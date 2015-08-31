@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+version = '1.0.0.0'
+group = 'edu.princeton.cs'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'algs4',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+    //repo, required to bringjavax.media.jai:com.springsource.javax.media.jai.core
+    //maven{
+    //    url "http://repository.springsource.com/maven/bundles/external"
+    //}
+}
+
+
+dependencies {
+    // compile 'gov.nist.math:jama:1.0.3'
+    // testCompile 'junit:junit:4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
