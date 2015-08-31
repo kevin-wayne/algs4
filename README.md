@@ -18,7 +18,7 @@ Prerequisites to use this code
 
 To import this project into an IDE, you need following:
 
-1) Java 7 or Java 8, from either <a href = "http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>Oracle</a>
+1) Java 7 or Java 8, from either <a href = "http://www.oracle.com/technetwork/java/javase/downloads/index.html"</a>Oracle</a>
    or <a href = "http://openjdk.java.net/install/">OpenJDK</a>.
 
 2) Your favorite IDE, such as <a href = "https://eclipse.org/downloads/">Eclipse</a>
