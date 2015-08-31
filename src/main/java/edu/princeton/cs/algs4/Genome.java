@@ -19,6 +19,9 @@ package edu.princeton.cs.algs4;
 public class Genome {
     private static final Alphabet DNA = new Alphabet("ACGT");
 
+    // Do not instantiate.
+    private Genome() { }
+
     public static void compress() { 
         String s = BinaryStdIn.readString();
         int N = s.length();

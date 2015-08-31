@@ -43,6 +43,10 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class WhiteFilter {  
+
+    // Do not instantiate.
+    private WhiteFilter() { }
+
     public static void main(String[] args) {
         SET<String> set = new SET<String>();
 

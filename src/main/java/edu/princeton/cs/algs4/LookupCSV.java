@@ -45,6 +45,10 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class LookupCSV {
+
+    // Do not instantiate.
+    private LookupCSV() { }
+
     public static void main(String[] args) {
         int keyField = Integer.parseInt(args[1]);
         int valField = Integer.parseInt(args[2]);

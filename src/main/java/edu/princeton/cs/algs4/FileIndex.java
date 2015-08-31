@@ -42,6 +42,9 @@ import java.io.File;
  */
 public class FileIndex { 
 
+    // Do not instantiate.
+    private FileIndex() { }
+
     public static void main(String[] args) {
 
         // key = word, value = set of files containing that word

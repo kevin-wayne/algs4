@@ -162,18 +162,6 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         else return keys[i];
     }
 
-   /**
-     * Change the key associated with index <tt>i</tt> to the specified value.
-     *
-     * @param  i the index of the key to change
-     * @param  key change the key assocated with index <tt>i</tt> to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @deprecated Replaced by {@link #changetKey(int, Key)}.
-     */
-    public void change(int i, Key key) {
-        changeKey(i, key);
-    }
-
     /**
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
@@ -188,6 +176,17 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         sink(qp[i]);
     }
 
+   /**
+     * Change the key associated with index <tt>i</tt> to the specified value.
+     *
+     * @param  i the index of the key to change
+     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
+     * @deprecated Replaced by {@link #changeKey(int,Key)}.
+     */
+    public void change(int i, Key key) {
+        changeKey(i, key);
+    }
 
     /**
      * Increase the key associated with index <tt>i</tt> to the specified value.

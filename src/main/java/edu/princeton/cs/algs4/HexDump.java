@@ -28,6 +28,9 @@ package edu.princeton.cs.algs4;
 
 public class HexDump {
 
+    // Do not instantiate.
+    private HexDump() { }
+
     public static void main(String[] args) {
         int bytesPerLine = 16;
         if (args.length == 1) {

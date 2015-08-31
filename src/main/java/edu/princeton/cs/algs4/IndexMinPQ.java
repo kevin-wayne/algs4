@@ -171,18 +171,6 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to change
-     * @param key change the key assocated with index <tt>i</tt> to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @deprecated Replaced by {@link #changeKey(int, Key)}.
-     */
-    public void change(int i, Key key) {
-        changeKey(i, key);
-    }
-
-    /**
-     * Change the key associated with index <tt>i</tt> to the specified value.
-     *
-     * @param  i the index of the key to change
      * @param  key change the key assocated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
@@ -193,6 +181,18 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         keys[i] = key;
         swim(qp[i]);
         sink(qp[i]);
+    }
+
+    /**
+     * Change the key associated with index <tt>i</tt> to the specified value.
+     *
+     * @param  i the index of the key to change
+     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
+     * @deprecated Replaced by {@link #changeKey(int, Key)}.
+     */
+    public void change(int i, Key key) {
+        changeKey(i, key);
     }
 
     /**

@@ -25,6 +25,9 @@ public class RunLength {
     private static final int R    = 256;
     private static final int LG_R = 8;
 
+    // Do not instantiate.
+    private RunLength() { }
+
     public static void expand() { 
         boolean b = false; 
         while (!BinaryStdIn.isEmpty()) {

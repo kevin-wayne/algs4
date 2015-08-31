@@ -34,6 +34,10 @@ package edu.princeton.cs.algs4;
 
 
 public class Count {
+
+    // Do not instantiate.
+    private Count() { }
+
     public static void main(String[] args) {
         Alphabet alpha = new Alphabet(args[0]);
         int R = alpha.R();

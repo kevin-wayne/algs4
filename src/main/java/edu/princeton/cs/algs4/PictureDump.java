@@ -19,6 +19,9 @@ import java.awt.Color;
 
 public class PictureDump {
 
+    // Do not instantiate.
+    private PictureDump() { }
+
     public static void main(String[] args) {
         int width = Integer.parseInt(args[0]);
         int height = Integer.parseInt(args[1]);

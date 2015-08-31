@@ -85,8 +85,8 @@ public class FFT {
 
     private static final Complex ZERO = new Complex(0, 0);
 
-
-    // compute the FFT of x[], assuming its length is a power of 2
+    // Do not instantiate.
+    private FFT() { }
 
     /**
      * Returns the FFT of the specified complex array.

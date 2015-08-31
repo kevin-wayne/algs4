@@ -25,6 +25,9 @@ public class Huffman {
     // alphabet size of extended ASCII
     private static final int R = 256;
 
+    // Do not instantiate.
+    private Huffman() { }
+
     // Huffman trie node
     private static class Node implements Comparable<Node> {
         private final char ch;

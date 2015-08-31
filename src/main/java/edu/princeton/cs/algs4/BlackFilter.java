@@ -43,6 +43,10 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class BlackFilter {  
+
+    // Do not instantiate.
+    private BlackFilter() { }
+
     public static void main(String[] args) {
         SET<String> set = new SET<String>();
 

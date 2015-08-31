@@ -23,6 +23,9 @@ public class LZW {
     private static final int L = 4096;       // number of codewords = 2^W
     private static final int W = 12;         // codeword width
 
+    // Do not instantiate.
+    private LZW() { }
+
     public static void compress() { 
         String input = BinaryStdIn.readString();
         TST<Integer> st = new TST<Integer>();

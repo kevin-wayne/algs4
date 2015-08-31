@@ -50,6 +50,9 @@ package edu.princeton.cs.algs4;
  */
 public class LookupIndex { 
 
+    // Do not instantiate.
+    private LookupIndex() { }
+
     public static void main(String[] args) {
         String filename  = args[0];
         String separator = args[1];

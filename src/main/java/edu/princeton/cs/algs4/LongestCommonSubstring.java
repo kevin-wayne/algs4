@@ -21,6 +21,9 @@ package edu.princeton.cs.algs4;
 
 public class LongestCommonSubstring {
 
+    // Do not instantiate.
+    private LongestCommonSubstring() { }
+
     public static void main(String[] args) {
 
         // read in two string from two files

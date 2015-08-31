@@ -24,6 +24,9 @@ package edu.princeton.cs.algs4;
 
 public class BinaryDump {
 
+    // Do not instantiate.
+    private BinaryDump() { }
+
     public static void main(String[] args) {
         int bitsPerLine = 16;
         if (args.length == 1) {

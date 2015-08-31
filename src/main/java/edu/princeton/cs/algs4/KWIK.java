@@ -38,6 +38,9 @@ package edu.princeton.cs.algs4;
 
 public class KWIK {
 
+    // Do not instantiate.
+    private KWIK() { }
+
     public static void main(String[] args) {
         In in = new In(args[0]);
         int context = Integer.parseInt(args[1]);

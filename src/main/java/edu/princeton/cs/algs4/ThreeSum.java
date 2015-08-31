@@ -43,6 +43,9 @@ package edu.princeton.cs.algs4;
  */
 public class ThreeSum {
 
+    // Do not instantiate.
+    private ThreeSum() { }
+
     /**
      * Prints to standard output the (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0.
      * @param a the array of integers

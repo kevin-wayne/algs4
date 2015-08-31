@@ -40,6 +40,9 @@ package edu.princeton.cs.algs4;
  */
 public class FrequencyCounter {
 
+    // Do not instantiate.
+    private FrequencyCounter() { }
+
     /**
      * Reads in a command-line integer and sequence of words from
      * standard input and prints out a word (whose length exceeds

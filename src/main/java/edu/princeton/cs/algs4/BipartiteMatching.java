@@ -19,6 +19,9 @@ package edu.princeton.cs.algs4;
 
 public class BipartiteMatching {
 
+    // Do not instantiate.
+    private BipartiteMatching() { }
+
     public static void main(String[] args) {
 
         // read in bipartite network with 2N vertices and E edges

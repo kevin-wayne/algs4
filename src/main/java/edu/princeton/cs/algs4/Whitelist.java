@@ -43,6 +43,9 @@ package edu.princeton.cs.algs4;
  */
 public class Whitelist {
 
+    // Do not instantiate.
+    private Whitelist() { }
+
     /**
      * Reads in a sequence of integers from the whitelist file, specified as
      * a command-line argument. Reads in integers from standard input and

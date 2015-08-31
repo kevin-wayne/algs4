@@ -30,6 +30,9 @@ package edu.princeton.cs.algs4;
 
 public class LRS {
 
+    // Do not instantiate.
+    private LRS() { }
+
     public static void main(String[] args) {
         String text = StdIn.readAll().replaceAll("\\s+", " ");
         SuffixArray sa = new SuffixArray(text);

@@ -17,6 +17,9 @@ package edu.princeton.cs.algs4;
 public class GaussianElimination {
     private static final double EPSILON = 1e-10;
 
+    // Do not instantiate.
+    private GaussianElimination() { }
+
     // Gaussian elimination with partial pivoting
     public static double[] lsolve(double[][] A, double[] b) {
         int N  = b.length;

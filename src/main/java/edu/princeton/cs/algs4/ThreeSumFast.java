@@ -59,6 +59,9 @@ import java.util.Arrays;
  */
 public class ThreeSumFast {
 
+    // Do not instantiate.
+    private ThreeSumFast() { }
+
     // returns true if the sorted array a[] contains any duplicated integers
     private static boolean containsDuplicates(int[] a) {
         for (int i = 1; i < a.length; i++)
