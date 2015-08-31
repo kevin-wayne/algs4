@@ -1,5 +1,2 @@
-*.class
-*.html
-*~
+/target/*
 README-GIT
-README.md.peter

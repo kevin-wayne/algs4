@@ -189,7 +189,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to change
      * @param  key change the key assocated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @deprecated Replaced by {@link #changeKey(int, Key)}.
+     * @deprecated Replaced by {@link #changeKey(int,%20Key)}.
      */
     public void change(int i, Key key) {
         changeKey(i, key);

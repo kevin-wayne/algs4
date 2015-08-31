@@ -74,30 +74,5 @@
 		</profile>
     </profiles>
 	<dependencies>
-        <dependency>
-			<groupId>javax.media.jai</groupId>
-			<artifactId>com.springsource.javax.media.jai.core</artifactId>
-			<version>1.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>java3d</groupId>
-			<artifactId>vecmath</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>gov.nist.math</groupId>
-			<artifactId>jama</artifactId>
-			<version>1.0.3</version>
-		</dependency>
-		<dependency>
-			<groupId>java3d</groupId>
-			<artifactId>j3d-core</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>java3d</groupId>
-			<artifactId>j3d-core-utils</artifactId>
-			<version>1.3.1</version>
-		</dependency>
 	</dependencies>  
 </project>
