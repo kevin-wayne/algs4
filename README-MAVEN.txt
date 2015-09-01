@@ -18,8 +18,8 @@ To install the Maven plugin for Eclipse (M2Eclipse):
   * Follow the instruction step by step.,
 
 
-[this could use a bit more explanation, with reference to algs4 repository and
- where algs4-<version>.jar ends up ]
+[this could use a bit more explanation, with reference to how to access algs4 repository
+ and where algs4-<version>.jar ends up ]
 To view source files and run this project, open this project with your favorite IDE,
 using "open project" or "import project wizards."
 
