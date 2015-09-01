@@ -1,5 +1,7 @@
 This file provides brief instructions on how to add this repository to
 a Maven build, from Eclipse, NetBeans, IntelliJ, or the command line.
+Specifically, it provides instructions on creating a version of algs4.jar
+that you can use as a dependency in your projects.
 
 These instructions assume that you already have installed Java 7
 (JDK 1.7) or above.
@@ -8,7 +10,7 @@ These instructions assume that you already have installed Java 7
 Using Maven in Eclipse for Java Developers
 ------------------------------------------
 [untested instructions from http://stackoverflow.com/questions/8620127/maven-in-eclipse-step-by-step-installation]
-To install Maven plugin:
+To install the Maven plugin for Eclipse (M2Eclipse):
   * Open Eclipse.
   * Go to Help -> Eclipse Marketplace.
   * Search for Maven.
@@ -16,7 +18,8 @@ To install Maven plugin:
   * Follow the instruction step by step.,
 
 
-[this could use a bit more explanation and reference to algs4 repository ]
+[this could use a bit more explanation, with reference to algs4 repository and
+ where algs4-<version>.jar ends up ]
 To view source files and run this project, open this project with your favorite IDE,
 using "open project" or "import project wizards."
 
@@ -49,14 +52,14 @@ set M2_HOME=C:\<appache-maven-x-y-z>
 set PATH=%M2_HOME%\bin;%PATH%
 
 To create the algs4-<version>.jar package and install it in the local
-repository for re-use from other projects, change to the directory of
+repository for reuse from other projects, change to the directory of
 the algs4 repository and run Maven.
 
 cd <algs4 directory>
 mvn clean install
 
 Maven will put algs4-<version>.jar in the directory <algs4 directory>/target.
-You can use this jar as dependency in your projects.
+You can use this jar as a dependency in your projects.
 
 
 
@@ -78,11 +81,11 @@ export M2_HOME=/my/maven/<appache-maven-x-y-z>
 export PATH=$M2_HOME/bin:$PATH
 
 To create the algs4-<version>.jar package and install it in the local
-repository for re-use from other projects, change to the directory of
+repository for reuse from other projects, change to the directory of
 the algs4 repository and run Maven.
 
 cd <algs4 directory>
 mvn clean install
 
 Maven will put algs4-<version>.jar in the directory <algs4 directory>/target.
-You can use this jar as dependency in your projects.
+You can use this jar as a dependency in your projects.
