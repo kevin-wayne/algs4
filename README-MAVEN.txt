@@ -29,20 +29,21 @@ If m2e (Maven plugin) is not built-in in Eclipse, follow these steps to install 
 
 Restart Eclipse after installing m2e.
 
-Now you can import algs4 as Maven Project into Eclipse:
+Now you can import algs4 as "Maven Project" into Eclipse:
 
-  * Open menu: File-> Import-> Maven-> Existing Maven Projects
+  * Open menu: File-> Import-> Maven-> Existing Maven Projects..
   * Choose directory of algs4 
   * Confirm import
 
-To complete dependencies resolution after import done:
+To complete dependencies resolution after import:
   * do right click on the project, choose Maven -> Update Project...
   * confirm project update.
 
 To build project in Eclipse:
-
+Eclipse automatically builds the project every time it saved.
+But if you want enforce build, do following:
   * Right click on the project in Eclipse
-  * Choose Run as... Maven install
+  * Choose Run as... Maven build
 
 
 
