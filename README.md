@@ -1,6 +1,6 @@
 #algs4
 
-<IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=200 alt = "Algorithms 4/e textbook">
+<IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
 This <a href = "https://github.com/kevin-wayne/algs4">public repository</a>
 contains the Java <a href = "http://algs4.cs.princeton.edu/code/">source code</a>
 for the algorithms and data structures in the textbook
