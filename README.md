@@ -1,12 +1,13 @@
-#algs4
+## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
 This <a href = "https://github.com/kevin-wayne/algs4">public repository</a>
 contains the Java <a href = "http://algs4.cs.princeton.edu/code/">source code</a>
 for the algorithms and data structures in the textbook
-<a href = "http://amzn.to/13VNJi7">Algorithms, 4th Edition</a>
-by Robert Sedgewick and Kevin Wayne. This is the official version maintained
-by the authors.
+<a href = "http://amzn.to/13VNJi7">Algorithms, 4th Edition</a> by Robert Sedgewick and Kevin Wayne.
+This is the official version maintained by the authors.
+
+<br>
 
 ## Design goals
 
@@ -27,23 +28,32 @@ or <a href = "https://gradle.org">Gradle</a> build managers.
 It can be run from either the command line or integrated into
 Eclipse, NetBeans, and IntelliJ.
 
-## License and copyright
+## Coursera Algorithms, Part I and II students
 
-Copyright &copy;2000-2015 Robert Sedgewick and Kevin Wayne.<br>
+Feel free to use this public repository to develop solutions to the programming assignments.
+However, please do not store solutions to programming assignments in public repositories.
+
+
+## Copyright
+
+Copyright &copy; 2000&ndash;2015 by Robert Sedgewick and Kevin Wayne.
+
+## License
+
 This code is released under GPLv3.
 
-## Contribute to this project
+## Contribute to this repository
 
 This <a href = "http://algs4.cs.princeton.edu/code/wishlist.txt">wishlist.txt</a>
 contains a list of algorithms and data structures that we would
 like to add to the repository. Indeed, several of the algorithms and
-data structures in this project were contributed by others. If interested, please
+data structures in this repository were contributed by others. If interested, please
 follow the same style as the code in the repository and thoroughly test your
 code before contacting us.
 
-## Other languaages
+## Support for other programming languaages
 
-The code has been translated to these other languages:
+Some of the code in this repository has been translated to other languages:
 <ul>
 <a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a>
 </ul>
@@ -51,4 +61,4 @@ The code has been translated to these other languages:
 
 ## Credits
 
-Thanks to Peter Korgan for Maven and Gradle and support.
+Thanks to Peter Korgan for Maven and Gradle support.
