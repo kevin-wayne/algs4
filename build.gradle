@@ -15,16 +15,10 @@ jar {
 
 repositories {
     mavenCentral()
-    //repo, required to bringjavax.media.jai:com.springsource.javax.media.jai.core
-    //maven{
-    //    url "http://repository.springsource.com/maven/bundles/external"
-    //}
 }
 
 
 dependencies {
-    // compile 'gov.nist.math:jama:1.0.3'
-    // testCompile 'junit:junit:4.+'
 }
 
 test {

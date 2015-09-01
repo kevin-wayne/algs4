@@ -7,72 +7,67 @@
 	<version>1.0.0.0</version>
 	<name>algs4</name>
 	<licenses>
-	   <license>
-	      <name>GNU GENERAL PUBLIC LICENSE</name>
-          <url>http://www.gnu.org/licenses/gpl-3.0.en.html</url>
-       </license>
+		<license>
+			<name>GNU GENERAL PUBLIC LICENSE</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0.en.html</url>
+		</license>
 	</licenses>
-    <developers>
-	      <developer>
-			  <id>kevin</id>
-			  <name>Kevin Wayne</name>
-			  <email>wayne@CS.Princeton.EDU</email>
-			  <url>https://www.cs.princeton.edu/~wayne/contact/</url>
-			  <organization>Princeton University </organization>
-			  <organizationUrl>https://www.cs.princeton.edu</organizationUrl>
-			  <roles>
+	<developers>
+		<developer>
+			<id>kevin</id>
+			<name>Kevin Wayne</name>
+			<email>wayne@CS.Princeton.EDU</email>
+			<url>https://www.cs.princeton.edu/~wayne/contact/</url>
+			<organization>Princeton University </organization>
+			<organizationUrl>https://www.cs.princeton.edu</organizationUrl>
+			<roles>
 				<role>author</role>
 				<role>developer</role>
-			  </roles>
-			  <timezone>UTC/GMT -4:00 hours</timezone>
-			  <properties>
+			</roles>
+			<timezone>UTC/GMT -4:00 hours</timezone>
+			<properties>
 				<picUrl>https://www.cs.princeton.edu/~wayne/contact/KevinWayne.jpg</picUrl>
-			  </properties>
-          </developer>
-		  <developer>
-			  <id>robert</id>
-			  <name>Robert Sedgewick</name>
-			  <roles>
+			</properties>
+		</developer>
+		<developer>
+			<id>robert</id>
+			<name>Robert Sedgewick</name>
+			<roles>
 				<role>author</role>
-			  </roles>
-		  </developer>
+			</roles>
+		</developer>
 	</developers>
 	<issueManagement>
-       <system>github.com</system>
-       <url>https://github.com/kevin-wayne/algs4/issues</url>
-    </issueManagement>
-    <profiles>
-	   <profile>
-		  <id>main-build</id>
-		  <activation>
-		      <activeByDefault>true</activeByDefault>
-		  </activation>
-		  <properties>
-			  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-              <java.version>1.8</java.version>
-		  </properties>
-		  <build>
-			  <plugins>
-			     <plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.3</version>
-					<configuration>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-					</configuration>
-				  </plugin>
-			  </plugins>
-		  </build>
-		  <repositories>
-			<repository>
-				<id>com.springsource.repository.bundles.external</id>
-				<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-				<url>http://repository.springsource.com/maven/bundles/external</url>
-			</repository>
+		<system>github.com</system>
+		<url>https://github.com/kevin-wayne/algs4/issues</url>
+	</issueManagement>
+	<profiles>
+		<profile>
+			<id>main-build</id>
+				<activation>
+					<activeByDefault>true</activeByDefault>
+				</activation>
+			<properties>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<java.version>1.8</java.version>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.3</version>
+						<configuration>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		<repositories>
 		</repositories>
 		</profile>
-    </profiles>
+	</profiles>
 	<dependencies>
 	</dependencies>  
 </project>
