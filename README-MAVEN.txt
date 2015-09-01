@@ -7,23 +7,42 @@ These instructions assume that you already have installed Java 7
 (JDK 1.7) or above.
 
 
+Using Maven in any IDE (common IDE nutral instructions)
+-------------------------------------------------------
+
+To view source files and run this project, open this project with your favorite IDE,
+using "open project" or "import project wizards."
+In any case open or import this project "As Maven Project".
+Jar location:
+Resulting algs4-<version>.jar can be found in <algs4 directory>/target directory on disk 
+
+
 Using Maven in Eclipse for Java Developers
 ------------------------------------------
-[untested instructions from http://stackoverflow.com/questions/8620127/maven-in-eclipse-step-by-step-installation]
-To install the Maven plugin for Eclipse (M2Eclipse):
+If m2e (Maven plugin) is not built-in in Eclipse, follow these steps to install the plugin:
+
   * Open Eclipse.
   * Go to Help -> Eclipse Marketplace.
   * Search for Maven.
-  * Click "Install" button at "Maven Integration for Eclipse" section.
+  * Click "Install" button at "Maven Integration for Eclipse" or "m2e" section.
   * Follow the instruction step by step.,
 
+Restart Eclipse after installing m2e.
 
-[this could use a bit more explanation, with reference to how to access algs4 repository
- and where algs4-<version>.jar ends up ]
-To view source files and run this project, open this project with your favorite IDE,
-using "open project" or "import project wizards."
+Now you can import algs4 as Maven Project into Eclipse:
 
-In any case open or import this project "As Maven Project".
+  * Open menu: File-> Import-> Maven-> Existing Maven Projects
+  * Choose directory of algs4 
+  * Confirm import
+
+To complete dependencies resolution after import done:
+  * do right click on the project, choose Maven -> Update Project...
+  * confirm project update.
+
+To build project in Eclipse:
+
+  * Right click on the project in Eclipse
+  * Choose Run as... Maven install
 
 
 
