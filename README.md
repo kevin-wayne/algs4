@@ -16,8 +16,8 @@ We use the word <em>programmer</em> to refer to anyone engaged in trying to acco
 something with the help of a computer, including scientists, engineers, and applications
 developers, not to mention college students in science, engineering, and computer science.
 The code is optimized for clarity, portability, and efficiency. While some of our 
-implementations are as fast as the corresponding counterparts in <tt>java.util</tt>,
-our goal is to express the core algorithmic idea in an elegant and efficient manner.
+implementations are as fast as (or faster than) their counterparts in <tt>java.util</tt>,
+our main goal is to express the core algorithmic ideas in an elegant and simple manner.
 While we embrace some advanced Java features (such as generics and iterators),
 we avoid other features that interfere with the exposition (such as inheritance and concurrency).
 

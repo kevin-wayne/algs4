@@ -64,8 +64,8 @@
 					</plugin>
 				</plugins>
 			</build>
-		<repositories>
-		</repositories>
+			<repositories>
+			</repositories>
 		</profile>
 	</profiles>
 	<dependencies>
