@@ -7,7 +7,7 @@ These instructions assume that you already have installed Java 7
 (JDK 1.7) or above.
 
 
-Using Maven in any IDE (common IDE nutral instructions)
+Using Maven in any IDE (common IDE neutral instructions)
 -------------------------------------------------------
 
 To view source files and run this project, open this project with your favorite IDE,
