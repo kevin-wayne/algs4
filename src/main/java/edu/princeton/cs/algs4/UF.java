@@ -125,7 +125,7 @@ public class UF {
      * @throws IndexOutOfBoundsException unless <tt>0 &le; p &lt; N</tt>
      */
     public int find(int p) {
-        if (p < 0 || p >= parent.length) throw new IndexOutOfBoundsException();
+        validate(p);
         while (p != parent[p]) {
             parent[p] = parent[parent[p]];    // path compression by halving
             p = parent[p];
@@ -180,6 +180,13 @@ public class UF {
         count--;
     }
 
+    // validate that p is a valid index
+    private void validate(int p) {
+        int N = parent.length;
+        if (p < 0 || p >= N) {
+            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N-1));  
+        }
+    }
 
     /**
      * Reads in a an integer <tt>N</tt> and a sequence of pairs of integers
@@ -201,6 +208,7 @@ public class UF {
         StdOut.println(uf.count() + " components");
     }
 }
+
 
 /******************************************************************************
  *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.

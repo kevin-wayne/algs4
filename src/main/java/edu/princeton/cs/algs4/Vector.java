@@ -19,7 +19,8 @@
  *   <x, y>  = 25.0
  * 
  *
- *  Note that Vector is also the name of an unrelated Java library class.
+ *  Note that Vector is also the name of an unrelated Java library class
+ *  in the package java.util.
  *
  ******************************************************************************/
 
@@ -120,7 +121,7 @@ public class Vector {
      *
      * @param  that the other vector 
      * @return the Euclidean distance between this vector and that vector
-     * @throws IllegalArgumentException if the dimensions of the two vectors are not equal.
+     * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public double distanceTo(Vector that) {
         if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");
@@ -147,7 +148,7 @@ public class Vector {
      *
      * @param  that the vector to subtract from this vector
      * @return the difference between this vector and that vector
-     * @throws IllegalArgumentException if the dimensions of the two vectors are not equal.
+     * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public Vector minus(Vector that) {
         if (this.d != that.d) throw new IllegalArgumentException("Dimensions don't agree");

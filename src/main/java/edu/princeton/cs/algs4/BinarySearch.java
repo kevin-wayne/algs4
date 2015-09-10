@@ -49,11 +49,11 @@ public class BinarySearch {
     /**
      * Returns the index of the specified key in the specified array.
      *
-     * @param  key the search key
      * @param  a the array of integers, must be sorted in ascending order
+     * @param  key the search key
      * @return index of key in array <tt>a</tt> if present; <tt>-1</tt> otherwise
      */
-    public static int indexOf(int key, int[] a) {
+    public static int indexOf(int[] a, int key) {
         int lo = 0;
         int hi = a.length - 1;
         while (lo <= hi) {
@@ -74,10 +74,10 @@ public class BinarySearch {
      * @param  key the search key
      * @param  a the array of integers, must be sorted in ascending order
      * @return index of key in array <tt>a</tt> if present; <tt>-1</tt> otherwise
-     * @deprecated Replaced by {@link #indexOf(int, int[])}.
+     * @deprecated Replaced by {@link #indexOf(int[], int)}.
      */
     public static int rank(int key, int[] a) {
-        return indexOf(key, a);
+        return indexOf(a, key);
     }
 
     /**
@@ -97,7 +97,7 @@ public class BinarySearch {
         // read integer key from standard input; print if not in whitelist
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
-            if (BinarySearch.indexOf(key, whitelist) == -1)
+            if (BinarySearch.indexOf(whitelist, key) == -1)
                 StdOut.println(key);
         }
     }

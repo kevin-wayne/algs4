@@ -29,6 +29,16 @@ import java.util.Comparator;
  *  The <tt>Insertion</tt> class provides static methods for sorting an
  *  array using insertion sort.
  *  <p>
+ *  This implementation makes ~ 1/2 N^2 compares and exchanges in
+ *  the worst case, so it is not suitable for sorting large arbitrary arrays.
+ *  More precisely, the number of exchanges is exactly equal to the number
+ *  of inversions. So, for example, it sorts a partially-sorted array
+ *  in linear time.
+ *  <p>
+ *  The sorting algorithm is stable and uses O(1) extra memory.
+ *  <p>
+
+
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *

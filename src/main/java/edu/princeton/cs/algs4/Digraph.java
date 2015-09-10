@@ -54,9 +54,10 @@ import java.util.NoSuchElementException;
 public class Digraph {
     private static final String NEWLINE = System.getProperty("line.separator");
 
-    private final int V;
-    private int E;
-    private Bag<Integer>[] adj;
+    private final int V;           // number of vertices in this digraph
+    private int E;                 // number of edges in this digraph
+    private Bag<Integer>[] adj;    // adj[v] = adjacency list for vertex v
+    private int[] indegree;        // indegree[v] = indegree of vertex v
     
     /**
      * Initializes an empty digraph with <em>V</em> vertices.
@@ -68,6 +69,7 @@ public class Digraph {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
         this.V = V;
         this.E = 0;
+        indegree = new int[V];
         adj = (Bag<Integer>[]) new Bag[V];
         for (int v = 0; v < V; v++) {
             adj[v] = new Bag<Integer>();
@@ -75,7 +77,7 @@ public class Digraph {
     }
 
     /**  
-     * Initializes a digraph from an input stream.
+     * Initializes a digraph from the specified input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
@@ -88,6 +90,7 @@ public class Digraph {
         try {
             this.V = in.readInt();
             if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+            indegree = new int[V];
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
@@ -106,13 +109,15 @@ public class Digraph {
     }
 
     /**
-     * Initializes a new digraph that is a deep copy of <tt>G</tt>.
+     * Initializes a new digraph that is a deep copy of the specified digraph.
      *
      * @param  G the digraph to copy
      */
     public Digraph(Digraph G) {
         this(G.V());
         this.E = G.E();
+        for (int v = 0; v < V; v++)
+            this.indegree[v] = G.indegree(v);
         for (int v = 0; v < G.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
@@ -161,6 +166,7 @@ public class Digraph {
         validateVertex(v);
         validateVertex(w);
         adj[v].add(w);
+        indegree[w]++;
         E++;
     }
 
@@ -187,6 +193,19 @@ public class Digraph {
     public int outdegree(int v) {
         validateVertex(v);
         return adj[v].size();
+    }
+
+    /**
+     * Returns the number of directed edges incident to vertex <tt>v</tt>.
+     * This is known as the <em>indegree</em> of vertex <tt>v</tt>.
+     *
+     * @param  v the vertex
+     * @return the indegree of vertex <tt>v</tt>               
+     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     */
+    public int indegree(int v) {
+        validateVertex(v);
+        return indegree[v];
     }
 
     /**

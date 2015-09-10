@@ -74,7 +74,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Initializes an empty symbol table with the given initial capacity.
+     * Initializes an empty symbol table with the specified initial capacity.
      */
     public BinarySearchST(int capacity) { 
         keys = (Key[]) new Comparable[capacity]; 
@@ -139,7 +139,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     } 
 
     /**
-     * Return the number of keys in the symbol table strictly less than <tt>key</tt>.
+     * Returns the number of keys in the symbol table strictly less than <tt>key</tt>.
      *
      * @param  key the key
      * @return the number of keys in the symbol table strictly less than <tt>key</tt>
@@ -148,11 +148,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public int rank(Key key) {
         int lo = 0, hi = N-1; 
         while (lo <= hi) { 
-            int m = lo + (hi - lo) / 2; 
-            int cmp = key.compareTo(keys[m]); 
-            if      (cmp < 0) hi = m - 1; 
-            else if (cmp > 0) lo = m + 1; 
-            else return m; 
+            int mid = lo + (hi - lo) / 2; 
+            int cmp = key.compareTo(keys[mid]);
+            if      (cmp < 0) hi = mid - 1; 
+            else if (cmp > 0) lo = mid + 1; 
+            else return mid; 
         } 
         return lo;
     } 

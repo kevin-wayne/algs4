@@ -42,12 +42,10 @@ public class DirectedCycleX {
 
     public DirectedCycleX(Digraph G) {
 
-        // compute indegrees
+        // indegrees of remaining vertices
         int[] indegree = new int[G.V()];
         for (int v = 0; v < G.V(); v++) {
-            for (int w : G.adj(v)) {
-                indegree[w]++;
-            }
+            indegree[v] = G.indegree(v);
         }
 
         // initialize queue to contain all vertices with indegree = 0

@@ -307,6 +307,55 @@ public class DigraphGenerator {
         return G;
     }
 
+    /**
+     * Returns an Eulerian cycle digraph on <tt>V</tt> vertices.
+     *
+     * @param  V the number of vertices in the cycle
+     * @param  E the number of edges in the cycle
+     * @return a digraph that is a directed Eulerian cycle on <tt>V</tt> vertices
+     *         and <tt>E</tt> edges
+     * @throws IllegalArgumentException if either V &le; 0 or E &le; 0
+     */
+    public static Digraph eulerianCycle(int V, int E) {
+        if (E <= 0)
+            throw new IllegalArgumentException("An Eulerian cycle must have at least one edge");
+        if (V <= 0)
+            throw new IllegalArgumentException("An Eulerian cycle must have at least one vertex");
+        Digraph G = new Digraph(V);
+        int[] vertices = new int[E];
+        for (int i = 0; i < E; i++)
+            vertices[i] = StdRandom.uniform(V);
+        for (int i = 0; i < E-1; i++) {
+            G.addEdge(vertices[i], vertices[i+1]);
+        }
+        G.addEdge(vertices[E-1], vertices[0]);
+        return G;
+    }
+
+    /**
+     * Returns an Eulerian cycle digraph on <tt>V</tt> vertices.
+     *
+     * @param  V the number of vertices in the path
+     * @param  E the number of edges in the path
+     * @return a digraph that is a directed Eulerian path on <tt>V</tt> vertices
+     *         and <tt>E</tt> edges
+     * @throws IllegalArgumentException if either V &le; 0 or E &lt; 0
+     */
+    public static Digraph eulerianPath(int V, int E) {
+        if (E < 0)
+            throw new IllegalArgumentException("negative number of edges");
+        if (V <= 0)
+            throw new IllegalArgumentException("An Eulerian path must have at least one vertex");
+        Digraph G = new Digraph(V);
+        int[] vertices = new int[E+1];
+        for (int i = 0; i < E+1; i++)
+            vertices[i] = StdRandom.uniform(V);
+        for (int i = 0; i < E; i++) {
+            G.addEdge(vertices[i], vertices[i+1]);
+        }
+        return G;
+    }
+
    /**
      * Returns a random simple digraph on <tt>V</tt> vertices, <tt>E</tt>
      * edges and (at least) <tt>c</tt> strong components. The vertices are randomly
@@ -410,6 +459,14 @@ public class DigraphGenerator {
 
         StdOut.println("cycle");
         StdOut.println(cycle(V));
+        StdOut.println();
+
+        StdOut.println("Eulierian path");
+        StdOut.println(eulerianPath(V, E));
+        StdOut.println();
+
+        StdOut.println("Eulierian cycle");
+        StdOut.println(eulerianCycle(V, E));
         StdOut.println();
 
         StdOut.println("binary tree");

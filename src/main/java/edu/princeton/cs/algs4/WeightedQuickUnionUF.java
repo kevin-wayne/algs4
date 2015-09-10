@@ -72,7 +72,7 @@ public class WeightedQuickUnionUF {
     private void validate(int p) {
         int N = parent.length;
         if (p < 0 || p >= N) {
-            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + N);
+            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N-1));  
         }
     }
 

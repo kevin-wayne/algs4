@@ -159,7 +159,10 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Compares two points by y-coordinate, breaking ties by x-coordinate.
-     * @param that the other point
+     * Formally, the invoking point (x0, y0) is less than the argument point (x1, y1)
+     * if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+     *
+     * @param  that the other point
      * @return the value <tt>0</tt> if this string is equal to the argument
      *         string (precisely when <tt>equals()</tt> returns <tt>true</tt>);
      *         a negative integer if this point is less than the argument
