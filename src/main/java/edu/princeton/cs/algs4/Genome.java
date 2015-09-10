@@ -16,12 +16,28 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>Genome</tt> class provides static methods for compressing
+ *  and expanding a genomic sequence using a 2-bit code.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class Genome {
     private static final Alphabet DNA = new Alphabet("ACGT");
 
     // Do not instantiate.
     private Genome() { }
 
+    /**
+     * Reads a sequence of characters over the alphabet { A, C, T, G } from
+     * standard input and writes them to standard output using two bits for
+     * each character.
+     */
     public static void compress() { 
         String s = BinaryStdIn.readString();
         int N = s.length();
@@ -35,6 +51,11 @@ public class Genome {
         BinaryStdOut.close();
     } 
 
+    /**
+     * Reads a binary sequence from standard input and writes them to
+     * standard standard output, converting each two bits to a character over
+     * the alphabet { A, C, T, G }.
+     */
     public static void expand() {
         int N = BinaryStdIn.readInt();
         // Read two bits; write char. 
@@ -46,6 +67,10 @@ public class Genome {
     }
 
 
+    /**
+     * Sample client that calls <tt>compress()</tt> if the command-line
+     * argument is "-" an <tt>expand()</tt> if it is "+".
+     */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();

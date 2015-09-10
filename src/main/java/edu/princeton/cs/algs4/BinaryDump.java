@@ -22,11 +22,34 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>BinaryDump</tt> class provides a client for displaying the contents
+ *  of a binary file in binary.
+ *  <p>
+ *  For more full-featured versions, see the Unix utilities
+ *  <tt>od</tt> (octal dump) and <tt>hexdump</tt> (hexadecimal dump).
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *  <p>
+ *  See also {@link HexDump} and {@link PictureDump}.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class BinaryDump {
 
     // Do not instantiate.
     private BinaryDump() { }
 
+    /**
+     * Reads in a sequence of bytes from standard input and writes
+     * them to standard output in binary, k bits per line,
+     * where k is given as a command-line integer (defaults
+     * to 16 if no integer is specified); also writes the number
+     * of bits.
+     */
     public static void main(String[] args) {
         int bitsPerLine = 16;
         if (args.length == 1) {
