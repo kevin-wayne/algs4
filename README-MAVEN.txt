@@ -7,19 +7,9 @@ These instructions assume that you already have installed Java 7
 (JDK 1.7) or above.
 
 
-Using Maven in any IDE (common IDE neutral instructions)
--------------------------------------------------------
-
-To view source files and run this project, open this project with your favorite IDE,
-using "open project" or "import project wizards."
-In any case open or import this project "As Maven Project".
-Jar location:
-Resulting algs4-<version>.jar can be found in <algs4 directory>/target directory on disk 
-
-
 Using Maven in Eclipse for Java Developers
 ------------------------------------------
-If m2e (Maven plugin) is not built-in in Eclipse, follow these steps to install the plugin:
+If m2e (Maven plugin) is not built into Eclipse, follow these steps to install the plugin:
 
   * Open Eclipse.
   * Go to Help -> Eclipse Marketplace.
@@ -31,20 +21,22 @@ Restart Eclipse after installing m2e.
 
 Now you can import algs4 as "Maven Project" into Eclipse:
 
-  * Open menu: File-> Import-> Maven-> Existing Maven Projects..
-  * Choose directory of algs4 
-  * Confirm import
+  * Open menu: File-> Import-> Maven-> Existing Maven Projects...
+  * Choose directory of algs4.
+  * Confirm import.
 
 To complete dependencies resolution after import:
-  * do right click on the project, choose Maven -> Update Project...
-  * confirm project update.
+  * Right click on the project, choose Maven -> Update Project...
+  * Confirm project update.
 
 To build project in Eclipse:
 Eclipse automatically builds the project every time it saved.
 But if you want enforce build, do following:
-  * Right click on the project in Eclipse
-  * Choose Run as... Maven build
+  * Right click on the project in Eclipse.
+  * Choose Run as... Maven build.
 
+Maven will put algs4-<version>.jar in the directory <algs4 directory>/target.
+You can use this jar as a dependency in your projects.
 
 
 Using Maven in IntelliJ IDEA
@@ -109,3 +101,4 @@ mvn clean install
 
 Maven will put algs4-<version>.jar in the directory <algs4 directory>/target.
 You can use this jar as a dependency in your projects.
+
