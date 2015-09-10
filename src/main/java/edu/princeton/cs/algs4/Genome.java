@@ -34,9 +34,9 @@ public class Genome {
     private Genome() { }
 
     /**
-     * Reads a sequence of characters over the alphabet { A, C, T, G } from
-     * standard input and writes them to standard output using two bits for
-     * each character.
+     * Reads a sequence of 8-bit extended ASCII characters over the alphabet
+     * { A, C, T, G } from standard input; compresses them using two bits per
+     * character; and writes the results to standard output.
      */
     public static void compress() { 
         String s = BinaryStdIn.readString();
@@ -52,9 +52,9 @@ public class Genome {
     } 
 
     /**
-     * Reads a binary sequence from standard input and writes them to
-     * standard standard output, converting each two bits to a character over
-     * the alphabet { A, C, T, G }.
+     * Reads a binary sequence from standard input; converts each two bits
+     * to an 8-bit extended ASCII character over the alphabet { A, C, T, G };
+     * and writes the results to standard output.
      */
     public static void expand() {
         int N = BinaryStdIn.readInt();

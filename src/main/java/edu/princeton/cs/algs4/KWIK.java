@@ -36,11 +36,31 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>KWIK</tt> class provides a {@link SuffixArray} client for computing
+ *  all occurrences of a keyword in a given string, with surrounding context.
+ *  This is known as <em>keyword-in-context search</em>.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class KWIK {
 
     // Do not instantiate.
     private KWIK() { }
 
+    /**
+     * Reads a string from a file specified as the first
+     * command-line argument; read an integer k specified as the
+     * second command line argument; then repeatedly processes
+     * use queries, printing all occurrences of the given query
+     * string in the text string with k characters of surrounding
+     * context on either side.
+     */
     public static void main(String[] args) {
         In in = new In(args[0]);
         int context = Integer.parseInt(args[1]);

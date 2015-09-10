@@ -18,6 +18,18 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>LZW</tt> class provides static methods for compressing
+ *  and expanding a binary input using LZW compression over the 8-bit extended
+ *  ASCII alphabet with 12-bit codewords.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick  
+ *  @author Kevin Wayne
+ */
 public class LZW {
     private static final int R = 256;        // number of input chars
     private static final int L = 4096;       // number of codewords = 2^W
@@ -26,6 +38,11 @@ public class LZW {
     // Do not instantiate.
     private LZW() { }
 
+    /**
+     * Reads a sequence of 8-bit bytes from standard input; compresses
+     * them using LZW compression with 12-bit codewords; and writes the results
+     * to standard output.
+     */
     public static void compress() { 
         String input = BinaryStdIn.readString();
         TST<Integer> st = new TST<Integer>();
@@ -45,7 +62,11 @@ public class LZW {
         BinaryStdOut.close();
     } 
 
-
+    /**
+     * Reads a sequence of bit encoded using LZW compression with
+     * 12-bit codewords from standard input; expands them; and writes
+     * the results to standard output.
+     */
     public static void expand() {
         String[] st = new String[L];
         int i; // next available codeword value
@@ -71,8 +92,10 @@ public class LZW {
         BinaryStdOut.close();
     }
 
-
-
+    /**
+     * Sample client that calls <tt>compress()</tt> if the command-line
+     * argument is "-" an <tt>expand()</tt> if it is "+".
+     */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();

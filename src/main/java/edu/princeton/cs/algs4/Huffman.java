@@ -20,6 +20,18 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>Huffman</tt> class provides static methods for compressing
+ *  and expanding a binary input using Huffman codes over the 8-bit extended
+ *  ASCII alphabet.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class Huffman {
 
     // alphabet size of extended ASCII
@@ -53,8 +65,11 @@ public class Huffman {
         }
     }
 
-
-    // compress bytes from standard input and write to standard output
+    /**
+     * Reads a sequence of 8-bit bytes from standard input; compresses them
+     * using Huffman codes with an 8-bit alphabet; and writes the results
+     * to standard output.
+     */
     public static void compress() {
         // read the input
         String s = BinaryStdIn.readString();
@@ -145,8 +160,10 @@ public class Huffman {
         }
     }
 
-
-    // expand Huffman-encoded input from standard input and write to standard output
+    /**
+     * Reads a sequence of bits that represents a Huffman-compressed message from
+     * standard input; expands them; and writes the results to standard output.
+     */
     public static void expand() {
 
         // read in Huffman trie from input stream
@@ -179,7 +196,10 @@ public class Huffman {
         }
     }
 
-
+    /**
+     * Sample client that calls <tt>compress()</tt> if the command-line
+     * argument is "-" an <tt>expand()</tt> if it is "+".
+     */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();

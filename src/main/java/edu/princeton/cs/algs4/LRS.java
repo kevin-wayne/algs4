@@ -27,18 +27,33 @@
 
 package edu.princeton.cs.algs4;
 
-
+/**
+ *  The <tt>LRS</tt> class provides a {@link SuffixArray} client for computing
+ *  the longest repeated substring of a string.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *  <p>
+ *  See also {@link LongestCommonSubstring}.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class LRS {
 
     // Do not instantiate.
     private LRS() { }
 
-    public static void main(String[] args) {
-        String text = StdIn.readAll().replaceAll("\\s+", " ");
+    /**
+     * Returns the longest repeated substring of the specified string.
+     *
+     * @param  text the string
+     * @return the longest repeated substring
+     */
+    public static String lrs(String text) {
         SuffixArray sa = new SuffixArray(text);
-
         int N = sa.length();
-
         String lrs = "";
         for (int i = 1; i < N; i++) {
             int length = sa.lcp(i);
@@ -47,8 +62,15 @@ public class LRS {
                 lrs = text.substring(sa.index(i), sa.index(i) + length);
             }
         }
-        
-        StdOut.println("'" + lrs + "'");
+        return lrs;
+    }
+
+    /**
+     * Unit tests the <tt>lrs()</tt> method.
+     */
+    public static void main(String[] args) {
+        String text = StdIn.readAll().replaceAll("\\s+", " ");
+        StdOut.println("'" + lrs(text) + "'");
     }
 }
 

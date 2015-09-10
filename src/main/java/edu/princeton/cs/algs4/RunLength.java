@@ -21,6 +21,18 @@
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>RunLength</tt> class provides static methods for compressing
+ *  and expanding a binary input using run-length coding with 8-bit
+ *  run lengths.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class RunLength {
     private static final int R    = 256;
     private static final int LG_R = 8;
@@ -28,6 +40,11 @@ public class RunLength {
     // Do not instantiate.
     private RunLength() { }
 
+    /**
+     * Reads a sequence of bits from standard input (that are encoded
+     * using run-length encoding with 8-bit run lengths); decodes them;
+     * and writes the results to standard output.
+     */
     public static void expand() { 
         boolean b = false; 
         while (!BinaryStdIn.isEmpty()) {
@@ -39,6 +56,11 @@ public class RunLength {
         BinaryStdOut.close();
     }
 
+    /**
+     * Reads a sequence of bits from standard input; compresses
+     * them using run-length coding with 8-bit run lengths; and writes the
+     * results to standard output.
+     */
     public static void compress() { 
         char run = 0; 
         boolean old = false;
@@ -63,6 +85,10 @@ public class RunLength {
     }
 
 
+    /**
+     * Sample client that calls <tt>compress()</tt> if the command-line
+     * argument is "-" an <tt>expand()</tt> if it is "+".
+     */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
         else if (args[0].equals("+")) expand();
