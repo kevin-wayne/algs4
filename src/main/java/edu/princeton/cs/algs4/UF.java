@@ -28,7 +28,7 @@ package edu.princeton.cs.algs4;
  *  The <tt>UF</tt> class represents a <em>union-find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
  *  It supports the <em>union</em> and <em>find</em> operations,
- *  along with a <em>connected</em> operation for determinig whether
+ *  along with a <em>connected</em> operation for determining whether
  *  two sites in the same component and a <em>count</em> operation that
  *  returns the total number of components.
  *  <p>

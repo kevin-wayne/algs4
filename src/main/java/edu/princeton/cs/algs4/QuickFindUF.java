@@ -12,7 +12,7 @@ package edu.princeton.cs.algs4;
 /**
  *  The <tt>QuickFindUF</tt> class represents a union-find data structure.
  *  It supports the <em>union</em> and <em>find</em> operations, along with
- *  methods for determinig whether two objects are in the same component
+ *  methods for determining whether two objects are in the same component
  *  and the total number of components.
  *  <p>
  *  This implementation uses quick find.
