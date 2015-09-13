@@ -62,7 +62,7 @@ public class Complex {
      * Returns a string representation of this complex number.
      *
      * @return a string representation of this complex number,
-     *         of the form 12 - 5i.
+     *         of the form 34 - 56i.
      */
     public String toString() {
         if (im == 0) return re + "";
@@ -96,7 +96,7 @@ public class Complex {
      * Returns the sum of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the sum of this complex number and that complex number
+     * @return the complex number whose value is <tt>(this + that)</tt>
      */
     public Complex plus(Complex that) {
         double real = this.re + that.re;
@@ -109,7 +109,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the result of subtracting that complex number from this complex number
+     * @return the complex number whose value is <tt>(this - that)</tt>
      */
     public Complex minus(Complex that) {
         double real = this.re - that.re;
@@ -121,7 +121,7 @@ public class Complex {
      * Returns the product of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the product of this complex number and that complex number
+     * @return the complex number whose value is <tt>(this * that)</tt>
      */
     public Complex times(Complex that) {
         double real = this.re * that.re - this.im * that.im;
@@ -133,7 +133,7 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the product of this complex number and the scalar <tt>alpha</tt>
+     * @return the complex number whose value is <tt>(alpha * this)</tt>
      */
     public Complex scale(double alpha) {
         return new Complex(alpha * re, alpha * im);
@@ -143,7 +143,7 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the product of this complex number and the scalar <tt>alpha</tt>
+     * @return the complex number whose value is <tt>(alpha * this)</tt>
      * @deprecated Use {@link #scale(double)} instead.
      */
     public Complex times(double alpha) {
@@ -162,7 +162,7 @@ public class Complex {
     /**
      * Returns the reciprocal of this complex number.
      *
-     * @return the reciprocal of this complex number
+     * @return the complex number whose value is <tt>(1 / this)</tt>
      */
     public Complex reciprocal() {
         double scale = re*re + im*im;
@@ -192,7 +192,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the result of dividing that complex number into this complex number
+     * @return the complex number whose value is <tt>(this / that)</tt>
      */
     public Complex divides(Complex that) {
         return this.times(that.reciprocal());

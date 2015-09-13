@@ -46,10 +46,19 @@ public class LRS {
     private LRS() { }
 
     /**
+     * Returns the longest common string of the two specified strings.
+     *
+     * @param  s one string
+     * @param  t the other string
+     * @return the longest common string that appears as a substring
+     */
+
+    /**
      * Returns the longest repeated substring of the specified string.
      *
      * @param  text the string
-     * @return the longest repeated substring
+     * @return the longest repeated substring that appears in <tt>text</tt>;
+     *         the empty string if no such string
      */
     public static String lrs(String text) {
         SuffixArray sa = new SuffixArray(text);

@@ -48,7 +48,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation uses <em>Krusal's algorithm</em> and the
  *  union-find data type.
- *  The constructor takes time proportional to <em>E</em> log <em>V</em>
+ *  The constructor takes time proportional to <em>E</em> log <em>E</em>
  *  and extra space (not including the graph) proportional to <em>V</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  Afterwards, the <tt>weight()</tt> method takes constant time

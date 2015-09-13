@@ -28,8 +28,8 @@ package edu.princeton.cs.algs4;
  *  The <tt>UF</tt> class represents a <em>union-find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
  *  It supports the <em>union</em> and <em>find</em> operations,
- *  along with a <em>connected</em> operation for determinig whether
- *  two sites in the same component and a <em>count</em> operation that
+ *  along with a <em>connected</em> operation for determining whether
+ *  two sites are in the same component and a <em>count</em> operation that
  *  returns the total number of components.
  *  <p>
  *  The union-find data type models connectivity among a set of <em>N</em>
@@ -39,11 +39,12 @@ package edu.princeton.cs.algs4;
  *  <ul>
  *  <p><li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.
  *  <p><li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
- *          <em>q</em> is connected to <em>p</em>.
+ *          then <em>q</em> is connected to <em>p</em>.
  *  <p><li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
  *          and <em>q</em> is connected to <em>r</em>, then
  *          <em>p</em> is connected to <em>r</em>.
  *  </ul>
+ *  <p>
  *  An equivalence relation partitions the sites into
  *  <em>equivalence classes</em> (or <em>components</em>). In this case,
  *  two sites are in the same component if and only if they are connected.
@@ -69,6 +70,7 @@ package edu.princeton.cs.algs4;
  *         are in the same component, and false otherwise.
  *  <p><li><em>count</em>() returns the number of components.
  *  </ul>
+ *  <p>
  *  The component identifier of a component can change
  *  only when the component itself changes during a call to
  *  <em>union</em>&mdash;it cannot change during a call
@@ -100,8 +102,9 @@ public class UF {
     private int count;     // number of components
 
     /**
-     * Initializes an empty union-find data structure with <tt>N</tt>
-     * isolated components <tt>0</tt> through <tt>N-1</tt>.
+     * Initializes an empty union-find data structure with <tt>N</tt> sites
+     * <tt>0</tt> through <tt>N-1</tt>. Each site is initially in its own 
+     * component.
      *
      * @param  N the number of sites
      * @throws IllegalArgumentException if <tt>N &lt; 0</tt>
@@ -120,7 +123,7 @@ public class UF {
     /**
      * Returns the component identifier for the component containing site <tt>p</tt>.
      *
-     * @param  p the integer representing one object
+     * @param  p the integer representing one site
      * @return the component identifier for the component containing site <tt>p</tt>
      * @throws IndexOutOfBoundsException unless <tt>0 &le; p &lt; N</tt>
      */
@@ -147,14 +150,14 @@ public class UF {
      *
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
-     * @return true if the two sites <tt>p</tt> and <tt>q</tt> are in the same component; false otherwise
+     * @return <tt>true</tt> if the two sites <tt>p</tt> and <tt>q</tt> are in the same component;
+     *         <tt>false</tt> otherwise
      * @throws IndexOutOfBoundsException unless
      *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
      */
     public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
-
   
     /**
      * Merges the component containing site <tt>p</tt> with the 

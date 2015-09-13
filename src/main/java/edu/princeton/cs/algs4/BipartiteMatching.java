@@ -13,6 +13,12 @@
  *  The Hopcroft-Karp algorithm improves this to E V^1/2 by finding
  *  a maximal set of shortest augmenting paths in each phase.
  *
+ *  Todo: update API so that it takes a Graph as an argument;
+ *        validates that it is bipartite; and provides the 
+ *        edges in the matching in some natural manner
+ *        (e.g., list of Edge objects? or for each vertex return -1
+ *         if not in matching and other endpoint if in the matching)
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;

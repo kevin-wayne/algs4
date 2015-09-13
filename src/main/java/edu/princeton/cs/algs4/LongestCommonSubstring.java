@@ -33,6 +33,9 @@ package edu.princeton.cs.algs4;
  */
 public class LongestCommonSubstring {
 
+    // Do not instantiate.
+    private LongestCommonSubstring() { }
+
     // return the longest common prefix of suffix s[p..] and suffix t[q..]
     private static String lcp(String s, int p, String t, int q) {
         int n = Math.min(s.length() - p, t.length() - q);
@@ -60,7 +63,9 @@ public class LongestCommonSubstring {
      *
      * @param  s one string
      * @param  t the other string
-     * @return the longest common strsing
+     * @return the longest common string that appears as a substring
+     *         in both <tt>s</tt> and <tt>t</tt>; the empty string
+     *         if no such string
      */
     public static String lcs(String s, String t) {
         SuffixArray suffix1 = new SuffixArray(s);

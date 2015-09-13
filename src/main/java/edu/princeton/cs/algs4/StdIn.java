@@ -84,8 +84,9 @@ public final class StdIn {
      * Returns true if standard input is empty (except possibly for whitespace).
      * Use this method to know whether the next call to {@link #readString()}, 
      * {@link #readDouble()}, etc will succeed.
+     *
      * @return <tt>true</tt> if standard input is empty (except possibly
-     *     for whitespae); <tt>false</tt> otherwise
+     *         for whitespace); <tt>false</tt> otherwise
      */
     public static boolean isEmpty() {
         return !scanner.hasNext();
@@ -96,7 +97,8 @@ public final class StdIn {
      * Use this method to know whether the
      * next call to {@link #readLine()} will succeed. <p> Functionally
      * equivalent to {@link #hasNextChar()}.
-     * @return true if standard input is empty, and false otherwise
+     *
+     * @return <tt>true</tt> if standard input is empty; <tt>false</tt> otherwise
      */
     public static boolean hasNextLine() {
         return scanner.hasNextLine();
@@ -105,8 +107,10 @@ public final class StdIn {
     /**
      * Returns true if standard input is empty (including whitespace).
      * Use this to know whether the next call to {@link #readChar()} will succeed.
-     * <p>Functionally equivalent to {@link #hasNextLine()}.
-     * @return true if standard input is empty, and false otherwise
+     * <p>
+     * Functionally equivalent to {@link #hasNextLine()}.
+     *
+     * @return <tt>true</tt> if standard input is empty; <tt>false</tt> otherwise
      */
     public static boolean hasNextChar() {
         scanner.useDelimiter(EMPTY_PATTERN);

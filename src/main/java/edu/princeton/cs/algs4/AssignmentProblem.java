@@ -12,6 +12,12 @@
  *
  *  Assumes N-by-N cost matrix is nonnegative.
  *
+ *  Todo: update API so that it takes an EdgeWeightedGraph as an argument;
+ *        validates that the graph is bipartite and the weights are
+ *        nonnegative (or adds a big constant to every edge); find a 
+ *        maximum cardinality matching of minimum weight (or create a
+ *        new data type WeightedBipartiteMatching to handle sparse instances); 
+ *        provides edges in matching to client
  *
  ******************************************************************************/
 
@@ -31,9 +37,13 @@ public class AssignmentProblem {
     public AssignmentProblem(double[][] weight) {
         N = weight.length;
         this.weight = new double[N][N];
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < N; j++)
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (!(weight[i][j] >= 0.0))
+                    throw new IllegalArgumentException("weights must be nonnegative");
                 this.weight[i][j] = weight[i][j];
+            }
+        }
 
         // dual variables
         px = new double[N];

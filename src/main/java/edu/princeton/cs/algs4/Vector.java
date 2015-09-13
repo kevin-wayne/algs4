@@ -132,7 +132,7 @@ public class Vector {
      * Returns the sum of this vector and the specified vector.
      *
      * @param  that the vector to add to this vector
-     * @return the sum of this vector and that vector
+     * @return the vector whose value is <tt>(this + that)</tt>
      * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public Vector plus(Vector that) {
@@ -147,7 +147,7 @@ public class Vector {
      * Returns the difference between this vector and the specified vector.
      *
      * @param  that the vector to subtract from this vector
-     * @return the difference between this vector and that vector
+     * @return the vector whose value is <tt>(this - that)</tt>
      * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public Vector minus(Vector that) {
@@ -171,27 +171,27 @@ public class Vector {
     /**
      * Returns the scalar-vector product of this vector and the specified scalar
      *
-     * @param  factor the scalar
-     * @return the scalar-vector product of this vector and the specified scalar
+     * @param  alpha the scalar
+     * @return the vector whose value is <tt>(alpha * this)</tt>
      * @deprecated Replaced by {@link #scale(double)}.
      */
-    public Vector times(double factor) {
+    public Vector times(double alpha) {
         Vector c = new Vector(d);
         for (int i = 0; i < d; i++)
-            c.data[i] = factor * data[i];
+            c.data[i] = alpha * data[i];
         return c;
     }
 
     /**
      * Returns the scalar-vector product of this vector and the specified scalar
      *
-     * @param  factor the scalar
-     * @return the scalar-vector product of this vector and the specified scalar
+     * @param  alpha the scalar
+     * @return the vector whose value is <tt>(alpha * this)</tt>
      */
-    public Vector scale(double factor) {
+    public Vector scale(double alpha) {
         Vector c = new Vector(d);
         for (int i = 0; i < d; i++)
-            c.data[i] = factor * data[i];
+            c.data[i] = alpha * data[i];
         return c;
     }
 
