@@ -30,7 +30,8 @@ package edu.princeton.cs.algs4;
  *  If the capacities and floating-point numbers, then floating-point
  *  roundoff error can accumulate.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/64maxflow">Section 6.4</a>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -46,9 +47,10 @@ public class FordFulkerson {
     /**
      * Compute a maximum flow and minimum cut in the network <tt>G</tt>
      * from vertex <tt>s</tt> to vertex <tt>t</tt>.
-     * @param G the flow network
-     * @param s the source vertex
-     * @param t the sink vertex
+     *
+     * @param  G the flow network
+     * @param  s the source vertex
+     * @param  t the sink vertex
      * @throws IndexOutOfBoundsException unless 0 <= s < V
      * @throws IndexOutOfBoundsException unless 0 <= t < V
      * @throws IllegalArgumentException if s = t
@@ -84,17 +86,18 @@ public class FordFulkerson {
 
     /**
      * Returns the value of the maximum flow.
+     *
      * @return the value of the maximum flow
      */
     public double value()  {
         return value;
     }
 
-    // is v in the s side of the min s-t cut?
     /**
-     * Is vertex <tt>v</tt> on the <tt>s</tt> side of the minimum st-cut?
-     * @return <tt>true</tt> if vertex <tt>v</tt> is on the <tt>s</tt> side of the micut,
-     *    and <tt>false</tt> if vertex <tt>v</tt> is on the <tt>t</tt> side.
+     * Returns true if the specified vertex is on the <tt>s</tt> side of the mincut.
+     *
+     * @return <tt>true</tt> if vertex <tt>v</tt> is on the <tt>s</tt> side of the micut;
+     *         <tt>false</tt> otherwise
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public boolean inCut(int v)  {

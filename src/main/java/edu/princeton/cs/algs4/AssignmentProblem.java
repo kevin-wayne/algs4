@@ -12,17 +12,35 @@
  *
  *  Assumes N-by-N cost matrix is nonnegative.
  *
- *  Todo: update API so that it takes an EdgeWeightedGraph as an argument;
- *        validates that the graph is bipartite and the weights are
- *        nonnegative (or adds a big constant to every edge); find a 
- *        maximum cardinality matching of minimum weight (or create a
- *        new data type WeightedBipartiteMatching to handle sparse instances); 
- *        provides edges in matching to client
- *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>AssignmentProblem</tt> class represents a data type for computing
+ *  an optimal solution to an <em>N</em>-by-<em>N</em> <em>assignment problem</em>.
+ *  The assignment problem is to find a maximum weight matching in an
+ *  edge-weighted complete bipartite graph.
+ *  <p>
+ *  The data type supplies methods for determining the optimal assignment
+ *  and the corresponding dual solution.
+ *  <p>
+ *  This implementation uses the <em>successive shortest paths algorithm</em>.
+ *  The order of growth of the running time in the worst case is
+ *  O(<em>N</em>^3 log <em>N</em>) to solve an <em>N</em>-by-<em>N</em>
+ *  instance.
+ *  <p>
+ *  See also {@link WeightedBipartiteMatching}, which solves the problem
+ *  in O(<em>E V</em> log <em>V</em>) time in the worst case
+ *  for bipartite graphs with <em>V</em> vertices and <em>E</em> edges.
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class AssignmentProblem {
     private static final int UNMATCHED = -1;
 
@@ -33,7 +51,13 @@ public class AssignmentProblem {
     private int[] xy;           // xy[i] = j means i-j is a match
     private int[] yx;           // yx[j] = i means i-j is a match
 
- 
+    /**
+     * Determines an optimal solution to the assignment problem.
+     *
+     * @param  weight the <em>N</em>-by-<em>N</em> matrix of weights
+     * @throws IllegalArgumentException unless all weights are nonnegative
+     * @throws NullPointerException if <tt>weight</tt> is <tt>null</tt>
+     */ 
     public AssignmentProblem(double[][] weight) {
         N = weight.length;
         this.weight = new double[N][N];
@@ -111,17 +135,52 @@ public class AssignmentProblem {
         return weight[i][j] + px[i] - py[j];
     }
 
+    /**
+     * Returns the dual optimal value for the specified row.
+     *
+     * @param  i the row index
+     * @return the dual optimal value for row <tt>i</tt>
+     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
+     *
+     */
     // dual variable for row i
     public double dualRow(int i) {
+        validate(i);
         return px[i];
     }
 
-    // dual variable for column j
+    /**
+     * Returns the dual optimal value for the specified column.
+     *
+     * @param  j the column index
+     * @return the dual optimal value for column <tt>j</tt>
+     * @throws IndexOutOfBoundsException unless <tt>0 &le; j &lt; N</tt>
+     *
+     */
     public double dualCol(int j) {
+        validate(j);
         return py[j];
     }
 
-    // total weight of min weight perfect matching
+    /**
+     * Returns the column associated with the specified row in the optimal assignment.
+     *
+     * @param  i the row index
+     * @return the column matched to row <tt>i</tt> in the optimal assignment
+     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
+     *
+     */
+    public int sol(int i) {
+        validate(i);
+        return xy[i];
+    }
+
+    /**
+     * Returns the total weight of the optimal assignment
+     *
+     * @return the total weight of the optimal assignment
+     *
+     */
     public double weight() {
         double total = 0.0;
         for (int i = 0; i < N; i++) {
@@ -131,9 +190,11 @@ public class AssignmentProblem {
         return total;
     }
 
-    public int sol(int i) {
-        return xy[i];
+    private void validate(int i) {
+        if (i < 0 || i >= N) throw new IndexOutOfBoundsException();
     }
+
+
 
     // check that dual variables are feasible
     private boolean isDualFeasible() {
