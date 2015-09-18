@@ -6,11 +6,8 @@
  *  Solve an N-by-N assignment problem in N^3 log N time using the
  *  successive shortest path algorithm.
  *
- *  Remark: could use dense version of Dijsktra's algorithm for
- *  improved theoretical efficiency of N^3, but it doesn't seem to
- *  help in practice.
- *
  *  Assumes N-by-N cost matrix is nonnegative.
+ *  TODO: remove this assumption
  *
  ******************************************************************************/
 
@@ -19,10 +16,10 @@ package edu.princeton.cs.algs4;
 /**
  *  The <tt>AssignmentProblem</tt> class represents a data type for computing
  *  an optimal solution to an <em>N</em>-by-<em>N</em> <em>assignment problem</em>.
- *  The assignment problem is to find a maximum weight matching in an
+ *  The assignment problem is to find a minimum weight matching in an
  *  edge-weighted complete bipartite graph.
  *  <p>
- *  The data type supplies methods for determining the optimal assignment
+ *  The data type supplies methods for determining the optimal solution
  *  and the corresponding dual solution.
  *  <p>
  *  This implementation uses the <em>successive shortest paths algorithm</em>.
@@ -87,7 +84,7 @@ public class AssignmentProblem {
             assert isComplementarySlack();
             augment();
         }
-        assert check();
+        assert certifySolution();
     }
 
     // find shortest augmenting path and upate
@@ -163,10 +160,10 @@ public class AssignmentProblem {
     }
 
     /**
-     * Returns the column associated with the specified row in the optimal assignment.
+     * Returns the column associated with the specified row in the optimal solution.
      *
      * @param  i the row index
-     * @return the column matched to row <tt>i</tt> in the optimal assignment
+     * @return the column matched to row <tt>i</tt> in the optimal solution
      * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
      *
      */
@@ -176,9 +173,9 @@ public class AssignmentProblem {
     }
 
     /**
-     * Returns the total weight of the optimal assignment
+     * Returns the total weight of the optimal solution
      *
-     * @return the total weight of the optimal assignment
+     * @return the total weight of the optimal solution
      *
      */
     public double weight() {
@@ -195,6 +192,11 @@ public class AssignmentProblem {
     }
 
 
+    /**************************************************************************
+     *
+     *  The code below is solely for testing correctness of the data type.
+     *
+     **************************************************************************/
 
     // check that dual variables are feasible
     private boolean isDualFeasible() {
@@ -253,35 +255,44 @@ public class AssignmentProblem {
         return true;
     }
 
-
     // check optimality conditions
-    private boolean check() {
+    private boolean certifySolution() {
         return isPerfectMatching() && isDualFeasible() && isComplementarySlack();
     }
 
+    /**
+     * Unit tests the <tt>AssignmentProblem</tt> data type.
+     * Takes a command-line argument N; creates a random N-by-N matrix;
+     * solves the N-by-N assignment problem; and prints the optimal
+     * solution.
+     */
     public static void main(String[] args) {
-        In in = new In(args[0]);
-        int N = in.readInt();
+
+        // create random N-by-N matrix
+        int N = Integer.parseInt(args[0]);
         double[][] weight = new double[N][N];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                weight[i][j] = in.readDouble();
+                weight[i][j] = 100 + StdRandom.uniform(900);
             }
         }
 
+        // solve assignment problem
         AssignmentProblem assignment = new AssignmentProblem(weight);
-        StdOut.println("weight = " + assignment.weight());
-        for (int i = 0; i < N; i++)
-            StdOut.println(i + "-" + assignment.sol(i) + "' " + weight[i][assignment.sol(i)]);
+        StdOut.printf("weight = %.0f\n", assignment.weight());
+        StdOut.println();
 
-        for (int i = 0; i < N; i++)
-            StdOut.println("px[" + i + "] = " + assignment.dualRow(i));
-        for (int j = 0; j < N; j++)
-            StdOut.println("py[" + j + "] = " + assignment.dualCol(j));
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < N; j++)
-                StdOut.println("reduced[" + i + "-" + j + "] = " + assignment.reduced(i, j));
-
+        // print N-by-N matrix and optimal solution
+        if (N <= 20) return;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (j == assignment.sol(i))
+                    StdOut.printf("*%.0f ", weight[i][j]);
+                else
+                    StdOut.printf(" %.0f ", weight[i][j]);
+            }
+            StdOut.println();
+        }
     }
 
 }

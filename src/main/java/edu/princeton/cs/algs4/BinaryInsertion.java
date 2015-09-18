@@ -1,45 +1,54 @@
 /******************************************************************************
- *  Compilation:  javac InsertionX.java
- *  Execution:    java InsertionX < input.txt
+ *  Compilation:  javac BinaryInsertion.java
+ *  Execution:    java BinaryInsertion < input.txt
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
  *                http://algs4.cs.princeton.edu/21sort/words3.txt
  *  
- *  Sorts a sequence of strings from standard input using an optimized
- *  version of insertion sort that uses half exchanges instead of 
- *  full exchanges to reduce data movement..
+ *  Sorts a sequence of strings from standard input using 
+ *  binary insertion sort with half exchanges.
  *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
- *  % java InsertionX < tiny.txt
+ *  % java BinaryInsertion < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
  *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
  *
- *  % java InsertionX < words3.txt
+ *  % java BinaryInsertion < words3.txt
  *  all bad bed bug dad ... yes yet zoo   [ one string per line ]
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
+
+import java.util.Comparator;
+
 /**
- *  The <tt>InsertionX</tt> class provides static methods for sorting
- *  an array using an optimized version of insertion sort (with half exchanges
- *  and a sentinel).
+ *  The <tt>BinaryInsertion</tt> class provides a static method for sorting an
+ *  array using an optimized binary insertion sort with half exchanges.
+ *  <p>
+ *  This implementation makes ~ N lg N compares for any array of length N.
+ *  However, in the worst case, the running time is quadratic because the
+ *  number of array accesses can be proportional to N^2 (e.g, if the array
+ *  is reverse sorted). As such, it is not suitable for sorting large
+ *  arrays (unless the number of inversions is small).
+ *  <p>
+ *  The sorting algorithm is stable and uses O(1) extra memory.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
+ *  @author Ivan Pesin
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-
-public class InsertionX {
+public class BinaryInsertion {
 
     // This class should not be instantiated.
-    private InsertionX() { }
+    private BinaryInsertion() { }
 
     /**
      * Rearranges the array in ascending order, using the natural order.
@@ -47,24 +56,26 @@ public class InsertionX {
      */
     public static void sort(Comparable[] a) {
         int N = a.length;
+        for (int i = 1; i < N; i++) {
 
-        // put smallest element in position to serve as sentinel
-        for (int i = N-1; i > 0; i--)
-            if (less(a[i], a[i-1])) exch(a, i, i-1);
-
-        // insertion sort with half-exchanges
-        for (int i = 2; i < N; i++) {
+            // binary search to determine index j at which to insert a[i]
             Comparable v = a[i];
-            int j = i;
-            while (less(v, a[j-1])) {
-                a[j] = a[j-1];
-                j--;
+            int lo = 0, hi = i;
+            while (lo < hi) {
+                int mid = lo + (hi - lo) / 2; 
+                if (less(v, a[mid])) hi = mid;
+                else                 lo = mid + 1;
             }
-            a[j] = v;
-        }
 
+            // insetion sort with "half exchanges"
+            // (insert a[i] at index j and shift a[j], ..., a[i-1] to right)
+            for (int j = i; j > lo; --j)
+                a[j] = a[j-1];
+            a[lo] = v;
+        }
         assert isSorted(a);
     }
+
 
 
    /***************************************************************************
@@ -75,7 +86,7 @@ public class InsertionX {
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
-        
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -83,12 +94,23 @@ public class InsertionX {
         a[j] = swap;
     }
 
+    // exchange a[i] and a[j]  (for indirect sort)
+    private static void exch(int[] a, int i, int j) {
+        int swap = a[i];
+        a[i] = a[j];
+        a[j] = swap;
+    }
 
    /***************************************************************************
     *  Check if array is sorted - useful for debugging.
     ***************************************************************************/
     private static boolean isSorted(Comparable[] a) {
-        for (int i = 1; i < a.length; i++)
+        return isSorted(a, 0, a.length - 1);
+    }
+
+    // is the array sorted from a[lo] to a[hi]
+    private static boolean isSorted(Comparable[] a, int lo, int hi) {
+        for (int i = lo+1; i <= hi; i++)
             if (less(a[i], a[i-1])) return false;
         return true;
     }
@@ -106,10 +128,9 @@ public class InsertionX {
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        InsertionX.sort(a);
+        BinaryInsertion.sort(a);
         show(a);
     }
-
 }
 
 /******************************************************************************

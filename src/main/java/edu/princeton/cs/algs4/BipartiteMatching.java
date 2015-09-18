@@ -237,6 +237,12 @@ public class BipartiteMatching {
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
+    /**************************************************************************
+     *
+     *  The code below is solely for testing correctness of the data type.
+     *
+     **************************************************************************/
+
     // check that mate[] and inVertexCover[] define a max matching and min vertex cover, respectively
     private boolean certifySolution(Graph G) {
 
@@ -289,6 +295,13 @@ public class BipartiteMatching {
         return true;
     }
 
+    /**
+     * Unit tests the <tt>HopcroftKarp</tt> data type.
+     * Takes three command-line arguments <tt>V1</tt>, <tt>V2</tt>, and <tt>E</tt>;
+     * creates a random bipartite graph with <tt>V1</tt> + <tt>V2</tt> vertices
+     * and <tt>E</tt> edges; computes a maximum matching and minimum vertex cover;
+     * and prints the results.
+     */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);
         int V2 = Integer.parseInt(args[1]);

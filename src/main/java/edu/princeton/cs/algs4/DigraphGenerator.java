@@ -333,7 +333,7 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns an Eulerian cycle digraph on <tt>V</tt> vertices.
+     * Returns an Eulerian path digraph on <tt>V</tt> vertices.
      *
      * @param  V the number of vertices in the path
      * @param  E the number of edges in the path
