@@ -14,9 +14,31 @@ package edu.princeton.cs.algs4;
 
 import java.util.Arrays;
 
+
+/**
+ *  The <tt>GrahamScan</tt> data type provides methods for computing the 
+ *  convex hull of a set of <em>N</em> points in the plane.
+ *  <p>
+ *  The implementation uses the Graham-Scan convex hull algorithm.
+ *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case
+ *  and uses O(<em>N</em>) extra memory.
+ *  <p>
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class GrahamScan {
     private Stack<Point2D> hull = new Stack<Point2D>();
 
+    /**
+     * Computes the convex hull of the specified array of points.
+     *
+     * @param  pts the array of points
+     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
+     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     */
     public GrahamScan(Point2D[] pts) {
 
         // defensive copy
@@ -61,7 +83,11 @@ public class GrahamScan {
         assert isConvex();
     }
 
-    // return extreme points on convex hull in counterclockwise order as an Iterable
+    /**
+     * Returns the extreme points on the convex hull in counterclockwise order.
+     *
+     * @return the extreme points on the convex hull in counterclockwise order
+     */
     public Iterable<Point2D> hull() {
         Stack<Point2D> s = new Stack<Point2D>();
         for (Point2D p : hull) s.push(p);
@@ -87,7 +113,13 @@ public class GrahamScan {
         return true;
     }
 
-    // test client
+   /**
+     * Unit tests the <tt>ClosestPair</tt> data type.
+     * Reads in an integer <tt>N</tt> and <tt>N</tt> points (specified by
+     * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
+     * computes their convex hull; and prints out the points on the
+     * convex hull to standard output.
+     */
     public static void main(String[] args) {
         int N = StdIn.readInt();
         Point2D[] points = new Point2D[N];

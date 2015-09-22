@@ -7,19 +7,45 @@
  *  (equivalently, compute the diameter of the set of points).
  *
  *  Computes the convex hull of the set of points and using the
- *  rotating callipers method to find all antipodal point pairs
+ *  rotating calipers method to find all antipodal point pairs
  *  and the farthest pair.
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>FarthestPair</tt> data type computes the farthest pair of points
+ *  in a set of <em>N</em> points in the plane and provides accessor methods
+ *  for getting the farthest pair of points and the distance between them.
+ *  The distance between two points is their Euclidean distance.
+ *  <p>
+ *  This implementation computes the convex hull of the set of points and
+ *  uses the rotating calipers method to find all antipodal point pairs
+ *  and the farthest pair.
+ *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case and uses
+ *  O(<em>N</em>) extra space.
+ *  See also {#link ClosestPair} and {#link GrahamScan}.
+ *  <p>
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99hull">Section 9.9</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class FarthestPair {
 
     // farthest pair of points and distance
     private Point2D best1, best2;
-    private double bestDistance = Double.NEGATIVE_INFINITY;
+    private double bestDistanceSquared = Double.NEGATIVE_INFINITY;
 
+    /**
+     * Computes the farthest pair of points in the specified array of points.
+     *
+     * @param  points the array of points
+     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
+     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     */
     public FarthestPair(Point2D[] points) {
         GrahamScan graham = new GrahamScan(points);
 
@@ -45,7 +71,7 @@ public class FarthestPair {
         if (M == 2) {
             best1 = hull[1];
             best2 = hull[2];
-            bestDistance = best1.distanceTo(best2);
+            bestDistanceSquared = best1.distanceSquaredTo(best2);
             return;
         }
 
@@ -58,29 +84,63 @@ public class FarthestPair {
         int j = k;
         for (int i = 1; i <= k; i++) {
             // StdOut.println("hull[i] + " and " + hull[j] + " are antipodal");
-            if (hull[i].distanceTo(hull[j]) > bestDistance) {
+            if (hull[i].distanceSquaredTo(hull[j]) > bestDistanceSquared) {
                 best1 = hull[i];
                 best2 = hull[j];
-                bestDistance = hull[i].distanceTo(hull[j]);
+                bestDistanceSquared = hull[i].distanceSquaredTo(hull[j]);
             }
             while ((j < M) && Point2D.area2(hull[i], hull[j+1], hull[i+1]) > Point2D.area2(hull[i], hull[j], hull[i+1])) {
                 j++;
                 // StdOut.println(hull[i] + " and " + hull[j] + " are antipodal");
-                double distance = hull[i].distanceTo(hull[j]);
-                if (distance > bestDistance) {
+                double distanceSquared = hull[i].distanceSquaredTo(hull[j]);
+                if (distanceSquared > bestDistanceSquared) {
                     best1 = hull[i];
                     best2 = hull[j];
-                    bestDistance = hull[i].distanceTo(hull[j]);
+                    bestDistanceSquared = hull[i].distanceSquaredTo(hull[j]);
                 }
             }
         }
     }
 
-    public Point2D either()    { return best1;        }
-    public Point2D other()     { return best2;        }
-    public double distance()   { return bestDistance; }
+    /**
+     * Returns one of the points in the closest pair of points.
+     *
+     * @return one of the two points in the closest pair of points;
+     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     */
+    public Point2D either() {
+        return best1;
+    }
 
+    /**
+     * Returns the other point in the closest pair of points.
+     *
+     * @return the other point in the closest pair of points
+     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     */
+    public Point2D other() {
+        return best2;
+    }
 
+    /**
+     * Returns the Eucliden distance between the closest pair of points.
+     * This quantity is also known as the <em>diameter</em> of the set of points.
+     *
+     * @return the Euclidean distance between the closest pair of points
+     *         <tt>Double.POSITIVE_INFINITY</tt> if no such pair of points
+     *         exist (because there are fewer than 2 points)
+     */
+    public double distance() {
+        return Math.sqrt(bestDistanceSquared);
+    }
+
+   /**
+     * Unit tests the <tt>FarthestPair</tt> data type.
+     * Reads in an integer <tt>N</tt> and <tt>N</tt> points (specified by
+     * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
+     * computes a farthest pair of points; and prints the pair to standard
+     * output.
+     */
     public static void main(String[] args) {
         int N = StdIn.readInt();
         Point2D[] points = new Point2D[N];

@@ -104,7 +104,7 @@ public class AssignmentProblem {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (xy[i] == j) G.addEdge(new DirectedEdge(N+j, i, 0.0));
-                else            G.addEdge(new DirectedEdge(i, N+j, reduced(i, j)));
+                else            G.addEdge(new DirectedEdge(i, N+j, reducedCost(i, j)));
             }
         }
 
@@ -128,7 +128,7 @@ public class AssignmentProblem {
     }
 
     // reduced cost of i-j
-    private double reduced(int i, int j) {
+    private double reducedCost(int i, int j) {
         return weight[i][j] + px[i] - py[j];
     }
 
@@ -203,7 +203,7 @@ public class AssignmentProblem {
         // check that all edges have >= 0 reduced cost
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if (reduced(i, j) < 0) {
+                if (reducedCost(i, j) < 0) {
                     StdOut.println("Dual variables are not feasible");
                     return false;
                 }
@@ -217,7 +217,7 @@ public class AssignmentProblem {
 
         // check that all matched edges have 0-reduced cost
         for (int i = 0; i < N; i++) {
-            if ((xy[i] != UNMATCHED) && (reduced(i, xy[i]) != 0)) {
+            if ((xy[i] != UNMATCHED) && (reducedCost(i, xy[i]) != 0)) {
                 StdOut.println("Primal and dual variables are not complementary slack");
                 return false;
             }

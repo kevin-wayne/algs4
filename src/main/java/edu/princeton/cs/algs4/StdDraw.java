@@ -402,7 +402,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Clears the screen to the given color.
+     * Clears the screen to the specified color.
      *
      * @param color the color to make the background
      */
@@ -415,6 +415,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     /**
      * Gets the current pen radius.
+     * The pen radius is not affected by coordinate scaling.
      *
      * @return the current value of the pen radius
      */
@@ -423,14 +424,20 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Sets the pen size to the default (.002).
+     * Sets the pen size to the default size (.002).
+     * The pen is circular, so that lines have rounded ends, and when you set the
+     * pen radius to <tt>r</tt> and draw a point, you get a circle of radius <tt>r</tt>.
+     * The pen radius is not affected by coordinate scaling.
      */
     public static void setPenRadius() {
         setPenRadius(DEFAULT_PEN_RADIUS);
     }
 
     /**
-     * Sets the radius of the pen to the given size.
+     * Sets the radius of the pen to the specified size.
+     * The pen is circular, so that lines have rounded ends, and when you set the
+     * pen radius to <tt>r</tt> and draw a point, you get a circle of radius <tt>r</tt>.
+     * The pen radius is not affected by coordinate scaling.
      *
      * @param  r the radius of the pen
      * @throws IllegalArgumentException if <tt>r</tt> is negative
@@ -461,7 +468,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Sets the pen color to the given color.
+     * Sets the pen color to the specified color.
      * <p>
      * The predefined pen colors are
      * <tt>StdDraw.BLACK</tt>, <tt>StdDraw.BLUE</tt>, <tt>StdDraw.CYAN</tt>,
@@ -478,7 +485,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Sets the pen color to the given RGB color.
+     * Sets the pen color to the specified RGB color.
      *
      * @param  red the amount of red (between 0 and 255)
      * @param  green the amount of green (between 0 and 255)
@@ -509,7 +516,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Sets the font to the given value.
+     * Sets the font to the specified value.
      *
      * @param f the font
      */

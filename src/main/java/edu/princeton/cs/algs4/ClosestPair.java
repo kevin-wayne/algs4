@@ -14,12 +14,37 @@ package edu.princeton.cs.algs4;
 
 import java.util.Arrays;
 
+/**
+ *  The <tt>ClosestPair</tt> data type computes a closest pair of points
+ *  in a set of <em>N</em> points in the plane and provides accessor methods 
+ *  for getting the closest pair of points and the distance between them.
+ *  The distance between two points is their Euclidean distance.
+ *  <p>
+ *  This implementation uses a divide-and-conquer algorithm. 
+ *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case and uses
+ *  O(<em>N</em>) extra space.
+ *  <p>
+ *  See also {#link FarthestPair}.
+ *  <p>
+ *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99hull">Section 9.9</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class ClosestPair {
 
     // closest pair of points and their Euclidean distance
     private Point2D best1, best2;
     private double bestDistance = Double.POSITIVE_INFINITY;
 
+    /**
+     * Computes the closest pair of points in the specified array of points.
+     *
+     * @param  points the array of points
+     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
+     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     */
     public ClosestPair(Point2D[] points) {
         int N = points.length;
         if (N <= 1) return;
@@ -95,9 +120,33 @@ public class ClosestPair {
         return delta;
     }
 
-    public Point2D either() { return best1; }
-    public Point2D other()  { return best2; }
+    /**
+     * Returns one of the points in the closest pair of points.
+     *
+     * @return one of the two points in the closest pair of points;
+     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     */
+    public Point2D either() {
+        return best1;
+    }
 
+    /**
+     * Returns the other point in the closest pair of points.
+     *
+     * @return the other point in the closest pair of points
+     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     */
+    public Point2D other() {
+        return best2;
+    }
+
+    /**
+     * Returns the Eucliden distance between the closest pair of points.
+     *
+     * @return the Euclidean distance between the closest pair of points
+     *         <tt>Double.POSITIVE_INFINITY</tt> if no such pair of points
+     *         exist (because there are fewer than 2 points)
+     */
     public double distance() {
         return bestDistance;
     }
@@ -127,6 +176,13 @@ public class ClosestPair {
 
 
 
+   /**
+     * Unit tests the <tt>ClosestPair</tt> data type.
+     * Reads in an integer <tt>N</tt> and <tt>N</tt> points (specified by
+     * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
+     * computes a closest pair of points; and prints the pair to standard
+     * output.
+     */
     public static void main(String[] args) {
         int N = StdIn.readInt();
         Point2D[] points = new Point2D[N];

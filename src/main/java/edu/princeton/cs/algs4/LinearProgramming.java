@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac Simplex.java
- *  Execution:    java Simplex M N
+ *  Compilation:  javac LinearProgramming.java
+ *  Execution:    java LinearProgramming M N
  *  Dependencies: StdOut.java
  *
  *  Given an M-by-N matrix A, an M-length vector b, and an
@@ -15,7 +15,29 @@
 
 package edu.princeton.cs.algs4;
 
-public class Simplex {
+/**
+ *  The <tt>LinearProgramming</tt> class represents a data type for solving a
+ *  linear program of the form { max cx : Ax <= b, x >= 0 }, where A is a M-by-N
+ *  matrix, b is an M-length vector, and c is an N-length vector. For simplicity,
+ *  we assume that A is of full rank and that b >= 0 so that x = 0 is a basic
+ *  feasible soution.
+ *  <p>
+ *  The data type supplies methods for determining the optimal primal and
+ *  dual solutions.
+ *  <p>
+ *  This is a bare-bones implementation of the <em>simplex algorithm</em>.
+ *  It uses Bland's rule to determing the entering and leaving variables.
+ *  It is not suitable for use on large inputs. It is also not robust
+ *  in the presence of floating-point roundoff error.
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
+public class LinearProgramming {
     private static final double EPSILON = 1.0E-10;
     private double[][] a;   // tableaux
     private int M;          // number of constraints
@@ -24,10 +46,23 @@ public class Simplex {
     private int[] basis;    // basis[i] = basic variable corresponding to row i
                             // only needed to print out solution, not book
 
-    // sets up the simplex tableaux
-    public Simplex(double[][] A, double[] b, double[] c) {
+    /**
+     * Determines an optimal solution to the linear program
+     * { max cx : Ax <= b, x >= 0 }, where A is a M-by-N
+     * matrix, b is an M-length vector, and c is an N-length vector.
+     *
+     * @param  A the <em>M</em>-by-<em>N</em> matrix
+     * @param  b the <em>M</em>-length RHS vector
+     * @param  c the <em>N</em>-length cost vector
+     * @throws IllegalArgumentException unless b[i] >= 0 for each i
+     * @throws ArithmeticException if the linear program is unbounded
+     */ 
+    public LinearProgramming(double[][] A, double[] b, double[] c) {
         M = b.length;
         N = c.length;
+        for (int i = 0; i < M; i++)
+            if (!(b[i] >= 0)) throw new IllegalArgumentException("RHS must be nonnegative");
+
         a = new double[M+1][N+M+1];
         for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
@@ -87,10 +122,13 @@ public class Simplex {
     }
 
     // find row p using min ratio rule (-1 if no such row)
+    // (smallest such index if there is a tie)
     private int minRatioRule(int q) {
+        double EPSILON = 1E-12;
         int p = -1;
         for (int i = 0; i < M; i++) {
-            if (a[i][q] <= 0) continue;
+            // if (a[i][q] <= 0) continue;
+            if (a[i][q] <= EPSILON) continue;
             else if (p == -1) p = i;
             else if ((a[i][M+N] / a[i][q]) < (a[p][M+N] / a[p][q])) p = i;
         }
@@ -115,12 +153,21 @@ public class Simplex {
         a[p][q] = 1.0;
     }
 
-    // return optimal objective value
+    /**
+     * Returns the optimal value of this linear program.
+     *
+     * @return the optimal value of this linear program
+     *
+     */
     public double value() {
         return -a[M][M+N];
     }
 
-    // return primal solution vector
+    /**
+     * Returns the optimal primal solution to this linear program.
+     *
+     * @return the optimal primal solution to this linear program
+     */
     public double[] primal() {
         double[] x = new double[N];
         for (int i = 0; i < M; i++)
@@ -128,7 +175,11 @@ public class Simplex {
         return x;
     }
 
-    // return dual solution vector
+    /**
+     * Returns the optimal dual solution to this linear program
+     *
+     * @return the optimal dual solution to this linear program
+     */
     public double[] dual() {
         double[] y = new double[M];
         for (int i = 0; i < M; i++)
@@ -217,12 +268,13 @@ public class Simplex {
     }
 
     // print tableaux
-    public void show() {
+    private void show() {
         StdOut.println("M = " + M);
         StdOut.println("N = " + N);
         for (int i = 0; i <= M; i++) {
             for (int j = 0; j <= M + N; j++) {
                 StdOut.printf("%7.2f ", a[i][j]);
+                // StdOut.printf("%10.7f ", a[i][j]);
             }
             StdOut.println();
         }
@@ -233,8 +285,8 @@ public class Simplex {
     }
 
 
-    public static void test(double[][] A, double[] b, double[] c) {
-        Simplex lp = new Simplex(A, b, c);
+    private static void test(double[][] A, double[] b, double[] c) {
+        LinearProgramming lp = new LinearProgramming(A, b, c);
         StdOut.println("value = " + lp.value());
         double[] x = lp.primal();
         for (int i = 0; i < x.length; i++)
@@ -244,7 +296,7 @@ public class Simplex {
             StdOut.println("y[" + j + "] = " + y[j]);
     }
 
-    public static void test1() {
+    private static void test1() {
         double[][] A = {
             { -1,  1,  0 },
             {  1,  4,  0 },
@@ -259,7 +311,7 @@ public class Simplex {
 
 
     // x0 = 12, x1 = 28, opt = 800
-    public static void test2() {
+    private static void test2() {
         double[] c = {  13.0,  23.0 };
         double[] b = { 480.0, 160.0, 1190.0 };
         double[][] A = {
@@ -271,7 +323,7 @@ public class Simplex {
     }
 
     // unbounded
-    public static void test3() {
+    private static void test3() {
         double[] c = { 2.0, 3.0, -1.0, -12.0 };
         double[] b = {  3.0,   2.0 };
         double[][] A = {
@@ -282,7 +334,7 @@ public class Simplex {
     }
 
     // degenerate - cycles if you choose most positive objective function coefficient
-    public static void test4() {
+    private static void test4() {
         double[] c = { 10.0, -57.0, -9.0, -24.0 };
         double[] b = {  0.0,   0.0,  1.0 };
         double[][] A = {
@@ -294,8 +346,9 @@ public class Simplex {
     }
 
 
-
-    // test client
+    /**
+     * Unit tests the <tt>LinearProgramming</tt> data type.
+     */
     public static void main(String[] args) {
 
         StdOut.println("----- test 1 --------------------");
@@ -327,7 +380,7 @@ public class Simplex {
         for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
                 A[i][j] = StdRandom.uniform(100);
-        Simplex lp = new Simplex(A, b, c);
+        LinearProgramming lp = new LinearProgramming(A, b, c);
         StdOut.println(lp.value());
     }
 
