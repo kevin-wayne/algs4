@@ -1,100 +1,352 @@
 /******************************************************************************
  *  Compilation:  javac GaussianElimination.java
- *  Execution:    java GaussianElimination
+ *  Execution:    java GaussianElimination M N
  *  Dependencies: StdOut.java
  * 
- *  Gaussian elimination with partial pivoting.
+ *  Gaussian elimination with partial pivoting for M-by-N system.
  *
- *  % java GaussianElimination
- *  -1.0
- *  2.0
- *  2.0
+ *  % java GaussianElimination M N
+ *  -1.000000
+ *  2.000000
+ *  2.000000
+ *
+ *  3.000000
+ *  -1.000000
+ *  -2.000000
+ * 
+ *  System is infeasible
+ *
+ *  -6.250000
+ *  -4.500000
+ *  0.000000
+ *  0.000000
+ *  1.000000
+ *
+ *  System is infeasible
+ *
+ *  -1.375000
+ *  1.625000
+ *  0.000000
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>GaussianElimination</tt> data type provides methods
+ *  to solve a linear system of equations <em>Ax</em> = <em>b</em>,
+ *  where <em>A</em> is an <em>M</em>-by-<em>N</em> matrix
+ *  and <em>b</em> is a length <em>N</em> vector.
+ *  <p>
+ *  This is a bare-bones implementation that uses Gaussian elimination
+ *  with partial pivoting. See {@link GaussianEliminationLite} for a further
+ *  stripped-down version that assumes the matrix <em>A</em> is square
+ *  and nonsingular. See {@link GaussJordanElimination} for an alternate
+ *  implementation that uses Gauss-Jordan elimination.
+ *  For an industrial-strength numerical linear algebra library,
+ *  see <a href = "http://math.nist.gov/javanumerics/jama/">JAMA</a>.
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a>
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class GaussianElimination {
-    private static final double EPSILON = 1e-10;
+    private static final double EPSILON = 1e-8;
 
-    // Do not instantiate.
-    private GaussianElimination() { }
+    private final int M;      // number of rows
+    private final int N;      // number of columns
+    private double[][] a;     // M-by-N+1 augmented matrix
 
-    // Gaussian elimination with partial pivoting
-    public static double[] lsolve(double[][] A, double[] b) {
-        int N  = b.length;
+    /**
+     * Solves the linear system of equations <em>Ax</em> = <em>b</em>,
+     * where <em>A</em> is an <em>M</em>-by-<em>N</em> matrix and <em>b</em>
+     * is a length <em>M</em> vector.
+     *
+     * @param  A the <em>M</em>-by-<em>N</em> constraint matrix
+     * @param  b the length <em>M</em> right-hand-side vector
+     * @throws IllegalArgumentException if the dimensions disagree, i.e.,
+     *         the length of <tt>b</tt> does not equal <tt>M</tt>
+     */
+    public GaussianElimination(double[][] A, double[] b) {
+        M = A.length;
+        N = A[0].length;
 
-        for (int p = 0; p < N; p++) {
+        if (b.length != M) throw new IllegalArgumentException("Dimensions disagree");
 
-            // find pivot row and swap
+        // build augmented matrix
+        a = new double[M][N+1];
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < N; j++)
+                a[i][j] = A[i][j];
+        for (int i = 0; i < M; i++)
+            a[i][N] = b[i];
+
+        forwardElimination();
+
+        assert certifySolution(A, b);
+    }
+
+    // forward elimination
+    private void forwardElimination() {
+        for (int p = 0; p < Math.min(M, N); p++) {
+
+            // find pivot row using partial pivoting
             int max = p;
-            for (int i = p + 1; i < N; i++) {
-                if (Math.abs(A[i][p]) > Math.abs(A[max][p])) {
+            for (int i = p+1; i < M; i++) {
+                if (Math.abs(a[i][p]) > Math.abs(a[max][p])) {
                     max = i;
                 }
             }
 
-            swap(A, p, max);
-            swap(b, p, max);
+            // swap
+            swap(p, max);
 
             // singular or nearly singular
-            if (Math.abs(A[p][p]) <= EPSILON) {
-                throw new ArithmeticException("Matrix is singular or nearly singular");
+            if (Math.abs(a[p][p]) <= EPSILON) {
+                continue;
             }
 
-            // pivot within A and b
-            for (int i = p + 1; i < N; i++) {
-                double alpha = A[i][p] / A[p][p];
-                b[i] -= alpha * b[p];
-                for (int j = p; j < N; j++) {
-                    A[i][j] -= alpha * A[p][j];
-                }
+            // pivot
+            pivot(p);
+        }
+    }
+
+    // swap row1 and row2
+    private void swap(int row1, int row2) {
+        double[] temp = a[row1];
+        a[row1] = a[row2];
+        a[row2] = temp;
+    }
+
+    // pivot on a[p][p]
+    private void pivot(int p) {
+        for (int i = p+1; i < M; i++) {
+            double alpha = a[i][p] / a[p][p];
+            for (int j = p; j <= N; j++) {
+                a[i][j] -= alpha * a[p][j];
             }
         }
+    }
 
+    /**
+     * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
+     *      
+     * @return a solution <em>x</em> to the linear system of equations
+     *         <em>Ax</em> = <em>b</em>; <tt>null</tt> if no such solution
+     */
+    public double[] primal() {
         // back substitution
         double[] x = new double[N];
-        for (int i = N - 1; i >= 0; i--) {
+        for (int i = Math.min(N-1, M-1); i >= 0; i--) {
             double sum = 0.0;
-            for (int j = i + 1; j < N; j++) {
-                sum += A[i][j] * x[j];
+            for (int j = i+1; j < N; j++) {
+                sum += a[i][j] * x[j];
             }
-            x[i] = (b[i] - sum) / A[i][i];
+
+            if (Math.abs(a[i][i]) > EPSILON)
+                x[i] = (a[i][N] - sum) / a[i][i];
+            else if (Math.abs(a[i][N] - sum) > EPSILON)
+                return null;
+        }
+
+        // redundant rows
+        for (int i = N; i < M; i++) {
+            double sum = 0.0;
+            for (int j = 0; j < N; j++) {
+                sum += a[i][j] * x[j];
+            }
+            if (Math.abs(a[i][N] - sum) > EPSILON)
+                return null;
         }
         return x;
     }
 
-    // swap entries a[i] and a[j] in array a[]
-    private static void swap(double[] a, int i, int j) {
-        double temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+    /**
+     * Returns true if there exists a solution to the linear system of
+     * equations <em>Ax</em> = <em>b</em>.
+     *      
+     * @return <tt>true</tt> if there exists a solution to the linear system
+     *         of equations <em>Ax</em> = <em>b</em>; <tt>false</tt> otherwise
+     */
+    public boolean isFeasible() {
+        return primal() != null;
     }
 
-    // swap rows A[i][] and A[j][] in 2D array A[][]
-    private static void swap(double[][] A, int i, int j) {
-        double[] temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
+
+    // check that Ax = b
+    private boolean certifySolution(double[][] A, double[] b) {
+        if (!isFeasible()) return true;
+        double[] x = primal();
+        for (int i = 0; i < M; i++) {
+            double sum = 0.0;
+            for (int j = 0; j < N; j++) {
+                sum += A[i][j] * x[j];
+            }
+            if (Math.abs(sum - b[i]) > EPSILON) {
+                StdOut.println("not feasible");
+                StdOut.println("b[" + i + "] = " + b[i] + ", sum = " + sum);
+                return false;
+            }
+        }
+        return true;
     }
 
-    // sample client
-    public static void main(String[] args) {
-        int N = 3;
+
+    /**
+     * Unit tests the <tt>GaussianElimination</tt> data type.
+     */
+    private static void test(String name, double[][] A, double[] b) {
+        StdOut.println("----------------------------------------------------");
+        StdOut.println(name);
+        StdOut.println("----------------------------------------------------");
+        GaussianElimination gaussian = new GaussianElimination(A, b);
+        double[] x = gaussian.primal();
+        if (gaussian.isFeasible()) {
+            for (int i = 0; i < x.length; i++) {
+                StdOut.printf("%.6f\n", x[i]);
+            }
+        }
+        else {
+            StdOut.println("System is infeasible");
+        }
+        StdOut.println();
+        StdOut.println();
+    }
+
+
+    // 3-by-3 nonsingular system
+    private static void test1() {
         double[][] A = {
             { 0, 1,  1 },
             { 2, 4, -2 },
             { 0, 3, 15 }
         };
         double[] b = { 4, 2, 36 };
-        double[] x = lsolve(A, b);
+        test("test 1 (3-by-3 system, nonsingular)", A, b);
+    }
 
+    // 3-by-3 nonsingular system
+    private static void test2() {
+        double[][] A = {
+            {  1, -3,   1 },
+            {  2, -8,   8 },
+            { -6,  3, -15 }
+        };
+        double[] b = { 4, -2, 9 };
+        test("test 2 (3-by-3 system, nonsingular)", A, b);
+    }
 
-        // print results
-        for (int i = 0; i < N; i++) {
-            StdOut.println(x[i]);
-        }
+    // 5-by-5 singular: no solutions
+    private static void test3() {
+        double[][] A = {
+            {  2, -3, -1,  2,  3 },
+            {  4, -4, -1,  4, 11 },
+            {  2, -5, -2,  2, -1 },
+            {  0,  2,  1,  0,  4 },
+            { -4,  6,  0,  0,  7 },
+        };
+        double[] b = { 4, 4, 9, -6, 5 };
+        test("test 3 (5-by-5 system, no solutions)", A, b);
+    }
 
+    // 5-by-5 singular: infinitely many solutions
+    private static void test4() {
+        double[][] A = {
+            {  2, -3, -1,  2,  3 },
+            {  4, -4, -1,  4, 11 },
+            {  2, -5, -2,  2, -1 },
+            {  0,  2,  1,  0,  4 },
+            { -4,  6,  0,  0,  7 },
+        };
+        double[] b = { 4, 4, 9, -5, 5 };
+        test("test 4 (5-by-5 system, infinitely many solutions)", A, b);
+    }
+
+    // 3-by-3 singular: no solutions
+    private static void test5() {
+        double[][] A = {
+            {  2, -1,  1 },
+            {  3,  2, -4 },
+            { -6,  3, -3 },
+        };
+        double[] b = { 1, 4, 2 };
+        test("test 5 (3-by-3 system, no solutions)", A, b);
+    }
+
+    // 3-by-3 singular: infinitely many solutions
+    private static void test6() {
+        double[][] A = {
+            {  1, -1,  2 },
+            {  4,  4, -2 },
+            { -2,  2, -4 },
+        };
+        double[] b = { -3, 1, 6 };
+        test("test 6 (3-by-3 system, infinitely many solutions)", A, b);
+    }
+
+    // 4-by-3 full rank and feasible system
+    private static void test7() {
+        double[][] A = {
+            { 0, 1,  1 },
+            { 2, 4, -2 },
+            { 0, 3, 15 },
+            { 2, 8, 14 }
+        };
+        double[] b = { 4, 2, 36, 42 };
+        test("test 7 (4-by-3 system, full rank)", A, b);
+    }
+
+    // 4-by-3 full rank and infeasible system
+    private static void test8() {
+        double[][] A = {
+            { 0, 1,  1 },
+            { 2, 4, -2 },
+            { 0, 3, 15 },
+            { 2, 8, 14 }
+        };
+        double[] b = { 4, 2, 36, 40 };
+        test("test 8 (4-by-3 system, no solution)", A, b);
+    }
+
+    // 3-by-4 full rank system
+    private static void test9() {
+        double[][] A = {
+            {  1, -3,   1,  1 },
+            {  2, -8,   8,  2 },
+            { -6,  3, -15,  3 }
+        };
+        double[] b = { 4, -2, 9 };
+        test("test 9 (3-by-4 system, full rank)", A, b);
+    }
+
+    /**
+     * Unit tests the <tt>GaussianElimination</tt> data type.
+     */
+    public static void main(String[] args) {
+        test1();
+        test2();
+        test3();
+        test4();
+        test5();
+        test6();
+        test7();
+        test8();
+        test9();
+
+        // N-by-N random system
+        int N = Integer.parseInt(args[0]);
+        double[][] A = new double[N][N];
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                A[i][j] = StdRandom.uniform(1000);
+        double[] b = new double[N];
+        for (int i = 0; i < N; i++)
+            b[i] = StdRandom.uniform(1000);
+
+        test(N + "-by-" + N + " (probably nonsingular)", A, b);
     }
 
 }
