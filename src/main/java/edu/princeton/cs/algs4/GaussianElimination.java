@@ -39,8 +39,9 @@ package edu.princeton.cs.algs4;
  *  and <em>b</em> is a length <em>N</em> vector.
  *  <p>
  *  This is a bare-bones implementation that uses Gaussian elimination
- *  with partial pivoting. See {@link GaussianEliminationLite} for a further
- *  stripped-down version that assumes the matrix <em>A</em> is square
+ *  with partial pivoting.
+ *  See <a href = "http://algs4.cs.princeton.edu/99scientific/GaussianEliminationLite.java.html">GaussianEliminationLite.java</a>
+ *  for a stripped-down version that assumes the matrix <em>A</em> is square
  *  and nonsingular. See {@link GaussJordanElimination} for an alternate
  *  implementation that uses Gauss-Jordan elimination.
  *  For an industrial-strength numerical linear algebra library,

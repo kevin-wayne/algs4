@@ -20,22 +20,49 @@
  *    - This version does not suport the + operator or multiway-or.
  *
  *    - This version does not handle character classes, 
- *      metacharacters (either in the text or pattern), capturing
- *      capabilities, greedy vs. relucantant modifier, and
- *      other features in industrial-strength implementations such
- *      as java.util.regexp.
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
+/**
+ *  The <tt>NFA</tt> class provides a data type for creating a
+ *  <em>nondeterministic finite state automaton</em> (NFA) from a regular
+ *  expression and testing whether a given string is matched by that regular
+ *  expression.
+ *  It supports the following operations: <em>concatenation</em>,
+ *  <em>closure</em>, <em>binary or</em>, and <em>parentheses</em>.
+ *  It does not support <em>mutiway or</em>, <em>character classes</em>,
+ *  <em>metacharacters</em> (either in the text or pattern),
+ *  <em>capturing capabilities</em>, <em>greedy</em> or <em>relucantant</em>
+ *  modifiers, and other features in industrial-strength implementations
+ *  such {@link java.util.regexp}.
+ *  <p>
+ *  This implementation builds the NFA using a digraph and a stack
+ *  and simulates the NFA using digraph search (see the textbook for details).
+ *  The constructor takes time proportional to <em>M</em>, where <em>M</em>
+ *  is the number of characters in the regular expression.
+ *  The <em>recognizes</em> method takes time proportional to <em>M N</em>,
+ *  where <em>N</em> is the number of characters in the text.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/54regexp">Section 5.4</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class NFA { 
 
     private Digraph G;         // digraph of epsilon transitions
     private String regexp;     // regular expression
     private int M;             // number of characters in regular expression
 
-    // Create the NFA for the given RE   
+    /**
+     * Initializes the NFA from the specified regular expression.
+     *
+     * @param  regexp the regular expression
+     */
     public NFA(String regexp) {
         this.regexp = regexp;
         M = regexp.length();
@@ -70,6 +97,13 @@ public class NFA {
     } 
 
     // Does the NFA recognize txt? 
+    /**
+     * Returns true if the text is matched by the regular expression.
+     * 
+     * @param  txt the text
+     * @return <tt>true</tt> if the text is matched by the regular expression,
+     *         <tt>false</tt> otherwise
+     */
     public boolean recognizes(String txt) {
         DirectedDFS dfs = new DirectedDFS(G, 0);
         Bag<Integer> pc = new Bag<Integer>();
@@ -99,7 +133,9 @@ public class NFA {
         return false;
     }
 
-
+    /**
+     * Unit tests the <tt>NFA</tt> data type.
+     */
     public static void main(String[] args) {
         String regexp = "(" + args[0] + ")";
         String txt = args[1];

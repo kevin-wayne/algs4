@@ -25,7 +25,7 @@ package edu.princeton.cs.algs4;
  *  and the farthest pair.
  *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case and uses
  *  O(<em>N</em>) extra space.
- *  See also {#link ClosestPair} and {#link GrahamScan}.
+ *  See also {@link ClosestPair} and {@link GrahamScan}.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99hull">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
