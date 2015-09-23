@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  <em>metacharacters</em> (either in the text or pattern),
  *  <em>capturing capabilities</em>, <em>greedy</em> or <em>relucantant</em>
  *  modifiers, and other features in industrial-strength implementations
- *  such {@link java.util.regexp}.
+ *  such as {@link java.util.regex.Pattern} and {@link java.util.regex.Matcher}.
  *  <p>
  *  This implementation builds the NFA using a digraph and a stack
  *  and simulates the NFA using digraph search (see the textbook for details).

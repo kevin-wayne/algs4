@@ -40,6 +40,9 @@ package edu.princeton.cs.algs4;
  */
 public class GREP {
 
+    // do not instantiate
+    private GREP() { }
+
     /**
      * Interprets the command-line argument as a regular expression
      * (supporting closure, binary or, parentheses, and wildcard)
