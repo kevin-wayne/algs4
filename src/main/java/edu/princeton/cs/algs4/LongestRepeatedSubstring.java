@@ -1,6 +1,6 @@
 /******************************************************************************
- *  Compilation:  javac LRS.java
- *  Execution:    java LRS < file.txt
+ *  Compilation:  javac LongestRepeatedSubstring.java
+ *  Execution:    java LongestRepeatedSubstring < file.txt
  *  Dependencies: StdIn.java SuffixArray.java
  *  Data files:   http://algs4.cs.princeton.edu/63suffix/tinyTale.txt
  *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt
@@ -9,17 +9,17 @@
  *  whitespace with a single space, and then computes the longest
  *  repeated substring in that text using a suffix array.
  * 
- *  % java LRS < tinyTale.txt 
+ *  % java LongestRepeatedSubstring < tinyTale.txt 
  *  'st of times it was the '
  *
- *  % java LRS < mobydick.txt
+ *  % java LongestRepeatedSubstring < mobydick.txt
  *  ',- Such a funny, sporty, gamy, jesty, joky, hoky-poky lad, is the Ocean, oh! Th'
  * 
- *  % java LRS 
+ *  % java LongestRepeatedSubstring
  *  aaaaaaaaa
  *  'aaaaaaaa'
  *
- *  % java LRS
+ *  % java LongestRepeatedSubstring
  *  abcdefg
  *  ''
  *
@@ -28,8 +28,8 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LRS</tt> class provides a {@link SuffixArray} client for computing
- *  the longest repeated substring of a string.
+ *  The <tt>LongestRepeatedSubstring</tt> class provides a {@link SuffixArray}
+ *  client for computing the longest repeated substring of a string.
  *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
@@ -40,10 +40,10 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class LRS {
+public class LongestRepeatedSubstring {
 
     // Do not instantiate.
-    private LRS() { }
+    private LongestRepeatedSubstring() { }
 
     /**
      * Returns the longest common string of the two specified strings.
@@ -61,8 +61,8 @@ public class LRS {
      *         the empty string if no such string
      */
     public static String lrs(String text) {
+        int N = text.length();
         SuffixArray sa = new SuffixArray(text);
-        int N = sa.length();
         String lrs = "";
         for (int i = 1; i < N; i++) {
             int length = sa.lcp(i);

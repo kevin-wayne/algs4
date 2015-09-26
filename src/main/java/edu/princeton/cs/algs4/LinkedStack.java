@@ -146,6 +146,11 @@ public class LinkedStack<Item> implements Iterable<Item> {
 
     // check internal invariants
     private boolean check() {
+
+        // check a few properties of instance variable 'first'
+        if (N < 0) {
+            return false;
+        }
         if (N == 0) {
             if (first != null) return false;
         }
@@ -154,12 +159,13 @@ public class LinkedStack<Item> implements Iterable<Item> {
             if (first.next != null) return false;
         }
         else {
+            if (first == null)      return false;
             if (first.next == null) return false;
         }
 
         // check internal consistency of instance variable N
         int numberOfNodes = 0;
-        for (Node x = first; x != null; x = x.next) {
+        for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
             numberOfNodes++;
         }
         if (numberOfNodes != N) return false;

@@ -125,7 +125,10 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     // check internal invariants
     private boolean check() {
-        if (N == 0) {
+        if (N < 0) {
+            return false;
+        }
+        else if (N == 0) {
             if (first != null) return false;
             if (last  != null) return false;
         }
@@ -135,13 +138,14 @@ public class LinkedQueue<Item> implements Iterable<Item> {
             if (first.next != null)            return false;
         }
         else {
+            if (first == null || last == null) return false;
             if (first == last)      return false;
             if (first.next == null) return false;
             if (last.next  != null) return false;
 
             // check internal consistency of instance variable N
             int numberOfNodes = 0;
-            for (Node x = first; x != null; x = x.next) {
+            for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
                 numberOfNodes++;
             }
             if (numberOfNodes != N) return false;
