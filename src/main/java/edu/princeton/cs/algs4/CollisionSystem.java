@@ -13,13 +13,30 @@ package edu.princeton.cs.algs4;
 
 import java.awt.Color;
 
+/**
+ *  The <tt>CollisionSystem</tt> class represents a collection of particles
+ *  moving in the unit box, according to the laws of inelastic collision.
+ *  This event-based simulation relies on a priority queue.
+ *  <p>
+ *  For additional documentation, 
+ *  see <a href="http://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class CollisionSystem {
     private MinPQ<Event> pq;        // the priority queue
     private double t  = 0.0;        // simulation clock time
     private double hz = 0.5;        // number of redraw events per clock tick
     private Particle[] particles;   // the array of particles
 
-    // create a new collision system with the given set of particles
+    /**
+     * Initializes a system with the specified collection of particles.
+     * The individual particles will be mutated during the simulation.
+     *
+     * @param  particles the array of particles
+     */
     public CollisionSystem(Particle[] particles) {
         this.particles = particles.clone();   // defensive copy
     }
@@ -55,9 +72,11 @@ public class CollisionSystem {
     }
 
       
-   /***************************************************************************
-    *  Event based simulation for limit seconds.
-    ***************************************************************************/
+    /**
+     * Simulates the system of particles for the specified amount of time.
+     *
+     * @param  limit the amount of time
+     */
     public void simulate(double limit) {
         
         // initialize PQ with collision events and redraw event
@@ -140,9 +159,12 @@ public class CollisionSystem {
     }
 
 
-   /***************************************************************************
-    *  Sample client.
-    ***************************************************************************/
+    /**
+     * Unit tests the <tt>CollisionSystem</tt> data type.
+     * Reads in the particle collision system from a standard input
+     * (or generates <tt>N</tt> random particles if a command-line integer
+     * is specified); simulates the system.
+     */
     public static void main(String[] args) {
 
         StdDraw.setCanvasSize(800, 800);
