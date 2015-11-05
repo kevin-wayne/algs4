@@ -49,8 +49,15 @@ public class InsertionX {
         int N = a.length;
 
         // put smallest element in position to serve as sentinel
-        for (int i = N-1; i > 0; i--)
-            if (less(a[i], a[i-1])) exch(a, i, i-1);
+        int exchanges = 0;
+        for (int i = N-1; i > 0; i--) {
+            if (less(a[i], a[i-1])) {
+                exch(a, i, i-1);
+                exchanges++;
+            }
+        }
+        if (exchanges == 0) return;
+
 
         // insertion sort with half-exchanges
         for (int i = 2; i < N; i++) {

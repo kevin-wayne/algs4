@@ -72,7 +72,7 @@ public class HopcroftKarp {
      * @param  G the bipartite graph
      * @throws IllegalArgumentException if <tt>G</tt> is not bipartite
      */
-    private HopcroftKarp(Graph G) {
+    public HopcroftKarp(Graph G) {
         bipartition = new BipartiteX(G);
         if (!bipartition.isBipartite()) {
             throw new IllegalArgumentException("graph is not bipartite");

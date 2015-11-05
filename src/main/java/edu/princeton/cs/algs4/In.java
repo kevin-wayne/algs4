@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.Socket;
 // import java.net.HttpURLConnection;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -91,15 +92,18 @@ public final class In {
      * Initializes an input stream from a socket.
      *
      * @param  socket the socket
+     * @throws IllegalArgumentException if cannot open {@code socket}
+     * @throws NullPointerException if {@code socket} is {@code null}
      */
-    public In(java.net.Socket socket) {
+    public In(Socket socket) {
+        if (socket == null) throw new NullPointerException("argument is null");
         try {
             InputStream is = socket.getInputStream();
             scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            System.err.println("Could not open " + socket);
+            throw new IllegalArgumentException("Could not open " + socket);
         }
     }
 
@@ -107,8 +111,11 @@ public final class In {
      * Initializes an input stream from a URL.
      *
      * @param  url the URL
+     * @throws IllegalArgumentException if cannot open {@code url}
+     * @throws NullPointerException if {@code url} is {@code null}
      */
     public In(URL url) {
+        if (url == null) throw new NullPointerException("argument is null");
         try {
             URLConnection site = url.openConnection();
             InputStream is     = site.getInputStream();
@@ -116,7 +123,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            System.err.println("Could not open " + url);
+            throw new IllegalArgumentException("Could not open " + url);
         }
     }
 
@@ -124,14 +131,17 @@ public final class In {
      * Initializes an input stream from a file.
      *
      * @param  file the file
+     * @throws IllegalArgumentException if cannot open {@code file}
+     * @throws NullPointerException if {@code file} is {@code null}
      */
     public In(File file) {
+        if (file == null) throw new NullPointerException("argument is null");
         try {
             scanner = new Scanner(file, CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            System.err.println("Could not open " + file);
+            throw new IllegalArgumentException("Could not open " + file);
         }
     }
 
@@ -139,12 +149,16 @@ public final class In {
    /**
      * Initializes an input stream from a filename or web page name.
      *
-     * @param  s the filename or web page name
+     * @param  name the filename or web page name
+     * @throws IllegalArgumentException if cannot open {@code name} as
+     *         a file or URL
+     * @throws NullPointerException if {@code name} is {@code null}
      */
-    public In(String s) {
+    public In(String name) {
+        if (name == null) throw new NullPointerException("argument is null");
         try {
             // first try to read file from local file system
-            File file = new File(s);
+            File file = new File(name);
             if (file.exists()) {
                 scanner = new Scanner(file, CHARSET_NAME);
                 scanner.useLocale(LOCALE);
@@ -152,11 +166,11 @@ public final class In {
             }
 
             // next try for files included in jar
-            URL url = getClass().getResource(s);
+            URL url = getClass().getResource(name);
 
             // or URL from web
             if (url == null) {
-                url = new URL(s);
+                url = new URL(name);
             }
 
             URLConnection site = url.openConnection();
@@ -170,7 +184,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            System.err.println("Could not open " + s);
+            throw new IllegalArgumentException("Could not open " + name);
         }
     }
 
@@ -182,8 +196,10 @@ public final class In {
      * scanner will be mutated as you read on. 
      *
      * @param  scanner the scanner
+     * @throws NullPointerException if {@code scanner} is {@code null}
      */
     public In(Scanner scanner) {
+        if (scanner == null) throw new NullPointerException("argument is null");
         this.scanner = scanner;
     }
 
@@ -211,13 +227,13 @@ public final class In {
         return !scanner.hasNext();
     }
 
-   /**
+   /** 
      * Returns true if this input stream has a next line.
-     * Use this to know whether the next call to {@link #readLine()} will succeed.
-     * <p>
-     * Functionally equivalent to {@link #hasNextChar()}.
+     * Use this method to know whether the
+     * next call to {@link #readLine()} will succeed.
+     * This method is functionally equivalent to {@link #hasNextChar()}.
      *
-     * @return <tt>true</tt> if this input stream has a next line;
+     * @return <tt>true</tt> if this input stream is empty;
      *         <tt>false</tt> otherwise
      */
     public boolean hasNextLine() {
@@ -225,13 +241,12 @@ public final class In {
     }
 
     /**
-     * Returns true if this input stream is empty (including whitespace).
-     * Use this to know  whether the next call to {@link #readChar()} will succeed.
-     * <p>
-     * Functionally equivalent to {@link #hasNextLine()}.
-     *
-     * @return <tt>true</tt> if this input stream is empty (including whitespace);
-     *         <tt>false</tt> otherwise
+     * Returns true if this input stream has more inputy (including whitespace).
+     * Use this method to know whether the next call to {@link #readChar()} will succeed.
+     * This method is functionally equivalent to {@link #hasNextLine()}.
+     * 
+     * @return <tt>true</tt> if this input stream has more input (including whitespace);
+     *         <tt>false</tt> otherwise   
      */
     public boolean hasNextChar() {
         scanner.useDelimiter(EMPTY_PATTERN);

@@ -52,8 +52,8 @@ import java.util.NoSuchElementException;
  *  @param <Item> the generic type of an item in this bag
  */
 public class Bag<Item> implements Iterable<Item> {
-    private int N;               // number of elements in bag
     private Node<Item> first;    // beginning of bag
+    private int N;               // number of elements in bag
 
     // helper linked list class
     private static class Node<Item> {

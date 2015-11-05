@@ -49,8 +49,8 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedBag<Item> implements Iterable<Item> {
-    private int N;         // number of elements in bag
     private Node first;    // beginning of bag
+    private int N;         // number of elements in bag
 
     // helper linked list class
     private class Node {

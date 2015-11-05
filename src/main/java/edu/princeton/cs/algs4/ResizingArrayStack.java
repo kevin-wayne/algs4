@@ -49,6 +49,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public ResizingArrayStack() {
         a = (Item[]) new Object[2];
+        N = 0;
     }
 
     /**

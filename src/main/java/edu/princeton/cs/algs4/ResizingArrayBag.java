@@ -31,13 +31,14 @@ import java.util.NoSuchElementException;
  */
 public class ResizingArrayBag<Item> implements Iterable<Item> {
     private Item[] a;         // array of items
-    private int N = 0;        // number of elements on stack
+    private int N;            // number of elements on stack
 
     /**
      * Initializes an empty bag.
      */
     public ResizingArrayBag() {
         a = (Item[]) new Object[2];
+        N = 0;
     }
 
     /**

@@ -40,6 +40,20 @@ public interface DrawListener {
      * @param c the character typed
      */
     void keyTyped(char c);
+
+    /**
+     * Invoked when a key has been pressed.
+     *
+     * @param keycode the key combination pressed
+     */
+    void keyPressed(int keycode);
+
+    /**
+     * Invoked when a key has been released.
+     *
+     * @param keycode the key combination released
+     */
+    void keyReleased(int keycode);
 }
 
 /******************************************************************************

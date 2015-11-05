@@ -39,9 +39,9 @@ import java.util.NoSuchElementException;
  *  @param <Item> the generic type of an item in this bag
  */
 public class Queue<Item> implements Iterable<Item> {
-    private int N;               // number of elements on queue
     private Node<Item> first;    // beginning of queue
     private Node<Item> last;     // end of queue
+    private int N;               // number of elements on queue
 
     // helper linked list class
     private static class Node<Item> {

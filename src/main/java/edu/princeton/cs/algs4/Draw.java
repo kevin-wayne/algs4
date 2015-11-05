@@ -1297,6 +1297,10 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         synchronized (keyLock) {
             keysDown.add(e.getKeyCode());
         }
+
+        // notify all listeners
+        for (DrawListener listener : listeners)
+            listener.keyPressed(e.getKeyCode());
     }
 
     /**
@@ -1307,6 +1311,10 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         synchronized (keyLock) {
             keysDown.remove(e.getKeyCode());
         }
+
+        // notify all listeners
+        for (DrawListener listener : listeners)
+            listener.keyPressed(e.getKeyCode());
     }
 
 

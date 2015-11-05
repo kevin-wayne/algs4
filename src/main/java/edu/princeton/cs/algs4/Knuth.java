@@ -53,8 +53,11 @@ package edu.princeton.cs.algs4;
  *  the assumption that Math.random() generates independent and
  *  uniformly distributed numbers between 0 and 1.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation,
+ *  see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *  See {@link StdRandom#shuffle()} for version that shuffle arrays and
+ *  subarrays of objects, doubles, and ints.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -69,7 +72,6 @@ public class Knuth {
      * (under the assumption that <tt>Math.random()</tt> generates independent
      * and uniformly distributed numbers between 0 and 1).
      * @param a the array to be shuffled
-     * @see StdRandom
      */
     public static void shuffle(Object[] a) {
         int N = a.length;

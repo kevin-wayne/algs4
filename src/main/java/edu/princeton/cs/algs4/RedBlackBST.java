@@ -555,6 +555,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @return all keys in the sybol table as an <tt>Iterable</tt>
      */
     public Iterable<Key> keys() {
+        if (isEmpty()) return new Queue<Key>();
         return keys(min(), max());
     }
 

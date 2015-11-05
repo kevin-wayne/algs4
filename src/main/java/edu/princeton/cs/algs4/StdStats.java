@@ -34,7 +34,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  <i>Standard statistics</i>. This class provides methods for computing
+ *  The {@code StdStats} class provides static methods for computing
  *  statistics such as min, max, mean, sample standard deviation, and
  *  sample variance.
  *  <p>
@@ -51,10 +51,10 @@ public final class StdStats {
     private StdStats() { }
 
     /**
-     * Returns the maximum value in the array.
+     * Returns the maximum value in the specified array.
      *
      * @param  a the array
-     * @return the maximum value in the array <tt>a[]</tt>,
+     * @return the maximum value in the array <tt>a[]</tt>;
      *         <tt>Double.NEGATIVE_INFINITY</tt> if no such value
      */
     public static double max(double[] a) {
@@ -67,12 +67,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the maximum value in the subarray.
+     * Returns the maximum value in the specified subarray.
      *
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
      * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>,
+     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NEGATIVE_INFINITY</tt> if no such value
      */
     public static double max(double[] a, int lo, int hi) {
@@ -87,10 +87,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the maximum value in the array.
+     * Returns the maximum value in the specified array.
      *
      * @param  a the array
-     * @return the maximum value in the array <tt>a[]</tt>,
+     * @return the maximum value in the array <tt>a[]</tt>;
      *         <tt>Integer.MIN_VALUE</tt> if no such value
      */
     public static int max(int[] a) {
@@ -102,10 +102,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the minimum value in the array.
+     * Returns the minimum value in the specified array.
      *
      * @param  a the array
-     * @return the minimum value in the array <tt>a[]</tt>,
+     * @return the minimum value in the array <tt>a[]</tt>;
      *         <tt>Double.POSITIVE_INFINITY</tt> if no such value
      */
     public static double min(double[] a) {
@@ -118,12 +118,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the minimum value in the subarray.
+     * Returns the minimum value in the specified subarray.
      *
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
      * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>,
+     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.POSITIVE_INFINITY</tt> if no such value
      */
     public static double min(double[] a, int lo, int hi) {
@@ -138,10 +138,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the minimum value in the array.
+     * Returns the minimum value in the specified array.
      *
      * @param  a the array
-     * @return the minimum value in the array <tt>a[]</tt>,
+     * @return the minimum value in the array <tt>a[]</tt>;
      *         <tt>Integer.MAX_VALUE</tt> if no such value
      */
     public static int min(int[] a) {
@@ -153,10 +153,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the average value in the array.
+     * Returns the average value in the specified array.
      *
      * @param  a the array
-     * @return the average value in the array <tt>a[]</tt>,
+     * @return the average value in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double mean(double[] a) {
@@ -166,12 +166,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the average value in the subarray.
+     * Returns the average value in the specified subarray.
      *
      * @param a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the average value in the subarray <tt>a[lo..hi]</tt>,
+     * @return the average value in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double mean(double[] a, int lo, int hi) {
@@ -184,10 +184,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the average value in the array.
+     * Returns the average value in the specified array.
      *
      * @param  a the array
-     * @return the average value in the array <tt>a[]</tt>,
+     * @return the average value in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double mean(int[] a) {
@@ -200,10 +200,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample variance in the array.
+     * Returns the sample variance in the specified array.
      *
      * @param  a the array
-     * @return the sample variance in the array <tt>a[]</tt>,
+     * @return the sample variance in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double var(double[] a) {
@@ -217,12 +217,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample variance in the subarray.
+     * Returns the sample variance in the specified subarray.
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample variance in the subarray <tt>a[lo..hi]</tt>,
+     * @return the sample variance in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double var(double[] a, int lo, int hi) {
@@ -239,10 +239,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample variance in the array.
+     * Returns the sample variance in the specified array.
      *
      * @param  a the array
-     * @return the sample variance in the array <tt>a[]</tt>,
+     * @return the sample variance in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double var(int[] a) {
@@ -256,10 +256,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the population variance in the array.
+     * Returns the population variance in the specified array.
      *
      * @param  a the array
-     * @return the population variance in the array <tt>a[]</tt>,
+     * @return the population variance in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double varp(double[] a) {
@@ -273,12 +273,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the population variance in the subarray.
+     * Returns the population variance in the specified subarray.
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population variance in the subarray <tt>a[lo..hi]</tt>,
+     * @return the population variance in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double varp(double[] a, int lo, int hi) {
@@ -295,10 +295,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample standard deviation in the array.
+     * Returns the sample standard deviation in the specified array.
      *
      * @param  a the array
-     * @return the sample standard deviation in the array <tt>a[]</tt>,
+     * @return the sample standard deviation in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double stddev(double[] a) {
@@ -306,10 +306,10 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample standard deviation in the array.
+     * Returns the sample standard deviation in the specified array.
      *
      * @param  a the array
-     * @return the sample standard deviation in the array <tt>a[]</tt>,
+     * @return the sample standard deviation in the array <tt>a[]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double stddev(int[] a) {
@@ -317,12 +317,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sample standard deviation in the subarray.
+     * Returns the sample standard deviation in the specified subarray.
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample standard deviation in the subarray <tt>a[lo..hi]</tt>,
+     * @return the sample standard deviation in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double stddev(double[] a, int lo, int hi) {
@@ -331,10 +331,10 @@ public final class StdStats {
 
 
     /**
-     * Returns the population standard deviation in the array.
+     * Returns the population standard deviation in the specified array.
      *
      * @param  a the array
-     * @return the population standard deviation in the subarray <tt>a[lo]</tt>,
+     * @return the population standard deviation in the array;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double stddevp(double[] a) {
@@ -342,12 +342,12 @@ public final class StdStats {
     }
 
     /**
-     * Returns the population standard deviation in the subarray.
+     * Returns the population standard deviation in the specified subarray.
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population standard deviation in the subarray <tt>a[lo..hi]</tt>,
+     * @return the population standard deviation in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>Double.NaN</tt> if no such value
      */
     public static double stddevp(double[] a, int lo, int hi) {
@@ -355,13 +355,13 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sum of all values in the array.
+     * Returns the sum of all values in the specified array.
      *
      * @param  a the array
-     * @return the sum of all values in the array <tt>a[]</tt>,
+     * @return the sum of all values in the array <tt>a[]</tt>;
      *         <tt>0.0</tt> if no such value
      */
-    public static double sum(double[] a) {
+    private static double sum(double[] a) {
         double sum = 0.0;
         for (int i = 0; i < a.length; i++) {
             sum += a[i];
@@ -370,15 +370,15 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sum of all values in the subarray.
+     * Returns the sum of all values in the specified subarray.
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sum of all values in the subarray <tt>a[lo..hi]</tt>,
+     * @return the sum of all values in the subarray <tt>a[lo..hi]</tt>;
      *         <tt>0.0</tt> if no such value
      */
-    public static double sum(double[] a, int lo, int hi) {
+    private static double sum(double[] a, int lo, int hi) {
         if (lo < 0 || hi >= a.length || lo > hi)
             throw new IndexOutOfBoundsException("Subarray indices out of bounds");
         double sum = 0.0;
@@ -389,13 +389,13 @@ public final class StdStats {
     }
 
     /**
-     * Returns the sum of all values in the array.
+     * Returns the sum of all values in the specified array.
      *
      * @param  a the array
-     * @return the sum of all values in the array <tt>a[]</tt>,
+     * @return the sum of all values in the array <tt>a[]</tt>;
      *         <tt>0.0</tt> if no such value
      */
-    public static int sum(int[] a) {
+    private static int sum(int[] a) {
         int sum = 0;
         for (int i = 0; i < a.length; i++) {
             sum += a[i];
@@ -404,7 +404,8 @@ public final class StdStats {
     }
 
    /**
-     * Plots the points (i, a[i]) to standard draw.
+     * Plots the points (0, <em>a</em><sub>0</sub>), (1, <em>a</em><sub>1</sub>), ...,
+     * (<em>n</em>&minus;1, <em>a</em><sub><em>n</em>&minus;1</sub>) to standard draw.
      *
      * @param a the array of values
      */
@@ -418,7 +419,10 @@ public final class StdStats {
     }
 
    /**
-     * Plots the line segments connecting points (i, a[i]) to standard draw.
+     * Plots the line segments connecting 
+     * (<em>i</em>, <em>a</em><sub><em>i</em></sub>) to
+     * (<em>i</em>+1, <em>a</em><sub><em>i</em>+1</sub>) for 
+     * each <em>i</em> to standard draw.
      *
      * @param a the array of values
      */
@@ -432,7 +436,9 @@ public final class StdStats {
     }
 
    /**
-     * Plots the bars from (0, a[i]) to (i, a[i]) to standard draw.
+     * Plots bars from (0, <em>a</em><sub><em>i</em></sub>) to
+     * (<em>a</em><sub><em>i</em></sub>) for each <em>i</em>
+     * to standard draw.
      *
      * @param a the array of values
      */
@@ -454,7 +460,6 @@ public final class StdStats {
         StdOut.printf("       min %10.3f\n", min(a));
         StdOut.printf("      mean %10.3f\n", mean(a));
         StdOut.printf("       max %10.3f\n", max(a));
-        StdOut.printf("       sum %10.3f\n", sum(a));
         StdOut.printf("    stddev %10.3f\n", stddev(a));
         StdOut.printf("       var %10.3f\n", var(a));
         StdOut.printf("   stddevp %10.3f\n", stddevp(a));

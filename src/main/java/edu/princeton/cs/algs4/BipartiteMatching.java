@@ -71,7 +71,7 @@ public class BipartiteMatching {
      * @param  G the bipartite graph
      * @throws IllegalArgumentException if <tt>G</tt> is not bipartite
      */
-    private BipartiteMatching(Graph G) {
+    public BipartiteMatching(Graph G) {
         bipartition = new BipartiteX(G);
         if (!bipartition.isBipartite()) {
             throw new IllegalArgumentException("graph is not bipartite");
