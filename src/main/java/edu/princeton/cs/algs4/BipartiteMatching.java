@@ -40,9 +40,9 @@ package edu.princeton.cs.algs4;
  *  of vertices in the graph. It uses extra space (not including the graph)
  *  proportional to <em>V</em>.
  *  <p>
- *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> <em>V</em>^1/2)
+ *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> sqrt(<em>V</em>))
  *  using the Hopcroft-Karp algorithm and
- *  {@link BipartiteMatchingToMaxflow}, which solves the problem in
+ *  <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>, which solves the problem in
  *  O(<em>E V</em>) time via a reduction to maxflow.
  *  <p>
  *  For additional documentation, see
@@ -171,7 +171,7 @@ public class BipartiteMatching {
 
     /**
      * Returns the vertex to which the specified vertex is matched in
-     * the maximum matching.
+     * the maximum matching computed by the algorithm.
      *
      * @param  v the vertex
      * @return the vertex to which vertex <tt>v</tt> is matched in the
@@ -185,7 +185,8 @@ public class BipartiteMatching {
     }
 
     /**
-     * Returns true if the specified vertex is matched in the maximum matching.
+     * Returns true if the specified vertex is matched in the maximum matching
+     * computed by the algorithm.
      *
      * @param  v the vertex
      * @return <tt>true</tt> if vertex <tt>v</tt> is matched in maximum matching;
@@ -209,7 +210,7 @@ public class BipartiteMatching {
 
     /**
      * Returns true if the graph contains a perfect matching.
-     * That is, the number of edges in the maximum matching is equal to one half
+     * That is, the number of edges in a maximum matching is equal to one half
      * of the number of vertices in the graph (so that every vertex is matched).
      *
      * @return <tt>true</tt> if the graph contains a perfect matching;
@@ -220,7 +221,8 @@ public class BipartiteMatching {
     }
 
     /**
-     * Returns true if the specified vertex is in the minimum vertex cover.
+     * Returns true if the specified vertex is in the minimum vertex cover
+     * computed by the algorithm.
      *
      * @param  v the vertex
      * @return <tt>true</tt> if vertex <tt>v</tt> is in the minimum vertex cover;
@@ -307,7 +309,8 @@ public class BipartiteMatching {
         int V2 = Integer.parseInt(args[1]);
         int E  = Integer.parseInt(args[2]);
         Graph G = GraphGenerator.bipartite(V1, V2, E);
-        StdOut.println(G);
+
+        if (G.V() < 1000) StdOut.println(G);
 
         BipartiteMatching matching = new BipartiteMatching(G);
         

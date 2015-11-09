@@ -42,7 +42,7 @@ import java.util.Iterator;
  *  <p>
  *  See also {@link BipartiteMatching}, which solves the problem in
  *  O(<em>E V</em>) time using the <em>alternating path algorithm</em>
- *  and {@link BipartiteMatchingToMaxflow},
+ *  and <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
  *  which solves the problem in O(<em>E V</em>) time via a reduction
  *  to the maxflow problem.
  *  <p>
@@ -118,7 +118,7 @@ public class HopcroftKarp {
 
                         // augmenting path found: update the matching
                         if (!isMatched(w)) {
-                            StdOut.println("augmenting path: " + toString(path));
+                            // StdOut.println("augmenting path: " + toString(path));
 
                             while (!path.isEmpty()) {
                                 int x = path.pop();
@@ -219,7 +219,7 @@ public class HopcroftKarp {
 
     /**
      * Returns the vertex to which the specified vertex is matched in
-     * the maximum matching.
+     * the maximum matching computed by the algorithm.
      *
      * @param  v the vertex
      * @return the vertex to which vertex <tt>v</tt> is matched in the
@@ -233,7 +233,8 @@ public class HopcroftKarp {
     }
 
     /**
-     * Returns true if the specified vertex is matched in the maximum matching.
+     * Returns true if the specified vertex is matched in the maximum matching
+     * computed by the algorithm.
      *
      * @param  v the vertex
      * @return <tt>true</tt> if vertex <tt>v</tt> is matched in maximum matching;
@@ -247,9 +248,9 @@ public class HopcroftKarp {
     }
 
     /**
-     * Returns the number of edges in a maximum matching.
+     * Returns the number of edges in any maximum matching.
      *
-     * @return the number of edges in a maximum matching
+     * @return the number of edges in any maximum matching
      */
     public int size() {
         return cardinality;
@@ -257,7 +258,7 @@ public class HopcroftKarp {
 
     /**
      * Returns true if the graph contains a perfect matching.
-     * That is, the number of edges in the maximum matching is equal to one half
+     * That is, the number of edges in a maximum matching is equal to one half
      * of the number of vertices in the graph (so that every vertex is matched).
      *
      * @return <tt>true</tt> if the graph contains a perfect matching;
@@ -268,7 +269,8 @@ public class HopcroftKarp {
     }
 
     /**
-     * Returns true if the specified vertex is in the minimum vertex cover.
+     * Returns true if the specified vertex is in the minimum vertex cover
+     * computed by the algorithm.
      *
      * @param  v the vertex
      * @return <tt>true</tt> if vertex <tt>v</tt> is in the minimum vertex cover;
@@ -357,7 +359,7 @@ public class HopcroftKarp {
         int V2 = Integer.parseInt(args[1]);
         int E  = Integer.parseInt(args[2]);
         Graph G = GraphGenerator.bipartite(V1, V2, E);
-        StdOut.println(G);
+        if (G.V() < 1000) StdOut.println(G);
 
         HopcroftKarp matching = new HopcroftKarp(G);
 

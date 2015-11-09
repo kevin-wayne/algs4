@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Topological</Xtt> class represents a data type for 
+ *  The <tt>TopologicalX</tt> class represents a data type for 
  *  determining a topological order of a directed acyclic graph (DAG).
  *  Recall, a digraph has a topological order if and only if it is a DAG.
  *  The <em>hasOrder</em> operation determines whether the digraph has
@@ -83,6 +83,48 @@ public class TopologicalX {
     }
 
     /**
+     * Determines whether the edge-weighted digraph <tt>G</tt> has a
+     * topological order and, if so, finds such a topological order.
+     * @param G the digraph
+     */
+    public TopologicalX(EdgeWeightedDigraph G) {
+
+        // indegrees of remaining vertices
+        int[] indegree = new int[G.V()];
+        for (int v = 0; v < G.V(); v++) {
+            indegree[v] = G.indegree(v);
+        }
+
+        // initialize 
+        rank = new int[G.V()]; 
+        order = new Queue<Integer>();
+        int count = 0;
+
+        // initialize queue to contain all vertices with indegree = 0
+        Queue<Integer> queue = new Queue<Integer>();
+        for (int v = 0; v < G.V(); v++)
+            if (indegree[v] == 0) queue.enqueue(v);
+
+        for (int j = 0; !queue.isEmpty(); j++) {
+            int v = queue.dequeue();
+            order.enqueue(v);
+            rank[v] = count++;
+            for (DirectedEdge e : G.adj(v)) {
+                int w = e.to();
+                indegree[w]--;
+                if (indegree[w] == 0) queue.enqueue(w);
+            }
+        }
+
+        // there is a directed cycle in subgraph of vertices with indegree >= 1.
+        if (count != G.V()) {
+            order = null;
+        }
+
+        assert check(G);
+    }
+
+    /**
      * Returns a topological order if the digraph has a topologial order,
      * and <tt>null</tt> otherwise.
      * @return a topological order of the vertices (as an interable) if the
@@ -136,6 +178,50 @@ public class TopologicalX {
             // check that ranks provide a valid topological order
             for (int v = 0; v < G.V(); v++) {
                 for (int w : G.adj(v)) {
+                    if (rank(v) > rank(w)) {
+                        System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
+                                          v, w, v, rank(v), w, rank(w));
+                        return false;
+                    }
+                }
+            }
+
+            // check that order() is consistent with rank()
+            int r = 0;
+            for (int v : order()) {
+                if (rank(v) != r) {
+                    System.err.println("order() and rank() inconsistent");
+                    return false;
+                }
+                r++;
+            }
+        }
+
+
+        return true;
+    }
+
+    // certify that digraph is acyclic
+    private boolean check(EdgeWeightedDigraph G) {
+
+        // digraph is acyclic
+        if (hasOrder()) {
+            // check that ranks are a permutation of 0 to V-1
+            boolean[] found = new boolean[G.V()];
+            for (int i = 0; i < G.V(); i++) {
+                found[rank(i)] = true;
+            }
+            for (int i = 0; i < G.V(); i++) {
+                if (!found[i]) {
+                    System.err.println("No vertex with rank " + i);
+                    return false;
+                }
+            }
+
+            // check that ranks provide a valid topological order
+            for (int v = 0; v < G.V(); v++) {
+                for (DirectedEdge e : G.adj(v)) {
+                    int w = e.to();
                     if (rank(v) > rank(w)) {
                         System.err.printf("%d-%d: rank(%d) = %d, rank(%d) = %d\n",
                                           v, w, v, rank(v), w, rank(w));

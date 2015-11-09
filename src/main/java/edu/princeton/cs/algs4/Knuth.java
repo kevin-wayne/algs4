@@ -56,7 +56,7 @@ package edu.princeton.cs.algs4;
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  See {@link StdRandom#shuffle()} for version that shuffle arrays and
+ *  See {@link StdRandom} for versions that shuffle arrays and
  *  subarrays of objects, doubles, and ints.
  *
  *  @author Robert Sedgewick
