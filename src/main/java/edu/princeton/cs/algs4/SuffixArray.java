@@ -43,14 +43,18 @@ import java.util.Arrays;
  *  This implementation uses a nested class <tt>Suffix</tt> to represent
  *  a suffix of a string (using constant time and space) and
  *  <tt>Arrays.sort()</tt> to sort the array of suffixes.
- *  For alternate implementations of the same API, see
- *  {@link SuffixArrayX}, which is faster in practice (uses 3-way radix quicksort)
- *  and uses less memory (does not create <tt>Suffix</tt> objects).
  *  The <em>index</em> and <em>length</em> operations takes constant time 
  *  in the worst case. The <em>lcp</em> operation takes time proportional to the
  *  length of the longest common prefix.
  *  The <em>select</em> operation takes time proportional
  *  to the length of the suffix and should be used primarily for debugging.
+ *  <p>
+ *  For alternate implementations of the same API, see
+ *  {@link SuffixArrayX}, which is faster in practice (uses 3-way radix quicksort)
+ *  and uses less memory (does not create <tt>Suffix</tt> objects)
+ *  and <a href = "http://algs4.cs.princeton.edu/63suffix/SuffixArrayJava6.java.html">SuffixArrayJava6.java</a>,
+ *  which relies on the constant-time substring extraction method that existed
+ *  in Java 6.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
