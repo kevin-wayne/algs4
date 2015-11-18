@@ -61,6 +61,13 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
+     * Initializes a new set that is an independent copy of the specified set.
+     */
+    public SET(SET<Key> x) {
+        set = new TreeSet<Key>(x.set);
+    }
+
+    /**
      * Adds the key to this set (if it is not already present).
      *
      * @param  key the key to add
