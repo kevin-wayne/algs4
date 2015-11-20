@@ -114,6 +114,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public boolean contains(Key key) {
+        if (key == null) throw new NullPointerException("argument to contains() is null");
         return get(key) != null;
     }
 
@@ -138,15 +139,17 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is <tt>null</tt>.
      *
      * @param  key the key
      * @param  val the value
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void put(Key key, Value val) {
+        if (key == null) throw new NullPointerException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
@@ -203,19 +206,21 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Removes the key and associated value from the symbol table
-     * (if the key is in the symbol table).
+     * Removes the specified key and its associated value from this symbol table     
+     * (if the key is in this symbol table).    
      *
      * @param  key the key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void delete(Key key) {
+        if (key == null) throw new NullPointerException("argument to delete() is null");
         root = delete(root, key);
         assert check();
     }
 
     private Node delete(Node x, Key key) {
         if (x == null) return null;
+
         int cmp = key.compareTo(x.key);
         if      (cmp < 0) x.left  = delete(x.left,  key);
         else if (cmp > 0) x.right = delete(x.right, key);
@@ -273,6 +278,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Key floor(Key key) {
+        if (key == null) throw new NullPointerException("argument to floor() is null");
         if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
         Node x = floor(root, key);
         if (x == null) return null;
@@ -298,6 +304,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Key ceiling(Key key) {
+        if (key == null) throw new NullPointerException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
         Node x = ceiling(root, key);
         if (x == null) return null;
@@ -347,6 +354,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public int rank(Key key) {
+        if (key == null) throw new NullPointerException("argument to rank() is null");
         return rank(key, root);
     } 
 
@@ -380,6 +388,9 @@ public class BST<Key extends Comparable<Key>, Value> {
      *         is <tt>null</tt>
      */
     public Iterable<Key> keys(Key lo, Key hi) {
+        if (lo == null) throw new NullPointerException("first argument to keys() is null");
+        if (hi == null) throw new NullPointerException("second argument to keys() is null");
+
         Queue<Key> queue = new Queue<Key>();
         keys(root, queue, lo, hi);
         return queue;
@@ -403,6 +414,9 @@ public class BST<Key extends Comparable<Key>, Value> {
      *         is <tt>null</tt>
      */
     public int size(Key lo, Key hi) {
+        if (lo == null) throw new NullPointerException("first argument to size() is null");
+        if (hi == null) throw new NullPointerException("second argument to size() is null");
+
         if (lo.compareTo(hi) > 0) return 0;
         if (contains(hi)) return rank(hi) - rank(lo) + 1;
         else              return rank(hi) - rank(lo);

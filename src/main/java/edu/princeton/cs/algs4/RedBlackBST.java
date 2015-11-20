@@ -139,6 +139,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Value get(Key key) {
+        if (key == null) throw new NullPointerException("argument to get() is null");
         return get(root, key);
     }
 
@@ -169,14 +170,22 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     ***************************************************************************/
 
     /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is <tt>null</tt>.
+     *
      * @param key the key
      * @param val the value
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void put(Key key, Value val) {
+        if (key == null) throw new NullPointerException("first argument to put() is null");
+        if (val == null) {
+            delete(key);
+            return;
+        }
+
         root = put(root, key, val);
         root.color = BLACK;
         // assert check();
@@ -266,16 +275,15 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Removes the key and associated value from the symbol table
-     * (if the key is in the symbol table).
-     * @param key the key
+     * Removes the specified key and its associated value from this symbol table     
+     * (if the key is in this symbol table).    
+     *
+     * @param  key the key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void delete(Key key) { 
-        if (!contains(key)) {
-            System.err.println("symbol table does not contain " + key);
-            return;
-        }
+        if (key == null) throw new NullPointerException("argument to delete() is null");
+        if (!contains(key)) return;
 
         // if both children of root are black, set root to red
         if (!isRed(root.left) && !isRed(root.right))
@@ -460,6 +468,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Key floor(Key key) {
+        if (key == null) throw new NullPointerException("argument to floor() is null");
         if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
         Node x = floor(root, key);
         if (x == null) return null;
@@ -484,7 +493,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if there is no such key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
-    public Key ceiling(Key key) {  
+    public Key ceiling(Key key) {
+        if (key == null) throw new NullPointerException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
         Node x = ceiling(root, key);
         if (x == null) return null;
@@ -532,6 +542,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public int rank(Key key) {
+        if (key == null) throw new NullPointerException("argument to rank() is null");
         return rank(key, root);
     } 
 
@@ -568,6 +579,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *    is <tt>null</tt>
      */
     public Iterable<Key> keys(Key lo, Key hi) {
+        if (lo == null) throw new NullPointerException("first argument to keys() is null");
+        if (hi == null) throw new NullPointerException("second argument to keys() is null");
+
         Queue<Key> queue = new Queue<Key>();
         // if (isEmpty() || lo.compareTo(hi) > 0) return queue;
         keys(root, queue, lo, hi);
@@ -593,6 +607,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *    is <tt>null</tt>
      */
     public int size(Key lo, Key hi) {
+        if (lo == null) throw new NullPointerException("first argument to size() is null");
+        if (hi == null) throw new NullPointerException("second argument to size() is null");
+
         if (lo.compareTo(hi) > 0) return 0;
         if (contains(hi)) return rank(hi) - rank(lo) + 1;
         else              return rank(hi) - rank(lo);

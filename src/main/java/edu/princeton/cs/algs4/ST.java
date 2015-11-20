@@ -64,11 +64,11 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
 
     /**
-     * Returns the value associated with the given key.
+     * Returns the value associated with the given key in this symbol table.
      *
      * @param  key the key
-     * @return the value associated with the given key if the key is in the symbol table;
-     *         <tt>null</tt> if the key is not in the symbol table
+     * @return the value associated with the given key if the key is in this symbol table;
+     *         <tt>null</tt> if the key is not in this symbol table
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Value get(Key key) {
@@ -77,9 +77,10 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is <tt>null</tt>.
      *
      * @param  key the key
      * @param  val the value
@@ -92,7 +93,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Removes the key and associated value from this symbol table.
+     * Removes the specified key and its associated value from this symbol table     
      * (if the key is in this symbol table).
      *
      * @param  key the key
@@ -140,7 +141,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * To iterate over all of the keys in the symbol table named <tt>st</tt>,
      * use the foreach notation: <tt>for (Key key : st.keys())</tt>.
      *
-     * @return all keys in the symbol table
+     * @return all keys in this symbol table
      */
     public Iterable<Key> keys() {
         return st.keySet();
@@ -154,7 +155,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * This method is provided for backward compatibility with the version from
      * <em>Introduction to Programming in Java: An Interdisciplinary Approach.</em>
      *
-     * @return     an iterator to all of the keys in the symbol table
+     * @return     an iterator to all of the keys in this symbol table
      * @deprecated Replaced by {@link #keys()}.
      */
     public Iterator<Key> iterator() {

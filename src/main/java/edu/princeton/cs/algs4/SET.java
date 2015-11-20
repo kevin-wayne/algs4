@@ -83,7 +83,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Returns true if this set contains the given key.
      *
      * @param  key the key
-     * @return <tt>true</tt> if this set contains <tt>key</tt> and
+     * @return <tt>true</tt> if this set contains <tt>key</tt>;
      *         <tt>false</tt> otherwise
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
@@ -93,7 +93,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Removes the key from this set (if the key is present).
+     * Removes the specified key from this set (if the set contains the specified key).
      *
      * @param  key the key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
@@ -115,7 +115,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     /**
      * Returns true if this set is empty.
      *
-     * @return <tt>true</tt> if this set is empty, and <tt>false</tt> otherwise
+     * @return <tt>true</tt> if this set is empty;
+     *         <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -160,8 +161,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  key the key
      * @return the smallest key in this set greater than or equal to <tt>key</tt>
-     * @throws NoSuchElementException if there is no such key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NoSuchElementException if there is no such key
      */
     public Key ceiling(Key key) {
         if (key == null) throw new NullPointerException("called ceiling() with a null key");
@@ -175,8 +176,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  key the key
      * @return the largest key in this set table less than or equal to <tt>key</tt>
-     * @throws NoSuchElementException if there is no such key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NoSuchElementException if there is no such key
      */
     public Key floor(Key key) {
         if (key == null) throw new NullPointerException("called floor() with a null key");

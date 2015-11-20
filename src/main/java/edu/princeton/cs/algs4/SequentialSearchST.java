@@ -79,6 +79,7 @@ public class SequentialSearchST<Key, Value> {
 
     /**
      * Returns the number of key-value pairs in this symbol table.
+     *
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
@@ -86,30 +87,38 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
-     * Is this symbol table empty?
-     * @return <tt>true</tt> if this symbol table is empty and <tt>false</tt> otherwise
+     * Returns true if this symbol table is empty.
+     *
+     * @return <tt>true</tt> if this symbol table is empty;
+     *         <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
     }
 
     /**
-     * Does this symbol table contain the given key?
-     * @param key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt> and
-     *     <tt>false</tt> otherwise
+     * Returns true if this symbol table contains the specified key.
+     *
+     * @param  key the key
+     * @return <tt>true</tt> if this symbol table contains <tt>key</tt>;
+     *         <tt>false</tt> otherwise
+     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public boolean contains(Key key) {
+        if (key == null) throw new NullPointerException("argument to contains() is null");
         return get(key) != null;
     }
 
     /**
-     * Returns the value associated with the given key.
-     * @param key the key
+     * Returns the value associated with the given key in this symbol table.
+     *
+     * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
      *     and <tt>null</tt> if the key is not in the symbol table
+     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Value get(Key key) {
+        if (key == null) throw new NullPointerException("argument to get() is null"); 
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key))
                 return x.val;
@@ -118,13 +127,17 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
-     * @param key the key
-     * @param val the value
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is <tt>null</tt>.
+     *
+     * @param  key the key
+     * @param  val the value
+     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void put(Key key, Value val) {
+        if (key == null) throw new NullPointerException("first argument to put() is null"); 
         if (val == null) {
             delete(key);
             return;
@@ -141,11 +154,14 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
-     * Removes the key and associated value from the symbol table
-     * (if the key is in the symbol table).
-     * @param key the key
+     * Removes the specified key and its associated value from this symbol table     
+     * (if the key is in this symbol table).    
+     *
+     * @param  key the key
+     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void delete(Key key) {
+        if (key == null) throw new NullPointerException("argument to delete() is null"); 
         first = delete(first, key);
     }
 
@@ -166,7 +182,8 @@ public class SequentialSearchST<Key, Value> {
      * Returns all keys in the symbol table as an <tt>Iterable</tt>.
      * To iterate over all of the keys in the symbol table named <tt>st</tt>,
      * use the foreach notation: <tt>for (Key key : st.keys())</tt>.
-     * @return all keys in the sybol table as an <tt>Iterable</tt>
+     *
+     * @return all keys in the sybol table
      */
     public Iterable<Key> keys()  {
         Queue<Key> queue = new Queue<Key>();

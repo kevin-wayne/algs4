@@ -92,6 +92,7 @@ public class SeparateChainingHashST<Key, Value> {
 
     /**
      * Returns the number of key-value pairs in this symbol table.
+     *
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
@@ -99,45 +100,54 @@ public class SeparateChainingHashST<Key, Value> {
     } 
 
     /**
-     * Is this symbol table empty?
-     * @return <tt>true</tt> if this symbol table is empty and <tt>false</tt> otherwise
+     * Returns true if this symbol table is empty.
+     *
+     * @return <tt>true</tt> if this symbol table is empty;
+     *         <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
     }
 
     /**
-     * Does this symbol table contain the given key?
-     * @param key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt> and
-     *     <tt>false</tt> otherwise
+     * Returns true if this symbol table contains the specified key.
+     *
+     * @param  key the key
+     * @return <tt>true</tt> if this symbol table contains <tt>key</tt>;
+     *         <tt>false</tt> otherwise
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public boolean contains(Key key) {
+        if (key == null) throw new NullPointerException("argument to contains() is null");
         return get(key) != null;
     } 
 
     /**
-     * Returns the value associated with the given key.
-     * @param key the key
-     * @return the value associated with the given key if the key is in the symbol table
-     *     and <tt>null</tt> if the key is not in the symbol table
+     * Returns the value associated with the specified key in this symbol table.
+     *
+     * @param  key the key
+     * @return the value associated with <tt>key</tt> in the symbol table;
+     *         <tt>null</tt> if no such value
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public Value get(Key key) {
+        if (key == null) throw new NullPointerException("argument to get() is null");
         int i = hash(key);
         return st[i].get(key);
     } 
 
     /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
-     * @param key the key
-     * @param val the value
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is <tt>null</tt>.
+     *
+     * @param  key the key
+     * @param  val the value
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void put(Key key, Value val) {
+        if (key == null) throw new NullPointerException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
@@ -152,12 +162,15 @@ public class SeparateChainingHashST<Key, Value> {
     } 
 
     /**
-     * Removes the key and associated value from the symbol table
-     * (if the key is in the symbol table).
-     * @param key the key
+     * Removes the specified key and its associated value from this symbol table     
+     * (if the key is in this symbol table).    
+     *
+     * @param  key the key
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void delete(Key key) {
+        if (key == null) throw new NullPointerException("argument to delete() is null");
+
         int i = hash(key);
         if (st[i].contains(key)) N--;
         st[i].delete(key);
