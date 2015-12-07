@@ -17,9 +17,11 @@
  *
  *  Remarks
  *  -----------
- *    - This version does not suport the + operator or multiway-or.
- *
- *    - This version does not handle character classes, 
+ *  The following features are not supported:
+ *    - The + operator
+ *    - Multiway or
+ *    - Metacharacters in the text
+ *    - Character classes.
  *
  ******************************************************************************/
 
@@ -93,10 +95,11 @@ public class NFA {
             } 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')') 
                 G.addEdge(i, i+1);
-        } 
+        }
+        if (ops.size() != 0)
+            throw new IllegalArgumentException("Invalid regular expression");
     } 
 
-    // Does the NFA recognize txt? 
     /**
      * Returns true if the text is matched by the regular expression.
      * 
@@ -112,6 +115,9 @@ public class NFA {
 
         // Compute possible NFA states for txt[i+1]
         for (int i = 0; i < txt.length(); i++) {
+            if (txt.charAt(i) == '*' || txt.charAt(i) == '|' || txt.charAt(i) == '(' || txt.charAt(i) == ')')
+                throw new IllegalArgumentException("text contains the metacharacter '" + txt.charAt(i) + "'");
+
             Bag<Integer> match = new Bag<Integer>();
             for (int v : pc) {
                 if (v == M) continue;
@@ -139,9 +145,6 @@ public class NFA {
     public static void main(String[] args) {
         String regexp = "(" + args[0] + ")";
         String txt = args[1];
-        if (txt.indexOf('|') >= 0) {
-            throw new IllegalArgumentException("| character in text is not supported");
-        }
         NFA nfa = new NFA(regexp);
         StdOut.println(nfa.recognizes(txt));
     }

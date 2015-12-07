@@ -29,7 +29,9 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The <tt>LongestRepeatedSubstring</tt> class provides a {@link SuffixArray}
- *  client for computing the longest repeated substring of a string.
+ *  client for computing the longest repeated substring of a string that
+ *  appears at least twice. The repeated substrings may overlap (but must
+ *  be distinct).
  *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of

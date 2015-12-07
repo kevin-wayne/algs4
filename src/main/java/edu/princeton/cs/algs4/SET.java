@@ -245,16 +245,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
         if (other == this) return true;
         if (other == null) return false;
         if (other.getClass() != this.getClass()) return false;
-        SET<Key> that = (SET<Key>) other;
-        if (this.size() != that.size()) return false;
-        try {
-            for (Key k : this)
-                if (!that.contains(k)) return false;
-        }
-        catch (ClassCastException exception) {
-            return false;
-        }
-        return true;
+        SET that = (SET) other;
+        return this.set.equals(that.set);
     }
 
     /**
@@ -287,7 +279,6 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      */
     public static void main(String[] args) {
         SET<String> set = new SET<String>();
-
 
         // insert some keys
         set.add("www.cs.princeton.edu");
@@ -329,6 +320,9 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
             StdOut.println(s);
         }
 
+        StdOut.println();
+        SET<String> set2 = new SET<String>(set);
+        StdOut.println(set.equals(set2));
     }
 
 }
