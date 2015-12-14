@@ -264,6 +264,10 @@ public class TST<Value> {
         StdOut.println(st.longestPrefixOf("shellsort"));
         StdOut.println();
 
+        StdOut.println("longestPrefixOf(\"shell\"):");
+        StdOut.println(st.longestPrefixOf("shell"));
+        StdOut.println();
+
         StdOut.println("keysWithPrefix(\"shor\"):");
         for (String s : st.keysWithPrefix("shor"))
             StdOut.println(s);

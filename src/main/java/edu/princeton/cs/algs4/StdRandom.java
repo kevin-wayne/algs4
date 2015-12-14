@@ -300,20 +300,21 @@ public final class StdRandom {
     /**
      * Returns a random integer from the specified discrete distribution.
      *
-     * @param  a the probability of occurrence of each integer
+     * @param  probabilities the probability of occurrence of each integer
      * @return a random integer from a discrete distribution:
-     *         <tt>i</tt> with probability <tt>a[i]</tt>
-     * @throws NullPointerException if <tt>a</tt> is <tt>null</tt>
+     *         <tt>i</tt> with probability <tt>probabilities[i]</tt>
+     * @throws NullPointerException if <tt>probabilities</tt> is <tt>null</tt>
      * @throws IllegalArgumentException if sum of array entries is not (very nearly) equal to <tt>1.0</tt>
-     * @throws IllegalArgumentException unless <tt>a[i] >= 0.0</tt> for each index <tt>i</tt>
+     * @throws IllegalArgumentException unless <tt>probabilities[i] >= 0.0</tt> for each index <tt>i</tt>
      */
-    public static int discrete(double[] a) {
-        if (a == null) throw new NullPointerException("argument array is null");
+    public static int discrete(double[] probabilities) {
+        if (probabilities == null) throw new NullPointerException("argument array is null");
         double EPSILON = 1E-14;
         double sum = 0.0;
-        for (int i = 0; i < a.length; i++) {
-            if (!(a[i] >= 0.0)) throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + a[i]);
-            sum = sum + a[i];
+        for (int i = 0; i < probabilities.length; i++) {
+            if (!(probabilities[i] >= 0.0))
+                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + probabilities[i]);
+            sum += probabilities[i];
         }
         if (sum > 1.0 + EPSILON || sum < 1.0 - EPSILON)
             throw new IllegalArgumentException("sum of array entries does not approximately equal 1.0: " + sum);
@@ -323,11 +324,48 @@ public final class StdRandom {
         while (true) {
             double r = uniform();
             sum = 0.0;
-            for (int i = 0; i < a.length; i++) {
-                sum = sum + a[i];
+            for (int i = 0; i < probabilities.length; i++) {
+                sum = sum + probabilities[i];
                 if (sum > r) return i;
             }
         }
+    }
+
+    /**
+     * Returns a random integer from the specified discrete distribution.
+     *
+     * @param  frequencies the frequency of occurrence of each integer
+     * @return a random integer from a discrete distribution:
+     *         <tt>i</tt> with probability proportional to <tt>frequencies[i]</tt>
+     * @throws NullPointerException if <tt>frequencies</tt> is <tt>null</tt>
+     * @throws IllegalArgumentException if all array entries are <tt>0</tt>
+     * @throws IllegalArgumentException if <tt>frequencies[i]</tt> is negative for any index <tt>i</tt>
+     * @throws IllegalArgumentException if sum of frequencies exceeds <tt>Integer.MAX_VALUE</tt> (2<sup>31</sup> - 1)
+     */
+    public static int discrete(int[] frequencies) {
+        if (frequencies == null) throw new NullPointerException("argument array is null");
+        long sum = 0;
+        for (int i = 0; i < frequencies.length; i++) {
+            if (frequencies[i] < 0)
+                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + frequencies[i]);
+            sum += frequencies[i];
+        }
+        if (sum == 0)
+            throw new IllegalArgumentException("at least one array entry must be positive");
+        if (sum >= Integer.MAX_VALUE)
+            throw new IllegalArgumentException("sum of frequencies overflows an int");
+
+        // pick index i with probabilitity proportional to frequency
+        double r = uniform((int) sum);
+        sum = 0;
+        for (int i = 0; i < frequencies.length; i++) {
+            sum += frequencies[i];
+            if (sum > r) return i;
+        }
+
+        // can't reach here
+        assert false;
+        return -1;
     }
 
     /**
@@ -353,9 +391,9 @@ public final class StdRandom {
      */
     public static void shuffle(Object[] a) {
         if (a == null) throw new NullPointerException("argument array is null");
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int r = i + uniform(N-i);     // between i and N-1
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int r = i + uniform(n-i);     // between i and n-1
             Object temp = a[i];
             a[i] = a[r];
             a[r] = temp;
@@ -370,9 +408,9 @@ public final class StdRandom {
      */
     public static void shuffle(double[] a) {
         if (a == null) throw new NullPointerException("argument array is null");
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int r = i + uniform(N-i);     // between i and N-1
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int r = i + uniform(n-i);     // between i and n-1
             double temp = a[i];
             a[i] = a[r];
             a[r] = temp;
@@ -387,9 +425,9 @@ public final class StdRandom {
      */
     public static void shuffle(int[] a) {
         if (a == null) throw new NullPointerException("argument array is null");
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int r = i + uniform(N-i);     // between i and N-1
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int r = i + uniform(n-i);     // between i and n-1
             int temp = a[i];
             a[i] = a[r];
             a[r] = temp;
@@ -468,24 +506,25 @@ public final class StdRandom {
      * Unit test.
      */
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[0]);
         if (args.length == 2) StdRandom.setSeed(Long.parseLong(args[1]));
-        double[] t = { .5, .3, .1, .1 };
+        double[] probabilities = { 0.5, 0.3, 0.1, 0.1 };
+        int[] frequencies = { 5, 3, 1, 1 };
+        String[] a = "A B C D E F G".split(" ");
 
         StdOut.println("seed = " + StdRandom.getSeed());
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StdOut.printf("%2d "  , uniform(100));
             StdOut.printf("%8.5f ", uniform(10.0, 99.0));
-            StdOut.printf("%5b "  , bernoulli(.5));
-            StdOut.printf("%7.5f ", gaussian(9.0, .2));
-            StdOut.printf("%2d "  , discrete(t));
+            StdOut.printf("%5b "  , bernoulli(0.5));
+            StdOut.printf("%7.5f ", gaussian(9.0, 0.2));
+            StdOut.printf("%1d "  , discrete(probabilities));
+            StdOut.printf("%1d "  , discrete(frequencies));
+            StdRandom.shuffle(a);
+            for (String s : a)
+                StdOut.print(s);
             StdOut.println();
         }
-
-        String[] a = "A B C D E F G".split(" ");
-        for (String s : a)
-            StdOut.print(s + " ");
-        StdOut.println();
     }
 
 }
