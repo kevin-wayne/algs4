@@ -1,10 +1,14 @@
 /******************************************************************************
  *  Compilation:  javac StopwatchCPU.java
- *  Execution:    none
+ *  Execution:    java StopwtachCPU n
  *  Dependencies: none
  *
  *  A version of Stopwatch.java that measures CPU time on a single
  *  core or processor (instead of wall clock time).
+ *
+ *  % java8 StopwatchCPU 100000000
+ *  6.666667e+11 (1.05 seconds)
+ *  6.666667e+11 (7.50 seconds)
  *
  ******************************************************************************/
 
@@ -47,7 +51,38 @@ public class StopwatchCPU {
     public double elapsedTime() {
         long now = threadTimer.getCurrentThreadCpuTime();
         return (now - start) / NANOSECONDS_PER_SECOND;
-    }   
+    }
+
+    /**
+     * Unit tests the <tt>StopwatchCPU</tt> data type.
+     * Takes a command-line argument <tt>n</tt> and computes the 
+     * sum of the square roots of the first <tt>n</tt> positive integers,
+     * first using <tt>Math.sqrt()</tt>, then using <tt>Math.pow()</tt>.
+     * It prints to standard output the sum and the amount of time to
+     * compute the sum. Note that the discrete sum can be approximated by
+     * an integral - the sum should be approximately 2/3 * (n^(3/2) - 1).
+     */
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+
+        // sum of square roots of integers from 1 to n using Math.sqrt(x).
+        StopwatchCPU timer1 = new StopwatchCPU();
+        double sum1 = 0.0;
+        for (int i = 1; i <= n; i++) {
+            sum1 += Math.sqrt(i);
+        }
+        double time1 = timer1.elapsedTime();
+        StdOut.printf("%e (%.2f seconds)\n", sum1, time1);
+
+        // sum of square roots of integers from 1 to n using Math.pow(x, 0.5).
+        StopwatchCPU timer2 = new StopwatchCPU();
+        double sum2 = 0.0;
+        for (int i = 1; i <= n; i++) {
+            sum2 += Math.pow(i, 0.5);
+        }
+        double time2 = timer2.elapsedTime();
+        StdOut.printf("%e (%.2f seconds)\n", sum2, time2);
+    }
 }
 
 /******************************************************************************
