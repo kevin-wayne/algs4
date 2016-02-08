@@ -147,9 +147,10 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         int min = pq[1];        
         exch(1, N--); 
         sink(1);
-        qp[min] = -1;            // delete
-        keys[pq[N+1]] = null;    // to help with garbage collection
-        pq[N+1] = -1;            // not needed
+        assert min == pq[N+1];
+        qp[min] = -1;        // delete
+        keys[min] = null;    // to help with garbage collection
+        pq[N+1] = -1;        // not needed
         return min; 
     }
 

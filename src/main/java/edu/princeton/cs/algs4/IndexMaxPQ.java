@@ -140,12 +140,14 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      */
     public int delMax() { 
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
-        int min = pq[1];        
-        exch(1, N--); 
+        int min = pq[1];
+        exch(1, N--);
         sink(1);
-        qp[min] = -1;            // delete
-        keys[pq[N+1]] = null;    // to help with garbage collection
-        pq[N+1] = -1;            // not needed
+
+        assert pq[N+1] == min;
+        qp[min] = -1;        // delete
+        keys[min] = null;    // to help with garbage collection
+        pq[N+1] = -1;        // not needed
         return min; 
     }
 

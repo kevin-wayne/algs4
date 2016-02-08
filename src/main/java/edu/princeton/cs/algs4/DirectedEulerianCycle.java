@@ -238,6 +238,10 @@ public class DirectedEulerianCycle {
         // random digraph
         Digraph G6 = DigraphGenerator.simple(V, E);
         unitTest(G6, "simple digraph");
+
+        // 4-vertex digraph
+        Digraph G7 = new Digraph(new In("eulerianD.txt"));
+        unitTest(G7, "4-vertex Eulerian digraph");
     }
 
 }

@@ -241,6 +241,10 @@ public class DirectedEulerianPath {
         // random digraph
         Digraph G7 = DigraphGenerator.simple(V, E);
         unitTest(G7, "simple digraph");
+
+        // 4-vertex digraph
+        Digraph G8 = new Digraph(new In("eulerianD.txt"));
+        unitTest(G8, "4-vertex Eulerian digraph");
     }
 
 }

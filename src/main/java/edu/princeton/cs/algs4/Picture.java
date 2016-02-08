@@ -128,6 +128,11 @@ public final class Picture implements ActionListener {
             // e.printStackTrace();
             throw new RuntimeException("Could not open file: " + filename);
         }
+
+        // check that image was read in
+        if (image == null) {
+            throw new RuntimeException("Invalid image file: " + filename);
+        }
     }
 
    /**
