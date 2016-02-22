@@ -37,6 +37,9 @@ import java.util.Comparator;
  *  <p>
  *  The sorting algorithm is stable and uses O(1) extra memory.
  *  <p>
+ *  See <a href="http://algs4.cs.princeton.edu/21elementary/InsertionPedantic.java.html">InsertionPedantic.java</a>
+ *  for a version that eliminates the compiler warning.
+ *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *

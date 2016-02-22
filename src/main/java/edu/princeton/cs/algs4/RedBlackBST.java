@@ -59,9 +59,9 @@ import java.util.NoSuchElementException;
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/33balanced">Section 3.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  For other implementations, see {@link ST}, {@link BinarySearchST},
+ *  For other implementations of the same API, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link BST},
- *  {@link SeparateChainingHashST}, and {@link LinearProbingHashST},
+ *  {@link SeparateChainingHashST}, {@link LinearProbingHashST}, and {@link AVLTreeST}.
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 

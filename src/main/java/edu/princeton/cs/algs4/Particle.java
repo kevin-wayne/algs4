@@ -15,7 +15,7 @@ import java.awt.Color;
 /**
  *  The <tt>Particle</tt> class represents a particle moving in the unit box,
  *  with a given position, velocity, radius, and mass. Methods are provided
- *  for moving the particle and for predicting and resolvling inelastic
+ *  for moving the particle and for predicting and resolvling elastic
  *  collisions with vertical walls, horizontal walls, and other particles.
  *  This data type is mutable because the position and velocity change.
  *  <p>
@@ -164,7 +164,7 @@ public class Particle {
 
     /**
      * Updates the velocities of this particle and the specified particle according
-     * to the laws of inelastic collision. Assumes that the particles are colliding
+     * to the laws of elastic collision. Assumes that the particles are colliding
      * at this instant.
      *
      * @param  that the other particle

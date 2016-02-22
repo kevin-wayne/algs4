@@ -151,6 +151,8 @@ public class QuickFindUF {
      *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
      */
     public void union(int p, int q) {
+        validate(p);
+        validate(q);
         int pID = id[p];   // needed for correctness
         int qID = id[q];   // to reduce the number of array accesses
 

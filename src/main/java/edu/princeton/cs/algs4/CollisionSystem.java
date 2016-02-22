@@ -15,7 +15,7 @@ import java.awt.Color;
 
 /**
  *  The <tt>CollisionSystem</tt> class represents a collection of particles
- *  moving in the unit box, according to the laws of inelastic collision.
+ *  moving in the unit box, according to the laws of elastic collision.
  *  This event-based simulation relies on a priority queue.
  *  <p>
  *  For additional documentation, 

@@ -133,7 +133,7 @@ import java.util.regex.Pattern;
  *  As an example, the following code fragment reads all of the remaining
  *  tokens from standard input and returns them as an array of strings.
  *  <pre>
- *  String[] words = StdIn.readAllString();
+ *  String[] words = StdIn.readAllStrings();
  *  </pre>
  *  <p>
  *  <b>Differences with Scanner.</b>
@@ -159,7 +159,7 @@ import java.util.regex.Pattern;
  *  </ul>
  *  <p>
  *  Historical note: {@code StdIn} preceded {@code Scanner}; when
- *  {@code Scanner} was introduced, this class was reimplemented to use it.
+ *  {@code Scanner} was introduced, this class was reimplemented to use {@code Scanner}.
  *  <p>
  *  <b>Using standard input.</b>
  *  Standard input is fundamental operating system abstraction, on Mac OS X,
@@ -262,7 +262,9 @@ public final class StdIn {
 
    /**
      * Reads and returns the next line, excluding the line separator if present.
-     * @return the next line, excluding the line separator if present
+     *
+     * @return the next line, excluding the line separator if present;
+     *         <tt>null</tt> if no such line
      */
     public static String readLine() {
         String line;
@@ -277,7 +279,9 @@ public final class StdIn {
 
     /**
      * Reads and returns the next character.
+     *
      * @return the next character
+     * @throws NoSuchElementException if standard input is empty
      */
     public static char readChar() {
         scanner.useDelimiter(EMPTY_PATTERN);
@@ -291,7 +295,9 @@ public final class StdIn {
 
    /**
      * Reads and returns the remainder of the input, as a string.
+     *
      * @return the remainder of the input, as a string
+     * @throws NoSuchElementException if standard input is empty
      */
     public static String readAll() {
         if (!scanner.hasNextLine())
@@ -306,7 +312,9 @@ public final class StdIn {
 
    /**
      * Reads the next token  and returns the <tt>String</tt>.
+     *
      * @return the next <tt>String</tt>
+     * @throws NoSuchElementException if standard input is empty
      */
     public static String readString() {
         return scanner.next();
@@ -314,7 +322,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as an integer, and returns the integer.
+     *
      * @return the next integer on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as an <tt>int</tt>
      */
     public static int readInt() {
@@ -323,7 +333,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as a double, and returns the double.
+     *
      * @return the next double on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>double</tt>
      */
     public static double readDouble() {
@@ -332,7 +344,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as a float, and returns the float.
+     *
      * @return the next float on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>float</tt>
      */
     public static float readFloat() {
@@ -341,7 +355,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as a long integer, and returns the long integer.
+     *
      * @return the next long integer on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>long</tt>
      */
     public static long readLong() {
@@ -350,7 +366,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as a short integer, and returns the short integer.
+     *
      * @return the next short integer on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>short</tt>
      */
     public static short readShort() {
@@ -359,7 +377,9 @@ public final class StdIn {
 
    /**
      * Reads the next token from standard input, parses it as a byte, and returns the byte.
+     *
      * @return the next byte on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>byte</tt>
      */
     public static byte readByte() {
@@ -369,7 +389,9 @@ public final class StdIn {
     /**
      * Reads the next token from standard input, parses it as a boolean,
      * and returns the boolean.
+     *
      * @return the next boolean on standard input
+     * @throws NoSuchElementException if standard input is empty
      * @throws InputMismatchException if the next token cannot be parsed as a <tt>boolean</tt>:
      *    <tt>true</tt> or <tt>1</tt> for true, and <tt>false</tt> or <tt>0</tt> for false,
      *    ignoring case
@@ -385,6 +407,7 @@ public final class StdIn {
 
     /**
      * Reads all remaining tokens from standard input and returns them as an array of strings.
+     *
      * @return all remaining tokens on standard input, as an array of strings
      */
     public static String[] readAllStrings() {
