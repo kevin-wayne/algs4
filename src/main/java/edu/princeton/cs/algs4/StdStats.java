@@ -192,11 +192,8 @@ public final class StdStats {
      */
     public static double mean(int[] a) {
         if (a.length == 0) return Double.NaN;
-        double sum = 0.0;
-        for (int i = 0; i < a.length; i++) {
-            sum = sum + a[i];
-        }
-        return sum / a.length;
+        int sum = sum(a);
+        return 1.0 * sum / a.length;
     }
 
     /**

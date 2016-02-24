@@ -121,17 +121,17 @@ public final class Picture implements ActionListener {
                 }
                 image = ImageIO.read(url);
             }
+
+            if (image == null) {
+                throw new IllegalArgumentException("Invalid image file: " + filename);
+            }
+
             width  = image.getWidth(null);
             height = image.getHeight(null);
         }
         catch (IOException e) {
             // e.printStackTrace();
             throw new RuntimeException("Could not open file: " + filename);
-        }
-
-        // check that image was read in
-        if (image == null) {
-            throw new RuntimeException("Invalid image file: " + filename);
         }
     }
 
