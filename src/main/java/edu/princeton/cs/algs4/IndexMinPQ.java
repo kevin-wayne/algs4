@@ -121,9 +121,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return an index associated with a minimum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public int minIndex() { 
+    public int minIndex() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
-        return pq[1];        
+        return pq[1];
     }
 
     /**
@@ -132,9 +132,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return a minimum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public Key minKey() { 
+    public Key minKey() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
-        return keys[pq[1]];        
+        return keys[pq[1]];
     }
 
     /**
@@ -142,16 +142,16 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return an index associated with a minimum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public int delMin() { 
+    public int delMin() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
-        int min = pq[1];        
-        exch(1, N--); 
+        int min = pq[1];
+        exch(1, N--);
         sink(1);
         assert min == pq[N+1];
         qp[min] = -1;        // delete
         keys[min] = null;    // to help with garbage collection
         pq[N+1] = -1;        // not needed
-        return min; 
+        return min;
     }
 
     /**
@@ -172,7 +172,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @param  key change the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
      */
@@ -188,7 +188,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @param  key change the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @deprecated Replaced by {@link #changeKey(int, Key)}.
      */
@@ -200,7 +200,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Decrease the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to decrease
-     * @param  key decrease the key assocated with index <tt>i</tt> to this key
+     * @param  key decrease the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws IllegalArgumentException if key &ge; key associated with index <tt>i</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
@@ -218,7 +218,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Increase the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to increase
-     * @param  key increase the key assocated with index <tt>i</tt> to this key
+     * @param  key increase the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws IllegalArgumentException if key &le; key associated with index <tt>i</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
@@ -270,7 +270,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
    /***************************************************************************
     * Heap helper functions.
     ***************************************************************************/
-    private void swim(int k)  {
+    private void swim(int k) {
         while (k > 1 && greater(k/2, k)) {
             exch(k, k/2);
             k = k/2;
