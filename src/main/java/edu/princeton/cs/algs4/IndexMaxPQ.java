@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 /**
  *  The <tt>IndexMaxPQ</tt> class represents an indexed priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-maximum</em>
- *  operations, along with <em>delete</em> and <em>change-the-key</em> 
+ *  operations, along with <em>delete</em> and <em>change-the-key</em>
  *  methods. In order to let the client refer to items on the priority queue,
  *  an integer between 0 and maxN-1 is associated with each key&mdash;the client
  *  uses this integer to specify which key to delete or change.
@@ -86,7 +86,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     /**
      * Returns the number of keys on this priority queue.
      *
-     * @return the number of keys on this priority queue 
+     * @return the number of keys on this priority queue
      */
     public int size() {
         return N;
@@ -116,7 +116,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return an index associated with a maximum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public int maxIndex() { 
+    public int maxIndex() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
         return pq[1];
     }
@@ -127,7 +127,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return a maximum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public Key maxKey() { 
+    public Key maxKey() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
         return keys[pq[1]];
     }
@@ -138,7 +138,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return an index associated with a maximum key
      * @throws NoSuchElementException if this priority queue is empty
      */
-    public int delMax() { 
+    public int delMax() {
         if (N == 0) throw new NoSuchElementException("Priority queue underflow");
         int min = pq[1];
         exch(1, N--);
@@ -148,7 +148,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         qp[min] = -1;        // delete
         keys[min] = null;    // to help with garbage collection
         pq[N+1] = -1;        // not needed
-        return min; 
+        return min;
     }
 
     /**
@@ -168,7 +168,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @param  key change the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; i < maxN
      */
     public void changeKey(int i, Key key) {
@@ -182,7 +182,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Change the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key assocated with index <tt>i</tt> to this key
+     * @param  key change the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @deprecated Replaced by {@link #changeKey(int, Key)}.
      */
@@ -194,7 +194,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Increase the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to increase
-     * @param  key increase the key assocated with index <tt>i</tt> to this key
+     * @param  key increase the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws IllegalArgumentException if key &le; key associated with index <tt>i</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
@@ -212,7 +212,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Decrease the key associated with index <tt>i</tt> to the specified value.
      *
      * @param  i the index of the key to decrease
-     * @param  key decrease the key assocated with index <tt>i</tt> to this key
+     * @param  key decrease the key associated with index <tt>i</tt> to this key
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @throws IllegalArgumentException if key &ge; key associated with index <tt>i</tt>
      * @throws NoSuchElementException no key is associated with index <tt>i</tt>
