@@ -631,7 +631,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         {@code height} are positive
      */
     public static void setCanvasSize(int canvasWidth, int canvasHeight) {
-        if (width <= 0 || height <= 0) throw new IllegalArgumentException("width and height must be positive");
+        if (canvasWidth <= 0 || canvasHeight <= 0)
+            throw new IllegalArgumentException("width and height must be positive");
         width = canvasWidth;
         height = canvasHeight;
         init();
