@@ -11,8 +11,8 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The <tt>Interval2D</tt> class represents a closed two-dimensional interval,
- *  which represents all points (x, y) with both xleft <= x <= xright and
- *  yleft <= y <= right.
+ *  which represents all points (x, y) with both xmin <= x <= xmax and
+ *  ymin <= y <= ymax.
  *  Two-dimensional intervals are immutable: their values cannot be changed
  *  after they are created.
  *  The class <code>Interval2D</code> includes methods for checking whether
@@ -72,7 +72,7 @@ public class Interval2D {
     /**
      * Returns a string representation of this two-dimensional interval.
      * @return a string representation of this two-dimensional interval
-     *    in the form [xleft, xright] x [yleft, yright]
+     *    in the form [xmin, xmax] x [ymin, ymax]
      */
     public String toString() {
         return x + " x " + y;
@@ -106,8 +106,8 @@ public class Interval2D {
      * Draws this two-dimensional interval to standard draw.
      */
     public void draw() {
-        double xc = (x.left() + x.right()) / 2.0;
-        double yc = (y.left() + y.right()) / 2.0;
+        double xc = (x.min() + x.max()) / 2.0;
+        double yc = (y.min() + y.max()) / 2.0;
         StdDraw.rectangle(xc, yc, x.length() / 2.0, y.length() / 2.0);
     }
 

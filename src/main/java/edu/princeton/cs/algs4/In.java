@@ -11,6 +11,7 @@ package edu.princeton.cs.algs4;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -137,7 +138,10 @@ public final class In {
     public In(File file) {
         if (file == null) throw new NullPointerException("argument is null");
         try {
-            scanner = new Scanner(file, CHARSET_NAME);
+            // for consistency with StdIn, wrap with BufferedInputStream instead of use
+            // file as argument to Scanner
+            FileInputStream fis = new FileInputStream(file);
+            scanner = new Scanner(new BufferedInputStream(fis), CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
@@ -160,7 +164,10 @@ public final class In {
             // first try to read file from local file system
             File file = new File(name);
             if (file.exists()) {
-                scanner = new Scanner(file, CHARSET_NAME);
+                // for consistency with StdIn, wrap with BufferedInputStream instead of use
+                // file as argument to Scanner
+                FileInputStream fis = new FileInputStream(file);
+                scanner = new Scanner(new BufferedInputStream(fis), CHARSET_NAME);
                 scanner.useLocale(LOCALE);
                 return;
             }

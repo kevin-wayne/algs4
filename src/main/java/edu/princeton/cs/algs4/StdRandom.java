@@ -230,7 +230,8 @@ public final class StdRandom {
      * 
      * @param  p the parameter of the geometric distribution
      * @return a random integer from a geometric distribution with success
-     *         probability <tt>p</tt>
+     *         probability <tt>p</tt>; or <tt>Integer.MAX_VALUE</tt> if
+     *         <tt>p</tt> is (nearly) equal to <tt>1.0</tt>.
      * @throws IllegalArgumentException unless <tt>p >= 0.0</tt> and <tt>p <= 1.0</tt>
      */
     public static int geometric(double p) {
