@@ -8,13 +8,13 @@
  *  The test clients create N counters and performs T increment
  *  operations on random counters.
  *
- *  % java Counter 6 600000
- *  0: 99870
- *  1: 99948
- *  2: 99738
- *  3: 100283
- *  4: 100185
- *  5: 99976
+ * java Counter 6 600000
+ *  100140 counter0
+ *  100273 counter1
+ *  99848 counter2
+ *  100129 counter3
+ *  99973 counter4
+ *  99637 counter5
  *
  ******************************************************************************/
 
