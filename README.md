@@ -58,7 +58,8 @@ code before contacting us.
 
 Some of the code in this repository has been translated to other languages:
 <ul>
-<a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a>
+<li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a>
+<li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a>
 </ul>
 
 
