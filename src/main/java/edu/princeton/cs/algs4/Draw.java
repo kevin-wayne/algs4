@@ -311,7 +311,17 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         frame.setLocation(x, y);
     }
 
-
+    /**
+     * Sets the default close operation.
+     *
+     * @param  value the value, typically <code>JFrame.EXIT_ON_CLOSE</code>
+     *         (close all windows) or <code>JFrame.DISPOSE_ON_CLOSE</code>
+     *         (close current window)
+     */
+    public void setDefaultCloseOperation(int value) {
+        frame.setDefaultCloseOperation(value);
+    }
+       
 
     /**
      * Sets the window size to w-by-h pixels.
@@ -769,10 +779,10 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * @param y an array of all the y-coordindates of the polygon
      */
     public void polygon(double[] x, double[] y) {
-        int N = x.length;
+        int n = x.length;
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             path.lineTo((float) scaleX(x[i]), (float) scaleY(y[i]));
         path.closePath();
         offscreen.draw(path);
@@ -786,10 +796,10 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * @param y an array of all the y-coordindates of the polygon
      */
     public void filledPolygon(double[] x, double[] y) {
-        int N = x.length;
+        int n = x.length;
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             path.lineTo((float) scaleX(x[i]), (float) scaleY(y[i]));
         path.closePath();
         offscreen.fill(path);
@@ -988,7 +998,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         // int ws = metrics.stringWidth(s);
         int hs = metrics.getDescent();
         offscreen.drawString(s, (float) xs, (float) (ys + hs));
-        show();
+        draw();
     }
 
 

@@ -111,6 +111,7 @@ public class Heap {
         String[] a = StdIn.readAllStrings();
         Heap.sort(a);
         show(a);
+        assert isSorted(a);
     }
 }
 

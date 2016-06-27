@@ -45,8 +45,7 @@ public class Transaction implements Comparable<Transaction> {
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
         this.who    = who;
         this.when   = when;
-        if (amount == 0.0) this.amount = 0.0;  // to handle -0.0
-        else               this.amount = amount;
+        this.amount = amount;
     }
 
     /**
@@ -61,9 +60,7 @@ public class Transaction implements Comparable<Transaction> {
         String[] a = transaction.split("\\s+");
         who    = a[0];
         when   = new Date(a[1]);
-        double value = Double.parseDouble(a[2]);
-        if (value == 0.0) amount = 0.0;  // convert -0.0 0.0
-        else              amount = value;
+        amount = Double.parseDouble(a[2]);
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
     }
@@ -114,9 +111,7 @@ public class Transaction implements Comparable<Transaction> {
      *         equal to, or greater than } the amount of that transaction
      */
     public int compareTo(Transaction that) {
-        if      (this.amount < that.amount) return -1;
-        else if (this.amount > that.amount) return +1;
-        else                                return  0;
+        return Double.compare(this.amount, that.amount);
     }    
 
     /**
@@ -178,9 +173,7 @@ public class Transaction implements Comparable<Transaction> {
 
         @Override
         public int compare(Transaction v, Transaction w) {
-            if      (v.amount < w.amount) return -1;
-            else if (v.amount > w.amount) return +1;
-            else                          return  0;
+            return Double.compare(v.amount, w.amount);
         }
     }
 

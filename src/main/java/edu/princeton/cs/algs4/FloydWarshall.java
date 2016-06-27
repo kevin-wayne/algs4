@@ -93,6 +93,7 @@ public class FloydWarshall {
                 }
             }
         }
+        assert check(G);
     }
 
     /**
@@ -170,7 +171,7 @@ public class FloydWarshall {
     }
 
     // check optimality conditions
-    private boolean check(EdgeWeightedDigraph G, int s) {
+    private boolean check(AdjMatrixEdgeWeightedDigraph G) {
 
         // no negative cycle
         if (!hasNegativeCycle()) {

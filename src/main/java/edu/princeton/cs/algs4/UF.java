@@ -33,7 +33,7 @@ package edu.princeton.cs.algs4;
  *  returns the total number of components.
  *  <p>
  *  The union-find data type models connectivity among a set of <em>N</em>
- *  sites, named 0 through <em>N</em> &ndash; 1.
+ *  sites, named 0 through <em>n</em> &ndash; 1.
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
@@ -50,7 +50,7 @@ package edu.princeton.cs.algs4;
  *  two sites are in the same component if and only if they are connected.
  *  Both sites and components are identified with integers between 0 and
  *  <em>N</em> &ndash; 1. 
- *  Initially, there are <em>N</em> components, with each site in its
+ *  Initially, there are <em>n</em> components, with each site in its
  *  own component.  The <em>component identifier</em> of a component
  *  (also known as the <em>root</em>, <em>canonical element</em>, <em>leader</em>,
  *  or <em>set representative</em>) is one of the sites in the component:
@@ -78,7 +78,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation uses weighted quick union by rank with path compression
  *  by halving.
- *  Initializing a data structure with <em>N</em> sites takes linear time.
+ *  Initializing a data structure with <em>n</em> sites takes linear time.
  *  Afterwards, the <em>union</em>, <em>find</em>, and <em>connected</em> 
  *  operations take logarithmic time (in the worst case) and the
  *  <em>count</em> operation takes constant time.
@@ -102,19 +102,19 @@ public class UF {
     private int count;     // number of components
 
     /**
-     * Initializes an empty union-find data structure with <tt>N</tt> sites
-     * <tt>0</tt> through <tt>N-1</tt>. Each site is initially in its own 
+     * Initializes an empty union-find data structure with <tt>n</tt> sites
+     * <tt>0</tt> through <tt>n-1</tt>. Each site is initially in its own 
      * component.
      *
-     * @param  N the number of sites
-     * @throws IllegalArgumentException if <tt>N &lt; 0</tt>
+     * @param  n the number of sites
+     * @throws IllegalArgumentException if <tt>n &lt; 0</tt>
      */
-    public UF(int N) {
-        if (N < 0) throw new IllegalArgumentException();
-        count = N;
-        parent = new int[N];
-        rank = new byte[N];
-        for (int i = 0; i < N; i++) {
+    public UF(int n) {
+        if (n < 0) throw new IllegalArgumentException();
+        count = n;
+        parent = new int[n];
+        rank = new byte[n];
+        for (int i = 0; i < n; i++) {
             parent[i] = i;
             rank[i] = 0;
         }
@@ -139,7 +139,7 @@ public class UF {
     /**
      * Returns the number of components.
      *
-     * @return the number of components (between <tt>1</tt> and <tt>N</tt>)
+     * @return the number of components (between <tt>1</tt> and <tt>n</tt>)
      */
     public int count() {
         return count;
@@ -153,7 +153,7 @@ public class UF {
      * @return <tt>true</tt> if the two sites <tt>p</tt> and <tt>q</tt> are in the same component;
      *         <tt>false</tt> otherwise
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
+     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
      */
     public boolean connected(int p, int q) {
         return find(p) == find(q);
@@ -166,7 +166,7 @@ public class UF {
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
+     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
      */
     public void union(int p, int q) {
         int rootP = find(p);
@@ -185,22 +185,22 @@ public class UF {
 
     // validate that p is a valid index
     private void validate(int p) {
-        int N = parent.length;
-        if (p < 0 || p >= N) {
-            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N-1));  
+        int n = parent.length;
+        if (p < 0 || p >= n) {
+            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n-1));  
         }
     }
 
     /**
-     * Reads in a an integer <tt>N</tt> and a sequence of pairs of integers
-     * (between <tt>0</tt> and <tt>N-1</tt>) from standard input, where each integer
+     * Reads in a an integer <tt>n</tt> and a sequence of pairs of integers
+     * (between <tt>0</tt> and <tt>n-1</tt>) from standard input, where each integer
      * in the pair represents some site;
      * if the sites are in different components, merge the two components
      * and print the pair to standard output.
      */
     public static void main(String[] args) {
-        int N = StdIn.readInt();
-        UF uf = new UF(N);
+        int n = StdIn.readInt();
+        UF uf = new UF(n);
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();

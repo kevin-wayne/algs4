@@ -85,13 +85,6 @@ public class MergeBU {
         return v.compareTo(w) < 0;
     }
 
-   // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
 
    /***************************************************************************
     *  Check if array is sorted - useful for debugging.

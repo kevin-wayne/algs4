@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac Graph.java        
  *  Execution:    java Graph input.txt
- *  Dependencies: Bag.java In.java StdOut.java
+ *  Dependencies: Bag.java Stack.java In.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
  *
  *  A graph, implemented using an array of sets.

@@ -31,7 +31,7 @@ import java.util.Arrays;
  *  The <tt>BinarySearch</tt> class provides a static method for binary
  *  searching for an integer in a sorted array of integers.
  *  <p>
- *  The <em>rank</em> operations takes logarithmic time in the worst case.
+ *  The <em>indexOf</em> operations takes logarithmic time in the worst case.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.

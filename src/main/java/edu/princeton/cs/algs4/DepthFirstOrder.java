@@ -74,6 +74,8 @@ public class DepthFirstOrder {
         marked    = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
+
+        assert check(G);
     }
 
     /**

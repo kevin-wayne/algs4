@@ -340,6 +340,8 @@ public final class Point2D implements Comparable<Point2D> {
         StdDraw.setXscale(0, 100);
         StdDraw.setYscale(0, 100);
         StdDraw.setPenRadius(.005);
+        StdDraw.enableDoubleBuffering();
+
         Point2D[] points = new Point2D[N];
         for (int i = 0; i < N; i++) {
             int x = StdRandom.uniform(100);
@@ -361,7 +363,8 @@ public final class Point2D implements Comparable<Point2D> {
         Arrays.sort(points, p.polarOrder());
         for (int i = 0; i < N; i++) {
             p.drawTo(points[i]);
-            StdDraw.show(100);
+            StdDraw.show();
+            StdDraw.pause(100);
         }
     }
 }

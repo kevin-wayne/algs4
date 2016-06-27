@@ -277,6 +277,7 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
 		}
 		
 		public Key next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return data.delMin();
 		}
 		

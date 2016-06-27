@@ -357,7 +357,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	private Node<Key> erase(int i) {
 		Node<Key> reference = nodes[i];
 		Node<Key> x = head;
-		Node<Key> previous = new Node<Key>();
+		Node<Key> previous = null;
 		while (x != reference) {
 			previous = x;
 			x = x.sibling;
@@ -371,7 +371,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	//Deletes and return the node containing the minimum key
 	private Node<Key> eraseMin() {
 		Node<Key> min = head;
-		Node<Key> previous = new Node<Key>();
+		Node<Key> previous = null;
 		Node<Key> current = head;
 		while (current.sibling != null) {
 			if (greater(min.key, current.sibling.key)) {
@@ -393,8 +393,8 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	//Merges two root lists into one, there can be up to 2 Binomial Trees of same order
 	private Node<Key> merge(Node<Key> h, Node<Key> x, Node<Key> y) {
 		if (x == null && y == null) return h;
-		else if (x == null) 		h.sibling = merge(y, x, y.sibling);
-		else if (y == null) 		h.sibling = merge(x, x.sibling, y);
+		else if (x == null) 		h.sibling = merge(y, null, y.sibling);
+		else if (y == null) 		h.sibling = merge(x, x.sibling, null);
 		else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
 		else 						h.sibling = merge(y, x, y.sibling);
 		return h;
@@ -478,6 +478,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 		}
 		
 		public Integer next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return data.delMin();
 		}
 		

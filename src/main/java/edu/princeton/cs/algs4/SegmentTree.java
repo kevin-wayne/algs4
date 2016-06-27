@@ -83,11 +83,11 @@ public class SegmentTree {
      *
      * Time-Complexity: O(log(n))
      */
-    public int RSQ(int from, int to) {
-        return RSQ(1, from, to);
+    public int rsq(int from, int to) {
+        return rsq(1, from, to);
     }
 
-    private int RSQ(int v, int from, int to) {
+    private int rsq(int v, int from, int to) {
         Node n = heap[v];
 
         //If you did a range update that contained this node, you can infer the Sum without going down the tree
@@ -101,8 +101,8 @@ public class SegmentTree {
 
         if (intersects(from, to, n.from, n.to)) {
             propagate(v);
-            int leftSum = RSQ(2 * v, from, to);
-            int rightSum = RSQ(2 * v + 1, from, to);
+            int leftSum = rsq(2 * v, from, to);
+            int rightSum = rsq(2 * v + 1, from, to);
 
             return leftSum + rightSum;
         }
@@ -115,11 +115,11 @@ public class SegmentTree {
      * 
      * Time-Complexity: O(log(n))
      */
-    public int RMinQ(int from, int to) {
-        return RMinQ(1, from, to);
+    public int rMinQ(int from, int to) {
+        return rMinQ(1, from, to);
     }
 
-    private int RMinQ(int v, int from, int to) {
+    private int rMinQ(int v, int from, int to) {
         Node n = heap[v];
 
 
@@ -134,8 +134,8 @@ public class SegmentTree {
 
         if (intersects(from, to, n.from, n.to)) {
             propagate(v);
-            int leftMin = RMinQ(2 * v, from, to);
-            int rightMin = RMinQ(2 * v + 1, from, to);
+            int leftMin = rMinQ(2 * v, from, to);
+            int rightMin = rMinQ(2 * v + 1, from, to);
 
             return Math.min(leftMin, rightMin);
         }
@@ -301,7 +301,7 @@ public class SegmentTree {
                 st = new SegmentTree(array);
 
                 for (int i = 0; i < st.size(); i++) {
-                    StdOut.print(st.RSQ(i, i) + " ");
+                    StdOut.print(st.rsq(i, i) + " ");
                 }
                 StdOut.println();
             }
@@ -309,15 +309,15 @@ public class SegmentTree {
             else if (line[0].equals("up")) {
                 st.update(arg1, arg2, arg3);
                 for (int i = 0; i < st.size(); i++) {
-                    StdOut.print(st.RSQ(i, i) + " ");
+                    StdOut.print(st.rsq(i, i) + " ");
                 }
                 StdOut.println();
             }
             else if (line[0].equals("rsq")) {
-                StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, st.RSQ(arg1, arg2));
+                StdOut.printf("Sum from %d to %d = %d%n", arg1, arg2, st.rsq(arg1, arg2));
             }
             else if (line[0].equals("rmq")) {
-                StdOut.printf("Min from %d to %d = %d%n", arg1, arg2, st.RMinQ(arg1, arg2));
+                StdOut.printf("Min from %d to %d = %d%n", arg1, arg2, st.rMinQ(arg1, arg2));
             }
             else {
                 StdOut.println("Invalid command");

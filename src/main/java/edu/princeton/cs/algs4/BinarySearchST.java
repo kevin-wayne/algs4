@@ -366,13 +366,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *         is <tt>null</tt>
      */
     public Iterable<Key> keys(Key lo, Key hi) {
-        if (lo == null) throw new NullPointerException("first argument to size() is null"); 
-        if (hi == null) throw new NullPointerException("second argument to size() is null"); 
+        if (lo == null) throw new NullPointerException("first argument to keys() is null"); 
+        if (hi == null) throw new NullPointerException("second argument to keys() is null"); 
 
         Queue<Key> queue = new Queue<Key>(); 
-        // if (lo == null && hi == null) return queue;
-        if (lo == null) throw new NullPointerException("lo is null in keys()");
-        if (hi == null) throw new NullPointerException("hi is null in keys()");
         if (lo.compareTo(hi) > 0) return queue;
         for (int i = rank(lo); i < rank(hi); i++) 
             queue.enqueue(keys[i]);

@@ -41,9 +41,9 @@ public class FlowEdge {
      * @throws java.lang.IllegalArgumentException if <tt>capacity</tt> is negative
      */
     public FlowEdge(int v, int w, double capacity) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
-        if (!(capacity >= 0.0)) throw new IllegalArgumentException("Edge capacity must be nonnegaitve");
+        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
+        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
+        if (!(capacity >= 0.0)) throw new IllegalArgumentException("Edge capacity must be non-negative");
         this.v         = v;
         this.w         = w;  
         this.capacity  = capacity;
@@ -64,11 +64,11 @@ public class FlowEdge {
      *    <tt>0.0</tt> and <tt>capacity</tt>.
      */
     public FlowEdge(int v, int w, double capacity, double flow) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
-        if (!(capacity >= 0.0))  throw new IllegalArgumentException("Edge capacity must be nonnegaitve");
+        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
+        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
+        if (!(capacity >= 0.0))  throw new IllegalArgumentException("Edge capacity must be non-negative");
         if (!(flow <= capacity)) throw new IllegalArgumentException("Flow exceeds capacity");
-        if (!(flow >= 0.0))      throw new IllegalArgumentException("Flow must be nonnnegative");
+        if (!(flow >= 0.0))      throw new IllegalArgumentException("Flow must be non-negative");
         this.v         = v;
         this.w         = w;  
         this.capacity  = capacity;
@@ -184,7 +184,7 @@ public class FlowEdge {
      * Unit tests the <tt>FlowEdge</tt> data type.
      */
     public static void main(String[] args) {
-        FlowEdge e = new FlowEdge(12, 23, 3.14);
+        FlowEdge e = new FlowEdge(12, 23, 4.56);
         StdOut.println(e);
     }
 

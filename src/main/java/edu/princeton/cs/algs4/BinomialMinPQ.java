@@ -212,7 +212,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	//Deletes and return the node containing the minimum key
 	private Node eraseMin() {
 		Node min = head;
-		Node previous = new Node();
+		Node previous = null;
 		Node current = head;
 		while (current.sibling != null) {
 			if (greater(min.key, current.sibling.key)) {
@@ -231,13 +231,13 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	 *************************************************/
 	
 	//Merges two root lists into one, there can be up to 2 Binomial Trees of same order
-	private Node merge(Node h, Node x, Node y) {
-		if (x == null && y == null) return h;
-		else if (x == null)  		h.sibling = merge(y, x, y.sibling);
-		else if (y == null) 		h.sibling = merge(x, x.sibling, y);
-		else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
-		else 						h.sibling = merge(y, x, y.sibling);
-		return h;
+        private Node merge(Node h, Node x, Node y) {
+            if (x == null && y == null) return h;
+            else if (x == null) h.sibling = merge(y, null, y.sibling);
+            else if (y == null) h.sibling = merge(x, x.sibling, null);
+            else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
+            else                        h.sibling = merge(y, x, y.sibling);
+            return h;
 	}
 	
 	/******************************************************************
@@ -280,6 +280,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 		}
 		
 		public Key next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return data.delMin();
 		}
 		

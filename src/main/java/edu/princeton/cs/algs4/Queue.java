@@ -36,7 +36,7 @@ import java.util.NoSuchElementException;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  *
- *  @param <Item> the generic type of an item in this bag
+ *  @param <Item> the generic type of an item in this queue
  */
 public class Queue<Item> implements Iterable<Item> {
     private Node<Item> first;    // beginning of queue

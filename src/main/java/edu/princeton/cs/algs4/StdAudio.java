@@ -155,9 +155,9 @@ public final class StdAudio {
      */
     public static double[] read(String filename) {
         byte[] data = readByte(filename);
-        int N = data.length;
-        double[] d = new double[N/2];
-        for (int i = 0; i < N/2; i++) {
+        int n = data.length;
+        double[] d = new double[n/2];
+        for (int i = 0; i < n/2; i++) {
             d[i] = ((short) (((data[2*i+1] & 0xFF) << 8) + (data[2*i] & 0xFF))) / ((double) MAX_16_BIT);
         }
         return d;
@@ -214,16 +214,20 @@ public final class StdAudio {
             File file = new File(filename);
             if (file.exists()) {
                 ais = AudioSystem.getAudioInputStream(file);
-                data = new byte[ais.available()];
-                ais.read(data);
+                int bytesToRead = ais.available();
+                data = new byte[bytesToRead];
+                int bytesRead = ais.read(data);
+                if (bytesToRead != bytesRead) throw new RuntimeException("read only " + bytesRead + " of " + bytesToRead + " bytes"); 
             }
 
             // try to read from URL
             else {
                 URL url = StdAudio.class.getResource(filename);
                 ais = AudioSystem.getAudioInputStream(url);
-                data = new byte[ais.available()];
-                ais.read(data);
+                int bytesToRead = ais.available();
+                data = new byte[bytesToRead];
+                int bytesRead = ais.read(data);
+                if (bytesToRead != bytesRead) throw new RuntimeException("read only " + bytesRead + " of " + bytesToRead + " bytes"); 
             }
         }
         catch (IOException e) {
@@ -289,9 +293,9 @@ public final class StdAudio {
     // create a note (sine wave) of the given frequency (Hz), for the given
     // duration (seconds) scaled to the given volume (amplitude)
     private static double[] note(double hz, double duration, double amplitude) {
-        int N = (int) (StdAudio.SAMPLE_RATE * duration);
-        double[] a = new double[N+1];
-        for (int i = 0; i <= N; i++)
+        int n = (int) (StdAudio.SAMPLE_RATE * duration);
+        double[] a = new double[n+1];
+        for (int i = 0; i <= n; i++)
             a[i] = amplitude * Math.sin(2 * Math.PI * i * hz / StdAudio.SAMPLE_RATE);
         return a;
     }

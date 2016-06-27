@@ -2,6 +2,8 @@
  *  Compilation:  javac DirectedEulerianPath.java
  *  Execution:    java DirectedEulerianPath V E
  *  Dependencies: Digraph.java Stack.java StdOut.java
+ *                BreadthFirstPaths.java
+ *                DigraphGenerator.java StdRandom.java
  *
  *  Find an Eulerian path in a digraph, if one exists.
  *

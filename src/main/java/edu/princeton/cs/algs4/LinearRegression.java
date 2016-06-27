@@ -28,7 +28,7 @@ package edu.princeton.cs.algs4;
 public class LinearRegression {
     private final int N;
     private final double intercept, slope;
-    private final double R2;
+    private final double r2;
     private final double svar, svar0, svar1;
 
    /**
@@ -74,7 +74,7 @@ public class LinearRegression {
         }
 
         int degreesOfFreedom = N-2;
-        R2    = ssr / yybar;
+        r2    = ssr / yybar;
         svar  = rss / degreesOfFreedom;
         svar1 = svar / xxbar;
         svar0 = svar/N + xbar*xbar*svar1;
@@ -105,7 +105,7 @@ public class LinearRegression {
      *         which is a real number between 0 and 1
      */
     public double R2() {
-        return R2;
+        return r2;
     }
 
    /**

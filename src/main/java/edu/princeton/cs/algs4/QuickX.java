@@ -159,6 +159,7 @@ public class QuickX {
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
         QuickX.sort(a);
+        assert isSorted(a);
         show(a);
     }
 

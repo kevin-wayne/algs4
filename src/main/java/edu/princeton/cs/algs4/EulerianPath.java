@@ -9,8 +9,6 @@
 
 package edu.princeton.cs.algs4;
 
-import java.util.Iterator;
-
 /**
  *  The <tt>EulerianPath</tt> class represents a data type
  *  for finding an Eulerian path in a graph.

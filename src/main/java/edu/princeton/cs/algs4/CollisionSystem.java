@@ -65,7 +65,8 @@ public class CollisionSystem {
         for (int i = 0; i < particles.length; i++) {
             particles[i].draw();
         }
-        StdDraw.show(20);
+        StdDraw.show();
+        StdDraw.pause(20);
         if (t < limit) {
             pq.insert(new Event(t + 1.0 / hz, null, null));
         }
@@ -144,9 +145,7 @@ public class CollisionSystem {
 
         // compare times when two events will occur
         public int compareTo(Event that) {
-            if      (this.time < that.time) return -1;
-            else if (this.time > that.time) return +1;
-            else                            return  0;
+            return Double.compare(this.time, that.time);
         }
         
         // has any collision occurred between when event was created and now?
@@ -173,8 +172,8 @@ public class CollisionSystem {
         // StdDraw.setXscale(1.0/22.0, 21.0/22.0);
         // StdDraw.setYscale(1.0/22.0, 21.0/22.0);
 
-        // turn on animation mode
-        StdDraw.show(0);
+        // enable double buffering
+        StdDraw.enableDoubleBuffering();
 
         // the array of particles
         Particle[] particles;

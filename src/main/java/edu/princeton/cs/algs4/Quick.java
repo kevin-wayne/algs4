@@ -163,6 +163,7 @@ public class Quick {
         String[] a = StdIn.readAllStrings();
         Quick.sort(a);
         show(a);
+        assert isSorted(a);
 
         // shuffle
         StdRandom.shuffle(a);

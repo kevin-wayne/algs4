@@ -77,11 +77,6 @@ public class Quick3way {
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
-
-    // does v == w ?
-    private static boolean eq(Comparable v, Comparable w) {
-        return v.compareTo(w) == 0;
-    }
         
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {

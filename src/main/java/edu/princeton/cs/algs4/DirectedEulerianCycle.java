@@ -2,6 +2,8 @@
  *  Compilation:  javac DirectedEulerianCycle.java
  *  Execution:    java DirectedEulerianCycle V E
  *  Dependencies: Digraph.java Stack.java StdOut.java
+ *                BreadthFirstPaths.java
+ *                DigraphGenerator.java StdRandom.java
  *
  *  Find an Eulerian cycle in a digraph, if one exists.
  *

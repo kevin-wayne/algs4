@@ -33,15 +33,15 @@ public class DoublingTest {
     private DoublingTest() { }
 
     /**
-     * Returns the amount of time to call <tt>ThreeSum.count()</tt> with <em>N</em>
+     * Returns the amount of time to call <tt>ThreeSum.count()</tt> with <em>n</em>
      * random 6-digit integers.
-     * @param N the number of integers
+     * @param n the number of integers
      * @return amount of time (in seconds) to call <tt>ThreeSum.count()</tt>
-     *   with <em>N</em> random 6-digit integers
+     *   with <em>n</em> random 6-digit integers
      */
-    public static double timeTrial(int N) {
-        int[] a = new int[N];
-        for (int i = 0; i < N; i++) {
+    public static double timeTrial(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
             a[i] = StdRandom.uniform(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
         }
         Stopwatch timer = new Stopwatch();
@@ -54,13 +54,12 @@ public class DoublingTest {
      * for arrays of size 250, 500, 1000, 2000, and so forth.
      */
     public static void main(String[] args) { 
-        for (int N = 250; true; N += N) {
-            double time = timeTrial(N);
-            StdOut.printf("%7d %5.1f\n", N, time);
+        for (int n = 250; true; n += n) {
+            double time = timeTrial(n);
+            StdOut.printf("%7d %5.1f\n", n, time);
         } 
     } 
-} 
-
+}
 
 /******************************************************************************
  *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.

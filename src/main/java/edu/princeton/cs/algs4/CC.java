@@ -153,12 +153,12 @@ public class CC {
         CC cc = new CC(G);
 
         // number of connected components
-        int M = cc.count();
-        StdOut.println(M + " components");
+        int m = cc.count();
+        StdOut.println(m + " components");
 
         // compute list of vertices in each connected component
-        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[M];
-        for (int i = 0; i < M; i++) {
+        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
+        for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
         for (int v = 0; v < G.V(); v++) {
@@ -166,7 +166,7 @@ public class CC {
         }
 
         // print results
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }

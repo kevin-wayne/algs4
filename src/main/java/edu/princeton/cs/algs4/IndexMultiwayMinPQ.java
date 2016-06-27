@@ -347,6 +347,7 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 		}
 		
 		public Integer next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return clone.delMin();
 		}
 		

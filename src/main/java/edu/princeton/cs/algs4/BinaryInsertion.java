@@ -79,26 +79,12 @@ public class BinaryInsertion {
 
 
    /***************************************************************************
-    *  Helper sorting functions.
+    *  Helper sorting function.
     ***************************************************************************/
     
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
-    }
-
-    // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    // exchange a[i] and a[j]  (for indirect sort)
-    private static void exch(int[] a, int i, int j) {
-        int swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
     }
 
    /***************************************************************************

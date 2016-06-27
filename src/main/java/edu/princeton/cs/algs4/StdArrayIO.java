@@ -70,9 +70,9 @@ public class StdArrayIO {
      * @return the 1D array of doubles
      */
     public static double[] readDouble1D() {
-        int N = StdIn.readInt();
-        double[] a = new double[N];
-        for (int i = 0; i < N; i++) {
+        int n = StdIn.readInt();
+        double[] a = new double[n];
+        for (int i = 0; i < n; i++) {
             a[i] = StdIn.readDouble();
         }
         return a;
@@ -84,9 +84,9 @@ public class StdArrayIO {
      * @param a the 1D array of doubles
      */
     public static void print(double[] a) {
-        int N = a.length;
-        StdOut.println(N);
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        StdOut.println(n);
+        for (int i = 0; i < n; i++) {
             StdOut.printf("%9.5f ", a[i]);
         }
         StdOut.println();
@@ -99,11 +99,11 @@ public class StdArrayIO {
      * @return the 2D array of doubles
      */
     public static double[][] readDouble2D() {
-        int M = StdIn.readInt();
-        int N = StdIn.readInt();
-        double[][] a = new double[M][N];
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = StdIn.readInt();
+        int n = StdIn.readInt();
+        double[][] a = new double[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 a[i][j] = StdIn.readDouble();
             }
         }
@@ -116,11 +116,11 @@ public class StdArrayIO {
      * @param a the 2D array of doubles
      */
     public static void print(double[][] a) {
-        int M = a.length;
-        int N = a[0].length;
-        StdOut.println(M + " " + N);
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = a.length;
+        int n = a[0].length;
+        StdOut.println(m + " " + n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 StdOut.printf("%9.5f ", a[i][j]);
             }
             StdOut.println();
@@ -134,9 +134,9 @@ public class StdArrayIO {
      * @return the 1D array of integers
      */
     public static int[] readInt1D() {
-        int N = StdIn.readInt();
-        int[] a = new int[N];
-        for (int i = 0; i < N; i++) {
+        int n = StdIn.readInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
             a[i] = StdIn.readInt();
         }
         return a;
@@ -148,9 +148,9 @@ public class StdArrayIO {
      * @param a the 1D array of integers
      */
     public static void print(int[] a) {
-        int N = a.length;
-        StdOut.println(N);
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        StdOut.println(n);
+        for (int i = 0; i < n; i++) {
             StdOut.printf("%9d ", a[i]);
         }
         StdOut.println();
@@ -163,11 +163,11 @@ public class StdArrayIO {
      * @return the 2D array of integers
      */
     public static int[][] readInt2D() {
-        int M = StdIn.readInt();
-        int N = StdIn.readInt();
-        int[][] a = new int[M][N];
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = StdIn.readInt();
+        int n = StdIn.readInt();
+        int[][] a = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 a[i][j] = StdIn.readInt();
             }
         }
@@ -180,11 +180,11 @@ public class StdArrayIO {
      * @param a the 2D array of integers
      */
     public static void print(int[][] a) {
-        int M = a.length;
-        int N = a[0].length;
-        StdOut.println(M + " " + N);
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = a.length;
+        int n = a[0].length;
+        StdOut.println(m + " " + n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 StdOut.printf("%9d ", a[i][j]);
             }
             StdOut.println();
@@ -198,9 +198,9 @@ public class StdArrayIO {
      * @return the 1D array of booleans
      */
     public static boolean[] readBoolean1D() {
-        int N = StdIn.readInt();
-        boolean[] a = new boolean[N];
-        for (int i = 0; i < N; i++) {
+        int n = StdIn.readInt();
+        boolean[] a = new boolean[n];
+        for (int i = 0; i < n; i++) {
             a[i] = StdIn.readBoolean();
         }
         return a;
@@ -212,9 +212,9 @@ public class StdArrayIO {
      * @param a the 1D array of booleans
      */
     public static void print(boolean[] a) {
-        int N = a.length;
-        StdOut.println(N);
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        StdOut.println(n);
+        for (int i = 0; i < n; i++) {
             if (a[i]) StdOut.print("1 ");
             else      StdOut.print("0 ");
         }
@@ -227,11 +227,11 @@ public class StdArrayIO {
      * @return the 2D array of booleans
      */
     public static boolean[][] readBoolean2D() {
-        int M = StdIn.readInt();
-        int N = StdIn.readInt();
-        boolean[][] a = new boolean[M][N];
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = StdIn.readInt();
+        int n = StdIn.readInt();
+        boolean[][] a = new boolean[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 a[i][j] = StdIn.readBoolean();
             }
         }
@@ -244,11 +244,11 @@ public class StdArrayIO {
      * @param a the 2D array of booleans
      */
     public static void print(boolean[][] a) {
-        int M = a.length;
-        int N = a[0].length;
-        StdOut.println(M + " " + N);
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        int m = a.length;
+        int n = a[0].length;
+        StdOut.println(m + " " + n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (a[i][j]) StdOut.print("1 ");
                 else         StdOut.print("0 ");
             }
@@ -258,7 +258,7 @@ public class StdArrayIO {
 
 
    /**
-     * Unit tests <tt>StdAudio</tt>.
+     * Unit tests <tt>StdArrayIO</tt>.
      */
     public static void main(String[] args) {
 

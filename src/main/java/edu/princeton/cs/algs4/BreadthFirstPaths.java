@@ -199,7 +199,7 @@ public class BreadthFirstPaths {
             }
         }
 
-        // check that v = edgeTo[w] satisfies distTo[w] + distTo[v] + 1
+        // check that v = edgeTo[w] satisfies distTo[w] = distTo[v] + 1
         // provided v is reachable from s
         for (int w = 0; w < G.V(); w++) {
             if (!hasPathTo(w) || w == s) continue;

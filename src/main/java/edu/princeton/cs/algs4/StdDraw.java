@@ -1463,6 +1463,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * on screen, draw the shapes, and call {@code show(0)} to display them all
      * on screen at once).
      * @param t number of milliseconds
+     * @deprecated  replaced by {@link #enableDoubleBuffering} and {@link #pause}
      */
     public static void show(int t) {
         // sleep until the next time we're allowed to draw
@@ -1477,32 +1478,73 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             millis = nextDraw;
         }
 
-        defer = false;
-        draw();
-        defer = true;
+        show();
+        enableDoubleBuffering();
 
         // when are we allowed to draw again
         nextDraw = millis + t;
     }
 
     /**
-     * Display on-screen and turn off animation mode:
-     * subsequent calls to
-     * drawing methods such as {@code line()}, {@code circle()},
-     * and {@code square()} will be displayed on screen when called.
-     * This is the default.
+     * Display on screen, pause for t milliseconds, and turn on
+     * <em>animation mode</em>: subsequent calls to
+     * drawing methods such as {@code line()}, {@code circle()}, and {@code square()}
+     * will not be displayed on screen until the next call to {@code show()}.
+     * This is useful for producing animations (clear the screen, draw a bunch of shapes,
+     * display on screen for a fixed amount of time, and repeat). It also speeds up
+     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
+     * on screen, draw the shapes, and call {@code show(0)} to display them all
+     * on screen at once).
+     * @param t number of milliseconds
+     */
+    public static void pause(int t) {
+        // sleep until the next time we're allowed to draw
+        long millis = System.currentTimeMillis();
+        if (millis < nextDraw) {
+            try {
+                Thread.sleep(nextDraw - millis);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Error sleeping");
+            }
+            millis = nextDraw;
+        }
+
+        // when are we allowed to draw again
+        nextDraw = millis + t;
+    }
+
+    /**
+     * Displays on-screen.
      */
     public static void show() {
-        defer = false;
-        nextDraw = -1;
-        draw();
+        onscreen.drawImage(offscreenImage, 0, 0, null);
+        frame.repaint();
     }
 
     // draw onscreen if defer is false
     private static void draw() {
-        if (defer) return;
-        onscreen.drawImage(offscreenImage, 0, 0, null);
-        frame.repaint();
+        if (!defer) show();
+    }
+
+    /**
+     * Enable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be deffered until the next call
+     * to show(). Useful for animations.
+     */
+    public static void enableDoubleBuffering() {
+        defer = true;
+    }
+
+    /**
+     * Disable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be displayed on screen when called.
+     * This is the default.
+     */
+    public static void disableDoubleBuffering() {
+        defer = false;
     }
 
 

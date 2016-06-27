@@ -244,8 +244,8 @@ public final class Picture implements ActionListener {
      *         and 0 &le; <tt>row</tt> &lt; <tt>height</tt>
      */
     public Color get(int col, int row) {
-        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1));
-        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1));
+        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1) + ": " + col);
+        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1) + ": " + col);
         if (isOriginUpperLeft) return new Color(image.getRGB(col, row));
         else                   return new Color(image.getRGB(col, height - row - 1));
     }
@@ -261,8 +261,8 @@ public final class Picture implements ActionListener {
      * @throws NullPointerException if <tt>color</tt> is <tt>null</tt>
      */
     public void set(int col, int row, Color color) {
-        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1));
-        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1));
+        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1) + ": " + col);
+        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1) + ": " + row);
         if (color == null) throw new NullPointerException("can't set Color to null");
         if (isOriginUpperLeft) image.setRGB(col, row, color.getRGB());
         else                   image.setRGB(col, height - row - 1, color.getRGB());

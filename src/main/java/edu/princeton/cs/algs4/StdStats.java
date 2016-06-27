@@ -407,10 +407,10 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotPoints(double[] a) {
-        int N = a.length;
-        StdDraw.setXscale(-1, N);
-        StdDraw.setPenRadius(1.0 / (3.0 * N));
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        StdDraw.setXscale(-1, n);
+        StdDraw.setPenRadius(1.0 / (3.0 * n));
+        for (int i = 0; i < n; i++) {
             StdDraw.point(i, a[i]);
         }
     }
@@ -424,10 +424,10 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotLines(double[] a) {
-        int N = a.length;
-        StdDraw.setXscale(-1, N);
+        int n = a.length;
+        StdDraw.setXscale(-1, n);
         StdDraw.setPenRadius();
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < n; i++) {
             StdDraw.line(i-1, a[i-1], i, a[i]);
         }
     }
@@ -440,10 +440,10 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotBars(double[] a) {
-        int N = a.length;
-        StdDraw.setXscale(-1, N);
-        for (int i = 0; i < N; i++) {
-            StdDraw.filledRectangle(i, a[i]/2, .25, a[i]/2);
+        int n = a.length;
+        StdDraw.setXscale(-1, n);
+        for (int i = 0; i < n; i++) {
+            StdDraw.filledRectangle(i, a[i]/2, 0.25, a[i]/2);
         }
     }
 

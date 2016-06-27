@@ -104,7 +104,7 @@ import java.util.regex.Pattern;
  *  As an example, the following code fragment reads text from standard input,
  *  one line at a time, and prints it to standard output.
  *  <pre>
- *  while (!StdIn.hasNextLine()) {
+ *  while (StdIn.hasNextLine()) {
  *      String line = StdIn.readLine();
  *      StdOut.println(line);
  *  }

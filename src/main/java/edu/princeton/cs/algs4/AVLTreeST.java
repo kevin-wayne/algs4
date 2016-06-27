@@ -211,7 +211,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
             return;
         }
         root = put(root, key, val);
-        // assert check();
+        assert check();
     }
 
     /**
@@ -324,7 +324,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
         if (key == null) throw new NullPointerException("argument to delete() is null");
         if (!contains(key)) return;
         root = delete(root, key);
-        // assert check();
+        assert check();
     }
 
     /**
@@ -370,6 +370,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     public void deleteMin() {
         if (isEmpty()) throw new NoSuchElementException("called deleteMin() with empty symbol table");
         root = deleteMin(root);
+        assert check();
     }
 
     /**
@@ -394,6 +395,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     public void deleteMax() {
         if (isEmpty()) throw new NoSuchElementException("called deleteMax() with empty symbol table");
         root = deleteMax(root);
+        assert check();
     }
 
     /**

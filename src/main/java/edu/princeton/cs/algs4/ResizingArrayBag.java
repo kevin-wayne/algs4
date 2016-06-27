@@ -31,14 +31,14 @@ import java.util.NoSuchElementException;
  */
 public class ResizingArrayBag<Item> implements Iterable<Item> {
     private Item[] a;         // array of items
-    private int N;            // number of elements on stack
+    private int n;            // number of elements on bag
 
     /**
      * Initializes an empty bag.
      */
     public ResizingArrayBag() {
         a = (Item[]) new Object[2];
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -46,7 +46,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
      * @return true if this bag is empty; false otherwise
      */
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     /**
@@ -54,14 +54,14 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
      * @return the number of items in this bag
      */
     public int size() {
-        return N;
+        return n;
     }
 
     // resize the underlying array holding the elements
     private void resize(int capacity) {
-        assert capacity >= N;
+        assert capacity >= n;
         Item[] temp = (Item[]) new Object[capacity];
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             temp[i] = a[i];
         a = temp;
     }
@@ -71,8 +71,8 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
      * @param item the item to add to this bag
      */
     public void add(Item item) {
-        if (N == a.length) resize(2*a.length);    // double size of array if necessary
-        a[N++] = item;                            // add item
+        if (n == a.length) resize(2*a.length);    // double size of array if necessary
+        a[n++] = item;                            // add item
     }
 
 
@@ -87,7 +87,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
     // an iterator, doesn't implement remove() since it's optional
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
-        public boolean hasNext()  { return i < N;                               }
+        public boolean hasNext()  { return i < n;                               }
         public void remove()      { throw new UnsupportedOperationException();  }
 
         public Item next() {
