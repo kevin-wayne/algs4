@@ -27,7 +27,12 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class QuickX {
-    private static final int CUTOFF = 8;  // cutoff to insertion sort, must be >= 1
+
+    // cutoff to insertion sort, must be >= 1
+    private static final int INSERTION_SORT_CUTOFF = 8;
+
+    // cutoff to median-of-3 partitioning
+    private static final int MEDIAN_OF_3_CUTOFF = 40;
 
     // This class should not be instantiated.
     private QuickX() { }
@@ -41,24 +46,24 @@ public class QuickX {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) { 
-        int N = hi - lo + 1;
+        int n = hi - lo + 1;
 
         // cutoff to insertion sort
-        if (N <= CUTOFF) {
+        if (n <= INSERTION_SORT_CUTOFF) {
             insertionSort(a, lo, hi);
             return;
         }
 
         // use median-of-3 as partitioning element
-        else if (N <= 40) {
-            int m = median3(a, lo, lo + N/2, hi);
+        else if (n <= MEDIAN_OF_3_CUTOFF) {
+            int m = median3(a, lo, lo + n/2, hi);
             exch(a, m, lo);
         }
 
         // use Tukey ninther as partitioning element
         else  {
-            int eps = N/8;
-            int mid = lo + N/2;
+            int eps = n/8;
+            int mid = lo + n/2;
             int m1 = median3(a, lo, lo + eps, lo + eps + eps);
             int m2 = median3(a, mid - eps, mid, mid + eps);
             int m3 = median3(a, hi - eps - eps, hi - eps, hi); 

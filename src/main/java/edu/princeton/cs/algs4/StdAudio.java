@@ -15,14 +15,13 @@
 
 package edu.princeton.cs.algs4;
 
-import java.applet.AudioClip;
-import java.applet.Applet;
+import javax.sound.sampled.Clip;
 
 import java.io.File;
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.sound.sampled.AudioFileFormat;
@@ -90,7 +89,6 @@ public final class StdAudio {
         }
         catch (LineUnavailableException e) {
             System.out.println(e.getMessage());
-            System.exit(1);
         }
 
         // no sound gets made before this call
@@ -168,41 +166,52 @@ public final class StdAudio {
      *
      * @param filename the name of the audio file
      */
-    public static void play(String filename) {
-        URL url = null;
+    public static synchronized void play(String filename) {
+        if (filename == null) throw new NullPointerException();
+
+        // code adapted from: http://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
         try {
-            File file = new File(filename);
-            if (file.canRead()) url = file.toURI().toURL();
+            Clip clip = AudioSystem.getClip();
+            InputStream is = StdAudio.class.getResourceAsStream(filename);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(is);
+            clip.open(ais);
+            clip.start();
         }
-        catch (MalformedURLException e) {
+        catch (RuntimeException e) {
+            System.out.println("could not play '" + filename + "'");
+            throw e;
+        }
+        catch (Exception e) {
+            System.out.println("could not play '" + filename + "'");
             e.printStackTrace();
         }
-        // URL url = StdAudio.class.getResource(filename);
-        if (url == null) throw new RuntimeException("audio " + filename + " not found");
-        AudioClip clip = Applet.newAudioClip(url);
-        clip.play();
     }
 
     /**
-     * Plays an audio file (in .wav, .mid, or .au format) in a loop in a background thread.
+     * Loops an audio file (in .wav, .mid, or .au format) in a background thread.
      *
-     * @param  filename the name of the audio file
+     * @param filename the name of the audio file
      */
-    public static void loop(String filename) {
-        URL url = null;
+    public static synchronized void loop(String filename) {
+        if (filename == null) throw new NullPointerException();
+
+        // code adapted from: http://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
         try {
-            File file = new File(filename);
-            if (file.canRead()) url = file.toURI().toURL();
+            Clip clip = AudioSystem.getClip();
+            InputStream is = StdAudio.class.getResourceAsStream(filename);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(is);
+            clip.open(ais);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
-        catch (MalformedURLException e) {
+        catch (RuntimeException e) {
+            System.out.println("could not play '" + filename + "'");
+            throw e;
+        }
+        catch (Exception e) {
+            System.out.println("could not play '" + filename + "'");
             e.printStackTrace();
         }
-        // URL url = StdAudio.class.getResource(filename);
-        if (url == null) throw new RuntimeException("audio " + filename + " not found");
-        AudioClip clip = Applet.newAudioClip(url);
-        clip.loop();
     }
-
 
     // return data as a byte array
     private static byte[] readByte(String filename) {
@@ -279,7 +288,6 @@ public final class StdAudio {
         }
         catch (IOException e) {
             System.out.println(e);
-            System.exit(1);
         }
     }
 
@@ -322,9 +330,6 @@ public final class StdAudio {
         // need to call this in non-interactive stuff so the program doesn't terminate
         // until all the sound leaves the speaker.
         StdAudio.close(); 
-
-        // need to terminate a Java program with sound
-        System.exit(0);
     }
 }
 

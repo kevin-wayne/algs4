@@ -1,11 +1,11 @@
 /******************************************************************************
  *  Compilation:  javac Counter.java
- *  Execution:    java Counter N T
+ *  Execution:    java Counter n trials
  *  Dependencies: StdRandom.java StdOut.java
  *
  *  A mutable data type for an integer counter.
  *
- *  The test clients create N counters and performs T increment
+ *  The test clients create n counters and performs trials increment
  *  operations on random counters.
  *
  * java Counter 6 600000
@@ -89,26 +89,26 @@ public class Counter implements Comparable<Counter> {
 
 
     /**
-     * Reads two command-line integers N and T; creates N counters;
-     * increments T counters at random; and prints results.
+     * Reads two command-line integers n and trials; creates n counters;
+     * increments trials counters at random; and prints results.
      */
     public static void main(String[] args) { 
-        int N = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
+        int n = Integer.parseInt(args[0]);
+        int trials = Integer.parseInt(args[1]);
 
-        // create N counters
-        Counter[] hits = new Counter[N];
-        for (int i = 0; i < N; i++) {
+        // create n counters
+        Counter[] hits = new Counter[n];
+        for (int i = 0; i < n; i++) {
             hits[i] = new Counter("counter" + i);
         }
 
-        // increment T counters at random
-        for (int t = 0; t < T; t++) {
-            hits[StdRandom.uniform(N)].increment();
+        // increment trials counters at random
+        for (int t = 0; t < trials; t++) {
+            hits[StdRandom.uniform(n)].increment();
         }
 
         // print results
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StdOut.println(hits[i]);
         }
     } 

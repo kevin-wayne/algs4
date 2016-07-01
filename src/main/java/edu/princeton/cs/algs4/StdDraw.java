@@ -31,7 +31,6 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
 
@@ -1217,39 +1216,40 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     *  Drawing images.
     ***************************************************************************/
 
-    // get an image from the given filename
-    private static Image getImage(String filename) {
+    // [Summer 2016] updated to use ImageIO instead of ImageIcon()
+    private static BufferedImage getImage(String filename) {
         if (filename == null) throw new NullPointerException();
 
-        // to read from file
-        ImageIcon icon = new ImageIcon(filename);
-
-        // try to read from URL
-        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
-            try {
-                URL url = new URL(filename);
-                icon = new ImageIcon(url);
-            }
-            catch (Exception e) {
-                /* not a url */
-            }
+        // from a file or URL
+        try {
+            URL url = new URL(filename);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
         }
 
         // in case file is inside a .jar (classpath relative to StdDraw)
-        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
+        try {
             URL url = StdDraw.class.getResource(filename);
-            if (url != null)
-                icon = new ImageIcon(url);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
         }
 
         // in case file is inside a .jar (classpath relative to root of jar)
-        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
+        try {
             URL url = StdDraw.class.getResource("/" + filename);
-            if (url == null) throw new IllegalArgumentException("image " + filename + " not found");
-            icon = new ImageIcon(url);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
         }
-
-        return icon.getImage();
+        throw new IllegalArgumentException("image " + filename + " not found");
     }
 
     /**
@@ -1266,11 +1266,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename) {
-        Image image = getImage(filename);
+        BufferedImage image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
-        int ws = image.getWidth(null);
-        int hs = image.getHeight(null);
+        int ws = image.getWidth();
+        int hs = image.getHeight();
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
@@ -1289,11 +1289,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename, double degrees) {
-        Image image = getImage(filename);
+        BufferedImage image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
-        int ws = image.getWidth(null);
-        int hs = image.getHeight(null);
+        int ws = image.getWidth();
+        int hs = image.getHeight();
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);

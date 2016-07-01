@@ -24,15 +24,13 @@
 
 package edu.princeton.cs.algs4;
 
-import java.util.Comparator;
-
 /**
  *  The <tt>BinaryInsertion</tt> class provides a static method for sorting an
  *  array using an optimized binary insertion sort with half exchanges.
  *  <p>
- *  This implementation makes ~ N lg N compares for any array of length N.
+ *  This implementation makes ~ n lg n compares for any array of length n.
  *  However, in the worst case, the running time is quadratic because the
- *  number of array accesses can be proportional to N^2 (e.g, if the array
+ *  number of array accesses can be proportional to n^2 (e.g, if the array
  *  is reverse sorted). As such, it is not suitable for sorting large
  *  arrays (unless the number of inversions is small).
  *  <p>
@@ -55,8 +53,8 @@ public class BinaryInsertion {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = 1; i < N; i++) {
+        int n = a.length;
+        for (int i = 1; i < n; i++) {
 
             // binary search to determine index j at which to insert a[i]
             Comparable v = a[i];

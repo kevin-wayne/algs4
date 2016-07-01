@@ -17,8 +17,8 @@ package edu.princeton.cs.algs4;
  *  two sites are in the same component and a <em>count</em> operation that
  *  returns the total number of components.
  *  <p>
- *  The union-find data type models connectivity among a set of <em>N</em>
- *  sites, named 0 through <em>N</em> &ndash; 1.
+ *  The union-find data type models connectivity among a set of <em>n</em>
+ *  sites, named 0 through <em>n</em> &ndash; 1.
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
@@ -34,8 +34,8 @@ package edu.princeton.cs.algs4;
  *  <em>equivalence classes</em> (or <em>components</em>). In this case,
  *  two sites are in the same component if and only if they are connected.
  *  Both sites and components are identified with integers between 0 and
- *  <em>N</em> &ndash; 1. 
- *  Initially, there are <em>N</em> components, with each site in its
+ *  <em>n</em> &ndash; 1. 
+ *  Initially, there are <em>n</em> components, with each site in its
  *  own component.  The <em>component identifier</em> of a component
  *  (also known as the <em>root</em>, <em>canonical element</em>, <em>leader</em>,
  *  or <em>set representative</em>) is one of the sites in the component:
@@ -62,7 +62,7 @@ package edu.princeton.cs.algs4;
  *  to <em>find</em>, <em>connected</em>, or <em>count</em>.
  *  <p>
  *  This implementation uses quick find.
- *  Initializing a data structure with <em>N</em> sites takes linear time.
+ *  Initializing a data structure with <em>n</em> sites takes linear time.
  *  Afterwards, the <em>find</em>, <em>connected</em>, and <em>count</em>
  *  operations take constant time but the <em>union</em> operation
  *  takes linear time.
@@ -82,24 +82,24 @@ public class QuickFindUF {
     private int count;   // number of components
 
     /**
-     * Initializes an empty union-find data structure with <tt>N</tt> sites
-     * <tt>0</tt> through <tt>N-1</tt>. Each site is initially in its own 
+     * Initializes an empty union-find data structure with <tt>n</tt> sites
+     * <tt>0</tt> through <tt>n-1</tt>. Each site is initially in its own 
      * component.
      *
-     * @param  N the number of sites
-     * @throws IllegalArgumentException if <tt>N &lt; 0</tt>
+     * @param  n the number of sites
+     * @throws IllegalArgumentException if <tt>n &lt; 0</tt>
      */
-    public QuickFindUF(int N) {
-        count = N;
-        id = new int[N];
-        for (int i = 0; i < N; i++)
+    public QuickFindUF(int n) {
+        count = n;
+        id = new int[n];
+        for (int i = 0; i < n; i++)
             id[i] = i;
     }
 
     /**
      * Returns the number of components.
      *
-     * @return the number of components (between <tt>1</tt> and <tt>N</tt>)
+     * @return the number of components (between <tt>1</tt> and <tt>n</tt>)
      */
     public int count() {
         return count;
@@ -110,7 +110,7 @@ public class QuickFindUF {
      *
      * @param  p the integer representing one site
      * @return the component identifier for the component containing site <tt>p</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; p &lt; N</tt>
+     * @throws IndexOutOfBoundsException unless <tt>0 &le; p &lt; n</tt>
      */
     public int find(int p) {
         validate(p);
@@ -119,9 +119,9 @@ public class QuickFindUF {
 
     // validate that p is a valid index
     private void validate(int p) {
-        int N = id.length;
-        if (p < 0 || p >= N) {
-            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (N-1));
+        int n = id.length;
+        if (p < 0 || p >= n) {
+            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n-1));
         }
     }
 
@@ -133,7 +133,7 @@ public class QuickFindUF {
      * @return <tt>true</tt> if the two sites <tt>p</tt> and <tt>q</tt> are in the same component;
      *         <tt>false</tt> otherwise
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
+     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
      */
     public boolean connected(int p, int q) {
         validate(p);
@@ -148,7 +148,7 @@ public class QuickFindUF {
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; N</tt> and <tt>0 &le; q &lt; N</tt>
+     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
      */
     public void union(int p, int q) {
         validate(p);
@@ -165,14 +165,14 @@ public class QuickFindUF {
     }
 
     /**
-     * Reads in a sequence of pairs of integers (between 0 and N-1) from standard input, 
+     * Reads in a sequence of pairs of integers (between 0 and n-1) from standard input, 
      * where each integer represents some site;
      * if the sites are in different components, merge the two components
      * and print the pair to standard output.
      */
     public static void main(String[] args) {
-        int N = StdIn.readInt();
-        QuickFindUF uf = new QuickFindUF(N);
+        int n = StdIn.readInt();
+        QuickFindUF uf = new QuickFindUF(n);
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();

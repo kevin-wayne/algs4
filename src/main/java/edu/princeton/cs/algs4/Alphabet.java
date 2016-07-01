@@ -39,7 +39,7 @@ public class Alphabet {
     /**
      *  The DNA alphabet { A, C, T, G }.
      */
-    public static final Alphabet DNA = new Alphabet("ACTG");
+    public static final Alphabet DNA = new Alphabet("ACGT");
 
     /**
      *  The lowercase alphabet { a, b, c, ..., z }.

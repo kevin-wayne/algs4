@@ -116,6 +116,7 @@ import java.util.regex.Pattern;
  *  <ul>
  *  <li> {@link #readAllDoubles()}
  *  <li> {@link #readAllInts()}
+ *  <li> {@link #readAllLongs()}
  *  <li> {@link #readAllStrings()}
  *  <li> {@link #readAllLines()}
  *  <li> {@link #readAll()}
@@ -447,6 +448,20 @@ public final class StdIn {
         int[] vals = new int[fields.length];
         for (int i = 0; i < fields.length; i++)
             vals[i] = Integer.parseInt(fields[i]);
+        return vals;
+    }
+
+    /**
+     * Reads all remaining tokens from standard input, parses them as longs, and returns
+     * them as an array of longs.
+     * @return all remaining longs on standard input, as an array
+     * @throws InputMismatchException if any token cannot be parsed as a <tt>long</tt>
+     */
+    public static long[] readAllLongs() {
+        String[] fields = readAllStrings();
+        long[] vals = new long[fields.length];
+        for (int i = 0; i < fields.length; i++)
+            vals[i] = Long.parseLong(fields[i]);
         return vals;
     }
 

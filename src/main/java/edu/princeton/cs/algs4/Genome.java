@@ -28,7 +28,6 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class Genome {
-    private static final Alphabet DNA = new Alphabet("ACGT");
 
     // Do not instantiate.
     private Genome() { }
@@ -39,6 +38,7 @@ public class Genome {
      * character; and writes the results to standard output.
      */
     public static void compress() { 
+        Alphabet DNA = Alphabet.DNA;
         String s = BinaryStdIn.readString();
         int N = s.length();
         BinaryStdOut.write(N);
@@ -57,6 +57,7 @@ public class Genome {
      * and writes the results to standard output.
      */
     public static void expand() {
+        Alphabet DNA = Alphabet.DNA;
         int N = BinaryStdIn.readInt();
         // Read two bits; write char. 
         for (int i = 0; i < N; i++) {

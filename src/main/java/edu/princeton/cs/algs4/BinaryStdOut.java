@@ -270,10 +270,10 @@ public final class BinaryStdOut {
      * Test client.
      */
     public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
+        int m = Integer.parseInt(args[0]);
 
         // write n integers to binary standard output
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < m; i++) {
             BinaryStdOut.write(i);
         }
         BinaryStdOut.flush();

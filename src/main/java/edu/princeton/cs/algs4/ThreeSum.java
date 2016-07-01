@@ -10,7 +10,7 @@
  *                http://algs4.cs.princeton.edu/14analysis/32Kints.txt
  *                http://algs4.cs.princeton.edu/14analysis/1Mints.txt
  *
- *  A program with cubic running time. Read in N integers
+ *  A program with cubic running time. Reads n integers
  *  and counts the number of triples that sum to exactly 0
  *  (ignoring integer overflow).
  *
@@ -32,8 +32,8 @@ package edu.princeton.cs.algs4;
  *  and printing the number of triples in an array of integers that sum to 0
  *  (ignoring integer overflow).
  *  <p>
- *  This implementation uses a triply nested loop and takes proportional to N^3,
- *  where N is the number of integers.
+ *  This implementation uses a triply nested loop and takes proportional to n^3,
+ *  where n is the number of integers.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -51,10 +51,10 @@ public class ThreeSum {
      * @param a the array of integers
      */
     public static void printAll(int[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
-                for (int k = j+1; k < N; k++) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
+                for (int k = j+1; k < n; k++) {
                     if (a[i] + a[j] + a[k] == 0) {
                         StdOut.println(a[i] + " " + a[j] + " " + a[k]);
                     }
@@ -69,18 +69,18 @@ public class ThreeSum {
      * @return the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0
      */
     public static int count(int[] a) {
-        int N = a.length;
-        int cnt = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
-                for (int k = j+1; k < N; k++) {
+        int n = a.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
+                for (int k = j+1; k < n; k++) {
                     if (a[i] + a[j] + a[k] == 0) {
-                        cnt++;
+                        count++;
                     }
                 }
             }
         }
-        return cnt;
+        return count;
     } 
 
     /**
@@ -93,9 +93,9 @@ public class ThreeSum {
         int[] a = in.readAllInts();
 
         Stopwatch timer = new Stopwatch();
-        int cnt = count(a);
+        int count = count(a);
         StdOut.println("elapsed time = " + timer.elapsedTime());
-        StdOut.println(cnt);
+        StdOut.println(count);
     } 
 } 
 

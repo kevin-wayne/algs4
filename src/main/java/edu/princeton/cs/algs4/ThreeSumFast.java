@@ -10,7 +10,7 @@
  *                http://algs4.cs.princeton.edu/14analysis/32Kints.txt
  *                http://algs4.cs.princeton.edu/14analysis/1Mints.txt
  *
- *  A program with N^2 log N running time. Read in N integers
+ *  A program with n^2 log n running time. Reads n integers
  *  and counts the number of triples that sum to exactly 0.
  *
  *  Limitations
@@ -49,7 +49,7 @@ import java.util.Arrays;
  *  sum to 0 (ignoring integer overflow).
  *  <p>
  *  This implementation uses sorting and binary search and takes time 
- *  proportional to N^2 log N, where N is the number of integers.
+ *  proportional to n^2 log n, where n is the number of integers.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -75,11 +75,11 @@ public class ThreeSumFast {
      * @throws IllegalArgumentException if the array contains duplicate integers
      */
     public static void printAll(int[] a) {
-        int N = a.length;
+        int n = a.length;
         Arrays.sort(a);
         if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
                 int k = Arrays.binarySearch(a, -(a[i] + a[j]));
                 if (k > j) StdOut.println(a[i] + " " + a[j] + " " + a[k]);
             }
@@ -92,17 +92,17 @@ public class ThreeSumFast {
      * @return the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0
      */
     public static int count(int[] a) {
-        int N = a.length;
+        int n = a.length;
         Arrays.sort(a);
         if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
-        int cnt = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
                 int k = Arrays.binarySearch(a, -(a[i] + a[j]));
-                if (k > j) cnt++;
+                if (k > j) count++;
             }
         }
-        return cnt;
+        return count;
     } 
 
     /**
@@ -113,8 +113,8 @@ public class ThreeSumFast {
     public static void main(String[] args)  { 
         In in = new In(args[0]);
         int[] a = in.readAllInts();
-        int cnt = count(a);
-        StdOut.println(cnt);
+        int count = count(a);
+        StdOut.println(count);
     } 
 } 
 

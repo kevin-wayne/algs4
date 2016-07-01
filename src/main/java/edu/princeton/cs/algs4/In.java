@@ -445,6 +445,20 @@ public final class In {
     }
 
     /**
+     * Reads all remaining tokens from this input stream, parses them as longs,
+     * and returns them as an array of longs.
+     *
+     * @return all remaining lines in this input stream, as an array of longs
+     */
+    public long[] readAllLongs() {
+        String[] fields = readAllStrings();
+        long[] vals = new long[fields.length];
+        for (int i = 0; i < fields.length; i++)
+            vals[i] = Long.parseLong(fields[i]);
+        return vals;
+    }
+
+    /**
      * Reads all remaining tokens from this input stream, parses them as doubles,
      * and returns them as an array of doubles.
      *

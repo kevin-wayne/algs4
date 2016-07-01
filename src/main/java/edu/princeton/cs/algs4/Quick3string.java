@@ -135,13 +135,13 @@ public class Quick3string {
 
         // read in the strings from standard input
         String[] a = StdIn.readAllStrings();
-        int N = a.length;
+        int n = a.length;
 
         // sort the strings
         sort(a);
 
         // print the results
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             StdOut.println(a[i]);
     }
 }

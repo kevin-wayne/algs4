@@ -334,16 +334,16 @@ public final class Point2D implements Comparable<Point2D> {
     public static void main(String[] args) {
         int x0 = Integer.parseInt(args[0]);
         int y0 = Integer.parseInt(args[1]);
-        int N = Integer.parseInt(args[2]);
+        int n = Integer.parseInt(args[2]);
 
         StdDraw.setCanvasSize(800, 800);
         StdDraw.setXscale(0, 100);
         StdDraw.setYscale(0, 100);
-        StdDraw.setPenRadius(.005);
+        StdDraw.setPenRadius(0.005);
         StdDraw.enableDoubleBuffering();
 
-        Point2D[] points = new Point2D[N];
-        for (int i = 0; i < N; i++) {
+        Point2D[] points = new Point2D[n];
+        for (int i = 0; i < n; i++) {
             int x = StdRandom.uniform(100);
             int y = StdRandom.uniform(100);
             points[i] = new Point2D(x, y);
@@ -353,7 +353,7 @@ public final class Point2D implements Comparable<Point2D> {
         // draw p = (x0, x1) in red
         Point2D p = new Point2D(x0, y0);
         StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.setPenRadius(.02);
+        StdDraw.setPenRadius(0.02);
         p.draw();
 
 
@@ -361,7 +361,7 @@ public final class Point2D implements Comparable<Point2D> {
         StdDraw.setPenRadius();
         StdDraw.setPenColor(StdDraw.BLUE);
         Arrays.sort(points, p.polarOrder());
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             p.drawTo(points[i]);
             StdDraw.show();
             StdDraw.pause(100);

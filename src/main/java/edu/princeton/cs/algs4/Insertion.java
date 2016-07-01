@@ -29,7 +29,7 @@ import java.util.Comparator;
  *  The <tt>Insertion</tt> class provides static methods for sorting an
  *  array using insertion sort.
  *  <p>
- *  This implementation makes ~ 1/2 N^2 compares and exchanges in
+ *  This implementation makes ~ 1/2 n^2 compares and exchanges in
  *  the worst case, so it is not suitable for sorting large arbitrary arrays.
  *  More precisely, the number of exchanges is exactly equal to the number
  *  of inversions. So, for example, it sorts a partially-sorted array
@@ -56,8 +56,8 @@ public class Insertion {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
                 exch(a, j, j-1);
             }
@@ -87,8 +87,8 @@ public class Insertion {
      * @param comparator the comparator specifying the order
      */
     public static void sort(Object[] a, Comparator comparator) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1], comparator); j--) {
                 exch(a, j, j-1);
             }
@@ -120,15 +120,15 @@ public class Insertion {
      * Returns a permutation that gives the elements in the array in ascending order.
      * @param a the array
      * @return a permutation <tt>p[]</tt> such that <tt>a[p[0]]</tt>, <tt>a[p[1]]</tt>,
-     *    ..., <tt>a[p[N-1]]</tt> are in ascending order
+     *    ..., <tt>a[p[n-1]]</tt> are in ascending order
      */
     public static int[] indexSort(Comparable[] a) {
-        int N = a.length;
-        int[] index = new int[N];
-        for (int i = 0; i < N; i++)
+        int n = a.length;
+        int[] index = new int[n];
+        for (int i = 0; i < n; i++)
             index[i] = i;
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             for (int j = i; j > 0 && less(a[index[j]], a[index[j-1]]); j--)
                 exch(index, j, j-1);
 
