@@ -145,8 +145,18 @@ public class SymbolGraph {
      * Returns the graph assoicated with the symbol graph. It is the client's responsibility
      * not to mutate the graph.
      * @return the graph associated with the symbol graph
+     * @deprecated Replaced by {@link #graph()}.
      */
     public Graph G() {
+        return G;
+    }
+
+    /**
+     * Returns the graph assoicated with the symbol graph. It is the client's responsibility
+     * not to mutate the graph.
+     * @return the graph associated with the symbol graph
+     */
+    public Graph graph() {
         return G;
     }
 

@@ -116,12 +116,20 @@ public class SymbolDigraph {
     /**
      * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
      * not to mutate the digraph.
-     * @return the digraph associated with the symbol digraph
+     * @deprecated Replaced by {@link #digraph()}.
      */
     public Digraph G() {
         return G;
     }
 
+    /**
+     * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
+     * not to mutate the digraph.
+     * @return the digraph associated with the symbol digraph
+     */
+    public Digraph digraph() {
+        return G;
+    }
 
     /**
      * Unit tests the <tt>SymbolDigraph</tt> data type.

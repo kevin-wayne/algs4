@@ -148,8 +148,18 @@ public class Alphabet {
      * Returns the number of characters in this alphabet (the radix).
      * 
      * @return the number of characters in this alphabet
+     * @deprecated Replaced by {@link #radix()}.
      */
     public int R() {
+        return R;
+    }
+
+    /**
+     * Returns the number of characters in this alphabet (the radix).
+     * 
+     * @return the number of characters in this alphabet
+     */
+    public int radix() {
         return R;
     }
 

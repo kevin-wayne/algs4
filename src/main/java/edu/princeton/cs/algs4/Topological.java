@@ -139,7 +139,7 @@ public class Topological {
         String filename  = args[0];
         String delimiter = args[1];
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
-        Topological topological = new Topological(sg.G());
+        Topological topological = new Topological(sg.digraph());
         for (int v : topological.order()) {
             StdOut.println(sg.name(v));
         }

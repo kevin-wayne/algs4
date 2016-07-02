@@ -144,7 +144,7 @@ public class Complex {
      *
      * @param  alpha the scalar
      * @return the complex number whose value is <tt>(alpha * this)</tt>
-     * @deprecated Use {@link #scale(double)} instead.
+     * @deprecated Replaced by {@link #scale(double)}.
      */
     public Complex times(double alpha) {
         return new Complex(alpha * re, alpha * im);

@@ -97,7 +97,7 @@ public class DegreesOfSeparation {
         // StdOut.println("Source: " + source);
 
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
-        Graph G = sg.G();
+        Graph G = sg.graph();
         if (!sg.contains(source)) {
             StdOut.println(source + " not in database.");
             return;
