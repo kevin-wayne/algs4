@@ -78,13 +78,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         private Value val;         // associated data
         private Node left, right;  // links to left and right subtrees
         private boolean color;     // color of parent link
-        private int N;             // subtree count
+        private int size;          // subtree count
 
-        public Node(Key key, Value val, boolean color, int N) {
+        public Node(Key key, Value val, boolean color, int size) {
             this.key = key;
             this.val = val;
             this.color = color;
-            this.N = N;
+            this.size = size;
         }
     }
 
@@ -106,7 +106,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     // number of node in subtree rooted at x; 0 if x is null
     private int size(Node x) {
         if (x == null) return 0;
-        return x.N;
+        return x.size;
     } 
 
 
@@ -204,7 +204,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         if (isRed(h.right) && !isRed(h.left))      h = rotateLeft(h);
         if (isRed(h.left)  &&  isRed(h.left.left)) h = rotateRight(h);
         if (isRed(h.left)  &&  isRed(h.right))     flipColors(h);
-        h.N = size(h.left) + size(h.right) + 1;
+        h.size = size(h.left) + size(h.right) + 1;
 
         return h;
     }
@@ -335,8 +335,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         x.right = h;
         x.color = x.right.color;
         x.right.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
+        x.size = h.size;
+        h.size = size(h.left) + size(h.right) + 1;
         return x;
     }
 
@@ -348,8 +348,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         x.left = h;
         x.color = x.left.color;
         x.left.color = RED;
-        x.N = h.N;
-        h.N = size(h.left) + size(h.right) + 1;
+        x.size = h.size;
+        h.size = size(h.left) + size(h.right) + 1;
         return x;
     }
 
@@ -400,7 +400,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
         if (isRed(h.left) && isRed(h.right))     flipColors(h);
 
-        h.N = size(h.left) + size(h.right) + 1;
+        h.size = size(h.left) + size(h.right) + 1;
         return h;
     }
 
@@ -648,7 +648,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private boolean isSizeConsistent() { return isSizeConsistent(root); }
     private boolean isSizeConsistent(Node x) {
         if (x == null) return true;
-        if (x.N != size(x.left) + size(x.right) + 1) return false;
+        if (x.size != size(x.left) + size(x.right) + 1) return false;
         return isSizeConsistent(x.left) && isSizeConsistent(x.right);
     } 
 

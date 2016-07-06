@@ -214,13 +214,13 @@ public class Digraph {
      * @return the reverse of the digraph
      */
     public Digraph reverse() {
-        Digraph R = new Digraph(V);
+        Digraph reverse = new Digraph(V);
         for (int v = 0; v < V; v++) {
             for (int w : adj(v)) {
-                R.addEdge(w, v);
+                reverse.addEdge(w, v);
             }
         }
-        return R;
+        return reverse;
     }
 
     /**

@@ -43,12 +43,12 @@ public class Heap {
      * @param pq the array to be sorted
      */
     public static void sort(Comparable[] pq) {
-        int N = pq.length;
-        for (int k = N/2; k >= 1; k--)
-            sink(pq, k, N);
-        while (N > 1) {
-            exch(pq, 1, N--);
-            sink(pq, 1, N);
+        int n = pq.length;
+        for (int k = n/2; k >= 1; k--)
+            sink(pq, k, n);
+        while (n > 1) {
+            exch(pq, 1, n--);
+            sink(pq, 1, n);
         }
     }
 
@@ -56,10 +56,10 @@ public class Heap {
     * Helper functions to restore the heap invariant.
     ***************************************************************************/
 
-    private static void sink(Comparable[] pq, int k, int N) {
-        while (2*k <= N) {
+    private static void sink(Comparable[] pq, int k, int n) {
+        while (2*k <= n) {
             int j = 2*k;
-            if (j < N && less(pq, j, j+1)) j++;
+            if (j < n && less(pq, j, j+1)) j++;
             if (!less(pq, k, j)) break;
             exch(pq, k, j);
             k = j;

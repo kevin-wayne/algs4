@@ -46,11 +46,11 @@ public class InsertionX {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
+        int n = a.length;
 
         // put smallest element in position to serve as sentinel
         int exchanges = 0;
-        for (int i = N-1; i > 0; i--) {
+        for (int i = n-1; i > 0; i--) {
             if (less(a[i], a[i-1])) {
                 exch(a, i, i-1);
                 exchanges++;
@@ -60,7 +60,7 @@ public class InsertionX {
 
 
         // insertion sort with half-exchanges
-        for (int i = 2; i < N; i++) {
+        for (int i = 2; i < n; i++) {
             Comparable v = a[i];
             int j = i;
             while (less(v, a[j-1])) {

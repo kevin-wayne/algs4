@@ -36,7 +36,7 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedQueue<Item> implements Iterable<Item> {
-    private int N;         // number of elements on queue
+    private int n;         // number of elements on queue
     private Node first;    // beginning of queue
     private Node last;     // end of queue
 
@@ -52,7 +52,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
     public LinkedQueue() {
         first = null;
         last  = null;
-        N = 0;
+        n = 0;
         assert check();
     }
 
@@ -69,7 +69,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return N;     
+        return n;     
     }
 
     /**
@@ -93,7 +93,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         last.next = null;
         if (isEmpty()) first = last;
         else           oldlast.next = last;
-        N++;
+        n++;
         assert check();
     }
 
@@ -106,7 +106,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = first.item;
         first = first.next;
-        N--;
+        n--;
         if (isEmpty()) last = null;   // to avoid loitering
         assert check();
         return item;
@@ -125,14 +125,14 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     // check internal invariants
     private boolean check() {
-        if (N < 0) {
+        if (n < 0) {
             return false;
         }
-        else if (N == 0) {
+        else if (n == 0) {
             if (first != null) return false;
             if (last  != null) return false;
         }
-        else if (N == 1) {
+        else if (n == 1) {
             if (first == null || last == null) return false;
             if (first != last)                 return false;
             if (first.next != null)            return false;
@@ -143,12 +143,12 @@ public class LinkedQueue<Item> implements Iterable<Item> {
             if (first.next == null) return false;
             if (last.next  != null) return false;
 
-            // check internal consistency of instance variable N
+            // check internal consistency of instance variable n
             int numberOfNodes = 0;
-            for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
+            for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
                 numberOfNodes++;
             }
-            if (numberOfNodes != N) return false;
+            if (numberOfNodes != n) return false;
 
             // check internal consistency of instance variable last
             Node lastNode = first;
@@ -190,13 +190,15 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * Unit tests the <tt>LinkedQueue</tt> data type.
      */
     public static void main(String[] args) {
-        LinkedQueue<String> q = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) q.enqueue(item);
-            else if (!q.isEmpty()) StdOut.print(q.dequeue() + " ");
+            if (!item.equals("-"))
+                queue.enqueue(item);
+            else if (!queue.isEmpty())
+                StdOut.print(queue.dequeue() + " ");
         }
-        StdOut.println("(" + q.size() + " left on queue)");
+        StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
 

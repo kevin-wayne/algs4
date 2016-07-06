@@ -103,16 +103,16 @@ public class DegreesOfSeparation {
             return;
         }
 
-        int s = sg.index(source);
+        int s = sg.indexOf(source);
         BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
 
         while (!StdIn.isEmpty()) {
             String sink = StdIn.readLine();
             if (sg.contains(sink)) {
-                int t = sg.index(sink);
+                int t = sg.indexOf(sink);
                 if (bfs.hasPathTo(t)) {
                     for (int v : bfs.pathTo(t)) {
-                        StdOut.println("   " + sg.name(v));
+                        StdOut.println("   " + sg.nameOf(v));
                     }
                 }
                 else {

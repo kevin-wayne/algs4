@@ -1,9 +1,9 @@
 /******************************************************************************
  *  Compilation:  javac TwoPersonZeroSumGame.java
- *  Execution:    java TwoPersonZeroSumGame M N
+ *  Execution:    java TwoPersonZeroSumGame m n
  *  Dependencies: LinearProgramming.java StdOut.java
  *
- *  Solve an M-by-N two-person zero-sum game by reducing it to
+ *  Solve an m-by-n two-person zero-sum game by reducing it to
  *  linear programming. Assuming A is a strictly positive payoff
  *  matrix, the optimal row and column player strategies are x* an y*,
  *  scaled to be probability distributions.
@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
  *  The <tt>TwoPersonZeroSumGame</tt> class represents a data type for
  *  computing optimal row and column strategies to two-person zero-sum games.
  *  <p>
- *  This implementation solves an <em>M</em>-by-<em>N</em> two-person
+ *  This implementation solves an <em>m</em>-by-<em>n</em> two-person
  *  zero-sum game by reducing it to a linear programming problem.
  *  Assuming the payoff matrix <em>A</em> is strictly positive, the
  *  optimal row and column player strategies x* and y* are obtained
@@ -52,8 +52,8 @@ package edu.princeton.cs.algs4;
 public class TwoPersonZeroSumGame {
     private static final double EPSILON = 1E-8;
 
-    private final int M;            // number of rows
-    private final int N;            // number of columns
+    private final int m;            // number of rows
+    private final int n;            // number of columns
     private LinearProgramming lp;   // linear program solver
     private double constant;        // constant added to each entry in payoff matrix
                                     // (0 if all entries are strictly positive)
@@ -62,32 +62,32 @@ public class TwoPersonZeroSumGame {
      * Determines an optimal solution to the two-sum zero-sum game
      * with the specified payoff matrix.
      *
-     * @param  payoff the <em>M</em>-by-<em>N</em> payoff matrix
+     * @param  payoff the <em>m</em>-by-<em>n</em> payoff matrix
      */ 
     public TwoPersonZeroSumGame(double[][] payoff) {
-        M = payoff.length;
-        N = payoff[0].length;
+        m = payoff.length;
+        n = payoff[0].length;
 
-        double[] c = new double[N];
-        double[] b = new double[M];
-        double[][] A = new double[M][N];
-        for (int i = 0; i < M; i++)
+        double[] c = new double[n];
+        double[] b = new double[m];
+        double[][] A = new double[m][n];
+        for (int i = 0; i < m; i++)
             b[i] = 1.0;
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < n; j++)
             c[j] = 1.0;
 
         // find smallest entry
         constant = Double.POSITIVE_INFINITY;
-        for (int i = 0; i < M; i++)
-            for (int j = 0; j < N; j++)
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
                 if (payoff[i][j] < constant)
                     constant = payoff[i][j];
 
         // add constant  to every entry to make strictly positive
         if (constant <= 0) constant = -constant + 1;
         else               constant = 0;
-        for (int i = 0; i < M; i++)
-            for (int j = 0; j < N; j++)
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
                 A[i][j] = payoff[i][j] + constant;
 
         lp = new LinearProgramming(A, b, c);
@@ -111,7 +111,7 @@ public class TwoPersonZeroSumGame {
     private double scale() {
         double[] x = lp.primal();
         double sum = 0.0;
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < n; j++)
             sum += x[j];
         return sum;
     }
@@ -124,7 +124,7 @@ public class TwoPersonZeroSumGame {
     public double[] row() {
         double scale = scale();
         double[] x = lp.primal();
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < n; j++)
             x[j] /= scale;
         return x;
     }
@@ -137,7 +137,7 @@ public class TwoPersonZeroSumGame {
     public double[] column() {
         double scale = scale();
         double[] y = lp.dual();
-        for (int i = 0; i < M; i++)
+        for (int i = 0; i < m; i++)
             y[i] /= scale;
         return y;
     }
@@ -153,7 +153,7 @@ public class TwoPersonZeroSumGame {
     private boolean isPrimalFeasible() {
         double[] x = row();
         double sum = 0.0;
-        for (int j = 0; j < N; j++) {
+        for (int j = 0; j < n; j++) {
             if (x[j] < 0) {
                 StdOut.println("row vector not a probability distribution");
                 StdOut.printf("    x[%d] = %f\n" , j, x[j]);
@@ -173,7 +173,7 @@ public class TwoPersonZeroSumGame {
     private boolean isDualFeasible() {
         double[] y = column();
         double sum = 0.0;
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             if (y[i] < 0) {
                 StdOut.println("column vector y[] is not a probability distribution");
                 StdOut.printf("    y[%d] = %f\n" , i, y[i]);
@@ -197,9 +197,9 @@ public class TwoPersonZeroSumGame {
 
         // given row player's mixed strategy, find column player's best pure strategy
         double opt1 = Double.NEGATIVE_INFINITY;
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             double sum = 0.0;
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < n; j++) {
                 sum += payoff[i][j] * x[j];
             }
             if (sum > opt1) opt1 = sum;
@@ -212,9 +212,9 @@ public class TwoPersonZeroSumGame {
 
         // given column player's mixed strategy, find row player's best pure strategy
         double opt2 = Double.POSITIVE_INFINITY;
-        for (int j = 0; j < N; j++) {
+        for (int j = 0; j < n; j++) {
             double sum = 0.0;
-            for (int i = 0; i < M; i++) {
+            for (int i = 0; i < m; i++) {
                 sum += payoff[i][j] * y[i];
             }
             if (sum < opt2) opt2 = sum;
@@ -238,21 +238,21 @@ public class TwoPersonZeroSumGame {
         StdOut.println();
         StdOut.println(description);
         StdOut.println("------------------------------------");
-        int M = payoff.length;
-        int N = payoff[0].length;
+        int m = payoff.length;
+        int n = payoff[0].length;
         TwoPersonZeroSumGame zerosum = new TwoPersonZeroSumGame(payoff);
         double[] x = zerosum.row();
         double[] y = zerosum.column();
 
         StdOut.print("x[] = [");
-        for (int j = 0; j < N-1; j++)
+        for (int j = 0; j < n-1; j++)
             StdOut.printf("%8.4f, ", x[j]);
-        StdOut.printf("%8.4f]\n", x[N-1]);
+        StdOut.printf("%8.4f]\n", x[n-1]);
 
         StdOut.print("y[] = [");
-        for (int i = 0; i < M-1; i++)
+        for (int i = 0; i < m-1; i++)
             StdOut.printf("%8.4f, ", y[i]);
-        StdOut.printf("%8.4f]\n", y[M-1]);
+        StdOut.printf("%8.4f]\n", y[m-1]);
         StdOut.println("value =  " + zerosum.value());
         
     }
@@ -338,13 +338,13 @@ public class TwoPersonZeroSumGame {
         test4();
         test5();
 
-        int M = Integer.parseInt(args[0]);
-        int N = Integer.parseInt(args[1]);
-        double[][] payoff = new double[M][N];
-        for (int i = 0; i < M; i++)
-            for (int j = 0; j < N; j++)
+        int m = Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[1]);
+        double[][] payoff = new double[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
                 payoff[i][j] = StdRandom.uniform(-0.5, 0.5);
-        test("random " + M + "-by-" + N, payoff);
+        test("random " + m + "-by-" + n, payoff);
     }
 
 }

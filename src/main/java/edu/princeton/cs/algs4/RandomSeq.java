@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac RandomSeq.java
- *  Execution:    java RandomSeq N lo hi
+ *  Execution:    java RandomSeq n lo hi
  *  Dependencies: StdOut.java
  *
  *  Prints N numbers between lo and hi.
@@ -33,18 +33,18 @@ public class RandomSeq {
 
 
     /**
-     * Reads in two command-line arguments lo and hi and prints N uniformly
+     * Reads in two command-line arguments lo and hi and prints n uniformly
      * random real numbers in [lo, hi) to standard output.
      */
     public static void main(String[] args) {
 
         // command-line arguments
-        int N = Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[0]);
 
         // for backward compatibility with Intro to Programming in Java version of RandomSeq
         if (args.length == 1) {
-            // generate and print N numbers between 0.0 and 1.0
-            for (int i = 0; i < N; i++) {
+            // generate and print n numbers between 0.0 and 1.0
+            for (int i = 0; i < n; i++) {
                 double x = StdRandom.uniform();
                 StdOut.println(x);
             }
@@ -54,8 +54,8 @@ public class RandomSeq {
             double lo = Double.parseDouble(args[1]);
             double hi = Double.parseDouble(args[2]);
 
-            // generate and print N numbers between lo and hi
-            for (int i = 0; i < N; i++) {
+            // generate and print n numbers between lo and hi
+            for (int i = 0; i < n; i++) {
                 double x = StdRandom.uniform(lo, hi);
                 StdOut.printf("%.2f\n", x);
             }

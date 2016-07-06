@@ -42,7 +42,7 @@ import java.util.NoSuchElementException;
  */
 public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer> {
     private int maxN;        // maximum number of elements on PQ
-    private int N;           // number of elements on PQ
+    private int n;           // number of elements on PQ
     private int[] pq;        // binary heap using 1-based indexing
     private int[] qp;        // inverse of pq - qp[pq[i]] = pq[qp[i]] = i
     private Key[] keys;      // keys[i] = priority of i
@@ -57,6 +57,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     public IndexMinPQ(int maxN) {
         if (maxN < 0) throw new IllegalArgumentException();
         this.maxN = maxN;
+        n = 0;
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
         pq   = new int[maxN + 1];
         qp   = new int[maxN + 1];                   // make this of length maxN??
@@ -71,7 +72,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *         <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     /**
@@ -93,7 +94,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @return the number of keys on this priority queue
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -108,11 +109,11 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     public void insert(int i, Key key) {
         if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
         if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
-        N++;
-        qp[i] = N;
-        pq[N] = i;
+        n++;
+        qp[i] = n;
+        pq[n] = i;
         keys[i] = key;
-        swim(N);
+        swim(n);
     }
 
     /**
@@ -122,7 +123,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException if this priority queue is empty
      */
     public int minIndex() {
-        if (N == 0) throw new NoSuchElementException("Priority queue underflow");
+        if (n == 0) throw new NoSuchElementException("Priority queue underflow");
         return pq[1];
     }
 
@@ -133,7 +134,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException if this priority queue is empty
      */
     public Key minKey() {
-        if (N == 0) throw new NoSuchElementException("Priority queue underflow");
+        if (n == 0) throw new NoSuchElementException("Priority queue underflow");
         return keys[pq[1]];
     }
 
@@ -143,14 +144,14 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException if this priority queue is empty
      */
     public int delMin() {
-        if (N == 0) throw new NoSuchElementException("Priority queue underflow");
+        if (n == 0) throw new NoSuchElementException("Priority queue underflow");
         int min = pq[1];
-        exch(1, N--);
+        exch(1, n--);
         sink(1);
-        assert min == pq[N+1];
+        assert min == pq[n+1];
         qp[min] = -1;        // delete
         keys[min] = null;    // to help with garbage collection
-        pq[N+1] = -1;        // not needed
+        pq[n+1] = -1;        // not needed
         return min;
     }
 
@@ -243,7 +244,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         int index = qp[i];
-        exch(index, N--);
+        exch(index, n--);
         swim(index);
         sink(index);
         keys[i] = null;
@@ -278,9 +279,9 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     private void sink(int k) {
-        while (2*k <= N) {
+        while (2*k <= n) {
             int j = 2*k;
-            if (j < N && greater(j, j+1)) j++;
+            if (j < n && greater(j, j+1)) j++;
             if (!greater(k, j)) break;
             exch(k, j);
             k = j;
@@ -309,7 +310,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
         // takes linear time since already in heap order so no keys move
         public HeapIterator() {
             copy = new IndexMinPQ<Key>(pq.length - 1);
-            for (int i = 1; i <= N; i++)
+            for (int i = 1; i <= n; i++)
                 copy.insert(pq[i], keys[pq[i]]);
         }
 

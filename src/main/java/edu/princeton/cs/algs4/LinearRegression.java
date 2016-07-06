@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The <tt>LinearRegression</tt> class performs a simple linear regression
- *  on an set of <em>N</em> data points (<em>y<sub>i</sub></em>, <em>x<sub>i</sub></em>).
+ *  on an set of <em>n</em> data points (<em>y<sub>i</sub></em>, <em>x<sub>i</sub></em>).
  *  That is, it fits a straight line <em>y</em> = &alpha; + &beta; <em>x</em>,
  *  (where <em>y</em> is the response variable, <em>x</em> is the predictor variable,
  *  &alpha; is the <em>y-intercept</em>, and &beta; is the <em>slope</em>)
@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class LinearRegression {
-    private final int N;
+    private final int n;
     private final double intercept, slope;
     private final double r2;
     private final double svar, svar0, svar1;
@@ -42,21 +42,21 @@ public class LinearRegression {
         if (x.length != y.length) {
             throw new IllegalArgumentException("array lengths are not equal");
         }
-        N = x.length;
+        n = x.length;
 
         // first pass
         double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             sumx  += x[i];
             sumx2 += x[i]*x[i];
             sumy  += y[i];
         }
-        double xbar = sumx / N;
-        double ybar = sumy / N;
+        double xbar = sumx / n;
+        double ybar = sumy / n;
 
         // second pass: compute summary statistics
         double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             xxbar += (x[i] - xbar) * (x[i] - xbar);
             yybar += (y[i] - ybar) * (y[i] - ybar);
             xybar += (x[i] - xbar) * (y[i] - ybar);
@@ -67,17 +67,17 @@ public class LinearRegression {
         // more statistical analysis
         double rss = 0.0;      // residual sum of squares
         double ssr = 0.0;      // regression sum of squares
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             double fit = slope*x[i] + intercept;
             rss += (fit - y[i]) * (fit - y[i]);
             ssr += (fit - ybar) * (fit - ybar);
         }
 
-        int degreesOfFreedom = N-2;
+        int degreesOfFreedom = n-2;
         r2    = ssr / yybar;
         svar  = rss / degreesOfFreedom;
         svar1 = svar / xxbar;
-        svar0 = svar/N + xbar*xbar*svar1;
+        svar0 = svar/n + xbar*xbar*svar1;
     }
 
    /**
@@ -147,13 +147,11 @@ public class LinearRegression {
      */
     public String toString() {
         String s = "";
-        s += String.format("%.2f N + %.2f", slope(), intercept());
+        s += String.format("%.2f n + %.2f", slope(), intercept());
         return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
     }
 
-
 }
-
 
 /******************************************************************************
  *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.

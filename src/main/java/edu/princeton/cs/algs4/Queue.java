@@ -41,7 +41,7 @@ import java.util.NoSuchElementException;
 public class Queue<Item> implements Iterable<Item> {
     private Node<Item> first;    // beginning of queue
     private Node<Item> last;     // end of queue
-    private int N;               // number of elements on queue
+    private int n;               // number of elements on queue
 
     // helper linked list class
     private static class Node<Item> {
@@ -55,7 +55,7 @@ public class Queue<Item> implements Iterable<Item> {
     public Queue() {
         first = null;
         last  = null;
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Queue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return N;     
+        return n;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Queue<Item> implements Iterable<Item> {
         last.next = null;
         if (isEmpty()) first = last;
         else           oldlast.next = last;
-        N++;
+        n++;
     }
 
     /**
@@ -112,7 +112,7 @@ public class Queue<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = first.item;
         first = first.next;
-        N--;
+        n--;
         if (isEmpty()) last = null;   // to avoid loitering
         return item;
     }
@@ -162,13 +162,15 @@ public class Queue<Item> implements Iterable<Item> {
      * Unit tests the <tt>Queue</tt> data type.
      */
     public static void main(String[] args) {
-        Queue<String> q = new Queue<String>();
+        Queue<String> queue = new Queue<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) q.enqueue(item);
-            else if (!q.isEmpty()) StdOut.print(q.dequeue() + " ");
+            if (!item.equals("-"))
+                queue.enqueue(item);
+            else if (!queue.isEmpty())
+                StdOut.print(queue.dequeue() + " ");
         }
-        StdOut.println("(" + q.size() + " left on queue)");
+        StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
 

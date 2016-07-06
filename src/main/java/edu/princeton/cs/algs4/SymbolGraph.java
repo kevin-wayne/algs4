@@ -55,9 +55,9 @@ package edu.princeton.cs.algs4;
  *  This implementation uses an {@link ST} to map from strings to integers,
  *  an array to map from integers to strings, and a {@link Graph} to store
  *  the underlying graph.
- *  The <em>index</em> and <em>contains</em> operations take time 
+ *  The <em>indexOf</em> and <em>contains</em> operations take time 
  *  proportional to log <em>V</em>, where <em>V</em> is the number of vertices.
- *  The <em>name</em> operation takes constant time.
+ *  The <em>nameOf</em> operation takes constant time.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -127,8 +127,19 @@ public class SymbolGraph {
      * Returns the integer associated with the vertex named <tt>s</tt>.
      * @param s the name of a vertex
      * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
+     * @deprecated Replaced by {@link #indexOf(String)}.
      */
     public int index(String s) {
+        return st.get(s);
+    }
+
+
+    /**
+     * Returns the integer associated with the vertex named <tt>s</tt>.
+     * @param s the name of a vertex
+     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
+     */
+    public int indexOf(String s) {
         return st.get(s);
     }
 
@@ -136,8 +147,18 @@ public class SymbolGraph {
      * Returns the name of the vertex associated with the integer <tt>v</tt>.
      * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
      * @return the name of the vertex associated with the integer <tt>v</tt>
+     * @deprecated Replaced by {@link #nameOf(int)}.
      */
     public String name(int v) {
+        return keys[v];
+    }
+
+    /**
+     * Returns the name of the vertex associated with the integer <tt>v</tt>.
+     * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @return the name of the vertex associated with the integer <tt>v</tt>
+     */
+    public String nameOf(int v) {
         return keys[v];
     }
 

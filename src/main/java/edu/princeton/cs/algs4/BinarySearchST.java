@@ -64,7 +64,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     private static final int INIT_CAPACITY = 2;
     private Key[] keys;
     private Value[] vals;
-    private int N = 0;
+    private int n = 0;
 
     /**
      * Initializes an empty symbol table.
@@ -83,10 +83,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     // resize the underlying arrays
     private void resize(int capacity) {
-        assert capacity >= N;
+        assert capacity >= n;
         Key[]   tempk = (Key[])   new Comparable[capacity];
         Value[] tempv = (Value[]) new Object[capacity];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             tempk[i] = keys[i];
             tempv[i] = vals[i];
         }
@@ -100,7 +100,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -139,7 +139,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         if (key == null) throw new NullPointerException("argument to get() is null"); 
         if (isEmpty()) return null;
         int i = rank(key); 
-        if (i < N && keys[i].compareTo(key) == 0) return vals[i];
+        if (i < n && keys[i].compareTo(key) == 0) return vals[i];
         return null;
     } 
 
@@ -153,7 +153,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public int rank(Key key) {
         if (key == null) throw new NullPointerException("argument to rank() is null"); 
 
-        int lo = 0, hi = N-1; 
+        int lo = 0, hi = n-1; 
         while (lo <= hi) { 
             int mid = lo + (hi - lo) / 2; 
             int cmp = key.compareTo(keys[mid]);
@@ -184,21 +184,21 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         int i = rank(key);
 
         // key is already in table
-        if (i < N && keys[i].compareTo(key) == 0) {
+        if (i < n && keys[i].compareTo(key) == 0) {
             vals[i] = val;
             return;
         }
 
         // insert new key-value pair
-        if (N == keys.length) resize(2*keys.length);
+        if (n == keys.length) resize(2*keys.length);
 
-        for (int j = N; j > i; j--)  {
+        for (int j = n; j > i; j--)  {
             keys[j] = keys[j-1];
             vals[j] = vals[j-1];
         }
         keys[i] = key;
         vals[i] = val;
-        N++;
+        n++;
 
         assert check();
     } 
@@ -218,21 +218,21 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         int i = rank(key);
 
         // key not in table
-        if (i == N || keys[i].compareTo(key) != 0) {
+        if (i == n || keys[i].compareTo(key) != 0) {
             return;
         }
 
-        for (int j = i; j < N-1; j++)  {
+        for (int j = i; j < n-1; j++)  {
             keys[j] = keys[j+1];
             vals[j] = vals[j+1];
         }
 
-        N--;
-        keys[N] = null;  // to avoid loitering
-        vals[N] = null;
+        n--;
+        keys[n] = null;  // to avoid loitering
+        vals[n] = null;
 
         // resize if 1/4 full
-        if (N > 0 && N == keys.length/4) resize(keys.length/2);
+        if (n > 0 && n == keys.length/4) resize(keys.length/2);
 
         assert check();
     } 
@@ -281,7 +281,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public Key max() {
         if (isEmpty()) return null;
-        return keys[N-1];
+        return keys[n-1];
     }
 
     /**
@@ -290,10 +290,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @param  k the order statistic
      * @return the kth smallest key in this symbol table
      * @throws IllegalArgumentException unless <tt>k</tt> is between 0 and
-     *        <em>N</em> &minus; 1
+     *        <em>n</em> &minus; 1
      */
     public Key select(int k) {
-        if (k < 0 || k >= N) return null;
+        if (k < 0 || k >= n) return null;
         return keys[k];
     }
 
@@ -308,7 +308,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public Key floor(Key key) {
         if (key == null) throw new NullPointerException("argument to floor() is null"); 
         int i = rank(key);
-        if (i < N && key.compareTo(keys[i]) == 0) return keys[i];
+        if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
         if (i == 0) return null;
         else return keys[i-1];
     }
@@ -324,7 +324,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public Key ceiling(Key key) {
         if (key == null) throw new NullPointerException("argument to ceiling() is null"); 
         int i = rank(key);
-        if (i == N) return null; 
+        if (i == n) return null; 
         else return keys[i];
     }
 

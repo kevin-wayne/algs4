@@ -134,13 +134,13 @@ public class Merge {
      *    ..., <tt>a[p[N-1]]</tt> are in ascending order
      */
     public static int[] indexSort(Comparable[] a) {
-        int N = a.length;
-        int[] index = new int[N];
-        for (int i = 0; i < N; i++)
+        int n = a.length;
+        int[] index = new int[n];
+        for (int i = 0; i < n; i++)
             index[i] = i;
 
-        int[] aux = new int[N];
-        sort(a, index, aux, 0, N-1);
+        int[] aux = new int[n];
+        sort(a, index, aux, 0, n-1);
         return index;
     }
 

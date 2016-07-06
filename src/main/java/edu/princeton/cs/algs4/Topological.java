@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac Topoological.java
- *  Execution:    java  Topological filename.txt separator
+ *  Execution:    java  Topological filename.txt delimiter
  *  Dependencies: Digraph.java DepthFirstOrder.java DirectedCycle.java
  *                EdgeWeightedDigraph.java EdgeWeightedDirectedCycle.java
  *                SymbolDigraph.java
@@ -141,7 +141,7 @@ public class Topological {
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
         Topological topological = new Topological(sg.digraph());
         for (int v : topological.order()) {
-            StdOut.println(sg.name(v));
+            StdOut.println(sg.nameOf(v));
         }
     }
 

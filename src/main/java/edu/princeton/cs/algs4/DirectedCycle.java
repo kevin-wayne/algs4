@@ -71,7 +71,7 @@ public class DirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            //found new vertex, so recur
+            // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = v;
                 dfs(G, w);

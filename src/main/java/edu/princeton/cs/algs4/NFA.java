@@ -42,10 +42,10 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation builds the NFA using a digraph and a stack
  *  and simulates the NFA using digraph search (see the textbook for details).
- *  The constructor takes time proportional to <em>M</em>, where <em>M</em>
+ *  The constructor takes time proportional to <em>m</em>, where <em>m</em>
  *  is the number of characters in the regular expression.
- *  The <em>recognizes</em> method takes time proportional to <em>M N</em>,
- *  where <em>N</em> is the number of characters in the text.
+ *  The <em>recognizes</em> method takes time proportional to <em>m n</em>,
+ *  where <em>n</em> is the number of characters in the text.
  *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/54regexp">Section 5.4</a> of
@@ -58,7 +58,7 @@ public class NFA {
 
     private Digraph G;         // digraph of epsilon transitions
     private String regexp;     // regular expression
-    private int M;             // number of characters in regular expression
+    private int m;             // number of characters in regular expression
 
     /**
      * Initializes the NFA from the specified regular expression.
@@ -67,10 +67,10 @@ public class NFA {
      */
     public NFA(String regexp) {
         this.regexp = regexp;
-        M = regexp.length();
+        m = regexp.length();
         Stack<Integer> ops = new Stack<Integer>(); 
-        G = new Digraph(M+1); 
-        for (int i = 0; i < M; i++) { 
+        G = new Digraph(m+1); 
+        for (int i = 0; i < m; i++) { 
             int lp = i; 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|') 
                 ops.push(i); 
@@ -89,7 +89,7 @@ public class NFA {
             } 
 
             // closure operator (uses 1-character lookahead)
-            if (i < M-1 && regexp.charAt(i+1) == '*') { 
+            if (i < m-1 && regexp.charAt(i+1) == '*') { 
                 G.addEdge(lp, i+1); 
                 G.addEdge(i+1, lp); 
             } 
@@ -120,7 +120,7 @@ public class NFA {
 
             Bag<Integer> match = new Bag<Integer>();
             for (int v : pc) {
-                if (v == M) continue;
+                if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
                     match.add(v+1); 
             }
@@ -135,7 +135,7 @@ public class NFA {
 
         // check for accept state
         for (int v : pc)
-            if (v == M) return true;
+            if (v == m) return true;
         return false;
     }
 

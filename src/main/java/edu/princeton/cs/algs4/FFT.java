@@ -1,15 +1,15 @@
 /******************************************************************************
  *  Compilation:  javac FFT.java
- *  Execution:    java FFT N
+ *  Execution:    java FFT n
  *  Dependencies: Complex.java
  *
- *  Compute the FFT and inverse FFT of a length N complex sequence.
- *  Bare bones implementation that runs in O(N log N) time. Our goal
+ *  Compute the FFT and inverse FFT of a length n complex sequence.
+ *  Bare bones implementation that runs in O(n log n) time. Our goal
  *  is to optimize the clarity of the code, rather than performance.
  *
  *  Limitations
  *  -----------
- *   -  assumes N is a power of 2
+ *   -  assumes n is a power of 2
  *
  *   -  not the most memory efficient algorithm (because it uses
  *      an object type for representing complex numbers and because
@@ -66,9 +66,9 @@ package edu.princeton.cs.algs4;
  *  FFT (Fast-Fourier Transform), inverse FFT, linear convolution,
  *  and circular convolution of a complex array.
  *  <p>
- *  It is a bare-bones implementation that runs in <em>N</em> log <em>N</em> time,
- *  where <em>N</em> is the length of the complex array. For simplicity,
- *  <em>N</em> must be a power of 2.
+ *  It is a bare-bones implementation that runs in <em>n</em> log <em>n</em> time,
+ *  where <em>n</em> is the length of the complex array. For simplicity,
+ *  <em>n</em> must be a power of 2.
  *  Our goal is to optimize the clarity of the code, rather than performance.
  *  It is not the most memory efficient implementation because it uses
  *  objects to represents complex numbers and it it re-allocates memory
@@ -96,37 +96,39 @@ public class FFT {
      * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
      */
     public static Complex[] fft(Complex[] x) {
-        int N = x.length;
+        int n = x.length;
 
         // base case
-        if (N == 1) return new Complex[] { x[0] };
+        if (n == 1) {
+            return new Complex[] { x[0] };
+        }
 
         // radix 2 Cooley-Tukey FFT
-        if (N % 2 != 0) {
-            throw new IllegalArgumentException("N is not a power of 2");
+        if (n % 2 != 0) {
+            throw new IllegalArgumentException("n is not a power of 2");
         }
 
         // fft of even terms
-        Complex[] even = new Complex[N/2];
-        for (int k = 0; k < N/2; k++) {
+        Complex[] even = new Complex[n/2];
+        for (int k = 0; k < n/2; k++) {
             even[k] = x[2*k];
         }
         Complex[] q = fft(even);
 
         // fft of odd terms
         Complex[] odd  = even;  // reuse the array
-        for (int k = 0; k < N/2; k++) {
+        for (int k = 0; k < n/2; k++) {
             odd[k] = x[2*k + 1];
         }
         Complex[] r = fft(odd);
 
         // combine
-        Complex[] y = new Complex[N];
-        for (int k = 0; k < N/2; k++) {
-            double kth = -2 * k * Math.PI / N;
+        Complex[] y = new Complex[n];
+        for (int k = 0; k < n/2; k++) {
+            double kth = -2 * k * Math.PI / n;
             Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
             y[k]       = q[k].plus(wk.times(r[k]));
-            y[k + N/2] = q[k].minus(wk.times(r[k]));
+            y[k + n/2] = q[k].minus(wk.times(r[k]));
         }
         return y;
     }
@@ -140,11 +142,11 @@ public class FFT {
      * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
      */
     public static Complex[] ifft(Complex[] x) {
-        int N = x.length;
-        Complex[] y = new Complex[N];
+        int n = x.length;
+        Complex[] y = new Complex[n];
 
         // take conjugate
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             y[i] = x[i].conjugate();
         }
 
@@ -152,13 +154,13 @@ public class FFT {
         y = fft(y);
 
         // take conjugate again
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             y[i] = y[i].conjugate();
         }
 
-        // divide by N
-        for (int i = 0; i < N; i++) {
-            y[i] = y[i].scale(1.0 / N);
+        // divide by n
+        for (int i = 0; i < n; i++) {
+            y[i] = y[i].scale(1.0 / n);
         }
 
         return y;
@@ -182,15 +184,15 @@ public class FFT {
             throw new IllegalArgumentException("Dimensions don't agree");
         }
 
-        int N = x.length;
+        int n = x.length;
 
         // compute FFT of each sequence
         Complex[] a = fft(x);
         Complex[] b = fft(y);
 
         // point-wise multiply
-        Complex[] c = new Complex[N];
-        for (int i = 0; i < N; i++) {
+        Complex[] c = new Complex[n];
+        for (int i = 0; i < n; i++) {
             c[i] = a[i].times(b[i]);
         }
 
@@ -242,13 +244,13 @@ public class FFT {
      * Unit tests the <tt>FFT</tt> class.
      */
     public static void main(String[] args) { 
-        int N = Integer.parseInt(args[0]);
-        Complex[] x = new Complex[N];
+        int n = Integer.parseInt(args[0]);
+        Complex[] x = new Complex[n];
 
         // original data
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             x[i] = new Complex(i, 0);
-            x[i] = new Complex(-2*Math.random() + 1, 0);
+            x[i] = new Complex(StdRandom.uniform(-1.0, 1.0), 0);
         }
         show(x, "x");
 

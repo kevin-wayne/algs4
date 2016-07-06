@@ -40,7 +40,7 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class LinkedStack<Item> implements Iterable<Item> {
-    private int N;          // size of the stack
+    private int n;          // size of the stack
     private Node first;     // top of stack
 
     // helper linked list class
@@ -54,7 +54,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
      */
     public LinkedStack() {
         first = null;
-        N = 0;
+        n = 0;
         assert check();
     }
 
@@ -71,7 +71,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
      * @return the number of items in the stack
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -83,7 +83,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
         assert check();
     }
 
@@ -96,7 +96,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;        // save item to return
         first = first.next;            // delete first node
-        N--;
+        n--;
         assert check();
         return item;                   // return the saved item
     }
@@ -127,7 +127,9 @@ public class LinkedStack<Item> implements Iterable<Item> {
      * Returns an iterator to this stack that iterates through the items in LIFO order.
      * @return an iterator to this stack that iterates through the items in LIFO order.
      */
-    public Iterator<Item> iterator()  { return new ListIterator();  }
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
 
     // an iterator, doesn't implement remove() since it's optional
     private class ListIterator implements Iterator<Item> {
@@ -148,13 +150,13 @@ public class LinkedStack<Item> implements Iterable<Item> {
     private boolean check() {
 
         // check a few properties of instance variable 'first'
-        if (N < 0) {
+        if (n < 0) {
             return false;
         }
-        if (N == 0) {
+        if (n == 0) {
             if (first != null) return false;
         }
-        else if (N == 1) {
+        else if (n == 1) {
             if (first == null)      return false;
             if (first.next != null) return false;
         }
@@ -163,12 +165,12 @@ public class LinkedStack<Item> implements Iterable<Item> {
             if (first.next == null) return false;
         }
 
-        // check internal consistency of instance variable N
+        // check internal consistency of instance variable n
         int numberOfNodes = 0;
-        for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
+        for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
             numberOfNodes++;
         }
-        if (numberOfNodes != N) return false;
+        if (numberOfNodes != n) return false;
 
         return true;
     }
@@ -177,13 +179,15 @@ public class LinkedStack<Item> implements Iterable<Item> {
      * Unit tests the <tt>LinkedStack</tt> data type.
      */
     public static void main(String[] args) {
-        LinkedStack<String> s = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) s.push(item);
-            else if (!s.isEmpty()) StdOut.print(s.pop() + " ");
+            if (!item.equals("-"))
+                stack.push(item);
+            else if (!stack.isEmpty())
+                StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
 

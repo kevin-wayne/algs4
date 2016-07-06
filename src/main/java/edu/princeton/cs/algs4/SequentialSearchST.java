@@ -55,7 +55,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class SequentialSearchST<Key, Value> {
-    private int N;           // number of key-value pairs
+    private int n;           // number of key-value pairs
     private Node first;      // the linked list of key-value pairs
 
     // a helper linked list data type
@@ -83,7 +83,7 @@ public class SequentialSearchST<Key, Value> {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -150,7 +150,7 @@ public class SequentialSearchST<Key, Value> {
             }
         }
         first = new Node(key, val, first);
-        N++;
+        n++;
     }
 
     /**
@@ -170,7 +170,7 @@ public class SequentialSearchST<Key, Value> {
     private Node delete(Node x, Key key) {
         if (x == null) return null;
         if (key.equals(x.key)) {
-            N--;
+            n--;
             return x.next;
         }
         x.next = delete(x.next, key);

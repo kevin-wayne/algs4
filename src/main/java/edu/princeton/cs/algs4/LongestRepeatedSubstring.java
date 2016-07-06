@@ -63,10 +63,10 @@ public class LongestRepeatedSubstring {
      *         the empty string if no such string
      */
     public static String lrs(String text) {
-        int N = text.length();
+        int n = text.length();
         SuffixArray sa = new SuffixArray(text);
         String lrs = "";
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < n; i++) {
             int length = sa.lcp(i);
             if (length > lrs.length()) {
                 // lrs = sa.select(i).substring(0, length);

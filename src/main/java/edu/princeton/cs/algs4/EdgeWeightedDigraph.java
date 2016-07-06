@@ -70,7 +70,7 @@ public class EdgeWeightedDigraph {
         for (int i = 0; i < E; i++) {
             int v = StdRandom.uniform(V);
             int w = StdRandom.uniform(V);
-            double weight = .01 * StdRandom.uniform(100);
+            double weight = 0.01 * StdRandom.uniform(100);
             DirectedEdge e = new DirectedEdge(v, w, weight);
             addEdge(e);
         }

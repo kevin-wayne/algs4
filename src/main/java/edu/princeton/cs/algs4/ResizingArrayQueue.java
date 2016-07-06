@@ -38,7 +38,7 @@ import java.util.NoSuchElementException;
  */
 public class ResizingArrayQueue<Item> implements Iterable<Item> {
     private Item[] q;       // queue elements
-    private int N;          // number of elements on queue
+    private int n;          // number of elements on queue
     private int first;      // index of first element of queue
     private int last;       // index of next available slot
 
@@ -48,7 +48,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      */
     public ResizingArrayQueue() {
         q = (Item[]) new Object[2];
-        N = 0;
+        n = 0;
         first = 0;
         last = 0;
     }
@@ -58,7 +58,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      * @return true if this queue is empty; false otherwise
      */
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     /**
@@ -66,19 +66,19 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return N;
+        return n;
     }
 
     // resize the underlying array
-    private void resize(int max) {
-        assert max >= N;
-        Item[] temp = (Item[]) new Object[max];
-        for (int i = 0; i < N; i++) {
+    private void resize(int capacity) {
+        assert capacity >= n;
+        Item[] temp = (Item[]) new Object[capacity];
+        for (int i = 0; i < n; i++) {
             temp[i] = q[(first + i) % q.length];
         }
         q = temp;
         first = 0;
-        last  = N;
+        last  = n;
     }
 
     /**
@@ -87,10 +87,10 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      */
     public void enqueue(Item item) {
         // double size of array if necessary and recopy to front of array
-        if (N == q.length) resize(2*q.length);   // double size of array if necessary
+        if (n == q.length) resize(2*q.length);   // double size of array if necessary
         q[last++] = item;                        // add item
         if (last == q.length) last = 0;          // wrap-around
-        N++;
+        n++;
     }
 
     /**
@@ -102,11 +102,11 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = q[first];
         q[first] = null;                            // to avoid loitering
-        N--;
+        n--;
         first++;
         if (first == q.length) first = 0;           // wrap-around
         // shrink size of array if necessary
-        if (N > 0 && N == q.length/4) resize(q.length/2); 
+        if (n > 0 && n == q.length/4) resize(q.length/2); 
         return item;
     }
 
@@ -132,7 +132,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
     // an iterator, doesn't implement remove() since it's optional
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
-        public boolean hasNext()  { return i < N;                               }
+        public boolean hasNext()  { return i < n;                               }
         public void remove()      { throw new UnsupportedOperationException();  }
 
         public Item next() {
@@ -147,13 +147,13 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      * Unit tests the <tt>ResizingArrayQueue</tt> data type.
      */
     public static void main(String[] args) {
-        ResizingArrayQueue<String> q = new ResizingArrayQueue<String>();
+        ResizingArrayQueue<String> queue = new ResizingArrayQueue<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) q.enqueue(item);
-            else if (!q.isEmpty()) StdOut.print(q.dequeue() + " ");
+            if (!item.equals("-")) queue.enqueue(item);
+            else if (!queue.isEmpty()) StdOut.print(queue.dequeue() + " ");
         }
-        StdOut.println("(" + q.size() + " left on queue)");
+        StdOut.println("(" + queue.size() + " left on queue)");
     }
 
 }

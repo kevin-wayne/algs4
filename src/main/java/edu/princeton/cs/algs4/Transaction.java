@@ -12,7 +12,6 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 import java.util.Comparator;
 
-
 /**
  *  The <tt>Transaction</tt> class is an immutable data type to encapsulate a
  *  commercial transaction with a customer name, date, and amount.
@@ -137,11 +136,12 @@ public class Transaction implements Comparable<Transaction> {
      * @return a hash code for this transaction
      */
     public int hashCode() {
-        int hash = 17;
+        int hash = 1;
         hash = 31*hash + who.hashCode();
         hash = 31*hash + when.hashCode();
         hash = 31*hash + ((Double) amount).hashCode();
         return hash;
+        // return Objects.hash(who, when, amount);
     }
 
     /**

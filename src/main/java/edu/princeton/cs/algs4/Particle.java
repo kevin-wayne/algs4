@@ -66,8 +66,8 @@ public class Particle {
     public Particle() {
         rx     = StdRandom.uniform(0.0, 1.0);
         ry     = StdRandom.uniform(0.0, 1.0);
-        vx     = StdRandom.uniform(-.005, 0.005);
-        vy     = StdRandom.uniform(-.005, 0.005);
+        vx     = StdRandom.uniform(-0.005, 0.005);
+        vy     = StdRandom.uniform(-0.005, 0.005);
         radius = 0.01;
         mass   = 0.5;
         color  = Color.BLACK;

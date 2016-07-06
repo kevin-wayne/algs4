@@ -51,9 +51,9 @@ public class MSD {
      * @param a the array to be sorted
      */
     public static void sort(String[] a) {
-        int N = a.length;
-        String[] aux = new String[N];
-        sort(a, 0, N-1, 0, aux);
+        int n = a.length;
+        String[] aux = new String[n];
+        sort(a, 0, n-1, 0, aux);
     }
 
     // return dth character of s, -1 if d = length of string
@@ -132,9 +132,9 @@ public class MSD {
      * @param a the array to be sorted
      */
     public static void sort(int[] a) {
-        int N = a.length;
-        int[] aux = new int[N];
-        sort(a, 0, N-1, 0, aux);
+        int n = a.length;
+        int[] aux = new int[n];
+        sort(a, 0, n-1, 0, aux);
     }
 
     // MSD sort from a[lo] to a[hi], starting at the dth byte
@@ -213,9 +213,9 @@ public class MSD {
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        int N = a.length;
+        int n = a.length;
         sort(a);
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             StdOut.println(a[i]);
     }
 }

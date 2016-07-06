@@ -68,12 +68,12 @@ public class BST<Key extends Comparable<Key>, Value> {
         private Key key;           // sorted by key
         private Value val;         // associated data
         private Node left, right;  // left and right subtrees
-        private int N;             // number of nodes in subtree
+        private int size;          // number of nodes in subtree
 
-        public Node(Key key, Value val, int N) {
+        public Node(Key key, Value val, int size) {
             this.key = key;
             this.val = val;
-            this.N = N;
+            this.size = size;
         }
     }
 
@@ -102,7 +102,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     // return number of key-value pairs in BST rooted at x
     private int size(Node x) {
         if (x == null) return 0;
-        else return x.N;
+        else return x.size;
     }
 
     /**
@@ -164,7 +164,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if      (cmp < 0) x.left  = put(x.left,  key, val);
         else if (cmp > 0) x.right = put(x.right, key, val);
         else              x.val   = val;
-        x.N = 1 + size(x.left) + size(x.right);
+        x.size = 1 + size(x.left) + size(x.right);
         return x;
     }
 
@@ -183,7 +183,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     private Node deleteMin(Node x) {
         if (x.left == null) return x.right;
         x.left = deleteMin(x.left);
-        x.N = size(x.left) + size(x.right) + 1;
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
 
@@ -201,7 +201,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     private Node deleteMax(Node x) {
         if (x.right == null) return x.left;
         x.right = deleteMax(x.right);
-        x.N = size(x.left) + size(x.right) + 1;
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     }
 
@@ -232,7 +232,7 @@ public class BST<Key extends Comparable<Key>, Value> {
             x.right = deleteMin(t.right);
             x.left = t.left;
         } 
-        x.N = size(x.left) + size(x.right) + 1;
+        x.size = size(x.left) + size(x.right) + 1;
         return x;
     } 
 
@@ -484,7 +484,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     private boolean isSizeConsistent() { return isSizeConsistent(root); }
     private boolean isSizeConsistent(Node x) {
         if (x == null) return true;
-        if (x.N != size(x.left) + size(x.right) + 1) return false;
+        if (x.size != size(x.left) + size(x.right) + 1) return false;
         return isSizeConsistent(x.left) && isSizeConsistent(x.right);
     } 
 

@@ -63,14 +63,13 @@ public class MergeBU {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
-        Comparable[] aux = new Comparable[N];
-        for (int n = 1; n < N; n = n+n) {
-            for (int i = 0; i < N-n; i += n+n) {
-                int lo = i;
-                int m  = i+n-1;
-                int hi = Math.min(i+n+n-1, N-1);
-                merge(a, aux, lo, m, hi);
+        int n = a.length;
+        Comparable[] aux = new Comparable[n];
+        for (int len = 1; len < n; len *= 2) {
+            for (int lo = 0; lo < n-len; lo += len+len) {
+                int mid  = lo+len-1;
+                int hi = Math.min(lo+len+len-1, n-1);
+                merge(a, aux, lo, mid, hi);
             }
         }
         assert isSorted(a);

@@ -47,7 +47,7 @@ import java.util.NoSuchElementException;
  */
 public class Stack<Item> implements Iterable<Item> {
     private Node<Item> first;     // top of stack
-    private int N;                // size of the stack
+    private int n;                // size of the stack
 
     // helper linked list class
     private static class Node<Item> {
@@ -60,7 +60,7 @@ public class Stack<Item> implements Iterable<Item> {
      */
     public Stack() {
         first = null;
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Stack<Item> implements Iterable<Item> {
      * @return the number of items in this stack
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -91,7 +91,7 @@ public class Stack<Item> implements Iterable<Item> {
         first = new Node<Item>();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
     }
 
     /**
@@ -104,7 +104,7 @@ public class Stack<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;        // save item to return
         first = first.next;            // delete first node
-        N--;
+        n--;
         return item;                   // return the saved item
     }
 
@@ -171,13 +171,15 @@ public class Stack<Item> implements Iterable<Item> {
      * Unit tests the <tt>Stack</tt> data type.
      */
     public static void main(String[] args) {
-        Stack<String> s = new Stack<String>();
+        Stack<String> stack = new Stack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) s.push(item);
-            else if (!s.isEmpty()) StdOut.print(s.pop() + " ");
+            if (!item.equals("-"))
+                stack.push(item);
+            else if (!stack.isEmpty())
+                StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
 
