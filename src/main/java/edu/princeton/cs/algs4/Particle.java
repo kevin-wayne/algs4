@@ -177,10 +177,12 @@ public class Particle {
         double dvdr = dx*dvx + dy*dvy;             // dv dot dr
         double dist = this.radius + that.radius;   // distance between particle centers at collison
 
-        // normal force F, and in x and y directions
-        double F = 2 * this.mass * that.mass * dvdr / ((this.mass + that.mass) * dist);
-        double fx = F * dx / dist;
-        double fy = F * dy / dist;
+        // magnitude of normal force
+        double magnitude = 2 * this.mass * that.mass * dvdr / ((this.mass + that.mass) * dist);
+
+        // normal force, and in x and y directions
+        double fx = magnitude * dx / dist;
+        double fy = magnitude * dy / dist;
 
         // update velocities according to normal force
         this.vx += fx / this.mass;

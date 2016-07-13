@@ -56,7 +56,7 @@ package edu.princeton.cs.algs4;
  */
 public class NFA { 
 
-    private Digraph G;         // digraph of epsilon transitions
+    private Digraph graph;     // digraph of epsilon transitions
     private String regexp;     // regular expression
     private int m;             // number of characters in regular expression
 
@@ -69,7 +69,7 @@ public class NFA {
         this.regexp = regexp;
         m = regexp.length();
         Stack<Integer> ops = new Stack<Integer>(); 
-        G = new Digraph(m+1); 
+        graph = new Digraph(m+1); 
         for (int i = 0; i < m; i++) { 
             int lp = i; 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|') 
@@ -80,8 +80,8 @@ public class NFA {
                 // 2-way or operator
                 if (regexp.charAt(or) == '|') { 
                     lp = ops.pop();
-                    G.addEdge(lp, or+1);
-                    G.addEdge(or, i);
+                    graph.addEdge(lp, or+1);
+                    graph.addEdge(or, i);
                 }
                 else if (regexp.charAt(or) == '(')
                     lp = or;
@@ -90,11 +90,11 @@ public class NFA {
 
             // closure operator (uses 1-character lookahead)
             if (i < m-1 && regexp.charAt(i+1) == '*') { 
-                G.addEdge(lp, i+1); 
-                G.addEdge(i+1, lp); 
+                graph.addEdge(lp, i+1); 
+                graph.addEdge(i+1, lp); 
             } 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')') 
-                G.addEdge(i, i+1);
+                graph.addEdge(i, i+1);
         }
         if (ops.size() != 0)
             throw new IllegalArgumentException("Invalid regular expression");
@@ -108,9 +108,9 @@ public class NFA {
      *         <tt>false</tt> otherwise
      */
     public boolean recognizes(String txt) {
-        DirectedDFS dfs = new DirectedDFS(G, 0);
+        DirectedDFS dfs = new DirectedDFS(graph, 0);
         Bag<Integer> pc = new Bag<Integer>();
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < graph.V(); v++)
             if (dfs.marked(v)) pc.add(v);
 
         // Compute possible NFA states for txt[i+1]
@@ -124,9 +124,9 @@ public class NFA {
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
                     match.add(v+1); 
             }
-            dfs = new DirectedDFS(G, match); 
+            dfs = new DirectedDFS(graph, match); 
             pc = new Bag<Integer>();
-            for (int v = 0; v < G.V(); v++)
+            for (int v = 0; v < graph.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
 
             // optimization if no states reachable

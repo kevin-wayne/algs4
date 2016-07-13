@@ -124,7 +124,6 @@ public class LinearProgramming {
     // find row p using min ratio rule (-1 if no such row)
     // (smallest such index if there is a tie)
     private int minRatioRule(int q) {
-        double EPSILON = 1E-12;
         int p = -1;
         for (int i = 0; i < m; i++) {
             // if (a[i][q] <= 0) continue;

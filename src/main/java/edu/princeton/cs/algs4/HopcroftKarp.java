@@ -165,14 +165,17 @@ public class HopcroftKarp {
         return false;
     }
 
-
-    // is there an augmenting path?
-    // an alternating path is a path whose edges belong alternately to the matching and not to the matchign
-    // an augmenting path is an alternating path that starts and ends at unmatched vertices
-    //
-    // if so, upon termination adj[] contains the level graph;
-    // if not, upon termination marked[] specifies those vertices reachable via an alternating path
-    // from one side of the bipartition
+    /*
+     * is there an augmenting path?
+     *   - if so, upon termination adj[] contains the level graph;
+     *   - if not, upon termination marked[] specifies those vertices reachable via an alternating
+     *     path from one side of the bipartition
+     *
+     * an alternating path is a path whose edges belong alternately to the matching and not
+     * to the matching
+     *
+     * an augmenting path is an alternating path that starts and ends at unmatched vertices
+     */
     private boolean hasAugmentingPath(Graph G) {
 
         // shortest path distances

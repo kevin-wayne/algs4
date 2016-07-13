@@ -1,10 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac CollisionSystem.java
- *  Execution:    java CollisionSystem N               (N random particles)
+ *  Execution:    java CollisionSystem n               (n random particles)
  *                java CollisionSystem < input.txt     (from a file) 
  *  Dependencies: StdDraw.java Particle.java MinPQ.java
  *  
- *  Creates N random particles and simulates their motion according
+ *  Creates n random particles and simulates their motion according
  *  to the laws of elastic collisions.
  *
  ******************************************************************************/
@@ -178,19 +178,19 @@ public class CollisionSystem {
         // the array of particles
         Particle[] particles;
 
-        // create N random particles
+        // create n random particles
         if (args.length == 1) {
-            int N = Integer.parseInt(args[0]);
-            particles = new Particle[N];
-            for (int i = 0; i < N; i++)
+            int n = Integer.parseInt(args[0]);
+            particles = new Particle[n];
+            for (int i = 0; i < n; i++)
                 particles[i] = new Particle();
         }
 
         // or read from standard input
         else {
-            int N = StdIn.readInt();
-            particles = new Particle[N];
-            for (int i = 0; i < N; i++) {
+            int n = StdIn.readInt();
+            particles = new Particle[n];
+            for (int i = 0; i < n; i++) {
                 double rx     = StdIn.readDouble();
                 double ry     = StdIn.readDouble();
                 double vx     = StdIn.readDouble();

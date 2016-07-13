@@ -68,7 +68,7 @@ public class EdgeWeightedDirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            //found new vertex, so recur
+            // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = e;
                 dfs(G, w);
@@ -77,11 +77,14 @@ public class EdgeWeightedDirectedCycle {
             // trace back directed cycle
             else if (onStack[w]) {
                 cycle = new Stack<DirectedEdge>();
-                while (e.from() != w) {
-                    cycle.push(e);
-                    e = edgeTo[e.from()];
+
+                DirectedEdge f = e;
+                while (f.from() != w) {
+                    cycle.push(f);
+                    f = edgeTo[f.from()];
                 }
-                cycle.push(e);
+                cycle.push(f);
+
                 return;
             }
         }

@@ -80,7 +80,7 @@ public class Alphabet {
 
     private char[] alphabet;     // the characters in the alphabet
     private int[] inverse;       // indices
-    private int R;               // the radix of the alphabet
+    private final int R;         // the radix of the alphabet
 
     /**
      * Initializes a new alphabet from the given set of characters.
@@ -112,12 +112,12 @@ public class Alphabet {
     /**
      * Initializes a new alphabet using characters 0 through R-1.
      *
-     * @param R the number of characters in the alphabet (the radix)
+     * @param radix the number of characters in the alphabet (the radix R)
      */
-    private Alphabet(int R) {
+    private Alphabet(int radix) {
+        this.R = radix;
         alphabet = new char[R];
         inverse = new int[R];
-        this.R = R;
 
         // can't use char since R can be as big as 65,536
         for (int i = 0; i < R; i++)

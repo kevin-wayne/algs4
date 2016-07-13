@@ -62,7 +62,9 @@ import java.util.NoSuchElementException;
  *  For other implementations of the same API, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link BST},
  *  {@link SeparateChainingHashST}, {@link LinearProbingHashST}, and {@link AVLTreeST}.
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
  */
 
 public class RedBlackBST<Key extends Comparable<Key>, Value> {

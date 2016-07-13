@@ -50,7 +50,7 @@ import java.util.NoSuchElementException;
  */
 public class LinkedBag<Item> implements Iterable<Item> {
     private Node first;    // beginning of bag
-    private int N;         // number of elements in bag
+    private int n;         // number of elements in bag
 
     // helper linked list class
     private class Node {
@@ -63,7 +63,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
      */
     public LinkedBag() {
         first = null;
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -79,7 +79,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
      * @return the number of items in this bag
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -91,7 +91,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
     }
 
 

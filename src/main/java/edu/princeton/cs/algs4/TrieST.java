@@ -51,7 +51,7 @@ public class TrieST<Value> {
 
 
     private Node root;      // root of trie
-    private int N;          // number of keys in trie
+    private int n;          // number of keys in trie
 
     // R-way trie node
     private static class Node {
@@ -113,7 +113,7 @@ public class TrieST<Value> {
     private Node put(Node x, String key, Value val, int d) {
         if (x == null) x = new Node();
         if (d == key.length()) {
-            if (x.val == null) N++;
+            if (x.val == null) n++;
             x.val = val;
             return x;
         }
@@ -127,7 +127,7 @@ public class TrieST<Value> {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -244,7 +244,7 @@ public class TrieST<Value> {
     private Node delete(Node x, String key, int d) {
         if (x == null) return null;
         if (d == key.length()) {
-            if (x.val != null) N--;
+            if (x.val != null) n--;
             x.val = null;
         }
         else {

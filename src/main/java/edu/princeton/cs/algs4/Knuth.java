@@ -74,10 +74,10 @@ public class Knuth {
      * @param a the array to be shuffled
      */
     public static void shuffle(Object[] a) {
-        int N = a.length;
-        for (int i = 0; i < N; i++) {
-            // choose index uniformly in [i, N-1]
-            int r = i + (int) (Math.random() * (N - i));
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            // choose index uniformly in [i, n-1]
+            int r = i + (int) (Math.random() * (n - i));
             Object swap = a[r];
             a[r] = a[i];
             a[i] = swap;

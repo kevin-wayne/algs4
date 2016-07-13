@@ -41,7 +41,9 @@ package edu.princeton.cs.algs4;
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link BST}, {@link RedBlackBST}, and
  *  {@link SeparateChainingHashST},
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
  */
 public class LinearProbingHashST<Key, Value> {
     private static final int INIT_CAPACITY = 4;

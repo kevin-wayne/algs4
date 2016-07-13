@@ -75,18 +75,18 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      * This class represents an inner node of the AVL tree.
      */
     private class Node {
-        private Key key;    // the key
-        private Value val;  // the associated value
-        private int h;      // height of the subtree
-        private int N;      // number of nodes in subtree
-        private Node left;  // left subtree
-        private Node right; // right subtree
+        private Key key;     // the key
+        private Value val;   // the associated value
+        private int height;  // height of the subtree
+        private int size;    // number of nodes in subtree
+        private Node left;   // left subtree
+        private Node right;  // right subtree
 
-        public Node(Key key, Value val, int h, int N) {
+        public Node(Key key, Value val, int height, int size) {
             this.key = key;
             this.val = val;
-            this.N = N;
-            this.h = h;
+            this.size = size;
+            this.height = height;
         }
     }
 
@@ -123,7 +123,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      */
     private int size(Node x) {
         if (x == null) return 0;
-        return x.N;
+        return x.size;
     }
 
     /**
@@ -146,7 +146,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      */
     private int height(Node x) {
         if (x == null) return -1;
-        return x.h;
+        return x.height;
     }
 
     /**
@@ -238,8 +238,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
             x.val = val;
             return x;
         }
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
         return balance(x);
     }
 
@@ -289,10 +289,10 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
         Node y = x.left;
         x.left = y.right;
         y.right = x;
-        y.N = x.N;
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
-        y.h = 1 + Math.max(height(y.left), height(y.right));
+        y.size = x.size;
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
+        y.height = 1 + Math.max(height(y.left), height(y.right));
         return y;
     }
 
@@ -306,10 +306,10 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
         Node y = x.right;
         x.right = y.left;
         y.left = x;
-        y.N = x.N;
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
-        y.h = 1 + Math.max(height(y.left), height(y.right));
+        y.size = x.size;
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
+        y.height = 1 + Math.max(height(y.left), height(y.right));
         return y;
     }
 
@@ -357,8 +357,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
                 x.left = y.left;
             }
         }
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
         return balance(x);
     }
 
@@ -382,8 +382,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     private Node deleteMin(Node x) {
         if (x.left == null) return x.right;
         x.left = deleteMin(x.left);
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
         return balance(x);
     }
 
@@ -407,8 +407,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     private Node deleteMax(Node x) {
         if (x.right == null) return x.left;
         x.right = deleteMax(x.right);
-        x.N = 1 + size(x.left) + size(x.right);
-        x.h = 1 + Math.max(height(x.left), height(x.right));
+        x.size = 1 + size(x.left) + size(x.right);
+        x.height = 1 + Math.max(height(x.left), height(x.right));
         return balance(x);
     }
 
@@ -774,7 +774,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      */
     private boolean isSizeConsistent(Node x) {
         if (x == null) return true;
-        if (x.N != size(x.left) + size(x.right) + 1) return false;
+        if (x.size != size(x.left) + size(x.right) + 1) return false;
         return isSizeConsistent(x.left) && isSizeConsistent(x.right);
     }
 

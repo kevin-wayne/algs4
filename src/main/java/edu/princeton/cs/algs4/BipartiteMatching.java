@@ -42,8 +42,8 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> sqrt(<em>V</em>))
  *  using the Hopcroft-Karp algorithm and
- *  <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>, which solves the problem in
- *  O(<em>E V</em>) time via a reduction to maxflow.
+ *  <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
+ *  which solves the problem in O(<em>E V</em>) time via a reduction to maxflow.
  *  <p>
  *  For additional documentation, see
  *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
@@ -116,16 +116,20 @@ public class BipartiteMatching {
     }
 
 
-    // is there an augmenting path?
-    // an alternating path is a path whose edges belong alternately to the matching and not to the matching
-    // an augmenting path is an alternating path that starts and ends at unmatched vertices
-    //
-    // if so, upon termination edgeTo[] contains a parent-link representation of such a path
-    // if not, upon terminatation marked[] specifies the subset of vertices reachable via an alternating
-    // path from one side of the bipartition
-    //
-    // this implementation finds a shortest augmenting path (fewest number of edges), though there
-    // is no particular advantage to do so here
+    /*
+     * is there an augmenting path?
+     *   - if so, upon termination adj[] contains the level graph;
+     *   - if not, upon termination marked[] specifies those vertices reachable via an alternating
+     *     path from one side of the bipartition
+     *
+     * an alternating path is a path whose edges belong alternately to the matching and not
+     * to the matching
+     *
+     * an augmenting path is an alternating path that starts and ends at unmatched vertices
+     *
+     * this implementation finds a shortest augmenting path (fewest number of edges), though there
+     * is no particular advantage to do so here
+     */
     private boolean hasAugmentingPath(Graph G) {
         marked = new boolean[V];
 

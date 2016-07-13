@@ -156,7 +156,7 @@ public class TwoPersonZeroSumGame {
         for (int j = 0; j < n; j++) {
             if (x[j] < 0) {
                 StdOut.println("row vector not a probability distribution");
-                StdOut.printf("    x[%d] = %f\n" , j, x[j]);
+                StdOut.printf("    x[%d] = %f\n", j, x[j]);
                 return false;
             }
             sum += x[j];
@@ -176,7 +176,7 @@ public class TwoPersonZeroSumGame {
         for (int i = 0; i < m; i++) {
             if (y[i] < 0) {
                 StdOut.println("column vector y[] is not a probability distribution");
-                StdOut.printf("    y[%d] = %f\n" , i, y[i]);
+                StdOut.printf("    y[%d] = %f\n", i, y[i]);
                 return false;
             }
             sum += y[i];

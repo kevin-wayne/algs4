@@ -6,9 +6,6 @@
  *  Solve an n-by-n assignment problem in n^3 log n time using the
  *  successive shortest path algorithm.
  *
- *  Assumes n-by-n cost matrix is nonnegative.
- *  TODO: remove this assumption
- *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -43,6 +40,7 @@ public class AssignmentProblem {
 
     private int n;              // number of rows and columns
     private double[][] weight;  // the n-by-n cost matrix
+    private double minWeight;   // minimum value of any weight
     private double[] px;        // px[i] = dual variable for row i
     private double[] py;        // py[j] = dual variable for col j
     private int[] xy;           // xy[i] = j means i-j is a match
@@ -60,8 +58,7 @@ public class AssignmentProblem {
         this.weight = new double[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (!(weight[i][j] >= 0.0))
-                    throw new IllegalArgumentException("weights must be nonnegative");
+                if (weight[i][j] < minWeight) minWeight = weight[i][j];
                 this.weight[i][j] = weight[i][j];
             }
         }
@@ -128,8 +125,9 @@ public class AssignmentProblem {
     }
 
     // reduced cost of i-j
+    // (subtracting off minWeight reweights all weights to be non-negative)
     private double reducedCost(int i, int j) {
-        return weight[i][j] + px[i] - py[j];
+        return (weight[i][j] - minWeight) + px[i] - py[j];
     }
 
     /**
@@ -273,7 +271,7 @@ public class AssignmentProblem {
         double[][] weight = new double[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                weight[i][j] = 100 + StdRandom.uniform(900);
+                weight[i][j] = StdRandom.uniform(900) + 100;  // 3 digits
             }
         }
 
@@ -283,7 +281,7 @@ public class AssignmentProblem {
         StdOut.println();
 
         // print n-by-n matrix and optimal solution
-        if (n <= 20) return;
+        if (n >= 20) return;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (j == assignment.sol(i))

@@ -42,7 +42,7 @@ package edu.princeton.cs.algs4;
 public class SymbolDigraph {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Digraph G;
+    private Digraph graph;           // the underlying digraph
 
     /**  
      * Initializes a digraph from a file using the specified delimiter.
@@ -74,14 +74,14 @@ public class SymbolDigraph {
 
         // second pass builds the digraph by connecting first vertex on each
         // line to all others
-        G = new Digraph(st.size());
+        graph = new Digraph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++) {
                 int w = st.get(a[i]);
-                G.addEdge(v, w);
+                graph.addEdge(v, w);
             }
         }
     }
@@ -139,7 +139,7 @@ public class SymbolDigraph {
      * @deprecated Replaced by {@link #digraph()}.
      */
     public Digraph G() {
-        return G;
+        return graph;
     }
 
     /**
@@ -148,7 +148,7 @@ public class SymbolDigraph {
      * @return the digraph associated with the symbol digraph
      */
     public Digraph digraph() {
-        return G;
+        return graph;
     }
 
     /**
@@ -158,10 +158,10 @@ public class SymbolDigraph {
         String filename  = args[0];
         String delimiter = args[1];
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
-        Digraph G = sg.G();
+        Digraph graph = sg.digraph();
         while (!StdIn.isEmpty()) {
             String t = StdIn.readLine();
-            for (int v : G.adj(sg.index(t))) {
+            for (int v : graph.adj(sg.index(t))) {
                 StdOut.println("   " + sg.name(v));
             }
         }

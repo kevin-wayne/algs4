@@ -40,11 +40,11 @@ public class Genome {
     public static void compress() { 
         Alphabet DNA = Alphabet.DNA;
         String s = BinaryStdIn.readString();
-        int N = s.length();
-        BinaryStdOut.write(N);
+        int n = s.length();
+        BinaryStdOut.write(n);
 
         // Write two-bit code for char. 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             int d = DNA.toIndex(s.charAt(i));
             BinaryStdOut.write(d, 2);
         }
@@ -58,9 +58,9 @@ public class Genome {
      */
     public static void expand() {
         Alphabet DNA = Alphabet.DNA;
-        int N = BinaryStdIn.readInt();
+        int n = BinaryStdIn.readInt();
         // Read two bits; write char. 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             char c = BinaryStdIn.readChar(2);
             BinaryStdOut.write(DNA.toChar(c), 8);
         }

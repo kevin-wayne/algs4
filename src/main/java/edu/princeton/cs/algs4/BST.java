@@ -60,6 +60,9 @@ import java.util.NoSuchElementException;
  *  {@link SequentialSearchST}, {@link RedBlackBST},
  *  {@link SeparateChainingHashST}, and {@link LinearProbingHashST},
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
  */
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;             // root of BST

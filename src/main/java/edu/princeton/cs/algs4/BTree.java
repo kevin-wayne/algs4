@@ -33,9 +33,9 @@ package edu.princeton.cs.algs4;
  *  <tt>compareTo()</tt> and method to compare two keys. It does not call either
  *  <tt>equals()</tt> or <tt>hashCode()</tt>.
  *  The <em>get</em>, <em>put</em>, and <em>contains</em> operations
- *  each make log<sub><em>M</em></sub>(<em>N</em>) probes in the worst case,
- *  where <em>N</em> is the number of key-value pairs
- *  and <em>M</em> is the branching factor.
+ *  each make log<sub><em>m</em></sub>(<em>n</em>) probes in the worst case,
+ *  where <em>n</em> is the number of key-value pairs
+ *  and <em>m</em> is the branching factor.
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
@@ -50,7 +50,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
 
     private Node root;       // root of the B-tree
     private int height;      // height of the B-tree
-    private int N;           // number of key-value pairs in the B-tree
+    private int n;           // number of key-value pairs in the B-tree
 
     // helper B-tree node data type
     private static final class Node {
@@ -96,7 +96,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -155,7 +155,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
     public void put(Key key, Value val) {
         if (key == null) throw new NullPointerException("key must not be null");
         Node u = insert(root, key, val, height); 
-        N++;
+        n++;
         if (u == null) return;
 
         // need to split root

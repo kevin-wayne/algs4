@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
 public class SymbolGraph {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Graph G;
+    private Graph graph;             // the underlying graph
 
     /**  
      * Initializes a graph from a file using the specified delimiter.
@@ -102,14 +102,14 @@ public class SymbolGraph {
 
         // second pass builds the graph by connecting first vertex on each
         // line to all others
-        G = new Graph(st.size());
+        graph = new Graph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++) {
                 int w = st.get(a[i]);
-                G.addEdge(v, w);
+                graph.addEdge(v, w);
             }
         }
     }
@@ -169,7 +169,7 @@ public class SymbolGraph {
      * @deprecated Replaced by {@link #graph()}.
      */
     public Graph G() {
-        return G;
+        return graph;
     }
 
     /**
@@ -178,7 +178,7 @@ public class SymbolGraph {
      * @return the graph associated with the symbol graph
      */
     public Graph graph() {
-        return G;
+        return graph;
     }
 
 
@@ -189,12 +189,12 @@ public class SymbolGraph {
         String filename  = args[0];
         String delimiter = args[1];
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
-        Graph G = sg.G();
+        Graph graph = sg.graph();
         while (StdIn.hasNextLine()) {
             String source = StdIn.readLine();
             if (sg.contains(source)) {
                 int s = sg.index(source);
-                for (int v : G.adj(s)) {
+                for (int v : graph.adj(s)) {
                     StdOut.println("   " + sg.name(v));
                 }
             }

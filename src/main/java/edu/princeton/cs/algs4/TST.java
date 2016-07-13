@@ -60,7 +60,7 @@ package edu.princeton.cs.algs4;
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class TST<Value> {
-    private int N;              // size
+    private int n;              // size
     private Node<Value> root;   // root of TST
 
     private static class Node<Value> {
@@ -80,7 +80,7 @@ public class TST<Value> {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -130,7 +130,7 @@ public class TST<Value> {
      * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
      */
     public void put(String key, Value val) {
-        if (!contains(key)) N++;
+        if (!contains(key)) n++;
         root = put(root, key, val, 0);
     }
 

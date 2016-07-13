@@ -10,6 +10,9 @@
  *  rotating calipers method to find all antipodal point pairs
  *  and the farthest pair.
  *
+ *  % java FarthestPair < input100.txt
+ *  42697.98170874122 from (32011.0, 3140.0) to (822.0, 32301.0)
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
