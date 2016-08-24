@@ -93,7 +93,7 @@ public class FFT {
      *
      * @param  x the complex array
      * @return the FFT of the complex array {@code x}
-     * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
+     * @throws IllegalArgumentException if the length of {@code x} is not a power of 2
      */
     public static Complex[] fft(Complex[] x) {
         int n = x.length;
@@ -139,7 +139,7 @@ public class FFT {
      *
      * @param  x the complex array
      * @return the inverse FFT of the complex array {@code x}
-     * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
+     * @throws IllegalArgumentException if the length of {@code x} is not a power of 2
      */
     public static Complex[] ifft(Complex[] x) {
         int n = x.length;
@@ -173,7 +173,7 @@ public class FFT {
      * @param  x one complex array
      * @param  y the other complex array
      * @return the circular convolution of {@code x} and {@code y}
-     * @throws IllegalArgumentException if the length of <t>x</tt> does not equal
+     * @throws IllegalArgumentException if the length of {@code x} does not equal
      *         the length of {@code y} or if the length is not a power of 2
      */
     public static Complex[] cconvolve(Complex[] x, Complex[] y) {
@@ -206,7 +206,7 @@ public class FFT {
      * @param  x one complex array
      * @param  y the other complex array
      * @return the linear convolution of {@code x} and {@code y}
-     * @throws IllegalArgumentException if the length of <t>x</tt> does not equal
+     * @throws IllegalArgumentException if the length of {@code x} does not equal
      *         the length of {@code y} or if the length is not a power of 2
      */
     public static Complex[] convolve(Complex[] x, Complex[] y) {

@@ -238,7 +238,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to remove
      * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
-     * @throws NoSuchElementException no key is associated with index <t>i</tt>
+     * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void delete(int i) {
         if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();

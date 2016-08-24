@@ -46,8 +46,8 @@ import java.util.regex.Pattern;
  *  <p>
  *  Whitespace is defined in {@link Character#isWhitespace(char)}. Newlines
  *  consist of \n, \r, \r\n, and Unicode hex code points 0x2028, 0x2029, 0x0085;
- *  see <tt><a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
- *  Scanner.java</a></tt> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).
+ *  <p> see <a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
+ *  Scanner.java</a> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).
  *
  *  @author David Pritchard
  *  @author Robert Sedgewick
