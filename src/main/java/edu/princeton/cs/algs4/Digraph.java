@@ -31,7 +31,7 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Digraph</tt> class represents a directed graph of vertices
+ *  The {@code Digraph} class represents a directed graph of vertices
  *  named 0 through <em>V</em> - 1.
  *  It supports the following two primary operations: add an edge to the digraph,
  *  iterate over all of the vertices adjacent from a given vertex.
@@ -171,10 +171,10 @@ public class Digraph {
     }
 
     /**
-     * Returns the vertices adjacent from vertex <tt>v</tt> in this digraph.
+     * Returns the vertices adjacent from vertex {@code v} in this digraph.
      *
      * @param  v the vertex
-     * @return the vertices adjacent from vertex <tt>v</tt> in this digraph, as an iterable
+     * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<Integer> adj(int v) {
@@ -183,11 +183,11 @@ public class Digraph {
     }
 
     /**
-     * Returns the number of directed edges incident from vertex <tt>v</tt>.
-     * This is known as the <em>outdegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident from vertex {@code v}.
+     * This is known as the <em>outdegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the outdegree of vertex <tt>v</tt>               
+     * @return the outdegree of vertex {@code v}               
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int outdegree(int v) {
@@ -196,11 +196,11 @@ public class Digraph {
     }
 
     /**
-     * Returns the number of directed edges incident to vertex <tt>v</tt>.
-     * This is known as the <em>indegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident to vertex {@code v}.
+     * This is known as the <em>indegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the indegree of vertex <tt>v</tt>               
+     * @return the indegree of vertex {@code v}               
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int indegree(int v) {
@@ -243,7 +243,7 @@ public class Digraph {
     }
 
     /**
-     * Unit tests the <tt>Digraph</tt> data type.
+     * Unit tests the {@code Digraph} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

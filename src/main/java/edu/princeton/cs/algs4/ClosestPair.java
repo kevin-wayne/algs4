@@ -15,7 +15,7 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>ClosestPair</tt> data type computes a closest pair of points
+ *  The {@code ClosestPair} data type computes a closest pair of points
  *  in a set of <em>n</em> points in the plane and provides accessor methods 
  *  for getting the closest pair of points and the distance between them.
  *  The distance between two points is their Euclidean distance.
@@ -42,8 +42,8 @@ public class ClosestPair {
      * Computes the closest pair of points in the specified array of points.
      *
      * @param  points the array of points
-     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
-     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code points} is {@code null} or if any
+     *         entry in {@code points[]} is {@code null}
      */
     public ClosestPair(Point2D[] points) {
         int n = points.length;
@@ -124,7 +124,7 @@ public class ClosestPair {
      * Returns one of the points in the closest pair of points.
      *
      * @return one of the two points in the closest pair of points;
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D either() {
         return best1;
@@ -134,7 +134,7 @@ public class ClosestPair {
      * Returns the other point in the closest pair of points.
      *
      * @return the other point in the closest pair of points
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D other() {
         return best2;
@@ -144,7 +144,7 @@ public class ClosestPair {
      * Returns the Eucliden distance between the closest pair of points.
      *
      * @return the Euclidean distance between the closest pair of points
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such pair of points
+     *         {@code Double.POSITIVE_INFINITY} if no such pair of points
      *         exist (because there are fewer than 2 points)
      */
     public double distance() {
@@ -177,8 +177,8 @@ public class ClosestPair {
 
 
    /**
-     * Unit tests the <tt>ClosestPair</tt> data type.
-     * Reads in an integer <tt>n</tt> and <tt>n</tt> points (specified by
+     * Unit tests the {@code ClosestPair} data type.
+     * Reads in an integer {@code n} and {@code n} points (specified by
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes a closest pair of points; and prints the pair to standard
      * output.

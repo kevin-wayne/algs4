@@ -14,7 +14,7 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 
 /**
- *  The <tt>CollisionSystem</tt> class represents a collection of particles
+ *  The {@code CollisionSystem} class represents a collection of particles
  *  moving in the unit box, according to the laws of elastic collision.
  *  This event-based simulation relies on a priority queue.
  *  <p>
@@ -159,9 +159,9 @@ public class CollisionSystem {
 
 
     /**
-     * Unit tests the <tt>CollisionSystem</tt> data type.
+     * Unit tests the {@code CollisionSystem} data type.
      * Reads in the particle collision system from a standard input
-     * (or generates <tt>N</tt> random particles if a command-line integer
+     * (or generates {@code N} random particles if a command-line integer
      * is specified); simulates the system.
      */
     public static void main(String[] args) {

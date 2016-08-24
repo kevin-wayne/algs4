@@ -24,7 +24,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Merge</tt> class provides static methods for sorting an
+ *  The {@code Merge} class provides static methods for sorting an
  *  array using mergesort.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
@@ -130,8 +130,8 @@ public class Merge {
     /**
      * Returns a permutation that gives the elements in the array in ascending order.
      * @param a the array
-     * @return a permutation <tt>p[]</tt> such that <tt>a[p[0]]</tt>, <tt>a[p[1]]</tt>,
-     *    ..., <tt>a[p[N-1]]</tt> are in ascending order
+     * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
+     *    ..., {@code a[p[N-1]]} are in ascending order
      */
     public static int[] indexSort(Comparable[] a) {
         int n = a.length;

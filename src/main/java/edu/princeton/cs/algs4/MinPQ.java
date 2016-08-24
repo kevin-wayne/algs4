@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>MinPQ</tt> class represents a priority queue of generic keys.
+ *  The {@code MinPQ} class represents a priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-minimum</em>
  *  operations, along with methods for peeking at the minimum key,
  *  testing if the priority queue is empty, and iterating through
@@ -108,8 +108,8 @@ public class MinPQ<Key> implements Iterable<Key> {
     /**
      * Returns true if this priority queue is empty.
      *
-     * @return <tt>true</tt> if this priority queue is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this priority queue is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return n == 0;
@@ -237,7 +237,7 @@ public class MinPQ<Key> implements Iterable<Key> {
      * Returns an iterator that iterates over the keys on this priority queue
      * in ascending order.
      * <p>
-     * The iterator doesn't implement <tt>remove()</tt> since it's optional.
+     * The iterator doesn't implement {@code remove()} since it's optional.
      *
      * @return an iterator that iterates over the keys in ascending order
      */
@@ -266,7 +266,7 @@ public class MinPQ<Key> implements Iterable<Key> {
     }
 
     /**
-     * Unit tests the <tt>MinPQ</tt> data type.
+     * Unit tests the {@code MinPQ} data type.
      */
     public static void main(String[] args) {
         MinPQ<String> pq = new MinPQ<String>();

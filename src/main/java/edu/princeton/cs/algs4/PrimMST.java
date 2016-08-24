@@ -39,13 +39,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>PrimMST</tt> class represents a data type for computing a
+ *  The {@code PrimMST} class represents a data type for computing a
  *  <em>minimum spanning tree</em> in an edge-weighted graph.
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The <tt>weight()</tt> method returns the 
- *  weight of a minimum spanning tree and the <tt>edges()</tt> method
+ *  in each connected component. The {@code weight()} method returns the 
+ *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
  *  This implementation uses <em>Prim's algorithm</em> with an indexed
@@ -53,8 +53,8 @@ package edu.princeton.cs.algs4;
  *  The constructor takes time proportional to <em>E</em> log <em>V</em>
  *  and extra space (not including the graph) proportional to <em>V</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>weight()</tt> method takes constant time
- *  and the <tt>edges()</tt> method takes time proportional to <em>V</em>.
+ *  Afterwards, the {@code weight()} method takes constant time
+ *  and the {@code edges()} method takes time proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
@@ -205,7 +205,7 @@ public class PrimMST {
     }
 
     /**
-     * Unit tests the <tt>PrimMST</tt> data type.
+     * Unit tests the {@code PrimMST} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

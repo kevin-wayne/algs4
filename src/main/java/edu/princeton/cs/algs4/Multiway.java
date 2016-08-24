@@ -23,7 +23,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Multiway</tt> class provides a client for reading in several
+ *  The {@code Multiway} class provides a client for reading in several
  *  sorted text files and merging them together into a single sorted
  *  text stream.
  *  This implementation uses a {@link IndexMinPQ} to perform the multiway

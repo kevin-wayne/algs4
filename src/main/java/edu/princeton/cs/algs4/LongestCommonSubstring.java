@@ -14,7 +14,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LongestCommonSubstring</tt> class provides a {@link SuffixArray}
+ *  The {@code LongestCommonSubstring} class provides a {@link SuffixArray}
  *  client for computing the longest common substring that appears in two
  *  given strings.
  *  <p>
@@ -64,7 +64,7 @@ public class LongestCommonSubstring {
      * @param  s one string
      * @param  t the other string
      * @return the longest common string that appears as a substring
-     *         in both <tt>s</tt> and <tt>t</tt>; the empty string
+     *         in both {@code s} and {@code t}; the empty string
      *         if no such string
      */
     public static String lcs(String s, String t) {
@@ -86,7 +86,7 @@ public class LongestCommonSubstring {
     }
 
     /**
-     * Unit tests the <tt>lcs()</tt> method.
+     * Unit tests the {@code lcs()} method.
      * Reads in two strings from files specified as command-line arguments;
      * computes the longest common substring; and prints the results to
      * standard output.

@@ -17,7 +17,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Genome</tt> class provides static methods for compressing
+ *  The {@code Genome} class provides static methods for compressing
  *  and expanding a genomic sequence using a 2-bit code.
  *  <p>
  *  For additional documentation,
@@ -69,8 +69,8 @@ public class Genome {
 
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();

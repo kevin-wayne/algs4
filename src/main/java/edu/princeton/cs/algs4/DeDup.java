@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DeDup</tt> class provides a client for reading in a sequence of
+ *  The {@code DeDup} class provides a client for reading in a sequence of
  *  words from standard input and printing each word, removing any duplicates.
  *  It is useful as a test client for various symbol table implementations.
  *  <p>

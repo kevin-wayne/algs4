@@ -25,7 +25,7 @@ import java.util.NoSuchElementException;
 
 
 /**
- *  The <tt>Stack</tt> class represents a last-in-first-out (LIFO) stack of generic items.
+ *  The {@code Stack} class represents a last-in-first-out (LIFO) stack of generic items.
  *  It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
  *  for peeking at the top item, testing if the stack is empty, and iterating through
  *  the items in LIFO order.
@@ -168,7 +168,7 @@ public class Stack<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>Stack</tt> data type.
+     * Unit tests the {@code Stack} data type.
      */
     public static void main(String[] args) {
         Stack<String> stack = new Stack<String>();

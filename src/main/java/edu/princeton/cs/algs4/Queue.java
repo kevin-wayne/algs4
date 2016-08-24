@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Queue</tt> class represents a first-in-first-out (FIFO)
+ *  The {@code Queue} class represents a first-in-first-out (FIFO)
  *  queue of generic items.
  *  It supports the usual <em>enqueue</em> and <em>dequeue</em>
  *  operations, along with methods for peeking at the first item,
@@ -61,7 +61,7 @@ public class Queue<Item> implements Iterable<Item> {
     /**
      * Returns true if this queue is empty.
      *
-     * @return <tt>true</tt> if this queue is empty; <tt>false</tt> otherwise
+     * @return {@code true} if this queue is empty; {@code false} otherwise
      */
     public boolean isEmpty() {
         return first == null;
@@ -159,7 +159,7 @@ public class Queue<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>Queue</tt> data type.
+     * Unit tests the {@code Queue} data type.
      */
     public static void main(String[] args) {
         Queue<String> queue = new Queue<String>();

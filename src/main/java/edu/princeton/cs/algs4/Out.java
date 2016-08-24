@@ -43,7 +43,7 @@ public class Out {
    /**
      * Initializes an output stream from a {@link OutputStream}.
      *
-     * @param  os the <tt>OutputStream</tt>
+     * @param  os the {@code OutputStream}
      */
     public Out(OutputStream os) {
         try {

@@ -12,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EdgeWeightedDirectedCycle</tt> class represents a data type for 
+ *  The {@code EdgeWeightedDirectedCycle} class represents a data type for 
  *  determining whether an edge-weighted digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the edge-weighted
  *  digraph has a directed cycle and, if so, the <em>cycle</em> operation
@@ -43,7 +43,7 @@ public class EdgeWeightedDirectedCycle {
     private Stack<DirectedEdge> cycle;    // directed cycle (or null if no such cycle)
 
     /**
-     * Determines whether the edge-weighted digraph <tt>G</tt> has a directed cycle and,
+     * Determines whether the edge-weighted digraph {@code G} has a directed cycle and,
      * if so, finds such a cycle.
      * @param G the edge-weighted digraph
      */
@@ -94,8 +94,8 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Does the edge-weighted digraph have a directed cycle?
-     * @return <tt>true</tt> if the edge-weighted digraph has a directed cycle,
-     * <tt>false</tt> otherwise
+     * @return {@code true} if the edge-weighted digraph has a directed cycle,
+     * {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
@@ -103,9 +103,9 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Returns a directed cycle if the edge-weighted digraph has a directed cycle,
-     * and <tt>null</tt> otherwise.
+     * and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the edge-weighted digraph
-     *    has a directed cycle, and <tt>null</tt> otherwise
+     *    has a directed cycle, and {@code null} otherwise
      */
     public Iterable<DirectedEdge> cycle() {
         return cycle;
@@ -141,7 +141,7 @@ public class EdgeWeightedDirectedCycle {
     }
 
     /**
-     * Unit tests the <tt>EdgeWeightedDirectedCycle</tt> data type.
+     * Unit tests the {@code EdgeWeightedDirectedCycle} data type.
      */
     public static void main(String[] args) {
 

@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EdgeWeightedDigraph</tt> class represents a edge-weighted
+ *  The {@code EdgeWeightedDigraph} class represents a edge-weighted
  *  digraph of vertices named 0 through <em>V</em> - 1, where each
  *  directed edge is of type {@link DirectedEdge} and has a real-valued weight.
  *  It supports the following two primary operations: add a directed edge
@@ -41,10 +41,10 @@ public class EdgeWeightedDigraph {
     private int[] indegree;             // indegree[v] = indegree of vertex v
     
     /**
-     * Initializes an empty edge-weighted digraph with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
+     * @throws IllegalArgumentException if {@code V} < 0
      */
     public EdgeWeightedDigraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -57,12 +57,12 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Initializes a random edge-weighted digraph with <tt>V</tt> vertices and <em>E</em> edges.
+     * Initializes a random edge-weighted digraph with {@code V} vertices and <em>E</em> edges.
      *
      * @param  V the number of vertices
      * @param  E the number of edges
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
-     * @throws IllegalArgumentException if <tt>E</tt> < 0
+     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code E} < 0
      */
     public EdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -102,7 +102,7 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Initializes a new edge-weighted digraph that is a deep copy of <tt>G</tt>.
+     * Initializes a new edge-weighted digraph that is a deep copy of {@code G}.
      *
      * @param  G the edge-weighted digraph to copy
      */
@@ -148,7 +148,7 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Adds the directed edge <tt>e</tt> to this edge-weighted digraph.
+     * Adds the directed edge {@code e} to this edge-weighted digraph.
      *
      * @param  e the edge
      * @throws IndexOutOfBoundsException unless endpoints of edge are between 0 and V-1
@@ -165,10 +165,10 @@ public class EdgeWeightedDigraph {
 
 
     /**
-     * Returns the directed edges incident from vertex <tt>v</tt>.
+     * Returns the directed edges incident from vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the directed edges incident from vertex <tt>v</tt> as an Iterable
+     * @return the directed edges incident from vertex {@code v} as an Iterable
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<DirectedEdge> adj(int v) {
@@ -177,11 +177,11 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Returns the number of directed edges incident from vertex <tt>v</tt>.
-     * This is known as the <em>outdegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident from vertex {@code v}.
+     * This is known as the <em>outdegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the outdegree of vertex <tt>v</tt>
+     * @return the outdegree of vertex {@code v}
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int outdegree(int v) {
@@ -190,11 +190,11 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Returns the number of directed edges incident to vertex <tt>v</tt>.
-     * This is known as the <em>indegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident to vertex {@code v}.
+     * This is known as the <em>indegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the indegree of vertex <tt>v</tt>
+     * @return the indegree of vertex {@code v}
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int indegree(int v) {
@@ -205,7 +205,7 @@ public class EdgeWeightedDigraph {
     /**
      * Returns all directed edges in this edge-weighted digraph.
      * To iterate over the edges in this edge-weighted digraph, use foreach notation:
-     * <tt>for (DirectedEdge e : G.edges())</tt>.
+     * {@code for (DirectedEdge e : G.edges())}.
      *
      * @return all edges in this edge-weighted digraph, as an iterable
      */
@@ -239,7 +239,7 @@ public class EdgeWeightedDigraph {
     }
 
     /**
-     * Unit tests the <tt>EdgeWeightedDigraph</tt> data type.
+     * Unit tests the {@code EdgeWeightedDigraph} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

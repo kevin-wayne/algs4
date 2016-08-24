@@ -16,7 +16,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>QuickX</tt> class provides static methods for sorting an
+ *  The {@code QuickX} class provides static methods for sorting an
  *  array using an optimized version of quicksort (using Bentley-McIlroy
  *  3-way partitioning, Tukey's ninther, and cutoff to insertion sort).
  *  <p>

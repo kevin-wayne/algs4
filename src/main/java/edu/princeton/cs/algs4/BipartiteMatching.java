@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BipartiteMatching</tt> class represents a data type for computing a
+ *  The {@code BipartiteMatching} class represents a data type for computing a
  *  <em>maximum (cardinality) matching</em> and a
  *  <em>minimum (cardinality) vertex cover</em> in a bipartite graph.
  *  A <em>bipartite graph</em> in a graph whose vertices can be partitioned
@@ -69,7 +69,7 @@ public class BipartiteMatching {
      * in a bipartite graph.
      *
      * @param  G the bipartite graph
-     * @throws IllegalArgumentException if <tt>G</tt> is not bipartite
+     * @throws IllegalArgumentException if {@code G} is not bipartite
      */
     public BipartiteMatching(Graph G) {
         bipartition = new BipartiteX(G);
@@ -178,9 +178,9 @@ public class BipartiteMatching {
      * the maximum matching computed by the algorithm.
      *
      * @param  v the vertex
-     * @return the vertex to which vertex <tt>v</tt> is matched in the
-     *         maximum matching; <tt>-1</tt> if the vertex is not matched
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return the vertex to which vertex {@code v} is matched in the
+     *         maximum matching; {@code -1} if the vertex is not matched
+     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
      *
      */
     public int mate(int v) {
@@ -193,9 +193,9 @@ public class BipartiteMatching {
      * computed by the algorithm.
      *
      * @param  v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is matched in maximum matching;
-     *         <tt>false</tt> otherwise
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return {@code true} if vertex {@code v} is matched in maximum matching;
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
      *
      */
     public boolean isMatched(int v) {
@@ -217,8 +217,8 @@ public class BipartiteMatching {
      * That is, the number of edges in a maximum matching is equal to one half
      * of the number of vertices in the graph (so that every vertex is matched).
      *
-     * @return <tt>true</tt> if the graph contains a perfect matching;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the graph contains a perfect matching;
+     *         {@code false} otherwise
      */
     public boolean isPerfect() {
         return cardinality * 2 == V;
@@ -229,9 +229,9 @@ public class BipartiteMatching {
      * computed by the algorithm.
      *
      * @param  v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is in the minimum vertex cover;
-     *         <tt>false</tt> otherwise
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return {@code true} if vertex {@code v} is in the minimum vertex cover;
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
      */
     public boolean inMinVertexCover(int v) {
         validate(v);
@@ -302,10 +302,10 @@ public class BipartiteMatching {
     }
 
     /**
-     * Unit tests the <tt>HopcroftKarp</tt> data type.
-     * Takes three command-line arguments <tt>V1</tt>, <tt>V2</tt>, and <tt>E</tt>;
-     * creates a random bipartite graph with <tt>V1</tt> + <tt>V2</tt> vertices
-     * and <tt>E</tt> edges; computes a maximum matching and minimum vertex cover;
+     * Unit tests the {@code HopcroftKarp} data type.
+     * Takes three command-line arguments {@code V1}, {@code V2}, and {@code E};
+     * creates a random bipartite graph with {@code V1} + {@code V2} vertices
+     * and {@code E} edges; computes a maximum matching and minimum vertex cover;
      * and prints the results.
      */
     public static void main(String[] args) {

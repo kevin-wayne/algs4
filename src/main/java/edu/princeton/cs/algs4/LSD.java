@@ -29,7 +29,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LSD</tt> class provides static methods for sorting an
+ *  The {@code LSD} class provides static methods for sorting an
  *  array of <em>w</em>-character strings or 32-bit integers using LSD radix sort.
  *  <p>
  *  For additional documentation,

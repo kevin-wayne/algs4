@@ -22,16 +22,16 @@ import java.net.Socket;
 
 /**
  *  <i>Binary output</i>. This class provides methods for converting
- *  primtive type variables (<tt>boolean</tt>, <tt>byte</tt>, <tt>char</tt>,
- *  <tt>int</tt>, <tt>long</tt>, <tt>float</tt>, and <tt>double</tt>)
+ *  primtive type variables ({@code boolean}, {@code byte}, {@code char},
+ *  {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to an output stream.
  *  The output stream can be standard output, a file, an OutputStream or a Socket.
  *  Uses big-endian (most-significant byte first).
  *  <p>
- *  The client must <tt>flush()</tt> the output stream when finished writing bits.
+ *  The client must {@code flush()} the output stream when finished writing bits.
  *  <p>
- *  The client should not intermixing calls to <tt>BinaryOut</tt> with calls
- *  to <tt>Out</tt>; otherwise unexpected behavior will result.
+ *  The client should not intermixing calls to {@code BinaryOut} with calls
+ *  to {@code Out}; otherwise unexpected behavior will result.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -51,8 +51,8 @@ public final class BinaryOut {
     }
 
    /**
-     * Initializes a binary output stream from an <tt>OutputStream</tt>.
-     * @param os the <tt>OutputStream</tt>
+     * Initializes a binary output stream from an {@code OutputStream}.
+     * @param os the {@code OutputStream}
      */
     public BinaryOut(OutputStream os) {
         out = new BufferedOutputStream(os);
@@ -171,7 +171,7 @@ public final class BinaryOut {
 
    /**
      * Writes the specified bit to the binary output stream.
-     * @param x the <tt>boolean</tt> to write
+     * @param x the {@code boolean} to write
      */
     public void write(boolean x) {
         writeBit(x);
@@ -179,7 +179,7 @@ public final class BinaryOut {
 
    /**
      * Writes the 8-bit byte to the binary output stream.
-     * @param x the <tt>byte</tt> to write.
+     * @param x the {@code byte} to write.
      */
     public void write(byte x) {
         writeByte(x & 0xff);
@@ -187,7 +187,7 @@ public final class BinaryOut {
 
    /**
      * Writes the 32-bit int to the binary output stream.
-     * @param x the <tt>int</tt> to write
+     * @param x the {@code int} to write
      */
     public void write(int x) {
         writeByte((x >>> 24) & 0xff);
@@ -199,10 +199,10 @@ public final class BinaryOut {
    /**
      * Writes the r-bit int to the binary output stream.
      *
-     * @param  x the <tt>int</tt> to write
+     * @param  x the {@code int} to write
      * @param  r the number of relevant bits in the char
-     * @throws IllegalArgumentException unless <tt>r</tt> is between 1 and 32
-     * @throws IllegalArgumentException unless <tt>x</tt> is between 0 and 2<sup>r</sup> - 1
+     * @throws IllegalArgumentException unless {@code r} is between 1 and 32
+     * @throws IllegalArgumentException unless {@code x} is between 0 and 2<sup>r</sup> - 1
      */
     public void write(int x, int r) {
         if (r == 32) {
@@ -220,7 +220,7 @@ public final class BinaryOut {
 
    /**
      * Writes the 64-bit double to the binary output stream.
-     * @param x the <tt>double</tt> to write
+     * @param x the {@code double} to write
      */
     public void write(double x) {
         write(Double.doubleToRawLongBits(x));
@@ -228,7 +228,7 @@ public final class BinaryOut {
 
    /**
      * Writes the 64-bit long to the binary output stream.
-     * @param x the <tt>long</tt> to write
+     * @param x the {@code long} to write
      */
     public void write(long x) {
         writeByte((int) ((x >>> 56) & 0xff));
@@ -243,7 +243,7 @@ public final class BinaryOut {
 
    /**
      * Writes the 32-bit float to the binary output stream.
-     * @param x the <tt>float</tt> to write
+     * @param x the {@code float} to write
      */
     public void write(float x) {
         write(Float.floatToRawIntBits(x));
@@ -251,7 +251,7 @@ public final class BinaryOut {
 
    /**
      * Write the 16-bit int to the binary output stream.
-     * @param x the <tt>short</tt> to write.
+     * @param x the {@code short} to write.
      */
     public void write(short x) {
         writeByte((x >>>  8) & 0xff);
@@ -261,8 +261,8 @@ public final class BinaryOut {
    /**
      * Writes the 8-bit char to the binary output stream.
      *
-     * @param  x the <tt>char</tt> to write
-     * @throws IllegalArgumentException unless <tt>x</tt> is betwen 0 and 255
+     * @param  x the {@code char} to write
+     * @throws IllegalArgumentException unless {@code x} is betwen 0 and 255
      */
     public void write(char x) {
         if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
@@ -272,10 +272,10 @@ public final class BinaryOut {
    /**
      * Writes the r-bit char to the binary output stream.
      *
-     * @param  x the <tt>char</tt> to write
+     * @param  x the {@code char} to write
      * @param  r the number of relevant bits in the char
-     * @throws IllegalArgumentException unless <tt>r</tt> is between 1 and 16
-     * @throws IllegalArgumentException unless <tt>x</tt> is between 0 and 2<sup>r</sup> - 1
+     * @throws IllegalArgumentException unless {@code r} is between 1 and 16
+     * @throws IllegalArgumentException unless {@code x} is between 0 and 2<sup>r</sup> - 1
      */
     public void write(char x, int r) {
         if (r == 8) {
@@ -293,7 +293,7 @@ public final class BinaryOut {
    /**
      * Writes the string of 8-bit characters to the binary output stream.
      *
-     * @param  s the <tt>String</tt> to write
+     * @param  s the {@code String} to write
      * @throws IllegalArgumentException if any character in the string is not
      *         between 0 and 255
      */
@@ -305,7 +305,7 @@ public final class BinaryOut {
 
    /**
      * Writes the String of r-bit characters to the binary output stream.
-     * @param  s the <tt>String</tt> to write
+     * @param  s the {@code String} to write
      * @param  r the number of relevants bits in each character
      * @throws IllegalArgumentException unless r is between 1 and 16
      * @throws IllegalArgumentException if any character in the string is not

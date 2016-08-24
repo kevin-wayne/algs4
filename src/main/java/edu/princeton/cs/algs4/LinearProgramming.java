@@ -16,7 +16,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LinearProgramming</tt> class represents a data type for solving a
+ *  The {@code LinearProgramming} class represents a data type for solving a
  *  linear program of the form { max cx : Ax <= b, x >= 0 }, where A is a m-by-n
  *  matrix, b is an m-length vector, and c is an n-length vector. For simplicity,
  *  we assume that A is of full rank and that b >= 0 so that x = 0 is a basic
@@ -346,7 +346,7 @@ public class LinearProgramming {
 
 
     /**
-     * Unit tests the <tt>LinearProgramming</tt> data type.
+     * Unit tests the {@code LinearProgramming} data type.
      */
     public static void main(String[] args) {
 

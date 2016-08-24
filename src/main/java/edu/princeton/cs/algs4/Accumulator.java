@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Accumulator</tt> class is a data type for computing the running
+ *  The {@code Accumulator} class is a data type for computing the running
  *  mean, sample standard deviation, and sample variance of a stream of real
  *  numbers. It provides an example of a mutable data type and a streaming
  *  algorithm.
@@ -88,7 +88,7 @@ public class Accumulator {
     }
 
     /**
-     * Unit tests the <tt>Accumulator</tt> data type.
+     * Unit tests the {@code Accumulator} data type.
      * Reads in a stream of real number from standard input;
      * adds them to the accumulator; and prints the mean,
      * sample standard deviation, and sample variance to standard

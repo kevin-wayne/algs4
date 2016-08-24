@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>ResizingArrayBag</tt> class represents a bag (or multiset) of 
+ *  The {@code ResizingArrayBag} class represents a bag (or multiset) of 
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
@@ -97,7 +97,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Unit tests the <tt>ResizingArrayBag</tt> data type.
+     * Unit tests the {@code ResizingArrayBag} data type.
      */
     public static void main(String[] args) {
         ResizingArrayBag<String> bag = new ResizingArrayBag<String>();

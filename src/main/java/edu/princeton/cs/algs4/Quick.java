@@ -29,7 +29,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick</tt> class provides static methods for sorting an
+ *  The {@code Quick} class provides static methods for sorting an
  *  array and selecting the ith smallest element in an array using quicksort.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of

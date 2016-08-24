@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SeparateChainingHashST</tt> class represents a symbol table of generic
+ *  The {@code SeparateChainingHashST} class represents a symbol table of generic
  *  key-value pairs.
  *  It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.
@@ -19,12 +19,12 @@ package edu.princeton.cs.algs4;
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
  *  Unlike {@link java.util.Map}, this class uses the convention that
- *  values cannot be <tt>null</tt>&mdash;setting the
- *  value associated with a key to <tt>null</tt> is equivalent to deleting the key
+ *  values cannot be {@code null}&mdash;setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This implementation uses a separate chaining hash table. It requires that
- *  the key type overrides the <tt>equals()</tt> and <tt>hashCode()</tt> methods.
+ *  the key type overrides the {@code equals()} and {@code hashCode()} methods.
  *  The expected time per <em>put</em>, <em>contains</em>, or <em>remove</em>
  *  operation is constant, subject to the uniform hashing assumption.
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
@@ -55,7 +55,7 @@ public class SeparateChainingHashST<Key, Value> {
     } 
 
     /**
-     * Initializes an empty symbol table with <tt>m</tt> chains.
+     * Initializes an empty symbol table with {@code m} chains.
      * @param m the initial number of chains
      */
     public SeparateChainingHashST(int m) {
@@ -96,8 +96,8 @@ public class SeparateChainingHashST<Key, Value> {
     /**
      * Returns true if this symbol table is empty.
      *
-     * @return <tt>true</tt> if this symbol table is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this symbol table is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -107,9 +107,9 @@ public class SeparateChainingHashST<Key, Value> {
      * Returns true if this symbol table contains the specified key.
      *
      * @param  key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt>;
-     *         <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if this symbol table contains {@code key};
+     *         {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
         if (key == null) throw new NullPointerException("argument to contains() is null");
@@ -120,9 +120,9 @@ public class SeparateChainingHashST<Key, Value> {
      * Returns the value associated with the specified key in this symbol table.
      *
      * @param  key the key
-     * @return the value associated with <tt>key</tt> in the symbol table;
-     *         <tt>null</tt> if no such value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return the value associated with {@code key} in the symbol table;
+     *         {@code null} if no such value
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Value get(Key key) {
         if (key == null) throw new NullPointerException("argument to get() is null");
@@ -134,11 +134,11 @@ public class SeparateChainingHashST<Key, Value> {
      * Inserts the specified key-value pair into the symbol table, overwriting the old 
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
-     * if the specified value is <tt>null</tt>.
+     * if the specified value is {@code null}.
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
         if (key == null) throw new NullPointerException("first argument to put() is null");
@@ -160,7 +160,7 @@ public class SeparateChainingHashST<Key, Value> {
      * (if the key is in this symbol table).    
      *
      * @param  key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new NullPointerException("argument to delete() is null");
@@ -185,7 +185,7 @@ public class SeparateChainingHashST<Key, Value> {
 
 
     /**
-     * Unit tests the <tt>SeparateChainingHashST</tt> data type.
+     * Unit tests the {@code SeparateChainingHashST} data type.
      */
     public static void main(String[] args) { 
         SeparateChainingHashST<String, Integer> st = new SeparateChainingHashST<String, Integer>();

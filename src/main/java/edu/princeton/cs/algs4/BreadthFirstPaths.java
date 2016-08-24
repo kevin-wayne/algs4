@@ -39,7 +39,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>BreadthFirstPaths</tt> class represents a data type for finding
+ *  The {@code BreadthFirstPaths} class represents a data type for finding
  *  shortest paths (number of edges) from a source vertex <em>s</em>
  *  (or a set of source vertices)
  *  to every other vertex in an undirected graph.
@@ -62,8 +62,8 @@ public class BreadthFirstPaths {
     private int[] distTo;      // distTo[v] = number of edges shortest s-v path
 
     /**
-     * Computes the shortest path between the source vertex <tt>s</tt>
-     * and every other vertex in the graph <tt>G</tt>.
+     * Computes the shortest path between the source vertex {@code s}
+     * and every other vertex in the graph {@code G}.
      * @param G the graph
      * @param s the source vertex
      */
@@ -77,8 +77,8 @@ public class BreadthFirstPaths {
     }
 
     /**
-     * Computes the shortest path between any one of the source vertices in <tt>sources</tt>
-     * and every other vertex in graph <tt>G</tt>.
+     * Computes the shortest path between any one of the source vertices in {@code sources}
+     * and every other vertex in graph {@code G}.
      * @param G the graph
      * @param sources the source vertices
      */
@@ -136,17 +136,17 @@ public class BreadthFirstPaths {
     }
 
     /**
-     * Is there a path between the source vertex <tt>s</tt> (or sources) and vertex <tt>v</tt>?
+     * Is there a path between the source vertex {@code s} (or sources) and vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a path, and <tt>false</tt> otherwise
+     * @return {@code true} if there is a path, and {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return marked[v];
     }
 
     /**
-     * Returns the number of edges in a shortest path between the source vertex <tt>s</tt>
-     * (or sources) and vertex <tt>v</tt>?
+     * Returns the number of edges in a shortest path between the source vertex {@code s}
+     * (or sources) and vertex {@code v}?
      * @param v the vertex
      * @return the number of edges in a shortest path
      */
@@ -155,8 +155,8 @@ public class BreadthFirstPaths {
     }
 
     /**
-     * Returns a shortest path between the source vertex <tt>s</tt> (or sources)
-     * and <tt>v</tt>, or <tt>null</tt> if no such path.
+     * Returns a shortest path between the source vertex {@code s} (or sources)
+     * and {@code v}, or {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a shortest path, as an Iterable
      */
@@ -216,7 +216,7 @@ public class BreadthFirstPaths {
     }
 
     /**
-     * Unit tests the <tt>BreadthFirstPaths</tt> data type.
+     * Unit tests the {@code BreadthFirstPaths} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

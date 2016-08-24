@@ -31,7 +31,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Shell</tt> class provides static methods for sorting an
+ *  The {@code Shell} class provides static methods for sorting an
  *  array using Shellsort with Knuth's increment sequence (1, 4, 13, 40, ...).
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of

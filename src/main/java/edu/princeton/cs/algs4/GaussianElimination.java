@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>GaussianElimination</tt> data type provides methods
+ *  The {@code GaussianElimination} data type provides methods
  *  to solve a linear system of equations <em>Ax</em> = <em>b</em>,
  *  where <em>A</em> is an <em>m</em>-by-<em>n</em> matrix
  *  and <em>b</em> is a length <em>n</em> vector.
@@ -69,7 +69,7 @@ public class GaussianElimination {
      * @param  A the <em>m</em>-by-<em>n</em> constraint matrix
      * @param  b the length <em>m</em> right-hand-side vector
      * @throws IllegalArgumentException if the dimensions disagree, i.e.,
-     *         the length of <tt>b</tt> does not equal <tt>m</tt>
+     *         the length of {@code b} does not equal {@code m}
      */
     public GaussianElimination(double[][] A, double[] b) {
         m = A.length;
@@ -136,7 +136,7 @@ public class GaussianElimination {
      * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
      *      
      * @return a solution <em>x</em> to the linear system of equations
-     *         <em>Ax</em> = <em>b</em>; <tt>null</tt> if no such solution
+     *         <em>Ax</em> = <em>b</em>; {@code null} if no such solution
      */
     public double[] primal() {
         // back substitution
@@ -169,8 +169,8 @@ public class GaussianElimination {
      * Returns true if there exists a solution to the linear system of
      * equations <em>Ax</em> = <em>b</em>.
      *      
-     * @return <tt>true</tt> if there exists a solution to the linear system
-     *         of equations <em>Ax</em> = <em>b</em>; <tt>false</tt> otherwise
+     * @return {@code true} if there exists a solution to the linear system
+     *         of equations <em>Ax</em> = <em>b</em>; {@code false} otherwise
      */
     public boolean isFeasible() {
         return primal() != null;
@@ -197,7 +197,7 @@ public class GaussianElimination {
 
 
     /**
-     * Unit tests the <tt>GaussianElimination</tt> data type.
+     * Unit tests the {@code GaussianElimination} data type.
      */
     private static void test(String name, double[][] A, double[] b) {
         StdOut.println("----------------------------------------------------");
@@ -324,7 +324,7 @@ public class GaussianElimination {
     }
 
     /**
-     * Unit tests the <tt>GaussianElimination</tt> data type.
+     * Unit tests the {@code GaussianElimination} data type.
      */
     public static void main(String[] args) {
         test1();

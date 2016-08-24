@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DirectedCycleX</tt> class represents a data type for 
+ *  The {@code DirectedCycleX} class represents a data type for 
  *  determining whether a digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the digraph has
  *  a directed cycle and, and of so, the <em>cycle</em> operation
@@ -97,9 +97,9 @@ public class DirectedCycleX {
     }
 
     /**
-     * Returns a directed cycle if the digraph has a directed cycle, and <tt>null</tt> otherwise.
+     * Returns a directed cycle if the digraph has a directed cycle, and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the digraph has a directed cycle,
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -107,7 +107,7 @@ public class DirectedCycleX {
 
     /**
      * Does the digraph have a directed cycle?
-     * @return <tt>true</tt> if the digraph has a directed cycle, <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a directed cycle, {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;

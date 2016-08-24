@@ -33,7 +33,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>NonrecursiveDFS</tt> class represents a data type for finding
+ *  The {@code NonrecursiveDFS} class represents a data type for finding
  *  the vertices connected to a source vertex <em>s</em> in the undirected
  *  graph.
  *  <p>
@@ -52,7 +52,7 @@ import java.util.Iterator;
 public class NonrecursiveDFS {
     private boolean[] marked;  // marked[v] = is there an s-v path?
     /**
-     * Computes the vertices connected to the source vertex <tt>s</tt> in the graph <tt>G</tt>.
+     * Computes the vertices connected to the source vertex {@code s} in the graph {@code G}.
      * @param G the graph
      * @param s the source vertex
      */
@@ -90,17 +90,17 @@ public class NonrecursiveDFS {
     }
 
     /**
-     * Is vertex <tt>v</tt> connected to the source vertex <tt>s</tt>?
+     * Is vertex {@code v} connected to the source vertex {@code s}?
      * @param v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is connected to the source vertex <tt>s</tt>,
-     *    and <tt>false</tt> otherwise
+     * @return {@code true} if vertex {@code v} is connected to the source vertex {@code s},
+     *    and {@code false} otherwise
      */
     public boolean marked(int v) {
         return marked[v];
     }
 
     /**
-     * Unit tests the <tt>NonrecursiveDFS</tt> data type.
+     * Unit tests the {@code NonrecursiveDFS} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

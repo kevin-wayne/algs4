@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Edge</tt> class represents a weighted edge in an 
+ *  The {@code Edge} class represents a weighted edge in an 
  *  {@link EdgeWeightedGraph}. Each edge consists of two integers
  *  (naming the two vertices) and a real-value weight. The data type
  *  provides methods for accessing the two endpoints of the edge and
@@ -30,15 +30,15 @@ public class Edge implements Comparable<Edge> {
     private final double weight;
 
     /**
-     * Initializes an edge between vertices <tt>v</tt> and <tt>w</tt> of
-     * the given <tt>weight</tt>.
+     * Initializes an edge between vertices {@code v} and {@code w} of
+     * the given {@code weight}.
      *
      * @param  v one vertex
      * @param  w the other vertex
      * @param  weight the weight of this edge
-     * @throws IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt> 
+     * @throws IndexOutOfBoundsException if either {@code v} or {@code w} 
      *         is a negative integer
-     * @throws IllegalArgumentException if <tt>weight</tt> is <tt>NaN</tt>
+     * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public Edge(int v, int w, double weight) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
@@ -83,8 +83,8 @@ public class Edge implements Comparable<Edge> {
 
     /**
      * Compares two edges by weight.
-     * Note that <tt>compareTo()</tt> is not consistent with <tt>equals()</tt>,
-     * which uses the reference equality implementation inherited from <tt>Object</tt>.
+     * Note that {@code compareTo()} is not consistent with {@code equals()},
+     * which uses the reference equality implementation inherited from {@code Object}.
      *
      * @param  that the other edge
      * @return a negative integer, zero, or positive integer depending on whether
@@ -106,7 +106,7 @@ public class Edge implements Comparable<Edge> {
     }
 
     /**
-     * Unit tests the <tt>Edge</tt> data type.
+     * Unit tests the {@code Edge} data type.
      */
     public static void main(String[] args) {
         Edge e = new Edge(12, 34, 5.67);

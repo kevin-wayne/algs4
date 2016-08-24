@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BoyerMoore</tt> class finds the first occurrence of a pattern string
+ *  The {@code BoyerMoore} class finds the first occurrence of a pattern string
  *  in a text string.
  *  <p>
  *  This implementation uses the Boyer-Moore algorithm (with the bad-character

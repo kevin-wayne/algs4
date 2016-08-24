@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 
 /**
- *  The <tt>Particle</tt> class represents a particle moving in the unit box,
+ *  The {@code Particle} class represents a particle moving in the unit box,
  *  with a given position, velocity, radius, and mass. Methods are provided
  *  for moving the particle and for predicting and resolvling elastic
  *  collisions with vertical walls, horizontal walls, and other particles.
@@ -113,7 +113,7 @@ public class Particle {
      * @param  that the other particle
      * @return the amount of time for this particle to collide with the specified
      *         particle, assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particles will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particles will not collide
      */
     public double timeToHit(Particle that) {
         if (this == that) return INFINITY;
@@ -138,7 +138,7 @@ public class Particle {
      *
      * @return the amount of time for this particle to collide with a vertical wall,
      *         assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particle will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a vertical wall
      */
     public double timeToHitVerticalWall() {
@@ -153,7 +153,7 @@ public class Particle {
      *
      * @return the amount of time for this particle to collide with a horizontal wall,
      *         assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particle will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a horizontal wall
      */
     public double timeToHitHorizontalWall() {

@@ -36,7 +36,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>GaussJordanElimination</tt> data type provides methods
+ *  The {@code GaussJordanElimination} data type provides methods
  *  to solve a linear system of equations <em>Ax</em> = <em>b</em>,
  *  where <em>A</em> is an <em>n</em>-by-<em>n</em> matrix
  *  and <em>b</em> is a length <em>n</em> vector.
@@ -155,7 +155,7 @@ public class GaussJordanElimination {
      * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
      *      
      * @return a solution <em>x</em> to the linear system of equations
-     *         <em>Ax</em> = <em>b</em>; <tt>null</tt> if no such solution
+     *         <em>Ax</em> = <em>b</em>; {@code null} if no such solution
      */
     public double[] primal() {
         double[] x = new double[n];
@@ -173,7 +173,7 @@ public class GaussJordanElimination {
      * <em>yb</em> &ne; 0.
      *      
      * @return a solution <em>y</em> to the linear system of equations
-     *         <em>yA</em> = 0, <em>yb</em> &ne 0; <tt>null</tt> if no such solution
+     *         <em>yA</em> = 0, <em>yb</em> &ne 0; {@code null} if no such solution
      */
     public double[] dual() {
         double[] y = new double[n];
@@ -191,8 +191,8 @@ public class GaussJordanElimination {
      * Returns true if there exists a solution to the linear system of
      * equations <em>Ax</em> = <em>b</em>.
      *      
-     * @return <tt>true</tt> if there exists a solution to the linear system
-     *         of equations <em>Ax</em> = <em>b</em>; <tt>false</tt> otherwise
+     * @return {@code true} if there exists a solution to the linear system
+     *         of equations <em>Ax</em> = <em>b</em>; {@code false} otherwise
      */
     public boolean isFeasible() {
         return primal() != null;
@@ -359,7 +359,7 @@ public class GaussJordanElimination {
     }
 
     /**
-     * Unit tests the <tt>GaussJordanElimination</tt> data type.
+     * Unit tests the {@code GaussJordanElimination} data type.
      */
     public static void main(String[] args) {
 

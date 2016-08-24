@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <code>PatriciaST</code> class provides an implementation of an unordered
+ *  The {@code PatriciaST} class provides an implementation of an unordered
  *  symbol table of key-value pairs, with the restriction that the key is of
  *  class {@link java.lang.String}. It supports the usual <em>put</em>,
  *  <em>get</em>, <em>contains</em>, <em>delete</em>, <em>size</em>, and
@@ -36,8 +36,8 @@ package edu.princeton.cs.algs4;
  *  <em>associative array</em> abstraction: when associating a value with a key
  *  that is already in the symbol table, the convention is to replace the old
  *  value with the new value. Unlike {@link java.util.Map}, this class uses the
- *  convention that values cannot be <code>null</code>&mdash;setting the value
- *  associated with a key to <code>null</code> is equivalent to deleting the key
+ *  convention that values cannot be {@code null}&mdash;setting the value
+ *  associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This unordered symbol table class implements PATRICIA (Practical Algorithm
@@ -129,12 +129,12 @@ public class PatriciaST<Value> {
     /**
      * Places a key-value pair into the symbol table. If the table already
      * contains the specified key, then its associated value becomes updated.
-     * If the value provided is <code>null</code>, then the key becomes removed
+     * If the value provided is {@code null}, then the key becomes removed
      * from the symbol table.
      * @param key the key
      * @param val the value
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void put(String key, Value val) {
         if (key == null) throw new NullPointerException("called put(null)");
@@ -175,9 +175,9 @@ public class PatriciaST<Value> {
      * Retrieves the value associated with the given key.
      * @param key the key
      * @return the value associated with the given key if the key is in the
-     * symbol table and <code>null</code> if the key is not in the symbol table
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * symbol table and {@code null} if the key is not in the symbol table
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public Value get(String key) {
         if (key == null) throw new NullPointerException("called get(null)");
@@ -197,8 +197,8 @@ public class PatriciaST<Value> {
      * Removes a key and its associated value from the symbol table, if it
      * exists.
      * @param key the key
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void delete(String key) {
         if (key == null) throw new NullPointerException("called delete(null)");
@@ -244,22 +244,22 @@ public class PatriciaST<Value> {
     }
 
     /**
-     * Returns <code>true</code> if the key-value pair, specified by the given
+     * Returns {@code true} if the key-value pair, specified by the given
      * key, exists within the symbol table.
      * @param key the key
-     * @return <code>true</code> if this symbol table contains the given
-     * <code>key</code> and <code>false</code> otherwise
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @return {@code true} if this symbol table contains the given
+     * {@code key} and {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public boolean contains(String key) {
         return get(key) != null;
     }
 
     /**
-     * Returns <code>true</code> if the symbol table is empty.
-     * @return <code>true</code> if this symbol table is empty and
-     * <code>false</code> otherwise
+     * Returns {@code true} if the symbol table is empty.
+     * @return {@code true} if this symbol table is empty and
+     * {@code false} otherwise
      */
     boolean isEmpty() {
         return count == 0;
@@ -274,11 +274,11 @@ public class PatriciaST<Value> {
     }
 
     /**
-     * Returns all keys in the symbol table as an <code>Iterable</code>.
+     * Returns all keys in the symbol table as an {@code Iterable}.
      * To iterate over all of the keys in the symbol table named
-     * <code>st</code>, use the foreach notation:
-     * <code>for (Key key : st.keys())</code>.
-     * @return all keys in the sybol table as an <code>Iterable</code>
+     * {@code st}, use the foreach notation:
+     * {@code for (Key key : st.keys())}.
+     * @return all keys in the sybol table as an {@code Iterable}
      */
     public Iterable<String> keys() {
         Queue<String> queue = new Queue<String>();
@@ -361,7 +361,7 @@ public class PatriciaST<Value> {
     }
 
     /**
-     * Unit tests the <code>PatriciaST</code> data type.
+     * Unit tests the {@code PatriciaST} data type.
      * This test fixture runs a series of tests on a randomly generated dataset.
      * You may specify up to two integer parameters on the command line. The
      * first parameter indicates the size of the dataset. The second parameter

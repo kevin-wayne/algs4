@@ -21,7 +21,7 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>DirectedDFS</tt> class represents a data type for 
+ *  The {@code DirectedDFS} class represents a data type for 
  *  determining the vertices reachable from a given source vertex <em>s</em>
  *  (or set of source vertices) in a digraph. For versions that find the paths,
  *  see {@link DepthFirstDirectedPaths} and {@link BreadthFirstDirectedPaths}.
@@ -44,8 +44,8 @@ public class DirectedDFS {
     private int count;         // number of vertices reachable from s
 
     /**
-     * Computes the vertices in digraph <tt>G</tt> that are
-     * reachable from the source vertex <tt>s</tt>.
+     * Computes the vertices in digraph {@code G} that are
+     * reachable from the source vertex {@code s}.
      * @param G the digraph
      * @param s the source vertex
      */
@@ -55,8 +55,8 @@ public class DirectedDFS {
     }
 
     /**
-     * Computes the vertices in digraph <tt>G</tt> that are
-     * connected to any of the source vertices <tt>sources</tt>.
+     * Computes the vertices in digraph {@code G} that are
+     * connected to any of the source vertices {@code sources}.
      * @param G the graph
      * @param sources the source vertices
      */
@@ -77,9 +77,9 @@ public class DirectedDFS {
 
     /**
      * Is there a directed path from the source vertex (or any
-     * of the source vertices) and vertex <tt>v</tt>?
+     * of the source vertices) and vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a directed path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a directed path, {@code false} otherwise
      */
     public boolean marked(int v) {
         return marked[v];
@@ -96,7 +96,7 @@ public class DirectedDFS {
     }
 
     /**
-     * Unit tests the <tt>DirectedDFS</tt> data type.
+     * Unit tests the {@code DirectedDFS} data type.
      */
     public static void main(String[] args) {
 

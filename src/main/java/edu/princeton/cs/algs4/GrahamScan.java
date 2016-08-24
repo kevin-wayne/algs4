@@ -28,7 +28,7 @@ import java.util.Arrays;
 
 
 /**
- *  The <tt>GrahamScan</tt> data type provides methods for computing the 
+ *  The {@code GrahamScan} data type provides methods for computing the 
  *  convex hull of a set of <em>N</em> points in the plane.
  *  <p>
  *  The implementation uses the Graham-Scan convex hull algorithm.
@@ -48,8 +48,8 @@ public class GrahamScan {
      * Computes the convex hull of the specified array of points.
      *
      * @param  pts the array of points
-     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
-     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code points} is {@code null} or if any
+     *         entry in {@code points[]} is {@code null}
      */
     public GrahamScan(Point2D[] pts) {
 
@@ -126,8 +126,8 @@ public class GrahamScan {
     }
 
    /**
-     * Unit tests the <tt>GrahamScan</tt> data type.
-     * Reads in an integer <tt>n</tt> and <tt>n</tt> points (specified by
+     * Unit tests the {@code GrahamScan} data type.
+     * Reads in an integer {@code n} and {@code n} points (specified by
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes their convex hull; and prints out the points on the
      * convex hull to standard output.

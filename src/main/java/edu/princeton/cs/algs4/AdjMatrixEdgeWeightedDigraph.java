@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>AdjMatrixEdgeWeightedDigraph</tt> class represents a edge-weighted
+ *  The {@code AdjMatrixEdgeWeightedDigraph} class represents a edge-weighted
  *  digraph of vertices named 0 through <em>V</em> - 1, where each
  *  directed edge is of type {@link DirectedEdge} and has a real-valued weight.
  *  It supports the following two primary operations: add a directed edge
@@ -43,9 +43,9 @@ public class AdjMatrixEdgeWeightedDigraph {
     private DirectedEdge[][] adj;
     
     /**
-     * Initializes an empty edge-weighted digraph with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if <tt>V</tt> < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} < 0
      */
     public AdjMatrixEdgeWeightedDigraph(int V) {
         if (V < 0) throw new RuntimeException("Number of vertices must be nonnegative");
@@ -55,11 +55,11 @@ public class AdjMatrixEdgeWeightedDigraph {
     }
 
     /**
-     * Initializes a random edge-weighted digraph with <tt>V</tt> vertices and <em>E</em> edges.
+     * Initializes a random edge-weighted digraph with {@code V} vertices and <em>E</em> edges.
      * param V the number of vertices
      * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if <tt>V</tt> < 0
-     * @throws java.lang.IllegalArgumentException if <tt>E</tt> < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @throws java.lang.IllegalArgumentException if {@code E} < 0
      */
     public AdjMatrixEdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -92,7 +92,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     }
 
     /**
-     * Adds the directed edge <tt>e</tt> to the edge-weighted digraph (if there
+     * Adds the directed edge {@code e} to the edge-weighted digraph (if there
      * is not already an edge with the same endpoints).
      * @param e the edge
      */
@@ -106,9 +106,9 @@ public class AdjMatrixEdgeWeightedDigraph {
     }
 
     /**
-     * Returns the directed edges incident from vertex <tt>v</tt>.
+     * Returns the directed edges incident from vertex {@code v}.
      * @param v the vertex
-     * @return the directed edges incident from vertex <tt>v</tt> as an Iterable
+     * @return the directed edges incident from vertex {@code v} as an Iterable
      * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<DirectedEdge> adj(int v) {
@@ -168,7 +168,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     }
 
     /**
-     * Unit tests the <tt>AdjMatrixEdgeWeightedDigraph</tt> data type.
+     * Unit tests the {@code AdjMatrixEdgeWeightedDigraph} data type.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

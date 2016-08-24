@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>SuffixArray</tt> class represents a suffix array of a string of
+ *  The {@code SuffixArray} class represents a suffix array of a string of
  *  length <em>n</em>.
  *  It supports the <em>selecting</em> the <em>i</em>th smallest suffix,
  *  getting the <em>index</em> of the <em>i</em>th smallest suffix,
@@ -40,9 +40,9 @@ import java.util.Arrays;
  *  and determining the <em>rank</em> of a query string (which is the number
  *  of suffixes strictly less than the query string).
  *  <p>
- *  This implementation uses a nested class <tt>Suffix</tt> to represent
+ *  This implementation uses a nested class {@code Suffix} to represent
  *  a suffix of a string (using constant time and space) and
- *  <tt>Arrays.sort()</tt> to sort the array of suffixes.
+ *  {@code Arrays.sort()} to sort the array of suffixes.
  *  The <em>index</em> and <em>length</em> operations takes constant time 
  *  in the worst case. The <em>lcp</em> operation takes time proportional to the
  *  length of the longest common prefix.
@@ -51,7 +51,7 @@ import java.util.Arrays;
  *  <p>
  *  For alternate implementations of the same API, see
  *  {@link SuffixArrayX}, which is faster in practice (uses 3-way radix quicksort)
- *  and uses less memory (does not create <tt>Suffix</tt> objects)
+ *  and uses less memory (does not create {@code Suffix} objects)
  *  and <a href = "http://algs4.cs.princeton.edu/63suffix/SuffixArrayJava6.java.html">SuffixArrayJava6.java</a>,
  *  which relies on the constant-time substring extraction method that existed
  *  in Java 6.
@@ -63,7 +63,7 @@ public class SuffixArray {
     private Suffix[] suffixes;
 
     /**
-     * Initializes a suffix array for the given <tt>text</tt> string.
+     * Initializes a suffix array for the given {@code text} string.
      * @param text the input string
      */
     public SuffixArray(String text) {
@@ -115,7 +115,7 @@ public class SuffixArray {
 
     /**
      * Returns the index into the original string of the <em>i</em>th smallest suffix.
-     * That is, <tt>text.substring(sa.index(i))</tt> is the <em>i</em>th smallest suffix.
+     * That is, {@code text.substring(sa.index(i))} is the <em>i</em>th smallest suffix.
      * @param i an integer between 0 and <em>n</em>-1
      * @return the index into the original string of the <em>i</em>th smallest suffix
      * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <em>n</em>
@@ -160,11 +160,11 @@ public class SuffixArray {
     }
 
     /**
-     * Returns the number of suffixes strictly less than the <tt>query</tt> string.
-     * We note that <tt>rank(select(i))</tt> equals <tt>i</tt> for each <tt>i</tt>
+     * Returns the number of suffixes strictly less than the {@code query} string.
+     * We note that {@code rank(select(i))} equals {@code i} for each {@code i}
      * between 0 and <em>n</em>-1.
      * @param query the query string
-     * @return the number of suffixes strictly less than <tt>query</tt>
+     * @return the number of suffixes strictly less than {@code query}
      */
     public int rank(String query) {
         int lo = 0, hi = suffixes.length - 1;
@@ -189,7 +189,7 @@ public class SuffixArray {
     }
 
     /**
-     * Unit tests the <tt>SuffixArray</tt> data type.
+     * Unit tests the {@code SuffixArray} data type.
      */
     public static void main(String[] args) {
         String s = StdIn.readAll().replaceAll("\\s+", " ").trim();

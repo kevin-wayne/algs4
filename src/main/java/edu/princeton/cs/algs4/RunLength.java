@@ -22,7 +22,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>RunLength</tt> class provides static methods for compressing
+ *  The {@code RunLength} class provides static methods for compressing
  *  and expanding a binary input using run-length coding with 8-bit
  *  run lengths.
  *  <p>
@@ -86,8 +86,8 @@ public class RunLength {
 
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();

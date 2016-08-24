@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>ThreeSum</tt> class provides static methods for counting
+ *  The {@code ThreeSum} class provides static methods for counting
  *  and printing the number of triples in an array of integers that sum to 0
  *  (ignoring integer overflow).
  *  <p>

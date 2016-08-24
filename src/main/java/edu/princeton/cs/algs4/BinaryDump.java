@@ -23,11 +23,11 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BinaryDump</tt> class provides a client for displaying the contents
+ *  The {@code BinaryDump} class provides a client for displaying the contents
  *  of a binary file in binary.
  *  <p>
  *  For more full-featured versions, see the Unix utilities
- *  <tt>od</tt> (octal dump) and <tt>hexdump</tt> (hexadecimal dump).
+ *  {@code od} (octal dump) and {@code hexdump} (hexadecimal dump).
  *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of

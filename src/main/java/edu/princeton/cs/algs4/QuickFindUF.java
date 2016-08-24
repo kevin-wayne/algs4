@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>QuickFindUF</tt> class represents a <em>union-find data type</em>
+ *  The {@code QuickFindUF} class represents a <em>union-find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
  *  It supports the <em>union</em> and <em>find</em> operations,
  *  along with a <em>connected</em> operation for determining whether
@@ -82,12 +82,12 @@ public class QuickFindUF {
     private int count;   // number of components
 
     /**
-     * Initializes an empty union-find data structure with <tt>n</tt> sites
-     * <tt>0</tt> through <tt>n-1</tt>. Each site is initially in its own 
+     * Initializes an empty union-find data structure with {@code n} sites
+     * {@code 0} through {@code n-1}. Each site is initially in its own 
      * component.
      *
      * @param  n the number of sites
-     * @throws IllegalArgumentException if <tt>n &lt; 0</tt>
+     * @throws IllegalArgumentException if {@code n &lt; 0}
      */
     public QuickFindUF(int n) {
         count = n;
@@ -99,18 +99,18 @@ public class QuickFindUF {
     /**
      * Returns the number of components.
      *
-     * @return the number of components (between <tt>1</tt> and <tt>n</tt>)
+     * @return the number of components (between {@code 1} and {@code n})
      */
     public int count() {
         return count;
     }
   
     /**
-     * Returns the component identifier for the component containing site <tt>p</tt>.
+     * Returns the component identifier for the component containing site {@code p}.
      *
      * @param  p the integer representing one site
-     * @return the component identifier for the component containing site <tt>p</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; p &lt; n</tt>
+     * @return the component identifier for the component containing site {@code p}
+     * @throws IndexOutOfBoundsException unless {@code 0 &le; p &lt; n}
      */
     public int find(int p) {
         validate(p);
@@ -130,10 +130,10 @@ public class QuickFindUF {
      *
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
-     * @return <tt>true</tt> if the two sites <tt>p</tt> and <tt>q</tt> are in the same component;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
+     *         {@code false} otherwise
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
+     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
      */
     public boolean connected(int p, int q) {
         validate(p);
@@ -142,13 +142,13 @@ public class QuickFindUF {
     }
   
     /**
-     * Merges the component containing site <tt>p</tt> with the 
-     * the component containing site <tt>q</tt>.
+     * Merges the component containing site {@code p} with the 
+     * the component containing site {@code q}.
      *
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
      * @throws IndexOutOfBoundsException unless
-     *         both <tt>0 &le; p &lt; n</tt> and <tt>0 &le; q &lt; n</tt>
+     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
      */
     public void union(int p, int q) {
         validate(p);

@@ -25,7 +25,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BinaryInsertion</tt> class provides a static method for sorting an
+ *  The {@code BinaryInsertion} class provides a static method for sorting an
  *  array using an optimized binary insertion sort with half exchanges.
  *  <p>
  *  This implementation makes ~ n lg n compares for any array of length n.

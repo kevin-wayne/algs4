@@ -18,7 +18,7 @@ import java.lang.management.ThreadMXBean;
 import java.lang.management.ManagementFactory;
 
 /**
- *  The <tt>StopwatchCPU</tt> data type is for measuring
+ *  The {@code StopwatchCPU} data type is for measuring
  *  the CPU time used during a programming task.
  *
  *  See {@link Stopwatch} for a version that measures wall-clock time
@@ -54,10 +54,10 @@ public class StopwatchCPU {
     }
 
     /**
-     * Unit tests the <tt>StopwatchCPU</tt> data type.
-     * Takes a command-line argument <tt>n</tt> and computes the 
-     * sum of the square roots of the first <tt>n</tt> positive integers,
-     * first using <tt>Math.sqrt()</tt>, then using <tt>Math.pow()</tt>.
+     * Unit tests the {@code StopwatchCPU} data type.
+     * Takes a command-line argument {@code n} and computes the 
+     * sum of the square roots of the first {@code n} positive integers,
+     * first using {@code Math.sqrt()}, then using {@code Math.pow()}.
      * It prints to standard output the sum and the amount of time to
      * compute the sum. Note that the discrete sum can be approximated by
      * an integral - the sum should be approximately 2/3 * (n^(3/2) - 1).

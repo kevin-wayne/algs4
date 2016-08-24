@@ -24,7 +24,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>MaxPQ</tt> class represents a priority queue of generic keys.
+ *  The {@code MaxPQ} class represents a priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-maximum</em>
  *  operations, along with methods for peeking at the maximum key,
  *  testing if the priority queue is empty, and iterating through
@@ -111,8 +111,8 @@ public class MaxPQ<Key> implements Iterable<Key> {
     /**
      * Returns true if this priority queue is empty.
      *
-     * @return <tt>true</tt> if this priority queue is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this priority queue is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return n == 0;
@@ -245,7 +245,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
     /**
      * Returns an iterator that iterates over the keys on this priority queue
      * in descending order.
-     * The iterator doesn't implement <tt>remove()</tt> since it's optional.
+     * The iterator doesn't implement {@code remove()} since it's optional.
      *
      * @return an iterator that iterates over the keys in descending order
      */
@@ -277,7 +277,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
     }
 
     /**
-     * Unit tests the <tt>MaxPQ</tt> data type.
+     * Unit tests the {@code MaxPQ} data type.
      */
     public static void main(String[] args) {
         MaxPQ<String> pq = new MaxPQ<String>();

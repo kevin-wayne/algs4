@@ -26,7 +26,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Cat</tt> class provides a client for concatenating the results
+ *  The {@code Cat} class provides a client for concatenating the results
  *  of several text files.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of

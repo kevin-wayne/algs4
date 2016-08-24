@@ -15,7 +15,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>TrieSET</tt> class represents an ordered set of strings over
+ *  The {@code TrieSET} class represents an ordered set of strings over
  *  the extended ASCII alphabet.
  *  It supports the usual <em>add</em>, <em>contains</em>, and <em>delete</em>
  *  methods. It also provides character-based methods for finding the string
@@ -56,9 +56,9 @@ public class TrieSET implements Iterable<String> {
     /**
      * Does the set contain the given key?
      * @param key the key
-     * @return <tt>true</tt> if the set contains <tt>key</tt> and
-     *     <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if the set contains {@code key} and
+     *     {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public boolean contains(String key) {
         Node x = get(root, key, 0);
@@ -76,7 +76,7 @@ public class TrieSET implements Iterable<String> {
     /**
      * Adds the key to the set if it is not already present.
      * @param key the key to add
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void add(String key) {
         root = add(root, key, 0);
@@ -105,7 +105,7 @@ public class TrieSET implements Iterable<String> {
 
     /**
      * Is the set empty?
-     * @return <tt>true</tt> if the set is empty, and <tt>false</tt> otherwise
+     * @return {@code true} if the set is empty, and {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -113,8 +113,8 @@ public class TrieSET implements Iterable<String> {
 
     /**
      * Returns all of the keys in the set, as an iterator.
-     * To iterate over all of the keys in a set named <tt>set</tt>, use the
-     * foreach notation: <tt>for (Key key : set)</tt>.
+     * To iterate over all of the keys in a set named {@code set}, use the
+     * foreach notation: {@code for (Key key : set)}.
      * @return an iterator to all of the keys in the set
      */
     public Iterator<String> iterator() {
@@ -122,9 +122,9 @@ public class TrieSET implements Iterable<String> {
     }
 
     /**
-     * Returns all of the keys in the set that start with <tt>prefix</tt>.
+     * Returns all of the keys in the set that start with {@code prefix}.
      * @param prefix the prefix
-     * @return all of the keys in the set that start with <tt>prefix</tt>,
+     * @return all of the keys in the set that start with {@code prefix},
      *     as an iterable
      */
     public Iterable<String> keysWithPrefix(String prefix) {
@@ -145,10 +145,10 @@ public class TrieSET implements Iterable<String> {
     }
 
     /**
-     * Returns all of the keys in the set that match <tt>pattern</tt>,
+     * Returns all of the keys in the set that match {@code pattern},
      * where . symbol is treated as a wildcard character.
      * @param pattern the pattern
-     * @return all of the keys in the set that match <tt>pattern</tt>,
+     * @return all of the keys in the set that match {@code pattern},
      *     as an iterable, where . is treated as a wildcard character.
      */  
     public Iterable<String> keysThatMatch(String pattern) {
@@ -181,12 +181,12 @@ public class TrieSET implements Iterable<String> {
     }
 
     /**
-     * Returns the string in the set that is the longest prefix of <tt>query</tt>,
-     * or <tt>null</tt>, if no such string.
+     * Returns the string in the set that is the longest prefix of {@code query},
+     * or {@code null}, if no such string.
      * @param query the query string
-     * @return the string in the set that is the longest prefix of <tt>query</tt>,
-     *     or <tt>null</tt> if no such string
-     * @throws NullPointerException if <tt>query</tt> is <tt>null</tt>
+     * @return the string in the set that is the longest prefix of {@code query},
+     *     or {@code null} if no such string
+     * @throws NullPointerException if {@code query} is {@code null}
      */
     public String longestPrefixOf(String query) {
         int length = longestPrefixOf(root, query, 0, -1);
@@ -209,7 +209,7 @@ public class TrieSET implements Iterable<String> {
     /**
      * Removes the key from the set if the key is present.
      * @param key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(String key) {
         root = delete(root, key, 0);
@@ -236,7 +236,7 @@ public class TrieSET implements Iterable<String> {
 
 
     /**
-     * Unit tests the <tt>TrieSET</tt> data type.
+     * Unit tests the {@code TrieSET} data type.
      */
     public static void main(String[] args) {
         TrieSET set = new TrieSET();

@@ -18,7 +18,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>FloydWarshall</tt> class represents a data type for solving the
+ *  The {@code FloydWarshall} class represents a data type for solving the
  *  all-pairs shortest paths problem in edge-weighted digraphs with
  *  no negative cycles.
  *  The edge weights can be positive, negative, or zero.
@@ -28,8 +28,8 @@ package edu.princeton.cs.algs4;
  *  This implementation uses the Floyd-Warshall algorithm.
  *  The constructor takes time proportional to <em>V</em><sup>3</sup> in the
  *  worst case, where <em>V</em> is the number of vertices.
- *  Afterwards, the <tt>dist()</tt>, <tt>hasPath()</tt>, and <tt>hasNegativeCycle()</tt>
- *  methods take constant time; the <tt>path()</tt> and <tt>negativeCycle()</tt>
+ *  Afterwards, the {@code dist()}, {@code hasPath()}, and {@code hasNegativeCycle()}
+ *  methods take constant time; the {@code path()} and {@code negativeCycle()}
  *  method takes time proportional to the number of edges returned.
  *  <p>
  *  For additional documentation,    
@@ -46,7 +46,7 @@ public class FloydWarshall {
 
     /**
      * Computes a shortest paths tree from each vertex to to every other vertex in
-     * the edge-weighted digraph <tt>G</tt>. If no such shortest path exists for
+     * the edge-weighted digraph {@code G}. If no such shortest path exists for
      * some pair of vertices, it computes a negative cycle.
      * @param G the edge-weighted digraph
      */
@@ -98,16 +98,16 @@ public class FloydWarshall {
 
     /**
      * Is there a negative cycle?
-     * @return <tt>true</tt> if there is a negative cycle, and <tt>false</tt> otherwise
+     * @return {@code true} if there is a negative cycle, and {@code false} otherwise
      */
     public boolean hasNegativeCycle() {
         return hasNegativeCycle;
     }
 
     /**
-     * Returns a negative cycle, or <tt>null</tt> if there is no such cycle.
+     * Returns a negative cycle, or {@code null} if there is no such cycle.
      * @return a negative cycle as an iterable of edges,
-     * or <tt>null</tt> if there is no such cycle
+     * or {@code null} if there is no such cycle
      */
     public Iterable<DirectedEdge> negativeCycle() {
         for (int v = 0; v < distTo.length; v++) {
@@ -127,22 +127,22 @@ public class FloydWarshall {
     }
 
     /**
-     * Is there a path from the vertex <tt>s</tt> to vertex <tt>t</tt>?
+     * Is there a path from the vertex {@code s} to vertex {@code t}?
      * @param s the source vertex
      * @param t the destination vertex
-     * @return <tt>true</tt> if there is a path from vertex <tt>s</tt>
-     * to vertex <tt>t</tt>, and <tt>false</tt> otherwise
+     * @return {@code true} if there is a path from vertex {@code s}
+     * to vertex {@code t}, and {@code false} otherwise
      */
     public boolean hasPath(int s, int t) {
         return distTo[s][t] < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns the length of a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>.
+     * Returns the length of a shortest path from vertex {@code s} to vertex {@code t}.
      * @param s the source vertex
      * @param t the destination vertex
-     * @return the length of a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>;
-     * <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * @return the length of a shortest path from vertex {@code s} to vertex {@code t};
+     * {@code Double.POSITIVE_INFINITY} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle
      */
     public double dist(int s, int t) {
@@ -152,11 +152,11 @@ public class FloydWarshall {
     }
 
     /**
-     * Returns a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>.
+     * Returns a shortest path from vertex {@code s} to vertex {@code t}.
      * @param s the source vertex
      * @param t the destination vertex
-     * @return a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>
-     * as an iterable of edges, and <tt>null</tt> if no such path
+     * @return a shortest path from vertex {@code s} to vertex {@code t}
+     * as an iterable of edges, and {@code null} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle
      */
     public Iterable<DirectedEdge> path(int s, int t) {
@@ -192,7 +192,7 @@ public class FloydWarshall {
 
 
     /**
-     * Unit tests the <tt>FloydWarshall</tt> data type.
+     * Unit tests the {@code FloydWarshall} data type.
      */
     public static void main(String[] args) {
 

@@ -313,8 +313,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     /**
      * Sets the default close operation.
      *
-     * @param  value the value, typically <code>JFrame.EXIT_ON_CLOSE</code>
-     *         (close all windows) or <code>JFrame.DISPOSE_ON_CLOSE</code>
+     * @param  value the value, typically {@code JFrame.EXIT_ON_CLOSE}
+     *         (close all windows) or {@code JFrame.DISPOSE_ON_CLOSE}
      *         (close current window)
      */
     public void setDefaultCloseOperation(int value) {
@@ -508,9 +508,9 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     }
 
     /**
-     * Gets the current <tt>JLabel</tt> for use in some other GUI.
+     * Gets the current {@code JLabel} for use in some other GUI.
      *
-     * @return the current <tt>JLabel</tt>
+     * @return the current {@code JLabel}
      */
     public JLabel getJLabel() {
         return draw;
@@ -1010,14 +1010,14 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
 
     /**
-     * Displays on screen, pause for <tt>t</tt> milliseconds, and turn on
+     * Displays on screen, pause for {@code t} milliseconds, and turn on
      * <em>animation mode</em>.
-     * Subsequent calls to drawing methods such as <tt>line()</tt>, <tt>circle()</tt>,
-     * and <tt>square()</tt> will not be displayed on screen until the next call to <tt>show()</tt>.
+     * Subsequent calls to drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will not be displayed on screen until the next call to {@code show()}.
      * This is useful for producing animations (clear the screen, draw a bunch of shapes,
      * display on screen for a fixed amount of time, and repeat). It also speeds up
-     * drawing a huge number of shapes (call <tt>show(0)</tt> to defer drawing
-     * on screen, draw the shapes, and call <tt>show(0)</tt> to display them all
+     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
+     * on screen, draw the shapes, and call {@code show(0)} to display them all
      * on screen at once).
      *
      * @param t number of milliseconds
@@ -1037,8 +1037,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
     /**
      * Displays on-screen and turn off animation mode.
-     * Subsequent calls to drawing methods such as <tt>line()</tt>, <tt>circle()</tt>,
-     * and <tt>square()</tt> will be displayed on screen when called. This is the default.
+     * Subsequent calls to drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be displayed on screen when called. This is the default.
      */
     public void show() {
         defer = false;
@@ -1141,8 +1141,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     /**
      * Returns true if the mouse is being pressed.
      *
-     * @return <tt>true</tt> if the mouse is being pressed;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the mouse is being pressed;
+     *         {@code false} otherwise
      */
     public boolean mousePressed() {
         synchronized (mouseLock) {
@@ -1255,7 +1255,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     /**
      * Returns true if the user has typed a key.
      *
-     * @return <tt>true</tt> if the user has typed a key; <tt>false</tt> otherwise
+     * @return {@code true} if the user has typed a key; {@code false} otherwise
      */
     public boolean hasNextKeyTyped() {
         synchronized (keyLock) {
@@ -1283,8 +1283,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * See {@link KeyEvent} for a description of key codes.
      *
      * @param  keycode the keycode to check
-     * @return <tt>true</tt> if <tt>keycode</tt> is currently being pressed;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code keycode} is currently being pressed;
+     *         {@code false} otherwise
      */
     public boolean isKeyPressed(int keycode) {
         synchronized (keyLock) {

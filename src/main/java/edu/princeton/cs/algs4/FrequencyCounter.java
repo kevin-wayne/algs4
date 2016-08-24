@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FrequencyCounter</tt> class provides a client for 
+ *  The {@code FrequencyCounter} class provides a client for 
  *  reading in a sequence of words and printing a word (exceeding
  *  a given length) that occurs most frequently. It is useful as
  *  a test client for various symbol table implementations.

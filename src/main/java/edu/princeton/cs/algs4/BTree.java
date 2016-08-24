@@ -16,7 +16,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BTree</tt> class represents an ordered symbol table of generic
+ *  The {@code BTree} class represents an ordered symbol table of generic
  *  key-value pairs.
  *  It supports the <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>size</em>, and <em>is-empty</em> methods.
@@ -24,14 +24,14 @@ package edu.princeton.cs.algs4;
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
  *  Unlike {@link java.util.Map}, this class uses the convention that
- *  values cannot be <tt>null</tt>&mdash;setting the
- *  value associated with a key to <tt>null</tt> is equivalent to deleting the key
+ *  values cannot be {@code null}&mdash;setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This implementation uses a B-tree. It requires that
- *  the key type implements the <tt>Comparable</tt> interface and calls the
- *  <tt>compareTo()</tt> and method to compare two keys. It does not call either
- *  <tt>equals()</tt> or <tt>hashCode()</tt>.
+ *  the key type implements the {@code Comparable} interface and calls the
+ *  {@code compareTo()} and method to compare two keys. It does not call either
+ *  {@code equals()} or {@code hashCode()}.
  *  The <em>get</em>, <em>put</em>, and <em>contains</em> operations
  *  each make log<sub><em>m</em></sub>(<em>n</em>) probes in the worst case,
  *  where <em>n</em> is the number of key-value pairs
@@ -85,7 +85,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
  
     /**
      * Returns true if this symbol table is empty.
-     * @return <tt>true</tt> if this symbol table is empty; <tt>false</tt> otherwise
+     * @return {@code true} if this symbol table is empty; {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -114,8 +114,8 @@ public class BTree<Key extends Comparable<Key>, Value>  {
      *
      * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
-     *         and <tt>null</tt> if the key is not in the symbol table
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     *         and {@code null} if the key is not in the symbol table
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Value get(Key key) {
         if (key == null) throw new NullPointerException("key must not be null");
@@ -146,11 +146,11 @@ public class BTree<Key extends Comparable<Key>, Value>  {
     /**
      * Inserts the key-value pair into the symbol table, overwriting the old value
      * with the new value if the key is already in the symbol table.
-     * If the value is <tt>null</tt>, this effectively deletes the key from the symbol table.
+     * If the value is {@code null}, this effectively deletes the key from the symbol table.
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
         if (key == null) throw new NullPointerException("key must not be null");
@@ -246,7 +246,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
 
 
     /**
-     * Unit tests the <tt>BTree</tt> data type.
+     * Unit tests the {@code BTree} data type.
      */
     public static void main(String[] args) {
         BTree<String, String> st = new BTree<String, String>();

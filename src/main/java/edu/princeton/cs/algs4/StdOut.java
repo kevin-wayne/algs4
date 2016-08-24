@@ -18,13 +18,13 @@ import java.util.Locale;
  *  This class provides methods for printing strings and numbers to standard output.
  *  <p>
  *  <b>Getting started.</b>
- *  To use this class, you must have <tt>StdOut.class</tt> in your
+ *  To use this class, you must have {@code StdOut.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
  *  Otherwise, download
  *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
  *  and put a copy in your working directory.
  *  <p>
- *  Here is an example program that uses <code>StdOut</code>:
+ *  Here is an example program that uses {@code StdOut}:
  *  <pre>
  *   public class TestStdOut {
  *       public static void main(String[] args) {
@@ -38,16 +38,16 @@ import java.util.Locale;
  *  </pre>
  *  <p>
  *  <b>Differences with System.out.</b>
- *  The behavior of <code>StdOut</code> is similar to that of {@link System#out},
+ *  The behavior of {@code StdOut} is similar to that of {@link System#out},
  *  but there are a few subtle differences:
  *  <ul>
- *  <li> <code>StdOut</code> coerces the character-set encoding to UTF-8,
+ *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
  *       which is a standard character encoding for Unicode.
- *  <li> <code>StdOut</code> coerces the locale to {@link Locale#US},
+ *  <li> {@code StdOut} coerces the locale to {@link Locale#US},
  *       for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
  *       and floating-point literals.
- *  <li> <code>StdOut</code> <em>flushes</em> standard output after each call to
- *       <code>print()</code> so that text will appear immediately in the terminal.
+ *  <li> {@code StdOut} <em>flushes</em> standard output after each call to
+ *       {@code print()} so that text will appear immediately in the terminal.
  *  </ul>
  *  <p>
  *  <b>Reference.</b>
@@ -304,7 +304,7 @@ public final class StdOut {
     }
 
    /**
-     * Unit tests some of the methods in <tt>StdOut</tt>.
+     * Unit tests some of the methods in {@code StdOut}.
      */
     public static void main(String[] args) {
 

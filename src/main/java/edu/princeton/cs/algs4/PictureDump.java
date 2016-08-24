@@ -20,7 +20,7 @@ import java.awt.Color;
 
 
 /**
- *  The <tt>PictureDump</tt> class provides a client for displaying the contents
+ *  The {@code PictureDump} class provides a client for displaying the contents
  *  of a binary file as a black-and-white picture.
  *  <p>
  *  For additional documentation,

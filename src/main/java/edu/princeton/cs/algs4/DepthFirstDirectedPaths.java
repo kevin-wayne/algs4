@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstDirectedPaths</tt> class represents a data type for finding
+ *  The {@code DepthFirstDirectedPaths} class represents a data type for finding
  *  directed paths from a source vertex <em>s</em> to every
  *  other vertex in the digraph.
  *  <p>
@@ -49,7 +49,7 @@ public class DepthFirstDirectedPaths {
     private final int s;       // source vertex
 
     /**
-     * Computes a directed path from <tt>s</tt> to every other vertex in digraph <tt>G</tt>.
+     * Computes a directed path from {@code s} to every other vertex in digraph {@code G}.
      * @param G the digraph
      * @param s the source vertex
      */
@@ -71,10 +71,10 @@ public class DepthFirstDirectedPaths {
     }
 
     /**
-     * Is there a directed path from the source vertex <tt>s</tt> to vertex <tt>v</tt>?
+     * Is there a directed path from the source vertex {@code s} to vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a directed path from the source
-     *   vertex <tt>s</tt> to vertex <tt>v</tt>, <tt>false</tt> otherwise
+     * @return {@code true} if there is a directed path from the source
+     *   vertex {@code s} to vertex {@code v}, {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return marked[v];
@@ -82,11 +82,11 @@ public class DepthFirstDirectedPaths {
 
     
     /**
-     * Returns a directed path from the source vertex <tt>s</tt> to vertex <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
+     * Returns a directed path from the source vertex {@code s} to vertex {@code v}, or
+     * {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a directed path from the source vertex
-     *   <tt>s</tt> to vertex <tt>v</tt>, as an Iterable
+     *   {@code s} to vertex {@code v}, as an Iterable
      */
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -98,7 +98,7 @@ public class DepthFirstDirectedPaths {
     }
 
     /**
-     * Unit tests the <tt>DepthFirstDirectedPaths</tt> data type.
+     * Unit tests the {@code DepthFirstDirectedPaths} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

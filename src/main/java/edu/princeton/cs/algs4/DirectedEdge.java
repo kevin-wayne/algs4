@@ -9,7 +9,7 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>DirectedEdge</tt> class represents a weighted edge in an 
+ *  The {@code DirectedEdge} class represents a weighted edge in an 
  *  {@link EdgeWeightedDigraph}. Each edge consists of two integers
  *  (naming the two vertices) and a real-value weight. The data type
  *  provides methods for accessing the two endpoints of the directed edge and
@@ -28,14 +28,14 @@ public class DirectedEdge {
     private final double weight;
 
     /**
-     * Initializes a directed edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
-     * the given <tt>weight</tt>.
+     * Initializes a directed edge from vertex {@code v} to vertex {@code w} with
+     * the given {@code weight}.
      * @param v the tail vertex
      * @param w the head vertex
      * @param weight the weight of the directed edge
-     * @throws IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt>
+     * @throws IndexOutOfBoundsException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws IllegalArgumentException if <tt>weight</tt> is <tt>NaN</tt>
+     * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public DirectedEdge(int v, int w, double weight) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
@@ -79,7 +79,7 @@ public class DirectedEdge {
     }
 
     /**
-     * Unit tests the <tt>DirectedEdge</tt> data type.
+     * Unit tests the {@code DirectedEdge} data type.
      */
     public static void main(String[] args) {
         DirectedEdge e = new DirectedEdge(12, 34, 5.67);

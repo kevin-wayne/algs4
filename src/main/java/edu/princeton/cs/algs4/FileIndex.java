@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
 import java.io.File;
 
 /**
- *  The <tt>FileIndex</tt> class provides a client for indexing a set of files,
+ *  The {@code FileIndex} class provides a client for indexing a set of files,
  *  specified as command-line arguments. It takes queries from standard input
  *  and prints each file that contains the given query.
  *  <p>
