@@ -165,7 +165,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	 * This operation is destructive
 	 * Worst case is O(log(n))
 	 * @param heap a Binomial Heap to be merged with the current heap
-	 * @throws java.util.IllegalArgumentException if the heap in parameter is null
+	 * @throws java.lang.IllegalArgumentException if the heap in parameter is null
 	 * @return the union of two heaps
 	 */
 	public BinomialMinPQ<Key> union(BinomialMinPQ<Key> heap) {
