@@ -186,7 +186,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
-     * @deprecated Replaced by {@link #changeKey(int, Key)}.
+     * @deprecated Replaced by {@code changeKey(int, Key)}.
      */
     @Deprecated
     public void change(int i, Key key) {
