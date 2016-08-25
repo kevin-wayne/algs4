@@ -83,6 +83,7 @@ public class SparseVector {
      * @return the dimension of this vector
      * @deprecated Replaced by {@link #dimension()}.
      */
+    @Deprecated
     public int size() {
         return d;
     }
@@ -151,6 +152,7 @@ public class SparseVector {
      * @return the Euclidean norm of this vector
      * @deprecated Replaced by {@link #magnitude()}.
      */
+    @Deprecated
     public double norm() {
         return Math.sqrt(this.dot(this));
     }

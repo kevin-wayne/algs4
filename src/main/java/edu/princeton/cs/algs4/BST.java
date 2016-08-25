@@ -59,7 +59,6 @@ import java.util.NoSuchElementException;
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link RedBlackBST},
  *  {@link SeparateChainingHashST}, and {@link LinearProbingHashST},
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne

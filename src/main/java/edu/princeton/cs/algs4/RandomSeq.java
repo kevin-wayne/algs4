@@ -17,7 +17,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>RandomSeq</tt> class is a client that prints out a pseudorandom
+ *  The {@code RandomSeq} class is a client that prints out a pseudorandom
  *  sequence of real numbers in a given range.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of

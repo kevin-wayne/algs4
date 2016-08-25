@@ -21,6 +21,10 @@
  *  1 components
  *  0 1 2 3 4 5 6 7 8 9 10 ...
  *
+ *  Note: This implementation uses a recursive DFS. To avoid needing
+ *        a potentially very large stack size, replace with a non-recurisve
+ *        DFS ala NonrecursiveDFS.java.
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -140,6 +144,7 @@ public class CC {
      *         connected component; <tt>false</tt> otherwise
      * @deprecated Replaced by {@link #connected(int, int)}.
      */
+    @Deprecated
     public boolean areConnected(int v, int w) {
         return id(v) == id(w);
     }

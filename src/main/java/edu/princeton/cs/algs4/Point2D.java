@@ -14,7 +14,7 @@ import java.util.Comparator;
 
 
 /**
- *  The <tt>Point</tt> class is an immutable data type to encapsulate a
+ *  The {@code Point} class is an immutable data type to encapsulate a
  *  two-dimensional point with real-value coordinates.
  *  <p>
  *  Note: in order to deal with the difference behavior of double and 
@@ -52,9 +52,9 @@ public final class Point2D implements Comparable<Point2D> {
      * Initializes a new point (x, y).
      * @param x the x-coordinate
      * @param y the y-coordinate
-     * @throws IllegalArgumentException if either <tt>x</tt> or <tt>y</tt>
-     *    is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt> or
-     *    <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if either {@code x} or {@code y}
+     *    is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY} or
+     *    {@code Double.NEGATIVE_INFINITY}
      */
     public Point2D(double x, double y) {
         if (Double.isInfinite(x) || Double.isInfinite(y))
@@ -163,8 +163,8 @@ public final class Point2D implements Comparable<Point2D> {
      * if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
      *
      * @param  that the other point
-     * @return the value <tt>0</tt> if this string is equal to the argument
-     *         string (precisely when <tt>equals()</tt> returns <tt>true</tt>);
+     * @return the value {@code 0} if this string is equal to the argument
+     *         string (precisely when {@code equals()} returns {@code true});
      *         a negative integer if this point is less than the argument
      *         point; and a positive integer if this point is greater than the
      *         argument point
@@ -280,8 +280,8 @@ public final class Point2D implements Comparable<Point2D> {
      * Compares this point to the specified point.
      *       
      * @param  other the other point
-     * @return <tt>true</tt> if this point equals <tt>other</tt>;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this point equals {@code other};
+     *         {@code false} otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -302,8 +302,8 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Returns an integer hash code for this point.
-     * @return an integer hash code for this point
+     * Returns an integer hash @code for this point.
+     * @return an integer hash @code for this point
      */
     @Override
     public int hashCode() {

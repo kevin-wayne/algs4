@@ -316,39 +316,62 @@ import javax.swing.KeyStroke;
  *  The first method clears the canvas to white; the second method
  *  allows you to specify a color of your choice. For example,
  *  {@code StdDraw.clear(StdDraw.LIGHT_GRAY)} clears the canvas to a shade
- *  of gray. Most often, these two methods are used in conjunction with animation mode.
+ *  of gray.
  *  <p>
- *  <b>Animations.</b>
- *  Animation mode is one of the trickier features of standard drawing.
- *  The following two methods control the way in which objects are drawn:
+ *  <b>Computer animations and double buffering.</b>
+ *  Double buffering is one of the most powerful features of standard drawing,
+ *  enabling computer animations.
+ *  The following methods control the way in which objects are drawn:
  *  <ul>
+ *  <li> {@link #enableDoubleBuffering()}
+ *  <li> {@link #disableDoubleBuffering()}
  *  <li> {@link #show()}
- *  <li> {@link #show(int t)}
+ *  <li> {@link #pause(int t)}
  *  </ul>
  *  <p>
- *  By default, animation mode is off, which means that as soon as you
+ *  By default, double buffering is disabled, which means that as soon as you
  *  call a drawing
  *  method&mdash;such as {@code point()} or {@code line()}&mdash;the
- *  results appear on the screen. {@code StdDraw.show()} turns off
- *  animation mode.
+ *  results appear on the screen.
  *  <p>
- *  You can call {@link #show(int t)} to turn on animation mode. This
- *  defers all drawing to the screen until you are aready to display them.
- *  Once you are ready to display them,
- *  you call {@link #show(int t)} again, which transfer the offscreen
- *  drawing to the screen and waits for the specified number of milliseconds.
- *  In conjuction with {@link #clear()}, you can create the illusion
- *  of movement by iterating the following three steps:
+ *  When double buffering is enabled by calling {@link #enableDoubleBuffering()},
+ *  all drawing takes place on the <em>offscreen canvas</em>. The offscreen canvas
+ *  is not displayed. Only when you call
+ *  {@link #show()} does your drawing get copied from the offscreen canvas to
+ *  the onscreen canvas, where it is displayed in the standard drawing window. You 
+ *  can think of double buffering as collecting all of the lines, points, shapes,
+ *  and text that you tell it to draw, and then drawing them all
+ *  <em>simultaneously</em>, upon request.
+ *  <p>
+ *  The most important use of double buffering is to produce computer
+ *  animations, creating the illusion of motion by rapidly
+ *  displaying static drawings. To produce an animation, repeat
+ *  the following four steps:
  *  <ul>
- *  <li> Clear the background canvas.
- *  <li> Draw geometric objects.
- *  <li> Show the drawing and wait for a short while.
+ *  <li> Clear the offscreen canvas.
+ *  <li> Draw objects on the offscreen canvas.
+ *  <li> Copy the offscreen canvas to the onscreen canvas.
+ *  <li> Wait for a short while.
  *  </ul>
  *  <p>
- *  Waiting for a short while is essential; otherwise, the drawing will appear
- *  and disappear so quickly that your animation will flicker.
+ *  The {@link #clear()}, {@link #show()}, and {@link #pause(int dt)} methods
+ *  support the first, third, and fourth of these steps, respectively.
  *  <p>
- *  Here is a simple example of an animation:
+ *  For example, this code fragment animates two balls moving in a circle.
+ *  <pre>
+ *   StdDraw.setScale(-2, +2);
+ *   StdDraw.enableDoubleBuffering();
+ *
+ *   for (double t = 0.0; true; t += 0.02) {
+ *       double x = Math.sin(t);
+ *       double y = Math.cos(t);
+ *       StdDraw.clear();
+ *       StdDraw.filledCircle(x, y, 0.05);
+ *       StdDraw.filledCircle(-x, -y, 0.05);
+ *       StdDraw.show();
+ *       StdDraw.pause(20);
+ *   }
+ *  </pre>
  *  <p>
  *  <b>Keyboard and mouse inputs.</b>
  *  Standard drawing has very basic support for keyboard and mouse input.
@@ -410,21 +433,17 @@ import javax.swing.KeyStroke;
  *  Standard drawing is capable of drawing large amounts of data.
  *  Here are a few tricks and tips:
  *  <ul>
- *  <li> Use <em>animation mode</em> for static drawing with a large
+ *  <li> Use <em>double buffering</em> for static drawing with a large
  *       number of objects.
- *       That is, call {@code StdDraw.show(0)} before
- *       and after the sequence of drawing commands.
- *       The bottleneck operation is not drawing the geometric
- *       shapes but rather drawing them to the screen. By using animation
- *       mode, you draw all of the shapes to an offscreen buffer, then copy
- *       them all at once to the screen.
- *  <li> When using <em>animation mode</em>, call {@code show()}
- *       only once per frame, not after drawing each object.
+ *       That is, call {@link #enableDoubleBuffering()} before
+ *       the sequence of drawing commands and call {@link #show()} afterwards.
+ *       Incrementally displaying a complex drawing while it is being
+ *       created can be intolerably inefficient on many computer systems.
+ *  <li> When drawing computer animations, call {@code show()}
+ *       only once per frame, not after drawing each individual object.
  *  <li> If you call {@code picture()} multiple times with the same filename,
  *       Java will cache the image, so you do not incur the cost of reading
  *       from a file each time.
- *  <li> Do not call {@code setFont()} in an animation loop (unless you really
- *       need to change the font in each iteration). It can cause flicker.
  *  </ul>
  *  <p>
  *  <b>Known bugs and issues.</b>
@@ -1453,18 +1472,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 
     /**
-     * Display on screen, pause for t milliseconds, and turn on
-     * <em>animation mode</em>: subsequent calls to
-     * drawing methods such as {@code line()}, {@code circle()}, and {@code square()}
-     * will not be displayed on screen until the next call to {@code show()}.
-     * This is useful for producing animations (clear the screen, draw a bunch of shapes,
-     * display on screen for a fixed amount of time, and repeat). It also speeds up
-     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
-     * on screen, draw the shapes, and call {@code show(0)} to display them all
-     * on screen at once).
+     * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
+     * and enables double buffering.
      * @param t number of milliseconds
-     * @deprecated  replaced by {@link #enableDoubleBuffering} and {@link #pause}
+     * @deprecated replaced by {@link #enableDoubleBuffering}, {@link #show()}, and {@link #pause}
      */
+    @Deprecated
     public static void show(int t) {
         // sleep until the next time we're allowed to draw
         long millis = System.currentTimeMillis();
@@ -1486,15 +1499,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Display on screen, pause for t milliseconds, and turn on
-     * <em>animation mode</em>: subsequent calls to
-     * drawing methods such as {@code line()}, {@code circle()}, and {@code square()}
-     * will not be displayed on screen until the next call to {@code show()}.
-     * This is useful for producing animations (clear the screen, draw a bunch of shapes,
-     * display on screen for a fixed amount of time, and repeat). It also speeds up
-     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
-     * on screen, draw the shapes, and call {@code show(0)} to display them all
-     * on screen at once).
+     * Pause for t milliseconds. This method is intended to support computer animations.
      * @param t number of milliseconds
      */
     public static void pause(int t) {
@@ -1515,7 +1520,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Displays on-screen.
+     * Copies offscreen buffer to onscreen buffer. There is no reason to call
+     * this method unless double buffering is enabled.
      */
     public static void show() {
         onscreen.drawImage(offscreenImage, 0, 0, null);

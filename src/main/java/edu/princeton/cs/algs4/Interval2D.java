@@ -10,12 +10,12 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Interval2D</tt> class represents a closed two-dimensional interval,
+ *  The {@code Interval2D} class represents a closed two-dimensional interval,
  *  which represents all points (x, y) with both xmin <= x <= xmax and
  *  ymin <= y <= ymax.
  *  Two-dimensional intervals are immutable: their values cannot be changed
  *  after they are created.
- *  The class <code>Interval2D</code> includes methods for checking whether
+ *  The class <@code>Interval2D</@code> includes methods for checking whether
  *  a two-dimensional interval contains a point and determining whether
  *  two two-dimensional intervals intersect.
  *  <p>
@@ -93,8 +93,8 @@ public class Interval2D {
 
  
     /**
-     * Returns an integer hash code for this interval.  
-     * @return an integer hash code for this interval 
+     * Returns an integer hash @code for this interval.  
+     * @return an integer hash @code for this interval 
      */
     public int hashCode() {
         int hash1 = x.hashCode();
@@ -112,7 +112,7 @@ public class Interval2D {
     }
 
     /**
-     * Unit tests the <tt>Interval2D</tt> data type.
+     * Unit tests the {@code Interval2D} data type.
      */
     public static void main(String[] args) {
         double xmin = Double.parseDouble(args[0]);

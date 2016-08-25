@@ -129,6 +129,7 @@ public class SymbolGraph {
      * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
      * @deprecated Replaced by {@link #indexOf(String)}.
      */
+    @Deprecated
     public int index(String s) {
         return st.get(s);
     }
@@ -149,6 +150,7 @@ public class SymbolGraph {
      * @return the name of the vertex associated with the integer <tt>v</tt>
      * @deprecated Replaced by {@link #nameOf(int)}.
      */
+    @Deprecated
     public String name(int v) {
         return keys[v];
     }
@@ -168,6 +170,7 @@ public class SymbolGraph {
      * @return the graph associated with the symbol graph
      * @deprecated Replaced by {@link #graph()}.
      */
+    @Deprecated
     public Graph G() {
         return graph;
     }

@@ -30,7 +30,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Whitelist</tt> class provides a client for reading in
+ *  The {@code Whitelist} class provides a client for reading in
  *  a set of integers from a file; reading in a sequence of integers
  *  from standard input; and printing to standard output those 
  *  integers not in the whitelist.

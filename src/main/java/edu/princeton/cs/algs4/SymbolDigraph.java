@@ -101,6 +101,7 @@ public class SymbolDigraph {
      * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
      * @deprecated Replaced by {@link #indexOf(String)}.
      */
+    @Deprecated
     public int index(String s) {
         return st.get(s);
     }
@@ -120,6 +121,7 @@ public class SymbolDigraph {
      * @return the name of the vertex associated with the integer <tt>v</tt>
      * @deprecated Replaced by {@link #nameOf(int)}.
      */
+    @Deprecated
     public String name(int v) {
         return keys[v];
     }
@@ -138,6 +140,7 @@ public class SymbolDigraph {
      * not to mutate the digraph.
      * @deprecated Replaced by {@link #digraph()}.
      */
+    @Deprecated
     public Digraph G() {
         return graph;
     }

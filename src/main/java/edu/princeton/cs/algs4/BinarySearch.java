@@ -28,7 +28,7 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>BinarySearch</tt> class provides a static method for binary
+ *  The {@code BinarySearch} class provides a static method for binary
  *  searching for an integer in a sorted array of integers.
  *  <p>
  *  The <em>indexOf</em> operations takes logarithmic time in the worst case.
@@ -51,7 +51,7 @@ public class BinarySearch {
      *
      * @param  a the array of integers, must be sorted in ascending order
      * @param  key the search key
-     * @return index of key in array <tt>a</tt> if present; <tt>-1</tt> otherwise
+     * @return index of key in array {@code a} if present; {@code -1} otherwise
      */
     public static int indexOf(int[] a, int key) {
         int lo = 0;
@@ -73,9 +73,10 @@ public class BinarySearch {
      *
      * @param  key the search key
      * @param  a the array of integers, must be sorted in ascending order
-     * @return index of key in array <tt>a</tt> if present; <tt>-1</tt> otherwise
+     * @return index of key in array {@code a} if present; {@code -1} otherwise
      * @deprecated Replaced by {@link #indexOf(int[], int)}.
      */
+    @Deprecated
     public static int rank(int key, int[] a) {
         return indexOf(a, key);
     }

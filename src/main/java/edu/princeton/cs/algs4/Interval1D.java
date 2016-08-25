@@ -13,10 +13,10 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- *  The <tt>Interval1D</tt> class represents a one-dimensional interval.
+ *  The {@code Interval1D} class represents a one-dimensional interval.
  *  The interval is <em>closed</em>&mdash;it contains both endpoints.
  *  Intervals are immutable: their values cannot be changed after they are created.
- *  The class <code>Interval1D</code> includes methods for checking whether
+ *  The class <@code>Interval1D</@code> includes methods for checking whether
  *  an interval contains a point and determining whether two intervals intersect.
  *  <p>
  *  For additional documentation, 
@@ -52,9 +52,9 @@ public class Interval1D {
      * @param  min the smaller endpoint
      * @param  max the larger endpoint
      * @throws IllegalArgumentException if the min endpoint is greater than the max endpoint
-     * @throws IllegalArgumentException if either <tt>min</tt> or <tt>max</tt>
-     *         is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt> or
-     *         <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if either {@code min} or {@code max}
+     *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY} or
+     *         {@code Double.NEGATIVE_INFINITY}
 
      */
     public Interval1D(double min, double max) {
@@ -80,6 +80,7 @@ public class Interval1D {
      * @return the left endpoint of this interval
      * @deprecated Replaced by {@link #min()}.
      */
+    @Deprecated
     public double left() { 
         return min;
     }
@@ -89,6 +90,7 @@ public class Interval1D {
      * @return the right endpoint of this interval
      * @deprecated Replaced by {@link #max()}.
      */
+    @Deprecated
     public double right() { 
         return max;
     }
@@ -115,8 +117,8 @@ public class Interval1D {
      * Returns true if this interval intersects the specified interval.
      *
      * @param  that the other interval
-     * @return <tt>true</tt> if this interval intersects the argument interval;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this interval intersects the argument interval;
+     *         {@code false} otherwise
      */
     public boolean intersects(Interval1D that) {
         if (this.max < that.min) return false;
@@ -128,8 +130,8 @@ public class Interval1D {
      * Returns true if this interval contains the specified value.
      *
      * @param x the value
-     * @return <tt>true</tt> if this interval contains the value <tt>x</tt>;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this interval contains the value {@code x};
+     *         {@code false} otherwise
      */
     public boolean contains(double x) {
         return (min <= x) && (x <= max);
@@ -157,8 +159,8 @@ public class Interval1D {
      * Compares this transaction to the specified object.
      *
      * @param  other the other interval
-     * @return <tt>true</tt> if this interval equals the other interval;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this interval equals the other interval;
+     *         {@code false} otherwise
      */
     public boolean equals(Object other) {
         if (other == this) return true;
@@ -169,9 +171,9 @@ public class Interval1D {
     }
 
     /**
-     * Returns an integer hash code for this interval.
+     * Returns an integer hash @code for this interval.
      *
-     * @return an integer hash code for this interval
+     * @return an integer hash @code for this interval
      */
     public int hashCode() {
         int hash1 = ((Double) min).hashCode();
@@ -216,7 +218,7 @@ public class Interval1D {
 
 
     /**
-     * Unit tests the <tt>Interval1D</tt> data type.
+     * Unit tests the {@code Interval1D} data type.
      */
     public static void main(String[] args) {
         Interval1D[] intervals = new Interval1D[4];

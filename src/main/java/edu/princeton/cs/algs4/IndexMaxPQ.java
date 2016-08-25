@@ -188,6 +188,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
      * @deprecated Replaced by {@link #changeKey(int, Key)}.
      */
+    @Deprecated
     public void change(int i, Key key) {
         changeKey(i, key);
     }

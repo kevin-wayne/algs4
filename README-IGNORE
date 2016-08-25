@@ -1,0 +1,161 @@
+git add -A .
+git commit -m "Describes commit"
+git push origin master
+
+
+add link to image of book
+
+add fixed URL to github (in case it is forked)
+
+
+Algorithms 4/e textbook libraries 
+=================================
+
+by Robert Sedgewick and Kevin Wayne
+-----------------------------------
+
+
+This repository stores all of the algorithms and data structures from the textbook
+Algorithms, Fourth Edition by Robert Sedgewick and Kevin Wayne packaged as algs4-`<version>`.jar.
+For more details, see
+
+http://algs4.cs.princeton.edu/code/
+
+This is the library used in Algorithms Part I and II on Coursera.
+
+
+                <dependency>
+                        <groupId>gov.nist.math</groupId>
+                        <artifactId>jama</artifactId>
+                        <version>1.0.3</version>
+                </dependency>  
+
+                <dependency>
+                        <groupId>classmexer</groupId>
+                        <artifactId>classmexer</artifactId>
+                        <version>0.03</version>
+                </dependency>
+
+
+
+Prerequisites to use this code
+------------------------------
+
+To import current project in your favourite IDE (Eclipse, IntelliJ, etc) you need following:
+
+1) Java (JRE or JDK), last version can be found here:  http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+2) Your favourite IDE , e.g. Eclipse for Java Developers: https://eclipse.org/downloads/  or intellij https://www.jetbrains.com/idea/
+
+3) Maven - build tool : https://maven.apache.org/  (optional step, because most modern IDE have an embedded Maven installation)
+
+
+Install Java (obligatory)
+-------------------------
+
+Download and unpackage(or install) Java JRE or JDK.
+
+Download link:  http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+I recommend use JDK for development purposes, because JDK contains many tools for performance measurements.
+
+However, JRE is also appropriate to run this code.
+
+This code compatible with Java 1.6 and higher
+
+But I recommend latest Java version.
+
+Note, where java landed after installation.
+
+For example , if java ended up in C:\Program Files\Java\\`<JDK-x-y-z>`, then this directory considered JAVA_HOME
+
+
+
+Note for command line users:
+
+%JAVA_HOME%\bin on Windows or $JAVA_HOME\bin on Linux must be part of system PATH to start command line build.
+
+
+
+
+Install your IDE
+----------------
+
+Free Eclipse IDE for Java Developers is OK: https://eclipse.org/downloads/
+
+Intellij IDE https://www.jetbrains.com/idea/ , use community edition for free
+
+
+
+Watch sources and build in your favourite IDE
+---------------------------------------------
+
+To view source files and run this project you can simply open the project with your favourite IDE , using open project or import project wizards.
+
+In any case open or import this project "As Maven Project".
+
+
+
+
+Command line build (for people who like hard core)
+--------------------------------------------------
+
+If you need command line build, use the approach below:
+
+Install Maven
+-------------
+
+Download Maven from https://maven.apache.org/
+
+Install it. (Usually just unpack/unzip it)
+
+For example, your maven is here C:\\`<appache-maven-x-y-z>`
+
+This directory considered M2_HOME
+
+Note, maven will use your disk space to save downloaded dependencies
+
+If you configure nothing, default maven repository on your disk will be at
+
+on Windows : C:\Users\\`<username>`\\.m2\repository
+
+On Linux : /home/`<username>`/.m2/repository
+
+
+Run build from command line
+---------------------------
+
+Open Windows command line or linux shell
+
+Specify following parameters:
+
+On Windows:
+
+set JAVA_HOME=C:\Program Files\Java\\`<JDK-x-y-z>`
+
+set PATH=%JAVA_HOME%\bin;%PATH%
+
+set M2_HOME=C:\\`<appache-maven-x-y-z>`
+
+set PATH=%M2_HOME%\bin;%PATH%
+
+On Linux:
+
+export JAVA_HOME=/my/java/`<JDK-x-y-z>`
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+export M2_HOME=/my/maven/`<appache-maven-x-y-z>`
+
+export PATH=$M2_HOME/bin:$PATH
+
+
+Change to directory of the project and run build on Windows or Linux in the same command line/shell:
+
+cd  `<algs4 directory>`
+
+mvn clean install
+
+In your `<algs4 directory>`/target you will find a algs4-`<version>`.jar
+
+This jar you can use as dependency in your projects (according to license of course)

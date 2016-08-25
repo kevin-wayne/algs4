@@ -46,7 +46,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Knuth</tt> class provides a client for reading in a 
+ *  The {@code Knuth} class provides a client for reading in a 
  *  sequence of strings and <em>shuffling</em> them using the Knuth (or Fisher-Yates)
  *  shuffling algorithm. This algorithm guarantees to rearrange the
  *  elements in uniformly random order, under
@@ -69,7 +69,7 @@ public class Knuth {
 
     /**
      * Rearranges an array of objects in uniformly random order
-     * (under the assumption that <tt>Math.random()</tt> generates independent
+     * (under the assumption that {@code Math.random()} generates independent
      * and uniformly distributed numbers between 0 and 1).
      * @param a the array to be shuffled
      */

@@ -158,6 +158,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @return     an iterator to all of the keys in this symbol table
      * @deprecated Replaced by {@link #keys()}.
      */
+    @Deprecated
     public Iterator<Key> iterator() {
         return st.keySet().iterator();
     }

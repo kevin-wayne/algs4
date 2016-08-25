@@ -489,6 +489,7 @@ public final class In {
      * @return     the integers in the file
      * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllInts()}.
      */
+    @Deprecated
     public static int[] readInts(String filename) {
         return new In(filename).readAllInts();
     }
@@ -501,6 +502,7 @@ public final class In {
      * @return     the doubles in the file
      * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllDoubles()}.
      */
+    @Deprecated
     public static double[] readDoubles(String filename) {
         return new In(filename).readAllDoubles();
     }
@@ -513,6 +515,7 @@ public final class In {
      * @return     the strings in the file
      * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllStrings()}.
      */
+    @Deprecated
     public static String[] readStrings(String filename) {
         return new In(filename).readAllStrings();
     }
@@ -524,6 +527,7 @@ public final class In {
      * @return     the integers on standard input
      * @deprecated Replaced by {@link StdIn#readAllInts()}.
      */
+    @Deprecated
     public static int[] readInts() {
         return new In().readAllInts();
     }
@@ -535,6 +539,7 @@ public final class In {
      * @return     the doubles on standard input
      * @deprecated Replaced by {@link StdIn#readAllDoubles()}.
      */
+    @Deprecated
     public static double[] readDoubles() {
         return new In().readAllDoubles();
     }
@@ -546,6 +551,7 @@ public final class In {
      * @return     the strings on standard input
      * @deprecated Replaced by {@link StdIn#readAllStrings()}.
      */
+    @Deprecated
     public static String[] readStrings() {
         return new In().readAllStrings();
     }

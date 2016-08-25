@@ -150,6 +150,7 @@ public class Alphabet {
      * @return the number of characters in this alphabet
      * @deprecated Replaced by {@link #radix()}.
      */
+    @Deprecated
     public int R() {
         return R;
     }

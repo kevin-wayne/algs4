@@ -42,6 +42,9 @@ package edu.princeton.cs.algs4;
  *  iterate over all of the vertices adjacent to a vertex. It also provides
  *  methods for returning the number of vertices <em>V</em> and the number
  *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
+ *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
+ *  adjacency list of <em>v</em> twice and contributes two to the degree
+ *  of <em>v</em>.
  *  <p>
  *  This implementation uses an adjacency-lists representation, which 
  *  is a vertex-indexed array of {@link Bag} objects.

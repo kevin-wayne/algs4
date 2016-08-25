@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- *  The <tt>Transaction</tt> class is an immutable data type to encapsulate a
+ *  The {@code Transaction} class is an immutable data type to encapsulate a
  *  commercial transaction with a customer name, date, and amount.
  *  <p>
  *  For additional documentation, 
@@ -35,9 +35,9 @@ public class Transaction implements Comparable<Transaction> {
      * @param  who the person involved in this transaction
      * @param  when the date of this transaction
      * @param  amount the amount of this transaction
-     * @throws IllegalArgumentException if <tt>amount</tt> 
-     *         is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt>,
-     *         or <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if {@code amount} 
+     *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
+     *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String who, Date when, double amount) {
         if (Double.isNaN(amount) || Double.isInfinite(amount))
@@ -51,9 +51,9 @@ public class Transaction implements Comparable<Transaction> {
      * Initializes a new transaction by parsing a string of the form NAME DATE AMOUNT.
      *
      * @param  transaction the string to parse
-     * @throws IllegalArgumentException if <tt>amount</tt> 
-     *         is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt>,
-     *         or <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if {@code amount} 
+     *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
+     *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String transaction) {
         String[] a = transaction.split("\\s+");
@@ -117,7 +117,7 @@ public class Transaction implements Comparable<Transaction> {
      * Compares this transaction to the specified object.
      *
      * @param  other the other transaction
-     * @return true if this transaction is equal to <tt>other</tt>; false otherwise
+     * @return true if this transaction is equal to {@code other}; false otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -131,9 +131,9 @@ public class Transaction implements Comparable<Transaction> {
 
 
     /**
-     * Returns a hash code for this transaction.
+     * Returns a hash @code for this transaction.
      *
-     * @return a hash code for this transaction
+     * @return a hash @code for this transaction
      */
     public int hashCode() {
         int hash = 1;
@@ -179,7 +179,7 @@ public class Transaction implements Comparable<Transaction> {
 
 
     /**
-     * Unit tests the <tt>Transaction</tt> data type.
+     * Unit tests the {@code Transaction} data type.
      */
     public static void main(String[] args) {
         Transaction[] a = new Transaction[4];

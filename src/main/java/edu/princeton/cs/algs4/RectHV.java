@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>RectHV</tt> class is an immutable data type to encapsulate a
+ *  The {@code RectHV} class is an immutable data type to encapsulate a
  *  two-dimensional axis-aligned rectagle with real-value coordinates.
  *  The rectangle is <em>closed</em>&mdash;it includes the points on the boundary.
  *  <p>
@@ -34,11 +34,11 @@ public final class RectHV {
      * @param  xmax the <em>x</em>-coordinate of the upper-right endpoint
      * @param  ymin the <em>y</em>-coordinate of the lower-left endpoint
      * @param  ymax the <em>y</em>-coordinate of the upper-right endpoint
-     * @throws IllegalArgumentException if any of <tt>xmin</tt>,
-     *         <tt>xmax</tt>, <tt>ymin</tt>, or <tt>ymax</tt>
-     *         is <tt>Double.NaN</tt>.
-     * @throws IllegalArgumentException if <tt>xmax</tt> &lt;
-     *         <tt>xmin</tt> or <tt>ymax</tt> &lt; <tt>ymin</tt>.
+     * @throws IllegalArgumentException if any of {@code xmin},
+     *         {@code xmax}, {@code ymin}, or {@code ymax}
+     *         is {@code Double.NaN}.
+     * @throws IllegalArgumentException if {@code xmax} &lt;
+     *         {@code xmin} or {@code ymax} &lt; {@code ymin}.
      */
     public RectHV(double xmin, double ymin, double xmax, double ymax) {
         if (Double.isNaN(xmin) || Double.isNaN(xmax))
@@ -93,7 +93,7 @@ public final class RectHV {
     /**
      * Returns the width of this rectangle.
      *
-     * @return the width of this rectangle <tt>xmax - xmin</tt>
+     * @return the width of this rectangle {@code xmax - xmin}
      */
     public double width() {
         return xmax - xmin;
@@ -102,7 +102,7 @@ public final class RectHV {
     /**
      * Returns the height of this rectangle.
      *
-     * @return the height of this rectangle <tt>ymax - ymin</tt>
+     * @return the height of this rectangle {@code ymax - ymin}
      */
     public double height() {
         return ymax - ymin;
@@ -112,7 +112,7 @@ public final class RectHV {
      * Returns true if the two rectangles intersect.
      *
      * @param  that the other rectangle
-     * @return <tt>true</tt> if this rectangle intersect the argument
+     * @return {@code true} if this rectangle intersect the argument
                rectagnle at one or more points, including on the boundary
      */
     public boolean intersects(RectHV that) {
@@ -123,8 +123,8 @@ public final class RectHV {
     /**
      * Returns true if this rectangle contain the point.
      * @param  p the point
-     * @return <tt>true</tt> if this rectangle contain the point <tt>p</tt>,
-               possibly at the boundary; <tt>false</tt> otherwise
+     * @return {@code true} if this rectangle contain the point {@code p},
+               possibly at the boundary; {@code false} otherwise
      */
     public boolean contains(Point2D p) {
         return (p.x() >= xmin) && (p.x() <= xmax)
@@ -132,10 +132,10 @@ public final class RectHV {
     }
 
     /**
-     * Returns the Euclidean distance between this rectangle and the point <tt>p</tt>.
+     * Returns the Euclidean distance between this rectangle and the point {@code p}.
      *
      * @param  p the point
-     * @return the Euclidean distance between the point <tt>p</tt> and the closest point
+     * @return the Euclidean distance between the point {@code p} and the closest point
                on this rectangle; 0 if the point is contained in this rectangle
      */
     public double distanceTo(Point2D p) {
@@ -143,10 +143,10 @@ public final class RectHV {
     }
 
     /**
-     * Returns the square of the Euclidean distance between this rectangle and the point <tt>p</tt>.
+     * Returns the square of the Euclidean distance between this rectangle and the point {@code p}.
      *
      * @param  p the point
-     * @return the square of the Euclidean distance between the point <tt>p</tt> and
+     * @return the square of the Euclidean distance between the point {@code p} and
      *         the closest point on this rectangle; 0 if the point is contained
      *         in this rectangle
      */
@@ -163,8 +163,8 @@ public final class RectHV {
      * Compares this rectangle to the specified rectangle.
      *
      * @param  other the other rectangle
-     * @return <tt>true</tt> if this rectangle equals <tt>other</tt>;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this rectangle equals {@code other};
+     *         {@code false} otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -180,8 +180,8 @@ public final class RectHV {
     }
 
     /**
-     * Returns an integer hash code for this rectangle.
-     * @return an integer hash code for this rectangle
+     * Returns an integer hash @code for this rectangle.
+     * @return an integer hash @code for this rectangle
      */
     @Override
     public int hashCode() {
@@ -196,7 +196,7 @@ public final class RectHV {
      * Returns a string representation of this rectangle.
      *
      * @return a string representation of this rectangle, using the format
-     *         <tt>[xmin, xmax] x [ymin, ymax]</tt>
+     *         {@code [xmin, xmax] x [ymin, ymax]}
      */
     @Override
     public String toString() {
