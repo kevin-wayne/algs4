@@ -45,7 +45,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
      */
     public AdjMatrixEdgeWeightedDigraph(int V) {
         if (V < 0) throw new RuntimeException("Number of vertices must be nonnegative");
@@ -58,8 +58,8 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Initializes a random edge-weighted digraph with {@code V} vertices and <em>E</em> edges.
      * param V the number of vertices
      * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
-     * @throws java.lang.IllegalArgumentException if {@code E} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
+     * @throws java.lang.IllegalArgumentException if {@code E} &lt; 0
      */
     public AdjMatrixEdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -109,7 +109,7 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Returns the directed edges incident from vertex {@code v}.
      * @param v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
+     * @throws java.lang.IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<DirectedEdge> adj(int v) {
         return new AdjIterator(v);

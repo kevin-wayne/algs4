@@ -24,7 +24,7 @@ package edu.princeton.cs.algs4;
  *  O(<em>n</em>^3 log <em>n</em>) to solve an <em>n</em>-by-<em>n</em>
  *  instance.
  *  <p>
- *  See also {@link WeightedBipartiteMatching}, which solves the problem
+ *  See also {@code WeightedBipartiteMatching}, which solves the problem
  *  in O(<em>E V</em> log <em>V</em>) time in the worst case
  *  for bipartite graphs with <em>V</em> vertices and <em>E</em> edges.
  *  <p>

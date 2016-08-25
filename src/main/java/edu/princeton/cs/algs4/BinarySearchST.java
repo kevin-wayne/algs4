@@ -47,13 +47,13 @@ import java.util.NoSuchElementException;
  *  the key type implements the {@code Comparable} interface and calls the
  *  {@code compareTo()} and method to compare two keys. It does not call either
  *  {@code equals()} or {@code hashCode()}.
- *  The <em>put/em> and <em>remove</em> operations each take linear time in
+ *  The <em>put</em> and <em>remove</em> operations each take linear time in
  *  the worst case; the <em>contains</em>, <em>ceiling</em>, <em>floor</em>,
  *  and <em>rank</em> operations take logarithmic time; the <em>size</em>,
  *  <em>is-empty</em>, <em>minimum</em>, <em>maximum</em>, and <em>select</em>
  *  operations take constant time. Construction takes constant time.
- *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
+ *  
+ *  <p>For additional documentation, see <a href="http://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For other implementations, see {@link ST}, {@link BST},
  *  {@link SequentialSearchST}, {@link RedBlackBST},

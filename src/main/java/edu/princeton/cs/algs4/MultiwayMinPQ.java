@@ -42,7 +42,7 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
      * Initializes an empty priority queue
      * Worst case is O(d)
      * @param D dimension of the heap
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public MultiwayMinPQ(int D) {
 		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
@@ -57,7 +57,7 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
      * Worst case is O(d)
      * @param D dimension of the heap
      * @param C a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public MultiwayMinPQ(Comparator<Key> C, int D) {
 		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
@@ -72,7 +72,7 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
      * Worst case is O(n*log-d(n))
      * @param D dimension of the heap
      * @param a an array of keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public MultiwayMinPQ(Key[] a, int D) {
 		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
@@ -89,7 +89,7 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
      * @param D dimension of the heap
      * @param C a Comparator over the keys
      * @param a an array of keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public MultiwayMinPQ(Comparator<Key> C, Key[] a, int D) {
 		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");

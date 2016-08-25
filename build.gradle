@@ -1,26 +1,36 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-
-sourceCompatibility = 1.6
-version = '1.0.0.0'
 group = 'edu.princeton.cs'
+version = '1.0.0'
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'algs4',
-                   'Implementation-Version': version
+
+allprojects {
+	repositories {
+		jcenter()
+	}
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+
+	compileJava {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
     }
 }
 
-repositories {
-    mavenCentral()
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
-
-dependencies {
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
 }
 
-test {
-    systemProperties 'property': 'value'
+artifacts {
+	archives sourcesJar
+	archives javadocJar
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.4'
 }

@@ -51,7 +51,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * and {@code maxN - 1}.
      *
      * @param  maxN the keys on this priority queue are index from {@code 0} to {@code maxN - 1}
-     * @throws IllegalArgumentException if maxN < 0
+     * @throws IllegalArgumentException if maxN &lt; 0
      */
     public IndexMaxPQ(int maxN) {
         if (maxN < 0) throw new IllegalArgumentException();
@@ -79,7 +79,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i an index
      * @return {@code true} if {@code i} is an index on this priority queue;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless (0 &le; i < maxN)
+     * @throws IndexOutOfBoundsException unless (0 &le; i &lt; maxN)
      */
     public boolean contains(int i) {
         return qp[i] != -1;
@@ -171,7 +171,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; i < maxN
+     * @throws IndexOutOfBoundsException unless 0 &le; i &lt; maxN
      */
     public void changeKey(int i, Key key) {
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
@@ -186,7 +186,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
-     * @deprecated Replaced by {@link #changeKey(int, Key)}.
+     * @deprecated Replaced by {@code #changeKey(int, Key)}.
      */
     public void change(int i, Key key) {
         changeKey(i, key);

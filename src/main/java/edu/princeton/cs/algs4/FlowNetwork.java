@@ -43,7 +43,7 @@ public class FlowNetwork {
     /**
      * Initializes an empty flow network with {@code V} vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
      */
     public FlowNetwork(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be nonnegative");
@@ -59,8 +59,8 @@ public class FlowNetwork {
      * The capacities are integers between 0 and 99 and the flow values are zero.
      * param V the number of vertices
      * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
-     * @throws java.lang.IllegalArgumentException if {@code E} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
+     * @throws java.lang.IllegalArgumentException if {@code E} &lt; 0
      */
     public FlowNetwork(int V, int E) {
         this(V);
@@ -114,7 +114,7 @@ public class FlowNetwork {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IndexOutOfBoundsException unless 0&lt;= v &lt; V
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -140,7 +140,7 @@ public class FlowNetwork {
      * and from {@code v}).
      * @param v the vertex
      * @return the edges incident on vertex {@code v} as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
+     * @throws java.lang.IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<FlowEdge> adj(int v) {
         validateVertex(v);

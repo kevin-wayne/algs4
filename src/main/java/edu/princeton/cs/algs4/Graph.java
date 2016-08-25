@@ -67,7 +67,7 @@ public class Graph {
      * param V the number of vertices
      *
      * @param  V number of vertices
-     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code V} &lt; 0
      */
     public Graph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -138,7 +138,7 @@ public class Graph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IndexOutOfBoundsException unless 0 &lt;= v &lt; V
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -149,7 +149,7 @@ public class Graph {
      *
      * @param  v one vertex in the edge
      * @param  w the other vertex in the edge
-     * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
+     * @throws IndexOutOfBoundsException unless both 0 &lt;= v &lt; V and 0 &lt;= w &lt; V
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -165,7 +165,7 @@ public class Graph {
      *
      * @param  v the vertex
      * @return the vertices adjacent to vertex {@code v}, as an iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -177,7 +177,7 @@ public class Graph {
      *
      * @param  v the vertex
      * @return the degree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int degree(int v) {
         validateVertex(v);

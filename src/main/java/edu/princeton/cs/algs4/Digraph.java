@@ -63,7 +63,7 @@ public class Digraph {
      * Initializes an empty digraph with <em>V</em> vertices.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if V < 0
+     * @throws IllegalArgumentException if V &lt; 0
      */
     public Digraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -156,11 +156,11 @@ public class Digraph {
     }
 
     /**
-     * Adds the directed edge v->w to this digraph.
+     * Adds the directed edge v-&gt;w to this digraph.
      *
      * @param  v the tail vertex
      * @param  w the head vertex
-     * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
+     * @throws IndexOutOfBoundsException unless both 0 &lt;= v &lt; V and 0 &lt;= w &lt; V
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -175,7 +175,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -188,7 +188,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the outdegree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -201,7 +201,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the indegree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int indegree(int v) {
         validateVertex(v);

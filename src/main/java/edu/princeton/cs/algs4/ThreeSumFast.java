@@ -70,7 +70,7 @@ public class ThreeSumFast {
     }
 
     /**
-     * Prints to standard output the (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0.
+     * Prints to standard output the (i, j, k) with i &lt; j &lt; k such that a[i] + a[j] + a[k] == 0.
      * @param a the array of integers
      * @throws IllegalArgumentException if the array contains duplicate integers
      */
@@ -87,9 +87,9 @@ public class ThreeSumFast {
     } 
 
     /**
-     * Returns the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0.
+     * Returns the number of triples (i, j, k) with i &lt; j &lt; k such that a[i] + a[j] + a[k] == 0.
      * @param a the array of integers
-     * @return the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0
+     * @return the number of triples (i, j, k) with i &lt; j &lt; k such that a[i] + a[j] + a[k] == 0
      */
     public static int count(int[] a) {
         int n = a.length;

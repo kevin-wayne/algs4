@@ -44,7 +44,7 @@ public class EdgeWeightedDigraph {
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code V} &lt; 0
      */
     public EdgeWeightedDigraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -61,8 +61,8 @@ public class EdgeWeightedDigraph {
      *
      * @param  V the number of vertices
      * @param  E the number of edges
-     * @throws IllegalArgumentException if {@code V} < 0
-     * @throws IllegalArgumentException if {@code E} < 0
+     * @throws IllegalArgumentException if {@code V} &lt; 0
+     * @throws IllegalArgumentException if {@code E} &lt; 0
      */
     public EdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -141,7 +141,7 @@ public class EdgeWeightedDigraph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IndexOutOfBoundsException unless 0 &lt;= v &lt; V
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -169,7 +169,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<DirectedEdge> adj(int v) {
         validateVertex(v);
@@ -182,7 +182,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the outdegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -195,7 +195,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the indegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int indegree(int v) {
         validateVertex(v);

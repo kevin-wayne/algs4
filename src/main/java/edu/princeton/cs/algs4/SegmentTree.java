@@ -14,17 +14,16 @@ import java.util.Arrays;
  * The {@code SegmentTree} class is an structure for efficient search of cummulative data.
  * It performs  Range Minimum Query and Range Sum Query in O(log(n)) time.
  * It can be easily customizable to support Range Max Query, Range Multiplication Query etc.
- * <p/>
- * Also it has been develop with  {@code LazyPropagation} for range updates, which means
+ * 
+ * <p>Also it has been develop with  {@code LazyPropagation} for range updates, which means
  * when you perform update operations over a range, the update process affects the least nodes as possible
  * so that the bigger the range you want to update the less time it consumes to update it. Eventually those changes will be propagated
  * to the children and the whole array will be up to date.
- * <p/>
- * <p/>
- * <p/>
- * Example:
- * <p/>
- * SegmentTreeHeap st = new SegmentTreeHeap(new Integer[]{1,3,4,2,1, -2, 4});
+ * 
+ * 
+ * <p>Example:
+ * 
+ * <p>SegmentTreeHeap st = new SegmentTreeHeap(new Integer[]{1,3,4,2,1, -2, 4});
  * st.update(0,3, 1)
  * In the above case only the node that represents the range [0,3] will be updated (and not their children) so in this case
  * the update task will be less than n*log(n)
@@ -32,7 +31,7 @@ import java.util.Arrays;
  * Memory usage:  O(n)
  *
  * @author Ricardo Pacheco 
- * <p/>
+ *
  */
 public class SegmentTree {
 
@@ -150,8 +149,8 @@ public class SegmentTree {
      * The update operations will update the less it can to update the whole range (Lazy Propagation).
      * The values will be propagated lazily from top to bottom of the segment tree.
      * This behavior is really useful for updates on portions of the array
-     * <p/>
-     * Time-Complexity: O(log(n))
+     * 
+     * <p>Time-Complexity: O(log(n))
      *
      * @param from
      * @param to
@@ -247,16 +246,16 @@ public class SegmentTree {
      * rmq a b      Range Min Query for the range [a, b]
      * up  a b v    Update the [a,b] portion of the array with value v.
      * exit
-     * <p/>
-     * Example:
-     * <<init
-     * <<set 1 2 3 4 5 6
-     * <<rsq 1 3
-     * >>Sum from 1 to 3 = 6
-     * <<rmq 1 3
-     * >>Min from 1 to 3 = 1
-     * <<input up 1 3
-     * >>[3,2,3,4,5,6]
+     * 
+     * <p>Example:
+     * &lt;&lt;init
+     * &lt;&lt;set 1 2 3 4 5 6
+     * &lt;&lt;rsq 1 3
+     * &gt;&gt;Sum from 1 to 3 = 6
+     * &lt;&lt;rmq 1 3
+     * &gt;&gt;Min from 1 to 3 = 1
+     * &lt;&lt;input up 1 3
+     * &gt;&gt;[3,2,3,4,5,6]
      *
      * @param args
      */
