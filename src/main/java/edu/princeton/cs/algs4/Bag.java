@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Bag</tt> class represents a bag (or multiset) of 
+ *  The {@code Bag} class represents a bag (or multiset) of 
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
@@ -72,8 +72,8 @@ public class Bag<Item> implements Iterable<Item> {
     /**
      * Returns true if this bag is empty.
      *
-     * @return <tt>true</tt> if this bag is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this bag is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return first == null;
@@ -131,7 +131,7 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Unit tests the <tt>Bag</tt> data type.
+     * Unit tests the {@code Bag} data type.
      */
     public static void main(String[] args) {
         Bag<String> bag = new Bag<String>();

@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick3string</tt> class provides static methods for sorting an
+ *  The {@code Quick3string} class provides static methods for sorting an
  *  array of strings using 3-way radix quicksort.
  *  <p>
  *  For additional documentation,

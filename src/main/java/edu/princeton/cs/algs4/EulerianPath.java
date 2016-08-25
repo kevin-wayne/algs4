@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EulerianPath</tt> class represents a data type
+ *  The {@code EulerianPath} class represents a data type
  *  for finding an Eulerian path in a graph.
  *  An <em>Eulerian path</em> is a path (not necessarily simple) that
  *  uses every edge in the graph exactly once.
@@ -138,7 +138,7 @@ public class EulerianPath {
      * Returns the sequence of vertices on an Eulerian path.
      * 
      * @return the sequence of vertices on an Eulerian path;
-     *         <tt>null</tt> if no such path
+     *         {@code null} if no such path
      */
     public Iterable<Integer> path() {
         return path;
@@ -147,8 +147,8 @@ public class EulerianPath {
     /**
      * Returns true if the graph has an Eulerian path.
      * 
-     * @return <tt>true</tt> if the graph has an Eulerian path;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the graph has an Eulerian path;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianPath() {
         return path != null;
@@ -239,7 +239,7 @@ public class EulerianPath {
 
 
     /**
-     * Unit tests the <tt>EulerianPath</tt> data type.
+     * Unit tests the {@code EulerianPath} data type.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

@@ -180,8 +180,8 @@ public final class RectHV {
     }
 
     /**
-     * Returns an integer hash @code for this rectangle.
-     * @return an integer hash @code for this rectangle
+     * Returns an integer hash code for this rectangle.
+     * @return an integer hash code for this rectangle
      */
     @Override
     public int hashCode() {

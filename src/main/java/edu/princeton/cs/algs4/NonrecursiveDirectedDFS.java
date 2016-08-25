@@ -23,7 +23,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>NonrecursiveDirectedDFS</tt> class represents a data type for finding
+ *  The {@code NonrecursiveDirectedDFS} class represents a data type for finding
  *  the vertices reachable from a source vertex <em>s</em> in the digraph.
  *  <p>
  *  This implementation uses a nonrecursive version of depth-first search
@@ -42,7 +42,7 @@ import java.util.Iterator;
 public class NonrecursiveDirectedDFS {
     private boolean[] marked;  // marked[v] = is there an s->v path?
     /**
-     * Computes the vertices reachable from the source vertex <tt>s</tt> in the digraph <tt>G</tt>.
+     * Computes the vertices reachable from the source vertex {@code s} in the digraph {@code G}.
      * @param G the digraph
      * @param s the source vertex
      */
@@ -80,17 +80,17 @@ public class NonrecursiveDirectedDFS {
     }
 
     /**
-     * Is vertex <tt>v</tt> reachable from the source vertex <tt>s</tt>?
+     * Is vertex {@code v} reachable from the source vertex {@code s}?
      * @param v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is reachable from the source vertex <tt>s</tt>,
-     *    and <tt>false</tt> otherwise
+     * @return {@code true} if vertex {@code v} is reachable from the source vertex {@code s},
+     *    and {@code false} otherwise
      */
     public boolean marked(int v) {
         return marked[v];
     }
 
     /**
-     * Unit tests the <tt>NonrecursiveDirectedDFS</tt> data type.
+     * Unit tests the {@code NonrecursiveDirectedDFS} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

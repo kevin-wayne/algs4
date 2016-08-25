@@ -20,7 +20,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TopM</tt> class provides a client that reads a sequence of
+ *  The {@code TopM} class provides a client that reads a sequence of
  *  transactions from standard input and prints the <em>m</em> largest ones
  *  to standard output. This implementation uses a {@link MinPQ} of size
  *  at most <em>m</em> + 1 to identify the <em>M</em> largest transactions

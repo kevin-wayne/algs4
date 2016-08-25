@@ -18,15 +18,15 @@ import java.io.IOException;
 
 /**
  *  <i>Binary standard output</i>. This class provides methods for converting
- *  primtive type variables (<tt>boolean</tt>, <tt>byte</tt>, <tt>char</tt>,
- *  <tt>int</tt>, <tt>long</tt>, <tt>float</tt>, and <tt>double</tt>)
+ *  primtive type variables ({@code boolean}, {@code byte}, {@code char},
+ *  {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to standard output.
  *  Uses big-endian (most-significant byte first).
  *  <p>
- *  The client must <tt>flush()</tt> the output stream when finished writing bits.
+ *  The client must {@code flush()} the output stream when finished writing bits.
  *  <p>
- *  The client should not intermixing calls to <tt>BinaryStdOut</tt> with calls
- *  to <tt>StdOut</tt> or <tt>System.out</tt>; otherwise unexpected behavior 
+ *  The client should not intermixing calls to {@code BinaryStdOut} with calls
+ *  to {@code StdOut} or {@code System.out}; otherwise unexpected behavior 
  *  will result.
  *
  *  @author Robert Sedgewick
@@ -123,7 +123,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the specified bit to standard output.
-     * @param x the <tt>boolean</tt> to write.
+     * @param x the {@code boolean} to write.
      */
     public static void write(boolean x) {
         writeBit(x);
@@ -131,7 +131,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 8-bit byte to standard output.
-     * @param x the <tt>byte</tt> to write.
+     * @param x the {@code byte} to write.
      */
     public static void write(byte x) {
         writeByte(x & 0xff);
@@ -139,7 +139,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 32-bit int to standard output.
-     * @param x the <tt>int</tt> to write.
+     * @param x the {@code int} to write.
      */
     public static void write(int x) {
         writeByte((x >>> 24) & 0xff);
@@ -150,10 +150,10 @@ public final class BinaryStdOut {
 
    /**
      * Write the r-bit int to standard output.
-     * @param x the <tt>int</tt> to write.
+     * @param x the {@code int} to write.
      * @param r the number of relevant bits in the char.
-     * @throws IllegalArgumentException if <tt>r</tt> is not between 1 and 32.
-     * @throws IllegalArgumentException if <tt>x</tt> is not between 0 and 2<sup>r</sup> - 1.
+     * @throws IllegalArgumentException if {@code r} is not between 1 and 32.
+     * @throws IllegalArgumentException if {@code x} is not between 0 and 2<sup>r</sup> - 1.
      */
     public static void write(int x, int r) {
         if (r == 32) {
@@ -174,7 +174,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 64-bit double to standard output.
-     * @param x the <tt>double</tt> to write.
+     * @param x the {@code double} to write.
      */
     public static void write(double x) {
         write(Double.doubleToRawLongBits(x));
@@ -182,7 +182,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 64-bit long to standard output.
-     * @param x the <tt>long</tt> to write.
+     * @param x the {@code long} to write.
      */
     public static void write(long x) {
         writeByte((int) ((x >>> 56) & 0xff));
@@ -197,7 +197,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 32-bit float to standard output.
-     * @param x the <tt>float</tt> to write.
+     * @param x the {@code float} to write.
      */
     public static void write(float x) {
         write(Float.floatToRawIntBits(x));
@@ -205,7 +205,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the 16-bit int to standard output.
-     * @param x the <tt>short</tt> to write.
+     * @param x the {@code short} to write.
      */
     public static void write(short x) {
         writeByte((x >>>  8) & 0xff);
@@ -214,8 +214,8 @@ public final class BinaryStdOut {
 
    /**
      * Write the 8-bit char to standard output.
-     * @param x the <tt>char</tt> to write.
-     * @throws IllegalArgumentException if <tt>x</tt> is not betwen 0 and 255.
+     * @param x the {@code char} to write.
+     * @throws IllegalArgumentException if {@code x} is not betwen 0 and 255.
      */
     public static void write(char x) {
         if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
@@ -224,10 +224,10 @@ public final class BinaryStdOut {
 
    /**
      * Write the r-bit char to standard output.
-     * @param x the <tt>char</tt> to write.
+     * @param x the {@code char} to write.
      * @param r the number of relevant bits in the char.
-     * @throws IllegalArgumentException if <tt>r</tt> is not between 1 and 16.
-     * @throws IllegalArgumentException if <tt>x</tt> is not between 0 and 2<sup>r</sup> - 1.
+     * @throws IllegalArgumentException if {@code r} is not between 1 and 16.
+     * @throws IllegalArgumentException if {@code x} is not between 0 and 2<sup>r</sup> - 1.
      */
     public static void write(char x, int r) {
         if (r == 8) {
@@ -244,7 +244,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the string of 8-bit characters to standard output.
-     * @param s the <tt>String</tt> to write.
+     * @param s the {@code String} to write.
      * @throws IllegalArgumentException if any character in the string is not
      * between 0 and 255.
      */
@@ -255,7 +255,7 @@ public final class BinaryStdOut {
 
    /**
      * Write the String of r-bit characters to standard output.
-     * @param s the <tt>String</tt> to write.
+     * @param s the {@code String} to write.
      * @param r the number of relevants bits in each character.
      * @throws IllegalArgumentException if r is not between 1 and 16.
      * @throws IllegalArgumentException if any character in the string is not

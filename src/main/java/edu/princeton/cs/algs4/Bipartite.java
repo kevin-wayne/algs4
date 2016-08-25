@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Bipartite</tt> class represents a data type for 
+ *  The {@code Bipartite} class represents a data type for 
  *  determining whether an undirected graph is bipartite or whether
  *  it has an odd-length cycle.
  *  The <em>isBipartite</em> operation determines whether the graph is
@@ -94,20 +94,20 @@ public class Bipartite {
     /**
      * Returns true if the graph is bipartite.
      *
-     * @return <tt>true</tt> if the graph is bipartite; <tt>false</tt> otherwise
+     * @return {@code true} if the graph is bipartite; {@code false} otherwise
      */
     public boolean isBipartite() {
         return isBipartite;
     }
  
     /**
-     * Returns the side of the bipartite that vertex <tt>v</tt> is on.
+     * Returns the side of the bipartite that vertex {@code v} is on.
      *
      * @param  v the vertex
-     * @return the side of the bipartition that vertex <tt>v</tt> is on; two vertices
+     * @return the side of the bipartition that vertex {@code v} is on; two vertices
      *         are in the same side of the bipartition if and only if they have the
      *         same color
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt> 
+     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V} 
      * @throws UnsupportedOperationException if this method is called when the graph
      *         is not bipartite
      */
@@ -119,10 +119,10 @@ public class Bipartite {
 
     /**
      * Returns an odd-length cycle if the graph is not bipartite, and
-     * <tt>null</tt> otherwise.
+     * {@code null} otherwise.
      *
      * @return an odd-length cycle if the graph is not bipartite
-     *         (and hence has an odd-length cycle), and <tt>null</tt>
+     *         (and hence has an odd-length cycle), and {@code null}
      *         otherwise
      */
     public Iterable<Integer> oddCycle() {
@@ -160,7 +160,7 @@ public class Bipartite {
     }
 
     /**
-     * Unit tests the <tt>Bipartite</tt> data type.
+     * Unit tests the {@code Bipartite} data type.
      */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);

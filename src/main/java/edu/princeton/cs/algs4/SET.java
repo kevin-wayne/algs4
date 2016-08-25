@@ -20,19 +20,19 @@ import java.util.NoSuchElementException;
 import java.util.TreeSet;
 
 /**
- *  The <tt>SET</tt> class represents an ordered set of comparable keys.
+ *  The {@code SET} class represents an ordered set of comparable keys.
  *  It supports the usual <em>add</em>, <em>contains</em>, and <em>delete</em>
  *  methods. It also provides ordered methods for finding the <em>minimum</em>,
  *  <em>maximum</em>, <em>floor</em>, and <em>ceiling</em> and set methods
  *  for <em>union</em>, <em>intersection</em>, and <em>equality</em>.
  *  <p>
- *  Even though this implementation include the method <tt>equals()</tt>, it
- *  does not support the method <tt>hashCode()</tt> because sets are mutable.
+ *  Even though this implementation include the method {@code equals()}, it
+ *  does not support the method {@code hashCode()} because sets are mutable.
  *  <p>
  *  This implementation uses a balanced binary search tree. It requires that
- *  the key type implements the <tt>Comparable</tt> interface and calls the
- *  <tt>compareTo()</tt> and method to compare two keys. It does not call either
- *  <tt>equals()</tt> or <tt>hashCode()</tt>.
+ *  the key type implements the {@code Comparable} interface and calls the
+ *  {@code compareTo()} and method to compare two keys. It does not call either
+ *  {@code equals()} or {@code hashCode()}.
  *  The <em>add</em>, <em>contains</em>, <em>delete</em>, <em>minimum</em>,
  *  <em>maximum</em>, <em>ceiling</em>, and <em>floor</em> methods take
  *  logarithmic time in the worst case.
@@ -71,7 +71,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Adds the key to this set (if it is not already present).
      *
      * @param  key the key to add
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void add(Key key) {
         if (key == null) throw new NullPointerException("called add() with a null key");
@@ -83,9 +83,9 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Returns true if this set contains the given key.
      *
      * @param  key the key
-     * @return <tt>true</tt> if this set contains <tt>key</tt>;
-     *         <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if this set contains {@code key};
+     *         {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
         if (key == null) throw new NullPointerException("called contains() with a null key");
@@ -96,7 +96,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Removes the specified key from this set (if the set contains the specified key).
      *
      * @param  key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new NullPointerException("called delete() with a null key");
@@ -115,8 +115,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     /**
      * Returns true if this set is empty.
      *
-     * @return <tt>true</tt> if this set is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this set is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -124,8 +124,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
  
     /**
      * Returns all of the keys in this set, as an iterator.
-     * To iterate over all of the keys in a set named <tt>set</tt>, use the
-     * foreach notation: <tt>for (Key key : set)</tt>.
+     * To iterate over all of the keys in a set named {@code set}, use the
+     * foreach notation: {@code for (Key key : set)}.
      *
      * @return an iterator to all of the keys in this set
      */
@@ -157,11 +157,11 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 
 
     /**
-     * Returns the smallest key in this set greater than or equal to <tt>key</tt>.
+     * Returns the smallest key in this set greater than or equal to {@code key}.
      *
      * @param  key the key
-     * @return the smallest key in this set greater than or equal to <tt>key</tt>
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return the smallest key in this set greater than or equal to {@code key}
+     * @throws NullPointerException if {@code key} is {@code null}
      * @throws NoSuchElementException if there is no such key
      */
     public Key ceiling(Key key) {
@@ -172,11 +172,11 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Returns the largest key in this set less than or equal to <tt>key</tt>.
+     * Returns the largest key in this set less than or equal to {@code key}.
      *
      * @param  key the key
-     * @return the largest key in this set table less than or equal to <tt>key</tt>
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return the largest key in this set table less than or equal to {@code key}
+     * @throws NullPointerException if {@code key} is {@code null}
      * @throws NoSuchElementException if there is no such key
      */
     public Key floor(Key key) {
@@ -191,7 +191,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  that the other set
      * @return the union of this set and that set
-     * @throws NullPointerException if <tt>that</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code that} is {@code null}
      */
     public SET<Key> union(SET<Key> that) {
         if (that == null) throw new NullPointerException("called union() with a null argument");
@@ -210,7 +210,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  that the other set
      * @return the intersection of this set and that set
-     * @throws NullPointerException if <tt>that</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code that} is {@code null}
      */
     public SET<Key> intersects(SET<Key> that) {
         if (that == null) throw new NullPointerException("called intersects() with a null argument");
@@ -233,12 +233,12 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * <p>
      * Note that this method declares two empty sets to be equal
      * even if they are parameterized by different generic types.
-     * This is consistent with the behavior of <tt>equals()</tt> 
+     * This is consistent with the behavior of {@code equals()} 
      * within Java's Collections framework.
      *       
      * @param  other the other set
-     * @return <tt>true</tt> if this set equals <tt>other</tt>;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this set equals {@code other};
+     *         {@code false} otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -275,7 +275,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     }
 
     /**
-     * Unit tests the <tt>SET</tt> data type.
+     * Unit tests the {@code SET} data type.
      */
     public static void main(String[] args) {
         SET<String> set = new SET<String>();

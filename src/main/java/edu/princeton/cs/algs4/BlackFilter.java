@@ -31,7 +31,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BlackFilter</tt> class provides a client for reading in a <em>blacklist</em>
+ *  The {@code BlackFilter} class provides a client for reading in a <em>blacklist</em>
  *  of words from a file; then, reading in a sequence of words from standard input, 
  *  printing out each word that <em>does not</em> appear in the file. 
  *  It is useful as a test client for various symbol table implementations.   

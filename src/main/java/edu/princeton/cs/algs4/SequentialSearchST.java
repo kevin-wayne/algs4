@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SequentialSearchST</tt> class represents an (unordered)
+ *  The {@code SequentialSearchST} class represents an (unordered)
  *  symbol table of generic key-value pairs.
  *  It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.
@@ -35,14 +35,14 @@ package edu.princeton.cs.algs4;
  *  A symbol table implements the <em>associative array</em> abstraction:
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
- *  The class also uses the convention that values cannot be <tt>null</tt>. Setting the
- *  value associated with a key to <tt>null</tt> is equivalent to deleting the key
+ *  The class also uses the convention that values cannot be {@code null}. Setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This implementation uses a singly-linked list and sequential search.
- *  It relies on the <tt>equals()</tt> method to test whether two keys
- *  are equal. It does not call either the <tt>compareTo()</tt> or
- *  <tt>hashCode()</tt> method. 
+ *  It relies on the {@code equals()} method to test whether two keys
+ *  are equal. It does not call either the {@code compareTo()} or
+ *  {@code hashCode()} method. 
  *  The <em>put</em> and <em>delete</em> operations take linear time; the
  *  <em>get</em> and <em>contains</em> operations takes linear time in the worst case.
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
@@ -89,8 +89,8 @@ public class SequentialSearchST<Key, Value> {
     /**
      * Returns true if this symbol table is empty.
      *
-     * @return <tt>true</tt> if this symbol table is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this symbol table is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -100,9 +100,9 @@ public class SequentialSearchST<Key, Value> {
      * Returns true if this symbol table contains the specified key.
      *
      * @param  key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt>;
-     *         <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if this symbol table contains {@code key};
+     *         {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
         if (key == null) throw new NullPointerException("argument to contains() is null");
@@ -114,8 +114,8 @@ public class SequentialSearchST<Key, Value> {
      *
      * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
-     *     and <tt>null</tt> if the key is not in the symbol table
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     *     and {@code null} if the key is not in the symbol table
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Value get(Key key) {
         if (key == null) throw new NullPointerException("argument to get() is null"); 
@@ -130,11 +130,11 @@ public class SequentialSearchST<Key, Value> {
      * Inserts the specified key-value pair into the symbol table, overwriting the old 
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
-     * if the specified value is <tt>null</tt>.
+     * if the specified value is {@code null}.
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
         if (key == null) throw new NullPointerException("first argument to put() is null"); 
@@ -158,7 +158,7 @@ public class SequentialSearchST<Key, Value> {
      * (if the key is in this symbol table).    
      *
      * @param  key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new NullPointerException("argument to delete() is null"); 
@@ -179,9 +179,9 @@ public class SequentialSearchST<Key, Value> {
 
 
     /**
-     * Returns all keys in the symbol table as an <tt>Iterable</tt>.
-     * To iterate over all of the keys in the symbol table named <tt>st</tt>,
-     * use the foreach notation: <tt>for (Key key : st.keys())</tt>.
+     * Returns all keys in the symbol table as an {@code Iterable}.
+     * To iterate over all of the keys in the symbol table named {@code st},
+     * use the foreach notation: {@code for (Key key : st.keys())}.
      *
      * @return all keys in the sybol table
      */
@@ -194,7 +194,7 @@ public class SequentialSearchST<Key, Value> {
 
 
     /**
-     * Unit tests the <tt>SequentialSearchST</tt> data type.
+     * Unit tests the {@code SequentialSearchST} data type.
      */
     public static void main(String[] args) {
         SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();

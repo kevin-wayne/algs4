@@ -12,7 +12,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>LinearRegression</tt> class performs a simple linear regression
+ *  The {@code LinearRegression} class performs a simple linear regression
  *  on an set of <em>n</em> data points (<em>y<sub>i</sub></em>, <em>x<sub>i</sub></em>).
  *  That is, it fits a straight line <em>y</em> = &alpha; + &beta; <em>x</em>,
  *  (where <em>y</em> is the response variable, <em>x</em> is the predictor variable,
@@ -32,7 +32,7 @@ public class LinearRegression {
     private final double svar, svar0, svar1;
 
    /**
-     * Performs a linear regression on the data points <tt>(y[i], x[i])</tt>.
+     * Performs a linear regression on the data points {@code (y[i], x[i])}.
      *
      * @param  x the values of the predictor variable
      * @param  y the corresponding values of the response variable
@@ -127,12 +127,12 @@ public class LinearRegression {
     }
 
    /**
-     * Returns the expected response <tt>y</tt> given the value of the predictor
-     * variable <tt>x</tt>.
+     * Returns the expected response {@code y} given the value of the predictor
+     * variable {@code x}.
      *
      * @param  x the value of the predictor variable
-     * @return the expected response <tt>y</tt> given the value of the predictor
-     *         variable <tt>x</tt>
+     * @return the expected response {@code y} given the value of the predictor
+     *         variable {@code x}
      */
     public double predict(double x) {
         return slope*x + intercept;

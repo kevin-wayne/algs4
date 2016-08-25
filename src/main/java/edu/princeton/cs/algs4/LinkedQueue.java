@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>LinkedQueue</tt> class represents a first-in-first-out (FIFO)
+ *  The {@code LinkedQueue} class represents a first-in-first-out (FIFO)
  *  queue of generic items.
  *  It supports the usual <em>enqueue</em> and <em>dequeue</em>
  *  operations, along with methods for peeking at the first item,
@@ -187,7 +187,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>LinkedQueue</tt> data type.
+     * Unit tests the {@code LinkedQueue} data type.
      */
     public static void main(String[] args) {
         LinkedQueue<String> queue = new LinkedQueue<String>();

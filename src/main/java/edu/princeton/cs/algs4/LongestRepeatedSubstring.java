@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LongestRepeatedSubstring</tt> class provides a {@link SuffixArray}
+ *  The {@code LongestRepeatedSubstring} class provides a {@link SuffixArray}
  *  client for computing the longest repeated substring of a string that
  *  appears at least twice. The repeated substrings may overlap (but must
  *  be distinct).
@@ -59,7 +59,7 @@ public class LongestRepeatedSubstring {
      * Returns the longest repeated substring of the specified string.
      *
      * @param  text the string
-     * @return the longest repeated substring that appears in <tt>text</tt>;
+     * @return the longest repeated substring that appears in {@code text};
      *         the empty string if no such string
      */
     public static String lrs(String text) {
@@ -77,7 +77,7 @@ public class LongestRepeatedSubstring {
     }
 
     /**
-     * Unit tests the <tt>lrs()</tt> method.
+     * Unit tests the {@code lrs()} method.
      */
     public static void main(String[] args) {
         String text = StdIn.readAll().replaceAll("\\s+", " ");

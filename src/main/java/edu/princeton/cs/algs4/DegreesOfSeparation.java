@@ -52,7 +52,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DegreesOfSeparation</tt> class provides a client for finding
+ *  The {@code DegreesOfSeparation} class provides a client for finding
  *  the degree of separation between one distinguished individual and
  *  every other individual in a social network.
  *  As an example, if the social network consists of actors in which

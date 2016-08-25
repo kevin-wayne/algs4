@@ -14,7 +14,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>DirectedEulerianCycle</tt> class represents a data type
+ *  The {@code DirectedEulerianCycle} class represents a data type
  *  for finding an Eulerian cycle or path in a digraph.
  *  An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
  *  uses every edge in the digraph exactly once.
@@ -90,7 +90,7 @@ public class DirectedEulerianCycle {
      * Returns the sequence of vertices on an Eulerian cycle.
      * 
      * @return the sequence of vertices on an Eulerian cycle;
-     *         <tt>null</tt> if no such cycle
+     *         {@code null} if no such cycle
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -99,8 +99,8 @@ public class DirectedEulerianCycle {
     /**
      * Returns true if the digraph has an Eulerian cycle.
      * 
-     * @return <tt>true</tt> if the digraph has an Eulerian cycle;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has an Eulerian cycle;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianCycle() {
         return cycle != null;
@@ -197,7 +197,7 @@ public class DirectedEulerianCycle {
 
 
     /**
-     * Unit tests the <tt>DirectedEulerianCycle</tt> data type.
+     * Unit tests the {@code DirectedEulerianCycle} data type.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

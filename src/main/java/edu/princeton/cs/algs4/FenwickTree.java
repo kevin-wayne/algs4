@@ -14,7 +14,7 @@ import java.util.Arrays;
 /**
  * Created by ricardodpsx@gmail.com on 4/01/15.
  * <p/>
- * In <tt>Fenwick Tree</tt> structure We arrange the array in an smart way to perform efficient <em>range queries and updates</em>.
+ * In {@code Fenwick Tree} structure We arrange the array in an smart way to perform efficient <em>range queries and updates</em>.
  * The key point is this: In a fenwick array, each position "responsible" for storing cumulative data of N previous positions (N could be 1)
  * For example:
  * array[40] stores: array[40] + array[39] ... + array[32] (8 positions)

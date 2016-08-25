@@ -119,7 +119,7 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * @param i an index
 	 * @param key a Key associated with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index is already in the queue
+	 * @throws java.lang.IllegalArgumentException if the index is already in the queue
 	 */
 	
 	public void insert(int i, Key key) {
@@ -226,7 +226,7 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is greater than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	
 	public void decreaseKey(int i, Key key) {
@@ -248,7 +248,7 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is lower than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is lower than the current key
 	 */
 	
 	public void increaseKey(int i, Key key) {

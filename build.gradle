@@ -1,26 +1,85 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
+buildscript {
+  repositories {
+        jcenter()
+   }
+}
 
-sourceCompatibility = 1.6
-version = '1.0.0.0'
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
+
 group = 'edu.princeton.cs'
+version = '1.0.1'
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'algs4',
-                   'Implementation-Version': version
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+    apply plugin: 'maven-publish'
+
+    compileJava {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
     }
 }
 
-repositories {
-    mavenCentral()
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
-
-dependencies {
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
-test {
-    systemProperties 'property': 'value'
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'edu.princeton.cs'
+                    artifactId 'algs4'
+                    version '1.0.0'
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['MyPublication']
+    publish = true
+    override = false
+    pkg {
+        repo = 'algs4'
+        name = 'algs4'
+        userOrg = 'algs4'
+        desc = 'Source Code for Algorithms, 4th Edition'
+        licenses = ['GPL-3.0']
+        vcsUrl = 'https://github.com/kevin-wayne/algs4.git'
+        websiteUrl = 'https://github.com/kevin-wayne/algs4'
+        labels = ['algorithms', 'java', 'Robert Sedgewick', 'Kevin Wayne']
+        publicDownloadNumbers = true
+        githubRepo = 'kevin-wayne/algs4'
+        githubReleaseNotesFile = 'README.md'
+        version {
+            name = '1.0.0'
+            vcsTag = '1.0.0'
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.4'
 }

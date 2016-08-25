@@ -131,9 +131,9 @@ public class Transaction implements Comparable<Transaction> {
 
 
     /**
-     * Returns a hash @code for this transaction.
+     * Returns a hash code for this transaction.
      *
-     * @return a hash @code for this transaction
+     * @return a hash code for this transaction
      */
     public int hashCode() {
         int hash = 1;

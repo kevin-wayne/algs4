@@ -116,7 +116,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * @param i an index
 	 * @param key a Key associated with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index is already in the queue
+	 * @throws java.lang.IllegalArgumentException if the index is already in the queue
 	 */
 	public void insert(int i, Key key) {
 		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
@@ -201,7 +201,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(1)
 	 * @param i an index
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index is not in the queue
+	 * @throws java.lang.IllegalArgumentException if the index is not in the queue
 	 * @return the key associated with index i
 	 */
 	
@@ -217,7 +217,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * @param i an index
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index has no key associated with
+	 * @throws java.lang.IllegalArgumentException if the index has no key associated with
 	 */
 	
 	public void changeKey(int i, Key key) {
@@ -234,7 +234,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is greater than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	
 	public void decreaseKey(int i, Key key) {
@@ -253,7 +253,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is lower than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is lower than the current key
 	 */
 	
 	public void increaseKey(int i, Key key) {

@@ -29,7 +29,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstPaths</tt> class represents a data type for finding
+ *  The {@code DepthFirstPaths} class represents a data type for finding
  *  paths from a source vertex <em>s</em> to every other vertex
  *  in an undirected graph.
  *  <p>
@@ -50,7 +50,7 @@ public class DepthFirstPaths {
     private final int s;         // source vertex
 
     /**
-     * Computes a path between <tt>s</tt> and every other vertex in graph <tt>G</tt>.
+     * Computes a path between {@code s} and every other vertex in graph {@code G}.
      * @param G the graph
      * @param s the source vertex
      */
@@ -73,20 +73,20 @@ public class DepthFirstPaths {
     }
 
     /**
-     * Is there a path between the source vertex <tt>s</tt> and vertex <tt>v</tt>?
+     * Is there a path between the source vertex {@code s} and vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a path, {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return marked[v];
     }
 
     /**
-     * Returns a path between the source vertex <tt>s</tt> and vertex <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
+     * Returns a path between the source vertex {@code s} and vertex {@code v}, or
+     * {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a path between the source vertex
-     *   <tt>s</tt> and vertex <tt>v</tt>, as an Iterable
+     *   {@code s} and vertex {@code v}, as an Iterable
      */
     public Iterable<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -98,7 +98,7 @@ public class DepthFirstPaths {
     }
 
     /**
-     * Unit tests the <tt>DepthFirstPaths</tt> data type.
+     * Unit tests the {@code DepthFirstPaths} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

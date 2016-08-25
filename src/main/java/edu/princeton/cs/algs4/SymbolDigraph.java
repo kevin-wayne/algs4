@@ -18,7 +18,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SymbolDigraph</tt> class represents a digraph, where the
+ *  The {@code SymbolDigraph} class represents a digraph, where the
  *  vertex names are arbitrary strings.
  *  By providing mappings between string vertex names and integers,
  *  it serves as a wrapper around the
@@ -87,18 +87,18 @@ public class SymbolDigraph {
     }
 
     /**
-     * Does the digraph contain the vertex named <tt>s</tt>?
+     * Does the digraph contain the vertex named {@code s}?
      * @param s the name of a vertex
-     * @return <tt>true</tt> if <tt>s</tt> is the name of a vertex, and <tt>false</tt> otherwise
+     * @return {@code true} if {@code s} is the name of a vertex, and {@code false} otherwise
      */
     public boolean contains(String s) {
         return st.contains(s);
     }
 
     /**
-     * Returns the integer associated with the vertex named <tt>s</tt>.
+     * Returns the integer associated with the vertex named {@code s}.
      * @param s the name of a vertex
-     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
+     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named {@code s}
      * @deprecated Replaced by {@link #indexOf(String)}.
      */
     @Deprecated
@@ -107,18 +107,18 @@ public class SymbolDigraph {
     }
 
     /**
-     * Returns the integer associated with the vertex named <tt>s</tt>.
+     * Returns the integer associated with the vertex named {@code s}.
      * @param s the name of a vertex
-     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
+     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named {@code s}
      */
     public int indexOf(String s) {
         return st.get(s);
     }
 
     /**
-     * Returns the name of the vertex associated with the integer <tt>v</tt>.
+     * Returns the name of the vertex associated with the integer {@code v}.
      * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
-     * @return the name of the vertex associated with the integer <tt>v</tt>
+     * @return the name of the vertex associated with the integer {@code v}
      * @deprecated Replaced by {@link #nameOf(int)}.
      */
     @Deprecated
@@ -127,9 +127,9 @@ public class SymbolDigraph {
     }
 
     /**
-     * Returns the name of the vertex associated with the integer <tt>v</tt>.
+     * Returns the name of the vertex associated with the integer {@code v}.
      * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
-     * @return the name of the vertex associated with the integer <tt>v</tt>
+     * @return the name of the vertex associated with the integer {@code v}
      */
     public String nameOf(int v) {
         return keys[v];
@@ -155,7 +155,7 @@ public class SymbolDigraph {
     }
 
     /**
-     * Unit tests the <tt>SymbolDigraph</tt> data type.
+     * Unit tests the {@code SymbolDigraph} data type.
      */
     public static void main(String[] args) {
         String filename  = args[0];

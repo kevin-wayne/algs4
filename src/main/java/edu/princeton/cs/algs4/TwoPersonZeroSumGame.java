@@ -19,7 +19,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TwoPersonZeroSumGame</tt> class represents a data type for
+ *  The {@code TwoPersonZeroSumGame} class represents a data type for
  *  computing optimal row and column strategies to two-person zero-sum games.
  *  <p>
  *  This implementation solves an <em>m</em>-by-<em>n</em> two-person
@@ -329,7 +329,7 @@ public class TwoPersonZeroSumGame {
 
 
     /**
-     * Unit tests the <tt>ZeroSumGameToLP</tt> data type.
+     * Unit tests the {@code ZeroSumGameToLP} data type.
      */
     public static void main(String[] args) {
         test1();

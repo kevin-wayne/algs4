@@ -23,7 +23,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EdgeWeightedGraph</tt> class represents an edge-weighted
+ *  The {@code EdgeWeightedGraph} class represents an edge-weighted
  *  graph of vertices named 0 through <em>V</em> - 1, where each
  *  undirected edge is of type {@link Edge} and has a real-valued weight.
  *  It supports the following two primary operations: add an edge to the graph,
@@ -52,10 +52,10 @@ public class EdgeWeightedGraph {
     private Bag<Edge>[] adj;
     
     /**
-     * Initializes an empty edge-weighted graph with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty edge-weighted graph with {@code V} vertices and 0 edges.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
+     * @throws IllegalArgumentException if {@code V} < 0
      */
     public EdgeWeightedGraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -68,12 +68,12 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Initializes a random edge-weighted graph with <tt>V</tt> vertices and <em>E</em> edges.
+     * Initializes a random edge-weighted graph with {@code V} vertices and <em>E</em> edges.
      *
      * @param  V the number of vertices
      * @param  E the number of edges
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
-     * @throws IllegalArgumentException if <tt>E</tt> < 0
+     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code E} < 0
      */
     public EdgeWeightedGraph(int V, int E) {
         this(V);
@@ -112,7 +112,7 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Initializes a new edge-weighted graph that is a deep copy of <tt>G</tt>.
+     * Initializes a new edge-weighted graph that is a deep copy of {@code G}.
      *
      * @param  G the edge-weighted graph to copy
      */
@@ -157,7 +157,7 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Adds the undirected edge <tt>e</tt> to this edge-weighted graph.
+     * Adds the undirected edge {@code e} to this edge-weighted graph.
      *
      * @param  e the edge
      * @throws IndexOutOfBoundsException unless both endpoints are between 0 and V-1
@@ -173,10 +173,10 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Returns the edges incident on vertex <tt>v</tt>.
+     * Returns the edges incident on vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the edges incident on vertex <tt>v</tt> as an Iterable
+     * @return the edges incident on vertex {@code v} as an Iterable
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<Edge> adj(int v) {
@@ -185,10 +185,10 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Returns the degree of vertex <tt>v</tt>.
+     * Returns the degree of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the degree of vertex <tt>v</tt>               
+     * @return the degree of vertex {@code v}               
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int degree(int v) {
@@ -199,7 +199,7 @@ public class EdgeWeightedGraph {
     /**
      * Returns all edges in this edge-weighted graph.
      * To iterate over the edges in this edge-weighted graph, use foreach notation:
-     * <tt>for (Edge e : G.edges())</tt>.
+     * {@code for (Edge e : G.edges())}.
      *
      * @return all edges in this edge-weighted graph, as an iterable
      */
@@ -242,7 +242,7 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Unit tests the <tt>EdgeWeightedGraph</tt> data type.
+     * Unit tests the {@code EdgeWeightedGraph} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

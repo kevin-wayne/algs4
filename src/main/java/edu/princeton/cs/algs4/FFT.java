@@ -62,7 +62,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FFT</tt> class provides methods for computing the 
+ *  The {@code FFT} class provides methods for computing the 
  *  FFT (Fast-Fourier Transform), inverse FFT, linear convolution,
  *  and circular convolution of a complex array.
  *  <p>
@@ -92,8 +92,8 @@ public class FFT {
      * Returns the FFT of the specified complex array.
      *
      * @param  x the complex array
-     * @return the FFT of the complex array <tt>x</tt>
-     * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
+     * @return the FFT of the complex array {@code x}
+     * @throws IllegalArgumentException if the length of {@code x} is not a power of 2
      */
     public static Complex[] fft(Complex[] x) {
         int n = x.length;
@@ -138,8 +138,8 @@ public class FFT {
      * Returns the inverse FFT of the specified complex array.
      *
      * @param  x the complex array
-     * @return the inverse FFT of the complex array <tt>x</tt>
-     * @throws IllegalArgumentException if the length of <t>x</tt> is not a power of 2
+     * @return the inverse FFT of the complex array {@code x}
+     * @throws IllegalArgumentException if the length of {@code x} is not a power of 2
      */
     public static Complex[] ifft(Complex[] x) {
         int n = x.length;
@@ -172,9 +172,9 @@ public class FFT {
      *
      * @param  x one complex array
      * @param  y the other complex array
-     * @return the circular convolution of <tt>x</tt> and <tt>y</tt>
-     * @throws IllegalArgumentException if the length of <t>x</tt> does not equal
-     *         the length of <tt>y</tt> or if the length is not a power of 2
+     * @return the circular convolution of {@code x} and {@code y}
+     * @throws IllegalArgumentException if the length of {@code x} does not equal
+     *         the length of {@code y} or if the length is not a power of 2
      */
     public static Complex[] cconvolve(Complex[] x, Complex[] y) {
 
@@ -205,9 +205,9 @@ public class FFT {
      *
      * @param  x one complex array
      * @param  y the other complex array
-     * @return the linear convolution of <tt>x</tt> and <tt>y</tt>
-     * @throws IllegalArgumentException if the length of <t>x</tt> does not equal
-     *         the length of <tt>y</tt> or if the length is not a power of 2
+     * @return the linear convolution of {@code x} and {@code y}
+     * @throws IllegalArgumentException if the length of {@code x} does not equal
+     *         the length of {@code y} or if the length is not a power of 2
      */
     public static Complex[] convolve(Complex[] x, Complex[] y) {
         Complex[] a = new Complex[2*x.length];
@@ -241,7 +241,7 @@ public class FFT {
     ***************************************************************************/
 
     /**
-     * Unit tests the <tt>FFT</tt> class.
+     * Unit tests the {@code FFT} class.
      */
     public static void main(String[] args) { 
         int n = Integer.parseInt(args[0]);

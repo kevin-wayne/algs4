@@ -11,7 +11,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>FlowNetwork</tt> class represents a capacitated network
+ *  The {@code FlowNetwork} class represents a capacitated network
  *  with vertices named 0 through <em>V</em> - 1, where each directed
  *  edge is of type {@link FlowEdge} and has a real-valued capacity
  *  and flow.
@@ -41,9 +41,9 @@ public class FlowNetwork {
     private Bag<FlowEdge>[] adj;
     
     /**
-     * Initializes an empty flow network with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty flow network with {@code V} vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if <tt>V</tt> < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} < 0
      */
     public FlowNetwork(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be nonnegative");
@@ -55,12 +55,12 @@ public class FlowNetwork {
     }
 
     /**
-     * Initializes a random flow network with <tt>V</tt> vertices and <em>E</em> edges.
+     * Initializes a random flow network with {@code V} vertices and <em>E</em> edges.
      * The capacities are integers between 0 and 99 and the flow values are zero.
      * param V the number of vertices
      * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if <tt>V</tt> < 0
-     * @throws java.lang.IllegalArgumentException if <tt>E</tt> < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @throws java.lang.IllegalArgumentException if {@code E} < 0
      */
     public FlowNetwork(int V, int E) {
         this(V);
@@ -121,7 +121,7 @@ public class FlowNetwork {
     }
 
     /**
-     * Adds the edge <tt>e</tt> to the network.
+     * Adds the edge {@code e} to the network.
      * @param e the edge
      * @throws java.lang.IndexOutOfBoundsException unless endpoints of edge are between 0 and V-1
      */
@@ -136,10 +136,10 @@ public class FlowNetwork {
     }
 
     /**
-     * Returns the edges incident on vertex <tt>v</tt> (includes both edges pointing to
-     * and from <tt>v</tt>).
+     * Returns the edges incident on vertex {@code v} (includes both edges pointing to
+     * and from {@code v}).
      * @param v the vertex
-     * @return the edges incident on vertex <tt>v</tt> as an Iterable
+     * @return the edges incident on vertex {@code v} as an Iterable
      * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<FlowEdge> adj(int v) {
@@ -179,7 +179,7 @@ public class FlowNetwork {
     }
 
     /**
-     * Unit tests the <tt>FlowNetwork</tt> data type.
+     * Unit tests the {@code FlowNetwork} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

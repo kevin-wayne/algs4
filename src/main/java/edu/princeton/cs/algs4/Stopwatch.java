@@ -14,7 +14,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Stopwatch</tt> data type is for measuring
+ *  The {@code Stopwatch} data type is for measuring
  *  the time that elapses between the start and end of a
  *  programming task (wall-clock time).
  *
@@ -52,10 +52,10 @@ public class Stopwatch {
 
     
     /**
-     * Unit tests the <tt>Stopwatch</tt> data type.
-     * Takes a command-line argument <tt>n</tt> and computes the 
-     * sum of the square roots of the first <tt>n</tt> positive integers,
-     * first using <tt>Math.sqrt()</tt>, then using <tt>Math.pow()</tt>.
+     * Unit tests the {@code Stopwatch} data type.
+     * Takes a command-line argument {@code n} and computes the 
+     * sum of the square roots of the first {@code n} positive integers,
+     * first using {@code Math.sqrt()}, then using {@code Math.pow()}.
      * It prints to standard output the sum and the amount of time to
      * compute the sum. Note that the discrete sum can be approximated by
      * an integral - the sum should be approximately 2/3 * (n^(3/2) - 1).

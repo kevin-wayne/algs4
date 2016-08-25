@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>GREP</tt> class provides a client for reading in a sequence of
+ *  The {@code GREP} class provides a client for reading in a sequence of
  *  lines from standard input and printing to standard output those lines
  *  that contain a substring matching a specified regular expression.
  *  <p>

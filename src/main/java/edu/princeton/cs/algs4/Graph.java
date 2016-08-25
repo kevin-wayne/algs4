@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Graph</tt> class represents an undirected graph of vertices
+ *  The {@code Graph} class represents an undirected graph of vertices
  *  named 0 through <em>V</em> - 1.
  *  It supports the following two primary operations: add an edge to the graph,
  *  iterate over all of the vertices adjacent to a vertex. It also provides
@@ -66,11 +66,11 @@ public class Graph {
     private Bag<Integer>[] adj;
     
     /**
-     * Initializes an empty graph with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty graph with {@code V} vertices and 0 edges.
      * param V the number of vertices
      *
      * @param  V number of vertices
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
+     * @throws IllegalArgumentException if {@code V} < 0
      */
     public Graph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -104,7 +104,7 @@ public class Graph {
     }
 
     /**
-     * Initializes a new graph that is a deep copy of <tt>G</tt>.
+     * Initializes a new graph that is a deep copy of {@code G}.
      *
      * @param  G the graph to copy
      */
@@ -164,10 +164,10 @@ public class Graph {
 
 
     /**
-     * Returns the vertices adjacent to vertex <tt>v</tt>.
+     * Returns the vertices adjacent to vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the vertices adjacent to vertex <tt>v</tt>, as an iterable
+     * @return the vertices adjacent to vertex {@code v}, as an iterable
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public Iterable<Integer> adj(int v) {
@@ -176,10 +176,10 @@ public class Graph {
     }
 
     /**
-     * Returns the degree of vertex <tt>v</tt>.
+     * Returns the degree of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the degree of vertex <tt>v</tt>
+     * @return the degree of vertex {@code v}
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public int degree(int v) {
@@ -209,7 +209,7 @@ public class Graph {
 
 
     /**
-     * Unit tests the <tt>Graph</tt> data type.
+     * Unit tests the {@code Graph} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

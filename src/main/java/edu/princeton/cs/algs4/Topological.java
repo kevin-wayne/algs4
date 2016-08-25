@@ -30,7 +30,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Topological</tt> class represents a data type for 
+ *  The {@code Topological} class represents a data type for 
  *  determining a topological order of a directed acyclic graph (DAG).
  *  Recall, a digraph has a topological order if and only if it is a DAG.
  *  The <em>hasOrder</em> operation determines whether the digraph has
@@ -62,7 +62,7 @@ public class Topological {
     private int[] rank;               // rank[v] = position of vertex v in topological order
 
     /**
-     * Determines whether the digraph <tt>G</tt> has a topological order and, if so,
+     * Determines whether the digraph {@code G} has a topological order and, if so,
      * finds such a topological order.
      * @param G the digraph
      */
@@ -79,7 +79,7 @@ public class Topological {
     }
 
     /**
-     * Determines whether the edge-weighted digraph <tt>G</tt> has a topological
+     * Determines whether the edge-weighted digraph {@code G} has a topological
      * order and, if so, finds such an order.
      * @param G the edge-weighted digraph
      */
@@ -93,10 +93,10 @@ public class Topological {
 
     /**
      * Returns a topological order if the digraph has a topologial order,
-     * and <tt>null</tt> otherwise.
+     * and {@code null} otherwise.
      * @return a topological order of the vertices (as an interable) if the
      *    digraph has a topological order (or equivalently, if the digraph is a DAG),
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> order() {
         return order;
@@ -104,19 +104,19 @@ public class Topological {
 
     /**
      * Does the digraph have a topological order?
-     * @return <tt>true</tt> if the digraph has a topological order (or equivalently,
-     *    if the digraph is a DAG), and <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a topological order (or equivalently,
+     *    if the digraph is a DAG), and {@code false} otherwise
      */
     public boolean hasOrder() {
         return order != null;
     }
 
     /**
-     * The the rank of vertex <tt>v</tt> in the topological order;
+     * The the rank of vertex {@code v} in the topological order;
      * -1 if the digraph is not a DAG
-     * @return the position of vertex <tt>v</tt> in a topological order
+     * @return the position of vertex {@code v} in a topological order
      *    of the digraph; -1 if the digraph is not a DAG
-     * @throws IndexOutOfBoundsException unless <tt>v</tt> is between 0 and
+     * @throws IndexOutOfBoundsException unless {@code v} is between 0 and
      *    <em>V</em> &minus; 1
      */
     public int rank(int v) {
@@ -133,7 +133,7 @@ public class Topological {
     }
 
     /**
-     * Unit tests the <tt>Topological</tt> data type.
+     * Unit tests the {@code Topological} data type.
      */
     public static void main(String[] args) {
         String filename  = args[0];

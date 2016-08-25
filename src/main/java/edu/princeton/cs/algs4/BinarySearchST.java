@@ -28,7 +28,7 @@ package edu.princeton.cs.algs4;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>BST</tt> class represents an ordered symbol table of generic
+ *  The {@code BST} class represents an ordered symbol table of generic
  *  key-value pairs.
  *  It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.
@@ -39,14 +39,14 @@ import java.util.NoSuchElementException;
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
  *  Unlike {@link java.util.Map}, this class uses the convention that
- *  values cannot be <tt>null</tt>&mdash;setting the
- *  value associated with a key to <tt>null</tt> is equivalent to deleting the key
+ *  values cannot be {@code null}&mdash;setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This implementation uses a sorted array. It requires that
- *  the key type implements the <tt>Comparable</tt> interface and calls the
- *  <tt>compareTo()</tt> and method to compare two keys. It does not call either
- *  <tt>equals()</tt> or <tt>hashCode()</tt>.
+ *  the key type implements the {@code Comparable} interface and calls the
+ *  {@code compareTo()} and method to compare two keys. It does not call either
+ *  {@code equals()} or {@code hashCode()}.
  *  The <em>put/em> and <em>remove</em> operations each take linear time in
  *  the worst case; the <em>contains</em>, <em>ceiling</em>, <em>floor</em>,
  *  and <em>rank</em> operations take logarithmic time; the <em>size</em>,
@@ -106,8 +106,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     /**
      * Returns true if this symbol table is empty.
      *
-     * @return <tt>true</tt> if this symbol table is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this symbol table is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -118,9 +118,9 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * Does this symbol table contain the given key?
      *
      * @param  key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt> and
-     *         <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if this symbol table contains {@code key} and
+     *         {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
         if (key == null) throw new NullPointerException("argument to contains() is null");
@@ -132,8 +132,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
-     *         and <tt>null</tt> if the key is not in the symbol table
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     *         and {@code null} if the key is not in the symbol table
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Value get(Key key) {
         if (key == null) throw new NullPointerException("argument to get() is null"); 
@@ -144,11 +144,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     } 
 
     /**
-     * Returns the number of keys in this symbol table strictly less than <tt>key</tt>.
+     * Returns the number of keys in this symbol table strictly less than {@code key}.
      *
      * @param  key the key
-     * @return the number of keys in the symbol table strictly less than <tt>key</tt>
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return the number of keys in the symbol table strictly less than {@code key}
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public int rank(Key key) {
         if (key == null) throw new NullPointerException("argument to rank() is null"); 
@@ -171,7 +171,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void put(Key key, Value val)  {
         if (key == null) throw new NullPointerException("first argument to put() is null"); 
@@ -208,7 +208,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * (if the key is in the symbol table).
      *
      * @param  key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new NullPointerException("argument to delete() is null"); 
@@ -289,7 +289,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param  k the order statistic
      * @return the kth smallest key in this symbol table
-     * @throws IllegalArgumentException unless <tt>k</tt> is between 0 and
+     * @throws IllegalArgumentException unless {@code k} is between 0 and
      *        <em>n</em> &minus; 1
      */
     public Key select(int k) {
@@ -298,12 +298,12 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns the largest key in this symbol table less than or equal to <tt>key</tt>.
+     * Returns the largest key in this symbol table less than or equal to {@code key}.
      *
      * @param  key the key
-     * @return the largest key in this symbol table less than or equal to <tt>key</tt>
+     * @return the largest key in this symbol table less than or equal to {@code key}
      * @throws NoSuchElementException if there is no such key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Key floor(Key key) {
         if (key == null) throw new NullPointerException("argument to floor() is null"); 
@@ -314,12 +314,12 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns the smallest key in this symbol table greater than or equal to <tt>key</tt>.
+     * Returns the smallest key in this symbol table greater than or equal to {@code key}.
      *
      * @param  key the key
-     * @return the smallest key in this symbol table greater than or equal to <tt>key</tt>
+     * @return the smallest key in this symbol table greater than or equal to {@code key}
      * @throws NoSuchElementException if there is no such key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code key} is {@code null}
      */
     public Key ceiling(Key key) {
         if (key == null) throw new NullPointerException("argument to ceiling() is null"); 
@@ -331,10 +331,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     /**
      * Returns the number of keys in this symbol table in the specified range.
      *
-     * @return the number of keys in this sybol table between <tt>lo</tt> 
-     *         (inclusive) and <tt>hi</tt> (exclusive)
-     * @throws NullPointerException if either <tt>lo</tt> or <tt>hi</tt>
-     *         is <tt>null</tt>
+     * @return the number of keys in this sybol table between {@code lo} 
+     *         (inclusive) and {@code hi} (exclusive)
+     * @throws NullPointerException if either {@code lo} or {@code hi}
+     *         is {@code null}
      */
     public int size(Key lo, Key hi) {
         if (lo == null) throw new NullPointerException("first argument to size() is null"); 
@@ -346,9 +346,9 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns all keys in this symbol table as an <tt>Iterable</tt>.
-     * To iterate over all of the keys in the symbol table named <tt>st</tt>,
-     * use the foreach notation: <tt>for (Key key : st.keys())</tt>.
+     * Returns all keys in this symbol table as an {@code Iterable}.
+     * To iterate over all of the keys in the symbol table named {@code st},
+     * use the foreach notation: {@code for (Key key : st.keys())}.
      *
      * @return all keys in this symbol table
      */
@@ -358,12 +358,12 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     /**
      * Returns all keys in this symbol table in the given range,
-     * as an <tt>Iterable</tt>.
+     * as an {@code Iterable}.
      *
-     * @return all keys in this symbol table between <tt>lo</tt> 
-     *         (inclusive) and <tt>hi</tt> (exclusive)
-     * @throws NullPointerException if either <tt>lo</tt> or <tt>hi</tt>
-     *         is <tt>null</tt>
+     * @return all keys in this symbol table between {@code lo} 
+     *         (inclusive) and {@code hi} (exclusive)
+     * @throws NullPointerException if either {@code lo} or {@code hi}
+     *         is {@code null}
      */
     public Iterable<Key> keys(Key lo, Key hi) {
         if (lo == null) throw new NullPointerException("first argument to keys() is null"); 
@@ -404,7 +404,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 
     /**
-     * Unit tests the <tt>BinarySearchST</tt> data type.
+     * Unit tests the {@code BinarySearchST} data type.
      */
     public static void main(String[] args) { 
         BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>();

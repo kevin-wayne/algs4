@@ -44,7 +44,7 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>ThreeSumFast</tt> class provides static methods for counting
+ *  The {@code ThreeSumFast} class provides static methods for counting
  *  and printing the number of triples in an array of distinct integers that
  *  sum to 0 (ignoring integer overflow).
  *  <p>

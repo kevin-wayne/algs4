@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SuffixArrayX</tt> class represents a suffix array of a string of
+ *  The {@code SuffixArrayX} class represents a suffix array of a string of
  *  length <em>n</em>.
  *  It supports the <em>selecting</em> the <em>i</em>th smallest suffix,
  *  getting the <em>index</em> of the <em>i</em>th smallest suffix,
@@ -67,7 +67,7 @@ public class SuffixArrayX {
     private final int n;         // number of characters in text
 
     /**
-     * Initializes a suffix array for the given <tt>text</tt> string.
+     * Initializes a suffix array for the given {@code text} string.
      * @param text the input string
      */
     public SuffixArrayX(String text) {
@@ -145,7 +145,7 @@ public class SuffixArrayX {
 
     /**
      * Returns the index into the original string of the <em>i</em>th smallest suffix.
-     * That is, <tt>text.substring(sa.index(i))</tt> is the <em>i</em> smallest suffix.
+     * That is, {@code text.substring(sa.index(i))} is the <em>i</em> smallest suffix.
      * @param i an integer between 0 and <em>n</em>-1
      * @return the index into the original string of the <em>i</em>th smallest suffix
      * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <em>n</em>
@@ -192,11 +192,11 @@ public class SuffixArrayX {
     }
 
     /**
-     * Returns the number of suffixes strictly less than the <tt>query</tt> string.
-     * We note that <tt>rank(select(i))</tt> equals <tt>i</tt> for each <tt>i</tt>
+     * Returns the number of suffixes strictly less than the {@code query} string.
+     * We note that {@code rank(select(i))} equals {@code i} for each {@code i}
      * between 0 and <em>n</em>-1. 
      * @param query the query string
-     * @return the number of suffixes strictly less than <tt>query</tt>
+     * @return the number of suffixes strictly less than {@code query}
      */
     public int rank(String query) {
         int lo = 0, hi = n - 1;
@@ -227,7 +227,7 @@ public class SuffixArrayX {
 
 
     /**
-     * Unit tests the <tt>SuffixArrayx</tt> data type.
+     * Unit tests the {@code SuffixArrayx} data type.
      */
     public static void main(String[] args) {
         String s = StdIn.readAll().replaceAll("\n", " ").trim();

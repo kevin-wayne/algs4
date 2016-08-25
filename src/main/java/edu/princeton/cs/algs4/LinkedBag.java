@@ -33,7 +33,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>LinkedBag</tt> class represents a bag (or multiset) of 
+ *  The {@code LinkedBag} class represents a bag (or multiset) of 
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
@@ -118,7 +118,7 @@ public class LinkedBag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Unit tests the <tt>LinkedBag</tt> data type.
+     * Unit tests the {@code LinkedBag} data type.
      */
     public static void main(String[] args) {
         LinkedBag<String> bag = new LinkedBag<String>();

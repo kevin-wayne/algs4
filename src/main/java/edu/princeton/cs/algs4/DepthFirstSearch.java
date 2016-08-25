@@ -20,7 +20,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstSearch</tt> class represents a data type for 
+ *  The {@code DepthFirstSearch} class represents a data type for 
  *  determining the vertices connected to a given source vertex <em>s</em>
  *  in an undirected graph. For versions that find the paths, see
  *  {@link DepthFirstPaths} and {@link BreadthFirstPaths}.
@@ -42,8 +42,8 @@ public class DepthFirstSearch {
     private int count;           // number of vertices connected to s
 
     /**
-     * Computes the vertices in graph <tt>G</tt> that are
-     * connected to the source vertex <tt>s</tt>.
+     * Computes the vertices in graph {@code G} that are
+     * connected to the source vertex {@code s}.
      * @param G the graph
      * @param s the source vertex
      */
@@ -64,24 +64,24 @@ public class DepthFirstSearch {
     }
 
     /**
-     * Is there a path between the source vertex <tt>s</tt> and vertex <tt>v</tt>?
+     * Is there a path between the source vertex {@code s} and vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a path, {@code false} otherwise
      */
     public boolean marked(int v) {
         return marked[v];
     }
 
     /**
-     * Returns the number of vertices connected to the source vertex <tt>s</tt>.
-     * @return the number of vertices connected to the source vertex <tt>s</tt>
+     * Returns the number of vertices connected to the source vertex {@code s}.
+     * @return the number of vertices connected to the source vertex {@code s}
      */
     public int count() {
         return count;
     }
 
     /**
-     * Unit tests the <tt>DepthFirstSearch</tt> data type.
+     * Unit tests the {@code DepthFirstSearch} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

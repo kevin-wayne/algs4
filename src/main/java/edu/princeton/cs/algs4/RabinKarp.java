@@ -37,7 +37,7 @@ import java.math.BigInteger;
 import java.util.Random;
 
 /**
- *  The <tt>RabinKarp</tt> class finds the first occurrence of a pattern string
+ *  The {@code RabinKarp} class finds the first occurrence of a pattern string
  *  in a text string.
  *  <p>
  *  This implementation uses the Rabin-Karp algorithm.

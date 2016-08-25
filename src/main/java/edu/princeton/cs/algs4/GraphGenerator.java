@@ -13,7 +13,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>GraphGenerator</tt> class provides static methods for creating
+ *  The {@code GraphGenerator} class provides static methods for creating
  *  various graphs, including Erdos-Renyi random graphs, random bipartite
  *  graphs, random k-regular graphs, and random rooted trees.
  *  <p>
@@ -52,11 +52,11 @@ public class GraphGenerator {
     private GraphGenerator() { }
 
     /**
-     * Returns a random simple graph containing <tt>V</tt> vertices and <tt>E</tt> edges.
+     * Returns a random simple graph containing {@code V} vertices and {@code E} edges.
      * @param V the number of vertices
      * @param E the number of vertices
-     * @return a random simple graph on <tt>V</tt> vertices, containing a total
-     *     of <tt>E</tt> edges
+     * @return a random simple graph on {@code V} vertices, containing a total
+     *     of {@code E} edges
      * @throws IllegalArgumentException if no such simple graph exists
      */
     public static Graph simple(int V, int E) {
@@ -77,13 +77,13 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a random simple graph on <tt>V</tt> vertices, with an 
-     * edge between any two vertices with probability <tt>p</tt>. This is sometimes
+     * Returns a random simple graph on {@code V} vertices, with an 
+     * edge between any two vertices with probability {@code p}. This is sometimes
      * referred to as the Erdos-Renyi random graph model.
      * @param V the number of vertices
      * @param p the probability of choosing an edge
-     * @return a random simple graph on <tt>V</tt> vertices, with an edge between
-     *     any two vertices with probability <tt>p</tt>
+     * @return a random simple graph on {@code V} vertices, with an edge between
+     *     any two vertices with probability {@code p}
      * @throws IllegalArgumentException if probability is not between 0 and 1
      */
     public static Graph simple(int V, double p) {
@@ -98,19 +98,19 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns the complete graph on <tt>V</tt> vertices.
+     * Returns the complete graph on {@code V} vertices.
      * @param V the number of vertices
-     * @return the complete graph on <tt>V</tt> vertices
+     * @return the complete graph on {@code V} vertices
      */
     public static Graph complete(int V) {
         return simple(V, 1.0);
     }
 
     /**
-     * Returns a complete bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices.
+     * Returns a complete bipartite graph on {@code V1} and {@code V2} vertices.
      * @param V1 the number of vertices in one partition
      * @param V2 the number of vertices in the other partition
-     * @return a complete bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices
+     * @return a complete bipartite graph on {@code V1} and {@code V2} vertices
      * @throws IllegalArgumentException if probability is not between 0 and 1
      */
     public static Graph completeBipartite(int V1, int V2) {
@@ -118,13 +118,13 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices
-     * with <tt>E</tt> edges.
+     * Returns a random simple bipartite graph on {@code V1} and {@code V2} vertices
+     * with {@code E} edges.
      * @param V1 the number of vertices in one partition
      * @param V2 the number of vertices in the other partition
      * @param E the number of edges
-     * @return a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices,
-     *    containing a total of <tt>E</tt> edges
+     * @return a random simple bipartite graph on {@code V1} and {@code V2} vertices,
+     *    containing a total of {@code E} edges
      * @throws IllegalArgumentException if no such simple bipartite graph exists
      */
     public static Graph bipartite(int V1, int V2, int E) {
@@ -151,13 +151,13 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices,
-     * containing each possible edge with probability <tt>p</tt>.
+     * Returns a random simple bipartite graph on {@code V1} and {@code V2} vertices,
+     * containing each possible edge with probability {@code p}.
      * @param V1 the number of vertices in one partition
      * @param V2 the number of vertices in the other partition
      * @param p the probability that the graph contains an edge with one endpoint in either side
-     * @return a random simple bipartite graph on <tt>V1</tt> and <tt>V2</tt> vertices,
-     *    containing each possible edge with probability <tt>p</tt>
+     * @return a random simple bipartite graph on {@code V1} and {@code V2} vertices,
+     *    containing each possible edge with probability {@code p}
      * @throws IllegalArgumentException if probability is not between 0 and 1
      */
     public static Graph bipartite(int V1, int V2, double p) {
@@ -176,9 +176,9 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a path graph on <tt>V</tt> vertices.
+     * Returns a path graph on {@code V} vertices.
      * @param V the number of vertices in the path
-     * @return a path graph on <tt>V</tt> vertices
+     * @return a path graph on {@code V} vertices
      */
     public static Graph path(int V) {
         Graph G = new Graph(V);
@@ -193,9 +193,9 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a complete binary tree graph on <tt>V</tt> vertices.
+     * Returns a complete binary tree graph on {@code V} vertices.
      * @param V the number of vertices in the binary tree
-     * @return a complete binary tree graph on <tt>V</tt> vertices
+     * @return a complete binary tree graph on {@code V} vertices
      */
     public static Graph binaryTree(int V) {
         Graph G = new Graph(V);
@@ -210,9 +210,9 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a cycle graph on <tt>V</tt> vertices.
+     * Returns a cycle graph on {@code V} vertices.
      * @param V the number of vertices in the cycle
-     * @return a cycle graph on <tt>V</tt> vertices
+     * @return a cycle graph on {@code V} vertices
      */
     public static Graph cycle(int V) {
         Graph G = new Graph(V);
@@ -228,12 +228,12 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns an Eulerian cycle graph on <tt>V</tt> vertices.
+     * Returns an Eulerian cycle graph on {@code V} vertices.
      *
      * @param  V the number of vertices in the cycle
      * @param  E the number of edges in the cycle
-     * @return a graph that is an Eulerian cycle on <tt>V</tt> vertices
-     *         and <tt>E</tt> edges
+     * @return a graph that is an Eulerian cycle on {@code V} vertices
+     *         and {@code E} edges
      * @throws IllegalArgumentException if either V &le; 0 or E &le; 0
      */
     public static Graph eulerianCycle(int V, int E) {
@@ -253,12 +253,12 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns an Eulerian path graph on <tt>V</tt> vertices.
+     * Returns an Eulerian path graph on {@code V} vertices.
      *
      * @param  V the number of vertices in the path
      * @param  E the number of edges in the path
-     * @return a graph that is an Eulerian path on <tt>V</tt> vertices
-     *         and <tt>E</tt> edges
+     * @return a graph that is an Eulerian path on {@code V} vertices
+     *         and {@code E} edges
      * @throws IllegalArgumentException if either V &le; 0 or E &lt; 0
      */
     public static Graph eulerianPath(int V, int E) {
@@ -277,10 +277,10 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a wheel graph on <tt>V</tt> vertices.
+     * Returns a wheel graph on {@code V} vertices.
      * @param V the number of vertices in the wheel
-     * @return a wheel graph on <tt>V</tt> vertices: a single vertex connected to
-     *     every vertex in a cycle on <tt>V-1</tt> vertices
+     * @return a wheel graph on {@code V} vertices: a single vertex connected to
+     *     every vertex in a cycle on {@code V-1} vertices
      */
     public static Graph wheel(int V) {
         if (V <= 1) throw new IllegalArgumentException("Number of vertices must be at least 2");
@@ -305,9 +305,9 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a star graph on <tt>V</tt> vertices.
+     * Returns a star graph on {@code V} vertices.
      * @param V the number of vertices in the star
-     * @return a star graph on <tt>V</tt> vertices: a single vertex connected to
+     * @return a star graph on {@code V} vertices: a single vertex connected to
      *     every other vertex
      */
     public static Graph star(int V) {
@@ -327,11 +327,11 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a uniformly random <tt>k</tt>-regular graph on <tt>V</tt> vertices
+     * Returns a uniformly random {@code k}-regular graph on {@code V} vertices
      * (not necessarily simple). The graph is simple with probability only about e^(-k^2/4),
      * which is tiny when k = 14.
      * @param V the number of vertices in the graph
-     * @return a uniformly random <tt>k</tt>-regular graph on <tt>V</tt> vertices.
+     * @return a uniformly random {@code k}-regular graph on {@code V} vertices.
      */
     public static Graph regular(int V, int k) {
         if (V*k % 2 != 0) throw new IllegalArgumentException("Number of vertices * k must be even");
@@ -356,10 +356,10 @@ public class GraphGenerator {
     // http://www.proofwiki.org/wiki/Labeled_Tree_from_Prüfer_Sequence
     // http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.36.6484&rep=rep1&type=pdf
     /**
-     * Returns a uniformly random tree on <tt>V</tt> vertices.
+     * Returns a uniformly random tree on {@code V} vertices.
      * This algorithm uses a Prufer sequence and takes time proportional to <em>V log V</em>.
      * @param V the number of vertices in the tree
-     * @return a uniformly random tree on <tt>V</tt> vertices
+     * @return a uniformly random tree on {@code V} vertices
      */
     public static Graph tree(int V) {
         Graph G = new Graph(V);
@@ -400,7 +400,7 @@ public class GraphGenerator {
     }
 
     /**
-     * Unit tests the <tt>GraphGenerator</tt> library.
+     * Unit tests the {@code GraphGenerator} library.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

@@ -27,7 +27,7 @@ package edu.princeton.cs.algs4;
 import java.util.Comparator;
 
 /**
- *  The <tt>MergeX</tt> class provides static methods for sorting an
+ *  The {@code MergeX} class provides static methods for sorting an
  *  array using an optimized version of mergesort.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of

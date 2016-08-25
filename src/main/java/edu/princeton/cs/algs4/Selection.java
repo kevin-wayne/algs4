@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
 import java.util.Comparator;
 
 /**
- *  The <tt>Selection</tt> class provides static methods for sorting an
+ *  The {@code Selection} class provides static methods for sorting an
  *  array using selection sort.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of

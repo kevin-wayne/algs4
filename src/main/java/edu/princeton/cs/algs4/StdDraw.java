@@ -81,7 +81,7 @@ import javax.swing.KeyStroke;
  *  user interaction via the keyboard and mouse.
  *  <p>
  *  <b>Getting started.</b>
- *  To use standard drawing, you must have <tt>StdDraw.class</tt> in your
+ *  To use standard drawing, you must have {@code StdDraw.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
  *  Otherwise, download
  *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
@@ -874,11 +874,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Sets the pen color to the specified color.
      * <p>
      * The predefined pen colors are
-     * <tt>StdDraw.BLACK</tt>, <tt>StdDraw.BLUE</tt>, <tt>StdDraw.CYAN</tt>,
-     * <tt>StdDraw.DARK_GRAY</tt>, <tt>StdDraw.GRAY</tt>, <tt>StdDraw.GREEN</tt>,
-     * <tt>StdDraw.LIGHT_GRAY</tt>, <tt>StdDraw.MAGENTA</tt>, <tt>StdDraw.ORANGE</tt>,
-     * <tt>StdDraw.PINK</tt>, <tt>StdDraw.RED</tt>, <tt>StdDraw.WHITE</tt>, and
-     * <tt>StdDraw.YELLOW</tt>.
+     * {@code StdDraw.BLACK}, {@code StdDraw.BLUE}, {@code StdDraw.CYAN},
+     * {@code StdDraw.DARK_GRAY}, {@code StdDraw.GRAY}, {@code StdDraw.GREEN},
+     * {@code StdDraw.LIGHT_GRAY}, {@code StdDraw.MAGENTA}, {@code StdDraw.ORANGE},
+     * {@code StdDraw.PINK}, {@code StdDraw.RED}, {@code StdDraw.WHITE}, and
+     * {@code StdDraw.YELLOW}.
      *
      * @param color the color to make the pen
      */
@@ -1561,7 +1561,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Saves the drawing to using the specified filename.
      * The supported image formats are JPEG and PNG;
-     * the filename suffix must be <tt>.jpg</tt> or <tt>.png</tt>.
+     * the filename suffix must be {@code .jpg} or {@code .png}.
      *
      * @param  filename the name of the file with one of the required suffixes
      */
@@ -1627,7 +1627,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Returns true if the mouse is being pressed.
      *
-     * @return <tt>true</tt> if the mouse is being pressed; <tt>false</tt> otherwise
+     * @return {@code true} if the mouse is being pressed; {@code false} otherwise
      */
     public static boolean mousePressed() {
         synchronized (mouseLock) {
@@ -1728,8 +1728,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Returns true if the user has typed a key (that has not yet been processed).
      *
-     * @return <tt>true</tt> if the user has typed a key (that has not yet been processed
-     *         by {@link #nextKeyTyped()}; <tt>false</tt> otherwise
+     * @return {@code true} if the user has typed a key (that has not yet been processed
+     *         by {@link #nextKeyTyped()}; {@code false} otherwise
      */
     public static boolean hasNextKeyTyped() {
         synchronized (keyLock) {
@@ -1767,8 +1767,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * See {@link KeyEvent} for a description of key codes.
      *
      * @param  keycode the key to check if it is being pressed
-     * @return <tt>true</tt> if {@code keycode} is currently being pressed;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code keycode} is currently being pressed;
+     *         {@code false} otherwise
      */
     public static boolean isKeyPressed(int keycode) {
         synchronized (keyLock) {

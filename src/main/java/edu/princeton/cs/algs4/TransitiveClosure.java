@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TransitiveClosure</tt> class represents a data type for 
+ *  The {@code TransitiveClosure} class represents a data type for 
  *  computing the transitive closure of a digraph.
  *  <p>
  *  This implementation runs depth-first search from each vertex.
@@ -57,7 +57,7 @@ public class TransitiveClosure {
     private DirectedDFS[] tc;  // tc[v] = reachable from v
 
     /**
-     * Computes the transitive closure of the digraph <tt>G</tt>.
+     * Computes the transitive closure of the digraph {@code G}.
      * @param G the digraph
      */
     public TransitiveClosure(Digraph G) {
@@ -67,18 +67,18 @@ public class TransitiveClosure {
     }
 
     /**
-     * Is there a directed path from vertex <tt>v</tt> to vertex <tt>w</tt> in the digraph?
+     * Is there a directed path from vertex {@code v} to vertex {@code w} in the digraph?
      * @param v the source vertex
      * @param w the target vertex
-     * @return <tt>true</tt> if there is a directed path from <tt>v</tt> to <tt>w</tt>,
-     *    <tt>false</tt> otherwise
+     * @return {@code true} if there is a directed path from {@code v} to {@code w},
+     *    {@code false} otherwise
      */
     public boolean reachable(int v, int w) {
         return tc[v].marked(w);
     }
 
     /**
-     * Unit tests the <tt>TransitiveClosure</tt> data type.
+     * Unit tests the {@code TransitiveClosure} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

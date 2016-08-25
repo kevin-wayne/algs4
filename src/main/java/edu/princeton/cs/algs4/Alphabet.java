@@ -137,8 +137,8 @@ public class Alphabet {
      * Returns true if the argument is a character in this alphabet.
      *
      * @param  c the character
-     * @return <tt>true</tt> if <tt>c</tt> is a character in this alphabet;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code c} is a character in this alphabet;
+     *         {@code false} otherwise
      */
     public boolean contains(char c) {
         return inverse[c] != -1;
@@ -180,8 +180,8 @@ public class Alphabet {
      * Returns the index corresponding to the argument character.
      * 
      * @param  c the character
-     * @return the index corresponding to the character <tt>c</tt>
-     * @throws IllegalArgumentException unless <tt>c</tt> is a character in this alphabet
+     * @return the index corresponding to the character {@code c}
+     * @throws IllegalArgumentException unless {@code c} is a character in this alphabet
      */
     public int toIndex(char c) {
         if (c >= inverse.length || inverse[c] == -1) {
@@ -194,8 +194,8 @@ public class Alphabet {
      * Returns the indices corresponding to the argument characters.
      * 
      * @param  s the characters
-     * @return the indices corresponding to the characters <tt>s</tt>
-     * @throws IllegalArgumentException unless every character in <tt>s</tt>
+     * @return the indices corresponding to the characters {@code s}
+     * @throws IllegalArgumentException unless every character in {@code s}
      *         is a character in this alphabet
      */
     public int[] toIndices(String s) {
@@ -210,9 +210,9 @@ public class Alphabet {
      * Returns the character corresponding to the argument index.
      * 
      * @param  index the index
-     * @return the character corresponding to the index <tt>index</tt>
-     * @throws IllegalArgumentException unless <tt>index</tt> is between <tt>0</tt>
-     *         and <tt>R - 1</tt>
+     * @return the character corresponding to the index {@code index}
+     * @throws IllegalArgumentException unless {@code index} is between {@code 0}
+     *         and {@code R - 1}
      */
     public char toChar(int index) {
         if (index < 0 || index >= R) {
@@ -225,9 +225,9 @@ public class Alphabet {
      * Returns the characters corresponding to the argument indices.
      * 
      * @param  indices the indices
-     * @return the characters corresponding to the indices <tt>indices</tt>
-     * @throws IllegalArgumentException unless every index is between <tt>0</tt>
-     *         and <tt>R - 1</tt>
+     * @return the characters corresponding to the indices {@code indices}
+     * @throws IllegalArgumentException unless every index is between {@code 0}
+     *         and {@code R - 1}
      */
     public String toChars(int[] indices) {
         StringBuilder s = new StringBuilder(indices.length);
@@ -237,7 +237,7 @@ public class Alphabet {
     }
 
     /**
-     * Unit tests the <tt>Alphabet</tt> data type.
+     * Unit tests the {@code Alphabet} data type.
      */
     public static void main(String[] args) {
         int[]  encoded1 = Alphabet.BASE64.toIndices("NowIsTheTimeForAllGoodMen");

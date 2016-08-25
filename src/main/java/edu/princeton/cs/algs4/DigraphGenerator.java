@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DigraphGenerator</tt> class provides static methods for creating
+ *  The {@code DigraphGenerator} class provides static methods for creating
  *  various digraphs, including Erdos-Renyi random digraphs, random DAGs,
  *  random rooted trees, random rooted DAGs, random tournaments, path digraphs,
  *  cycle digraphs, and the complete digraph.
@@ -44,11 +44,11 @@ public class DigraphGenerator {
     private DigraphGenerator() { }
 
     /**
-     * Returns a random simple digraph containing <tt>V</tt> vertices and <tt>E</tt> edges.
+     * Returns a random simple digraph containing {@code V} vertices and {@code E} edges.
      * @param V the number of vertices
      * @param E the number of vertices
-     * @return a random simple digraph on <tt>V</tt> vertices, containing a total
-     *     of <tt>E</tt> edges
+     * @return a random simple digraph on {@code V} vertices, containing a total
+     *     of {@code E} edges
      * @throws IllegalArgumentException if no such simple digraph exists
      */
     public static Digraph simple(int V, int E) {
@@ -69,14 +69,14 @@ public class DigraphGenerator {
     }
 
    /**
-     * Returns a random simple digraph on <tt>V</tt> vertices, with an 
-     * edge between any two vertices with probability <tt>p</tt>. This is sometimes
+     * Returns a random simple digraph on {@code V} vertices, with an 
+     * edge between any two vertices with probability {@code p}. This is sometimes
      * referred to as the Erdos-Renyi random digraph model.
-     * This implementations takes time propotional to V^2 (even if <tt>p</tt> is small).
+     * This implementations takes time propotional to V^2 (even if {@code p} is small).
      * @param V the number of vertices
      * @param p the probability of choosing an edge
-     * @return a random simple digraph on <tt>V</tt> vertices, with an edge between
-     *     any two vertices with probability <tt>p</tt>
+     * @return a random simple digraph on {@code V} vertices, with an edge between
+     *     any two vertices with probability {@code p}
      * @throws IllegalArgumentException if probability is not between 0 and 1
      */
     public static Digraph simple(int V, double p) {
@@ -92,21 +92,21 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns the complete digraph on <tt>V</tt> vertices.
+     * Returns the complete digraph on {@code V} vertices.
      * @param V the number of vertices
-     * @return the complete digraph on <tt>V</tt> vertices
+     * @return the complete digraph on {@code V} vertices
      */
     public static Digraph complete(int V) {
         return simple(V, V*(V-1));
     }
 
     /**
-     * Returns a random simple DAG containing <tt>V</tt> vertices and <tt>E</tt> edges.
+     * Returns a random simple DAG containing {@code V} vertices and {@code E} edges.
      * Note: it is not uniformly selected at random among all such DAGs.
      * @param V the number of vertices
      * @param E the number of vertices
-     * @return a random simple DAG on <tt>V</tt> vertices, containing a total
-     *     of <tt>E</tt> edges
+     * @return a random simple DAG on {@code V} vertices, containing a total
+     *     of {@code E} edges
      * @throws IllegalArgumentException if no such simple DAG exists
      */
     public static Digraph dag(int V, int E) {
@@ -132,11 +132,11 @@ public class DigraphGenerator {
 
     // tournament
     /**
-     * Returns a random tournament digraph on <tt>V</tt> vertices. A tournament digraph
+     * Returns a random tournament digraph on {@code V} vertices. A tournament digraph
      * is a DAG in which for every two vertices, there is one directed edge.
      * A tournament is an oriented complete graph.
      * @param V the number of vertices
-     * @return a random tournament digraph on <tt>V</tt> vertices
+     * @return a random tournament digraph on {@code V} vertices
      */
     public static Digraph tournament(int V) {
         Digraph G = new Digraph(V);
@@ -150,13 +150,13 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns a random rooted-in DAG on <tt>V</tt> vertices and <tt>E</tt> edges.
+     * Returns a random rooted-in DAG on {@code V} vertices and {@code E} edges.
      * A rooted in-tree is a DAG in which there is a single vertex
      * reachable from every other vertex.
      * The DAG returned is not chosen uniformly at random among all such DAGs.
      * @param V the number of vertices
      * @param E the number of edges
-     * @return a random rooted-in DAG on <tt>V</tt> vertices and <tt>E</tt> edges
+     * @return a random rooted-in DAG on {@code V} vertices and {@code E} edges
      */
     public static Digraph rootedInDAG(int V, int E) {
         if (E > (long) V*(V-1) / 2) throw new IllegalArgumentException("Too many edges");
@@ -191,13 +191,13 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns a random rooted-out DAG on <tt>V</tt> vertices and <tt>E</tt> edges.
+     * Returns a random rooted-out DAG on {@code V} vertices and {@code E} edges.
      * A rooted out-tree is a DAG in which every vertex is reachable from a
      * single vertex.
      * The DAG returned is not chosen uniformly at random among all such DAGs.
      * @param V the number of vertices
      * @param E the number of edges
-     * @return a random rooted-out DAG on <tt>V</tt> vertices and <tt>E</tt> edges
+     * @return a random rooted-out DAG on {@code V} vertices and {@code E} edges
      */
     public static Digraph rootedOutDAG(int V, int E) {
         if (E > (long) V*(V-1) / 2) throw new IllegalArgumentException("Too many edges");
@@ -232,33 +232,33 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns a random rooted-in tree on <tt>V</tt> vertices.
+     * Returns a random rooted-in tree on {@code V} vertices.
      * A rooted in-tree is an oriented tree in which there is a single vertex
      * reachable from every other vertex.
      * The tree returned is not chosen uniformly at random among all such trees.
      * @param V the number of vertices
-     * @return a random rooted-in tree on <tt>V</tt> vertices
+     * @return a random rooted-in tree on {@code V} vertices
      */
     public static Digraph rootedInTree(int V) {
         return rootedInDAG(V, V-1);
     }
 
     /**
-     * Returns a random rooted-out tree on <tt>V</tt> vertices. A rooted out-tree
+     * Returns a random rooted-out tree on {@code V} vertices. A rooted out-tree
      * is an oriented tree in which each vertex is reachable from a single vertex.
      * It is also known as a <em>arborescence</em> or <em>branching</em>.
      * The tree returned is not chosen uniformly at random among all such trees.
      * @param V the number of vertices
-     * @return a random rooted-out tree on <tt>V</tt> vertices
+     * @return a random rooted-out tree on {@code V} vertices
      */
     public static Digraph rootedOutTree(int V) {
         return rootedOutDAG(V, V-1);
     }
 
     /**
-     * Returns a path digraph on <tt>V</tt> vertices.
+     * Returns a path digraph on {@code V} vertices.
      * @param V the number of vertices in the path
-     * @return a digraph that is a directed path on <tt>V</tt> vertices
+     * @return a digraph that is a directed path on {@code V} vertices
      */
     public static Digraph path(int V) {
         Digraph G = new Digraph(V);
@@ -273,9 +273,9 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns a complete binary tree digraph on <tt>V</tt> vertices.
+     * Returns a complete binary tree digraph on {@code V} vertices.
      * @param V the number of vertices in the binary tree
-     * @return a digraph that is a complete binary tree on <tt>V</tt> vertices
+     * @return a digraph that is a complete binary tree on {@code V} vertices
      */
     public static Digraph binaryTree(int V) {
         Digraph G = new Digraph(V);
@@ -290,9 +290,9 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns a cycle digraph on <tt>V</tt> vertices.
+     * Returns a cycle digraph on {@code V} vertices.
      * @param V the number of vertices in the cycle
-     * @return a digraph that is a directed cycle on <tt>V</tt> vertices
+     * @return a digraph that is a directed cycle on {@code V} vertices
      */
     public static Digraph cycle(int V) {
         Digraph G = new Digraph(V);
@@ -308,12 +308,12 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns an Eulerian cycle digraph on <tt>V</tt> vertices.
+     * Returns an Eulerian cycle digraph on {@code V} vertices.
      *
      * @param  V the number of vertices in the cycle
      * @param  E the number of edges in the cycle
-     * @return a digraph that is a directed Eulerian cycle on <tt>V</tt> vertices
-     *         and <tt>E</tt> edges
+     * @return a digraph that is a directed Eulerian cycle on {@code V} vertices
+     *         and {@code E} edges
      * @throws IllegalArgumentException if either V &le; 0 or E &le; 0
      */
     public static Digraph eulerianCycle(int V, int E) {
@@ -333,12 +333,12 @@ public class DigraphGenerator {
     }
 
     /**
-     * Returns an Eulerian path digraph on <tt>V</tt> vertices.
+     * Returns an Eulerian path digraph on {@code V} vertices.
      *
      * @param  V the number of vertices in the path
      * @param  E the number of edges in the path
-     * @return a digraph that is a directed Eulerian path on <tt>V</tt> vertices
-     *         and <tt>E</tt> edges
+     * @return a digraph that is a directed Eulerian path on {@code V} vertices
+     *         and {@code E} edges
      * @throws IllegalArgumentException if either V &le; 0 or E &lt; 0
      */
     public static Digraph eulerianPath(int V, int E) {
@@ -357,9 +357,9 @@ public class DigraphGenerator {
     }
 
    /**
-     * Returns a random simple digraph on <tt>V</tt> vertices, <tt>E</tt>
-     * edges and (at least) <tt>c</tt> strong components. The vertices are randomly
-     * assigned integer labels between <tt>0</tt> and <tt>c-1</tt> (corresponding to 
+     * Returns a random simple digraph on {@code V} vertices, {@code E}
+     * edges and (at least) {@code c} strong components. The vertices are randomly
+     * assigned integer labels between {@code 0} and {@code c-1} (corresponding to 
      * strong components). Then, a strong component is creates among the vertices
      * with the same label. Next, random edges (either between two vertices with
      * the same labels or from a vetex with a smaller label to a vertex with a 
@@ -369,9 +369,9 @@ public class DigraphGenerator {
      * @param V the number of vertices
      * @param E the number of edges
      * @param c the (maximum) number of strong components
-     * @return a random simple digraph on <tt>V</tt> vertices and
-               <tt>E</tt> edges, with (at most) <tt>c</tt> strong components
-     * @throws IllegalArgumentException if <tt>c</tt> is larger than <tt>V</tt>
+     * @return a random simple digraph on {@code V} vertices and
+               {@code E} edges, with (at most) {@code c} strong components
+     * @throws IllegalArgumentException if {@code c} is larger than {@code V}
      */
     public static Digraph strong(int V, int E, int c) {
         if (c >= V || c <= 0)
@@ -440,7 +440,7 @@ public class DigraphGenerator {
     }
 
     /**
-     * Unit tests the <tt>DigraphGenerator</tt> library.
+     * Unit tests the {@code DigraphGenerator} library.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

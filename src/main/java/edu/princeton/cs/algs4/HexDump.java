@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>HexDump</tt> class provides a client for displaying the contents
+ *  The {@code HexDump} class provides a client for displaying the contents
  *  of a binary file in hexadecimal.
  *  <p>
  *  For additional documentation,
@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  See also {@link BinaryDump} and {@link PictureDump}.
  *  For more full-featured versions, see the Unix utilities
- *  <tt>od</tt> (octal dump) and <tt>hexdump</tt> (hexadecimal dump).
+ *  {@code od} (octal dump) and {@code hexdump} (hexadecimal dump).
  *  <p>
  *
  *  @author Robert Sedgewick

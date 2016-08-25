@@ -24,11 +24,11 @@ import java.net.URLConnection;
 /**
  *  <i>Binary input</i>. This class provides methods for reading
  *  in bits from a binary input stream, either
- *  one bit at a time (as a <tt>boolean</tt>),
- *  8 bits at a time (as a <tt>byte</tt> or <tt>char</tt>),
- *  16 bits at a time (as a <tt>short</tt>),
- *  32 bits at a time (as an <tt>int</tt> or <tt>float</tt>), or
- *  64 bits at a time (as a <tt>double</tt> or <tt>long</tt>).
+ *  one bit at a time (as a {@code boolean}),
+ *  8 bits at a time (as a {@code byte} or {@code char}),
+ *  16 bits at a time (as a {@code short}),
+ *  32 bits at a time (as an {@code int} or {@code float}), or
+ *  64 bits at a time (as a {@code double} or {@code long}).
  *  <p>
  *  The binary input stream can be from standard input, a filename,
  *  a URL name, a Socket, or an InputStream.
@@ -37,8 +37,8 @@ import java.net.URLConnection;
  *  standard Java representations, in big-endian (most significant
  *  byte first) order.
  *  <p>
- *  The client should not intermix calls to <tt>BinaryIn</tt> with calls
- *  to <tt>In</tt>; otherwise unexpected behavior will result.
+ *  The client should not intermix calls to {@code BinaryIn} with calls
+ *  to {@code In}; otherwise unexpected behavior will result.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -59,9 +59,9 @@ public final class BinaryIn {
     }
 
    /**
-     * Initializes a binary input stream from an <tt>InputStream</tt>.
+     * Initializes a binary input stream from an {@code InputStream}.
      *
-     * @param is the <tt>InputStream</tt> object
+     * @param is the {@code InputStream} object
      */
     public BinaryIn(InputStream is) {
         in = new BufferedInputStream(is);
@@ -151,8 +151,8 @@ public final class BinaryIn {
     /**
      * Returns true if this binary input stream exists.
      *
-     * @return <tt>true</tt> if this binary input stream exists;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this binary input stream exists;
+     *         {@code false} otherwise
      */
     public boolean exists()  {
         return in != null;
@@ -161,8 +161,8 @@ public final class BinaryIn {
    /**
      * Returns true if this binary input stream is empty.
      *
-     * @return <tt>true</tt> if this binary input stream is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this binary input stream is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return buffer == EOF;
@@ -171,7 +171,7 @@ public final class BinaryIn {
    /**
      * Reads the next bit of data from this binary input stream and return as a boolean.
      *
-     * @return the next bit of data from this binary input stream as a <tt>boolean</tt>
+     * @return the next bit of data from this binary input stream as a {@code boolean}
      * @throws RuntimeException if this binary input stream is empty
      */
     public boolean readBoolean() {
@@ -185,7 +185,7 @@ public final class BinaryIn {
    /**
      * Reads the next 8 bits from this binary input stream and return as an 8-bit char.
      *
-     * @return the next 8 bits of data from this binary input stream as a <tt>char</tt>
+     * @return the next 8 bits of data from this binary input stream as a {@code char}
      * @throws RuntimeException if there are fewer than 8 bits available
      */
     public char readChar() {
@@ -216,7 +216,7 @@ public final class BinaryIn {
      * Reads the next r bits from this binary input stream and return as an r-bit character.
      *
      * @param  r number of bits to read
-     * @return the next r bits of data from this binary input streamt as a <tt>char</tt>
+     * @return the next r bits of data from this binary input streamt as a {@code char}
      * @throws RuntimeException if there are fewer than r bits available
      */
     public char readChar(int r) {
@@ -238,7 +238,7 @@ public final class BinaryIn {
    /**
      * Reads the remaining bytes of data from this binary input stream and return as a string. 
      *
-     * @return the remaining bytes of data from this binary input stream as a <tt>String</tt>
+     * @return the remaining bytes of data from this binary input stream as a {@code String}
      * @throws RuntimeException if this binary input stream is empty or if the number of bits
      *         available is not a multiple of 8 (byte-aligned)
      */
@@ -257,7 +257,7 @@ public final class BinaryIn {
    /**
      * Reads the next 16 bits from this binary input stream and return as a 16-bit short.
      *
-     * @return the next 16 bits of data from this binary standard input as a <tt>short</tt>
+     * @return the next 16 bits of data from this binary standard input as a {@code short}
      * @throws RuntimeException if there are fewer than 16 bits available
      */
     public short readShort() {
@@ -273,7 +273,7 @@ public final class BinaryIn {
    /**
      * Reads the next 32 bits from this binary input stream and return as a 32-bit int.
      *
-     * @return the next 32 bits of data from this binary input stream as a <tt>int</tt>
+     * @return the next 32 bits of data from this binary input stream as a {@code int}
      * @throws RuntimeException if there are fewer than 32 bits available
      */
     public int readInt() {
@@ -290,7 +290,7 @@ public final class BinaryIn {
      * Reads the next r bits from this binary input stream return as an r-bit int.
      *
      * @param  r number of bits to read
-     * @return the next r bits of data from this binary input stream as a <tt>int</tt>
+     * @return the next r bits of data from this binary input stream as a {@code int}
      * @throws RuntimeException if there are fewer than r bits available on standard input
      */
     public int readInt(int r) {
@@ -311,7 +311,7 @@ public final class BinaryIn {
    /**
      * Reads the next 64 bits from this binary input stream and return as a 64-bit long.
      *
-     * @return the next 64 bits of data from this binary input stream as a <tt>long</tt>
+     * @return the next 64 bits of data from this binary input stream as a {@code long}
      * @throws RuntimeException if there are fewer than 64 bits available
      */
     public long readLong() {
@@ -327,7 +327,7 @@ public final class BinaryIn {
    /**
      * Reads the next 64 bits from this binary input stream and return as a 64-bit double.
      *
-     * @return the next 64 bits of data from this binary input stream as a <tt>double</tt>
+     * @return the next 64 bits of data from this binary input stream as a {@code double}
      * @throws RuntimeException if there are fewer than 64 bits available
      */
     public double readDouble() {
@@ -337,7 +337,7 @@ public final class BinaryIn {
    /**
      * Reads the next 32 bits from standard input and return as a 32-bit float.
      *
-     * @return the next 32 bits of data from standard input as a <tt>float</tt>
+     * @return the next 32 bits of data from standard input as a {@code float}
      * @throws RuntimeException if there are fewer than 32 bits available on standard input
      */
     public float readFloat() {
@@ -348,7 +348,7 @@ public final class BinaryIn {
    /**
      * Reads the next 8 bits from this binary input stream and return as an 8-bit byte.
      *
-     * @return the next 8 bits of data from this binary input stream as a <tt>byte</tt>
+     * @return the next 8 bits of data from this binary input stream as a {@code byte}
      * @throws RuntimeException if there are fewer than 8 bits available
      */
     public byte readByte() {
@@ -358,7 +358,7 @@ public final class BinaryIn {
     }
     
    /**
-     * Unit tests the <tt>BinaryIn</tt> data type.
+     * Unit tests the {@code BinaryIn} data type.
      * Reads the name of a file or URL (first command-line argument)
      * and writes it to a file (second command-line argument).
      */

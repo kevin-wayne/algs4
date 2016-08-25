@@ -109,7 +109,7 @@ public final class StdAudio {
      * If the sample is outside the range, it will be clipped.
      *
      * @param  sample the sample to play
-     * @throws IllegalArgumentException if the sample is <tt>Double.NaN</tt>
+     * @throws IllegalArgumentException if the sample is {@code Double.NaN}
      */
     public static void play(double sample) {
 
@@ -135,7 +135,7 @@ public final class StdAudio {
      * If a sample is outside the range, it will be clipped.
      *
      * @param  samples the array of samples to play
-     * @throws IllegalArgumentException if any sample is <tt>Double.NaN</tt>
+     * @throws IllegalArgumentException if any sample is {@code Double.NaN}
      */
     public static void play(double[] samples) {
         if (samples == null) throw new NullPointerException("argument to play() is null");
@@ -295,7 +295,7 @@ public final class StdAudio {
 
 
    /***************************************************************************
-    * Unit tests <tt>StdAudio</tt>.
+    * Unit tests {@code StdAudio}.
     ***************************************************************************/
 
     // create a note (sine wave) of the given frequency (Hz), for the given

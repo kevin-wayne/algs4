@@ -29,7 +29,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <code>PatriciaSET</code> class provides an implementation of an
+ *  The {@code PatriciaSET} class provides an implementation of an
  *  unordered set, with the restriction that the items (keys) are of class
  *  {@link java.lang.String}. It supports the usual <em>add</em>,
  *  <em>contains</em>, <em>delete</em>, <em>size</em>, and <em>is-empty</em>
@@ -124,8 +124,8 @@ public class PatriciaSET implements Iterable<String> {
     /**
      * Adds the key to the set if it is not already present.
      * @param key the key to add
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void add(String key) {
         if (key == null) throw new NullPointerException("called add(null)");
@@ -163,10 +163,10 @@ public class PatriciaSET implements Iterable<String> {
     /**
      * Does the set contain the given key?
      * @param key the key
-     * @return <code>true</code> if the set contains <code>key</code> and
-     * <code>false</code> otherwise
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @return {@code true} if the set contains {@code key} and
+     * {@code false} otherwise
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public boolean contains(String key) {
         if (key == null) throw new NullPointerException("called contains(null)");
@@ -184,8 +184,8 @@ public class PatriciaSET implements Iterable<String> {
     /**
      * Removes the key from the set if the key is present.
      * @param key the key
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     * @throws IllegalArgumentException if <code>key</code> is the empty string.
+     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void delete(String key) {
         if (key == null) throw new NullPointerException("called delete(null)");
@@ -232,7 +232,7 @@ public class PatriciaSET implements Iterable<String> {
 
     /**
      * Is the set empty?
-     * @return <code>true</code> if the set is empty, and <code>false</code>
+     * @return {@code true} if the set is empty, and {@code false}
      * otherwise
      */
     boolean isEmpty() {
@@ -249,8 +249,8 @@ public class PatriciaSET implements Iterable<String> {
 
     /**
      * Returns all of the keys in the set, as an iterator.
-     * To iterate over all of the keys in a set named <code>set</code>, use the
-     * foreach notation: <code>for (Key key : set)</code>.
+     * To iterate over all of the keys in a set named {@code set}, use the
+     * foreach notation: {@code for (Key key : set)}.
      * @return an iterator to all of the keys in the set
      */
     public Iterator<String> iterator() {
@@ -346,7 +346,7 @@ public class PatriciaSET implements Iterable<String> {
     }
 
     /**
-     * Unit tests the <code>PatriciaSET</code> data type.
+     * Unit tests the {@code PatriciaSET} data type.
      * This test fixture runs a series of tests on a randomly generated dataset.
      * You may specify up to two integer parameters on the command line. The
      * first parameter indicates the size of the dataset. The second parameter

@@ -25,7 +25,7 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>InsertionX</tt> class provides static methods for sorting
+ *  The {@code InsertionX} class provides static methods for sorting
  *  an array using an optimized version of insertion sort (with half exchanges
  *  and a sentinel).
  *  <p>

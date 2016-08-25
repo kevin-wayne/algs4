@@ -19,7 +19,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LZW</tt> class provides static methods for compressing
+ *  The {@code LZW} class provides static methods for compressing
  *  and expanding a binary input using LZW compression over the 8-bit extended
  *  ASCII alphabet with 12-bit codewords.
  *  <p>
@@ -93,8 +93,8 @@ public class LZW {
     }
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();

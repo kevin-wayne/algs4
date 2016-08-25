@@ -16,7 +16,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EulerianCycle</tt> class represents a data type
+ *  The {@code EulerianCycle} class represents a data type
  *  for finding an Eulerian cycle or path in a graph.
  *  An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
  *  uses every edge in the graph exactly once.
@@ -135,7 +135,7 @@ public class EulerianCycle {
      * Returns the sequence of vertices on an Eulerian cycle.
      * 
      * @return the sequence of vertices on an Eulerian cycle;
-     *         <tt>null</tt> if no such cycle
+     *         {@code null} if no such cycle
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -144,8 +144,8 @@ public class EulerianCycle {
     /**
      * Returns true if the graph has an Eulerian cycle.
      * 
-     * @return <tt>true</tt> if the graph has an Eulerian cycle;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the graph has an Eulerian cycle;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianCycle() {
         return cycle != null;
@@ -241,7 +241,7 @@ public class EulerianCycle {
 
 
     /**
-     * Unit tests the <tt>EulerianCycle</tt> data type.
+     * Unit tests the {@code EulerianCycle} data type.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

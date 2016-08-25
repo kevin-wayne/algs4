@@ -20,7 +20,7 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>GabowSCC</tt> class represents a data type for 
+ *  The {@code GabowSCC} class represents a data type for 
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -61,7 +61,7 @@ public class GabowSCC {
 
 
     /**
-     * Computes the strong components of the digraph <tt>G</tt>.
+     * Computes the strong components of the digraph {@code G}.
      * @param G the digraph
      */
     public GabowSCC(Digraph G) {
@@ -115,20 +115,20 @@ public class GabowSCC {
     }
 
     /**
-     * Are vertices <tt>v</tt> and <tt>w</tt> in the same strong component?
+     * Are vertices {@code v} and {@code w} in the same strong component?
      * @param v one vertex
      * @param w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *     strong component, and <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *     strong component, and {@code false} otherwise
      */
     public boolean stronglyConnected(int v, int w) {
         return id[v] == id[w];
     }
 
     /**
-     * Returns the component id of the strong component containing vertex <tt>v</tt>.
+     * Returns the component id of the strong component containing vertex {@code v}.
      * @param v the vertex
-     * @return the component id of the strong component containing vertex <tt>v</tt>
+     * @return the component id of the strong component containing vertex {@code v}
      */
     public int id(int v) {
         return id[v];
@@ -147,7 +147,7 @@ public class GabowSCC {
     }
 
     /**
-     * Unit tests the <tt>GabowSCC</tt> data type.
+     * Unit tests the {@code GabowSCC} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

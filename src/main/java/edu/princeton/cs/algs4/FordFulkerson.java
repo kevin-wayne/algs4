@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FordFulkerson</tt> class represents a data type for computing a
+ *  The {@code FordFulkerson} class represents a data type for computing a
  *  <em>maximum st-flow</em> and <em>minimum st-cut</em> in a flow
  *  network.
  *  <p>
@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
  *  proportional to <em>V</em>, where <em>V</em> is the number of vertices
  *  and <em>E</em> is the number of edges. In practice, the algorithm will
  *  run much faster.
- *  Afterwards, the <tt>inCut()</tt> and <tt>value()</tt> methods take
+ *  Afterwards, the {@code inCut()} and {@code value()} methods take
  *  constant time.
  *  <p>
  *  If the capacities and initial flow values are all integers, then this
@@ -45,8 +45,8 @@ public class FordFulkerson {
     private double value;         // current value of max flow
   
     /**
-     * Compute a maximum flow and minimum cut in the network <tt>G</tt>
-     * from vertex <tt>s</tt> to vertex <tt>t</tt>.
+     * Compute a maximum flow and minimum cut in the network {@code G}
+     * from vertex {@code s} to vertex {@code t}.
      *
      * @param  G the flow network
      * @param  s the source vertex
@@ -94,10 +94,10 @@ public class FordFulkerson {
     }
 
     /**
-     * Returns true if the specified vertex is on the <tt>s</tt> side of the mincut.
+     * Returns true if the specified vertex is on the {@code s} side of the mincut.
      *
-     * @return <tt>true</tt> if vertex <tt>v</tt> is on the <tt>s</tt> side of the micut;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if vertex {@code v} is on the {@code s} side of the micut;
+     *         {@code false} otherwise
      * @throws IndexOutOfBoundsException unless 0 <= v < V
      */
     public boolean inCut(int v)  {
@@ -231,7 +231,7 @@ public class FordFulkerson {
 
 
     /**
-     * Unit tests the <tt>FordFulkerson</tt> data type.
+     * Unit tests the {@code FordFulkerson} data type.
      */
     public static void main(String[] args) {
 

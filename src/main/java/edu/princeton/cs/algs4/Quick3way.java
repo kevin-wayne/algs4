@@ -24,7 +24,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick3way</tt> class provides static methods for sorting an
+ *  The {@code Quick3way} class provides static methods for sorting an
  *  array using quicksort with 3-way partitioning.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of

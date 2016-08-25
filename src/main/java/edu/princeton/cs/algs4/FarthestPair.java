@@ -18,7 +18,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FarthestPair</tt> data type computes the farthest pair of points
+ *  The {@code FarthestPair} data type computes the farthest pair of points
  *  in a set of <em>n</em> points in the plane and provides accessor methods
  *  for getting the farthest pair of points and the distance between them.
  *  The distance between two points is their Euclidean distance.
@@ -46,8 +46,8 @@ public class FarthestPair {
      * Computes the farthest pair of points in the specified array of points.
      *
      * @param  points the array of points
-     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
-     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code points} is {@code null} or if any
+     *         entry in {@code points[]} is {@code null}
      */
     public FarthestPair(Point2D[] points) {
         GrahamScan graham = new GrahamScan(points);
@@ -110,7 +110,7 @@ public class FarthestPair {
      * Returns one of the points in the farthest pair of points.
      *
      * @return one of the two points in the farthest pair of points;
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D either() {
         return best1;
@@ -120,7 +120,7 @@ public class FarthestPair {
      * Returns the other point in the farthest pair of points.
      *
      * @return the other point in the farthest pair of points
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D other() {
         return best2;
@@ -131,7 +131,7 @@ public class FarthestPair {
      * This quantity is also known as the <em>diameter</em> of the set of points.
      *
      * @return the Euclidean distance between the farthest pair of points
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such pair of points
+     *         {@code Double.POSITIVE_INFINITY} if no such pair of points
      *         exist (because there are fewer than 2 points)
      */
     public double distance() {
@@ -139,8 +139,8 @@ public class FarthestPair {
     }
 
    /**
-     * Unit tests the <tt>FarthestPair</tt> data type.
-     * Reads in an integer <tt>n</tt> and <tt>n</tt> points (specified by
+     * Unit tests the {@code FarthestPair} data type.
+     * Reads in an integer {@code n} and {@code n} points (specified by
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes a farthest pair of points; and prints the pair to standard
      * output.

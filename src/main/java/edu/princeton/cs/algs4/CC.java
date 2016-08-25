@@ -30,7 +30,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>CC</tt> class represents a data type for 
+ *  The {@code CC} class represents a data type for 
  *  determining the connected components in an undirected graph.
  *  The <em>id</em> operation determines in which connected component
  *  a given vertex lies; the <em>connected</em> operation
@@ -64,7 +64,7 @@ public class CC {
     private int count;          // number of connected components
 
     /**
-     * Computes the connected components of the undirected graph <tt>G</tt>.
+     * Computes the connected components of the undirected graph {@code G}.
      *
      * @param G the undirected graph
      */
@@ -93,55 +93,55 @@ public class CC {
     }
 
     /**
-     * Returns the component id of the connected component containing vertex <tt>v</tt>.
+     * Returns the component id of the connected component containing vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the component id of the connected component containing vertex <tt>v</tt>
+     * @return the component id of the connected component containing vertex {@code v}
      */
     public int id(int v) {
         return id[v];
     }
 
     /**
-     * Returns the number of vertices in the connected component containing vertex <tt>v</tt>.
+     * Returns the number of vertices in the connected component containing vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the number of vertices in the connected component containing vertex <tt>v</tt>
+     * @return the number of vertices in the connected component containing vertex {@code v}
      */
     public int size(int v) {
         return size[id[v]];
     }
 
     /**
-     * Returns the number of connected components in the graph <tt>G</tt>.
+     * Returns the number of connected components in the graph {@code G}.
      *
-     * @return the number of connected components in the graph <tt>G</tt>
+     * @return the number of connected components in the graph {@code G}
      */
     public int count() {
         return count;
     }
 
     /**
-     * Returns true if vertices <tt>v</tt> and <tt>w</tt> are in the same
+     * Returns true if vertices {@code v} and {@code w} are in the same
      * connected component.
      *
      * @param  v one vertex
      * @param  w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *         connected component; <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         connected component; {@code false} otherwise
      */
     public boolean connected(int v, int w) {
         return id(v) == id(w);
     }
 
     /**
-     * Returns true if vertices <tt>v</tt> and <tt>w</tt> are in the same
+     * Returns true if vertices {@code v} and {@code w} are in the same
      * connected component.
      *
      * @param  v one vertex
      * @param  w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *         connected component; <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         connected component; {@code false} otherwise
      * @deprecated Replaced by {@link #connected(int, int)}.
      */
     @Deprecated
@@ -150,7 +150,7 @@ public class CC {
     }
 
     /**
-     * Unit tests the <tt>CC</tt> data type.
+     * Unit tests the {@code CC} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

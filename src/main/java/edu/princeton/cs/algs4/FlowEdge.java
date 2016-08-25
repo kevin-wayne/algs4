@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FlowEdge</tt> class represents a capacitated edge with a 
+ *  The {@code FlowEdge} class represents a capacitated edge with a 
   * flow in a {@link FlowNetwork}. Each edge consists of two integers
  *  (naming the two vertices), a real-valued capacity, and a real-valued
  *  flow. The data type provides methods for accessing the two endpoints
@@ -31,14 +31,14 @@ public class FlowEdge {
     private double flow;             // flow
 
     /**
-     * Initializes an edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
-     * the given <tt>capacity</tt> and zero flow.
+     * Initializes an edge from vertex {@code v} to vertex {@code w} with
+     * the given {@code capacity} and zero flow.
      * @param v the tail vertex
      * @param w the head vertex
      * @param capacity the capacity of the edge
-     * @throws java.lang.IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt>
+     * @throws java.lang.IndexOutOfBoundsException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws java.lang.IllegalArgumentException if <tt>capacity</tt> is negative
+     * @throws java.lang.IllegalArgumentException if {@code capacity} is negative
      */
     public FlowEdge(int v, int w, double capacity) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
@@ -51,17 +51,17 @@ public class FlowEdge {
     }
 
     /**
-     * Initializes an edge from vertex <tt>v</tt> to vertex <tt>w</tt> with
-     * the given <tt>capacity</tt> and <tt>flow</tt>.
+     * Initializes an edge from vertex {@code v} to vertex {@code w} with
+     * the given {@code capacity} and {@code flow}.
      * @param v the tail vertex
      * @param w the head vertex
      * @param capacity the capacity of the edge
      * @param flow the flow on the edge
-     * @throws java.lang.IndexOutOfBoundsException if either <tt>v</tt> or <tt>w</tt>
+     * @throws java.lang.IndexOutOfBoundsException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws java.lang.IllegalArgumentException if <tt>capacity</tt> is negative
-     * @throws java.lang.IllegalArgumentException unless <tt>flow</tt> is between 
-     *    <tt>0.0</tt> and <tt>capacity</tt>.
+     * @throws java.lang.IllegalArgumentException if {@code capacity} is negative
+     * @throws java.lang.IllegalArgumentException unless {@code flow} is between 
+     *    {@code 0.0} and {@code capacity}.
      */
     public FlowEdge(int v, int w, double capacity, double flow) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
@@ -124,7 +124,7 @@ public class FlowEdge {
      * @param vertex one endpoint of the edge
      * @return the endpoint of the edge that is different from the given vertex
      *   (unless the edge represents a self-loop in which case it returns the same vertex)
-     * @throws java.lang.IllegalArgumentException if <tt>vertex</tt> is not one of the endpoints
+     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
      */
     public int other(int vertex) {
@@ -135,13 +135,13 @@ public class FlowEdge {
 
     /**
      * Returns the residual capacity of the edge in the direction
-     *  to the given <tt>vertex</tt>.
+     *  to the given {@code vertex}.
      * @param vertex one endpoint of the edge
      * @return the residual capacity of the edge in the direction to the given vertex
-     *   If <tt>vertex</tt> is the tail vertex, the residual capacity equals
-     *   <tt>capacity() - flow()</tt>; if <tt>vertex</tt> is the head vertex, the
-     *   residual capacity equals <tt>flow()</tt>.
-     * @throws java.lang.IllegalArgumentException if <tt>vertex</tt> is not one of the endpoints
+     *   If {@code vertex} is the tail vertex, the residual capacity equals
+     *   {@code capacity() - flow()}; if {@code vertex} is the head vertex, the
+     *   residual capacity equals {@code flow()}.
+     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
      */
     public double residualCapacityTo(int vertex) {
@@ -152,14 +152,14 @@ public class FlowEdge {
 
     /**
      * Increases the flow on the edge in the direction to the given vertex.
-     *   If <tt>vertex</tt> is the tail vertex, this increases the flow on the edge by <tt>delta</tt>;
-     *   if <tt>vertex</tt> is the head vertex, this decreases the flow on the edge by <tt>delta</tt>.
+     *   If {@code vertex} is the tail vertex, this increases the flow on the edge by {@code delta};
+     *   if {@code vertex} is the head vertex, this decreases the flow on the edge by {@code delta}.
      * @param vertex one endpoint of the edge
-     * @throws java.lang.IllegalArgumentException if <tt>vertex</tt> is not one of the endpoints
+     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
-     * @throws java.lang.IllegalArgumentException if <tt>delta</tt> makes the flow on
+     * @throws java.lang.IllegalArgumentException if {@code delta} makes the flow on
      *   on the edge either negative or larger than its capacity
-     * @throws java.lang.IllegalArgumentException if <tt>delta</tt> is <tt>NaN</tt>
+     * @throws java.lang.IllegalArgumentException if {@code delta} is {@code NaN}
      */
     public void addResidualFlowTo(int vertex, double delta) {
         if      (vertex == v) flow -= delta;           // backward edge
@@ -181,7 +181,7 @@ public class FlowEdge {
 
 
    /**
-     * Unit tests the <tt>FlowEdge</tt> data type.
+     * Unit tests the {@code FlowEdge} data type.
      */
     public static void main(String[] args) {
         FlowEdge e = new FlowEdge(12, 23, 4.56);

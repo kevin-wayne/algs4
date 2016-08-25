@@ -11,11 +11,11 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- * The <tt>SegmentTree</tt> class is an structure for efficient search of cummulative data.
+ * The {@code SegmentTree} class is an structure for efficient search of cummulative data.
  * It performs  Range Minimum Query and Range Sum Query in O(log(n)) time.
  * It can be easily customizable to support Range Max Query, Range Multiplication Query etc.
  * <p/>
- * Also it has been develop with  <tt>LazyPropagation</tt> for range updates, which means
+ * Also it has been develop with  {@code LazyPropagation} for range updates, which means
  * when you perform update operations over a range, the update process affects the least nodes as possible
  * so that the bigger the range you want to update the less time it consumes to update it. Eventually those changes will be propagated
  * to the children and the whole array will be up to date.

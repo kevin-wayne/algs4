@@ -42,15 +42,15 @@ import javax.swing.KeyStroke;
 
 /**
  *  This class provides methods for manipulating individual pixels of
- *  an image. The original image can be read from a <tt>.jpg</tt>, <tt>.gif</tt>,
- *  or <tt>.png</tt> file or the user can create a blank image of a given size.
+ *  an image. The original image can be read from a {@code .jpg}, {@code .gif},
+ *  or {@code .png} file or the user can create a blank image of a given size.
  *  This class includes methods for displaying the image in a window on
  *  the screen or saving it to a file.
  *  <p>
  *  Pixel (<em>x</em>, <em>y</em>) is column <em>x</em> and row <em>y</em>.
  *  By default, the origin (0, 0) is upper left, which is a common convention
  *  in image processing.
- *  The method <tt>setOriginLowerLeft()</tt> change the origin to the lower left.
+ *  The method {@code setOriginLowerLeft()} change the origin to the lower left.
  *  <p>
  *  For additional documentation, see
  *  <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
@@ -68,8 +68,8 @@ public final class Picture implements ActionListener {
     private final int width, height;           // width and height
 
    /**
-     * Initializes a blank <tt>width</tt>-by-<tt>height</tt> picture, with <tt>width</tt> columns
-     * and <tt>height</tt> rows, where each pixel is black.
+     * Initializes a blank {@code width}-by-{@code height} picture, with {@code width} columns
+     * and {@code height} rows, where each pixel is black.
      *
      * @param width the width of the picture
      * @param height the height of the picture
@@ -160,7 +160,7 @@ public final class Picture implements ActionListener {
      * Returns a JLabel containing this picture, for embedding in a JPanel,
      * JFrame or other GUI widget.
      *
-     * @return the <tt>JLabel</tt>
+     * @return the {@code JLabel}
      */
     public JLabel getJLabel() {
         if (image == null) return null;         // no image available
@@ -245,13 +245,13 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Returns the color of pixel (<tt>col</tt>, <tt>row</tt>).
+     * Returns the color of pixel ({@code col}, {@code row}).
      *
      * @param col the column index
      * @param row the row index
-     * @return the color of pixel (<tt>col</tt>, <tt>row</tt>)
-     * @throws IndexOutOfBoundsException unless both 0 &le; <tt>col</tt> &lt; <tt>width</tt>
-     *         and 0 &le; <tt>row</tt> &lt; <tt>height</tt>
+     * @return the color of pixel ({@code col}, {@code row})
+     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
+     *         and 0 &le; {@code row} &lt; {@code height}
      */
     public Color get(int col, int row) {
         validateCol(col);
@@ -261,14 +261,14 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Sets the color of pixel (<tt>col</tt>, <tt>row</tt>) to given color.
+     * Sets the color of pixel ({@code col}, {@code row}) to given color.
      *
      * @param col the column index
      * @param row the row index
      * @param color the color
-     * @throws IndexOutOfBoundsException unless both 0 &le; <tt>col</tt> &lt; <tt>width</tt>
-     *         and 0 &le; <tt>row</tt> &lt; <tt>height</tt>
-     * @throws NullPointerException if <tt>color</tt> is <tt>null</tt>
+     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
+     *         and 0 &le; {@code row} &lt; {@code height}
+     * @throws NullPointerException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
         validateCol(col);
@@ -282,8 +282,8 @@ public final class Picture implements ActionListener {
      * Returns true if this picture is equal to the argument picture.
      *
      * @param other the other picture
-     * @return <tt>true</tt> if this picture is the same dimension as <tt>other</tt>
-     *         and if all pixels have the same color; <tt>false</tt> otherwise
+     * @return {@code true} if this picture is the same dimension as {@code other}
+     *         and if all pixels have the same color; {@code false} otherwise
      */
     public boolean equals(Object other) {
         if (other == this) return true;
@@ -356,7 +356,7 @@ public final class Picture implements ActionListener {
 
 
    /**
-     * Unit tests this <tt>Picture</tt> data type.
+     * Unit tests this {@code Picture} data type.
      * Reads a picture specified by the command-line argument,
      * and shows it in a window on the screen.
      */

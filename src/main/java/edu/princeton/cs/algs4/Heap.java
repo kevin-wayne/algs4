@@ -24,7 +24,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Heap</tt> class provides a static methods for heapsorting
+ *  The {@code Heap} class provides a static methods for heapsorting
  *  an array.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/24pq">Section 2.4</a> of

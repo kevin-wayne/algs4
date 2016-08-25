@@ -26,7 +26,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BreadthDirectedFirstPaths</tt> class represents a data type for finding
+ *  The {@code BreadthDirectedFirstPaths} class represents a data type for finding
  *  shortest paths (number of edges) from a source vertex <em>s</em>
  *  (or set of source vertices) to every other vertex in the digraph.
  *  <p>
@@ -49,7 +49,7 @@ public class BreadthFirstDirectedPaths {
     private int[] distTo;      // distTo[v] = length of shortest s->v path
 
     /**
-     * Computes the shortest path from <tt>s</tt> and every other vertex in graph <tt>G</tt>.
+     * Computes the shortest path from {@code s} and every other vertex in graph {@code G}.
      * @param G the digraph
      * @param s the source vertex
      */
@@ -63,8 +63,8 @@ public class BreadthFirstDirectedPaths {
     }
 
     /**
-     * Computes the shortest path from any one of the source vertices in <tt>sources</tt>
-     * to every other vertex in graph <tt>G</tt>.
+     * Computes the shortest path from any one of the source vertices in {@code sources}
+     * to every other vertex in graph {@code G}.
      * @param G the digraph
      * @param sources the source vertices
      */
@@ -118,17 +118,17 @@ public class BreadthFirstDirectedPaths {
     }
 
     /**
-     * Is there a directed path from the source <tt>s</tt> (or sources) to vertex <tt>v</tt>?
+     * Is there a directed path from the source {@code s} (or sources) to vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a directed path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a directed path, {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return marked[v];
     }
 
     /**
-     * Returns the number of edges in a shortest path from the source <tt>s</tt>
-     * (or sources) to vertex <tt>v</tt>?
+     * Returns the number of edges in a shortest path from the source {@code s}
+     * (or sources) to vertex {@code v}?
      * @param v the vertex
      * @return the number of edges in a shortest path
      */
@@ -137,8 +137,8 @@ public class BreadthFirstDirectedPaths {
     }
 
     /**
-     * Returns a shortest path from <tt>s</tt> (or sources) to <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
+     * Returns a shortest path from {@code s} (or sources) to {@code v}, or
+     * {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a shortest path, as an Iterable
      */
@@ -153,7 +153,7 @@ public class BreadthFirstDirectedPaths {
     }
 
     /**
-     * Unit tests the <tt>BreadthFirstDirectedPaths</tt> data type.
+     * Unit tests the {@code BreadthFirstDirectedPaths} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

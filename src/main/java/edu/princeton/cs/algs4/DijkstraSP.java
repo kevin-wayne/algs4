@@ -33,15 +33,15 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>DijkstraSP</tt> class represents a data type for solving the
+ *  The {@code DijkstraSP} class represents a data type for solving the
  *  single-source shortest paths problem in edge-weighted digraphs
  *  where the edge weights are nonnegative.
  *  <p>
  *  This implementation uses Dijkstra's algorithm with a binary heap.
  *  The constructor takes time proportional to <em>E</em> log <em>V</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
- *  constant time and the <tt>pathTo()</tt> method takes time proportional to the
+ *  Afterwards, the {@code distTo()} and {@code hasPathTo()} methods take
+ *  constant time and the {@code pathTo()} method takes time proportional to the
  *  number of edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
@@ -57,13 +57,13 @@ public class DijkstraSP {
     private IndexMinPQ<Double> pq;    // priority queue of vertices
 
     /**
-     * Computes a shortest-paths tree from the source vertex <tt>s</tt> to every other
-     * vertex in the edge-weighted digraph <tt>G</tt>.
+     * Computes a shortest-paths tree from the source vertex {@code s} to every other
+     * vertex in the edge-weighted digraph {@code G}.
      *
      * @param  G the edge-weighted digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
+     * @throws IllegalArgumentException unless 0 &le; {@code s} &le; {@code V} - 1
      */
     public DijkstraSP(EdgeWeightedDigraph G, int s) {
         for (DirectedEdge e : G.edges()) {
@@ -102,32 +102,32 @@ public class DijkstraSP {
     }
 
     /**
-     * Returns the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     * Returns the length of a shortest path from the source vertex {@code s} to vertex {@code v}.
      * @param  v the destination vertex
-     * @return the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>;
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * @return the length of a shortest path from the source vertex {@code s} to vertex {@code v};
+     *         {@code Double.POSITIVE_INFINITY} if no such path
      */
     public double distTo(int v) {
         return distTo[v];
     }
 
     /**
-     * Returns true if there is a path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     * Returns true if there is a path from the source vertex {@code s} to vertex {@code v}.
      *
      * @param  v the destination vertex
-     * @return <tt>true</tt> if there is a path from the source vertex
-     *         <tt>s</tt> to vertex <tt>v</tt>; <tt>false</tt> otherwise
+     * @return {@code true} if there is a path from the source vertex
+     *         {@code s} to vertex {@code v}; {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     * Returns a shortest path from the source vertex {@code s} to vertex {@code v}.
      *
      * @param  v the destination vertex
-     * @return a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>
-     *         as an iterable of edges, and <tt>null</tt> if no such path
+     * @return a shortest path from the source vertex {@code s} to vertex {@code v}
+     *         as an iterable of edges, and {@code null} if no such path
      */
     public Iterable<DirectedEdge> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -192,7 +192,7 @@ public class DijkstraSP {
 
 
     /**
-     * Unit tests the <tt>DijkstraSP</tt> data type.
+     * Unit tests the {@code DijkstraSP} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

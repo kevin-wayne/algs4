@@ -302,8 +302,8 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Returns an integer hash @code for this point.
-     * @return an integer hash @code for this point
+     * Returns an integer hash code for this point.
+     * @return an integer hash code for this point
      */
     @Override
     public int hashCode() {

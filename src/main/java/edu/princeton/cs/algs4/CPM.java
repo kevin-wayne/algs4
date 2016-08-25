@@ -26,7 +26,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>CPM</tt> class provides a client that solves the
+ *  The {@code CPM} class provides a client that solves the
  *  parallel precedence-constrained job scheduling problem
  *  via the <em>critical path method</em>. It reduces the problem
  *  to the longest-paths problem in edge-weighted DAGs.

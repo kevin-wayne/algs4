@@ -46,8 +46,8 @@ import java.util.regex.Pattern;
  *  <p>
  *  Whitespace is defined in {@link Character#isWhitespace(char)}. Newlines
  *  consist of \n, \r, \r\n, and Unicode hex code points 0x2028, 0x2029, 0x0085;
- *  see <tt><a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
- *  Scanner.java</a></tt> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).
+ *  see <a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
+ *  Scanner.java</a> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).
  *
  *  @author David Pritchard
  *  @author Robert Sedgewick
@@ -197,7 +197,7 @@ public final class In {
 
     /**
      * Initializes an input stream from a given {@link Scanner} source; use with 
-     * <tt>new Scanner(String)</tt> to read from a string.
+     * {@code new Scanner(String)} to read from a string.
      * <p>
      * Note that this does not create a defensive copy, so the
      * scanner will be mutated as you read on. 
@@ -213,7 +213,7 @@ public final class In {
     /**
      * Returns true if this input stream exists.
      *
-     * @return <tt>true</tt> if this input stream exists; <tt>false</tt> otherwise
+     * @return {@code true} if this input stream exists; {@code false} otherwise
      */
     public boolean exists()  {
         return scanner != null;
@@ -227,8 +227,8 @@ public final class In {
      * Use this to know whether the next call to {@link #readString()}, 
      * {@link #readDouble()}, etc will succeed.
      *
-     * @return <tt>true</tt> if this input stream is empty (except possibly whitespace);
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this input stream is empty (except possibly whitespace);
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return !scanner.hasNext();
@@ -240,8 +240,8 @@ public final class In {
      * next call to {@link #readLine()} will succeed.
      * This method is functionally equivalent to {@link #hasNextChar()}.
      *
-     * @return <tt>true</tt> if this input stream is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this input stream is empty;
+     *         {@code false} otherwise
      */
     public boolean hasNextLine() {
         return scanner.hasNextLine();
@@ -252,8 +252,8 @@ public final class In {
      * Use this method to know whether the next call to {@link #readChar()} will succeed.
      * This method is functionally equivalent to {@link #hasNextLine()}.
      * 
-     * @return <tt>true</tt> if this input stream has more input (including whitespace);
-     *         <tt>false</tt> otherwise   
+     * @return {@code true} if this input stream has more input (including whitespace);
+     *         {@code false} otherwise   
      */
     public boolean hasNextChar() {
         scanner.useDelimiter(EMPTY_PATTERN);
@@ -266,7 +266,7 @@ public final class In {
    /**
      * Reads and returns the next line in this input stream.
      *
-     * @return the next line in this input stream; <tt>null</tt> if no such line
+     * @return the next line in this input stream; {@code null} if no such line
      */
     public String readLine() {
         String line;
@@ -311,82 +311,82 @@ public final class In {
 
 
    /**
-     * Reads the next token from this input stream and returns it as a <tt>String</tt>.
+     * Reads the next token from this input stream and returns it as a {@code String}.
      *
-     * @return the next <tt>String</tt> in this input stream
+     * @return the next {@code String} in this input stream
      */
     public String readString() {
         return scanner.next();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>int</tt>,
-     * and returns the <tt>int</tt>.
+     * Reads the next token from this input stream, parses it as a {@code int},
+     * and returns the {@code int}.
      *
-     * @return the next <tt>int</tt> in this input stream
+     * @return the next {@code int} in this input stream
      */
     public int readInt() {
         return scanner.nextInt();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>double</tt>,
-     * and returns the <tt>double</tt>.
+     * Reads the next token from this input stream, parses it as a {@code double},
+     * and returns the {@code double}.
      *
-     * @return the next <tt>double</tt> in this input stream
+     * @return the next {@code double} in this input stream
      */
     public double readDouble() {
         return scanner.nextDouble();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>float</tt>,
-     * and returns the <tt>float</tt>.
+     * Reads the next token from this input stream, parses it as a {@code float},
+     * and returns the {@code float}.
      *
-     * @return the next <tt>float</tt> in this input stream
+     * @return the next {@code float} in this input stream
      */
     public float readFloat() {
         return scanner.nextFloat();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>long</tt>,
-     * and returns the <tt>long</tt>.
+     * Reads the next token from this input stream, parses it as a {@code long},
+     * and returns the {@code long}.
      *
-     * @return the next <tt>long</tt> in this input stream
+     * @return the next {@code long} in this input stream
      */
     public long readLong() {
         return scanner.nextLong();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>short</tt>,
-     * and returns the <tt>short</tt>.
+     * Reads the next token from this input stream, parses it as a {@code short},
+     * and returns the {@code short}.
      *
-     * @return the next <tt>short</tt> in this input stream
+     * @return the next {@code short} in this input stream
      */
     public short readShort() {
         return scanner.nextShort();
     }
 
    /**
-     * Reads the next token from this input stream, parses it as a <tt>byte</tt>,
-     * and returns the <tt>byte</tt>.
+     * Reads the next token from this input stream, parses it as a {@code byte},
+     * and returns the {@code byte}.
      * <p>
      * To read binary data, use {@link BinaryIn}.
      *
-     * @return the next <tt>byte</tt> in this input stream
+     * @return the next {@code byte} in this input stream
      */
     public byte readByte() {
         return scanner.nextByte();
     }
 
     /**
-     * Reads the next token from this input stream, parses it as a <tt>boolean</tt>
-     * (interpreting either <tt>"true"</tt> or <tt>"1"</tt> as <tt>true</tt>,
-     * and either <tt>"false"</tt> or <tt>"0"</tt> as <tt>false</tt>).
+     * Reads the next token from this input stream, parses it as a {@code boolean}
+     * (interpreting either {@code "true"} or {@code "1"} as {@code true},
+     * and either {@code "false"} or {@code "0"} as {@code false}).
      *
-     * @return the next <tt>boolean</tt> in this input stream
+     * @return the next {@code boolean} in this input stream
      */
     public boolean readBoolean() {
         String s = readString();
@@ -487,7 +487,7 @@ public final class In {
      *
      * @param      filename the name of the file
      * @return     the integers in the file
-     * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllInts()}.
+     * @deprecated Replaced by {@code new In(filename)}.{@link #readAllInts()}.
      */
     @Deprecated
     public static int[] readInts(String filename) {
@@ -500,7 +500,7 @@ public final class In {
      *
      * @param      filename the name of the file
      * @return     the doubles in the file
-     * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllDoubles()}.
+     * @deprecated Replaced by {@code new In(filename)}.{@link #readAllDoubles()}.
      */
     @Deprecated
     public static double[] readDoubles(String filename) {
@@ -513,7 +513,7 @@ public final class In {
      *
      * @param      filename the name of the file
      * @return     the strings in the file
-     * @deprecated Replaced by <tt>new In(filename)</tt>.{@link #readAllStrings()}.
+     * @deprecated Replaced by {@code new In(filename)}.{@link #readAllStrings()}.
      */
     @Deprecated
     public static String[] readStrings(String filename) {
@@ -557,7 +557,7 @@ public final class In {
     }
     
    /**
-     * Unit tests the <tt>In</tt> data type.
+     * Unit tests the {@code In} data type.
      */
     public static void main(String[] args) {
         In in;

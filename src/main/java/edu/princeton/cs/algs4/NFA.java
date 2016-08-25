@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>NFA</tt> class provides a data type for creating a
+ *  The {@code NFA} class provides a data type for creating a
  *  <em>nondeterministic finite state automaton</em> (NFA) from a regular
  *  expression and testing whether a given string is matched by that regular
  *  expression.
@@ -104,8 +104,8 @@ public class NFA {
      * Returns true if the text is matched by the regular expression.
      * 
      * @param  txt the text
-     * @return <tt>true</tt> if the text is matched by the regular expression,
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the text is matched by the regular expression,
+     *         {@code false} otherwise
      */
     public boolean recognizes(String txt) {
         DirectedDFS dfs = new DirectedDFS(graph, 0);
@@ -140,7 +140,7 @@ public class NFA {
     }
 
     /**
-     * Unit tests the <tt>NFA</tt> data type.
+     * Unit tests the {@code NFA} data type.
      */
     public static void main(String[] args) {
         String regexp = "(" + args[0] + ")";

@@ -31,7 +31,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>WhiteFilter</tt> class provides a client for reading in a <em>whitelist</em>
+ *  The {@code WhiteFilter} class provides a client for reading in a <em>whitelist</em>
  *  of words from a file; then, reading in a sequence of words from standard input,
  *  printing out each word that appears in the file.
  *  It is useful as a test client for various symbol table implementations.

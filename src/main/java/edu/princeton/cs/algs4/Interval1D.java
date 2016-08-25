@@ -171,9 +171,9 @@ public class Interval1D {
     }
 
     /**
-     * Returns an integer hash @code for this interval.
+     * Returns an integer hash code for this interval.
      *
-     * @return an integer hash @code for this interval
+     * @return an integer hash code for this interval
      */
     public int hashCode() {
         int hash1 = ((Double) min).hashCode();

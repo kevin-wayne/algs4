@@ -18,7 +18,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DoublingRatio</tt> class provides a client for measuring
+ *  The {@code DoublingRatio} class provides a client for measuring
  *  the running time of a method using a doubling ratio test.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a>
@@ -34,10 +34,10 @@ public class DoublingRatio {
     private DoublingRatio() { }
 
     /**
-     * Returns the amount of time to call <tt>ThreeSum.count()</tt> with <em>n</em>
+     * Returns the amount of time to call {@code ThreeSum.count()} with <em>n</em>
      * random 6-digit integers.
      * @param n the number of integers
-     * @return amount of time (in seconds) to call <tt>ThreeSum.count()</tt>
+     * @return amount of time (in seconds) to call {@code ThreeSum.count()}
      *   with <em>n</em> random 6-digit integers
      */
     public static double timeTrial(int n) {
@@ -51,7 +51,7 @@ public class DoublingRatio {
     }
 
     /**
-     * Prints table of running times to call <tt>ThreeSum.count()</tt>
+     * Prints table of running times to call {@code ThreeSum.count()}
      * for arrays of size 250, 500, 1000, 2000, and so forth, along
      * with ratios of running times between successive array sizes.
      */

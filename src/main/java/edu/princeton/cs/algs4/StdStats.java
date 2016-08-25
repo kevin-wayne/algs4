@@ -54,8 +54,8 @@ public final class StdStats {
      * Returns the maximum value in the specified array.
      *
      * @param  a the array
-     * @return the maximum value in the array <tt>a[]</tt>;
-     *         <tt>Double.NEGATIVE_INFINITY</tt> if no such value
+     * @return the maximum value in the array {@code a[]};
+     *         {@code Double.NEGATIVE_INFINITY} if no such value
      */
     public static double max(double[] a) {
         double max = Double.NEGATIVE_INFINITY;
@@ -72,8 +72,8 @@ public final class StdStats {
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
      * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NEGATIVE_INFINITY</tt> if no such value
+     * @return the maximum value in the subarray {@code a[lo..hi]};
+     *         {@code Double.NEGATIVE_INFINITY} if no such value
      */
     public static double max(double[] a, int lo, int hi) {
         if (lo < 0 || hi >= a.length || lo > hi)
@@ -90,8 +90,8 @@ public final class StdStats {
      * Returns the maximum value in the specified array.
      *
      * @param  a the array
-     * @return the maximum value in the array <tt>a[]</tt>;
-     *         <tt>Integer.MIN_VALUE</tt> if no such value
+     * @return the maximum value in the array {@code a[]};
+     *         {@code Integer.MIN_VALUE} if no such value
      */
     public static int max(int[] a) {
         int max = Integer.MIN_VALUE;
@@ -105,8 +105,8 @@ public final class StdStats {
      * Returns the minimum value in the specified array.
      *
      * @param  a the array
-     * @return the minimum value in the array <tt>a[]</tt>;
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such value
+     * @return the minimum value in the array {@code a[]};
+     *         {@code Double.POSITIVE_INFINITY} if no such value
      */
     public static double min(double[] a) {
         double min = Double.POSITIVE_INFINITY;
@@ -123,8 +123,8 @@ public final class StdStats {
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
      * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such value
+     * @return the maximum value in the subarray {@code a[lo..hi]};
+     *         {@code Double.POSITIVE_INFINITY} if no such value
      */
     public static double min(double[] a, int lo, int hi) {
         if (lo < 0 || hi >= a.length || lo > hi)
@@ -141,8 +141,8 @@ public final class StdStats {
      * Returns the minimum value in the specified array.
      *
      * @param  a the array
-     * @return the minimum value in the array <tt>a[]</tt>;
-     *         <tt>Integer.MAX_VALUE</tt> if no such value
+     * @return the minimum value in the array {@code a[]};
+     *         {@code Integer.MAX_VALUE} if no such value
      */
     public static int min(int[] a) {
         int min = Integer.MAX_VALUE;
@@ -156,8 +156,8 @@ public final class StdStats {
      * Returns the average value in the specified array.
      *
      * @param  a the array
-     * @return the average value in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the average value in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double mean(double[] a) {
         if (a.length == 0) return Double.NaN;
@@ -171,8 +171,8 @@ public final class StdStats {
      * @param a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the average value in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the average value in the subarray {@code a[lo..hi]};
+     *         {@code Double.NaN} if no such value
      */
     public static double mean(double[] a, int lo, int hi) {
         int length = hi - lo + 1;
@@ -187,8 +187,8 @@ public final class StdStats {
      * Returns the average value in the specified array.
      *
      * @param  a the array
-     * @return the average value in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the average value in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double mean(int[] a) {
         if (a.length == 0) return Double.NaN;
@@ -200,8 +200,8 @@ public final class StdStats {
      * Returns the sample variance in the specified array.
      *
      * @param  a the array
-     * @return the sample variance in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample variance in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double var(double[] a) {
         if (a.length == 0) return Double.NaN;
@@ -219,8 +219,8 @@ public final class StdStats {
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample variance in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample variance in the subarray {@code a[lo..hi]};
+     *         {@code Double.NaN} if no such value
      */
     public static double var(double[] a, int lo, int hi) {
         int length = hi - lo + 1;
@@ -239,8 +239,8 @@ public final class StdStats {
      * Returns the sample variance in the specified array.
      *
      * @param  a the array
-     * @return the sample variance in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample variance in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double var(int[] a) {
         if (a.length == 0) return Double.NaN;
@@ -256,8 +256,8 @@ public final class StdStats {
      * Returns the population variance in the specified array.
      *
      * @param  a the array
-     * @return the population variance in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the population variance in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double varp(double[] a) {
         if (a.length == 0) return Double.NaN;
@@ -275,8 +275,8 @@ public final class StdStats {
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population variance in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the population variance in the subarray {@code a[lo..hi]};
+     *         {@code Double.NaN} if no such value
      */
     public static double varp(double[] a, int lo, int hi) {
         int length = hi - lo + 1;
@@ -295,8 +295,8 @@ public final class StdStats {
      * Returns the sample standard deviation in the specified array.
      *
      * @param  a the array
-     * @return the sample standard deviation in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample standard deviation in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double stddev(double[] a) {
         return Math.sqrt(var(a));
@@ -306,8 +306,8 @@ public final class StdStats {
      * Returns the sample standard deviation in the specified array.
      *
      * @param  a the array
-     * @return the sample standard deviation in the array <tt>a[]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample standard deviation in the array {@code a[]};
+     *         {@code Double.NaN} if no such value
      */
     public static double stddev(int[] a) {
         return Math.sqrt(var(a));
@@ -319,8 +319,8 @@ public final class StdStats {
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample standard deviation in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the sample standard deviation in the subarray {@code a[lo..hi]};
+     *         {@code Double.NaN} if no such value
      */
     public static double stddev(double[] a, int lo, int hi) {
         return Math.sqrt(var(a, lo, hi));
@@ -332,7 +332,7 @@ public final class StdStats {
      *
      * @param  a the array
      * @return the population standard deviation in the array;
-     *         <tt>Double.NaN</tt> if no such value
+     *         {@code Double.NaN} if no such value
      */
     public static double stddevp(double[] a) {
         return Math.sqrt(varp(a));
@@ -344,8 +344,8 @@ public final class StdStats {
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population standard deviation in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>Double.NaN</tt> if no such value
+     * @return the population standard deviation in the subarray {@code a[lo..hi]};
+     *         {@code Double.NaN} if no such value
      */
     public static double stddevp(double[] a, int lo, int hi) {
         return Math.sqrt(varp(a, lo, hi));
@@ -355,8 +355,8 @@ public final class StdStats {
      * Returns the sum of all values in the specified array.
      *
      * @param  a the array
-     * @return the sum of all values in the array <tt>a[]</tt>;
-     *         <tt>0.0</tt> if no such value
+     * @return the sum of all values in the array {@code a[]};
+     *         {@code 0.0} if no such value
      */
     private static double sum(double[] a) {
         double sum = 0.0;
@@ -372,8 +372,8 @@ public final class StdStats {
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
      * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sum of all values in the subarray <tt>a[lo..hi]</tt>;
-     *         <tt>0.0</tt> if no such value
+     * @return the sum of all values in the subarray {@code a[lo..hi]};
+     *         {@code 0.0} if no such value
      */
     private static double sum(double[] a, int lo, int hi) {
         if (lo < 0 || hi >= a.length || lo > hi)
@@ -389,8 +389,8 @@ public final class StdStats {
      * Returns the sum of all values in the specified array.
      *
      * @param  a the array
-     * @return the sum of all values in the array <tt>a[]</tt>;
-     *         <tt>0.0</tt> if no such value
+     * @return the sum of all values in the array {@code a[]};
+     *         {@code 0.0} if no such value
      */
     private static int sum(int[] a) {
         int sum = 0;
@@ -449,7 +449,7 @@ public final class StdStats {
 
 
    /**
-     * Unit tests <tt>StdStats</tt>.
+     * Unit tests {@code StdStats}.
      * Convert command-line arguments to array of doubles and call various methods.
      */
     public static void main(String[] args) {

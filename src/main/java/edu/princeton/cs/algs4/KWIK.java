@@ -37,7 +37,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>KWIK</tt> class provides a {@link SuffixArray} client for computing
+ *  The {@code KWIK} class provides a {@link SuffixArray} client for computing
  *  all occurrences of a keyword in a given string, with surrounding context.
  *  This is known as <em>keyword-in-context search</em>.
  *  <p>

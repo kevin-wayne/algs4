@@ -25,7 +25,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>MergeBU</tt> class provides static methods for sorting an
+ *  The {@code MergeBU} class provides static methods for sorting an
  *  array using bottom-up mergesort.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of

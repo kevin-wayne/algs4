@@ -173,9 +173,9 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Returns an integer hash @code for this date.
+     * Returns an integer hash code for this date.
      *
-     * @return a hash @code for this date
+     * @return an integer hash code for this date
      */
     @Override
     public int hashCode() {

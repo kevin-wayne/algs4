@@ -31,7 +31,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Complex</tt> class represents a complex number.
+ *  The {@code Complex} class represents a complex number.
  *  Complex numbers are immutable: their values cannot be changed after they
  *  are created.
  *  It includes methods for addition, subtraction, multiplication, division,
@@ -95,7 +95,7 @@ public class Complex {
      * Returns the sum of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this + that)</tt>
+     * @return the complex number whose value is {@code (this + that)}
      */
     public Complex plus(Complex that) {
         double real = this.re + that.re;
@@ -108,7 +108,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this - that)</tt>
+     * @return the complex number whose value is {@code (this - that)}
      */
     public Complex minus(Complex that) {
         double real = this.re - that.re;
@@ -120,7 +120,7 @@ public class Complex {
      * Returns the product of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this * that)</tt>
+     * @return the complex number whose value is {@code (this * that)}
      */
     public Complex times(Complex that) {
         double real = this.re * that.re - this.im * that.im;
@@ -132,7 +132,7 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the complex number whose value is <tt>(alpha * this)</tt>
+     * @return the complex number whose value is {@code (alpha * this)}
      */
     public Complex scale(double alpha) {
         return new Complex(alpha * re, alpha * im);
@@ -142,7 +142,7 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the complex number whose value is <tt>(alpha * this)</tt>
+     * @return the complex number whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
     @Deprecated
@@ -162,7 +162,7 @@ public class Complex {
     /**
      * Returns the reciprocal of this complex number.
      *
-     * @return the complex number whose value is <tt>(1 / this)</tt>
+     * @return the complex number whose value is {@code (1 / this)}
      */
     public Complex reciprocal() {
         double scale = re*re + im*im;
@@ -192,7 +192,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this / that)</tt>
+     * @return the complex number whose value is {@code (this / that)}
      */
     public Complex divides(Complex that) {
         return this.times(that.reciprocal());
@@ -236,7 +236,7 @@ public class Complex {
     
 
     /**
-     * Unit tests the <tt>Complex</tt> data type.
+     * Unit tests the {@code Complex} data type.
      */
     public static void main(String[] args) {
         Complex a = new Complex(5.0, 6.0);

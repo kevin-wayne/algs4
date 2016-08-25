@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>IndexMaxPQ</tt> class represents an indexed priority queue of generic keys.
+ *  The {@code IndexMaxPQ} class represents an indexed priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-maximum</em>
  *  operations, along with <em>delete</em> and <em>change-the-key</em> 
  *  methods. In order to let the client refer to items on the priority queue,
@@ -47,10 +47,10 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     private Key[] keys;      // keys[i] = priority of i
 
     /**
-     * Initializes an empty indexed priority queue with indices between <tt>0</tt>
-     * and <tt>maxN - 1</tt>.
+     * Initializes an empty indexed priority queue with indices between {@code 0}
+     * and {@code maxN - 1}.
      *
-     * @param  maxN the keys on this priority queue are index from <tt>0</tt> to <tt>maxN - 1</tt>
+     * @param  maxN the keys on this priority queue are index from {@code 0} to {@code maxN - 1}
      * @throws IllegalArgumentException if maxN < 0
      */
     public IndexMaxPQ(int maxN) {
@@ -66,19 +66,19 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     /**
      * Returns true if this priority queue is empty.
      *
-     * @return <tt>true</tt> if this priority queue is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this priority queue is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return n == 0;
     }
 
     /**
-     * Is <tt>i</tt> an index on this priority queue?
+     * Is {@code i} an index on this priority queue?
      *
      * @param  i an index
-     * @return <tt>true</tt> if <tt>i</tt> is an index on this priority queue;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code i} is an index on this priority queue;
+     *         {@code false} otherwise
      * @throws IndexOutOfBoundsException unless (0 &le; i < maxN)
      */
     public boolean contains(int i) {
@@ -98,10 +98,10 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Associate key with index i.
      *
      * @param  i an index
-     * @param  key the key to associate with index <tt>i</tt>
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
+     * @param  key the key to associate with index {@code i}
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
      * @throws IllegalArgumentException if there already is an item
-     *         associated with index <tt>i</tt>
+     *         associated with index {@code i}
      */
     public void insert(int i, Key key) {
         if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
@@ -154,12 +154,12 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Returns the key associated with index <tt>i</tt>.
+     * Returns the key associated with index {@code i}.
      *
      * @param  i the index of the key to return
-     * @return the key associated with index <tt>i</tt>
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @throws NoSuchElementException no key is associated with index <tt>i</tt>
+     * @return the key associated with index {@code i}
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
+     * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public Key keyOf(int i) {
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
@@ -167,10 +167,10 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Change the key associated with index <tt>i</tt> to the specified value.
+     * Change the key associated with index {@code i} to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key associated with index <tt>i</tt> to this key
+     * @param  key change the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless 0 &le; i < maxN
      */
     public void changeKey(int i, Key key) {
@@ -181,11 +181,11 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
    /**
-     * Change the key associated with index <tt>i</tt> to the specified value.
+     * Change the key associated with index {@code i} to the specified value.
      *
      * @param  i the index of the key to change
-     * @param  key change the key associated with index <tt>i</tt> to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
+     * @param  key change the key associated with index {@code i} to this key
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
      * @deprecated Replaced by {@link #changeKey(int, Key)}.
      */
     @Deprecated
@@ -194,13 +194,13 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Increase the key associated with index <tt>i</tt> to the specified value.
+     * Increase the key associated with index {@code i} to the specified value.
      *
      * @param  i the index of the key to increase
-     * @param  key increase the key associated with index <tt>i</tt> to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @throws IllegalArgumentException if key &le; key associated with index <tt>i</tt>
-     * @throws NoSuchElementException no key is associated with index <tt>i</tt>
+     * @param  key increase the key associated with index {@code i} to this key
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
+     * @throws IllegalArgumentException if key &le; key associated with index {@code i}
+     * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void increaseKey(int i, Key key) {
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
@@ -212,13 +212,13 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Decrease the key associated with index <tt>i</tt> to the specified value.
+     * Decrease the key associated with index {@code i} to the specified value.
      *
      * @param  i the index of the key to decrease
-     * @param  key decrease the key associated with index <tt>i</tt> to this key
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @throws IllegalArgumentException if key &ge; key associated with index <tt>i</tt>
-     * @throws NoSuchElementException no key is associated with index <tt>i</tt>
+     * @param  key decrease the key associated with index {@code i} to this key
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
+     * @throws IllegalArgumentException if key &ge; key associated with index {@code i}
+     * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void decreaseKey(int i, Key key) {
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
@@ -230,11 +230,11 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Remove the key on the priority queue associated with index <tt>i</tt>.
+     * Remove the key on the priority queue associated with index {@code i}.
      *
      * @param  i the index of the key to remove
-     * @throws IndexOutOfBoundsException unless 0 &le; <tt>i</tt> &lt; <tt>maxN</tt>
-     * @throws NoSuchElementException no key is associated with index <tt>i</tt>
+     * @throws IndexOutOfBoundsException unless 0 &le; {@code i} &lt; {@code maxN}
+     * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void delete(int i) {
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
@@ -287,7 +287,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     /**
      * Returns an iterator that iterates over the keys on the
      * priority queue in descending order.
-     * The iterator doesn't implement <tt>remove()</tt> since it's optional.
+     * The iterator doesn't implement {@code remove()} since it's optional.
      *
      * @return an iterator that iterates over the keys in descending order
      */
@@ -317,7 +317,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     }
 
     /**
-     * Unit tests the <tt>IndexMaxPQ</tt> data type.
+     * Unit tests the {@code IndexMaxPQ} data type.
      */
     public static void main(String[] args) {
         // insert a bunch of strings

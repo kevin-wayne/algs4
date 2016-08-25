@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>AssignmentProblem</tt> class represents a data type for computing
+ *  The {@code AssignmentProblem} class represents a data type for computing
  *  an optimal solution to an <em>n</em>-by-<em>n</em> <em>assignment problem</em>.
  *  The assignment problem is to find a minimum weight matching in an
  *  edge-weighted complete bipartite graph.
@@ -51,7 +51,7 @@ public class AssignmentProblem {
      *
      * @param  weight the <em>n</em>-by-<em>n</em> matrix of weights
      * @throws IllegalArgumentException unless all weights are nonnegative
-     * @throws NullPointerException if <tt>weight</tt> is <tt>null</tt>
+     * @throws NullPointerException if {@code weight} is {@code null}
      */ 
     public AssignmentProblem(double[][] weight) {
         n = weight.length;
@@ -134,8 +134,8 @@ public class AssignmentProblem {
      * Returns the dual optimal value for the specified row.
      *
      * @param  i the row index
-     * @return the dual optimal value for row <tt>i</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
+     * @return the dual optimal value for row {@code i}
+     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; N}
      *
      */
     // dual variable for row i
@@ -148,8 +148,8 @@ public class AssignmentProblem {
      * Returns the dual optimal value for the specified column.
      *
      * @param  j the column index
-     * @return the dual optimal value for column <tt>j</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; j &lt; n</tt>
+     * @return the dual optimal value for column {@code j}
+     * @throws IndexOutOfBoundsException unless {@code 0 &le; j &lt; n}
      *
      */
     public double dualCol(int j) {
@@ -161,8 +161,8 @@ public class AssignmentProblem {
      * Returns the column associated with the specified row in the optimal solution.
      *
      * @param  i the row index
-     * @return the column matched to row <tt>i</tt> in the optimal solution
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; n</tt>
+     * @return the column matched to row {@code i} in the optimal solution
+     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; n}
      *
      */
     public int sol(int i) {
@@ -259,7 +259,7 @@ public class AssignmentProblem {
     }
 
     /**
-     * Unit tests the <tt>AssignmentProblem</tt> data type.
+     * Unit tests the {@code AssignmentProblem} data type.
      * Takes a command-line argument n; creates a random n-by-n matrix;
      * solves the n-by-n assignment problem; and prints the optimal
      * solution.

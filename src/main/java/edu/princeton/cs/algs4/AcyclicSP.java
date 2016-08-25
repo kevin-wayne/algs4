@@ -21,15 +21,15 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>AcyclicSP</tt> class represents a data type for solving the
+ *  The {@code AcyclicSP} class represents a data type for solving the
  *  single-source shortest paths problem in edge-weighted directed acyclic
  *  graphs (DAGs). The edge weights can be positive, negative, or zero.
  *  <p>
  *  This implementation uses a topological-sort based algorithm.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
- *  constant time and the <tt>pathTo()</tt> method takes time proportional to the
+ *  Afterwards, the {@code distTo()} and {@code hasPathTo()} methods take
+ *  constant time and the {@code pathTo()} method takes time proportional to the
  *  number of edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
@@ -45,12 +45,12 @@ public class AcyclicSP {
 
 
     /**
-     * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
-     * the directed acyclic graph <tt>G</tt>.
+     * Computes a shortest paths tree from {@code s} to every other vertex in
+     * the directed acyclic graph {@code G}.
      * @param G the acyclic digraph
      * @param s the source vertex
      * @throws IllegalArgumentException if the digraph is not acyclic
-     * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
+     * @throws IllegalArgumentException unless 0 &le; {@code s} &le; {@code V} - 1
      */
     public AcyclicSP(EdgeWeightedDigraph G, int s) {
         distTo = new double[G.V()];
@@ -79,30 +79,30 @@ public class AcyclicSP {
     }
 
     /**
-     * Returns the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     * Returns the length of a shortest path from the source vertex {@code s} to vertex {@code v}.
      * @param v the destination vertex
-     * @return the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>;
-     *    <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * @return the length of a shortest path from the source vertex {@code s} to vertex {@code v};
+     *    {@code Double.POSITIVE_INFINITY} if no such path
      */
     public double distTo(int v) {
         return distTo[v];
     }
 
     /**
-     * Is there a path from the source vertex <tt>s</tt> to vertex <tt>v</tt>?
+     * Is there a path from the source vertex {@code s} to vertex {@code v}?
      * @param v the destination vertex
-     * @return <tt>true</tt> if there is a path from the source vertex
-     *    <tt>s</tt> to vertex <tt>v</tt>, and <tt>false</tt> otherwise
+     * @return {@code true} if there is a path from the source vertex
+     *    {@code s} to vertex {@code v}, and {@code false} otherwise
      */
     public boolean hasPathTo(int v) {
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
+     * Returns a shortest path from the source vertex {@code s} to vertex {@code v}.
      * @param v the destination vertex
-     * @return a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>
-     *    as an iterable of edges, and <tt>null</tt> if no such path
+     * @return a shortest path from the source vertex {@code s} to vertex {@code v}
+     *    as an iterable of edges, and {@code null} if no such path
      */
     public Iterable<DirectedEdge> pathTo(int v) {
         if (!hasPathTo(v)) return null;
@@ -115,7 +115,7 @@ public class AcyclicSP {
 
 
     /**
-     * Unit tests the <tt>AcyclicSP</tt> data type.
+     * Unit tests the {@code AcyclicSP} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

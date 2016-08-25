@@ -36,7 +36,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LookupIndex</tt> class provides a data-driven client for reading in a
+ *  The {@code LookupIndex} class provides a data-driven client for reading in a
  *  key-value pairs from a file; then, printing the values corresponding to the
  *  keys found on standard input. Keys are strings; values are lists of strings.
  *  The separating delimiter is taken as a command-line argument. This client

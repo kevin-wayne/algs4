@@ -32,7 +32,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>KMP</tt> class finds the first occurrence of a pattern string
+ *  The {@code KMP} class finds the first occurrence of a pattern string
  *  in a text string.
  *  <p>
  *  This implementation uses a version of the Knuth-Morris-Pratt substring search

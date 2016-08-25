@@ -25,7 +25,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Arbitrage</tt> class provides a client that finds an arbitrage
+ *  The {@code Arbitrage} class provides a client that finds an arbitrage
  *  opportunity in a currency exchange table by constructing a
  *  complete-digraph representation of the exchange table and then finding
  *  a negative cycle in the digraph.

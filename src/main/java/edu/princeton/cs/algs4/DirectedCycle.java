@@ -19,7 +19,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DirectedCycle</tt> class represents a data type for 
+ *  The {@code DirectedCycle} class represents a data type for 
  *  determining whether a digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the digraph has
  *  a directed cycle and, and of so, the <em>cycle</em> operation
@@ -50,7 +50,7 @@ public class DirectedCycle {
     private Stack<Integer> cycle;    // directed cycle (or null if no such cycle)
 
     /**
-     * Determines whether the digraph <tt>G</tt> has a directed cycle and, if so,
+     * Determines whether the digraph {@code G} has a directed cycle and, if so,
      * finds such a cycle.
      * @param G the digraph
      */
@@ -93,16 +93,16 @@ public class DirectedCycle {
 
     /**
      * Does the digraph have a directed cycle?
-     * @return <tt>true</tt> if the digraph has a directed cycle, <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a directed cycle, {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
     }
 
     /**
-     * Returns a directed cycle if the digraph has a directed cycle, and <tt>null</tt> otherwise.
+     * Returns a directed cycle if the digraph has a directed cycle, and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the digraph has a directed cycle,
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -130,7 +130,7 @@ public class DirectedCycle {
     }
 
     /**
-     * Unit tests the <tt>DirectedCycle</tt> data type.
+     * Unit tests the {@code DirectedCycle} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

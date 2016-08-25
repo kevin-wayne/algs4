@@ -21,7 +21,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TarjanSCC</tt> class represents a data type for 
+ *  The {@code TarjanSCC} class represents a data type for 
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -61,7 +61,7 @@ public class TarjanSCC {
 
 
     /**
-     * Computes the strong components of the digraph <tt>G</tt>.
+     * Computes the strong components of the digraph {@code G}.
      * @param G the digraph
      */
     public TarjanSCC(Digraph G) {
@@ -110,20 +110,20 @@ public class TarjanSCC {
 
 
     /**
-     * Are vertices <tt>v</tt> and <tt>w</tt> in the same strong component?
+     * Are vertices {@code v} and {@code w} in the same strong component?
      * @param v one vertex
      * @param w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *     strong component, and <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *     strong component, and {@code false} otherwise
      */
     public boolean stronglyConnected(int v, int w) {
         return id[v] == id[w];
     }
 
     /**
-     * Returns the component id of the strong component containing vertex <tt>v</tt>.
+     * Returns the component id of the strong component containing vertex {@code v}.
      * @param v the vertex
-     * @return the component id of the strong component containing vertex <tt>v</tt>
+     * @return the component id of the strong component containing vertex {@code v}
      */
     public int id(int v) {
         return id[v];
@@ -142,7 +142,7 @@ public class TarjanSCC {
     }
 
     /**
-     * Unit tests the <tt>TarjanSCC</tt> data type.
+     * Unit tests the {@code TarjanSCC} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

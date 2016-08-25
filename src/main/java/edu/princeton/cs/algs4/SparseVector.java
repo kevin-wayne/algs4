@@ -12,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SparseVector</tt> class represents a <em>d</em>-dimensional mathematical vector.
+ *  The {@code SparseVector} class represents a <em>d</em>-dimensional mathematical vector.
  *  Vectors are mutable: their values can be changed after they are created.
  *  It includes methods for addition, subtraction,
  *  dot product, scalar product, unit vector, and Euclidean norm.
@@ -199,7 +199,7 @@ public class SparseVector {
 
 
     /**
-     * Unit tests the <tt>SparseVector</tt> data type.
+     * Unit tests the {@code SparseVector} data type.
      */
     public static void main(String[] args) {
         SparseVector a = new SparseVector(10);

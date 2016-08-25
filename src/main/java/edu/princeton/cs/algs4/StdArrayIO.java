@@ -258,7 +258,7 @@ public class StdArrayIO {
 
 
    /**
-     * Unit tests <tt>StdArrayIO</tt>.
+     * Unit tests {@code StdArrayIO}.
      */
     public static void main(String[] args) {
 

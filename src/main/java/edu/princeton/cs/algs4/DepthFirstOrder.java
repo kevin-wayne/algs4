@@ -34,7 +34,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstOrder</tt> class represents a data type for 
+ *  The {@code DepthFirstOrder} class represents a data type for 
  *  determining depth-first search ordering of the vertices in a digraph
  *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
  *  <p>
@@ -63,7 +63,7 @@ public class DepthFirstOrder {
     private int postCounter;           // counter for postorder numbering
 
     /**
-     * Determines a depth-first order for the digraph <tt>G</tt>.
+     * Determines a depth-first order for the digraph {@code G}.
      * @param G the digraph
      */
     public DepthFirstOrder(Digraph G) {
@@ -79,7 +79,7 @@ public class DepthFirstOrder {
     }
 
     /**
-     * Determines a depth-first order for the edge-weighted digraph <tt>G</tt>.
+     * Determines a depth-first order for the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      */
     public DepthFirstOrder(EdgeWeightedDigraph G) {
@@ -122,18 +122,18 @@ public class DepthFirstOrder {
     }
 
     /**
-     * Returns the preorder number of vertex <tt>v</tt>.
+     * Returns the preorder number of vertex {@code v}.
      * @param v the vertex
-     * @return the preorder number of vertex <tt>v</tt>
+     * @return the preorder number of vertex {@code v}
      */
     public int pre(int v) {
         return pre[v];
     }
 
     /**
-     * Returns the postorder number of vertex <tt>v</tt>.
+     * Returns the postorder number of vertex {@code v}.
      * @param v the vertex
-     * @return the postorder number of vertex <tt>v</tt>
+     * @return the postorder number of vertex {@code v}
      */
     public int post(int v) {
         return post[v];
@@ -195,7 +195,7 @@ public class DepthFirstOrder {
     }
 
     /**
-     * Unit tests the <tt>DepthFirstOrder</tt> data type.
+     * Unit tests the {@code DepthFirstOrder} data type.
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

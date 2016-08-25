@@ -14,7 +14,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>DirectedEulerianPath</tt> class represents a data type
+ *  The {@code DirectedEulerianPath} class represents a data type
  *  for finding an Eulerian path in a digraph.
  *  An <em>Eulerian path</em> is a path (not necessarily simple) that
  *  uses every edge in the digraph exactly once.
@@ -95,7 +95,7 @@ public class DirectedEulerianPath {
      * Returns the sequence of vertices on an Eulerian path.
      * 
      * @return the sequence of vertices on an Eulerian path;
-     *         <tt>null</tt> if no such path
+     *         {@code null} if no such path
      */
     public Iterable<Integer> path() {
         return path;
@@ -104,8 +104,8 @@ public class DirectedEulerianPath {
     /**
      * Returns true if the digraph has an Eulerian path.
      * 
-     * @return <tt>true</tt> if the digraph has an Eulerian path;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has an Eulerian path;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianPath() {
         return path != null;
@@ -205,7 +205,7 @@ public class DirectedEulerianPath {
     }
 
     /**
-     * Unit tests the <tt>DirectedEulerianPath</tt> data type.
+     * Unit tests the {@code DirectedEulerianPath} data type.
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
