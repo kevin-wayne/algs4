@@ -2,6 +2,9 @@
  *  Compilation:  javac Cycle.java
  *  Execution:    java  Cycle filename.txt
  *  Dependencies: Graph.java Stack.java In.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt  
  *
  *  Identifies a cycle.
  *  Runs in O(E + V) time.

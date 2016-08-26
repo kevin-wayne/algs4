@@ -2,6 +2,9 @@
  *  Compilation:  javac WeightedQuickUnionUF.java
  *  Execution:  java WeightedQuickUnionUF < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/15uf/tinyUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/mediumUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/largeUF.txt
  *
  *  Weighted quick-union (without path compression).
  *

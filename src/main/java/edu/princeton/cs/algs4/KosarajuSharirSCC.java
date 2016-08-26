@@ -3,6 +3,8 @@
  *  Execution:    java KosarajuSharirSCC filename.txt
  *  Dependencies: Digraph.java TransitiveClosure.java StdOut.java In.java
  *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Compute the strongly-connected components of a digraph using the
  *  Kosaraju-Sharir algorithm.

@@ -2,6 +2,7 @@
  *  Compilation:  javac SuffixArrayX.java
  *  Execution:    java SuffixArrayX < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/63suffix/abra.txt
  *  
  *  A data type that computes the suffix array of a string using 3-way
  *  radix quicksort.

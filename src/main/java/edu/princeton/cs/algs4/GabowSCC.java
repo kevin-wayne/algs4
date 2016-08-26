@@ -2,6 +2,9 @@
  *  Compilation:  javac GabowSCC.java
  *  Execution:    java GabowSCC V E
  *  Dependencies: Digraph.java Stack.java TransitiveClosure.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Compute the strongly-connected components of a digraph using 
  *  Gabow's algorithm (aka Cheriyan-Mehlhorn algorithm).

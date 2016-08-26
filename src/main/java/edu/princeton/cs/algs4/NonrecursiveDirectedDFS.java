@@ -3,6 +3,8 @@
  *  Execution:    java NonrecursiveDirectedDFS digraph.txt s
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Run nonrecurisve depth-first search on an directed graph.
  *  Runs in O(E + V) time.

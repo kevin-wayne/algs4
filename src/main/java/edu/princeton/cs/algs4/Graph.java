@@ -3,6 +3,8 @@
  *  Execution:    java Graph input.txt
  *  Dependencies: Bag.java Stack.java In.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  A graph, implemented using an array of sets.
  *  Parallel edges and self-loops allowed.

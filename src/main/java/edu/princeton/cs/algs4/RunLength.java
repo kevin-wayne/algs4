@@ -3,6 +3,9 @@
  *  Execution:    java RunLength - < input.txt   (compress)
  *  Execution:    java RunLength + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/55compression/4runs.bin
+ *                http://algs4.cs.princeton.edu/55compression/q32x48.bin
+ *                http://algs4.cs.princeton.edu/55compression/q64x96.bin
  *
  *  Compress or expand binary input from standard input using
  *  run-length encoding.

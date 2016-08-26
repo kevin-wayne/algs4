@@ -3,6 +3,8 @@
  *  Execution:    java Digraph filename.txt
  *  Dependencies: Bag.java In.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt  
  *
  *  A graph, implemented using an array of lists.
  *  Parallel edges and self-loops are permitted.

@@ -3,6 +3,8 @@
  *  Execution:    java CC filename.txt
  *  Dependencies: Graph.java StdOut.java Queue.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Compute connected components using depth first search.
  *  Runs in O(E + V) time.

@@ -2,6 +2,8 @@
  *  Compilation:  javac Count.java
  *  Execution:    java Count alpha < input.txt
  *  Dependencies: Alphabet.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/50strings/abra.txt
+ *                http://algs4.cs.princeton.edu/50strings/pi.txt
  *
  *  Create an alphabet specified on the command line, read in a 
  *  sequence of characters over that alphabet (ignoring characters

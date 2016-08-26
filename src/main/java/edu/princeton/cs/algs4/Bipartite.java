@@ -2,6 +2,9 @@
  *  Compilation:  javac Bipartite.java
  *  Execution:    java  Bipartite V E F
  *  Dependencies: Graph.java 
+ *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Given a graph, find either (i) a bipartition or (ii) an odd-length cycle.
  *  Runs in O(E + V) time.

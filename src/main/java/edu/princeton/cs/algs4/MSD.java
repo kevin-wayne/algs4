@@ -2,6 +2,8 @@
  *  Compilation: javac MSD.java
  *  Execution:   java MSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
+ *                http://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using MSD radix sort.
  *

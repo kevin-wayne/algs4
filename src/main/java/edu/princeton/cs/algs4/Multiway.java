@@ -2,6 +2,9 @@
  *  Compilation:  javac Multiway.java
  *  Execution:    java Multiway input1.txt input2.txt input3.txt ...
  *  Dependencies: IndexMinPQ.java In.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/24pq/m1.txt
+ *                http://algs4.cs.princeton.edu/24pq/m2.txt
+ *                http://algs4.cs.princeton.edu/24pq/m3.txt
  * 
  *  Merges together the sorted input stream given as command-line arguments
  *  into a single sorted output stream on standard output.

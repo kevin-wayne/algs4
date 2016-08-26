@@ -2,6 +2,8 @@
  *  Compilation:  javac LongestCommonSubstring.java
  *  Execution:    java  LongestCommonSubstring file1.txt file2.txt
  *  Dependencies: SuffixArray.java In.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *  
  *  Read in two text files and find the longest substring that
  *  appears in both texts.

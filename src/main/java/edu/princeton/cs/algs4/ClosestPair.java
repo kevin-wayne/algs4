@@ -2,6 +2,8 @@
  *  Compilation:  javac ClosestPair.java
  *  Execution:    java ClosestPair < input.txt
  *  Dependencies: Point2D.java
+ *  Data files:   http://algs4.cs.princeton.edu/99hull/rs1423.txt
+ *                http://algs4.cs.princeton.edu/99hull/kw1260.txt
  *  
  *  Given n points in the plane, find the closest pair in n log n time.
  *

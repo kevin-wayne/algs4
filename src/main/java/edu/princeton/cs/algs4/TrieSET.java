@@ -2,6 +2,7 @@
  *  Compilation:  javac TrieSET.java
  *  Execution:    java TrieSET < words.txt
  *  Dependencies: StdIn.java
+ *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  An set for extended ASCII strings, implemented  using a 256-way trie.
  *

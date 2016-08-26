@@ -2,6 +2,7 @@
  *  Compilation:  javac LinkedStack.java
  *  Execution:    java LinkedStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt
  *
  *  A generic stack, implemented using a linked list. Each stack
  *  element is of type Item.

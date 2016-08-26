@@ -2,6 +2,7 @@
  *  Compilation:  javac FordFulkerson.java
  *  Execution:    java FordFulkerson V E
  *  Dependencies: FlowNetwork.java FlowEdge.java Queue.java
+ *  Data files:   http://algs4.cs.princeton.edu/65maxflow/tinyFN.txt
  *
  *  Ford-Fulkerson algorithm for computing a max flow and 
  *  a min cut using shortest augmenting path rule.

@@ -1,13 +1,16 @@
 /******************************************************************************
  *  Compilation:  javac DepthFirstDirectedPaths.java
- *  Execution:    java DepthFirstDirectedPaths G s
+ *  Execution:    java DepthFirstDirectedPaths digraph.txt s
  *  Dependencies: Digraph.java Stack.java
+ *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Determine reachability in a digraph from a given vertex using
- *  depth first search.
+ *  depth-first search.
  *  Runs in O(E + V) time.
  *
- *  % tinyDG.txt 3
+ *  % java DepthFirstDirectedPaths tinyDG.txt 3
  *  3 to 0:  3-5-4-2-0
  *  3 to 1:  3-5-4-2-0-1
  *  3 to 2:  3-5-4-2

@@ -2,6 +2,9 @@
  *  Compilation:  javac QuickUnionUF.java
  *  Execution:  java QuickUnionUF < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/15uf/tinyUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/mediumUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/largeUF.txt
  *
  *  Quick-union algorithm.
  *

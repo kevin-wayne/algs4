@@ -2,6 +2,8 @@
  *  Compilation:  javac FarthestPair.java
  *  Execution:    java FarthestPair < input.txt
  *  Dependencies: GrahamScan.java Point2D.java
+ *  Data files:   http://algs4.cs.princeton.edu/99hull/rs1423.txt
+ *                http://algs4.cs.princeton.edu/99hull/kw1260.txt
  *  
  *  Given a set of n points in the plane, find the farthest pair
  *  (equivalently, compute the diameter of the set of points).

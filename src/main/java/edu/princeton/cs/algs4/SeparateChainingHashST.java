@@ -1,7 +1,8 @@
 /******************************************************************************
  *  Compilation:  javac SeparateChainingHashST.java
- *  Execution:    java SeparateChainingHashST
+ *  Execution:    java SeparateChainingHashST < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/34hash/tinyST.txt
  *
  *  A symbol table implemented with a separate-chaining hash table.
  * 

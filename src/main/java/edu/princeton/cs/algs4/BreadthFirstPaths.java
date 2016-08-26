@@ -3,6 +3,9 @@
  *  Execution:    java BreadthFirstPaths G s
  *  Dependencies: Graph.java Queue.java Stack.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *                http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Run breadth first search on an undirected graph.
  *  Runs in O(E + V) time.

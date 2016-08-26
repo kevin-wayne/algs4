@@ -2,6 +2,7 @@
  *  Compilation:  javac TrieST.java
  *  Execution:    java TrieST < words.txt
  *  Dependencies: StdIn.java
+ *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  A string symbol table for extended ASCII strings, implemented
  *  using a 256-way trie.

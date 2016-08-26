@@ -2,6 +2,7 @@
  *  Compilation:  javac MaxPQ.java
  *  Execution:    java MaxPQ < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/24pq/tinyPQ.txt
  *  
  *  Generic max priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order,

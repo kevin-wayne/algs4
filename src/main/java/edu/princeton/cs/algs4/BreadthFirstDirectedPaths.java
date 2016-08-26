@@ -1,9 +1,12 @@
 /******************************************************************************
  *  Compilation:  javac BreadthFirstDirectedPaths.java
- *  Execution:    java BreadthFirstDirectedPaths V E
+ *  Execution:    java BreadthFirstDirectedPaths digraph.txt s
  *  Dependencies: Digraph.java Queue.java Stack.java
+ *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
- *  Run breadth first search on a digraph.
+ *  Run breadth-first search on a digraph.
  *  Runs in O(E + V) time.
  *
  *  % java BreadthFirstDirectedPaths tinyDG.txt 3

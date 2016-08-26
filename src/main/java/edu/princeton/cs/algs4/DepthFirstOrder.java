@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac DepthFirstOrder.java
- *  Execution:    java DepthFirstOrder filename.txt
+ *  Execution:    java DepthFirstOrder digraph.txt
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
  *                EdgeWeightedDigraph.java DirectedEdge.java
  *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt

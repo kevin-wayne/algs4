@@ -2,6 +2,7 @@
  *  Compilation:  javac LSD.java
  *  Execution:    java LSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
  *
  *  LSD radix sort
  *

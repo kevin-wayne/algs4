@@ -2,6 +2,7 @@
  *  Compilation:  javac TST.java
  *  Execution:    java TST < words.txt
  *  Dependencies: StdIn.java
+ *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  Symbol table with string keys, implemented using a ternary search
  *  trie (TST).

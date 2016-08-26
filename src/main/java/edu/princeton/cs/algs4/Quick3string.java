@@ -2,6 +2,8 @@
  *  Compilation:  javac Quick3string.java
  *  Execution:    java Quick3string < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
+ *                http://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Reads string from standard input and 3-way string quicksort them.
  *
