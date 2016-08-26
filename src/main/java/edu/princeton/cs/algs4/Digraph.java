@@ -149,7 +149,7 @@ public class Digraph {
     }
 
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -160,7 +160,7 @@ public class Digraph {
      *
      * @param  v the tail vertex
      * @param  w the head vertex
-     * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -175,7 +175,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -188,7 +188,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the outdegree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -201,7 +201,7 @@ public class Digraph {
      *
      * @param  v the vertex
      * @return the indegree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public int indegree(int v) {
         validateVertex(v);

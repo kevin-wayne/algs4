@@ -131,7 +131,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the dual optimal value for row {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < N}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
      *
      */
     // dual variable for row i

@@ -70,7 +70,7 @@ public class DijkstraUndirectedSP {
      * @param  G the edge-weighted digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DijkstraUndirectedSP(EdgeWeightedGraph G, int s) {
         for (Edge e : G.edges()) {

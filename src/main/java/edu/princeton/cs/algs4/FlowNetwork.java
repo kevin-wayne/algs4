@@ -114,7 +114,7 @@ public class FlowNetwork {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -123,7 +123,8 @@ public class FlowNetwork {
     /**
      * Adds the edge {@code e} to the network.
      * @param e the edge
-     * @throws java.lang.IndexOutOfBoundsException unless endpoints of edge are between 0 and V-1
+     * @throws java.lang.IndexOutOfBoundsException unless endpoints of edge are between
+     *         {@code 0} and {@code V-1}
      */
     public void addEdge(FlowEdge e) {
         int v = e.from();
@@ -140,7 +141,7 @@ public class FlowNetwork {
      * and from {@code v}).
      * @param v the vertex
      * @return the edges incident on vertex {@code v} as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
+     * @throws java.lang.IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public Iterable<FlowEdge> adj(int v) {
         validateVertex(v);

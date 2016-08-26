@@ -17,7 +17,8 @@ import java.util.NoSuchElementException;
  *  It supports the usual <em>insert</em> and <em>delete-the-minimum</em>
  *  operations, along with <em>delete</em> and <em>change-the-key</em> 
  *  methods. In order to let the client refer to keys on the priority queue,
- *  an integer between 0 and maxN-1 is associated with each key&mdash;the client
+ *  an integer between {@code 0} and {@code maxN - 1}
+ *  is associated with each key&mdash;the client
  *  uses this integer to specify which key to delete or change.
  *  It also supports methods for peeking at the minimum key,
  *  testing if the priority queue is empty, and iterating through
@@ -81,7 +82,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i an index
      * @return {@code true} if {@code i} is an index on this priority queue;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      */
     public boolean contains(int i) {
         if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
@@ -102,7 +103,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i an index
      * @param  key the key to associate with index {@code i}
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if there already is an item associated
      *         with index {@code i}
      */
@@ -160,7 +161,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to return
      * @return the key associated with index {@code i}
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public Key keyOf(int i) {
@@ -174,7 +175,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void changeKey(int i, Key key) {
@@ -190,7 +191,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @deprecated Replaced by {@code changeKey(int, Key)}.
      */
     @Deprecated
@@ -203,7 +204,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to decrease
      * @param  key decrease the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if key >= key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
@@ -221,7 +222,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to increase
      * @param  key increase the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if key <= key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
@@ -238,7 +239,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Remove the key associated with index {@code i}.
      *
      * @param  i the index of the key to remove
-     * @throws IndexOutOfBoundsException unless 0 <= {@code i} < {@code maxN}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void delete(int i) {

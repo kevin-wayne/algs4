@@ -109,7 +109,7 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Returns the directed edges incident from vertex {@code v}.
      * @param v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless 0 <= v < V
+     * @throws java.lang.IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> adj(int v) {
         return new AdjIterator(v);

@@ -51,7 +51,7 @@ public class AcyclicLP {
      * @param G the acyclic digraph
      * @param s the source vertex
      * @throws IllegalArgumentException if the digraph is not acyclic
-     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public AcyclicLP(EdgeWeightedDigraph G, int s) {
         distTo = new double[G.V()];

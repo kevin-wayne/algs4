@@ -211,8 +211,7 @@ public class Alphabet {
      * 
      * @param  index the index
      * @return the character corresponding to the index {@code index}
-     * @throws IllegalArgumentException unless {@code index} is between {@code 0}
-     *         and {@code R - 1}
+     * @throws IllegalArgumentException unless {@code 0 <= index < R}
      */
     public char toChar(int index) {
         if (index < 0 || index >= R) {
@@ -226,8 +225,8 @@ public class Alphabet {
      * 
      * @param  indices the indices
      * @return the characters corresponding to the indices {@code indices}
-     * @throws IllegalArgumentException unless every index is between {@code 0}
-     *         and {@code R - 1}
+     * @throws IllegalArgumentException unless {@code 0 < indices[i] < R}
+     *         for every {@code i}
      */
     public String toChars(int[] indices) {
         StringBuilder s = new StringBuilder(indices.length);

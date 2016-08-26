@@ -65,7 +65,7 @@ public class BellmanFordSP {
      * the edge-weighted digraph {@code G}.
      * @param G the acyclic digraph
      * @param s the source vertex
-     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public BellmanFordSP(EdgeWeightedDigraph G, int s) {
         distTo  = new double[G.V()];
