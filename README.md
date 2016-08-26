@@ -3,7 +3,7 @@
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
 This <a href = "https://github.com/kevin-wayne/algs4">public repository</a>
 contains the Java <a href = "http://algs4.cs.princeton.edu/code/">source code</a>
-for the algorithms in the textbook
+for the algorithms and clients in the textbook
 <a href = "http://amzn.to/13VNJi7">Algorithms, 4th Edition</a> by Robert Sedgewick and Kevin Wayne.
 This is the official version&mdash;it is actively maintained and updated by the authors.
 The programs are organized in the package <code>edu.princeton.cs.algs4</code>.
@@ -39,7 +39,7 @@ However, please do not store solutions to programming assignments in public repo
 
 ## Copyright
 
-Copyright &copy; 2000&ndash;2015 by Robert Sedgewick and Kevin Wayne.
+Copyright &copy; 2000&ndash;2016 by Robert Sedgewick and Kevin Wayne.
 
 ## License
 
@@ -58,8 +58,8 @@ code before contacting us.
 
 Some of the code in this repository has been translated to other languages:
 <ul>
-<li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a>
-<li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a>
+<li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
+<li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
 </ul>
 
 
