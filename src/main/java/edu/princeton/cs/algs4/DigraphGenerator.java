@@ -314,7 +314,7 @@ public class DigraphGenerator {
      * @param  E the number of edges in the cycle
      * @return a digraph that is a directed Eulerian cycle on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V &le; 0 or E &le; 0
+     * @throws IllegalArgumentException if either V <= 0 or E <= 0
      */
     public static Digraph eulerianCycle(int V, int E) {
         if (E <= 0)
@@ -339,7 +339,7 @@ public class DigraphGenerator {
      * @param  E the number of edges in the path
      * @return a digraph that is a directed Eulerian path on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V &le; 0 or E &lt; 0
+     * @throws IllegalArgumentException if either V <= 0 or E < 0
      */
     public static Digraph eulerianPath(int V, int E) {
         if (E < 0)
@@ -501,7 +501,7 @@ public class DigraphGenerator {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

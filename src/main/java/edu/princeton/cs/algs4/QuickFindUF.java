@@ -18,7 +18,7 @@ package edu.princeton.cs.algs4;
  *  returns the total number of components.
  *  <p>
  *  The union-find data type models connectivity among a set of <em>n</em>
- *  sites, named 0 through <em>n</em> &ndash; 1.
+ *  sites, named 0 through <em>n</em> &minus; 1.
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  <em>equivalence classes</em> (or <em>components</em>). In this case,
  *  two sites are in the same component if and only if they are connected.
  *  Both sites and components are identified with integers between 0 and
- *  <em>n</em> &ndash; 1. 
+ *  <em>n</em> &minus; 1. 
  *  Initially, there are <em>n</em> components, with each site in its
  *  own component.  The <em>component identifier</em> of a component
  *  (also known as the <em>root</em>, <em>canonical element</em>, <em>leader</em>,
@@ -87,7 +87,7 @@ public class QuickFindUF {
      * component.
      *
      * @param  n the number of sites
-     * @throws IllegalArgumentException if {@code n &lt; 0}
+     * @throws IllegalArgumentException if {@code n < 0}
      */
     public QuickFindUF(int n) {
         count = n;
@@ -110,7 +110,7 @@ public class QuickFindUF {
      *
      * @param  p the integer representing one site
      * @return the component identifier for the component containing site {@code p}
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; p &lt; n}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= p < n}
      */
     public int find(int p) {
         validate(p);
@@ -133,7 +133,7 @@ public class QuickFindUF {
      * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
      *         {@code false} otherwise
      * @throws IndexOutOfBoundsException unless
-     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
+     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
     public boolean connected(int p, int q) {
         validate(p);
@@ -148,7 +148,7 @@ public class QuickFindUF {
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
      * @throws IndexOutOfBoundsException unless
-     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
+     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
     public void union(int p, int q) {
         validate(p);
@@ -186,7 +186,7 @@ public class QuickFindUF {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

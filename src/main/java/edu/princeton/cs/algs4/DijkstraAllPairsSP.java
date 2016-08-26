@@ -38,7 +38,7 @@ public class DijkstraAllPairsSP {
      * the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 &le; {@code s} &le; {@code V} - 1
+     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
      */
     public DijkstraAllPairsSP(EdgeWeightedDigraph G) {
         all  = new DijkstraSP[G.V()];
@@ -81,7 +81,7 @@ public class DijkstraAllPairsSP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

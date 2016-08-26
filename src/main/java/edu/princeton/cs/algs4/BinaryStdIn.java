@@ -133,7 +133,7 @@ public final class BinaryStdIn {
      * @param  r number of bits to read.
      * @return the next r bits of data from standard input as a {@code char}
      * @throws IllegalArgumentException if there are fewer than r bits available on standard input
-     * @throws IllegalArgumentException unless 1 &le; r &le; 16
+     * @throws IllegalArgumentException unless both {@code 1 <= r <= 16}
      */
     public static char readChar(int r) {
         if (r < 1 || r > 16) throw new IllegalArgumentException("Illegal value of r = " + r);
@@ -207,7 +207,7 @@ public final class BinaryStdIn {
      * @param  r number of bits to read.
      * @return the next r bits of data from standard input as a {@code int}
      * @throws IllegalArgumentException if there are fewer than r bits available on standard input
-     * @throws IllegalArgumentException unless 1 &le; r &le; 32
+     * @throws IllegalArgumentException unless {@code 1 <= r <= 32}
      */
     public static int readInt(int r) {
         if (r < 1 || r > 32) throw new IllegalArgumentException("Illegal value of r = " + r);
@@ -290,7 +290,7 @@ public final class BinaryStdIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

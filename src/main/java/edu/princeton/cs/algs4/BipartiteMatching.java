@@ -180,7 +180,7 @@ public class BipartiteMatching {
      * @param  v the vertex
      * @return the vertex to which vertex {@code v} is matched in the
      *         maximum matching; {@code -1} if the vertex is not matched
-     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      *
      */
     public int mate(int v) {
@@ -195,7 +195,7 @@ public class BipartiteMatching {
      * @param  v the vertex
      * @return {@code true} if vertex {@code v} is matched in maximum matching;
      *         {@code false} otherwise
-     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      *
      */
     public boolean isMatched(int v) {
@@ -231,7 +231,7 @@ public class BipartiteMatching {
      * @param  v the vertex
      * @return {@code true} if vertex {@code v} is in the minimum vertex cover;
      *         {@code false} otherwise
-     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean inMinVertexCover(int v) {
         validate(v);
@@ -345,7 +345,7 @@ public class BipartiteMatching {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

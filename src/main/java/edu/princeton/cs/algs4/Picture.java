@@ -250,8 +250,7 @@ public final class Picture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @return the color of pixel ({@code col}, {@code row})
-     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
-     *         and 0 &le; {@code row} &lt; {@code height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public Color get(int col, int row) {
         validateCol(col);
@@ -266,8 +265,7 @@ public final class Picture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @param color the color
-     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
-     *         and 0 &le; {@code row} &lt; {@code height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      * @throws NullPointerException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
@@ -370,7 +368,7 @@ public final class Picture implements ActionListener {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

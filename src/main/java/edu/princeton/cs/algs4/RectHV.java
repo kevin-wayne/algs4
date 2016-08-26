@@ -37,8 +37,8 @@ public final class RectHV {
      * @throws IllegalArgumentException if any of {@code xmin},
      *         {@code xmax}, {@code ymin}, or {@code ymax}
      *         is {@code Double.NaN}.
-     * @throws IllegalArgumentException if {@code xmax} &lt;
-     *         {@code xmin} or {@code ymax} &lt; {@code ymin}.
+     * @throws IllegalArgumentException if {@code xmax} <
+     *         {@code xmin} or {@code ymax} < {@code ymin}.
      */
     public RectHV(double xmin, double ymin, double xmax, double ymax) {
         if (Double.isNaN(xmin) || Double.isNaN(xmax))
@@ -217,7 +217,7 @@ public final class RectHV {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

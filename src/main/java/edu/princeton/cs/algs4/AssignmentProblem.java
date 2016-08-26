@@ -131,7 +131,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the dual optimal value for row {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; N}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < N}
      *
      */
     // dual variable for row i
@@ -145,7 +145,7 @@ public class AssignmentProblem {
      *
      * @param  j the column index
      * @return the dual optimal value for column {@code j}
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; j &lt; n}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= j < n}
      *
      */
     public double dualCol(int j) {
@@ -158,7 +158,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the column matched to row {@code i} in the optimal solution
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; n}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
      *
      */
     public int sol(int i) {
@@ -292,7 +292,7 @@ public class AssignmentProblem {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
