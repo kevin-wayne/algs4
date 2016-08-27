@@ -2,6 +2,9 @@
  *  Compilation:  javac Cycle.java
  *  Execution:    java  Cycle filename.txt
  *  Dependencies: Graph.java Stack.java In.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt  
  *
  *  Identifies a cycle.
  *  Runs in O(E + V) time.
@@ -169,7 +172,7 @@ public class Cycle {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

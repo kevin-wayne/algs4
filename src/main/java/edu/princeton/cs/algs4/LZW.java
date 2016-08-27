@@ -3,6 +3,8 @@
  *  Execution:    java LZW - < input.txt   (compress)
  *  Execution:    java LZW + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/55compression/abraLZW.txt
+ *                http://algs4.cs.princeton.edu/55compression/ababLZW.txt
  *
  *  Compress or expand binary input from standard input using LZW.
  *
@@ -105,7 +107,7 @@ public class LZW {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

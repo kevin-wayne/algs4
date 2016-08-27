@@ -2,7 +2,8 @@
  *  Compilation:  javac LongestRepeatedSubstring.java
  *  Execution:    java LongestRepeatedSubstring < file.txt
  *  Dependencies: StdIn.java SuffixArray.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/tinyTale.txt
+ *  Data files:   http://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                http://algs4.cs.princeton.edu/63suffix/tinyTale.txt
  *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *  
  *  Reads a text string from stdin, replaces all consecutive blocks of
@@ -86,7 +87,7 @@ public class LongestRepeatedSubstring {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

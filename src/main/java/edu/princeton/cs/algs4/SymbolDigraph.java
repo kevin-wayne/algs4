@@ -2,6 +2,7 @@
  *  Compilation:  javac SymbolDigraph.java
  *  Execution:    java SymbolDigraph
  *  Dependencies: ST.java Digraph.java In.java
+ *  Data files:   http://algs4.cs.princeton.edu/42digraph/routes.txt
  *  
  *  %  java SymbolDigraph routes.txt " "
  *  JFK
@@ -101,6 +102,7 @@ public class SymbolDigraph {
      * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named {@code s}
      * @deprecated Replaced by {@link #indexOf(String)}.
      */
+    @Deprecated
     public int index(String s) {
         return st.get(s);
     }
@@ -120,6 +122,7 @@ public class SymbolDigraph {
      * @return the name of the vertex associated with the integer {@code v}
      * @deprecated Replaced by {@link #nameOf(int)}.
      */
+    @Deprecated
     public String name(int v) {
         return keys[v];
     }
@@ -138,6 +141,7 @@ public class SymbolDigraph {
      * not to mutate the digraph.
      * @deprecated Replaced by {@link #digraph()}.
      */
+    @Deprecated
     public Digraph G() {
         return graph;
     }
@@ -169,7 +173,7 @@ public class SymbolDigraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

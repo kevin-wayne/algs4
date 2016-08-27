@@ -78,6 +78,7 @@ public class Vector {
      * @return the dimension of this vector
      * @deprecated Replaced by {@link #dimension()}.
      */
+    @Deprecated
     public int length() {
         return d;
     }
@@ -175,6 +176,7 @@ public class Vector {
      * @return the vector whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
+    @Deprecated
     public Vector times(double alpha) {
         Vector c = new Vector(d);
         for (int i = 0; i < d; i++)
@@ -247,7 +249,7 @@ public class Vector {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

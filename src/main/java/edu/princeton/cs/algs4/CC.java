@@ -3,6 +3,8 @@
  *  Execution:    java CC filename.txt
  *  Dependencies: Graph.java StdOut.java Queue.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Compute connected components using depth first search.
  *  Runs in O(E + V) time.
@@ -20,6 +22,10 @@
  *  % java -Xss50m CC largeG.txt 
  *  1 components
  *  0 1 2 3 4 5 6 7 8 9 10 ...
+ *
+ *  Note: This implementation uses a recursive DFS. To avoid needing
+ *        a potentially very large stack size, replace with a non-recurisve
+ *        DFS ala NonrecursiveDFS.java.
  *
  ******************************************************************************/
 
@@ -140,6 +146,7 @@ public class CC {
      *         connected component; {@code false} otherwise
      * @deprecated Replaced by {@link #connected(int, int)}.
      */
+    @Deprecated
     public boolean areConnected(int v, int w) {
         return id(v) == id(w);
     }
@@ -176,7 +183,7 @@ public class CC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

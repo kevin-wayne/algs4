@@ -1,7 +1,9 @@
 /******************************************************************************
  *  Compilation:  javac QuickX.java
- *  Execution:    java QuickX N
+ *  Execution:    java QuickX < input.txt
  *  Dependencies: StdOut.java StdIn.java
+ *  Data files:   http://algs4.cs.princeton.edu/23quicksort/tiny.txt
+ *                http://algs4.cs.princeton.edu/23quicksort/words3.txt
  *  
  *  Uses the Bentley-McIlroy 3-way partitioning scheme,
  *  chooses the partitioning element using Tukey's ninther,
@@ -171,7 +173,7 @@ public class QuickX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

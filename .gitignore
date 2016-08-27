@@ -52,3 +52,6 @@ test-output
 
 # JIRA plugin
 atlassian-ide-plugin.xml
+
+# files intended to be ignored
+*IGNORE

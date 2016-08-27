@@ -234,18 +234,27 @@ public final class Picture implements ActionListener {
         return width;
     }
 
+    private void validateRow(int row) {
+        if (row < 0 || row >= height())
+            throw new IndexOutOfBoundsException("row must be between 0 and " + (height() - 1) + ": " + row);
+    }
+
+    private void validateCol(int col) {
+        if (col < 0 || col >= width())
+            throw new IndexOutOfBoundsException("col must be between 0 and " + (width() - 1) + ": " + col);
+    }
+
    /**
      * Returns the color of pixel ({@code col}, {@code row}).
      *
      * @param col the column index
      * @param row the row index
      * @return the color of pixel ({@code col}, {@code row})
-     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
-     *         and 0 &le; {@code row} &lt; {@code height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public Color get(int col, int row) {
-        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1) + ": " + col);
-        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1) + ": " + col);
+        validateCol(col);
+        validateRow(row);
         if (isOriginUpperLeft) return new Color(image.getRGB(col, row));
         else                   return new Color(image.getRGB(col, height - row - 1));
     }
@@ -256,13 +265,12 @@ public final class Picture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @param color the color
-     * @throws IndexOutOfBoundsException unless both 0 &le; {@code col} &lt; {@code width}
-     *         and 0 &le; {@code row} &lt; {@code height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      * @throws NullPointerException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
-        if (col < 0 || col >= width())  throw new IndexOutOfBoundsException("col must be between 0 and " + (width()-1) + ": " + col);
-        if (row < 0 || row >= height()) throw new IndexOutOfBoundsException("row must be between 0 and " + (height()-1) + ": " + row);
+        validateCol(col);
+        validateRow(row);
         if (color == null) throw new NullPointerException("can't set Color to null");
         if (isOriginUpperLeft) image.setRGB(col, row, color.getRGB());
         else                   image.setRGB(col, height - row - 1, color.getRGB());
@@ -360,7 +368,7 @@ public final class Picture implements ActionListener {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

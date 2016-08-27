@@ -150,6 +150,7 @@ public class Alphabet {
      * @return the number of characters in this alphabet
      * @deprecated Replaced by {@link #radix()}.
      */
+    @Deprecated
     public int R() {
         return R;
     }
@@ -210,8 +211,7 @@ public class Alphabet {
      * 
      * @param  index the index
      * @return the character corresponding to the index {@code index}
-     * @throws IllegalArgumentException unless {@code index} is between {@code 0}
-     *         and {@code R - 1}
+     * @throws IllegalArgumentException unless {@code 0 <= index < R}
      */
     public char toChar(int index) {
         if (index < 0 || index >= R) {
@@ -225,8 +225,8 @@ public class Alphabet {
      * 
      * @param  indices the indices
      * @return the characters corresponding to the indices {@code indices}
-     * @throws IllegalArgumentException unless every index is between {@code 0}
-     *         and {@code R - 1}
+     * @throws IllegalArgumentException unless {@code 0 < indices[i] < R}
+     *         for every {@code i}
      */
     public String toChars(int[] indices) {
         StringBuilder s = new StringBuilder(indices.length);
@@ -254,7 +254,7 @@ public class Alphabet {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

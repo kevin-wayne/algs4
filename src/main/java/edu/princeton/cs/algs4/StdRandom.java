@@ -133,6 +133,7 @@ public final class StdRandom {
      * @return     a random real number uniformly in [0, 1)
      * @deprecated Replaced by {@link #uniform()}.
      */
+    @Deprecated
     public static double random() {
         return uniform();
     }
@@ -531,7 +532,7 @@ public final class StdRandom {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

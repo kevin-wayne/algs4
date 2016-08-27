@@ -24,10 +24,6 @@ package edu.princeton.cs.algs4;
  *  O(<em>n</em>^3 log <em>n</em>) to solve an <em>n</em>-by-<em>n</em>
  *  instance.
  *  <p>
- *  See also {@code WeightedBipartiteMatching}, which solves the problem
- *  in O(<em>E V</em> log <em>V</em>) time in the worst case
- *  for bipartite graphs with <em>V</em> vertices and <em>E</em> edges.
- *  <p>
  *  For additional documentation, see
  *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -135,7 +131,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the dual optimal value for row {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; N}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
      *
      */
     // dual variable for row i
@@ -149,7 +145,7 @@ public class AssignmentProblem {
      *
      * @param  j the column index
      * @return the dual optimal value for column {@code j}
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; j &lt; n}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= j < n}
      *
      */
     public double dualCol(int j) {
@@ -162,7 +158,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the column matched to row {@code i} in the optimal solution
-     * @throws IndexOutOfBoundsException unless {@code 0 &le; i &lt; n}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
      *
      */
     public int sol(int i) {
@@ -296,7 +292,7 @@ public class AssignmentProblem {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

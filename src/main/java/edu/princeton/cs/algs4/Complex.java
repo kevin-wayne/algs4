@@ -71,7 +71,6 @@ public class Complex {
         return re + " + " + im + "i";
     }
 
-    // return abs/modulus/magnitude and angle/phase/argument
     /**
      * Returns the absolute value of this complex number.
      * This quantity is also known as the <em>modulus</em> or <em>magnitude</em>.
@@ -84,7 +83,7 @@ public class Complex {
 
     /**
      * Returns the phase of this complex number.
-     * This quantity is also known as the <em>ange</em> or <em>argument</em>.
+     * This quantity is also known as the <em>angle</em> or <em>argument</em>.
      *
      * @return the phase of this complex number, a real number between -pi and pi
      */
@@ -146,6 +145,7 @@ public class Complex {
      * @return the complex number whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
+    @Deprecated
     public Complex times(double alpha) {
         return new Complex(alpha * re, alpha * im);
     }
@@ -260,7 +260,7 @@ public class Complex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

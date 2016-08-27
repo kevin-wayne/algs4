@@ -124,7 +124,7 @@ public class BipartiteX {
      * @return the side of the bipartition that vertex {@code v} is on; two vertices
      *         are in the same side of the bipartition if and only if they have the
      *         same color
-     * @throws IllegalArgumentException unless {@code 0 &le; v &lt; V} 
+     * @throws IllegalArgumentException unless {@code 0 <= v < V} 
      * @throws UnsupportedOperationException if this method is called when the graph
      *         is not bipartite
      */
@@ -217,7 +217,7 @@ public class BipartiteX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

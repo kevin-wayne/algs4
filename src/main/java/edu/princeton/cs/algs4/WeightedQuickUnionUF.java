@@ -2,6 +2,9 @@
  *  Compilation:  javac WeightedQuickUnionUF.java
  *  Execution:  java WeightedQuickUnionUF < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/15uf/tinyUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/mediumUF.txt
+ *                http://algs4.cs.princeton.edu/15uf/largeUF.txt
  *
  *  Weighted quick-union (without path compression).
  *
@@ -10,15 +13,15 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code WeightedQuickUnionUF} class represents a <em>union-find data type</em>
+ *  The {@code WeightedQuickUnionUF} class represents a <em>union–find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
  *  It supports the <em>union</em> and <em>find</em> operations,
  *  along with a <em>connected</em> operation for determining whether
  *  two sites are in the same component and a <em>count</em> operation that
  *  returns the total number of components.
  *  <p>
- *  The union-find data type models connectivity among a set of <em>n</em>
- *  sites, named 0 through <em>m</em> &ndash; 1.
+ *  The union–find data type models connectivity among a set of <em>n</em>
+ *  sites, named 0 through <em>n</em>&minus;1.
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
@@ -34,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  <em>equivalence classes</em> (or <em>components</em>). In this case,
  *  two sites are in the same component if and only if they are connected.
  *  Both sites and components are identified with integers between 0 and
- *  <em>n</em> &ndash; 1. 
+ *  <em>n</em>&minus;1. 
  *  Initially, there are <em>n</em> components, with each site in its
  *  own component.  The <em>component identifier</em> of a component
  *  (also known as the <em>root</em>, <em>canonical element</em>, <em>leader</em>,
@@ -82,7 +85,7 @@ public class WeightedQuickUnionUF {
     private int count;      // number of components
 
     /**
-     * Initializes an empty union-find data structure with {@code n} sites
+     * Initializes an empty union–find data structure with {@code n} sites
      * {@code 0} through {@code n-1}. Each site is initially in its own 
      * component.
      *
@@ -194,7 +197,7 @@ public class WeightedQuickUnionUF {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

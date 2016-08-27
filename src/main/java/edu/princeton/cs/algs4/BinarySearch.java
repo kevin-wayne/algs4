@@ -76,6 +76,7 @@ public class BinarySearch {
      * @return index of key in array {@code a} if present; {@code -1} otherwise
      * @deprecated Replaced by {@link #indexOf(int[], int)}.
      */
+    @Deprecated
     public static int rank(int key, int[] a) {
         return indexOf(a, key);
     }
@@ -104,7 +105,7 @@ public class BinarySearch {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

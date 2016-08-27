@@ -2,6 +2,7 @@
  *  Compilation:  javac TrieSET.java
  *  Execution:    java TrieSET < words.txt
  *  Dependencies: StdIn.java
+ *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  An set for extended ASCII strings, implemented  using a 256-way trie.
  *
@@ -279,7 +280,7 @@ public class TrieSET implements Iterable<String> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

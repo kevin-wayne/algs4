@@ -3,6 +3,8 @@
  *  Execution:    java Graph input.txt
  *  Dependencies: Bag.java Stack.java In.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                http://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  A graph, implemented using an array of sets.
  *  Parallel edges and self-loops allowed.
@@ -42,6 +44,9 @@ package edu.princeton.cs.algs4;
  *  iterate over all of the vertices adjacent to a vertex. It also provides
  *  methods for returning the number of vertices <em>V</em> and the number
  *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
+ *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
+ *  adjacency list of <em>v</em> twice and contributes two to the degree
+ *  of <em>v</em>.
  *  <p>
  *  This implementation uses an adjacency-lists representation, which 
  *  is a vertex-indexed array of {@link Bag} objects.
@@ -217,7 +222,7 @@ public class Graph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

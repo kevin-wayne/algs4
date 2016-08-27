@@ -1,12 +1,11 @@
 /******************************************************************************
  *  Compilation:  javac ST.java
- *  Execution:    java ST
+ *  Execution:    java ST < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/35applications/tinyST.txt
  *  
  *  Sorted symbol table implementation using a java.util.TreeMap.
  *  Does not allow duplicates.
- *
- *  % java ST
  *
  ******************************************************************************/
 
@@ -158,6 +157,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
      * @return     an iterator to all of the keys in this symbol table
      * @deprecated Replaced by {@link #keys()}.
      */
+    @Deprecated
     public Iterator<Key> iterator() {
         return st.keySet().iterator();
     }
@@ -229,7 +229,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

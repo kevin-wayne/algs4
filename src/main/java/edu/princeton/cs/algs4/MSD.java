@@ -2,6 +2,8 @@
  *  Compilation: javac MSD.java
  *  Execution:   java MSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
+ *                http://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using MSD radix sort.
  *
@@ -221,7 +223,7 @@ public class MSD {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

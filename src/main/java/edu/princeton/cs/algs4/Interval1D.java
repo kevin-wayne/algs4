@@ -55,7 +55,6 @@ public class Interval1D {
      * @throws IllegalArgumentException if either {@code min} or {@code max}
      *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY} or
      *         {@code Double.NEGATIVE_INFINITY}
-
      */
     public Interval1D(double min, double max) {
         if (Double.isInfinite(min) || Double.isInfinite(max))
@@ -80,6 +79,7 @@ public class Interval1D {
      * @return the left endpoint of this interval
      * @deprecated Replaced by {@link #min()}.
      */
+    @Deprecated
     public double left() { 
         return min;
     }
@@ -89,6 +89,7 @@ public class Interval1D {
      * @return the right endpoint of this interval
      * @deprecated Replaced by {@link #max()}.
      */
+    @Deprecated
     public double right() { 
         return max;
     }
@@ -251,7 +252,7 @@ public class Interval1D {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

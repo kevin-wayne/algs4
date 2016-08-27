@@ -226,6 +226,7 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * @param key the key to associate with i
 	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
+	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	
 	public void decreaseKey(int i, Key key) {
@@ -468,7 +469,7 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

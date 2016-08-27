@@ -59,7 +59,6 @@ import java.util.NoSuchElementException;
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link RedBlackBST},
  *  {@link SeparateChainingHashST}, and {@link LinearProbingHashST},
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -522,7 +521,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

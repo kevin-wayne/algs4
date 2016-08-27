@@ -536,7 +536,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
      * @param k the order statistic
      * @return the kth smallest key in the symbol table
      * @throws IllegalArgumentException unless {@code k} is between 0 and
-     *             {@code  size() -1 }
+     *             {@code size() -1 }
      */
     public Key select(int k) {
         if (k < 0 || k >= size()) throw new IllegalArgumentException("k is not in range 0-" + (size() - 1));
@@ -807,7 +807,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

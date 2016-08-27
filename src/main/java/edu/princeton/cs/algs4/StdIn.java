@@ -506,6 +506,7 @@ public final class StdIn {
      * @throws InputMismatchException if any token cannot be parsed as an {@code int}
      * @deprecated Replaced by {@link #readAllInts()}.
      */
+    @Deprecated
     public static int[] readInts() {
         return readAllInts();
     }
@@ -517,6 +518,7 @@ public final class StdIn {
      * @throws InputMismatchException if any token cannot be parsed as a {@code double}
      * @deprecated Replaced by {@link #readAllDoubles()}.
      */
+    @Deprecated
     public static double[] readDoubles() {
         return readAllDoubles();
     }
@@ -526,6 +528,7 @@ public final class StdIn {
      * @return all remaining tokens, as an array of strings
      * @deprecated Replaced by {@link #readAllStrings()}.
      */
+    @Deprecated
     public static String[] readStrings() {
         return readAllStrings();
     }
@@ -561,7 +564,7 @@ public final class StdIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

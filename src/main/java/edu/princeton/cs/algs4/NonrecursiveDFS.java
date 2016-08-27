@@ -3,6 +3,8 @@
  *  Execution:    java NonrecursiveDFS graph.txt s
  *  Dependencies: Graph.java Queue.java Stack.java StdOut.java
  *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *                http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
  *
  *  Run nonrecurisve depth-first search on an undirected graph.
  *  Runs in O(E + V) time.
@@ -117,7 +119,7 @@ public class NonrecursiveDFS {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

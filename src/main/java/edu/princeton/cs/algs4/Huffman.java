@@ -5,6 +5,8 @@
  *  Dependencies: BinaryIn.java BinaryOut.java
  *  Data files:   http://algs4.cs.princeton.edu/55compression/abra.txt
  *                http://algs4.cs.princeton.edu/55compression/tinytinyTale.txt
+ *                http://algs4.cs.princeton.edu/55compression/medTale.txt
+ *                http://algs4.cs.princeton.edu/55compression/tale.txt
  *
  *  Compress or expand a binary input stream using the Huffman algorithm.
  *
@@ -209,7 +211,7 @@ public class Huffman {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

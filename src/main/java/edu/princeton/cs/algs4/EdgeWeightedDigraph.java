@@ -1,7 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac EdgeWeightedDigraph.java
- *  Execution:    java EdgeWeightedDigraph V E
+ *  Execution:    java EdgeWeightedDigraph digraph.txt
  *  Dependencies: Bag.java DirectedEdge.java
+ *  Data files:   http://algs4.cs.princeton.edu/44st/tinyEWD.txt
+ *                http://algs4.cs.princeton.edu/44st/mediumEWD.txt
+ *                http://algs4.cs.princeton.edu/44st/largeEWD.txt
  *
  *  An edge-weighted digraph, implemented using adjacency lists.
  *
@@ -141,7 +144,7 @@ public class EdgeWeightedDigraph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 &lt;= v &lt; V
+    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
             throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
@@ -151,7 +154,8 @@ public class EdgeWeightedDigraph {
      * Adds the directed edge {@code e} to this edge-weighted digraph.
      *
      * @param  e the edge
-     * @throws IndexOutOfBoundsException unless endpoints of edge are between 0 and V-1
+     * @throws IndexOutOfBoundsException unless endpoints of edge are between {@code 0}
+     *         and {@code V-1}
      */
     public void addEdge(DirectedEdge e) {
         int v = e.from();
@@ -169,7 +173,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> adj(int v) {
         validateVertex(v);
@@ -182,7 +186,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the outdegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -195,7 +199,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the indegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public int indegree(int v) {
         validateVertex(v);
@@ -250,7 +254,7 @@ public class EdgeWeightedDigraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

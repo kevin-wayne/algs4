@@ -1,15 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac LinearProbingHashST.java
- *  Execution:    java LinearProbingHashST
+ *  Execution:    java LinearProbingHashST < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   http://algs4.cs.princeton.edu/34hash/tinyST.txt
  *  
- *  Symbol table implementation with linear probing hash table.
- *
- *  % java LinearProbingHashST
- *  128.112.136.11
- *  208.216.181.15
- *  null
- *
+ *  Symbol-table implementation with linear-probing hash table.
  *
  ******************************************************************************/
 
@@ -266,7 +261,7 @@ public class LinearProbingHashST<Key, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
