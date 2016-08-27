@@ -205,7 +205,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to decrease
      * @param  key decrease the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
-     * @throws IllegalArgumentException if key >= key associated with index {@code i}
+     * @throws IllegalArgumentException if key &gt;= key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void decreaseKey(int i, Key key) {
@@ -223,7 +223,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to increase
      * @param  key increase the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
-     * @throws IllegalArgumentException if key <= key associated with index {@code i}
+     * @throws IllegalArgumentException if key &lt;= key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void increaseKey(int i, Key key) {
