@@ -63,7 +63,7 @@ public class DijkstraSP {
      * @param  G the edge-weighted digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
+     * @throws IllegalArgumentException unless 0 &le; {@code s} &le; {@code V} - 1
      */
     public DijkstraSP(EdgeWeightedDigraph G, int s) {
         for (DirectedEdge e : G.edges()) {

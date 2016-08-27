@@ -30,8 +30,8 @@ package edu.princeton.cs.algs4;
  *  scaling the results to be probability distributions.
  *  <p><blockquote><pre>
  *  (P)  max  y^T 1         (D)  min   1^T x
- *       s.t  A^T y <= 1         s.t   A x >= 1
- *                y >= 0                 x >= 0
+ *       s.t  A^T y &lt;= 1         s.t   A x &gt;= 1
+ *                y &gt;= 0                 x &gt;= 0
  *  </pre></blockquote><p>
  *  If the payoff matrix <em>A</em> has any negative entries, we add
  *  the same constant to every entry so that every entry is positive.

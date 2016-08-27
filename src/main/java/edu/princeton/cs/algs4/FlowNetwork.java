@@ -43,7 +43,7 @@ public class FlowNetwork {
     /**
      * Initializes an empty flow network with {@code V} vertices and 0 edges.
      * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
      */
     public FlowNetwork(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be nonnegative");
@@ -59,8 +59,8 @@ public class FlowNetwork {
      * The capacities are integers between 0 and 99 and the flow values are zero.
      * param V the number of vertices
      * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
-     * @throws java.lang.IllegalArgumentException if {@code E} < 0
+     * @throws java.lang.IllegalArgumentException if {@code V} &lt; 0
+     * @throws java.lang.IllegalArgumentException if {@code E} &lt; 0
      */
     public FlowNetwork(int V, int E) {
         this(V);

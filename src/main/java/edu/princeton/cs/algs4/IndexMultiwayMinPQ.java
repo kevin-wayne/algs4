@@ -52,8 +52,8 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
      * Worst case is O(n)
      * @param N number of keys in the priority queue, index from 0 to N-1
      * @param D dimension of the heap
-     * @throws java.lang.IllegalArgumentException if N < 0
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if N &lt; 0
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public IndexMultiwayMinPQ(int N, int D) {
 		if (N < 0) throw new IllegalArgumentException("Maximum number of elements cannot be negative");
@@ -73,8 +73,8 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
      * @param N number of keys in the priority queue, index from 0 to N-1
      * @param D dimension of the heap
      * @param C a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if N < 0
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if N &lt; 0
+     * @throws java.lang.IllegalArgumentException if D &lt; 2
      */
 	public IndexMultiwayMinPQ(int N, Comparator<Key> C, int D) {
 		if (N < 0) throw new IllegalArgumentException("Maximum number of elements cannot be negative");

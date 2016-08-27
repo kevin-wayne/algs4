@@ -57,7 +57,7 @@ public class EdgeWeightedGraph {
      * Initializes an empty edge-weighted graph with {@code V} vertices and 0 edges.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code V} &lt; 0
      */
     public EdgeWeightedGraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -74,8 +74,8 @@ public class EdgeWeightedGraph {
      *
      * @param  V the number of vertices
      * @param  E the number of edges
-     * @throws IllegalArgumentException if {@code V} < 0
-     * @throws IllegalArgumentException if {@code E} < 0
+     * @throws IllegalArgumentException if {@code V} &lt; 0
+     * @throws IllegalArgumentException if {@code E} &lt; 0
      */
     public EdgeWeightedGraph(int V, int E) {
         this(V);
@@ -179,7 +179,7 @@ public class EdgeWeightedGraph {
      *
      * @param  v the vertex
      * @return the edges incident on vertex {@code v} as an Iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public Iterable<Edge> adj(int v) {
         validateVertex(v);
@@ -191,7 +191,7 @@ public class EdgeWeightedGraph {
      *
      * @param  v the vertex
      * @return the degree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless 0 &lt;= v &lt; V
      */
     public int degree(int v) {
         validateVertex(v);

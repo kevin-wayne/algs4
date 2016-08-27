@@ -13,7 +13,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code QuickFindUF} class represents a <em>union–find data type</em>
+ *  The {@code QuickFindUF} class represents a <em>union-find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
  *  It supports the <em>union</em> and <em>find</em> operations,
  *  along with a <em>connected</em> operation for determining whether
@@ -25,12 +25,12 @@ package edu.princeton.cs.algs4;
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
- *  <p><li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.
- *  <p><li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
- *          then <em>q</em> is connected to <em>p</em>.
- *  <p><li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
+ *  <li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.</li>
+ *  <li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
+ *          then <em>q</em> is connected to <em>p</em>.</li>
+ *  <li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
  *          and <em>q</em> is connected to <em>r</em>, then
- *          <em>p</em> is connected to <em>r</em>.
+ *          <em>p</em> is connected to <em>r</em>.</li>
  *  </ul>
  *  <p>
  *  An equivalence relation partitions the sites into
@@ -45,18 +45,18 @@ package edu.princeton.cs.algs4;
  *  two sites have the same component identifier if and only if they are
  *  in the same component.
  *  <ul>
- *  <p><li><em>union</em>(<em>p</em>, <em>q</em>) adds a
+ *  <li><em>union</em>(<em>p</em>, <em>q</em>) adds a
  *         connection between the two sites <em>p</em> and <em>q</em>.
  *         If <em>p</em> and <em>q</em> are in different components,
  *         then it replaces
  *         these two components with a new component that is the union of
- *         the two.
- *  <p><li><em>find</em>(<em>p</em>) returns the component
- *         identifier of the component containing <em>p</em>.
- *  <p><li><em>connected</em>(<em>p</em>, <em>q</em>)
+ *         the two.</li>
+ *  <li><em>find</em>(<em>p</em>) returns the component
+ *         identifier of the component containing <em>p</em>.</li>
+ *  <li><em>connected</em>(<em>p</em>, <em>q</em>)
  *         returns true if both <em>p</em> and <em>q</em>
- *         are in the same component, and false otherwise.
- *  <p><li><em>count</em>() returns the number of components.
+ *         are in the same component, and false otherwise.</li>
+ *  <li><em>count</em>() returns the number of components.</li>
  *  </ul>
  *  <p>
  *  The component identifier of a component can change
@@ -113,7 +113,7 @@ public class QuickFindUF {
      *
      * @param  p the integer representing one site
      * @return the component identifier for the component containing site {@code p}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= p < n}
+     * @throws IndexOutOfBoundsException unless {@code 0 &le; p &lt; n}
      */
     public int find(int p) {
         validate(p);
@@ -136,7 +136,7 @@ public class QuickFindUF {
      * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
      *         {@code false} otherwise
      * @throws IndexOutOfBoundsException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
+     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
      */
     public boolean connected(int p, int q) {
         validate(p);
@@ -151,7 +151,7 @@ public class QuickFindUF {
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
      * @throws IndexOutOfBoundsException unless
-     *         both {@code 0 <= p < n} and {@code 0 <= q < n}
+     *         both {@code 0 &le; p &lt; n} and {@code 0 &le; q &lt; n}
      */
     public void union(int p, int q) {
         validate(p);

@@ -245,7 +245,7 @@ public final class BinaryStdIn {
      * Reads the next 64 bits from standard input and return as a 64-bit double.
      *
      * @return the next 64 bits of data from standard input as a {@code double}
-     * @throws RuntimeExceptionArgument if there are fewer than 64 bits available on standard input
+     * @throws RuntimeException if there are fewer than 64 bits available on standard input
      */
     public static double readDouble() {
         return Double.longBitsToDouble(readLong());
