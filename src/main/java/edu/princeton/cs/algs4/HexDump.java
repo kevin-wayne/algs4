@@ -53,6 +53,8 @@ public class HexDump {
      * per line, where k is given as a command-line integer (defaults
      * to 16 if no integer is specified); also writes the number
      * of bits.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int bytesPerLine = 16;

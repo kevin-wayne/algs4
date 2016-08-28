@@ -558,6 +558,8 @@ public final class In {
     
    /**
      * Unit tests the {@code In} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in;

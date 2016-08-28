@@ -325,6 +325,8 @@ public class GaussianElimination {
 
     /**
      * Unit tests the {@code GaussianElimination} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         test1();

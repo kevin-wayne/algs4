@@ -198,6 +198,8 @@ public class DirectedEulerianCycle {
 
     /**
      * Unit tests the {@code DirectedEulerianCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

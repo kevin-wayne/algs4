@@ -162,6 +162,8 @@ public class QuickX {
      * Reads in a sequence of strings from standard input; quicksorts them
      * (using an optimized version of quicksort); 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

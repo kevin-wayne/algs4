@@ -200,6 +200,8 @@ public class SparseVector {
 
     /**
      * Unit tests the {@code SparseVector} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         SparseVector a = new SparseVector(10);

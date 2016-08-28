@@ -176,6 +176,8 @@ public class KruskalMST {
 
     /**
      * Unit tests the {@code KruskalMST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

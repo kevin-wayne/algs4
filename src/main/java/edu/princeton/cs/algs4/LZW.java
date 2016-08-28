@@ -97,6 +97,8 @@ public class LZW {
     /**
      * Sample client that calls {@code compress()} if the command-line
      * argument is "-" an {@code expand()} if it is "+".
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();

@@ -234,7 +234,7 @@ public class GraphGenerator {
      * @param  E the number of edges in the cycle
      * @return a graph that is an Eulerian cycle on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V <= 0 or E <= 0
+     * @throws IllegalArgumentException if either {@code V <= 0} or {@code E <= 0}
      */
     public static Graph eulerianCycle(int V, int E) {
         if (E <= 0)
@@ -259,7 +259,7 @@ public class GraphGenerator {
      * @param  E the number of edges in the path
      * @return a graph that is an Eulerian path on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V <= 0 or E < 0
+     * @throws IllegalArgumentException if either {@code V <= 0} or {@code E < 0}
      */
     public static Graph eulerianPath(int V, int E) {
         if (E < 0)
@@ -330,7 +330,9 @@ public class GraphGenerator {
      * Returns a uniformly random {@code k}-regular graph on {@code V} vertices
      * (not necessarily simple). The graph is simple with probability only about e^(-k^2/4),
      * which is tiny when k = 14.
+     *
      * @param V the number of vertices in the graph
+     * @param k degree of each vertex
      * @return a uniformly random {@code k}-regular graph on {@code V} vertices.
      */
     public static Graph regular(int V, int k) {
@@ -401,6 +403,8 @@ public class GraphGenerator {
 
     /**
      * Unit tests the {@code GraphGenerator} library.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

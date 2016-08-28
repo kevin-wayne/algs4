@@ -142,6 +142,8 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Unit tests the {@code EdgeWeightedDirectedCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

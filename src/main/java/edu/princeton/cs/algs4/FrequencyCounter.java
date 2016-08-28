@@ -49,6 +49,8 @@ public class FrequencyCounter {
      * the threshold) that occurs most frequently to standard output.
      * It also prints out the number of words whose length exceeds
      * the threshold and the number of distinct such words.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int distinct = 0, words = 0;

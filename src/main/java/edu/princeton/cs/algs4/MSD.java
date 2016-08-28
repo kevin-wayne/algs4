@@ -212,6 +212,8 @@ public class MSD {
      * Reads in a sequence of extended ASCII strings from standard input;
      * MSD radix sorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

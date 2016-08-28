@@ -575,6 +575,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     /**
      * Returns all keys in the symbol table in the given range,
      * as an {@code Iterable}.
+     *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
      * @return all keys in the sybol table between {@code lo} 
      *    (inclusive) and {@code hi} (exclusive) as an {@code Iterable}
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -603,6 +606,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 
     /**
      * Returns the number of keys in the symbol table in the given range.
+     *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
      * @return the number of keys in the sybol table between {@code lo} 
      *    (inclusive) and {@code hi} (exclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -695,6 +701,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 
     /**
      * Unit tests the {@code RedBlackBST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         RedBlackBST<String, Integer> st = new RedBlackBST<String, Integer>();

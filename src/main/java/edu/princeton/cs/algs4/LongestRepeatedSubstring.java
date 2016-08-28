@@ -79,6 +79,8 @@ public class LongestRepeatedSubstring {
 
     /**
      * Unit tests the {@code lrs()} method.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String text = StdIn.readAll().replaceAll("\\s+", " ");

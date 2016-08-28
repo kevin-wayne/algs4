@@ -88,6 +88,8 @@ public class DegreesOfSeparation {
      *  Each line in the file contains the name of a vertex, followed by a
      *  list of the names of the vertices adjacent to that vertex,
      *  separated by the delimiter.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String filename  = args[0];

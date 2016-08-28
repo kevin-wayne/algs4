@@ -206,6 +206,8 @@ public class PrimMST {
 
     /**
      * Unit tests the {@code PrimMST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

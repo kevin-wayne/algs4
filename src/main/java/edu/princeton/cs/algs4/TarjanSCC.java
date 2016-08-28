@@ -146,6 +146,8 @@ public class TarjanSCC {
 
     /**
      * Unit tests the {@code TarjanSCC} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

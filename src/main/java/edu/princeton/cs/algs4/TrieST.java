@@ -263,6 +263,8 @@ public class TrieST<Value> {
 
     /**
      * Unit tests the {@code TrieST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

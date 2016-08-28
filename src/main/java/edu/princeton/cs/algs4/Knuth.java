@@ -87,6 +87,8 @@ public class Knuth {
     /**
      * Reads in a sequence of strings from standard input, shuffles
      * them, and prints out the results.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

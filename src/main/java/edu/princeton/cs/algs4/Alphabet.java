@@ -237,6 +237,8 @@ public class Alphabet {
 
     /**
      * Unit tests the {@code Alphabet} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int[]  encoded1 = Alphabet.BASE64.toIndices("NowIsTheTimeForAllGoodMen");

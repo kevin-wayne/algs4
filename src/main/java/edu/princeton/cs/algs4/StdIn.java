@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
  *  The {@code StdIn} class provides static methods for reading strings
  *  and numbers from standard input.
  *  These functions fall into one of four categories:
- *  <p>
  *  <ul>
  *  <li>those for reading individual tokens from standard input, one at a time,
  *      and converting each to a number, string, or boolean
@@ -536,6 +535,8 @@ public final class StdIn {
 
     /**
      * Interactive test of basic functionality.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

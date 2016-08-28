@@ -145,6 +145,8 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
 
    /**
      * Unit tests the {@code ResizingArrayQueue} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         ResizingArrayQueue<String> queue = new ResizingArrayQueue<String>();

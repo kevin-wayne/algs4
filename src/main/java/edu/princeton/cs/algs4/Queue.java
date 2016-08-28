@@ -160,6 +160,8 @@ public class Queue<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code Queue} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Queue<String> queue = new Queue<String>();

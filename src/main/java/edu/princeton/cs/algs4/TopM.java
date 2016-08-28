@@ -41,6 +41,8 @@ public class TopM {
      *  Reads a sequence of transactions from standard input; takes a
      *  command-line integer m; prints to standard output the m largest
      *  transactions in descending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int m = Integer.parseInt(args[0]); 

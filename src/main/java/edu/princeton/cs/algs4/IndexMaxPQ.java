@@ -52,7 +52,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * and {@code maxN - 1}.
      *
      * @param  maxN the keys on this priority queue are index from {@code 0} to {@code maxN - 1}
-     * @throws IllegalArgumentException if maxN < 0
+     * @throws IllegalArgumentException if {@code maxN < 0}
      */
     public IndexMaxPQ(int maxN) {
         if (maxN < 0) throw new IllegalArgumentException();
@@ -200,7 +200,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to increase
      * @param  key increase the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
-     * @throws IllegalArgumentException if key <= key associated with index {@code i}
+     * @throws IllegalArgumentException if {@code key <=} key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void increaseKey(int i, Key key) {
@@ -218,7 +218,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i the index of the key to decrease
      * @param  key decrease the key associated with index {@code i} to this key
      * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
-     * @throws IllegalArgumentException if key >= key associated with index {@code i}
+     * @throws IllegalArgumentException if {@code key >=} key associated with index {@code i}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void decreaseKey(int i, Key key) {
@@ -319,6 +319,8 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
 
     /**
      * Unit tests the {@code IndexMaxPQ} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         // insert a bunch of strings

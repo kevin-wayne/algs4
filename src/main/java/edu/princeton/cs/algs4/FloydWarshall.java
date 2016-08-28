@@ -193,6 +193,8 @@ public class FloydWarshall {
 
     /**
      * Unit tests the {@code FloydWarshall} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

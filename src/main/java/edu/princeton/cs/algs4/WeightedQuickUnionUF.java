@@ -25,12 +25,12 @@ package edu.princeton.cs.algs4;
  *  The <em>is-connected-to</em> relation must be an 
  *  <em>equivalence relation</em>:
  *  <ul>
- *  <p><li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.
- *  <p><li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
- *          then <em>q</em> is connected to <em>p</em>.
- *  <p><li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
- *          and <em>q</em> is connected to <em>r</em>, then
- *          <em>p</em> is connected to <em>r</em>.
+ *  <li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.
+ *  <li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
+ *       then <em>q</em> is connected to <em>p</em>.
+ *  <li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
+ *       and <em>q</em> is connected to <em>r</em>, then
+ *       <em>p</em> is connected to <em>r</em>.
  *  </ul>
  *  <p>
  *  An equivalence relation partitions the sites into
@@ -45,18 +45,18 @@ package edu.princeton.cs.algs4;
  *  two sites have the same component identifier if and only if they are
  *  in the same component.
  *  <ul>
- *  <p><li><em>union</em>(<em>p</em>, <em>q</em>) adds a
- *         connection between the two sites <em>p</em> and <em>q</em>.
- *         If <em>p</em> and <em>q</em> are in different components,
- *         then it replaces
- *         these two components with a new component that is the union of
- *         the two.
- *  <p><li><em>find</em>(<em>p</em>) returns the component
- *         identifier of the component containing <em>p</em>.
- *  <p><li><em>connected</em>(<em>p</em>, <em>q</em>)
- *         returns true if both <em>p</em> and <em>q</em>
- *         are in the same component, and false otherwise.
- *  <p><li><em>count</em>() returns the number of components.
+ *  <li><em>union</em>(<em>p</em>, <em>q</em>) adds a
+ *      connection between the two sites <em>p</em> and <em>q</em>.
+ *      If <em>p</em> and <em>q</em> are in different components,
+ *      then it replaces
+ *      these two components with a new component that is the union of
+ *      the two.
+ *  <li><em>find</em>(<em>p</em>) returns the component
+ *      identifier of the component containing <em>p</em>.
+ *  <li><em>connected</em>(<em>p</em>, <em>q</em>)
+ *      returns true if both <em>p</em> and <em>q</em>
+ *      are in the same component, and false otherwise.
+ *  <li><em>count</em>() returns the number of components.
  *  </ul>
  *  <p>
  *  The component identifier of a component can change
@@ -179,6 +179,8 @@ public class WeightedQuickUnionUF {
      * where each integer represents some object;
      * if the sites are in different components, merge the two components
      * and print the pair to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = StdIn.readInt();

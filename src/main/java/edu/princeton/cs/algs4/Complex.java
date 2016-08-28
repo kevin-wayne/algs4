@@ -237,6 +237,8 @@ public class Complex {
 
     /**
      * Unit tests the {@code Complex} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Complex a = new Complex(5.0, 6.0);

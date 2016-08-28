@@ -45,7 +45,6 @@ package edu.princeton.cs.algs4;
  *  Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
  *  operation takes take time proportional to <em>V</em>.
  *  <p>
- *  <p>
  *  For additional documentation,
  *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -196,6 +195,8 @@ public class DepthFirstOrder {
 
     /**
      * Unit tests the {@code DepthFirstOrder} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

@@ -92,11 +92,13 @@ public class Quick {
     }
 
     /**
-     * Rearranges the array so that a[k] contains the kth smallest key;
-     * a[0] through a[k-1] are less than (or equal to) a[k]; and
-     * a[k+1] through a[N-1] are greater than (or equal to) a[k].
-     * @param a the array
-     * @param k find the kth smallest
+     * Rearranges the array so that {@code a[k]} contains the kth smallest key;
+     * {@code a[0]} through {@code a[k-1]} are less than (or equal to) {@code a[k]}; and
+     * {@code a[k+1]} through {@code a[n-1]} are greater than (or equal to) {@code a[k]}.
+     *
+     * @param  a the array
+     * @param  k the rank of the key
+     * @return the key of rank {@code k}
      */
     public static Comparable select(Comparable[] a, int k) {
         if (k < 0 || k >= a.length) {
@@ -158,6 +160,8 @@ public class Quick {
      * and prints them to standard output in ascending order. 
      * Shuffles the array and then prints the strings again to
      * standard output, but this time, using the select method.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

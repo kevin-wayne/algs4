@@ -384,8 +384,10 @@ public class BST<Key extends Comparable<Key>, Value> {
      * Returns all keys in the symbol table in the given range,
      * as an {@code Iterable}.
      *
-     * @return all keys in the sybol table between {@code lo} 
-     *         (inclusive) and {@code hi} (exclusive)
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
+     * @return all keys in the symbol table between {@code lo} 
+     *         (inclusive) and {@code hi} (inclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
      *         is {@code null}
      */
@@ -410,6 +412,8 @@ public class BST<Key extends Comparable<Key>, Value> {
     /**
      * Returns the number of keys in the symbol table in the given range.
      *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
      * @return the number of keys in the sybol table between {@code lo} 
      *         (inclusive) and {@code hi} (exclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -502,6 +506,8 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     /**
      * Unit tests the {@code BST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         BST<String, Integer> st = new BST<String, Integer>();

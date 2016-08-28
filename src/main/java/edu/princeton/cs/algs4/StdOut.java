@@ -305,6 +305,8 @@ public final class StdOut {
 
    /**
      * Unit tests some of the methods in {@code StdOut}.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

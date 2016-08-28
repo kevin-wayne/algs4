@@ -130,7 +130,9 @@ public class MergeX {
 
     /**
      * Rearranges the array in ascending order, using the provided order.
+     *
      * @param a the array to be sorted
+     * @param comparator the comparator that defines the total order
      */
     public static void sort(Object[] a, Comparator comparator) {
         Object[] aux = a.clone();
@@ -218,6 +220,8 @@ public class MergeX {
      * Reads in a sequence of strings from standard input; mergesorts them
      * (using an optimized version of mergesort); 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

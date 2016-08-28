@@ -361,6 +361,8 @@ public final class BinaryIn {
      * Unit tests the {@code BinaryIn} data type.
      * Reads the name of a file or URL (first command-line argument)
      * and writes it to a file (second command-line argument).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         BinaryIn  in  = new BinaryIn(args[0]);

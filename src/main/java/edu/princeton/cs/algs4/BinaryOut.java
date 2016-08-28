@@ -320,6 +320,8 @@ public final class BinaryOut {
    /**
      * Test client. Read bits from standard input and write to the file
      * specified on command line.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

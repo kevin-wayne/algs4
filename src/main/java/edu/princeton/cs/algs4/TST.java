@@ -242,6 +242,8 @@ public class TST<Value> {
 
     /**
      * Unit tests the {@code TST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

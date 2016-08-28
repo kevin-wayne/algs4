@@ -193,6 +193,8 @@ public class LazyPrimMST {
     
     /**
      * Unit tests the {@code LazyPrimMST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

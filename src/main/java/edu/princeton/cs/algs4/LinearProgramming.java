@@ -17,9 +17,9 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code LinearProgramming} class represents a data type for solving a
- *  linear program of the form { max cx : Ax <= b, x >= 0 }, where A is a m-by-n
+ *  linear program of the form { max cx : Ax &le; b, x &ge; 0 }, where A is a m-by-n
  *  matrix, b is an m-length vector, and c is an n-length vector. For simplicity,
- *  we assume that A is of full rank and that b >= 0 so that x = 0 is a basic
+ *  we assume that A is of full rank and that b &ge; 0 so that x = 0 is a basic
  *  feasible soution.
  *  <p>
  *  The data type supplies methods for determining the optimal primal and
@@ -48,13 +48,13 @@ public class LinearProgramming {
 
     /**
      * Determines an optimal solution to the linear program
-     * { max cx : Ax <= b, x >= 0 }, where A is a m-by-n
+     * { max cx : Ax &le; b, x &ge; 0 }, where A is a m-by-n
      * matrix, b is an m-length vector, and c is an n-length vector.
      *
-     * @param  A the <em>m</em>-by-<em>N</em> matrix
+     * @param  A the <em>m</em>-by-<em>b</em> matrix
      * @param  b the <em>m</em>-length RHS vector
      * @param  c the <em>n</em>-length cost vector
-     * @throws IllegalArgumentException unless b[i] >= 0 for each i
+     * @throws IllegalArgumentException unless {@code b[i] >= 0} for each {@code i}
      * @throws ArithmeticException if the linear program is unbounded
      */ 
     public LinearProgramming(double[][] A, double[] b, double[] c) {
@@ -347,6 +347,8 @@ public class LinearProgramming {
 
     /**
      * Unit tests the {@code LinearProgramming} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

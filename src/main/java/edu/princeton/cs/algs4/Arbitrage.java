@@ -50,6 +50,8 @@ public class Arbitrage {
     /**
      *  Reads the currency exchange table from standard input and
      *  prints an arbitrage opportunity to standard output (if one exists).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

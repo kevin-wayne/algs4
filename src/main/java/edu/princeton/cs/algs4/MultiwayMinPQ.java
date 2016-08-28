@@ -41,63 +41,67 @@ public class MultiwayMinPQ<Key> implements Iterable<Key> {
     /**
      * Initializes an empty priority queue
      * Worst case is O(d)
-     * @param D dimension of the heap
-     * @throws java.lang.IllegalArgumentException if D < 2
+     *
+     * @param  d dimension of the heap
+     * @throws java.lang.IllegalArgumentException if {@code d < 2}
      */
-	public MultiwayMinPQ(int D) {
-		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
-		this.d = D;
+	public MultiwayMinPQ(int d) {
+		if (d < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
+		this.d = d;
 		order = 1;
-		keys = (Key[]) new Comparable[D << 1];
+		keys = (Key[]) new Comparable[d << 1];
 		comp = new MyComparator();
 	}
 	
     /**
      * Initializes an empty priority queue
      * Worst case is O(d)
-     * @param D dimension of the heap
-     * @param C a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     *
+     * @param  d dimension of the heap
+     * @param  comparator a Comparator over the keys
+     * @throws java.lang.IllegalArgumentException if {@code d < 2}
      */
-	public MultiwayMinPQ(Comparator<Key> C, int D) {
-		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
-		this.d = D;
+	public MultiwayMinPQ(Comparator<Key> comparator, int d) {
+		if (d < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
+		this.d = d;
 		order = 1;
-		keys = (Key[]) new Comparable[D << 1];
-		comp = C;
+		keys = (Key[]) new Comparable[d << 1];
+		comp = comparator;
 	}
 	
     /**
      * Initializes a priority queue with given indexes
      * Worst case is O(n*log-d(n))
-     * @param D dimension of the heap
-     * @param a an array of keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     *
+     * @param  d dimension of the heap
+     * @param  a an array of keys
+     * @throws java.lang.IllegalArgumentException if {@code d < 2}
      */
-	public MultiwayMinPQ(Key[] a, int D) {
-		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
-		this.d = D;
+	public MultiwayMinPQ(Key[] a, int d) {
+		if (d < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
+		this.d = d;
 		order = 1;
-		keys = (Key[]) new Comparable[D << 1];
+		keys = (Key[]) new Comparable[d << 1];
 		comp = new MyComparator();
-		for (Key k : a) insert(k);
+		for (Key key : a) insert(key);
 	}
 	
     /**
      * Initializes a priority queue with given indexes
      * Worst case is O(a*log-d(n))
-     * @param D dimension of the heap
-     * @param C a Comparator over the keys
-     * @param a an array of keys
-     * @throws java.lang.IllegalArgumentException if D < 2
+     *
+     * @param  d dimension of the heap
+     * @param  comparator a Comparator over the keys
+     * @param  a an array of keys
+     * @throws java.lang.IllegalArgumentException if {@code d < 2}
      */
-	public MultiwayMinPQ(Comparator<Key> C, Key[] a, int D) {
-		if (D < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
-		this.d = D;
+	public MultiwayMinPQ(Comparator<Key> comparator, Key[] a, int d) {
+		if (d < 2) throw new IllegalArgumentException("Dimension should be 2 or over");
+		this.d = d;
 		order = 1;
-		keys = (Key[]) new Comparable[D << 1];
-		comp = C;
-		for (Key k : a) insert(k);
+		keys = (Key[]) new Comparable[d << 1];
+		comp = comparator;
+		for (Key key : a) insert(key);
 	}
 
         /**

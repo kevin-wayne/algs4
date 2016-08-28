@@ -65,7 +65,7 @@ public class Digraph {
      * Initializes an empty digraph with <em>V</em> vertices.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if V < 0
+     * @throws IllegalArgumentException if {@code V < 0}
      */
     public Digraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -158,7 +158,7 @@ public class Digraph {
     }
 
     /**
-     * Adds the directed edge v->w to this digraph.
+     * Adds the directed edge v→w to this digraph.
      *
      * @param  v the tail vertex
      * @param  w the head vertex
@@ -246,6 +246,8 @@ public class Digraph {
 
     /**
      * Unit tests the {@code Digraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

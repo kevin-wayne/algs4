@@ -54,6 +54,8 @@ public class DoublingRatio {
      * Prints table of running times to call {@code ThreeSum.count()}
      * for arrays of size 250, 500, 1000, 2000, and so forth, along
      * with ratios of running times between successive array sizes.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         double prev = timeTrial(125);

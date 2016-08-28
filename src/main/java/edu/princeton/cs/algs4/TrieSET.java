@@ -238,6 +238,8 @@ public class TrieSET implements Iterable<String> {
 
     /**
      * Unit tests the {@code TrieSET} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         TrieSET set = new TrieSET();

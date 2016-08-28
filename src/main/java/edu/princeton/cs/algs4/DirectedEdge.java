@@ -80,6 +80,8 @@ public class DirectedEdge {
 
     /**
      * Unit tests the {@code DirectedEdge} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         DirectedEdge e = new DirectedEdge(12, 34, 5.67);

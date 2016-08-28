@@ -451,6 +451,8 @@ public final class StdStats {
    /**
      * Unit tests {@code StdStats}.
      * Convert command-line arguments to array of doubles and call various methods.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         double[] a = StdArrayIO.readDouble1D();

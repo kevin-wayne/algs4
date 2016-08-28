@@ -216,6 +216,8 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 
     /**
      * Unit tests the {@code ST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         ST<String, Integer> st = new ST<String, Integer>();

@@ -61,6 +61,8 @@ public class StopwatchCPU {
      * It prints to standard output the sum and the amount of time to
      * compute the sum. Note that the discrete sum can be approximated by
      * an integral - the sum should be approximately 2/3 * (n^(3/2) - 1).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);

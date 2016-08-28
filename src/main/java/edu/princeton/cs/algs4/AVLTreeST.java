@@ -684,6 +684,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     /**
      * Returns the number of keys in the symbol table in the given range.
      * 
+     * @param lo minimum endpoint
+     * @param hi maximum endpoint
      * @return the number of keys in the symbol table between {@code lo}
      *         (inclusive) and {@code hi} (exclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -793,6 +795,8 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
 
     /**
      * Unit tests the {@code AVLTreeST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         AVLTreeST<String, Integer> st = new AVLTreeST<String, Integer>();

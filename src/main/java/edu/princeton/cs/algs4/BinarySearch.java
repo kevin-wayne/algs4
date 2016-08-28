@@ -85,6 +85,8 @@ public class BinarySearch {
      * Reads in a sequence of integers from the whitelist file, specified as
      * a command-line argument; reads in integers from standard input;
      * prints to standard output those integers that do <em>not</em> appear in the file.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

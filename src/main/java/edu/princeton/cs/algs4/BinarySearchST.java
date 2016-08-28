@@ -47,7 +47,7 @@ import java.util.NoSuchElementException;
  *  the key type implements the {@code Comparable} interface and calls the
  *  {@code compareTo()} and method to compare two keys. It does not call either
  *  {@code equals()} or {@code hashCode()}.
- *  The <em>put/em> and <em>remove</em> operations each take linear time in
+ *  The <em>put</em> and <em>remove</em> operations each take linear time in
  *  the worst case; the <em>contains</em>, <em>ceiling</em>, <em>floor</em>,
  *  and <em>rank</em> operations take logarithmic time; the <em>size</em>,
  *  <em>is-empty</em>, <em>minimum</em>, <em>maximum</em>, and <em>select</em>
@@ -75,6 +75,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     /**
      * Initializes an empty symbol table with the specified initial capacity.
+     * @param capacity the maximum capacity
      */
     public BinarySearchST(int capacity) { 
         keys = (Key[]) new Comparable[capacity]; 
@@ -331,6 +332,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     /**
      * Returns the number of keys in this symbol table in the specified range.
      *
+     * @param lo minimum endpoint
+     * @param hi maximum endpoint
      * @return the number of keys in this sybol table between {@code lo} 
      *         (inclusive) and {@code hi} (exclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -360,6 +363,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * Returns all keys in this symbol table in the given range,
      * as an {@code Iterable}.
      *
+     * @param lo minimum endpoint
+     * @param hi maximum endpoint
      * @return all keys in this symbol table between {@code lo} 
      *         (inclusive) and {@code hi} (exclusive)
      * @throws NullPointerException if either {@code lo} or {@code hi}
@@ -405,6 +410,8 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     /**
      * Unit tests the {@code BinarySearchST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>();

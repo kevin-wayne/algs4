@@ -107,6 +107,8 @@ public class Edge implements Comparable<Edge> {
 
     /**
      * Unit tests the {@code Edge} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Edge e = new Edge(12, 34, 5.67);

@@ -147,6 +147,8 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code Stack} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         ResizingArrayStack<String> stack = new ResizingArrayStack<String>();

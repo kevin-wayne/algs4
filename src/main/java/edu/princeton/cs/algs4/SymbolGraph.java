@@ -187,6 +187,8 @@ public class SymbolGraph {
 
     /**
      * Unit tests the {@code SymbolGraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String filename  = args[0];

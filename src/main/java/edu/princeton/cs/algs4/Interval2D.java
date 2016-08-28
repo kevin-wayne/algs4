@@ -11,11 +11,11 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code Interval2D} class represents a closed two-dimensional interval,
- *  which represents all points (x, y) with both xmin <= x <= xmax and
- *  ymin <= y <= ymax.
+ *  which represents all points (x, y) with both {@code xmin <= x <= xmax} and
+ *  {@code ymin <= y <= ymax}.
  *  Two-dimensional intervals are immutable: their values cannot be changed
  *  after they are created.
- *  The class <@code>Interval2D</@code> includes methods for checking whether
+ *  The class {@code Interval2D} includes methods for checking whether
  *  a two-dimensional interval contains a point and determining whether
  *  two two-dimensional intervals intersect.
  *  <p>
@@ -113,6 +113,8 @@ public class Interval2D {
 
     /**
      * Unit tests the {@code Interval2D} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         double xmin = Double.parseDouble(args[0]);

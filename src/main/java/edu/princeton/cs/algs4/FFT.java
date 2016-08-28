@@ -242,6 +242,8 @@ public class FFT {
 
     /**
      * Unit tests the {@code FFT} class.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         int n = Integer.parseInt(args[0]);

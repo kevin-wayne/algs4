@@ -93,6 +93,8 @@ public class Accumulator {
      * adds them to the accumulator; and prints the mean,
      * sample standard deviation, and sample variance to standard
      * output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Accumulator stats = new Accumulator();

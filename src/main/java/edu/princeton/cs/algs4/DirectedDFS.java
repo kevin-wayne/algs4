@@ -99,6 +99,8 @@ public class DirectedDFS {
 
     /**
      * Unit tests the {@code DirectedDFS} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

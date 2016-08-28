@@ -314,7 +314,7 @@ public class DigraphGenerator {
      * @param  E the number of edges in the cycle
      * @return a digraph that is a directed Eulerian cycle on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V <= 0 or E <= 0
+     * @throws IllegalArgumentException if either {@code V <= 0} or {@code E <= 0}
      */
     public static Digraph eulerianCycle(int V, int E) {
         if (E <= 0)
@@ -339,7 +339,7 @@ public class DigraphGenerator {
      * @param  E the number of edges in the path
      * @return a digraph that is a directed Eulerian path on {@code V} vertices
      *         and {@code E} edges
-     * @throws IllegalArgumentException if either V <= 0 or E < 0
+     * @throws IllegalArgumentException if either {@code V <= 0} or {@code E < 0}
      */
     public static Digraph eulerianPath(int V, int E) {
         if (E < 0)
@@ -441,6 +441,8 @@ public class DigraphGenerator {
 
     /**
      * Unit tests the {@code DigraphGenerator} library.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

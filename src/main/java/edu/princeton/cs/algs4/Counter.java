@@ -91,6 +91,8 @@ public class Counter implements Comparable<Counter> {
     /**
      * Reads two command-line integers n and trials; creates n counters;
      * increments trials counters at random; and prints results.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         int n = Integer.parseInt(args[0]);

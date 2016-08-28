@@ -133,6 +133,8 @@ public class GrahamScan {
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes their convex hull; and prints out the points on the
      * convex hull to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = StdIn.readInt();

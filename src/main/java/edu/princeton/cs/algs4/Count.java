@@ -56,6 +56,8 @@ public class Count {
      * occurrence of each character over the alphabet specified as a
      * commmand-line argument; and prints the frequencies to standard
      * output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Alphabet alphabet = new Alphabet(args[0]);

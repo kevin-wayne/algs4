@@ -259,6 +259,8 @@ public class StdArrayIO {
 
    /**
      * Unit tests {@code StdArrayIO}.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

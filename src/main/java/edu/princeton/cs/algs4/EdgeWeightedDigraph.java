@@ -47,7 +47,7 @@ public class EdgeWeightedDigraph {
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if {@code V} < 0
+     * @throws IllegalArgumentException if {@code V < 0}
      */
     public EdgeWeightedDigraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -64,8 +64,8 @@ public class EdgeWeightedDigraph {
      *
      * @param  V the number of vertices
      * @param  E the number of edges
-     * @throws IllegalArgumentException if {@code V} < 0
-     * @throws IllegalArgumentException if {@code E} < 0
+     * @throws IllegalArgumentException if {@code V < 0}
+     * @throws IllegalArgumentException if {@code E < 0}
      */
     public EdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -244,6 +244,8 @@ public class EdgeWeightedDigraph {
 
     /**
      * Unit tests the {@code EdgeWeightedDigraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

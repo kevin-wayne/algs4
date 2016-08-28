@@ -247,6 +247,8 @@ public class BTree<Key extends Comparable<Key>, Value>  {
 
     /**
      * Unit tests the {@code BTree} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         BTree<String, String> st = new BTree<String, String>();

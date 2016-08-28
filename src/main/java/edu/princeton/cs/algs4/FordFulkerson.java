@@ -52,9 +52,9 @@ public class FordFulkerson {
      * @param  G the flow network
      * @param  s the source vertex
      * @param  t the sink vertex
-     * @throws IndexOutOfBoundsException unless 0 <= s < V
-     * @throws IndexOutOfBoundsException unless 0 <= t < V
-     * @throws IllegalArgumentException if s = t
+     * @throws IndexOutOfBoundsException unless {@code 0 <= s < V}
+     * @throws IndexOutOfBoundsException unless {@code 0 <= t < V}
+     * @throws IllegalArgumentException if {@code s == t}
      * @throws IllegalArgumentException if initial flow is infeasible
      */
     public FordFulkerson(FlowNetwork G, int s, int t) {
@@ -97,9 +97,10 @@ public class FordFulkerson {
     /**
      * Returns true if the specified vertex is on the {@code s} side of the mincut.
      *
+     * @param  v vertex
      * @return {@code true} if vertex {@code v} is on the {@code s} side of the micut;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
      */
     public boolean inCut(int v)  {
         validate(v, marked.length);
@@ -233,6 +234,8 @@ public class FordFulkerson {
 
     /**
      * Unit tests the {@code FordFulkerson} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

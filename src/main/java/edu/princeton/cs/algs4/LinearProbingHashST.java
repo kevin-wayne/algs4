@@ -246,6 +246,8 @@ public class LinearProbingHashST<Key, Value> {
 
     /**
      * Unit tests the {@code LinearProbingHashST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         LinearProbingHashST<String, Integer> st = new LinearProbingHashST<String, Integer>();

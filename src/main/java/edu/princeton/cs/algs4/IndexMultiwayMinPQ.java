@@ -48,12 +48,12 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
      * @param D dimension of the heap
-     * @throws java.lang.IllegalArgumentException if N < 0
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
+     * @throws java.lang.IllegalArgumentException if {@code D < 2}
      */
 	public IndexMultiwayMinPQ(int N, int D) {
 		if (N < 0) throw new IllegalArgumentException("Maximum number of elements cannot be negative");
@@ -68,13 +68,13 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
      * @param D dimension of the heap
      * @param C a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if N < 0
-     * @throws java.lang.IllegalArgumentException if D < 2
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
+     * @throws java.lang.IllegalArgumentException if {@code D < 2}
      */
 	public IndexMultiwayMinPQ(int N, Comparator<Key> C, int D) {
 		if (N < 0) throw new IllegalArgumentException("Maximum number of elements cannot be negative");

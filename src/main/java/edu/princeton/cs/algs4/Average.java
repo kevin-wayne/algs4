@@ -36,6 +36,8 @@ public class Average {
     /**
      * Reads in a sequence of real numbers from standard input and prints
      * out their average to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         int count = 0;       // number input values

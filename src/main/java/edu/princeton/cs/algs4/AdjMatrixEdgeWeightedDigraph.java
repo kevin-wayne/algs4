@@ -44,8 +44,8 @@ public class AdjMatrixEdgeWeightedDigraph {
     
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
-     * param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
+     * @param V the number of vertices
+     * @throws java.lang.IllegalArgumentException if {@code V < 0}
      */
     public AdjMatrixEdgeWeightedDigraph(int V) {
         if (V < 0) throw new RuntimeException("Number of vertices must be nonnegative");
@@ -56,10 +56,10 @@ public class AdjMatrixEdgeWeightedDigraph {
 
     /**
      * Initializes a random edge-weighted digraph with {@code V} vertices and <em>E</em> edges.
-     * param V the number of vertices
-     * param E the number of edges
-     * @throws java.lang.IllegalArgumentException if {@code V} < 0
-     * @throws java.lang.IllegalArgumentException if {@code E} < 0
+     * @param V the number of vertices
+     * @param E the number of edges
+     * @throws java.lang.IllegalArgumentException if {@code V < 0}
+     * @throws java.lang.IllegalArgumentException if {@code E < 0}
      */
     public AdjMatrixEdgeWeightedDigraph(int V, int E) {
         this(V);
@@ -169,6 +169,8 @@ public class AdjMatrixEdgeWeightedDigraph {
 
     /**
      * Unit tests the {@code AdjMatrixEdgeWeightedDigraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);

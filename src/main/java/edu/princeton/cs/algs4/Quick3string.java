@@ -132,6 +132,8 @@ public class Quick3string {
      * Reads in a sequence of fixed-length strings from standard input;
      * 3-way radix quicksorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

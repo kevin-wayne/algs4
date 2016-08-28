@@ -50,6 +50,8 @@ public class Whitelist {
      * Reads in a sequence of integers from the whitelist file, specified as
      * a command-line argument. Reads in integers from standard input and
      * prints to standard output those integers that are not in the file.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

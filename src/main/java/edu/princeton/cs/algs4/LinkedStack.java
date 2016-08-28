@@ -178,6 +178,8 @@ public class LinkedStack<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code LinkedStack} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         LinkedStack<String> stack = new LinkedStack<String>();

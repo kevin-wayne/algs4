@@ -54,10 +54,10 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} and {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexFibonacciMinPQ(int N) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");
@@ -67,11 +67,11 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} and {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
      * @param C a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexFibonacciMinPQ(Comparator<Key> C, int N) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");

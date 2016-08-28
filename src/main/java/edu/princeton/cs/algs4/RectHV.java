@@ -37,8 +37,7 @@ public final class RectHV {
      * @throws IllegalArgumentException if any of {@code xmin},
      *         {@code xmax}, {@code ymin}, or {@code ymax}
      *         is {@code Double.NaN}.
-     * @throws IllegalArgumentException if {@code xmax} <
-     *         {@code xmin} or {@code ymax} < {@code ymin}.
+     * @throws IllegalArgumentException if {@code xmax < xmin} or {@code ymax < ymin}.
      */
     public RectHV(double xmin, double ymin, double xmax, double ymax) {
         if (Double.isNaN(xmin) || Double.isNaN(xmax))

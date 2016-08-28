@@ -132,6 +132,8 @@ public class Bag<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code Bag} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Bag<String> bag = new Bag<String>();

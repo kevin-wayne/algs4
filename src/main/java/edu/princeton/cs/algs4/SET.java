@@ -62,6 +62,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 
     /**
      * Initializes a new set that is an independent copy of the specified set.
+     *
+     * @param x the set to copy
      */
     public SET(SET<Key> x) {
         set = new TreeSet<Key>(x.set);
@@ -276,6 +278,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 
     /**
      * Unit tests the {@code SET} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         SET<String> set = new SET<String>();

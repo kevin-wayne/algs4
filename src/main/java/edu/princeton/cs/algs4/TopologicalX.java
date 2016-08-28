@@ -147,6 +147,8 @@ public class TopologicalX {
     /**
      * The the rank of vertex {@code v} in the topological order;
      * -1 if the digraph is not a DAG
+     *
+     * @param v vertex
      * @return the position of vertex {@code v} in a topological order
      *    of the digraph; -1 if the digraph is not a DAG
      * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
@@ -253,6 +255,8 @@ public class TopologicalX {
 
     /**
      * Unit tests the {@code TopologicalX} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

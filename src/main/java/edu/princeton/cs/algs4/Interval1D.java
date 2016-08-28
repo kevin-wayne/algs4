@@ -16,7 +16,7 @@ import java.util.Comparator;
  *  The {@code Interval1D} class represents a one-dimensional interval.
  *  The interval is <em>closed</em>&mdash;it contains both endpoints.
  *  Intervals are immutable: their values cannot be changed after they are created.
- *  The class <@code>Interval1D</@code> includes methods for checking whether
+ *  The class {@code Interval1D} includes methods for checking whether
  *  an interval contains a point and determining whether two intervals intersect.
  *  <p>
  *  For additional documentation, 
@@ -219,6 +219,8 @@ public class Interval1D {
 
     /**
      * Unit tests the {@code Interval1D} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Interval1D[] intervals = new Interval1D[4];

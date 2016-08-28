@@ -178,6 +178,8 @@ public class BipartiteX {
 
     /**
      * Unit tests the {@code BipartiteX} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);

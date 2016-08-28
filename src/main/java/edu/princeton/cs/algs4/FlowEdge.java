@@ -38,7 +38,7 @@ public class FlowEdge {
      * @param capacity the capacity of the edge
      * @throws java.lang.IndexOutOfBoundsException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws java.lang.IllegalArgumentException if {@code capacity} is negative
+     * @throws java.lang.IllegalArgumentException if {@code capacity < 0.0}
      */
     public FlowEdge(int v, int w, double capacity) {
         if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
@@ -155,6 +155,7 @@ public class FlowEdge {
      *   If {@code vertex} is the tail vertex, this increases the flow on the edge by {@code delta};
      *   if {@code vertex} is the head vertex, this decreases the flow on the edge by {@code delta}.
      * @param vertex one endpoint of the edge
+     * @param delta amount by which to increase flow
      * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
      * @throws java.lang.IllegalArgumentException if {@code delta} makes the flow on
@@ -182,6 +183,8 @@ public class FlowEdge {
 
    /**
      * Unit tests the {@code FlowEdge} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         FlowEdge e = new FlowEdge(12, 23, 4.56);

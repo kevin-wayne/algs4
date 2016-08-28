@@ -48,10 +48,10 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexBinomialMinPQ(int N) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");
@@ -61,11 +61,11 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
      * @param comparator a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexBinomialMinPQ(int N, Comparator<Key> comparator) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");

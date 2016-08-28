@@ -187,6 +187,8 @@ public class SeparateChainingHashST<Key, Value> {
 
     /**
      * Unit tests the {@code SeparateChainingHashST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         SeparateChainingHashST<String, Integer> st = new SeparateChainingHashST<String, Integer>();

@@ -42,6 +42,8 @@ public class PictureDump {
      * them to standard drawing output as a width-by-height picture,
      * using black for 1 and white for 0 (and red for any leftover
      * pixels).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int width = Integer.parseInt(args[0]);

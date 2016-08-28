@@ -279,6 +279,8 @@ public class MaxPQ<Key> implements Iterable<Key> {
 
     /**
      * Unit tests the {@code MaxPQ} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         MaxPQ<String> pq = new MaxPQ<String>();

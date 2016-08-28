@@ -92,6 +92,8 @@ public class LongestCommonSubstring {
      * Reads in two strings from files specified as command-line arguments;
      * computes the longest common substring; and prints the results to
      * standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in1 = new In(args[0]);

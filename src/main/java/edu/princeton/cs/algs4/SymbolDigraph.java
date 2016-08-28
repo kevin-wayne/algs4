@@ -139,6 +139,8 @@ public class SymbolDigraph {
     /**
      * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
      * not to mutate the digraph.
+     *
+     * @return the digraph associated with the symbol digraph
      * @deprecated Replaced by {@link #digraph()}.
      */
     @Deprecated
@@ -149,6 +151,7 @@ public class SymbolDigraph {
     /**
      * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
      * not to mutate the digraph.
+     *
      * @return the digraph associated with the symbol digraph
      */
     public Digraph digraph() {
@@ -157,6 +160,8 @@ public class SymbolDigraph {
 
     /**
      * Unit tests the {@code SymbolDigraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String filename  = args[0];

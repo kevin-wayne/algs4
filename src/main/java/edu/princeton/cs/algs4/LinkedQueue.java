@@ -188,6 +188,8 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code LinkedQueue} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         LinkedQueue<String> queue = new LinkedQueue<String>();

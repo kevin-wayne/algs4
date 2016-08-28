@@ -133,6 +133,8 @@ public class LSD {
      * Reads in a sequence of fixed-length strings from standard input;
      * LSD radix sorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

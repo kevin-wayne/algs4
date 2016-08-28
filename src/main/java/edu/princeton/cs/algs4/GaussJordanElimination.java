@@ -173,7 +173,7 @@ public class GaussJordanElimination {
      * <em>yb</em> &ne; 0.
      *      
      * @return a solution <em>y</em> to the linear system of equations
-     *         <em>yA</em> = 0, <em>yb</em> &ne 0; {@code null} if no such solution
+     *         <em>yA</em> = 0, <em>yb</em> &ne; 0; {@code null} if no such solution
      */
     public double[] dual() {
         double[] y = new double[n];
@@ -360,6 +360,8 @@ public class GaussJordanElimination {
 
     /**
      * Unit tests the {@code GaussJordanElimination} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

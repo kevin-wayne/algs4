@@ -104,6 +104,8 @@ public class MergeBU {
     /**
      * Reads in a sequence of strings from standard input; bottom-up
      * mergesorts them; and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();

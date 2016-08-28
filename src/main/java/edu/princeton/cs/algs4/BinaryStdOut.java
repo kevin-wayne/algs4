@@ -268,6 +268,8 @@ public final class BinaryStdOut {
 
    /**
      * Test client.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int m = Integer.parseInt(args[0]);

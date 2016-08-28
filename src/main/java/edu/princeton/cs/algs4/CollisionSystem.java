@@ -170,6 +170,8 @@ public class CollisionSystem {
      * Reads in the particle collision system from a standard input
      * (or generates {@code N} random particles if a command-line integer
      * is specified); simulates the system.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

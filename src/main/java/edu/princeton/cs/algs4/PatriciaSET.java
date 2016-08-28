@@ -352,6 +352,8 @@ public class PatriciaSET implements Iterable<String> {
      * first parameter indicates the size of the dataset. The second parameter
      * controls the number of passes (a new random dataset becomes generated at
      * the start of each pass).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         PatriciaSET set = new PatriciaSET();

@@ -144,6 +144,8 @@ public class KMP {
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String pat = args[0];

@@ -141,6 +141,8 @@ public class NFA {
 
     /**
      * Unit tests the {@code NFA} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String regexp = "(" + args[0] + ")";

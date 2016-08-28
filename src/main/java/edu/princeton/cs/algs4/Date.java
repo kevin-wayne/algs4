@@ -188,6 +188,8 @@ public class Date implements Comparable<Date> {
 
     /**
      * Unit tests the {@code Date} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Date today = new Date(2, 25, 2004);

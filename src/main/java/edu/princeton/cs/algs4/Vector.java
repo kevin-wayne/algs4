@@ -224,6 +224,8 @@ public class Vector {
 
     /**
      * Unit tests the {@code Vector} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         double[] xdata = { 1.0, 2.0, 3.0, 4.0 };

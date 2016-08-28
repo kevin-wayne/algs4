@@ -220,6 +220,8 @@ public class BreadthFirstPaths {
 
     /**
      * Unit tests the {@code BreadthFirstPaths} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

@@ -259,6 +259,8 @@ public class AssignmentProblem {
      * Takes a command-line argument n; creates a random n-by-n matrix;
      * solves the n-by-n assignment problem; and prints the optimal
      * solution.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 

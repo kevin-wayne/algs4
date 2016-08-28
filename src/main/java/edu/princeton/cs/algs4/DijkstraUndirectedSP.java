@@ -205,6 +205,8 @@ public class DijkstraUndirectedSP {
 
     /**
      * Unit tests the {@code DijkstraUndirectedSP} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

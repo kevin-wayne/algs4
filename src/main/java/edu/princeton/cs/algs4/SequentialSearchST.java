@@ -195,6 +195,8 @@ public class SequentialSearchST<Key, Value> {
 
     /**
      * Unit tests the {@code SequentialSearchST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         SequentialSearchST<String, Integer> st = new SequentialSearchST<String, Integer>();

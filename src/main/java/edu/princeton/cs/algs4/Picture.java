@@ -357,6 +357,8 @@ public final class Picture implements ActionListener {
      * Unit tests this {@code Picture} data type.
      * Reads a picture specified by the command-line argument,
      * and shows it in a window on the screen.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Picture picture = new Picture(args[0]);

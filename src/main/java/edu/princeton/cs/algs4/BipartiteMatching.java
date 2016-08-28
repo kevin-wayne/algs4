@@ -307,6 +307,8 @@ public class BipartiteMatching {
      * creates a random bipartite graph with {@code V1} + {@code V2} vertices
      * and {@code E} edges; computes a maximum matching and minimum vertex cover;
      * and prints the results.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);

@@ -506,6 +506,8 @@ public final class StdRandom {
 
     /**
      * Unit test.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);

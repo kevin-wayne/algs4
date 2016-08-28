@@ -28,11 +28,12 @@ package edu.princeton.cs.algs4;
  *  optimal row and column player strategies x* and y* are obtained
  *  by solving the following primal and dual pair of linear programs,
  *  scaling the results to be probability distributions.
- *  <p><blockquote><pre>
- *  (P)  max  y^T 1         (D)  min   1^T x
- *       s.t  A^T y <= 1         s.t   A x >= 1
- *                y >= 0                 x >= 0
- *  </pre></blockquote><p>
+ *  <blockquote><pre>
+ *  (P)  max  y^T 1           (D)  min   1^T x
+ *       s.t  A^T y &le; 1         s.t   A x &ge; 1
+ *                y &le; 0                 x &ge; 0
+ *  </pre></blockquote>
+ *  <p>
  *  If the payoff matrix <em>A</em> has any negative entries, we add
  *  the same constant to every entry so that every entry is positive.
  *  This increases the value of the game by that constant, but does not
@@ -330,6 +331,8 @@ public class TwoPersonZeroSumGame {
 
     /**
      * Unit tests the {@code ZeroSumGameToLP} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         test1();

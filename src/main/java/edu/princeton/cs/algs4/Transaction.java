@@ -180,6 +180,8 @@ public class Transaction implements Comparable<Transaction> {
 
     /**
      * Unit tests the {@code Transaction} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Transaction[] a = new Transaction[4];

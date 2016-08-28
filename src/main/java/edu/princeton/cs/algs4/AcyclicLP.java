@@ -118,6 +118,8 @@ public class AcyclicLP {
 
     /**
      * Unit tests the {@code AcyclicLP} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);

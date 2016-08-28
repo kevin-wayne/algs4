@@ -119,6 +119,8 @@ public class LinkedBag<Item> implements Iterable<Item> {
 
     /**
      * Unit tests the {@code LinkedBag} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         LinkedBag<String> bag = new LinkedBag<String>();

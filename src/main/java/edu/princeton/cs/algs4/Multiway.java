@@ -68,6 +68,8 @@ public class Multiway {
      *  merges them together into a sorted output; and writes
      *  the results to standard output.
      *  Note: this client does not check that the input files are sorted.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = args.length;

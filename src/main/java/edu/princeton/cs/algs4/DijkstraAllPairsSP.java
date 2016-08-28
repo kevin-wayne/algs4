@@ -38,7 +38,7 @@ public class DijkstraAllPairsSP {
      * the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 <= {@code s} <= {@code V} - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DijkstraAllPairsSP(EdgeWeightedDigraph G) {
         all  = new DijkstraSP[G.V()];
