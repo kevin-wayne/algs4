@@ -48,7 +48,7 @@ publishing {
             artifact javadocJar
             groupId 'edu.princeton.cs'
                     artifactId 'algs4'
-                    version '1.0.1'
+                    version '1.0.2'
         }
     }
 }
@@ -72,8 +72,8 @@ bintray {
         githubRepo = 'kevin-wayne/algs4'
         githubReleaseNotesFile = 'README.md'
         version {
-            name = '1.0.1'
-            vcsTag = '1.0.1'
+            name = '1.0.2'
+            vcsTag = '1.0.2'
         }
     }
 }
