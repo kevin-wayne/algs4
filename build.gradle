@@ -62,7 +62,7 @@ bintray {
     publish = true
     override = false
     pkg {
-        repo = 'algs4'
+        repo = 'maven'
         name = 'algs4'
         userOrg = 'algs4'
         desc = 'Source Code for Algorithms, 4th Edition'
