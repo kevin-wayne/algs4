@@ -11,8 +11,8 @@
  *
  *  Runs in O(E + V) time.
  *
- *  % java KosarajuSCC tinyDG.txt
- *  5 components
+ *  % java KosarajuSharirSCC tinyDG.txt
+ *  5 strong components
  *  1 
  *  0 2 3 4 5 
  *  9 10 11 12 
@@ -20,7 +20,7 @@
  *  7
  *
  *  % java KosarajuSharirSCC mediumDG.txt 
- *  10 components
+ *  10 strong components
  *  21 
  *  2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49 
  *  14 
@@ -33,7 +33,7 @@
  *  10 
  *
  *  % java -Xss50m KosarajuSharirSCC mediumDG.txt 
- *  25 components
+ *  25 strong components
  *  7 11 32 36 61 84 95 116 121 128 230   ...
  *  28 73 80 104 115 143 149 164 184 185  ...
  *  38 40 200 201 207 218 286 387 418 422 ...
@@ -183,7 +183,7 @@ public class KosarajuSharirSCC {
 
         // number of connected components
         int m = scc.count();
-        StdOut.println(m + " components");
+        StdOut.println(m + " strong components");
 
         // compute list of vertices in each strong component
         Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];

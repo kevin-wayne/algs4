@@ -94,6 +94,38 @@ public class CC {
         }
     }
 
+
+    /**
+     * Computes the connected components of the edge-weighted graph {@code G}.
+     *
+     * @param G the edge-weighted graph
+     */
+    public CC(EdgeWeightedGraph G) {
+        marked = new boolean[G.V()];
+        id = new int[G.V()];
+        size = new int[G.V()];
+        for (int v = 0; v < G.V(); v++) {
+            if (!marked[v]) {
+                dfs(G, v);
+                count++;
+            }
+        }
+    }
+
+    // depth-first search
+    private void dfs(EdgeWeightedGraph G, int v) {
+        marked[v] = true;
+        id[v] = count;
+        size[count]++;
+        for (Edge e : G.adj(v)) {
+            int w = e.other(v);
+            if (!marked[w]) {
+                dfs(G, w);
+            }
+        }
+    }
+
+
     /**
      * Returns the component id of the connected component containing vertex {@code v}.
      *

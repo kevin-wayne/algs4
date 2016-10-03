@@ -61,7 +61,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  The component identifier of a component can change
  *  only when the component itself changes during a call to
- *  <em>union</em>&mdash;it cannot change during a call
+ *  <em>union</em>—it cannot change during a call
  *  to <em>find</em>, <em>connected</em>, or <em>count</em>.
  *  <p>
  *  This implementation uses quick find.

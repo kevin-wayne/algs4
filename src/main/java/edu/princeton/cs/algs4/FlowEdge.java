@@ -25,6 +25,9 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class FlowEdge {
+    // to deal with floating-point roundoff errors
+    private static final double FLOATING_POINT_EPSILON = 1E-10;
+
     private final int v;             // from
     private final int w;             // to 
     private final double capacity;   // capacity
@@ -163,10 +166,18 @@ public class FlowEdge {
      * @throws java.lang.IllegalArgumentException if {@code delta} is {@code NaN}
      */
     public void addResidualFlowTo(int vertex, double delta) {
+        if (!(delta >= 0.0)) throw new IllegalArgumentException("Delta must be nonnegative");
+
         if      (vertex == v) flow -= delta;           // backward edge
         else if (vertex == w) flow += delta;           // forward edge
         else throw new IllegalArgumentException("Illegal endpoint");
-        if (Double.isNaN(delta)) throw new IllegalArgumentException("Change in flow = NaN");
+
+        // round flow to 0 or capacity if within floating-point precision
+        if (Math.abs(flow) <= FLOATING_POINT_EPSILON)
+            flow = 0;
+        if (Math.abs(flow - capacity) <= FLOATING_POINT_EPSILON)
+            flow = capacity;
+
         if (!(flow >= 0.0))      throw new IllegalArgumentException("Flow is negative");
         if (!(flow <= capacity)) throw new IllegalArgumentException("Flow exceeds capacity");
     }

@@ -72,12 +72,19 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     // resize the underlying array holding the elements
     private void resize(int capacity) {
         assert capacity >= n;
+
+        // textbook implementation
         Item[] temp = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
             temp[i] = a[i];
         }
         a = temp;
+
+       // alternative implementation
+       // a = java.util.Arrays.copyOf(a, capacity);
     }
+
+
 
     /**
      * Adds the item to this stack.

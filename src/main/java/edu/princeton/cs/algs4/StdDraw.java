@@ -31,6 +31,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
 
@@ -102,7 +103,7 @@ import javax.swing.KeyStroke;
  *  If you compile and execute the program, you should see a window
  *  appear with a thick magenta line and a blue point.
  *  This program illustrates the two main types of methods in standard
- *  drawing&mdash;methods that draw geometric shapes and methods that
+ *  drawing—methods that draw geometric shapes and methods that
  *  control drawing parameters.
  *  The methods {@code StdDraw.line()} and {@code StdDraw.point()}
  *  draw lines and points; the methods {@code StdDraw.setPenRadius()}
@@ -284,15 +285,15 @@ import javax.swing.KeyStroke;
  *  <ul>
  *  <li> {@link #picture(double x, double y, String filename)}
  *  <li> {@link #picture(double x, double y, String filename, double degrees)}
- *  <li> {@link #picture(double x, double y, String filename, double width)}
- *  <li> {@link #picture(double x, double y, String filename, double width, double degrees)}
+ *  <li> {@link #picture(double x, double y, String filename, double scaledWidth, double scaledHeight)}
+ *  <li> {@link #picture(double x, double y, String filename, double scaledWidth, double scaledHeight, double degrees)}
  *  </ul>
  *  <p>
  *  These methods draw the specified image, centered at (<em>x</em>, <em>y</em>).
  *  The supported image formats are JPEG, PNG, and GIF.
  *  The image will display at its native size, independent of the coordinate system.
  *  Optionally, you can rotate the image a specified number of degrees counterclockwise
- *  or rescale it to fit inside a width-by-height pixel bounding box.
+ *  or rescale it to fit snugly inside a width-by-height bounding box.
  *  <p>
  *  <b>Saving to a file.</b>
  *  You save your image to a file using the <em>File → Save</em> menu option.
@@ -331,7 +332,7 @@ import javax.swing.KeyStroke;
  *  <p>
  *  By default, double buffering is disabled, which means that as soon as you
  *  call a drawing
- *  method&mdash;such as {@code point()} or {@code line()}&mdash;the
+ *  method—such as {@code point()} or {@code line()}—the
  *  results appear on the screen.
  *  <p>
  *  When double buffering is enabled by calling {@link #enableDoubleBuffering()},
@@ -421,7 +422,7 @@ import javax.swing.KeyStroke;
  *  <li> Any method that is passed a {@code null} argument will throw a
  *       {@link NullPointerException}.
  *  <li> Except as noted in the APIs, drawing an object outside (or partly outside)
- *       the canvas is permitted&mdash;however, only the part of the object that
+ *       the canvas is permitted—however, only the part of the object that
  *       appears inside the canvas will be visible.
  *  <li> Except as noted in the APIs, all methods accept {@link Double#NaN},
  *       {@link Double#POSITIVE_INFINITY}, and {@link Double#NEGATIVE_INFINITY}
@@ -1234,8 +1235,49 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
    /***************************************************************************
     *  Drawing images.
     ***************************************************************************/
+    // get an image from the given filename
+    private static Image getImage(String filename) {
+        if (filename == null) throw new NullPointerException();
 
-    // [Summer 2016] updated to use ImageIO instead of ImageIcon()
+        // to read from file
+        ImageIcon icon = new ImageIcon(filename);
+
+        // try to read from URL
+        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
+            try {
+                URL url = new URL(filename);
+                icon = new ImageIcon(url);
+            }
+            catch (Exception e) {
+                /* not a url */
+            }
+        }
+
+        // in case file is inside a .jar (classpath relative to StdDraw)
+        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
+            URL url = StdDraw.class.getResource(filename);
+            if (url != null)
+                icon = new ImageIcon(url);
+        }
+
+        // in case file is inside a .jar (classpath relative to root of jar)
+        if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
+            URL url = StdDraw.class.getResource("/" + filename);
+            if (url == null) throw new IllegalArgumentException("image " + filename + " not found");
+            icon = new ImageIcon(url);
+        }
+
+        return icon.getImage();
+    }
+
+   /***************************************************************************
+    * [Summer 2016] Should we update to use ImageIO instead of ImageIcon()?
+    *               Seems to have some issues loading images on some systems
+    *               and slows things down on other systems.
+    *               especially if you don't call ImageIO.setUseCache(false)
+    *               One advantage is that it returns a BufferedImage.
+    ***************************************************************************/
+/*
     private static BufferedImage getImage(String filename) {
         if (filename == null) throw new NullPointerException();
 
@@ -1270,7 +1312,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         }
         throw new IllegalArgumentException("image " + filename + " not found");
     }
-
+*/
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>).
      * The supported image formats are JPEG, PNG, and GIF.
@@ -1285,11 +1327,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename) {
-        BufferedImage image = getImage(filename);
+        // BufferedImage image = getImage(filename);
+        Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
-        int ws = image.getWidth();
-        int hs = image.getHeight();
+        // int ws = image.getWidth();    // can call only if image is a BufferedImage
+        // int hs = image.getHeight();
+        int ws = image.getWidth(null);
+        int hs = image.getHeight(null);
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
@@ -1308,11 +1353,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename, double degrees) {
-        BufferedImage image = getImage(filename);
+        // BufferedImage image = getImage(filename);
+        Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
-        int ws = image.getWidth();
-        int hs = image.getHeight();
+        // int ws = image.getWidth();    // can call only if image is a BufferedImage
+        // int hs = image.getHeight();
+        int ws = image.getWidth(null);
+        int hs = image.getHeight(null);
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
@@ -1330,15 +1378,15 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
      * @param  filename the name of the image/picture, e.g., "ball.gif"
-     * @param  scaledWidth the width of the scaled image in pixels
-     * @param  scaledHeight the height of the scaled image in pixels
+     * @param  scaledWidth the width of the scaled image (in screen coordinates)
+     * @param  scaledHeight the height of the scaled image (in screen coordinates)
      * @throws IllegalArgumentException if either {@code scaledWidth}
      *         or {@code scaledHeight} is negative
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename, double scaledWidth, double scaledHeight) {
         Image image = getImage(filename);
-        if (scaledWidth < 0) throw new IllegalArgumentException("width is negative: " + scaledWidth);
+        if (scaledWidth  < 0) throw new IllegalArgumentException("width  is negative: " + scaledWidth);
         if (scaledHeight < 0) throw new IllegalArgumentException("height is negative: " + scaledHeight);
         double xs = scaleX(x);
         double ys = scaleY(y);
@@ -1364,8 +1412,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
      * @param  filename the name of the image/picture, e.g., "ball.gif"
-     * @param  scaledWidth the width of the scaled image in pixels
-     * @param  scaledHeight the height of the scaled image in pixels
+     * @param  scaledWidth the width of the scaled image (in screen coordinates)
+     * @param  scaledHeight the height of the scaled image (in screen coordinates)
      * @param  degrees is the number of degrees to rotate counterclockwise
      * @throws IllegalArgumentException if either {@code scaledWidth}
      *         or {@code scaledHeight} is negative

@@ -77,7 +77,7 @@ import java.util.regex.Pattern;
  *  As an example, the following code fragment reads characters from standard input,
  *  one character at a time, and prints it to standard output.
  *  <pre>
- *  while (!StdIn.hasNextChar()) {
+ *  while (StdIn.hasNextChar()) {
  *      char c = StdIn.readChar();
  *      StdOut.print(c);
  *  }

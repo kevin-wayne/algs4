@@ -183,7 +183,7 @@ public class SequentialSearchST<Key, Value> {
      * To iterate over all of the keys in the symbol table named {@code st},
      * use the foreach notation: {@code for (Key key : st.keys())}.
      *
-     * @return all keys in the sybol table
+     * @return all keys in the symbol table
      */
     public Iterable<Key> keys()  {
         Queue<Key> queue = new Queue<Key>();

@@ -33,7 +33,7 @@ package edu.princeton.cs.algs4;
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
  *  Unlike {@link java.util.Map}, this class uses the convention that
- *  values cannot be {@code null}&mdash;setting the
+ *  values cannot be {@code null}—setting the
  *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
@@ -143,7 +143,7 @@ public class TrieST<Value> {
      * Returns all keys in the symbol table as an {@code Iterable}.
      * To iterate over all of the keys in the symbol table named {@code st},
      * use the foreach notation: {@code for (Key key : st.keys())}.
-     * @return all keys in the sybol table as an {@code Iterable}
+     * @return all keys in the symbol table as an {@code Iterable}
      */
     public Iterable<String> keys() {
         return keysWithPrefix("");

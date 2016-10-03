@@ -2,6 +2,9 @@
  *  Compilation:  javac StdArrayIO.java
  *  Execution:    java StdArrayIO < input.txt
  *  Dependencies: StdOut.java
+ *  Data files:    http://introcs.cs.princeton.edu/java/22library/tinyDouble1D.txt
+ *                 http://introcs.cs.princeton.edu/java/22library/tinyDouble2D.txt
+ *                 http://introcs.cs.princeton.edu/java/22library/tinyBoolean2D.txt
  *
  *  A library for reading in 1D and 2D arrays of integers, doubles,
  *  and booleans from standard input and printing them out to
