@@ -32,6 +32,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class AssignmentProblem {
+    private static final double FLOATING_POINT_EPSILON = 1E-14;
     private static final int UNMATCHED = -1;
 
     private int n;              // number of rows and columns
@@ -54,6 +55,8 @@ public class AssignmentProblem {
         this.weight = new double[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                if (Double.isNaN(weight[i][j]))
+                    throw new IllegalArgumentException("weight " + i + "-" + j  + " is NaN");
                 if (weight[i][j] < minWeight) minWeight = weight[i][j];
                 this.weight[i][j] = weight[i][j];
             }
@@ -123,7 +126,21 @@ public class AssignmentProblem {
     // reduced cost of i-j
     // (subtracting off minWeight reweights all weights to be non-negative)
     private double reducedCost(int i, int j) {
-        return (weight[i][j] - minWeight) + px[i] - py[j];
+        double reducedCost = (weight[i][j] - minWeight) + px[i] - py[j];
+
+        if (reducedCost < 0.0) {
+            System.out.println("reduced cost = " + reducedCost);
+            System.out.println("weight       = " + weight[i][j]);
+            System.out.println("px           = " + px[i]);
+            System.out.println("py           = " + py[j]);
+        }
+
+        // to avoid issues with floating-point precision
+        double magnitude = Math.abs(weight[i][j]) + Math.abs(px[i]) + Math.abs(py[j]);
+        if (Math.abs(reducedCost) <= FLOATING_POINT_EPSILON * magnitude) return 0.0;
+
+        assert reducedCost >= 0.0;
+        return reducedCost;
     }
 
     /**

@@ -240,7 +240,7 @@ public final class In {
      * next call to {@link #readLine()} will succeed.
      * This method is functionally equivalent to {@link #hasNextChar()}.
      *
-     * @return {@code true} if this input stream is empty;
+     * @return {@code true} if this input stream has more input (including whitespace);
      *         {@code false} otherwise
      */
     public boolean hasNextLine() {

@@ -237,7 +237,7 @@ public final class StdIn {
      * next call to {@link #readLine()} will succeed.
      * This method is functionally equivalent to {@link #hasNextChar()}.
      *
-     * @return {@code true} if standard input is empty;
+     * @return {@code true} if standard input has more input (including whitespace);
      *         {@code false} otherwise
      */
     public static boolean hasNextLine() {
