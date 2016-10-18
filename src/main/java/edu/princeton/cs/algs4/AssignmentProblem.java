@@ -128,13 +128,6 @@ public class AssignmentProblem {
     private double reducedCost(int i, int j) {
         double reducedCost = (weight[i][j] - minWeight) + px[i] - py[j];
 
-        if (reducedCost < 0.0) {
-            System.out.println("reduced cost = " + reducedCost);
-            System.out.println("weight       = " + weight[i][j]);
-            System.out.println("px           = " + px[i]);
-            System.out.println("py           = " + py[j]);
-        }
-
         // to avoid issues with floating-point precision
         double magnitude = Math.abs(weight[i][j]) + Math.abs(px[i]) + Math.abs(py[j]);
         if (Math.abs(reducedCost) <= FLOATING_POINT_EPSILON * magnitude) return 0.0;
