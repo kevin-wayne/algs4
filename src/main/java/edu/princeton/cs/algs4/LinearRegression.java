@@ -26,10 +26,9 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class LinearRegression {
-    private final int n;
     private final double intercept, slope;
     private final double r2;
-    private final double svar, svar0, svar1;
+    private final double svar0, svar1;
 
    /**
      * Performs a linear regression on the data points {@code (y[i], x[i])}.
@@ -42,7 +41,7 @@ public class LinearRegression {
         if (x.length != y.length) {
             throw new IllegalArgumentException("array lengths are not equal");
         }
-        n = x.length;
+        int n = x.length;
 
         // first pass
         double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
@@ -75,7 +74,7 @@ public class LinearRegression {
 
         int degreesOfFreedom = n-2;
         r2    = ssr / yybar;
-        svar  = rss / degreesOfFreedom;
+        double svar  = rss / degreesOfFreedom;
         svar1 = svar / xxbar;
         svar0 = svar/n + xbar*xbar*svar1;
     }
@@ -146,9 +145,10 @@ public class LinearRegression {
      *         <em>R</em><sup>2</sup>
      */
     public String toString() {
-        String s = "";
-        s += String.format("%.2f n + %.2f", slope(), intercept());
-        return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
+        StringBuilder s = new StringBuilder();
+        s.append(String.format("%.2f n + %.2f", slope(), intercept()));
+        s.append("  (R^2 = " + String.format("%.3f", R2()) + ")");
+        return s.toString();
     }
 
 }

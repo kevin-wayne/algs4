@@ -133,11 +133,11 @@ public class PatriciaST<Value> {
      * from the symbol table.
      * @param key the key
      * @param val the value
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void put(String key, Value val) {
-        if (key == null) throw new NullPointerException("called put(null)");
+        if (key == null) throw new IllegalArgumentException("called put(null)");
         if (key.length() == 0) throw new IllegalArgumentException("invalid key");
         if (val == null) delete(key);
         Node p;
@@ -176,11 +176,11 @@ public class PatriciaST<Value> {
      * @param key the key
      * @return the value associated with the given key if the key is in the
      * symbol table and {@code null} if the key is not in the symbol table
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public Value get(String key) {
-        if (key == null) throw new NullPointerException("called get(null)");
+        if (key == null) throw new IllegalArgumentException("called get(null)");
         if (key.length() == 0) throw new IllegalArgumentException("invalid key");
         Node p;
         Node x = head;
@@ -197,11 +197,11 @@ public class PatriciaST<Value> {
      * Removes a key and its associated value from the symbol table, if it
      * exists.
      * @param key the key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public void delete(String key) {
-        if (key == null) throw new NullPointerException("called delete(null)");
+        if (key == null) throw new IllegalArgumentException("called delete(null)");
         if (key.length() == 0) throw new IllegalArgumentException("invalid key");
         Node g;             // previous previous (grandparent)
         Node p = head;      // previous (parent)
@@ -249,7 +249,7 @@ public class PatriciaST<Value> {
      * @param key the key
      * @return {@code true} if this symbol table contains the given
      * {@code key} and {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws IllegalArgumentException if {@code key} is the empty string.
      */
     public boolean contains(String key) {

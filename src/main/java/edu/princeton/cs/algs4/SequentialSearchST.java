@@ -102,10 +102,10 @@ public class SequentialSearchST<Key, Value> {
      * @param  key the key
      * @return {@code true} if this symbol table contains {@code key};
      *         {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
-        if (key == null) throw new NullPointerException("argument to contains() is null");
+        if (key == null) throw new IllegalArgumentException("argument to contains() is null");
         return get(key) != null;
     }
 
@@ -115,10 +115,10 @@ public class SequentialSearchST<Key, Value> {
      * @param  key the key
      * @return the value associated with the given key if the key is in the symbol table
      *     and {@code null} if the key is not in the symbol table
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new NullPointerException("argument to get() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to get() is null"); 
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key))
                 return x.val;
@@ -134,10 +134,10 @@ public class SequentialSearchST<Key, Value> {
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new NullPointerException("first argument to put() is null"); 
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null"); 
         if (val == null) {
             delete(key);
             return;
@@ -158,10 +158,10 @@ public class SequentialSearchST<Key, Value> {
      * (if the key is in this symbol table).    
      *
      * @param  key the key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new NullPointerException("argument to delete() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null"); 
         first = delete(first, key);
     }
 

@@ -33,10 +33,11 @@ import java.awt.Color;
  *  @author Kevin Wayne
  */
 public class CollisionSystem {
-    private MinPQ<Event> pq;        // the priority queue
-    private double t  = 0.0;        // simulation clock time
-    private double hz = 0.5;        // number of redraw events per clock tick
-    private Particle[] particles;   // the array of particles
+    private final static double HZ = 0.5;    // number of redraw events per clock tick
+
+    private MinPQ<Event> pq;          // the priority queue
+    private double t  = 0.0;          // simulation clock time
+    private Particle[] particles;     // the array of particles
 
     /**
      * Initializes a system with the specified collection of particles.
@@ -75,7 +76,7 @@ public class CollisionSystem {
         StdDraw.show();
         StdDraw.pause(20);
         if (t < limit) {
-            pq.insert(new Event(t + 1.0 / hz, null, null));
+            pq.insert(new Event(t + 1.0 / HZ, null, null));
         }
     }
 

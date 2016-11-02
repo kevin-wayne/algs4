@@ -182,7 +182,7 @@ import java.util.regex.Pattern;
  *  <b>Reference.</b> 
  *  For additional documentation,
  *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of   
- *  <em>Introduction to Programming in Java: An Interdisciplinary Approach</em>
+ *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author David Pritchard
@@ -398,10 +398,10 @@ public final class StdIn {
      */
     public static boolean readBoolean() {
         String s = readString();
-        if (s.equalsIgnoreCase("true"))  return true;
-        if (s.equalsIgnoreCase("false")) return false;
-        if (s.equals("1"))               return true;
-        if (s.equals("0"))               return false;
+        if ("true".equalsIgnoreCase(s))  return true;
+        if ("false".equalsIgnoreCase(s)) return false;
+        if ("1".equals(s))               return true;
+        if ("0".equals(s))               return false;
         throw new InputMismatchException();
     }
 
@@ -433,7 +433,7 @@ public final class StdIn {
         while (hasNextLine()) {
             lines.add(readLine());
         }
-        return lines.toArray(new String[0]);
+        return lines.toArray(new String[lines.size()]);
     }
 
     /**

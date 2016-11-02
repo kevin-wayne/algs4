@@ -56,12 +56,12 @@ import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import java.util.LinkedList;
 import java.util.TreeSet;
 import java.util.NoSuchElementException;
-
 import javax.imageio.ImageIO;
 
 import javax.swing.ImageIcon;
@@ -419,8 +419,8 @@ import javax.swing.KeyStroke;
  *  To avoid clutter, the API doesn't explicitly refer to arguments that are
  *  null, infinity, or NaN.
  *  <ul>
- *  <li> Any method that is passed a {@code null} argument will throw a
- *       {@link NullPointerException}.
+ *  <li> Any method that is passed a {@code null} argument will throw an
+ *       {@link IllegalArgumentException}.
  *  <li> Except as noted in the APIs, drawing an object outside (or partly outside)
  *       the canvas is permitted—however, only the part of the object that
  *       appears inside the canvas will be visible.
@@ -461,7 +461,7 @@ import javax.swing.KeyStroke;
  *  <b>Reference.</b>
  *  For additional documentation,
  *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Introduction to Programming in Java: An Interdisciplinary Approach</em>
+ *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -884,7 +884,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param color the color to make the pen
      */
     public static void setPenColor(Color color) {
-        if (color == null) throw new NullPointerException();
+        if (color == null) throw new IllegalArgumentException();
         penColor = color;
         offscreen.setColor(penColor);
     }
@@ -927,7 +927,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param font the font
      */
     public static void setFont(Font font) {
-        if (font == null) throw new NullPointerException();
+        if (font == null) throw new IllegalArgumentException();
         StdDraw.font = font;
     }
 
@@ -1189,8 +1189,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void polygon(double[] x, double[] y) {
-        if (x == null) throw new NullPointerException();
-        if (y == null) throw new NullPointerException();
+        if (x == null) throw new IllegalArgumentException();
+        if (y == null) throw new IllegalArgumentException();
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
@@ -1216,8 +1216,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void filledPolygon(double[] x, double[] y) {
-        if (x == null) throw new NullPointerException();
-        if (y == null) throw new NullPointerException();
+        if (x == null) throw new IllegalArgumentException();
+        if (y == null) throw new IllegalArgumentException();
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
@@ -1237,7 +1237,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     ***************************************************************************/
     // get an image from the given filename
     private static Image getImage(String filename) {
-        if (filename == null) throw new NullPointerException();
+        if (filename == null) throw new IllegalArgumentException();
 
         // to read from file
         ImageIcon icon = new ImageIcon(filename);
@@ -1248,7 +1248,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
                 URL url = new URL(filename);
                 icon = new ImageIcon(url);
             }
-            catch (Exception e) {
+            catch (MalformedURLException e) {
                 /* not a url */
             }
         }
@@ -1279,7 +1279,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     ***************************************************************************/
 /*
     private static BufferedImage getImage(String filename) {
-        if (filename == null) throw new NullPointerException();
+        if (filename == null) throw new IllegalArgumentException();
 
         // from a file or URL
         try {
@@ -1452,7 +1452,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text to write
      */
     public static void text(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1472,7 +1472,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  degrees is the number of degrees to rotate counterclockwise
      */
     public static void text(double x, double y, String text, double degrees) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         double xs = scaleX(x);
         double ys = scaleY(y);
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
@@ -1488,7 +1488,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text
      */
     public static void textLeft(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1506,7 +1506,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text to write
      */
     public static void textRight(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1614,12 +1614,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  filename the name of the file with one of the required suffixes
      */
     public static void save(String filename) {
-        if (filename == null) throw new NullPointerException();
+        if (filename == null) throw new IllegalArgumentException();
         File file = new File(filename);
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
 
         // png files
-        if (suffix.toLowerCase().equals("png")) {
+        if ("png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(onscreenImage, suffix, file);
             }
@@ -1630,7 +1630,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         // need to change from ARGB to RGB for JPEG
         // reference: http://archives.java.sun.com/cgi-bin/wa?A2=ind0404&L=java2d-interest&D=0&P=2727
-        else if (suffix.toLowerCase().equals("jpg")) {
+        else if ("jpg".equalsIgnoreCase(suffix)) {
             WritableRaster raster = onscreenImage.getRaster();
             WritableRaster newRaster;
             newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
@@ -1710,19 +1710,25 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * This method cannot be called directly.
      */
     @Override
-    public void mouseClicked(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseEntered(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseExited(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.

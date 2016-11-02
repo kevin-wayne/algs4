@@ -47,14 +47,14 @@ import javax.swing.KeyStroke;
  *  This class includes methods for displaying the image in a window on
  *  the screen or saving it to a file.
  *  <p>
- *  Pixel (<em>x</em>, <em>y</em>) is column <em>x</em> and row <em>y</em>.
- *  By default, the origin (0, 0) is upper left, which is a common convention
- *  in image processing.
+ *  Pixel (<em>col</em>, <em>row</em>) is column <em>col</em> and row <em>row</em>.
+ *  By default, the origin (0, 0) is the pixel in the top-left corner,
+ *  which is a common convention in image processing.
  *  The method {@code setOriginLowerLeft()} change the origin to the lower left.
  *  <p>
  *  For additional documentation, see
  *  <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i>
+ *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -73,6 +73,8 @@ public final class Picture implements ActionListener {
      *
      * @param width the width of the picture
      * @param height the height of the picture
+     * @throws IllegalArgumentException if {@code width} is negative
+     * @throws IllegalArgumentException if {@code height} is negative
      */
     public Picture(int width, int height) {
         if (width  < 0) throw new IllegalArgumentException("width must be nonnegative");
@@ -103,6 +105,7 @@ public final class Picture implements ActionListener {
      * Initializes a picture by reading from a file or URL.
      *
      * @param filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @throws IllegalArgumentException if cannot read image
      */
     public Picture(String filename) {
         this.filename = filename;
@@ -123,15 +126,14 @@ public final class Picture implements ActionListener {
             }
 
             if (image == null) {
-                throw new IllegalArgumentException("Invalid image file: " + filename);
+                throw new IllegalArgumentException("could not read image file: " + filename);
             }
 
             width  = image.getWidth(null);
             height = image.getHeight(null);
         }
-        catch (IOException e) {
-            // e.printStackTrace();
-            throw new RuntimeException("Could not open file: " + filename);
+        catch (IOException ioe) {
+            throw new IllegalArgumentException("could not open image file: " + filename, ioe);
         }
     }
 
@@ -139,17 +141,17 @@ public final class Picture implements ActionListener {
      * Initializes a picture by reading in a .png, .gif, or .jpg from a file.
      *
      * @param file the file
+     * @throws IllegalArgumentException if cannot read image
      */
     public Picture(File file) {
         try {
             image = ImageIO.read(file);
         }
-        catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Could not open file: " + file);
+        catch (IOException ioe) {
+            throw new IllegalArgumentException("could not open file: " + file, ioe);
         }
         if (image == null) {
-            throw new RuntimeException("Invalid image file: " + file);
+            throw new IllegalArgumentException("could not read file: " + file);
         }
         width  = image.getWidth(null);
         height = image.getHeight(null);
@@ -266,12 +268,12 @@ public final class Picture implements ActionListener {
      * @param row the row index
      * @param color the color
      * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
-     * @throws NullPointerException if {@code color} is {@code null}
+     * @throws IllegalArgumentException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
         validateCol(col);
         validateRow(row);
-        if (color == null) throw new NullPointerException("can't set Color to null");
+        if (color == null) throw new IllegalArgumentException("color argument is null");
         if (isOriginUpperLeft) image.setRGB(col, row, color.getRGB());
         else                   image.setRGB(col, height - row - 1, color.getRGB());
     }
@@ -325,8 +327,7 @@ public final class Picture implements ActionListener {
         filename = file.getName();
         if (frame != null) frame.setTitle(filename);
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
-        suffix = suffix.toLowerCase();
-        if (suffix.equals("jpg") || suffix.equals("png")) {
+        if ("jpg".equalsIgnoreCase(suffix) || "png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(image, suffix, file);
             }

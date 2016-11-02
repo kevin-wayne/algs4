@@ -36,6 +36,7 @@
 
 package edu.princeton.cs.algs4;
 
+import java.util.NoSuchElementException;
 
 /**
  *  The {@code Graph} class represents an undirected graph of vertices
@@ -85,7 +86,7 @@ public class Graph {
     }
 
     /**  
-     * Initializes a graph from an input stream.
+     * Initializes a graph from the specified input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
@@ -93,17 +94,29 @@ public class Graph {
      * @param  in the input stream
      * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException if the input stream is in the wrong format
      */
     public Graph(In in) {
-        this(in.readInt());
-        int E = in.readInt();
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-        for (int i = 0; i < E; i++) {
-            int v = in.readInt();
-            int w = in.readInt();
-            addEdge(v, w);
+        try {
+            this.V = in.readInt();
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
+            adj = (Bag<Integer>[]) new Bag[V];
+            for (int v = 0; v < V; v++) {
+                adj[v] = new Bag<Integer>();
+            }
+            int E = in.readInt();
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
+            for (int i = 0; i < E; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                addEdge(v, w); 
+            }
+        }
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
     }
+
 
     /**
      * Initializes a new graph that is a deep copy of {@code G}.

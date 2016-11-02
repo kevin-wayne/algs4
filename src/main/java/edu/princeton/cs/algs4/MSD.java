@@ -193,7 +193,7 @@ public class MSD {
                 sort(a, lo + count[r], lo + count[r+1] - 1, d+1, aux);
     }
 
-    // insertion sort a[lo..hi], starting at dth character
+    // TODO: insertion sort a[lo..hi], starting at dth character
     private static void insertion(int[] a, int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && a[j] < a[j-1]; j--)

@@ -29,7 +29,6 @@
 
 package edu.princeton.cs.algs4;
 
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 /**
@@ -87,18 +86,19 @@ public class Digraph {
      * @param  in the input stream
      * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException if the input stream is in the wrong format
      */
     public Digraph(In in) {
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
             indegree = new int[V];
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
             }
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("Number of edges in a Digraph must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be nonnegative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
@@ -106,7 +106,7 @@ public class Digraph {
             }
         }
         catch (NoSuchElementException e) {
-            throw new InputMismatchException("Invalid input format in Digraph constructor");
+            throw new IllegalArgumentException("invalid input format in Digraph constructor", e);
         }
     }
 

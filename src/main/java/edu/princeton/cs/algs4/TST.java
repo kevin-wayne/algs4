@@ -89,9 +89,12 @@ public class TST<Value> {
      * @param key the key
      * @return {@code true} if this symbol table contains {@code key} and
      *     {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(String key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to contains() is null");
+        }
         return get(key) != null;
     }
 
@@ -100,10 +103,12 @@ public class TST<Value> {
      * @param key the key
      * @return the value associated with the given key if the key is in the symbol table
      *     and {@code null} if the key is not in the symbol table
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(String key) {
-        if (key == null) throw new NullPointerException();
+        if (key == null) {
+            throw new IllegalArgumentException("calls get() with null argument");
+        }
         if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         Node<Value> x = get(root, key, 0);
         if (x == null) return null;
@@ -112,9 +117,8 @@ public class TST<Value> {
 
     // return subtrie corresponding to given key
     private Node<Value> get(Node<Value> x, String key, int d) {
-        if (key == null) throw new NullPointerException();
-        if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         if (x == null) return null;
+        if (key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
         char c = key.charAt(d);
         if      (c < x.c)              return get(x.left,  key, d);
         else if (c > x.c)              return get(x.right, key, d);
@@ -128,9 +132,12 @@ public class TST<Value> {
      * If the value is {@code null}, this effectively deletes the key from the symbol table.
      * @param key the key
      * @param val the value
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(String key, Value val) {
+        if (key == null) {
+            throw new IllegalArgumentException("calls put() with null key");
+        }
         if (!contains(key)) n++;
         root = put(root, key, val, 0);
     }
@@ -154,10 +161,13 @@ public class TST<Value> {
      * @param query the query string
      * @return the string in the symbol table that is the longest prefix of {@code query},
      *     or {@code null} if no such string
-     * @throws NullPointerException if {@code query} is {@code null}
+     * @throws IllegalArgumentException if {@code query} is {@code null}
      */
     public String longestPrefixOf(String query) {
-        if (query == null || query.length() == 0) return null;
+        if (query == null) {
+            throw new IllegalArgumentException("calls longestPrefixOf() with null argument");
+        }
+        if (query.length() == 0) return null;
         int length = 0;
         Node<Value> x = root;
         int i = 0;
@@ -191,8 +201,12 @@ public class TST<Value> {
      * @param prefix the prefix
      * @return all of the keys in the set that start with {@code prefix},
      *     as an iterable
+     * @throws IllegalArgumentException if {@code prefix} is {@code null}
      */
     public Iterable<String> keysWithPrefix(String prefix) {
+        if (prefix == null) {
+            throw new IllegalArgumentException("calls keysWithPrefix() with null argument");
+        }
         Queue<String> queue = new Queue<String>();
         Node<Value> x = get(root, prefix, 0);
         if (x == null) return queue;

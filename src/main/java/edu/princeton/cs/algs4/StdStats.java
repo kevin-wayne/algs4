@@ -9,8 +9,8 @@
  *  input, and computes the minimum, mean, maximum, and
  *  standard deviation.
  *
- *  The functions all throw a NullPointerException if the array
- *  passed in is null.
+ *  The functions all throw a java.lang.IllegalArgumentException
+ *  if the array passed in as an argument is null.
  *
  *  The floating-point functions all return NaN if any input is NaN.
  *
@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  For additional documentation, see
  *  <a href="http://introcs.cs.princeton.edu/22library">Section 2.2</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i>
+ *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -58,6 +58,8 @@ public final class StdStats {
      *         {@code Double.NEGATIVE_INFINITY} if no such value
      */
     public static double max(double[] a) {
+        validateNotNull(a);
+
         double max = Double.NEGATIVE_INFINITY;
         for (int i = 0; i < a.length; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
@@ -76,8 +78,9 @@ public final class StdStats {
      *         {@code Double.NEGATIVE_INFINITY} if no such value
      */
     public static double max(double[] a, int lo, int hi) {
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         double max = Double.NEGATIVE_INFINITY;
         for (int i = lo; i <= hi; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
@@ -94,6 +97,8 @@ public final class StdStats {
      *         {@code Integer.MIN_VALUE} if no such value
      */
     public static int max(int[] a) {
+        validateNotNull(a);
+
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < a.length; i++) {
             if (a[i] > max) max = a[i];
@@ -109,6 +114,8 @@ public final class StdStats {
      *         {@code Double.POSITIVE_INFINITY} if no such value
      */
     public static double min(double[] a) {
+        validateNotNull(a);
+
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < a.length; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
@@ -127,8 +134,9 @@ public final class StdStats {
      *         {@code Double.POSITIVE_INFINITY} if no such value
      */
     public static double min(double[] a, int lo, int hi) {
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         double min = Double.POSITIVE_INFINITY;
         for (int i = lo; i <= hi; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
@@ -145,6 +153,8 @@ public final class StdStats {
      *         {@code Integer.MAX_VALUE} if no such value
      */
     public static int min(int[] a) {
+        validateNotNull(a);
+
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < a.length; i++) {
             if (a[i] < min) min = a[i];
@@ -160,6 +170,8 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double mean(double[] a) {
+        validateNotNull(a);
+
         if (a.length == 0) return Double.NaN;
         double sum = sum(a);
         return sum / a.length;
@@ -175,12 +187,12 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double mean(double[] a, int lo, int hi) {
-        int length = hi - lo + 1;
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
-        if (length == 0) return Double.NaN;
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
+        if (a.length == 0) return Double.NaN;
         double sum = sum(a, lo, hi);
-        return sum / length;
+        return sum / a.length;
     }
 
     /**
@@ -191,6 +203,8 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double mean(int[] a) {
+        validateNotNull(a);
+
         if (a.length == 0) return Double.NaN;
         int sum = sum(a);
         return 1.0 * sum / a.length;
@@ -204,6 +218,8 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double var(double[] a) {
+        validateNotNull(a);
+
         if (a.length == 0) return Double.NaN;
         double avg = mean(a);
         double sum = 0.0;
@@ -223,16 +239,16 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double var(double[] a, int lo, int hi) {
-        int length = hi - lo + 1;
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
-        if (length == 0) return Double.NaN;
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
+        if (a.length == 0) return Double.NaN;
         double avg = mean(a, lo, hi);
         double sum = 0.0;
         for (int i = lo; i <= hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
-        return sum / (length - 1);
+        return sum / (a.length - 1);
     }
 
     /**
@@ -243,6 +259,7 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double var(int[] a) {
+        validateNotNull(a);
         if (a.length == 0) return Double.NaN;
         double avg = mean(a);
         double sum = 0.0;
@@ -260,6 +277,7 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double varp(double[] a) {
+        validateNotNull(a);
         if (a.length == 0) return Double.NaN;
         double avg = mean(a);
         double sum = 0.0;
@@ -279,16 +297,16 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double varp(double[] a, int lo, int hi) {
-        int length = hi - lo + 1;
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
-        if (length == 0) return Double.NaN;
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
+        if (a.length == 0) return Double.NaN;
         double avg = mean(a, lo, hi);
         double sum = 0.0;
         for (int i = lo; i <= hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
-        return sum / length;
+        return sum / a.length;
     }
 
     /**
@@ -299,6 +317,7 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double stddev(double[] a) {
+        validateNotNull(a);
         return Math.sqrt(var(a));
     }
 
@@ -310,6 +329,7 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double stddev(int[] a) {
+        validateNotNull(a);
         return Math.sqrt(var(a));
     }
 
@@ -323,6 +343,9 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double stddev(double[] a, int lo, int hi) {
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         return Math.sqrt(var(a, lo, hi));
     }
 
@@ -335,6 +358,7 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double stddevp(double[] a) {
+        validateNotNull(a);
         return Math.sqrt(varp(a));
     }
 
@@ -348,6 +372,9 @@ public final class StdStats {
      *         {@code Double.NaN} if no such value
      */
     public static double stddevp(double[] a, int lo, int hi) {
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         return Math.sqrt(varp(a, lo, hi));
     }
 
@@ -359,6 +386,7 @@ public final class StdStats {
      *         {@code 0.0} if no such value
      */
     private static double sum(double[] a) {
+        validateNotNull(a);
         double sum = 0.0;
         for (int i = 0; i < a.length; i++) {
             sum += a[i];
@@ -376,8 +404,9 @@ public final class StdStats {
      *         {@code 0.0} if no such value
      */
     private static double sum(double[] a, int lo, int hi) {
-        if (lo < 0 || hi >= a.length || lo > hi)
-            throw new IndexOutOfBoundsException("Subarray indices out of bounds");
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         double sum = 0.0;
         for (int i = lo; i <= hi; i++) {
             sum += a[i];
@@ -393,6 +422,7 @@ public final class StdStats {
      *         {@code 0.0} if no such value
      */
     private static int sum(int[] a) {
+        validateNotNull(a);
         int sum = 0;
         for (int i = 0; i < a.length; i++) {
             sum += a[i];
@@ -407,6 +437,7 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotPoints(double[] a) {
+        validateNotNull(a);
         int n = a.length;
         StdDraw.setXscale(-1, n);
         StdDraw.setPenRadius(1.0 / (3.0 * n));
@@ -424,6 +455,7 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotLines(double[] a) {
+        validateNotNull(a);
         int n = a.length;
         StdDraw.setXscale(-1, n);
         StdDraw.setPenRadius();
@@ -440,11 +472,24 @@ public final class StdStats {
      * @param a the array of values
      */
     public static void plotBars(double[] a) {
+        validateNotNull(a);
         int n = a.length;
         StdDraw.setXscale(-1, n);
         for (int i = 0; i < n; i++) {
             StdDraw.filledRectangle(i, a[i]/2, 0.25, a[i]/2);
         }
+    }
+
+    // throw an IllegalArgumentException if x is null
+    private static void validateNotNull(Object x) {
+        if (x == null)
+            throw new IllegalArgumentException("argument is null");
+    }
+
+    // throw an exception unless 0 <= lo <= hi < length
+    private static void validateSubarrayIndices(int lo, int hi, int length) {
+        if (lo < 0 || hi >= length || lo > hi)
+            throw new IndexOutOfBoundsException("subarray indices out of bounds");
     }
 
 

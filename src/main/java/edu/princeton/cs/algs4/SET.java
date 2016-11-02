@@ -73,10 +73,10 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Adds the key to this set (if it is not already present).
      *
      * @param  key the key to add
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void add(Key key) {
-        if (key == null) throw new NullPointerException("called add() with a null key");
+        if (key == null) throw new IllegalArgumentException("called add() with a null key");
         set.add(key);
     }
 
@@ -87,10 +87,10 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * @param  key the key
      * @return {@code true} if this set contains {@code key};
      *         {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
-        if (key == null) throw new NullPointerException("called contains() with a null key");
+        if (key == null) throw new IllegalArgumentException("called contains() with a null key");
         return set.contains(key);
     }
 
@@ -98,10 +98,10 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      * Removes the specified key from this set (if the set contains the specified key).
      *
      * @param  key the key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new NullPointerException("called delete() with a null key");
+        if (key == null) throw new IllegalArgumentException("called delete() with a null key");
         set.remove(key);
     }
 
@@ -163,11 +163,11 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  key the key
      * @return the smallest key in this set greater than or equal to {@code key}
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws NoSuchElementException if there is no such key
      */
     public Key ceiling(Key key) {
-        if (key == null) throw new NullPointerException("called ceiling() with a null key");
+        if (key == null) throw new IllegalArgumentException("called ceiling() with a null key");
         Key k = set.ceiling(key);
         if (k == null) throw new NoSuchElementException("all keys are less than " + key);
         return k;
@@ -178,11 +178,11 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  key the key
      * @return the largest key in this set table less than or equal to {@code key}
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      * @throws NoSuchElementException if there is no such key
      */
     public Key floor(Key key) {
-        if (key == null) throw new NullPointerException("called floor() with a null key");
+        if (key == null) throw new IllegalArgumentException("called floor() with a null key");
         Key k = set.floor(key);
         if (k == null) throw new NoSuchElementException("all keys are greater than " + key);
         return k;
@@ -193,10 +193,10 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  that the other set
      * @return the union of this set and that set
-     * @throws NullPointerException if {@code that} is {@code null}
+     * @throws IllegalArgumentException if {@code that} is {@code null}
      */
     public SET<Key> union(SET<Key> that) {
-        if (that == null) throw new NullPointerException("called union() with a null argument");
+        if (that == null) throw new IllegalArgumentException("called union() with a null argument");
         SET<Key> c = new SET<Key>();
         for (Key x : this) {
             c.add(x);
@@ -212,10 +212,10 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      *
      * @param  that the other set
      * @return the intersection of this set and that set
-     * @throws NullPointerException if {@code that} is {@code null}
+     * @throws IllegalArgumentException if {@code that} is {@code null}
      */
     public SET<Key> intersects(SET<Key> that) {
-        if (that == null) throw new NullPointerException("called intersects() with a null argument");
+        if (that == null) throw new IllegalArgumentException("called intersects() with a null argument");
         SET<Key> c = new SET<Key>();
         if (this.size() < that.size()) {
             for (Key x : this) {

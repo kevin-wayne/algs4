@@ -23,8 +23,8 @@ package edu.princeton.cs.algs4;
  */
 public class DigraphGenerator {
     private static final class Edge implements Comparable<Edge> {
-        private int v;
-        private int w;
+        private final int v;
+        private final int w;
 
         private Edge(int v, int w) {
             this.v = v;

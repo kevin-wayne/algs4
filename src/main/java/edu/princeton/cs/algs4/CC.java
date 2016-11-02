@@ -82,19 +82,6 @@ public class CC {
         }
     }
 
-    // depth-first search
-    private void dfs(Graph G, int v) {
-        marked[v] = true;
-        id[v] = count;
-        size[count]++;
-        for (int w : G.adj(v)) {
-            if (!marked[w]) {
-                dfs(G, w);
-            }
-        }
-    }
-
-
     /**
      * Computes the connected components of the edge-weighted graph {@code G}.
      *
@@ -112,7 +99,19 @@ public class CC {
         }
     }
 
-    // depth-first search
+    // depth-first search for a Graph
+    private void dfs(Graph G, int v) {
+        marked[v] = true;
+        id[v] = count;
+        size[count]++;
+        for (int w : G.adj(v)) {
+            if (!marked[w]) {
+                dfs(G, w);
+            }
+        }
+    }
+
+    // depth-first search for an EdgeWeightedGraph
     private void dfs(EdgeWeightedGraph G, int v) {
         marked[v] = true;
         id[v] = count;

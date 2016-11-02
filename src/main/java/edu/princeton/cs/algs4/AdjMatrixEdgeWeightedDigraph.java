@@ -38,17 +38,17 @@ import java.util.NoSuchElementException;
 public class AdjMatrixEdgeWeightedDigraph {
     private static final String NEWLINE = System.getProperty("line.separator");
 
-    private int V;
+    private final int V;
     private int E;
     private DirectedEdge[][] adj;
     
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      * @param V the number of vertices
-     * @throws java.lang.IllegalArgumentException if {@code V < 0}
+     * @throws IllegalArgumentException if {@code V < 0}
      */
     public AdjMatrixEdgeWeightedDigraph(int V) {
-        if (V < 0) throw new RuntimeException("Number of vertices must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("number of vertices must be nonnegative");
         this.V = V;
         this.E = 0;
         this.adj = new DirectedEdge[V][V];
@@ -58,13 +58,13 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Initializes a random edge-weighted digraph with {@code V} vertices and <em>E</em> edges.
      * @param V the number of vertices
      * @param E the number of edges
-     * @throws java.lang.IllegalArgumentException if {@code V < 0}
-     * @throws java.lang.IllegalArgumentException if {@code E < 0}
+     * @throws IllegalArgumentException if {@code V < 0}
+     * @throws IllegalArgumentException if {@code E < 0}
      */
     public AdjMatrixEdgeWeightedDigraph(int V, int E) {
         this(V);
-        if (E < 0) throw new RuntimeException("Number of edges must be nonnegative");
-        if (E > V*V) throw new RuntimeException("Too many edges");
+        if (E < 0) throw new IllegalArgumentException("number of edges must be nonnegative");
+        if (E > V*V) throw new IllegalArgumentException("too many edges");
 
         // can be inefficient
         while (this.E != E) {

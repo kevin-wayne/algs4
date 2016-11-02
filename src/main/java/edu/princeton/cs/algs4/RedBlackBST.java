@@ -138,10 +138,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param key the key
      * @return the value associated with the given key if the key is in the symbol table
      *     and {@code null} if the key is not in the symbol table
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new NullPointerException("argument to get() is null");
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         return get(root, key);
     }
 
@@ -161,7 +161,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param key the key
      * @return {@code true} if this symbol table contains {@code key} and
      *     {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
         return get(key) != null;
@@ -179,10 +179,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *
      * @param key the key
      * @param val the value
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new NullPointerException("first argument to put() is null");
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
@@ -281,10 +281,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * (if the key is in this symbol table).    
      *
      * @param  key the key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) { 
-        if (key == null) throw new NullPointerException("argument to delete() is null");
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         if (!contains(key)) return;
 
         // if both children of root are black, set root to red
@@ -467,10 +467,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param key the key
      * @return the largest key in the symbol table less than or equal to {@code key}
      * @throws NoSuchElementException if there is no such key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key floor(Key key) {
-        if (key == null) throw new NullPointerException("argument to floor() is null");
+        if (key == null) throw new IllegalArgumentException("argument to floor() is null");
         if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
         Node x = floor(root, key);
         if (x == null) return null;
@@ -493,10 +493,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param key the key
      * @return the smallest key in the symbol table greater than or equal to {@code key}
      * @throws NoSuchElementException if there is no such key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key ceiling(Key key) {
-        if (key == null) throw new NullPointerException("argument to ceiling() is null");
+        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
         Node x = ceiling(root, key);
         if (x == null) return null;
@@ -541,10 +541,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * Return the number of keys in the symbol table strictly less than {@code key}.
      * @param key the key
      * @return the number of keys in the symbol table strictly less than {@code key}
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public int rank(Key key) {
-        if (key == null) throw new NullPointerException("argument to rank() is null");
+        if (key == null) throw new IllegalArgumentException("argument to rank() is null");
         return rank(key, root);
     } 
 
@@ -580,12 +580,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param  hi maximum endpoint
      * @return all keys in the sybol table between {@code lo} 
      *    (inclusive) and {@code hi} (inclusive) as an {@code Iterable}
-     * @throws NullPointerException if either {@code lo} or {@code hi}
+     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *    is {@code null}
      */
     public Iterable<Key> keys(Key lo, Key hi) {
-        if (lo == null) throw new NullPointerException("first argument to keys() is null");
-        if (hi == null) throw new NullPointerException("second argument to keys() is null");
+        if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
+        if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
         Queue<Key> queue = new Queue<Key>();
         // if (isEmpty() || lo.compareTo(hi) > 0) return queue;
@@ -611,12 +611,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param  hi maximum endpoint
      * @return the number of keys in the sybol table between {@code lo} 
      *    (inclusive) and {@code hi} (inclusive)
-     * @throws NullPointerException if either {@code lo} or {@code hi}
+     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *    is {@code null}
      */
     public int size(Key lo, Key hi) {
-        if (lo == null) throw new NullPointerException("first argument to size() is null");
-        if (hi == null) throw new NullPointerException("second argument to size() is null");
+        if (lo == null) throw new IllegalArgumentException("first argument to size() is null");
+        if (hi == null) throw new IllegalArgumentException("second argument to size() is null");
 
         if (lo.compareTo(hi) > 0) return 0;
         if (contains(hi)) return rank(hi) - rank(lo) + 1;

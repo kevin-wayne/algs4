@@ -29,12 +29,12 @@ import java.awt.Color;
 public class Particle {
     private static final double INFINITY = Double.POSITIVE_INFINITY;
 
-    private double rx, ry;    // position
-    private double vx, vy;    // velocity
-    private double radius;    // radius
-    private double mass;      // mass
-    private Color color;      // color
-    private int count;        // number of collisions so far
+    private double rx, ry;        // position
+    private double vx, vy;        // velocity
+    private int count;            // number of collisions so far
+    private final double radius;  // radius
+    private final double mass;    // mass
+    private final Color color;    // color
 
 
     /**

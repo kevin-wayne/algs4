@@ -152,13 +152,11 @@ public class BipartiteMatching {
             for (int w : G.adj(v)) {
 
                 // either (1) forward edge not in matching or (2) backward edge in matching
-                if (isResidualGraphEdge(v, w)) {
-                    if (!marked[w]) {
-                        edgeTo[w] = v;
-                        marked[w] = true;
-                        if (!isMatched(w)) return true;
-                        queue.enqueue(w);
-                    }
+                if (isResidualGraphEdge(v, w) && !marked[w]) {
+                    edgeTo[w] = v;
+                    marked[w] = true;
+                    if (!isMatched(w)) return true;
+                    queue.enqueue(w);
                 }
             }
         }

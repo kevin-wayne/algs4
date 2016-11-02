@@ -58,7 +58,7 @@ public class NFA {
 
     private Digraph graph;     // digraph of epsilon transitions
     private String regexp;     // regular expression
-    private int m;             // number of characters in regular expression
+    private final int m;       // number of characters in regular expression
 
     /**
      * Initializes the NFA from the specified regular expression.

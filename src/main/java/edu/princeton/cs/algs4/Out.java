@@ -24,7 +24,7 @@ import java.util.Locale;
  *  <p>
  *  For additional documentation, see
  *  <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i>
+ *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

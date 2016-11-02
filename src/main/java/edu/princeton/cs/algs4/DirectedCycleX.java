@@ -53,7 +53,7 @@ public class DirectedCycleX {
         for (int v = 0; v < G.V(); v++)
             if (indegree[v] == 0) queue.enqueue(v);
 
-        for (int j = 0; !queue.isEmpty(); j++) {
+        while(!queue.isEmpty()) {
             int v = queue.dequeue();
             for (int w : G.adj(v)) {
                 indegree[w]--;

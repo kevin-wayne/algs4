@@ -81,7 +81,7 @@ import javax.swing.KeyStroke;
  *  multiple indepedent drawing windows.
  *  <p>
  *  For additional documentation, see <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
+ *  <i>Computer Science: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -210,8 +210,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     private String name = "Draw";
 
     // for synchronization
-    private Object mouseLock = new Object();
-    private Object keyLock = new Object();
+    private final Object mouseLock = new Object();
+    private final Object keyLock = new Object();
 
     // current font
     private Font font;
@@ -232,11 +232,11 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     private double mouseY = 0;
 
     // keyboard state
-    private LinkedList<Character> keysTyped = new LinkedList<Character>();
-    private TreeSet<Integer> keysDown = new TreeSet<Integer>();
+    private final LinkedList<Character> keysTyped = new LinkedList<Character>();
+    private final TreeSet<Integer> keysDown = new TreeSet<Integer>();
 
     // event-based listeners
-    private ArrayList<DrawListener> listeners = new ArrayList<DrawListener>();
+    private final ArrayList<DrawListener> listeners = new ArrayList<DrawListener>();
 
 
     /**
@@ -812,13 +812,11 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     ***************************************************************************/
 
     private static BufferedImage getImage(String filename) {
-        if (filename == null) throw new NullPointerException();
 
         // from a file or URL
         try {
             URL url = new URL(filename);
-            BufferedImage image = ImageIO.read(url);
-            return image;
+            return ImageIO.read(url);
         } 
         catch (IOException e) {
             // ignore
@@ -827,8 +825,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         // in case file is inside a .jar (classpath relative to StdDraw)
         try {
             URL url = StdDraw.class.getResource(filename);
-            BufferedImage image = ImageIO.read(url);
-            return image;
+            return ImageIO.read(url);
         } 
         catch (IOException e) {
             // ignore
@@ -837,8 +834,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         // in case file is inside a .jar (classpath relative to root of jar)
         try {
             URL url = StdDraw.class.getResource("/" + filename);
-            BufferedImage image = ImageIO.read(url);
-            return image;
+            return ImageIO.read(url);
         } 
         catch (IOException e) {
             // ignore
@@ -851,16 +847,18 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      *
      * @param  x the center x-coordinate of the image
      * @param  y the center y-coordinate of the image
-     * @param  s the name of the image/picture, e.g., "ball.gif"
+     * @param  filename the name of the image/picture, e.g., "ball.gif"
      * @throws IllegalArgumentException if the image is corrupt
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
-    public void picture(double x, double y, String s) {
-        BufferedImage image = getImage(s);
+    public void picture(double x, double y, String filename) {
+        if (filename == null) throw new IllegalArgumentException("filename argument is null");
+        BufferedImage image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
         int ws = image.getWidth();
         int hs = image.getHeight();
-        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + s + " is corrupt");
+        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
         draw();
@@ -872,17 +870,19 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      *
      * @param  x the center x-coordinate of the image
      * @param  y the center y-coordinate of the image
-     * @param  s the name of the image/picture, e.g., "ball.gif"
+     * @param  filename the name of the image/picture, e.g., "ball.gif"
      * @param  degrees is the number of degrees to rotate counterclockwise
      * @throws IllegalArgumentException if the image is corrupt
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
-    public void picture(double x, double y, String s, double degrees) {
-        BufferedImage image = getImage(s);
+    public void picture(double x, double y, String filename, double degrees) {
+        if (filename == null) throw new IllegalArgumentException("filename argument is null");
+        BufferedImage image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
         int ws = image.getWidth();
         int hs = image.getHeight();
-        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + s + " is corrupt");
+        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
         offscreen.drawImage(image, (int) Math.round(xs - ws/2.0), (int) Math.round(ys - hs/2.0), null);
@@ -896,18 +896,20 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      *
      * @param  x the center x coordinate of the image
      * @param  y the center y coordinate of the image
-     * @param  s the name of the image/picture, e.g., "ball.gif"
+     * @param  filename the name of the image/picture, e.g., "ball.gif"
      * @param  w the width of the image
      * @param  h the height of the image
      * @throws IllegalArgumentException if the image is corrupt
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
-    public void picture(double x, double y, String s, double w, double h) {
-        Image image = getImage(s);
+    public void picture(double x, double y, String filename, double w, double h) {
+        if (filename == null) throw new IllegalArgumentException("filename argument is null");
+        Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
         double ws = factorX(w);
         double hs = factorY(h);
-        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + s + " is corrupt");
+        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
         if (ws <= 1 && hs <= 1) pixel(x, y);
         else {
             offscreen.drawImage(image, (int) Math.round(xs - ws/2.0),
@@ -925,19 +927,21 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      *
      * @param  x the center x-coordinate of the image
      * @param  y the center y-coordinate of the image
-     * @param  s the name of the image/picture, e.g., "ball.gif"
+     * @param  filename the name of the image/picture, e.g., "ball.gif"
      * @param  w the width of the image
      * @param  h the height of the image
      * @param  degrees is the number of degrees to rotate counterclockwise
      * @throws IllegalArgumentException if the image is corrupt
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
-    public void picture(double x, double y, String s, double w, double h, double degrees) {
-        Image image = getImage(s);
+    public void picture(double x, double y, String filename, double w, double h, double degrees) {
+        if (filename == null) throw new IllegalArgumentException("filename argument is null");
+        Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
         double ws = factorX(w);
         double hs = factorY(h);
-        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + s + " is corrupt");
+        if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
         if (ws <= 1 && hs <= 1) pixel(x, y);
 
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
@@ -1062,7 +1066,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
 
         // png files
-        if (suffix.toLowerCase().equals("png")) {
+        if ("png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(offscreenImage, suffix, file);
             }
@@ -1073,7 +1077,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
         // need to change from ARGB to RGB for jpeg
         // reference: http://archives.java.sun.com/cgi-bin/wa?A2=ind0404&L=java2d-interest&D=0&P=2727
-        else if (suffix.toLowerCase().equals("jpg")) {
+        else if ("jpg".equalsIgnoreCase(suffix)) {
             WritableRaster raster = offscreenImage.getRaster();
             WritableRaster newRaster;
             newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
@@ -1177,19 +1181,25 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * This method cannot be called directly.
      */
     @Override
-    public void mouseClicked(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseEntered(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseExited(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.

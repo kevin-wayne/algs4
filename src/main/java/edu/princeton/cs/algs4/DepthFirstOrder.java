@@ -74,7 +74,7 @@ public class DepthFirstOrder {
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
 
-        assert check(G);
+        assert check();
     }
 
     /**
@@ -167,7 +167,7 @@ public class DepthFirstOrder {
 
 
     // check that pre() and post() are consistent with pre(v) and post(v)
-    private boolean check(Digraph G) {
+    private boolean check() {
 
         // check that post(v) is consistent with post()
         int r = 0;
@@ -188,7 +188,6 @@ public class DepthFirstOrder {
             }
             r++;
         }
-
 
         return true;
     }

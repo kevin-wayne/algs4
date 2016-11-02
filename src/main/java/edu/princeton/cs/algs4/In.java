@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
  *  <p>
  *  For additional documentation, see 
  *  <a href="http://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> 
+ *  <i>Computer Science: An Interdisciplinary Approach</i> 
  *  by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  Like {@link Scanner}, reading a token also consumes preceding Java
@@ -94,17 +94,17 @@ public final class In {
      *
      * @param  socket the socket
      * @throws IllegalArgumentException if cannot open {@code socket}
-     * @throws NullPointerException if {@code socket} is {@code null}
+     * @throws IllegalArgumentException if {@code socket} is {@code null}
      */
     public In(Socket socket) {
-        if (socket == null) throw new NullPointerException("argument is null");
+        if (socket == null) throw new IllegalArgumentException("socket argument is null");
         try {
             InputStream is = socket.getInputStream();
             scanner = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + socket);
+            throw new IllegalArgumentException("Could not open " + socket, ioe);
         }
     }
 
@@ -113,10 +113,10 @@ public final class In {
      *
      * @param  url the URL
      * @throws IllegalArgumentException if cannot open {@code url}
-     * @throws NullPointerException if {@code url} is {@code null}
+     * @throws IllegalArgumentException if {@code url} is {@code null}
      */
     public In(URL url) {
-        if (url == null) throw new NullPointerException("argument is null");
+        if (url == null) throw new IllegalArgumentException("url argument is null");
         try {
             URLConnection site = url.openConnection();
             InputStream is     = site.getInputStream();
@@ -124,7 +124,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + url);
+            throw new IllegalArgumentException("Could not open " + url, ioe);
         }
     }
 
@@ -133,10 +133,10 @@ public final class In {
      *
      * @param  file the file
      * @throws IllegalArgumentException if cannot open {@code file}
-     * @throws NullPointerException if {@code file} is {@code null}
+     * @throws IllegalArgumentException if {@code file} is {@code null}
      */
     public In(File file) {
-        if (file == null) throw new NullPointerException("argument is null");
+        if (file == null) throw new IllegalArgumentException("file argument is null");
         try {
             // for consistency with StdIn, wrap with BufferedInputStream instead of use
             // file as argument to Scanner
@@ -145,7 +145,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + file);
+            throw new IllegalArgumentException("Could not open " + file, ioe);
         }
     }
 
@@ -156,10 +156,10 @@ public final class In {
      * @param  name the filename or web page name
      * @throws IllegalArgumentException if cannot open {@code name} as
      *         a file or URL
-     * @throws NullPointerException if {@code name} is {@code null}
+     * @throws IllegalArgumentException if {@code name} is {@code null}
      */
     public In(String name) {
-        if (name == null) throw new NullPointerException("argument is null");
+        if (name == null) throw new IllegalArgumentException("argument is null");
         try {
             // first try to read file from local file system
             File file = new File(name);
@@ -191,7 +191,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + name);
+            throw new IllegalArgumentException("Could not open " + name, ioe);
         }
     }
 
@@ -203,10 +203,10 @@ public final class In {
      * scanner will be mutated as you read on. 
      *
      * @param  scanner the scanner
-     * @throws NullPointerException if {@code scanner} is {@code null}
+     * @throws IllegalArgumentException if {@code scanner} is {@code null}
      */
     public In(Scanner scanner) {
-        if (scanner == null) throw new NullPointerException("argument is null");
+        if (scanner == null) throw new IllegalArgumentException("scanner argument is null");
         this.scanner = scanner;
     }
 
@@ -390,10 +390,10 @@ public final class In {
      */
     public boolean readBoolean() {
         String s = readString();
-        if (s.equalsIgnoreCase("true"))  return true;
-        if (s.equalsIgnoreCase("false")) return false;
-        if (s.equals("1"))               return true;
-        if (s.equals("0"))               return false;
+        if ("true".equalsIgnoreCase(s))  return true;
+        if ("false".equalsIgnoreCase(s)) return false;
+        if ("1".equals(s))               return true;
+        if ("0".equals(s))               return false;
         throw new InputMismatchException();
     }
 
@@ -426,7 +426,7 @@ public final class In {
         while (hasNextLine()) {
             lines.add(readLine());
         }
-        return lines.toArray(new String[0]);
+        return lines.toArray(new String[lines.size()]);
     }
 
 
@@ -572,7 +572,7 @@ public final class In {
             in = new In(urlName);
             System.out.println(in.readAll());
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -587,7 +587,7 @@ public final class In {
                 System.out.println(s);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -602,7 +602,7 @@ public final class In {
                 System.out.println(s);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -618,7 +618,7 @@ public final class In {
                 System.out.println(s);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -634,7 +634,7 @@ public final class In {
                 System.out.println(s);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -649,7 +649,7 @@ public final class In {
                 System.out.print(c);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -665,7 +665,7 @@ public final class In {
                 System.out.println(s);
             }
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();
@@ -682,7 +682,7 @@ public final class In {
             }
             System.out.println();
         }
-        catch (Exception e) {
+        catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         System.out.println();

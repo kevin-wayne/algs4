@@ -55,7 +55,7 @@ public class EdgeWeightedDirectedCycle {
             if (!marked[v]) dfs(G, v);
 
         // check that digraph has a cycle
-        assert check(G);
+        assert check();
     }
 
     // check that algorithm computes either the topological order or finds a directed cycle
@@ -113,7 +113,7 @@ public class EdgeWeightedDirectedCycle {
 
 
     // certify that digraph is either acyclic or has a directed cycle
-    private boolean check(EdgeWeightedDigraph G) {
+    private boolean check() {
 
         // edge-weighted digraph is cyclic
         if (hasCycle()) {

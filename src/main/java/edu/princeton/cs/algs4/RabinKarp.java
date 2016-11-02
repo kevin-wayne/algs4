@@ -99,9 +99,9 @@ public class RabinKarp {
     }
 
     // Monte Carlo version: always return true
-    private boolean check(int i) {
-        return true;
-    }
+    // private boolean check(int i) {
+    //    return true;
+    //}
  
     /**
      * Returns the index of the first occurrrence of the pattern string
