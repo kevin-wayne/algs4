@@ -646,8 +646,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *
      * @param  canvasWidth the width as a number of pixels
      * @param  canvasHeight the height as a number of pixels
-     * @throws IllegalArgumentException unless both {@code width} and
-     *         {@code height} are positive
+     * @throws IllegalArgumentException unless both {@code canvasWidth} and
+     *         {@code canvasHeight} are positive
      */
     public static void setCanvasSize(int canvasWidth, int canvasHeight) {
         if (canvasWidth <= 0 || canvasHeight <= 0)

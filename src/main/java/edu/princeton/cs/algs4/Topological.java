@@ -112,6 +112,17 @@ public class Topological {
     }
 
     /**
+     * Does the digraph have a topological order?
+     * @return {@code true} if the digraph has a topological order (or equivalently,
+     *    if the digraph is a DAG), and {@code false} otherwise
+     * @deprecated Replaced by {@link #hasOrder()}.
+     */
+    @Deprecated
+    public boolean isDAG() {
+        return hasOrder();
+    }
+
+    /**
      * The the rank of vertex {@code v} in the topological order;
      * -1 if the digraph is not a DAG
      *

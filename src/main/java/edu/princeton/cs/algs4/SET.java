@@ -265,15 +265,13 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     /**
      * Returns a string representation of this set.
      *
-     * @return a string representation of this set, with the keys separated
-     *         by single spaces
+     * @return a string representation of this set, enclosed in curly braces,
+     *         with adjacent keys separated by a comma and a space
      */
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        for (Key key : this)
-            s.append(key + " ");
-        return s.toString();
+        String s = set.toString();
+        return "{ " + s.substring(1, s.length() - 1) + " }";
     }
 
     /**
@@ -283,6 +281,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
      */
     public static void main(String[] args) {
         SET<String> set = new SET<String>();
+        StdOut.println("set = " + set);
 
         // insert some keys
         set.add("www.cs.princeton.edu");
@@ -318,6 +317,8 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
         StdOut.println("floor(www.simpsont.com)   = " + set.floor("www.simpsont.com"));
         StdOut.println();
 
+        StdOut.println("set = " + set);
+        StdOut.println();
 
         // print out all keys in this set in lexicographic order
         for (String s : set) {

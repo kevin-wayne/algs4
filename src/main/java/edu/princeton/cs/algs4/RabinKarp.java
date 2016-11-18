@@ -61,6 +61,8 @@ public class RabinKarp {
      * @param R the alphabet size
      */
     public RabinKarp(char[] pattern, int R) {
+        this.pat = String.valueOf(pattern);
+        this.R = R;        
         throw new UnsupportedOperationException("Operation not supported yet");
     }
 
