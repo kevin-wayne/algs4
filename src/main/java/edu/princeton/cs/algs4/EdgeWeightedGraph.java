@@ -97,7 +97,7 @@ public class EdgeWeightedGraph {
      * with each entry separated by whitespace.
      *
      * @param  in the input stream
-     * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      */
     public EdgeWeightedGraph(In in) {
@@ -107,6 +107,8 @@ public class EdgeWeightedGraph {
         for (int i = 0; i < E; i++) {
             int v = in.readInt();
             int w = in.readInt();
+            validateVertex(v);
+            validateVertex(w);
             double weight = in.readDouble();
             Edge e = new Edge(v, w, weight);
             addEdge(e);
@@ -152,17 +154,17 @@ public class EdgeWeightedGraph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
      * Adds the undirected edge {@code e} to this edge-weighted graph.
      *
      * @param  e the edge
-     * @throws IndexOutOfBoundsException unless both endpoints are between {@code 0} and {@code V-1}
+     * @throws IllegalArgumentException unless both endpoints are between {@code 0} and {@code V-1}
      */
     public void addEdge(Edge e) {
         int v = e.either();
@@ -179,7 +181,7 @@ public class EdgeWeightedGraph {
      *
      * @param  v the vertex
      * @return the edges incident on vertex {@code v} as an Iterable
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Edge> adj(int v) {
         validateVertex(v);
@@ -191,7 +193,7 @@ public class EdgeWeightedGraph {
      *
      * @param  v the vertex
      * @return the degree of vertex {@code v}               
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int degree(int v) {
         validateVertex(v);

@@ -87,7 +87,7 @@ public class EdgeWeightedDigraph {
      * with each entry separated by whitespace.
      *
      * @param  in the input stream
-     * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      */
     public EdgeWeightedDigraph(In in) {
@@ -97,8 +97,8 @@ public class EdgeWeightedDigraph {
         for (int i = 0; i < E; i++) {
             int v = in.readInt();
             int w = in.readInt();
-            if (v < 0 || v >= V) throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
-            if (w < 0 || w >= V) throw new IndexOutOfBoundsException("vertex " + w + " is not between 0 and " + (V-1));
+            validateVertex(v);
+            validateVertex(w);
             double weight = in.readDouble();
             addEdge(new DirectedEdge(v, w, weight));
         }
@@ -144,17 +144,17 @@ public class EdgeWeightedDigraph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
      * Adds the directed edge {@code e} to this edge-weighted digraph.
      *
      * @param  e the edge
-     * @throws IndexOutOfBoundsException unless endpoints of edge are between {@code 0}
+     * @throws IllegalArgumentException unless endpoints of edge are between {@code 0}
      *         and {@code V-1}
      */
     public void addEdge(DirectedEdge e) {
@@ -173,7 +173,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> adj(int v) {
         validateVertex(v);
@@ -186,7 +186,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the outdegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -199,7 +199,7 @@ public class EdgeWeightedDigraph {
      *
      * @param  v the vertex
      * @return the indegree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int indegree(int v) {
         validateVertex(v);

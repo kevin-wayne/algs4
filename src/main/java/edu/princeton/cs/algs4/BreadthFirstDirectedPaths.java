@@ -55,6 +55,7 @@ public class BreadthFirstDirectedPaths {
      * Computes the shortest path from {@code s} and every other vertex in graph {@code G}.
      * @param G the digraph
      * @param s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public BreadthFirstDirectedPaths(Digraph G, int s) {
         marked = new boolean[G.V()];
@@ -62,6 +63,7 @@ public class BreadthFirstDirectedPaths {
         edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             distTo[v] = INFINITY;
+        validateVertex(s);
         bfs(G, s);
     }
 
@@ -70,6 +72,8 @@ public class BreadthFirstDirectedPaths {
      * to every other vertex in graph {@code G}.
      * @param G the digraph
      * @param sources the source vertices
+     * @throws IllegalArgumentException unless each vertex {@code v} in
+     *         {@code sources} satisfies {@code 0 <= v < V}
      */
     public BreadthFirstDirectedPaths(Digraph G, Iterable<Integer> sources) {
         marked = new boolean[G.V()];
@@ -77,6 +81,7 @@ public class BreadthFirstDirectedPaths {
         edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             distTo[v] = INFINITY;
+        validateVertices(sources);
         bfs(G, sources);
     }
 
@@ -124,8 +129,10 @@ public class BreadthFirstDirectedPaths {
      * Is there a directed path from the source {@code s} (or sources) to vertex {@code v}?
      * @param v the vertex
      * @return {@code true} if there is a directed path, {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
@@ -134,8 +141,10 @@ public class BreadthFirstDirectedPaths {
      * (or sources) to vertex {@code v}?
      * @param v the vertex
      * @return the number of edges in a shortest path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int distTo(int v) {
+        validateVertex(v);
         return distTo[v];
     }
 
@@ -144,8 +153,11 @@ public class BreadthFirstDirectedPaths {
      * {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a shortest path, as an Iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
+
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<Integer>();
         int x;
@@ -154,6 +166,27 @@ public class BreadthFirstDirectedPaths {
         path.push(x);
         return path;
     }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertices(Iterable<Integer> vertices) {
+        if (vertices == null) {
+            throw new IllegalArgumentException("argument is null");
+        }
+        int V = marked.length;
+        for (int v : vertices) {
+            if (v < 0 || v >= V) {
+                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            }
+        }
+    }
+
 
     /**
      * Unit tests the {@code BreadthFirstDirectedPaths} data type.

@@ -41,6 +41,7 @@ package edu.princeton.cs.algs4;
 public class FordFulkerson {
     private static final double FLOATING_POINT_EPSILON = 1E-11;
 
+    private final int V;          // number of vertices
     private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
     private FlowEdge[] edgeTo;    // edgeTo[v] = last edge on shortest residual s->v path
     private double value;         // current value of max flow
@@ -52,14 +53,15 @@ public class FordFulkerson {
      * @param  G the flow network
      * @param  s the source vertex
      * @param  t the sink vertex
-     * @throws IndexOutOfBoundsException unless {@code 0 <= s < V}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= t < V}
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
      * @throws IllegalArgumentException if {@code s == t}
      * @throws IllegalArgumentException if initial flow is infeasible
      */
     public FordFulkerson(FlowNetwork G, int s, int t) {
-        validate(s, G.V());
-        validate(t, G.V());
+        V = G.V();
+        validate(s);
+        validate(t);
         if (s == t)               throw new IllegalArgumentException("Source equals sink");
         if (!isFeasible(G, s, t)) throw new IllegalArgumentException("Initial flow is infeasible");
 
@@ -100,17 +102,17 @@ public class FordFulkerson {
      * @param  v vertex
      * @return {@code true} if vertex {@code v} is on the {@code s} side of the micut;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean inCut(int v)  {
-        validate(v, marked.length);
+        validate(v);
         return marked[v];
     }
 
-    // throw an exception if v is outside prescibed range
-    private void validate(int v, int V)  {
+    // throw an IllegalArgumentException if v is outside prescibed range
+    private void validate(int v)  {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
 

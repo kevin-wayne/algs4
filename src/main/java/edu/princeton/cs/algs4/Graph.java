@@ -92,7 +92,7 @@ public class Graph {
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
      *
      * @param  in the input stream
-     * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      * @throws IllegalArgumentException if the input stream is in the wrong format
      */
@@ -109,6 +109,8 @@ public class Graph {
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
                 addEdge(v, w); 
             }
         }
@@ -156,10 +158,10 @@ public class Graph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
@@ -167,7 +169,7 @@ public class Graph {
      *
      * @param  v one vertex in the edge
      * @param  w the other vertex in the edge
-     * @throws IndexOutOfBoundsException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
+     * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -183,7 +185,7 @@ public class Graph {
      *
      * @param  v the vertex
      * @return the vertices adjacent to vertex {@code v}, as an iterable
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -195,7 +197,7 @@ public class Graph {
      *
      * @param  v the vertex
      * @return the degree of vertex {@code v}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int degree(int v) {
         validateVertex(v);

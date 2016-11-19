@@ -33,13 +33,13 @@ public class DirectedEdge {
      * @param v the tail vertex
      * @param w the head vertex
      * @param weight the weight of the directed edge
-     * @throws IndexOutOfBoundsException if either {@code v} or {@code w}
+     * @throws IllegalArgumentException if either {@code v} or {@code w}
      *    is a negative integer
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public DirectedEdge(int v, int w, double weight) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex names must be nonnegative integers");
+        if (v < 0) throw new IllegalArgumentException("Vertex names must be nonnegative integers");
+        if (w < 0) throw new IllegalArgumentException("Vertex names must be nonnegative integers");
         if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
         this.v = v;
         this.w = w;

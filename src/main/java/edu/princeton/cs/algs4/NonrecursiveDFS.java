@@ -57,9 +57,12 @@ public class NonrecursiveDFS {
      * Computes the vertices connected to the source vertex {@code s} in the graph {@code G}.
      * @param G the graph
      * @param s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public NonrecursiveDFS(Graph G, int s) {
         marked = new boolean[G.V()];
+
+        validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
@@ -96,9 +99,18 @@ public class NonrecursiveDFS {
      * @param v the vertex
      * @return {@code true} if vertex {@code v} is connected to the source vertex {@code s},
      *    and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean marked(int v) {
+        validateVertex(v);
         return marked[v];
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

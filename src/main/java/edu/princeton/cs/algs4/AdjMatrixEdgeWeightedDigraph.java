@@ -99,6 +99,8 @@ public class AdjMatrixEdgeWeightedDigraph {
     public void addEdge(DirectedEdge e) {
         int v = e.from();
         int w = e.to();
+        validateVertex(v);
+        validateVertex(w);
         if (adj[v][w] == null) {
             E++;
             adj[v][w] = e;
@@ -109,9 +111,10 @@ public class AdjMatrixEdgeWeightedDigraph {
      * Returns the directed edges incident from vertex {@code v}.
      * @param v the vertex
      * @return the directed edges incident from vertex {@code v} as an Iterable
-     * @throws java.lang.IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> adj(int v) {
+        validateVertex(v);
         return new AdjIterator(v);
     }
 
@@ -166,6 +169,13 @@ public class AdjMatrixEdgeWeightedDigraph {
         }
         return s.toString();
     }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
 
     /**
      * Unit tests the {@code AdjMatrixEdgeWeightedDigraph} data type.

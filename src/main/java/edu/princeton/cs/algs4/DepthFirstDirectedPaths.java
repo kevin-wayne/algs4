@@ -53,13 +53,15 @@ public class DepthFirstDirectedPaths {
 
     /**
      * Computes a directed path from {@code s} to every other vertex in digraph {@code G}.
-     * @param G the digraph
-     * @param s the source vertex
+     * @param  G the digraph
+     * @param  s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DepthFirstDirectedPaths(Digraph G, int s) {
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
         this.s = s;
+        validateVertex(s);
         dfs(G, s);
     }
 
@@ -75,11 +77,13 @@ public class DepthFirstDirectedPaths {
 
     /**
      * Is there a directed path from the source vertex {@code s} to vertex {@code v}?
-     * @param v the vertex
+     * @param  v the vertex
      * @return {@code true} if there is a directed path from the source
-     *   vertex {@code s} to vertex {@code v}, {@code false} otherwise
+     *         vertex {@code s} to vertex {@code v}, {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
@@ -87,17 +91,26 @@ public class DepthFirstDirectedPaths {
     /**
      * Returns a directed path from the source vertex {@code s} to vertex {@code v}, or
      * {@code null} if no such path.
-     * @param v the vertex
+     * @param  v the vertex
      * @return the sequence of vertices on a directed path from the source vertex
-     *   {@code s} to vertex {@code v}, as an Iterable
+     *         {@code s} to vertex {@code v}, as an Iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<Integer>();
         for (int x = v; x != s; x = edgeTo[x])
             path.push(x);
         path.push(s);
         return path;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

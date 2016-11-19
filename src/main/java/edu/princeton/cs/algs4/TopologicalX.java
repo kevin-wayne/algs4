@@ -151,7 +151,7 @@ public class TopologicalX {
      * @param v vertex
      * @return the position of vertex {@code v} in a topological order
      *    of the digraph; -1 if the digraph is not a DAG
-     * @throws IndexOutOfBoundsException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int rank(int v) {
         validateVertex(v);
@@ -246,11 +246,11 @@ public class TopologicalX {
         return true;
     }
 
-    // throw an IndexOutOfBoundsException unless {@code 0 <= v < V}
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         int V = ranks.length;
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

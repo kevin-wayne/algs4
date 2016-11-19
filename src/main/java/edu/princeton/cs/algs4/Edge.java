@@ -36,13 +36,13 @@ public class Edge implements Comparable<Edge> {
      * @param  v one vertex
      * @param  w the other vertex
      * @param  weight the weight of this edge
-     * @throws IndexOutOfBoundsException if either {@code v} or {@code w} 
+     * @throws IllegalArgumentException if either {@code v} or {@code w} 
      *         is a negative integer
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public Edge(int v, int w, double weight) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a nonnegative integer");
+        if (v < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
+        if (w < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
         if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
         this.v = v;
         this.w = w;

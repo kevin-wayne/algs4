@@ -45,11 +45,13 @@ public class NonrecursiveDirectedDFS {
     private boolean[] marked;  // marked[v] = is there an s->v path?
     /**
      * Computes the vertices reachable from the source vertex {@code s} in the digraph {@code G}.
-     * @param G the digraph
-     * @param s the source vertex
+     * @param  G the digraph
+     * @param  s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public NonrecursiveDirectedDFS(Digraph G, int s) {
         marked = new boolean[G.V()];
+        validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
@@ -83,12 +85,21 @@ public class NonrecursiveDirectedDFS {
 
     /**
      * Is vertex {@code v} reachable from the source vertex {@code s}?
-     * @param v the vertex
+     * @param  v the vertex
      * @return {@code true} if vertex {@code v} is reachable from the source vertex {@code s},
-     *    and {@code false} otherwise
+     *         and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean marked(int v) {
+        validateVertex(v);
         return marked[v];
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
@@ -106,7 +117,6 @@ public class NonrecursiveDirectedDFS {
                 StdOut.print(v + " ");
         StdOut.println();
     }
-
 
 }
 

@@ -39,13 +39,13 @@ public class FlowEdge {
      * @param v the tail vertex
      * @param w the head vertex
      * @param capacity the capacity of the edge
-     * @throws java.lang.IndexOutOfBoundsException if either {@code v} or {@code w}
+     * @throws IllegalArgumentException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws java.lang.IllegalArgumentException if {@code capacity < 0.0}
+     * @throws IllegalArgumentException if {@code capacity < 0.0}
      */
     public FlowEdge(int v, int w, double capacity) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
+        if (v < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
+        if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (!(capacity >= 0.0)) throw new IllegalArgumentException("Edge capacity must be non-negative");
         this.v         = v;
         this.w         = w;  
@@ -60,18 +60,18 @@ public class FlowEdge {
      * @param w the head vertex
      * @param capacity the capacity of the edge
      * @param flow the flow on the edge
-     * @throws java.lang.IndexOutOfBoundsException if either {@code v} or {@code w}
+     * @throws IllegalArgumentException if either {@code v} or {@code w}
      *    is a negative integer
-     * @throws java.lang.IllegalArgumentException if {@code capacity} is negative
-     * @throws java.lang.IllegalArgumentException unless {@code flow} is between 
+     * @throws IllegalArgumentException if {@code capacity} is negative
+     * @throws IllegalArgumentException unless {@code flow} is between 
      *    {@code 0.0} and {@code capacity}.
      */
     public FlowEdge(int v, int w, double capacity, double flow) {
-        if (v < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
-        if (w < 0) throw new IndexOutOfBoundsException("Vertex name must be a non-negative integer");
-        if (!(capacity >= 0.0))  throw new IllegalArgumentException("Edge capacity must be non-negative");
-        if (!(flow <= capacity)) throw new IllegalArgumentException("Flow exceeds capacity");
-        if (!(flow >= 0.0))      throw new IllegalArgumentException("Flow must be non-negative");
+        if (v < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
+        if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
+        if (!(capacity >= 0.0))  throw new IllegalArgumentException("edge capacity must be non-negative");
+        if (!(flow <= capacity)) throw new IllegalArgumentException("flow exceeds capacity");
+        if (!(flow >= 0.0))      throw new IllegalArgumentException("flow must be non-negative");
         this.v         = v;
         this.w         = w;  
         this.capacity  = capacity;
@@ -84,7 +84,7 @@ public class FlowEdge {
      */
     public FlowEdge(FlowEdge e) {
         this.v         = e.v;
-        this.w         = e.w;  
+        this.w         = e.w;
         this.capacity  = e.capacity;
         this.flow      = e.flow;
     }
@@ -127,13 +127,13 @@ public class FlowEdge {
      * @param vertex one endpoint of the edge
      * @return the endpoint of the edge that is different from the given vertex
      *   (unless the edge represents a self-loop in which case it returns the same vertex)
-     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
+     * @throws IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
      */
     public int other(int vertex) {
         if      (vertex == v) return w;
         else if (vertex == w) return v;
-        else throw new IllegalArgumentException("Illegal endpoint");
+        else throw new IllegalArgumentException("invalid endpoint");
     }
 
     /**
@@ -144,13 +144,12 @@ public class FlowEdge {
      *   If {@code vertex} is the tail vertex, the residual capacity equals
      *   {@code capacity() - flow()}; if {@code vertex} is the head vertex, the
      *   residual capacity equals {@code flow()}.
-     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
-     *   of the edge
+     * @throws IllegalArgumentException if {@code vertex} is not one of the endpoints of the edge
      */
     public double residualCapacityTo(int vertex) {
         if      (vertex == v) return flow;              // backward edge
         else if (vertex == w) return capacity - flow;   // forward edge
-        else throw new IllegalArgumentException("Illegal endpoint");
+        else throw new IllegalArgumentException("invalid endpoint");
     }
 
     /**
@@ -159,18 +158,18 @@ public class FlowEdge {
      *   if {@code vertex} is the head vertex, this decreases the flow on the edge by {@code delta}.
      * @param vertex one endpoint of the edge
      * @param delta amount by which to increase flow
-     * @throws java.lang.IllegalArgumentException if {@code vertex} is not one of the endpoints
+     * @throws IllegalArgumentException if {@code vertex} is not one of the endpoints
      *   of the edge
-     * @throws java.lang.IllegalArgumentException if {@code delta} makes the flow on
+     * @throws IllegalArgumentException if {@code delta} makes the flow on
      *   on the edge either negative or larger than its capacity
-     * @throws java.lang.IllegalArgumentException if {@code delta} is {@code NaN}
+     * @throws IllegalArgumentException if {@code delta} is {@code NaN}
      */
     public void addResidualFlowTo(int vertex, double delta) {
         if (!(delta >= 0.0)) throw new IllegalArgumentException("Delta must be nonnegative");
 
         if      (vertex == v) flow -= delta;           // backward edge
         else if (vertex == w) flow += delta;           // forward edge
-        else throw new IllegalArgumentException("Illegal endpoint");
+        else throw new IllegalArgumentException("invalid endpoint");
 
         // round flow to 0 or capacity if within floating-point precision
         if (Math.abs(flow) <= FLOATING_POINT_EPSILON)
