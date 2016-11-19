@@ -140,13 +140,15 @@ public class BellmanFordSP {
 
     /**
      * Returns the length of a shortest path from the source vertex {@code s} to vertex {@code v}.
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return the length of a shortest path from the source vertex {@code s} to vertex {@code v};
-     *    {@code Double.POSITIVE_INFINITY} if no such path
+     *         {@code Double.POSITIVE_INFINITY} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle reachable
-     *    from the source vertex {@code s}
+     *         from the source vertex {@code s}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double distTo(int v) {
+        validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         return distTo[v];
@@ -154,23 +156,27 @@ public class BellmanFordSP {
 
     /**
      * Is there a path from the source {@code s} to vertex {@code v}?
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return {@code true} if there is a path from the source vertex
-     *    {@code s} to vertex {@code v}, and {@code false} otherwise
+     *         {@code s} to vertex {@code v}, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
     /**
      * Returns a shortest path from the source {@code s} to vertex {@code v}.
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return a shortest path from the source {@code s} to vertex {@code v}
-     *    as an iterable of edges, and {@code null} if no such path
+     *         as an iterable of edges, and {@code null} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle reachable
-     *    from the source vertex {@code s}
+     *         from the source vertex {@code s}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> pathTo(int v) {
+        validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPathTo(v)) return null;
@@ -243,6 +249,13 @@ public class BellmanFordSP {
         StdOut.println("Satisfies optimality conditions");
         StdOut.println();
         return true;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

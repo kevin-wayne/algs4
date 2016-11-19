@@ -129,6 +129,7 @@ public class BipartiteX {
      *         is not bipartite
      */
     public boolean color(int v) {
+        validateVertex(v);
         if (!isBipartite)
             throw new UnsupportedOperationException("Graph is not bipartite");
         return color[v];
@@ -174,6 +175,13 @@ public class BipartiteX {
             }
         }
         return true;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

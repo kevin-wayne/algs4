@@ -56,6 +56,9 @@ public class AcyclicLP {
     public AcyclicLP(EdgeWeightedDigraph G, int s) {
         distTo = new double[G.V()];
         edgeTo = new DirectedEdge[G.V()];
+
+        validateVertex(s);
+
         for (int v = 0; v < G.V(); v++)
             distTo[v] = Double.NEGATIVE_INFINITY;
         distTo[s] = 0.0;
@@ -81,31 +84,37 @@ public class AcyclicLP {
 
     /**
      * Returns the length of a longest path from the source vertex {@code s} to vertex {@code v}.
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return the length of a longest path from the source vertex {@code s} to vertex {@code v};
-     *    {@code Double.NEGATIVE_INFINITY} if no such path
+     *         {@code Double.NEGATIVE_INFINITY} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double distTo(int v) {
+        validateVertex(v);
         return distTo[v];
     }
 
     /**
      * Is there a path from the source vertex {@code s} to vertex {@code v}?
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return {@code true} if there is a path from the source vertex
-     *    {@code s} to vertex {@code v}, and {@code false} otherwise
+     *         {@code s} to vertex {@code v}, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return distTo[v] > Double.NEGATIVE_INFINITY;
     }
 
     /**
      * Returns a longest path from the source vertex {@code s} to vertex {@code v}.
-     * @param v the destination vertex
+     * @param  v the destination vertex
      * @return a longest path from the source vertex {@code s} to vertex {@code v}
-     *    as an iterable of edges, and {@code null} if no such path
+     *         as an iterable of edges, and {@code null} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<DirectedEdge> path = new Stack<DirectedEdge>();
         for (DirectedEdge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
@@ -114,7 +123,12 @@ public class AcyclicLP {
         return path;
     }
 
-
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
 
     /**
      * Unit tests the {@code AcyclicLP} data type.

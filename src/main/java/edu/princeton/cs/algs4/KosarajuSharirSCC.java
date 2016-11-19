@@ -141,21 +141,27 @@ public class KosarajuSharirSCC {
 
     /**
      * Are vertices {@code v} and {@code w} in the same strong component?
-     * @param v one vertex
-     * @param w the other vertex
+     * @param  v one vertex
+     * @param  w the other vertex
      * @return {@code true} if vertices {@code v} and {@code w} are in the same
-     *     strong component, and {@code false} otherwise
+     *         strong component, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean stronglyConnected(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return id[v] == id[w];
     }
 
     /**
      * Returns the component id of the strong component containing vertex {@code v}.
-     * @param v the vertex
+     * @param  v the vertex
      * @return the component id of the strong component containing vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public int id(int v) {
+        validateVertex(v);
         return id[v];
     }
 
@@ -169,6 +175,13 @@ public class KosarajuSharirSCC {
             }
         }
         return true;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

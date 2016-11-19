@@ -41,8 +41,8 @@ package edu.princeton.cs.algs4;
  */
 public class FloydWarshall {
     private boolean hasNegativeCycle;  // is there a negative cycle?
-    private double[][] distTo;  // distTo[v][w] = length of shortest v->w path
-    private DirectedEdge[][] edgeTo;  // edgeTo[v][w] = last edge on shortest v->w path
+    private double[][] distTo;         // distTo[v][w] = length of shortest v->w path
+    private DirectedEdge[][] edgeTo;   // edgeTo[v][w] = last edge on shortest v->w path
 
     /**
      * Computes a shortest paths tree from each vertex to to every other vertex in
@@ -128,24 +128,31 @@ public class FloydWarshall {
 
     /**
      * Is there a path from the vertex {@code s} to vertex {@code t}?
-     * @param s the source vertex
-     * @param t the destination vertex
+     * @param  s the source vertex
+     * @param  t the destination vertex
      * @return {@code true} if there is a path from vertex {@code s}
-     * to vertex {@code t}, and {@code false} otherwise
+     *         to vertex {@code t}, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
      */
     public boolean hasPath(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         return distTo[s][t] < Double.POSITIVE_INFINITY;
     }
 
     /**
      * Returns the length of a shortest path from vertex {@code s} to vertex {@code t}.
-     * @param s the source vertex
-     * @param t the destination vertex
+     * @param  s the source vertex
+     * @param  t the destination vertex
      * @return the length of a shortest path from vertex {@code s} to vertex {@code t};
-     * {@code Double.POSITIVE_INFINITY} if no such path
+     *         {@code Double.POSITIVE_INFINITY} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double dist(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         return distTo[s][t];
@@ -153,13 +160,16 @@ public class FloydWarshall {
 
     /**
      * Returns a shortest path from vertex {@code s} to vertex {@code t}.
-     * @param s the source vertex
-     * @param t the destination vertex
+     * @param  s the source vertex
+     * @param  t the destination vertex
      * @return a shortest path from vertex {@code s} to vertex {@code t}
-     * as an iterable of edges, and {@code null} if no such path
+     *         as an iterable of edges, and {@code null} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> path(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPath(s, t)) return null;
@@ -190,6 +200,12 @@ public class FloydWarshall {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
 
     /**
      * Unit tests the {@code FloydWarshall} data type.

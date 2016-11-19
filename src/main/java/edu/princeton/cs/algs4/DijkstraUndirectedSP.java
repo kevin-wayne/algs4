@@ -80,6 +80,9 @@ public class DijkstraUndirectedSP {
 
         distTo = new double[G.V()];
         edgeTo = new Edge[G.V()];
+
+        validateVertex(s);
+
         for (int v = 0; v < G.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
@@ -115,8 +118,10 @@ public class DijkstraUndirectedSP {
      * @param  v the destination vertex
      * @return the length of a shortest path between the source vertex {@code s} and
      *         the vertex {@code v}; {@code Double.POSITIVE_INFINITY} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double distTo(int v) {
+        validateVertex(v);
         return distTo[v];
     }
 
@@ -127,8 +132,10 @@ public class DijkstraUndirectedSP {
      * @param  v the destination vertex
      * @return {@code true} if there is a path between the source vertex
      *         {@code s} to vertex {@code v}; {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
@@ -138,8 +145,10 @@ public class DijkstraUndirectedSP {
      * @param  v the destination vertex
      * @return a shortest path between the source vertex {@code s} and vertex {@code v};
      *         {@code null} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Edge> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Edge> path = new Stack<Edge>();
         int x = v;
@@ -202,6 +211,12 @@ public class DijkstraUndirectedSP {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
 
     /**
      * Unit tests the {@code DijkstraUndirectedSP} data type.

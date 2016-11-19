@@ -68,13 +68,24 @@ public class TransitiveClosure {
 
     /**
      * Is there a directed path from vertex {@code v} to vertex {@code w} in the digraph?
-     * @param v the source vertex
-     * @param w the target vertex
+     * @param  v the source vertex
+     * @param  w the target vertex
      * @return {@code true} if there is a directed path from {@code v} to {@code w},
-     *    {@code false} otherwise
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean reachable(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return tc[v].marked(w);
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = tc.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**

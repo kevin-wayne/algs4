@@ -118,21 +118,25 @@ public class SymbolDigraph {
 
     /**
      * Returns the name of the vertex associated with the integer {@code v}.
-     * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
      * @return the name of the vertex associated with the integer {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      * @deprecated Replaced by {@link #nameOf(int)}.
      */
     @Deprecated
     public String name(int v) {
+        validateVertex(v);
         return keys[v];
     }
 
     /**
      * Returns the name of the vertex associated with the integer {@code v}.
-     * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
      * @return the name of the vertex associated with the integer {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public String nameOf(int v) {
+        validateVertex(v);
         return keys[v];
     }
 
@@ -156,6 +160,13 @@ public class SymbolDigraph {
      */
     public Digraph digraph() {
         return graph;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+         int V = graph.V();
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
