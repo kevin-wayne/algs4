@@ -190,9 +190,11 @@ public final class StdStats {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        if (a.length == 0) return Double.NaN;
+        int length = hi - lo + 1;
+        if (length == 0) return Double.NaN;
+
         double sum = sum(a, lo, hi);
-        return sum / a.length;
+        return sum / length;
     }
 
     /**
@@ -242,13 +244,15 @@ public final class StdStats {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        if (a.length == 0) return Double.NaN;
+        int length = hi - lo + 1;
+        if (length == 0) return Double.NaN;
+
         double avg = mean(a, lo, hi);
         double sum = 0.0;
         for (int i = lo; i <= hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
-        return sum / (a.length - 1);
+        return sum / (length - 1);
     }
 
     /**
@@ -300,13 +304,15 @@ public final class StdStats {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        if (a.length == 0) return Double.NaN;
+        int length = hi - lo + 1;
+        if (length == 0) return Double.NaN;
+
         double avg = mean(a, lo, hi);
         double sum = 0.0;
         for (int i = lo; i <= hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
-        return sum / a.length;
+        return sum / length;
     }
 
     /**

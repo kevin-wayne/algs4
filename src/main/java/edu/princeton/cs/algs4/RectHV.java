@@ -108,11 +108,14 @@ public final class RectHV {
     }
 
     /**
-     * Returns true if the two rectangles intersect.
+     * Returns true if the two rectangles intersect. This includes
+     * <em>improper intersections</em> (at points on the boundary
+     * of each rectangle) and <em>nested intersctions</em>
+     * (when one rectangle is contained inside the other)
      *
      * @param  that the other rectangle
      * @return {@code true} if this rectangle intersect the argument
-               rectagnle at one or more points, including on the boundary
+               rectangle at one or more points
      */
     public boolean intersects(RectHV that) {
         return this.xmax >= that.xmin && this.ymax >= that.ymin

@@ -4,12 +4,12 @@
  *  Dependencies: ThreeSum.java Stopwatch.java StdRandom.java StdOut.java
  *
  *  % java DoublingTest 
- *      250   0.0
- *      500   0.0
- *     1000   0.1
- *     2000   0.6
- *     4000   4.5
- *     8000  35.7
+ *      250     0.0
+ *      500     0.0
+ *     1000     0.1
+ *     2000     0.6
+ *     4000     4.5
+ *     8000    35.7
  *  ...
  *
  ******************************************************************************/
@@ -58,7 +58,7 @@ public class DoublingTest {
     public static void main(String[] args) { 
         for (int n = 250; true; n += n) {
             double time = timeTrial(n);
-            StdOut.printf("%7d %5.1f\n", n, time);
+            StdOut.printf("%7d %7.1f\n", n, time);
         } 
     } 
 }

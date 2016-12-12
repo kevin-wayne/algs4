@@ -5,12 +5,14 @@
  *
  *
  *  % java DoublingRatio
- *      250   0.0    2.7
- *      500   0.0    4.8
- *     1000   0.1    6.9
- *     2000   0.6    7.7
- *     4000   4.5    8.0
- *     8000  35.7    8.0
+ *      250     0.0   2.7
+ *      500     0.0   4.8
+ *     1000     0.1   6.9
+ *     2000     0.6   7.7
+ *     4000     4.5   8.0
+ *     8000    35.7   8.0
+ *     4000     3.9   6.6
+
  *  ...
  *
  ******************************************************************************/
@@ -61,7 +63,7 @@ public class DoublingRatio {
         double prev = timeTrial(125);
         for (int n = 250; true; n += n) {
             double time = timeTrial(n);
-            StdOut.printf("%6d %7.1f %5.1f\n", n, time, time/prev);
+            StdOut.printf("%7d %7.1f %5.1f\n", n, time, time/prev);
             prev = time;
         } 
     } 
