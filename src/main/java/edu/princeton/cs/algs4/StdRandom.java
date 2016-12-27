@@ -176,7 +176,7 @@ public final class StdRandom {
      * @param  p the probability of returning {@code true}
      * @return {@code true} with probability {@code p} and
      *         {@code false} with probability {@code p}
-     * @throws IllegalArgumentException unless {@code p >= 0.0} and {@code p <= 1.0}
+     * @throws IllegalArgumentException unless {@code 0} &le; {@code p} &le; {@code 1.0}
      */
     public static boolean bernoulli(double p) {
         if (!(p >= 0.0 && p <= 1.0))
@@ -446,17 +446,17 @@ public final class StdRandom {
      *
      * @param  a the array to shuffle
      * @param  lo the left endpoint (inclusive)
-     * @param  hi the right endpoint (inclusive)
+     * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo <= hi) && (hi < a.length)}
+     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      * 
      */
     public static void shuffle(Object[] a, int lo, int hi) {
         if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo > hi || hi >= a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + "]");
+        if (lo < 0 || lo >= hi || hi > a.length) {
+            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i+1);     // between i and hi
             Object temp = a[i];
             a[i] = a[r];
@@ -469,16 +469,16 @@ public final class StdRandom {
      *
      * @param  a the array to shuffle
      * @param  lo the left endpoint (inclusive)
-     * @param  hi the right endpoint (inclusive)
+     * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo <= hi) && (hi < a.length)}
+     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static void shuffle(double[] a, int lo, int hi) {
         if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo > hi || hi >= a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + "]");
+        if (lo < 0 || lo >= hi || hi > a.length) {
+            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i+1);     // between i and hi
             double temp = a[i];
             a[i] = a[r];
@@ -491,21 +491,64 @@ public final class StdRandom {
      *
      * @param  a the array to shuffle
      * @param  lo the left endpoint (inclusive)
-     * @param  hi the right endpoint (inclusive)
+     * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo <= hi) && (hi < a.length)}
+     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static void shuffle(int[] a, int lo, int hi) {
         if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo > hi || hi >= a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + "]");
+        if (lo < 0 || lo >= hi || hi > a.length) {
+            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i+1);     // between i and hi
             int temp = a[i];
             a[i] = a[r];
             a[r] = temp;
         }
+    }
+
+    /**
+     * Returns a uniformly random permutation of <em>n</em> elements
+     *
+     * @param  n number of elements
+     * @throws IllegalArgumentException if {@code n} is negative
+     * @return an array of length {@code n} that is a uniformly random permutation
+     *         of {@code 0}, {@code 1}, ..., {@code n-1}
+     */
+    public static int[] permutation(int n) {
+        if (n < 0) throw new IllegalArgumentException("argument is negative");
+        int[] perm = new int[n];
+        for (int i = 0; i < n; i++)
+            perm[i] = i;
+        shuffle(perm);
+        return perm;
+    }
+
+    /**
+     * Returns a uniformly random permutation of <em>k</em> of <em>n</em> elements
+     *
+     * @param  n number of elements
+     * @param  k number of elements to select
+     * @throws IllegalArgumentException if {@code n} is negative
+     * @throws IllegalArgumentException unless {@code 0 <= k <= n}
+     * @return an array of length {@code k} that is a uniformly random permutation
+     *         of {@code k} of the elements from {@code 0}, {@code 1}, ..., {@code n-1}
+     */
+    public static int[] permutation(int n, int k) {
+        if (n < 0) throw new IllegalArgumentException("argument is negative");
+        if (k < 0 || k > n) throw new IllegalArgumentException("k must be between 0 and n");
+        int[] perm = new int[k];
+        for (int i = 0; i < k; i++) {
+            int r = uniform(i+1);    // between 0 and i
+            perm[i] = perm[r];
+            perm[r] = i;
+        }
+        for (int i = k; i < n; i++) {
+            int r = uniform(i+1);    // between 0 and i
+            if (r < k) perm[r] = i;
+        }
+        return perm;
     }
 
     /**

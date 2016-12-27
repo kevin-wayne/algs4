@@ -89,9 +89,12 @@ public final class Picture implements ActionListener {
    /**
      * Initializes a new picture that is a deep copy of the argument picture.
      *
-     * @param picture the picture to copy
+     * @param  picture the picture to copy
+     * @throws IllegalArgumentException if {@code picture} is {@code null}
      */
     public Picture(Picture picture) {
+        if (picture == null) throw new IllegalArgumentException("constructor argument is null");
+
         width  = picture.width();
         height = picture.height();
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -104,10 +107,13 @@ public final class Picture implements ActionListener {
    /**
      * Initializes a picture by reading from a file or URL.
      *
-     * @param filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
      * @throws IllegalArgumentException if cannot read image
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
     public Picture(String filename) {
+        if (filename == null) throw new IllegalArgumentException("constructor argument is null");
+
         this.filename = filename;
         try {
             // try to read from file in working directory
@@ -142,8 +148,11 @@ public final class Picture implements ActionListener {
      *
      * @param file the file
      * @throws IllegalArgumentException if cannot read image
+     * @throws IllegalArgumentException if {@code file} is {@code null}
      */
     public Picture(File file) {
+        if (file == null) throw new IllegalArgumentException("constructor argument is null");
+
         try {
             image = ImageIO.read(file);
         }
@@ -312,18 +321,22 @@ public final class Picture implements ActionListener {
      * Saves the picture to a file in a standard image format.
      * The filetype must be .png or .jpg.
      *
-     * @param name the name of the file
+     * @param filename the name of the file
+     * @throws IllegalArgumentException if {@code name} is {@code null}
      */
-    public void save(String name) {
-        save(new File(name));
+    public void save(String filename) {
+        if (filename == null) throw new IllegalArgumentException("argument to save() is null");
+        save(new File(filename));
     }
 
    /**
      * Saves the picture to a file in a PNG or JPEG image format.
      *
-     * @param file the file
+     * @param  file the file
+     * @throws IllegalArgumentException if {@code file} is {@code null}
      */
     public void save(File file) {
+        if (file == null) throw new IllegalArgumentException("argument to save() is null");
         filename = file.getName();
         if (frame != null) frame.setTitle(filename);
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
