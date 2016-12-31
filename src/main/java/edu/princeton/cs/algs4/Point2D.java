@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac Point2D.java
- *  Execution:    java Point2D x0 y0 N
+ *  Execution:    java Point2D x0 y0 n
  *  Dependencies: StdDraw.java StdRandom.java
  *
  *  Immutable point data type for points in the plane.
@@ -94,7 +94,7 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Returns the angle of this point in polar coordinates.
-     * @return the angle (in radians) of this point in polar coordiantes (between -pi/2 and pi/2)
+     * @return the angle (in radians) of this point in polar coordiantes (between –&pi;/2 and &pi;/2)
      */
     public double theta() {
         return Math.atan2(y, x);
@@ -102,7 +102,7 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Returns the angle between this point and that point.
-     * @return the angle in radians (between -pi and pi) between this point and that point (0 if equal)
+     * @return the angle in radians (between –&pi; and &pi;) between this point and that point (0 if equal)
      */
     private double angleTo(Point2D that) {
         double dx = that.x - this.x;
@@ -178,7 +178,7 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Compares two points by polar angle (between 0 and 2pi) with respect to this point.
+     * Compares two points by polar angle (between 0 and 2&pi;) with respect to this point.
      *
      * @return the comparator
      */
@@ -187,7 +187,7 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Compares two points by atan2() angle (between -pi and pi) with respect to this point.
+     * Compares two points by atan2() angle (between –&pi; and &pi;) with respect to this point.
      *
      * @return the comparator
      */

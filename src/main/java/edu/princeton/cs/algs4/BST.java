@@ -329,9 +329,9 @@ public class BST<Key extends Comparable<Key>, Value> {
      * Return the kth smallest key in the symbol table.
      *
      * @param  k the order statistic
-     * @return the kth smallest key in the symbol table
+     * @return the {@code k}th smallest key in the symbol table
      * @throws IllegalArgumentException unless {@code k} is between 0 and
-     *        <em>N</em> &minus; 1
+     *        <em>n</em>–1
      */
     public Key select(int k) {
         if (k < 0 || k >= size()) throw new IllegalArgumentException();
