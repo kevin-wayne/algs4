@@ -30,6 +30,7 @@ This repository is intended for use with either the <a href = "https://maven.apa
 or <a href = "https://gradle.org">Gradle</a> build managers.
 It can be run from either the command line or integrated into
 Eclipse, NetBeans, and IntelliJ.
+You can also access it via <a href = "https://bintray.com/algs4/maven/algs4">Bintray</a>.
 
 ## Coursera Algorithms, Part I and II students
 
@@ -39,7 +40,7 @@ However, please do not store solutions to programming assignments in public repo
 
 ## Copyright
 
-Copyright &copy; 2000&ndash;2016 by Robert Sedgewick and Kevin Wayne.
+Copyright &copy; 2000&ndash;2017 by Robert Sedgewick and Kevin Wayne.
 
 ## License
 
