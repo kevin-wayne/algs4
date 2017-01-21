@@ -355,7 +355,7 @@ import javax.swing.KeyStroke;
  *  <li> Wait for a short while.
  *  </ul>
  *  <p>
- *  The {@link #clear()}, {@link #show()}, and {@link #pause(int dt)} methods
+ *  The {@link #clear()}, {@link #show()}, and {@link #pause(int t)} methods
  *  support the first, third, and fourth of these steps, respectively.
  *  <p>
  *  For example, this code fragment animates two balls moving in a circle.
@@ -1523,7 +1523,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
      * and enables double buffering.
      * @param t number of milliseconds
-     * @deprecated replaced by {@link #enableDoubleBuffering}, {@link #show()}, and {@link #pause}
+     * @deprecated replaced by {@link #enableDoubleBuffering()}, {@link #show()}, and {@link #pause(int t)}
      */
     @Deprecated
     public static void show(int t) {

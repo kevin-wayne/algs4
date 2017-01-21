@@ -473,7 +473,7 @@ public final class StdRandom {
             throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
         for (int i = lo; i < hi; i++) {
-            int r = i + uniform(hi-i+1);     // between i and hi
+            int r = i + uniform(hi-i);     // between i and hi-1
             Object temp = a[i];
             a[i] = a[r];
             a[r] = temp;
@@ -495,7 +495,7 @@ public final class StdRandom {
             throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
         for (int i = lo; i < hi; i++) {
-            int r = i + uniform(hi-i+1);     // between i and hi
+            int r = i + uniform(hi-i);     // between i and hi-1
             double temp = a[i];
             a[i] = a[r];
             a[r] = temp;
@@ -517,7 +517,7 @@ public final class StdRandom {
             throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
         }
         for (int i = lo; i < hi; i++) {
-            int r = i + uniform(hi-i+1);     // between i and hi
+            int r = i + uniform(hi-i);     // between i and hi-1
             int temp = a[i];
             a[i] = a[r];
             a[r] = temp;
