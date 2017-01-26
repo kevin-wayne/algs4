@@ -167,8 +167,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
 
     /**
-     * Removes the specified key and its associated value from this symbol table
-     * (if the key is in this symbol table).
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is {@code null}.
      *
      * @param  key the key
      * @param  val the value
