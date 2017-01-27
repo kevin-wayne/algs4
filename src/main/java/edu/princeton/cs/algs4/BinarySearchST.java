@@ -272,7 +272,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key min() {
-        if (isEmpty()) return null;
+        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
         return keys[0]; 
     }
 
@@ -283,7 +283,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key max() {
-        if (isEmpty()) return null;
+        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
         return keys[n-1];
     }
 
@@ -296,7 +296,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *        <em>n</em>–1
      */
     public Key select(int k) {
-        if (k < 0 || k >= n) return null;
+        if (k < 0 || k >= n) throw new IllegalArgumentException();
         return keys[k];
     }
 
