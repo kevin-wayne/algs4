@@ -166,9 +166,12 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     } 
 
 
+
     /**
-     * Removes the specified key and its associated value from this symbol table
-     * (if the key is in this symbol table).
+     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * value with the new value if the symbol table already contains the specified key.
+     * Deletes the specified key (and its associated value) from this symbol table
+     * if the specified value is {@code null}.
      *
      * @param  key the key
      * @param  val the value
@@ -270,7 +273,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key min() {
-        if (isEmpty()) return null;
+        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
         return keys[0]; 
     }
 
@@ -281,7 +284,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if this symbol table is empty
      */
     public Key max() {
-        if (isEmpty()) return null;
+        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
         return keys[n-1];
     }
 
@@ -294,7 +297,9 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *        <em>n</em>–1
      */
     public Key select(int k) {
-        if (k < 0 || k >= n) return null;
+        if (k < 0 || k >= size()) {
+            throw new IllegalArgumentException("called select() with invalid argument: " + k);
+        }
         return keys[k];
     }
 

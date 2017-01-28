@@ -522,7 +522,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *     <em>n</em>–1
      */
     public Key select(int k) {
-        if (k < 0 || k >= size()) throw new IllegalArgumentException();
+        if (k < 0 || k >= size()) {
+            throw new IllegalArgumentException("called select() with invalid argument: " + k);
+        }
         Node x = select(root, k);
         return x.key;
     }
