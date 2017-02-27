@@ -31,11 +31,11 @@ import java.util.Arrays;
 
 /**
  *  The {@code GrahamScan} data type provides methods for computing the 
- *  convex hull of a set of <em>N</em> points in the plane.
+ *  convex hull of a set of <em>n</em> points in the plane.
  *  <p>
  *  The implementation uses the Graham-Scan convex hull algorithm.
- *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case
- *  and uses O(<em>N</em>) extra memory.
+ *  It runs in O(<em>n</em> log <em>n</em>) time in the worst case
+ *  and uses O(<em>n</em>) extra memory.
  *  <p>
  *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -49,49 +49,55 @@ public class GrahamScan {
     /**
      * Computes the convex hull of the specified array of points.
      *
-     * @param  pts the array of points
-     * @throws NullPointerException if {@code points} is {@code null} or if any
-     *         entry in {@code points[]} is {@code null}
+     * @param  points the array of points
+     * @throws IllegalArgumentException if {@code points} is {@code null}
+     * @throws IllegalArgumentException if any entry in {@code points[]} is {@code null}
+     * @throws IllegalArgumentException if {@code points.length} is {@code 0}
      */
-    public GrahamScan(Point2D[] pts) {
+    public GrahamScan(Point2D[] points) {
+        if (points == null) throw new IllegalArgumentException("argument is null");
+        if (points.length == 0) throw new IllegalArgumentException("array is of length 0");
 
         // defensive copy
-        int n = pts.length;
-        Point2D[] points = new Point2D[n];
-        for (int i = 0; i < n; i++)
-            points[i] = pts[i];
+        int n = points.length;
+        Point2D[] a = new Point2D[n];
+        for (int i = 0; i < n; i++) {
+            if (points[i] == null)
+                throw new IllegalArgumentException("points[" + i + "] is null");
+            a[i] = points[i];
+         }
 
-        // preprocess so that points[0] has lowest y-coordinate; break ties by x-coordinate
-        // points[0] is an extreme point of the convex hull
+        // preprocess so that a[0] has lowest y-coordinate; break ties by x-coordinate
+        // a[0] is an extreme point of the convex hull
         // (alternatively, could do easily in linear time)
         Arrays.sort(points);
 
-        // sort by polar angle with respect to base point points[0],
-        // breaking ties by distance to points[0]
-        Arrays.sort(points, 1, n, points[0].polarOrder());
+        // sort by polar angle with respect to base point a[0],
+        // breaking ties by distance to a[0]
+        Arrays.sort(a, 1, n, a[0].polarOrder());
 
-        hull.push(points[0]);       // p[0] is first extreme point
+        hull.push(a[0]);       // a[0] is first extreme point
 
-        // find index k1 of first point not equal to points[0]
+        // find index k1 of first point not equal to a[0]
         int k1;
         for (k1 = 1; k1 < n; k1++)
-            if (!points[0].equals(points[k1])) break;
+            if (!a[0].equals(a[k1])) break;
         if (k1 == n) return;        // all points equal
 
-        // find index k2 of first point not collinear with points[0] and points[k1]
+        // find index k2 of first point not collinear with a[0] and a[k1]
         int k2;
         for (k2 = k1+1; k2 < n; k2++)
-            if (Point2D.ccw(points[0], points[k1], points[k2]) != 0) break;
-        hull.push(points[k2-1]);    // points[k2-1] is second extreme point
+            if (Point2D.ccw(a[0], a[k1], a[k2]) != 0) break;
+        hull.push(a[k2-1]);    // a[k2-1] is second extreme point
 
-        // Graham scan; note that points[n-1] is extreme point different from points[0]
+        // Graham scan; note that a[n-1] is extreme point different from a[0]
         for (int i = k2; i < n; i++) {
             Point2D top = hull.pop();
-            while (Point2D.ccw(hull.peek(), top, points[i]) <= 0) {
+            while (Point2D.ccw(hull.peek(), top, a[i]) <= 0) {
                 top = hull.pop();
             }
             hull.push(top);
-            hull.push(points[i]);
+            hull.push(a[i]);
         }
 
         assert isConvex();

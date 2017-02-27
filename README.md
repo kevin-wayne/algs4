@@ -55,7 +55,7 @@ data structures in this repository were contributed by others. If interested, pl
 follow the same style as the code in the repository and thoroughly test your
 code before contacting us.
 
-## Support for other programming languaages
+## Support for other programming languages
 
 Some of the code in this repository has been translated to other languages:
 <ul>

@@ -34,6 +34,7 @@ import java.util.NoSuchElementException;
  *  This implementation uses a singly-linked list with a static nested class for
  *  linked-list nodes. See {@link LinkedStack} for the version from the
  *  textbook that uses a non-static nested class.
+ *  See {@link ResizingArrayStack} for a version that uses a resizing array.
  *  The <em>push</em>, <em>pop</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  *  <p>
