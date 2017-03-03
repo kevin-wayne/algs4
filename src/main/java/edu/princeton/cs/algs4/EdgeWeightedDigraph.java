@@ -23,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
  *  <p>
  *  This implementation uses an adjacency-lists representation, which 
- *  is a vertex-indexed array of @link{Bag} objects.
+ *  is a vertex-indexed array of {@link Bag} objects.
  *  All operations take constant time (in the worst case) except
  *  iterating over the edges incident from a given vertex, which takes
  *  time proportional to the number of such edges.

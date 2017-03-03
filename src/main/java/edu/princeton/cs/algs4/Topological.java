@@ -13,17 +13,16 @@
  *  Calculus
  *  Linear Algebra
  *  Introduction to CS
- *  Programming Systems
+ *  Advanced Programming
  *  Algorithms
  *  Theoretical CS
  *  Artificial Intelligence
+ *  Robotics
  *  Machine Learning
  *  Neural Networks
- *  Robotics
+ *  Databases
  *  Scientific Computing
  *  Computational Biology
- *  Databases
- *
  *
  ******************************************************************************/
 

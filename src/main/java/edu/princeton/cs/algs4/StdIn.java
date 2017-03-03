@@ -280,16 +280,21 @@ public final class StdIn {
     /**
      * Reads and returns the next character.
      *
-     * @return the next character
+     * @return the next {@code char}
      * @throws NoSuchElementException if standard input is empty
      */
     public static char readChar() {
-        scanner.useDelimiter(EMPTY_PATTERN);
-        String ch = scanner.next();
-        assert ch.length() == 1 : "Internal (Std)In.readChar() error!"
-            + " Please contact the authors.";
-        scanner.useDelimiter(WHITESPACE_PATTERN);
-        return ch.charAt(0);
+        try {
+            scanner.useDelimiter(EMPTY_PATTERN);
+            String ch = scanner.next();
+            assert ch.length() == 1 : "Internal (Std)In.readChar() error!"
+                + " Please contact the authors.";
+            scanner.useDelimiter(WHITESPACE_PATTERN);
+            return ch.charAt(0);
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'char' value from standard input, but there are no more tokens available");
+        }
     }  
 
 
@@ -317,7 +322,12 @@ public final class StdIn {
      * @throws NoSuchElementException if standard input is empty
      */
     public static String readString() {
-        return scanner.next();
+        try {
+            return scanner.next();
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'String' value from standard input, but there are no more tokens available");
+        }
     }
 
    /**
@@ -328,7 +338,17 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as an {@code int}
      */
     public static int readInt() {
-        return scanner.nextInt();
+        try {
+            return scanner.nextInt();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read an 'int' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attemps to read an 'int' value from standard input, but there are no more tokens available");
+        }
+
     }
 
    /**
@@ -339,7 +359,16 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as a {@code double}
      */
     public static double readDouble() {
-        return scanner.nextDouble();
+        try {
+            return scanner.nextDouble();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read a 'double' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'double' value from standard input, but there are no more tokens available");
+        }
     }
 
    /**
@@ -350,7 +379,16 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as a {@code float}
      */
     public static float readFloat() {
-        return scanner.nextFloat();
+        try {
+            return scanner.nextFloat();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read a 'float' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'float' value from standard input, but there are no more tokens available");
+        }
     }
 
    /**
@@ -361,7 +399,16 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as a {@code long}
      */
     public static long readLong() {
-        return scanner.nextLong();
+        try {
+            return scanner.nextLong();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read a 'long' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'long' value from standard input, but there are no more tokens available");
+        }
     }
 
    /**
@@ -372,7 +419,16 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as a {@code short}
      */
     public static short readShort() {
-        return scanner.nextShort();
+        try {
+            return scanner.nextShort();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read a 'short' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'short' value from standard input, but there are no more tokens available");
+        }
     }
 
    /**
@@ -383,7 +439,16 @@ public final class StdIn {
      * @throws InputMismatchException if the next token cannot be parsed as a {@code byte}
      */
     public static byte readByte() {
-        return scanner.nextByte();
+        try {
+            return scanner.nextByte();
+        }
+        catch (InputMismatchException e) {
+            String token = scanner.next();
+            throw new InputMismatchException("attempts to read a 'byte' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'byte' value from standard input, but there are no more tokens available");
+        }
     }
 
     /**
@@ -397,12 +462,18 @@ public final class StdIn {
      *    ignoring case
      */
     public static boolean readBoolean() {
-        String s = readString();
-        if ("true".equalsIgnoreCase(s))  return true;
-        if ("false".equalsIgnoreCase(s)) return false;
-        if ("1".equals(s))               return true;
-        if ("0".equals(s))               return false;
-        throw new InputMismatchException();
+        try {
+            String token = readString();
+            if ("true".equalsIgnoreCase(token))  return true;
+            if ("false".equalsIgnoreCase(token)) return false;
+            if ("1".equals(token))               return true;
+            if ("0".equals(token))               return false;
+            throw new InputMismatchException("attempts to read a 'boolean' value from standard input, but the next token is \"" + token + "\"");
+        }
+        catch (NoSuchElementException e) {
+            throw new NoSuchElementException("attempts to read a 'boolean' value from standard input, but there are no more tokens available");
+        }
+
     }
 
     /**
@@ -559,7 +630,6 @@ public final class StdIn {
         double c = StdIn.readDouble();
         StdOut.println("Your double was: " + c);
         StdOut.println();
-
     }
 
 }

@@ -80,22 +80,6 @@ public class Heap {
         pq[j-1] = swap;
     }
 
-    // is v < w ?
-    private static boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
-    }
-        
-
-   /***************************************************************************
-    *  Check if array is sorted - useful for debugging.
-    ***************************************************************************/
-    private static boolean isSorted(Comparable[] a) {
-        for (int i = 1; i < a.length; i++)
-            if (less(a[i], a[i-1])) return false;
-        return true;
-    }
-
-
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
@@ -113,7 +97,6 @@ public class Heap {
         String[] a = StdIn.readAllStrings();
         Heap.sort(a);
         show(a);
-        assert isSorted(a);
     }
 }
 
