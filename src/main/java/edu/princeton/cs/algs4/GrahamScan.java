@@ -70,7 +70,7 @@ public class GrahamScan {
         // preprocess so that a[0] has lowest y-coordinate; break ties by x-coordinate
         // a[0] is an extreme point of the convex hull
         // (alternatively, could do easily in linear time)
-        Arrays.sort(points);
+        Arrays.sort(a);
 
         // sort by polar angle with respect to base point a[0],
         // breaking ties by distance to a[0]
