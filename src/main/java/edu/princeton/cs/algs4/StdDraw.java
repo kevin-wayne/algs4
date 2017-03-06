@@ -613,10 +613,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     // set of key codes currently pressed down
     private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
 
-    // time in milliseconds (from currentTimeMillis()) when we can draw again
-    // used to control the frame rate
-    private static long nextDraw = -1;  
-
     // singleton pattern: client can't instantiate
     private StdDraw() { }
 
@@ -1189,12 +1185,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void polygon(double[] x, double[] y) {
-        if (x == null) throw new IllegalArgumentException();
-        if (y == null) throw new IllegalArgumentException();
+        if (x == null) throw new IllegalArgumentException("x-coordinate array is null");
+        if (y == null) throw new IllegalArgumentException("y-coordinate array is null");
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
         int n = n1;
+        if (n == 0) return;
+
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
         for (int i = 0; i < n; i++)
@@ -1216,12 +1214,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void filledPolygon(double[] x, double[] y) {
-        if (x == null) throw new IllegalArgumentException();
-        if (y == null) throw new IllegalArgumentException();
+        if (x == null) throw new IllegalArgumentException("x-coordinate array is null");
+        if (y == null) throw new IllegalArgumentException("y-coordinate array is null");
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
         int n = n1;
+        if (n == 0) return;
+
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
         for (int i = 0; i < n; i++)
@@ -1527,23 +1527,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      */
     @Deprecated
     public static void show(int t) {
-        // sleep until the next time we're allowed to draw
-        long millis = System.currentTimeMillis();
-        if (millis < nextDraw) {
-            try {
-                Thread.sleep(nextDraw - millis);
-            }
-            catch (InterruptedException e) {
-                System.out.println("Error sleeping");
-            }
-            millis = nextDraw;
-        }
-
         show();
+        pause(t);
         enableDoubleBuffering();
-
-        // when are we allowed to draw again
-        nextDraw = millis + t;
     }
 
     /**
@@ -1551,20 +1537,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param t number of milliseconds
      */
     public static void pause(int t) {
-        // sleep until the next time we're allowed to draw
-        long millis = System.currentTimeMillis();
-        if (millis < nextDraw) {
-            try {
-                Thread.sleep(nextDraw - millis);
-            }
-            catch (InterruptedException e) {
-                System.out.println("Error sleeping");
-            }
-            millis = nextDraw;
+        try {
+            Thread.sleep(t);
         }
-
-        // when are we allowed to draw again
-        nextDraw = millis + t;
+        catch (InterruptedException e) {
+            System.out.println("Error sleeping");
+        }
     }
 
     /**
@@ -1870,19 +1848,19 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        StdDraw.square(.2, .8, .1);
-        StdDraw.filledSquare(.8, .8, .2);
-        StdDraw.circle(.8, .2, .2);
+        StdDraw.square(0.2, 0.8, 0.1);
+        StdDraw.filledSquare(0.8, 0.8, 0.2);
+        StdDraw.circle(0.8, 0.2, 0.2);
 
         StdDraw.setPenColor(StdDraw.BOOK_RED);
-        StdDraw.setPenRadius(.02);
-        StdDraw.arc(.8, .2, .1, 200, 45);
+        StdDraw.setPenRadius(0.02);
+        StdDraw.arc(0.8, 0.2, 0.1, 200, 45);
 
         // draw a blue diamond
         StdDraw.setPenRadius();
         StdDraw.setPenColor(StdDraw.BOOK_BLUE);
-        double[] x = { .1, .2, .3, .2 };
-        double[] y = { .2, .3, .2, .1 };
+        double[] x = { 0.1, 0.2, 0.3, 0.2 };
+        double[] y = { 0.2, 0.3, 0.2, 0.1 };
         StdDraw.filledPolygon(x, y);
 
         // text

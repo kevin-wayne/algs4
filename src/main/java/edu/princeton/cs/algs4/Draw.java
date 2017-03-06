@@ -1020,46 +1020,63 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
 
     /**
-     * Displays on screen, pause for {@code t} milliseconds, and turn on
-     * <em>animation mode</em>.
-     * Subsequent calls to drawing methods such as {@code line()}, {@code circle()},
-     * and {@code square()} will not be displayed on screen until the next call to {@code show()}.
-     * This is useful for producing animations (clear the screen, draw a bunch of shapes,
-     * display on screen for a fixed amount of time, and repeat). It also speeds up
-     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
-     * on screen, draw the shapes, and call {@code show(0)} to display them all
-     * on screen at once).
-     *
+     * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
+     * and enables double buffering.
+     * @param t number of milliseconds
+     * @deprecated replaced by {@link #enableDoubleBuffering()}, {@link #show()}, and {@link #pause(int t)}
+     */
+    @Deprecated
+    public void show(int t) {
+        show();
+        pause(t);
+        enableDoubleBuffering();
+    }
+
+    /**
+     * Pause for t milliseconds. This method is intended to support computer animations.
      * @param t number of milliseconds
      */
-    public void show(int t) {
-        defer = false;
-        draw();
+    public void pause(int t) {
         try {
             Thread.sleep(t);
         }
         catch (InterruptedException e) {
             System.out.println("Error sleeping");
         }
-        defer = true;
     }
 
-
     /**
-     * Displays on-screen and turn off animation mode.
-     * Subsequent calls to drawing methods such as {@code line()}, {@code circle()},
-     * and {@code square()} will be displayed on screen when called. This is the default.
+     * Copies offscreen buffer to onscreen buffer. There is no reason to call
+     * this method unless double buffering is enabled.
      */
     public void show() {
-        defer = false;
-        draw();
+        onscreen.drawImage(offscreenImage, 0, 0, null);
+        frame.repaint();
     }
 
     // draw onscreen if defer is false
     private void draw() {
-        if (defer) return;
-        onscreen.drawImage(offscreenImage, 0, 0, null);
-        frame.repaint();
+        if (!defer) show();
+    }
+
+    /**
+     * Enable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be deffered until the next call
+     * to show(). Useful for animations.
+     */
+    public void enableDoubleBuffering() {
+        defer = true;
+    }
+
+    /**
+     * Disable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be displayed on screen when called.
+     * This is the default.
+     */
+    public void disableDoubleBuffering() {
+        defer = false;
     }
 
     /**
