@@ -171,6 +171,12 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      */
     public static final Color BOOK_RED = new Color(150, 35, 31);
 
+    /**
+     * Shade of orange used in Princeton's identity.
+     * It is PMS 158. The RGB values are approximately (245, 128, 37).
+     */
+    public static final Color PRINCETON_ORANGE = new Color(245, 128, 37);
+
     // default colors
     private static final Color DEFAULT_PEN_COLOR   = BLACK;
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;

@@ -133,6 +133,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     private Value get(Node x, Key key) {
+        if (key == null) throw new IllegalArgumentException("called get() with a null key");
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
         if      (cmp < 0) return get(x.left, key);
@@ -151,7 +152,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
+        if (key == null) throw new IllegalArgumentException("calledput() with a null key");
         if (val == null) {
             delete(key);
             return;
@@ -215,7 +216,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+        if (key == null) throw new IllegalArgumentException("called delete() with a null key");
         root = delete(root, key);
         assert check();
     }

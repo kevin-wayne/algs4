@@ -211,7 +211,9 @@ import javax.swing.KeyStroke;
  *  you can use this method with one of these predefined colors in standard drawing:
  *  {@link #BLACK}, {@link #BLUE}, {@link #CYAN}, {@link #DARK_GRAY}, {@link #GRAY},
  *  {@link #GREEN}, {@link #LIGHT_GRAY}, {@link #MAGENTA}, {@link #ORANGE},
- *  {@link #PINK}, {@link #RED}, {@link #WHITE}, and {@link #YELLOW}.
+ *  {@link #PINK}, {@link #RED}, {@link #WHITE}, {@link #YELLOW},
+ *  {@link #BOOK_BLUE}, {@link #BOOK_LIGHT_BLUE}, {@link #BOOK_RED}, and
+ *  {@link #PRINCETON_ORANGE}.
  *  For example, {@code StdDraw.setPenColor(StdDraw.MAGENTA)} sets the
  *  pen color to magenta.
  *  <p>
@@ -551,6 +553,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * It is Pantone 1805U. The RGB values are approximately (150, 35, 31).
      */
     public static final Color BOOK_RED = new Color(150, 35, 31);
+
+    /**
+     * Shade of orange used in Princeton University's identity.
+     * It is PMS 158. The RGB values are approximately (245, 128, 37).
+     */
+    public static final Color PRINCETON_ORANGE = new Color(245, 128, 37);
 
     // default colors
     private static final Color DEFAULT_PEN_COLOR   = BLACK;

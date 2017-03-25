@@ -2,8 +2,8 @@
  *  Compilation:  javac BinaryInsertion.java
  *  Execution:    java BinaryInsertion < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
- *                http://algs4.cs.princeton.edu/21sort/words3.txt
+ *  Data files:   http://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                http://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using 
  *  binary insertion sort with half exchanges.
