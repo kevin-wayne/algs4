@@ -195,8 +195,8 @@ public class Interval1D {
     // ascending order of max endpoint, breaking ties by min endpoint
     private static class MaxEndpointComparator implements Comparator<Interval1D> {
         public int compare(Interval1D a, Interval1D b) {
-            if      (a.min < b.max) return -1;
-            else if (a.min > b.max) return +1;
+            if      (a.max < b.max) return -1;
+            else if (a.max > b.max) return +1;
             else if (a.min < b.min) return -1;
             else if (a.min > b.min) return +1;
             else                    return  0;
