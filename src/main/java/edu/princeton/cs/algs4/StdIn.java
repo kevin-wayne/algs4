@@ -122,7 +122,7 @@ import java.util.regex.Pattern;
  *  </ul>
  *  <p>
  *  The first three methods read of all of remaining token on standard input
- *  and dconverts the tokens to values of
+ *  and converts the tokens to values of
  *  the specified type, as in the corresponding
  *  {@code readDouble}, {@code readInt}, and {@code readString()} methods.
  *  The {@code readAllLines()} method reads all remaining lines on standard
@@ -245,7 +245,7 @@ public final class StdIn {
     }
 
     /**
-     * Returns true if standard input has more inputy (including whitespace).
+     * Returns true if standard input has more input (including whitespace).
      * Use this method to know whether the next call to {@link #readChar()} will succeed.
      * This method is functionally equivalent to {@link #hasNextLine()}.
      *

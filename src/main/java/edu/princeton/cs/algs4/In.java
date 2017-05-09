@@ -248,7 +248,7 @@ public final class In {
     }
 
     /**
-     * Returns true if this input stream has more inputy (including whitespace).
+     * Returns true if this input stream has more input (including whitespace).
      * Use this method to know whether the next call to {@link #readChar()} will succeed.
      * This method is functionally equivalent to {@link #hasNextLine()}.
      * 
