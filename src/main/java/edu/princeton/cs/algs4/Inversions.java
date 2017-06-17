@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
  *  The {@code Inversions} class provides static methods to count the 
  *  number of <em>inversions</em> in either an array of integers or comparables.
  *  An inversion in an array {@code a[]} is a pair of indicies {@code i} and
- *  {@code j} such that {@code i} < {@code j} and {@code a[i] > a[j]}.
+ *  {@code j} such that {@code i < j} and {@code a[i] > a[j]}.
  *  <p>
  *  This implementation uses a generalization of mergesort. The <em>count</em>
  *  operation takes time proportional to <em>n</em> log <em>n</em>,
@@ -121,6 +121,7 @@ public class Inversions {
      * Returns the number of inversions in the comparable array.
      * The argument array is not modified.
      * @param  a the array
+     * @param <Key> the inferred type of the elements in the array
      * @return the number of inversions in the array. An inversion is a pair of 
      *         indicies {@code i} and {@code j} such that {@code i < j}
      *         and {@code a[i].compareTo(a[j]) > 0}.
