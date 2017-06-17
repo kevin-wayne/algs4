@@ -70,7 +70,7 @@ public class Inversions {
      * @param  a the array
      * @return the number of inversions in the array. An inversion is a pair of 
      *         indicies {@code i} and {@code j} such that {@code i < j}
-     *         and {@code a[i]} > {@code a[j]}.
+     *         and {@code a[i] > a[j]}.
      */
     public static long count(int[] a) {
         int[] b   = new int[a.length];
