@@ -130,6 +130,7 @@ public class GlobalMincut {
      * vertices of the minimum cut; or {@code false} if the vertex {@code v} is
      * on the second subset.
      * 
+     * @param v the vertex to check
      * @return {@code true} if the vertex {@code v} is on the first subset of
      *         vertices of the minimum cut; or {@code false} if the vertex
      *         {@code v} is on the second subset.
