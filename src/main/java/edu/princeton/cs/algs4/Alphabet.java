@@ -215,7 +215,7 @@ public class Alphabet {
      */
     public char toChar(int index) {
         if (index < 0 || index >= R) {
-            throw new IndexOutOfBoundsException("Alphabet index out of bounds");
+            throw new IllegalArgumentException("index must be between 0 and " + R + ": " + index);
         }
         return alphabet[index];
     }

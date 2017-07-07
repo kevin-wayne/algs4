@@ -48,9 +48,11 @@ public class AssignmentProblem {
      *
      * @param  weight the <em>n</em>-by-<em>n</em> matrix of weights
      * @throws IllegalArgumentException unless all weights are nonnegative
-     * @throws NullPointerException if {@code weight} is {@code null}
+     * @throws IllegalArgumentException if {@code weight} is {@code null}
      */ 
     public AssignmentProblem(double[][] weight) {
+        if (weight == null) throw new IllegalArgumentException("constructor argument is null");
+
         n = weight.length;
         this.weight = new double[n][n];
         for (int i = 0; i < n; i++) {
@@ -141,7 +143,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the dual optimal value for row {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
+     * @throws IllegalArgumentException unless {@code 0 <= i < n}
      *
      */
     // dual variable for row i
@@ -155,7 +157,7 @@ public class AssignmentProblem {
      *
      * @param  j the column index
      * @return the dual optimal value for column {@code j}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= j < n}
+     * @throws IllegalArgumentException unless {@code 0 <= j < n}
      *
      */
     public double dualCol(int j) {
@@ -168,7 +170,7 @@ public class AssignmentProblem {
      *
      * @param  i the row index
      * @return the column matched to row {@code i} in the optimal solution
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < n}
+     * @throws IllegalArgumentException unless {@code 0 <= i < n}
      *
      */
     public int sol(int i) {
@@ -192,7 +194,7 @@ public class AssignmentProblem {
     }
 
     private void validate(int i) {
-        if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= n) throw new IllegalArgumentException("index is not between 0 and " + (n-1) + ": " + i);
     }
 
 

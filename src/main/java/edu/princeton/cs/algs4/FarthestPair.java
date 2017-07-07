@@ -48,10 +48,15 @@ public class FarthestPair {
      * Computes the farthest pair of points in the specified array of points.
      *
      * @param  points the array of points
-     * @throws NullPointerException if {@code points} is {@code null} or if any
+     * @throws IllegalArgumentException if {@code points} is {@code null} or if any
      *         entry in {@code points[]} is {@code null}
      */
     public FarthestPair(Point2D[] points) {
+        if (points == null) throw new IllegalArgumentException("constructor argument is null");
+        for (int i = 0; i < points.length; i++) {
+            if (points[i] == null) throw new IllegalArgumentException("array element " + i + " is null");
+        }
+
         GrahamScan graham = new GrahamScan(points);
 
         // single point

@@ -113,7 +113,7 @@ public class QuickUnionUF {
      *
      * @param  p the integer representing one object
      * @return the component identifier for the component containing site {@code p}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= p < n}
+     * @throws IllegalArgumentException unless {@code 0 <= p < n}
      */
     public int find(int p) {
         validate(p);
@@ -126,7 +126,7 @@ public class QuickUnionUF {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IndexOutOfBoundsException("index " + p + " is not between 0 and " + (n-1));
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
         }
     }
 
@@ -137,7 +137,7 @@ public class QuickUnionUF {
      * @param  q the integer representing the other site
      * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless
+     * @throws IllegalArgumentException unless
      *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
     public boolean connected(int p, int q) {
@@ -151,7 +151,7 @@ public class QuickUnionUF {
      *
      * @param  p the integer representing one site
      * @param  q the integer representing the other site
-     * @throws IndexOutOfBoundsException unless
+     * @throws IllegalArgumentException unless
      *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
     public void union(int p, int q) {

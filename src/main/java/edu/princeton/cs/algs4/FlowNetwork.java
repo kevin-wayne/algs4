@@ -123,7 +123,7 @@ public class FlowNetwork {
     /**
      * Adds the edge {@code e} to the network.
      * @param e the edge
-     * @throws IndexOutOfBoundsException unless endpoints of edge are between
+     * @throws IllegalArgumentException unless endpoints of edge are between
      *         {@code 0} and {@code V-1}
      */
     public void addEdge(FlowEdge e) {

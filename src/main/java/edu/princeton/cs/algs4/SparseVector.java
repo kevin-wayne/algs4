@@ -47,10 +47,10 @@ public class SparseVector {
      *
      * @param  i the index
      * @param  value the new value
-     * @throws IndexOutOfBoundsException unless i is between 0 and d-1
+     * @throws IllegalArgumentException unless i is between 0 and d-1
      */
     public void put(int i, double value) {
-        if (i < 0 || i >= d) throw new IndexOutOfBoundsException("Illegal index");
+        if (i < 0 || i >= d) throw new IllegalArgumentException("Illegal index");
         if (value == 0.0) st.delete(i);
         else              st.put(i, value);
     }
@@ -60,10 +60,10 @@ public class SparseVector {
      *
      * @param  i the index
      * @return the value of the ith coordinate of this vector
-     * @throws IndexOutOfBoundsException unless i is between 0 and d-1
+     * @throws IllegalArgumentException unless i is between 0 and d-1
      */
     public double get(int i) {
-        if (i < 0 || i >= d) throw new IndexOutOfBoundsException("Illegal index");
+        if (i < 0 || i >= d) throw new IllegalArgumentException("Illegal index");
         if (st.contains(i)) return st.get(i);
         else                return 0.0;
     }
