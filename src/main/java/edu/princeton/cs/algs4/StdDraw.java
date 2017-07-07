@@ -381,7 +381,7 @@ import javax.swing.KeyStroke;
  *  It is much less powerful than most user interface libraries provide, but also much simpler.
  *  You can use the following methods to intercept mouse events:
  *  <ul>
- *  <li> {@link #mousePressed()}
+ *  <li> {@link #isMousePressed()}
  *  <li> {@link #mouseX()}
  *  <li> {@link #mouseY()}
  *  </ul>
@@ -611,7 +611,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static JFrame frame;
 
     // mouse state
-    private static boolean mousePressed = false;
+    private static boolean isMousePressed = false;
     private static double mouseX = 0;
     private static double mouseY = 0;
 
@@ -1663,9 +1663,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *
      * @return {@code true} if the mouse is being pressed; {@code false} otherwise
      */
-    public static boolean mousePressed() {
+    public static boolean isMousePressed() {
         synchronized (mouseLock) {
-            return mousePressed;
+            return isMousePressed;
         }
     }
 
@@ -1724,7 +1724,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         synchronized (mouseLock) {
             mouseX = StdDraw.userX(e.getX());
             mouseY = StdDraw.userY(e.getY());
-            mousePressed = true;
+            isMousePressed = true;
         }
     }
 
@@ -1734,7 +1734,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     @Override
     public void mouseReleased(MouseEvent e) {
         synchronized (mouseLock) {
-            mousePressed = false;
+            isMousePressed = false;
         }
     }
 
@@ -1794,7 +1794,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             if (keysTyped.isEmpty()) {
                 throw new NoSuchElementException("your program has already processed all keystrokes");
             }
-            return keysTyped.removeLast();
+            return keysTyped.remove(keysTyped.size() - 1);
+            // return keysTyped.removeLast();
         }
     }
 

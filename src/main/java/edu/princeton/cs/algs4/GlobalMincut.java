@@ -138,7 +138,6 @@ public class GlobalMincut {
      *             {@code 0} and {@code (G.V() - 1)}
      */
     public boolean cut(int v) {
-        int V = cut.length;
         validateVertex(v);
         return cut[v];
     }

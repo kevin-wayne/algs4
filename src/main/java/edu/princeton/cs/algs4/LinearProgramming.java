@@ -361,7 +361,7 @@ public class LinearProgramming {
             test3();
         }
         catch (ArithmeticException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         StdOut.println("----- test 4 --------------------");

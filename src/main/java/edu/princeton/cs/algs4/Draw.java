@@ -233,7 +233,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     private JFrame frame = new JFrame();
 
     // mouse state
-    private boolean mousePressed = false;
+    private boolean isMousePressed = false;
     private double mouseX = 0;
     private double mouseY = 0;
 
@@ -1177,9 +1177,9 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * @return {@code true} if the mouse is being pressed;
      *         {@code false} otherwise
      */
-    public boolean mousePressed() {
+    public boolean isMousePressed() {
         synchronized (mouseLock) {
-            return mousePressed;
+            return isMousePressed;
         }
     }
 
@@ -1238,7 +1238,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         synchronized (mouseLock) {
             mouseX = userX(e.getX());
             mouseY = userY(e.getY());
-            mousePressed = true;
+            isMousePressed = true;
         }
         if (e.getButton() == MouseEvent.BUTTON1) {
             for (DrawListener listener : listeners)
@@ -1253,7 +1253,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     @Override
     public void mouseReleased(MouseEvent e) {
         synchronized (mouseLock) {
-            mousePressed = false;
+            isMousePressed = false;
         }
         if (e.getButton() == MouseEvent.BUTTON1) {
             for (DrawListener listener : listeners)

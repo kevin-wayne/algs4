@@ -72,7 +72,7 @@ public class MinPQ<Key> implements Iterable<Key> {
      * using the given comparator.
      *
      * @param  initCapacity the initial capacity of this priority queue
-     * @param  comparator the order to use when comparing keys
+     * @param  comparator the order in which to compare the keys
      */
     public MinPQ(int initCapacity, Comparator<Key> comparator) {
         this.comparator = comparator;
@@ -83,7 +83,7 @@ public class MinPQ<Key> implements Iterable<Key> {
     /**
      * Initializes an empty priority queue using the given comparator.
      *
-     * @param  comparator the order to use when comparing keys
+     * @param  comparator the order in which to compare the keys
      */
     public MinPQ(Comparator<Key> comparator) {
         this(1, comparator);
@@ -169,11 +169,11 @@ public class MinPQ<Key> implements Iterable<Key> {
      */
     public Key delMin() {
         if (isEmpty()) throw new NoSuchElementException("Priority queue underflow");
-        exch(1, n);
-        Key min = pq[n--];
+        Key min = pq[1];
+        exch(1, n--);
         sink(1);
-        pq[n+1] = null;         // avoid loitering and help with garbage collection
-        if ((n > 0) && (n == (pq.length - 1) / 4)) resize(pq.length  / 2);
+        pq[n+1] = null;     // to avoid loiterig and help with garbage collection
+        if ((n > 0) && (n == (pq.length - 1) / 4)) resize(pq.length / 2);
         assert isMinHeap();
         return min;
     }
@@ -242,7 +242,9 @@ public class MinPQ<Key> implements Iterable<Key> {
      *
      * @return an iterator that iterates over the keys in ascending order
      */
-    public Iterator<Key> iterator() { return new HeapIterator(); }
+    public Iterator<Key> iterator() {
+        return new HeapIterator();
+    }
 
     private class HeapIterator implements Iterator<Key> {
         // create a new pq

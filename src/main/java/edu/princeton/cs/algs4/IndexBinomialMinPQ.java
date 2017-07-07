@@ -458,18 +458,18 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 		//It takes linear time
 		public MyIterator() {
 			data = new IndexBinomialMinPQ<Key>(n, comparator);
-			data.head = clone(head, false, false, null);
+			data.head = clone(head, null);
 		}
 		
-		private Node<Key> clone(Node<Key> x, boolean isParent, boolean isChild, Node<Key> parent) {
+		private Node<Key> clone(Node<Key> x, Node<Key> parent) {
 			if (x == null) return null;
 			Node<Key> node = new Node<Key>();
 			node.index = x.index;
 			node.key = x.key;
 			data.nodes[node.index] = node;
 			node.parent = parent;
-			node.sibling = clone(x.sibling, false, false, parent);
-			node.child = clone(x.child, false, true, node);
+			node.sibling = clone(x.sibling, parent);
+			node.child = clone(x.child, node);
 			return node;
 		}
 		

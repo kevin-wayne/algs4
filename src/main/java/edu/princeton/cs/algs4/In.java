@@ -65,17 +65,14 @@ public final class In {
 
     // the default token separator; we maintain the invariant that this value 
     // is held by the scanner's delimiter between calls
-    private static final Pattern WHITESPACE_PATTERN
-        = Pattern.compile("\\p{javaWhitespace}+");
+    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
 
     // makes whitespace characters significant 
-    private static final Pattern EMPTY_PATTERN
-        = Pattern.compile("");
+    private static final Pattern EMPTY_PATTERN = Pattern.compile("");
 
     // used to read the entire input. source:
     // http://weblogs.java.net/blog/pat/archive/2004/10/stupid_scanner_1.html
-    private static final Pattern EVERYTHING_PATTERN
-        = Pattern.compile("\\A");
+    private static final Pattern EVERYTHING_PATTERN = Pattern.compile("\\A");
 
     //// end: section (1 of 2) of code duplicated from In to StdIn.
 
@@ -174,6 +171,11 @@ public final class In {
 
             // next try for files included in jar
             URL url = getClass().getResource(name);
+
+            // try this as well
+            if (url == null) {
+                url = getClass().getClassLoader().getResource(name);
+            }
 
             // or URL from web
             if (url == null) {

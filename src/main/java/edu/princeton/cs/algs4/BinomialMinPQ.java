@@ -263,15 +263,15 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 		//It takes linear time
 		public MyIterator() {
 			data = new BinomialMinPQ<Key>(comp);
-			data.head = clone(head, false, false, null);
+			data.head = clone(head, null);
 		}
 		
-		private Node clone(Node x, boolean isParent, boolean isChild, Node parent) {
+		private Node clone(Node x, Node parent) {
 			if (x == null) return null;
 			Node node = new Node();
 			node.key = x.key;
-			node.sibling = clone(x.sibling, false, false, parent);
-			node.child = clone(x.child, false, true, node);
+			node.sibling = clone(x.sibling, parent);
+			node.child = clone(x.child, node);
 			return node;
 		}
 		

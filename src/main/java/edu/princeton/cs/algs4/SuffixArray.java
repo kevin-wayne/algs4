@@ -137,11 +137,11 @@ public class SuffixArray {
      */
     public int lcp(int i) {
         if (i < 1 || i >= suffixes.length) throw new IndexOutOfBoundsException();
-        return lcp(suffixes[i], suffixes[i-1]);
+        return lcpSuffix(suffixes[i], suffixes[i-1]);
     }
 
     // longest common prefix of s and t
-    private static int lcp(Suffix s, Suffix t) {
+    private static int lcpSuffix(Suffix s, Suffix t) {
         int n = Math.min(s.length(), t.length());
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) != t.charAt(i)) return i;

@@ -83,7 +83,6 @@ public final class Picture implements ActionListener {
         this.height = height;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // set to TYPE_INT_ARGB to support transparency
-        filename = width + "-by-" + height;
     }
 
    /**
@@ -217,7 +216,8 @@ public final class Picture implements ActionListener {
             frame.setContentPane(getJLabel());
             // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setTitle(filename);
+            if (filename == null) frame.setTitle(width + "-by-" + height);
+            else                  frame.setTitle(filename);
             frame.setResizable(false);
             frame.pack();
             frame.setVisible(true);
