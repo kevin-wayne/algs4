@@ -1,5 +1,5 @@
 /******************************************************************************
- *  Compilation:  javac Topoological.java
+ *  Compilation:  javac Topological.java
  *  Execution:    java  Topological filename.txt delimiter
  *  Dependencies: Digraph.java DepthFirstOrder.java DirectedCycle.java
  *                EdgeWeightedDigraph.java EdgeWeightedDirectedCycle.java
