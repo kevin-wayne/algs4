@@ -16,6 +16,9 @@
  *
  *   - see also GrayPicture.java for a grayscale version
  *
+ *   - should we add int getRGB(int x, int y) and settRGB(int x, int y, int argb)
+ *     for performance (to avoid creating of Color objects when important)?
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;

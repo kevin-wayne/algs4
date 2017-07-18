@@ -1184,6 +1184,20 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     }
 
     /**
+     * Returns true if the mouse is being pressed.
+     *
+     * @return {@code true} if the mouse is being pressed;
+     *         {@code false} otherwise
+     * @deprecated replaced by {@link #isMousePressed()}
+     */
+    @Deprecated
+    public boolean mousePressed() {
+        synchronized (mouseLock) {
+            return isMousePressed;
+        }
+    }
+
+    /**
      * Returns the x-coordinate of the mouse.
      * @return the x-coordinate of the mouse
      */

@@ -1670,6 +1670,19 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
+     * Returns true if the mouse is being pressed.
+     *
+     * @return {@code true} if the mouse is being pressed; {@code false} otherwise
+     * @deprecated replaced by {@link #isMousePressed()}
+     */
+    @Deprecated
+    public static boolean mousePressed() {
+        synchronized (mouseLock) {
+            return isMousePressed;
+        }
+    }
+
+    /**
      * Returns the <em>x</em>-coordinate of the mouse.
      *
      * @return the <em>x</em>-coordinate of the mouse
