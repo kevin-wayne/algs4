@@ -430,6 +430,10 @@ import javax.swing.KeyStroke;
  *       {@link Double#POSITIVE_INFINITY}, and {@link Double#NEGATIVE_INFINITY}
  *       as arugments. An object drawn with an <em>x</em>- or <em>y</em>-coordinate
  *       that is NaN will behave as if it is outside the canvas, and will not be visible.
+ *  <li> Due to floating-point issues, an object drawn with an <em>x</em>- or
+ *       <em>y</em>-coordinate that is way outside the canvas (such as the line segment
+ *       from (0.5, –&infin;) to (0.5, &infin;) may not be visible even in the
+ *       part of the canvas where it should be.
  *  </ul>
  *  <p>
  *  <b>Performance tricks.</b>
