@@ -96,7 +96,8 @@ public class MergeX {
 
     // sort from a[lo] to a[hi] using insertion sort
     private static void insertionSort(Comparable[] a, int lo, int hi) {
-        for (int i = lo; i <= hi; i++)
+      // Array Out of Bound Exception of a[j-1], so change i = lo + 1
+        for (int i = lo + 1; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1]); j--)
                 exch(a, j, j-1);
     }
@@ -180,7 +181,8 @@ public class MergeX {
 
     // sort from a[lo] to a[hi] using insertion sort
     private static void insertionSort(Object[] a, int lo, int hi, Comparator comparator) {
-        for (int i = lo; i <= hi; i++)
+      // Array Out of Bound Exception of a[j-1], so change i = lo + 1
+        for (int i = lo + 1; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1], comparator); j--)
                 exch(a, j, j-1);
     }
