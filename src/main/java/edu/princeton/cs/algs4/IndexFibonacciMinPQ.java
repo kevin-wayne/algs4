@@ -94,12 +94,12 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Does the priority queue contains the index i ?
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @return true if i is on the priority queue, false if not
 	 */
 	
 	public boolean contains(int i) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		else 				 return nodes[i] != null;
 	}
 
@@ -118,12 +118,12 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(1)
 	 * @param i an index
 	 * @param key a Key associated with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.lang.IllegalArgumentException if the index is already in the queue
 	 */
 	
 	public void insert(int i, Key key) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		if (contains(i)) throw new IllegalArgumentException("Specified index is already in the queue");
 		Node<Key> x = new Node<Key>();
 		x.key = key;
@@ -191,13 +191,13 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Get the key associated with index i
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index is not in the queue
 	 * @return the key associated with index i
 	 */
 	
 	public Key keyOf(int i) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		if (!contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		return nodes[i].key;
 	}
@@ -208,12 +208,12 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * If the given key is lower, Worst case is O(1) (amortized)
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
 	 */
 	
 	public void changeKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		if (greater(key, nodes[i].key))  increaseKey(i, key);
 		else 							 decreaseKey(i, key);
@@ -224,13 +224,13 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(1) (amortized).
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
 	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	
 	public void decreaseKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		if (greater(key, nodes[i].key))  throw new IllegalArgumentException("Calling with this argument would not decrease the key");
 		Node<Key> x = nodes[i];
@@ -246,13 +246,13 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
 	 * @throws java.lang.IllegalArgumentException if the given key is lower than the current key
 	 */
 	
 	public void increaseKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		if (greater(nodes[i].key, key))  throw new IllegalArgumentException("Calling with this argument would not increase the key");
 		delete(i);
@@ -263,12 +263,12 @@ public class IndexFibonacciMinPQ<Key> implements Iterable<Integer> {
 	 * Deletes the key associated the given index
 	 * Worst case is O(log(n)) (amortized)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the given index has no key associated with
 	 */
 	
 	public void delete(int i) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		Node<Key> x = nodes[i];
 		x.key = null;				//For garbage collection

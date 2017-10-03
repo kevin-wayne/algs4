@@ -175,7 +175,7 @@ public class EulerianPath {
     //    - degree(v) is even for every vertex, except for possibly two
     //    - the graph is connected (ignoring isolated vertices)
     // This method is solely for unit testing.
-    private static boolean hasEulerianPath(Graph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Graph G) {
         if (G.E() == 0) return true;
 
         // Condition 1: degree(v) is even except for possibly two
@@ -202,7 +202,7 @@ public class EulerianPath {
         if (hasEulerianPath() == (path() == null)) return false;
 
         // hashEulerianPath() returns correct value
-        if (hasEulerianPath() != hasEulerianPath(G)) return false;
+        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian path
         if (path == null) return true;

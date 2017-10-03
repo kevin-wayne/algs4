@@ -73,16 +73,18 @@ public final class StdStats {
      *
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
-     * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray {@code a[lo..hi]};
+     * @param  hi the right endpoint of the subarray (exclusive)
+     * @return the maximum value in the subarray {@code a[lo..hi)};
      *         {@code Double.NEGATIVE_INFINITY} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null}
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double max(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
         double max = Double.NEGATIVE_INFINITY;
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
             if (a[i] > max) max = a[i];
         }
@@ -129,16 +131,18 @@ public final class StdStats {
      *
      * @param  a the array
      * @param  lo the left endpoint of the subarray (inclusive)
-     * @param  hi the right endpoint of the subarray (inclusive)
-     * @return the maximum value in the subarray {@code a[lo..hi]};
+     * @param  hi the right endpoint of the subarray (exclusive)
+     * @return the maximum value in the subarray {@code a[lo..hi)};
      *         {@code Double.POSITIVE_INFINITY} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double min(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
         double min = Double.POSITIVE_INFINITY;
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             if (Double.isNaN(a[i])) return Double.NaN;
             if (a[i] < min) min = a[i];
         }
@@ -182,15 +186,17 @@ public final class StdStats {
      *
      * @param a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the average value in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the average value in the subarray {@code a[lo..hi)};
      *         {@code Double.NaN} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double mean(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        int length = hi - lo + 1;
+        int length = hi - lo;
         if (length == 0) return Double.NaN;
 
         double sum = sum(a, lo, hi);
@@ -236,20 +242,22 @@ public final class StdStats {
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample variance in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the sample variance in the subarray {@code a[lo..hi)};
      *         {@code Double.NaN} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double var(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        int length = hi - lo + 1;
+        int length = hi - lo;
         if (length == 0) return Double.NaN;
 
         double avg = mean(a, lo, hi);
         double sum = 0.0;
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
         return sum / (length - 1);
@@ -296,20 +304,22 @@ public final class StdStats {
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population variance in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the population variance in the subarray {@code a[lo..hi)};
      *         {@code Double.NaN} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double varp(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
-        int length = hi - lo + 1;
+        int length = hi - lo;
         if (length == 0) return Double.NaN;
 
         double avg = mean(a, lo, hi);
         double sum = 0.0;
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             sum += (a[i] - avg) * (a[i] - avg);
         }
         return sum / length;
@@ -344,9 +354,11 @@ public final class StdStats {
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sample standard deviation in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the sample standard deviation in the subarray {@code a[lo..hi)};
      *         {@code Double.NaN} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double stddev(double[] a, int lo, int hi) {
         validateNotNull(a);
@@ -373,9 +385,11 @@ public final class StdStats {
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the population standard deviation in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the population standard deviation in the subarray {@code a[lo..hi)};
      *         {@code Double.NaN} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static double stddevp(double[] a, int lo, int hi) {
         validateNotNull(a);
@@ -405,16 +419,18 @@ public final class StdStats {
      *
      * @param  a the array
      * @param lo the left endpoint of the subarray (inclusive)
-     * @param hi the right endpoint of the subarray (inclusive)
-     * @return the sum of all values in the subarray {@code a[lo..hi]};
+     * @param hi the right endpoint of the subarray (exclusive)
+     * @return the sum of all values in the subarray {@code a[lo..hi)};
      *         {@code 0.0} if no such value
+     * @throws IllegalArgumentException if {@code a} is {@code null} 
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     private static double sum(double[] a, int lo, int hi) {
         validateNotNull(a);
         validateSubarrayIndices(lo, hi, a.length);
 
         double sum = 0.0;
-        for (int i = lo; i <= hi; i++) {
+        for (int i = lo; i < hi; i++) {
             sum += a[i];
         }
         return sum;
@@ -487,15 +503,16 @@ public final class StdStats {
     }
 
     // throw an IllegalArgumentException if x is null
+    // (x is either of type double[] or int[])
     private static void validateNotNull(Object x) {
         if (x == null)
             throw new IllegalArgumentException("argument is null");
     }
 
-    // throw an exception unless 0 <= lo <= hi < length
+    // throw an exception unless 0 <= lo <= hi <= length
     private static void validateSubarrayIndices(int lo, int hi, int length) {
-        if (lo < 0 || hi >= length || lo > hi)
-            throw new IndexOutOfBoundsException("subarray indices out of bounds");
+        if (lo < 0 || hi > length || lo > hi)
+            throw new IllegalArgumentException("subarray indices out of bounds: [" + lo + ", " + hi + ")");
     }
 
 

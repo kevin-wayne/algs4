@@ -118,8 +118,36 @@ public final class StdRandom {
      * @throws IllegalArgumentException if {@code n <= 0}
      */
     public static int uniform(int n) {
-        if (n <= 0) throw new IllegalArgumentException("argument must be positive");
+        if (n <= 0) throw new IllegalArgumentException("argument must be positive: " + n);
         return random.nextInt(n);
+    }
+
+
+    /**
+     * Returns a random long integer uniformly in [0, n).
+     * 
+     * @param n number of possible long integers
+     * @return a random long integer uniformly between 0 (inclusive) and {@code n} (exclusive)
+     * @throws IllegalArgumentException if {@code n <= 0}
+     */
+    public static long uniform(long n) {
+        if (n <= 0L) throw new IllegalArgumentException("argument must be positive: " + n);
+
+        // https://docs.oracle.com/javase/8/docs/api/java/util/Random.html#longs-long-long-long-
+        long r = random.nextLong();
+        long m = n - 1;
+
+        // power of two
+        if ((n & m) == 0L) {
+            return r & m;
+        }
+
+        // reject over-represented candidates
+        long u = r >>> 1;
+        while (u + m - (r = u % n) < 0L) {
+            u = random.nextLong() >>> 1;
+        }
+        return r;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -149,7 +177,7 @@ public final class StdRandom {
      */
     public static int uniform(int a, int b) {
         if ((b <= a) || ((long) b - a >= Integer.MAX_VALUE)) {
-            throw new IllegalArgumentException("invalid range: [" + a + ", " + b + "]");
+            throw new IllegalArgumentException("invalid range: [" + a + ", " + b + ")");
         }
         return a + uniform(b - a);
     }
@@ -164,7 +192,7 @@ public final class StdRandom {
      */
     public static double uniform(double a, double b) {
         if (!(a < b)) {
-            throw new IllegalArgumentException("invalid range: [" + a + ", " + b + "]");
+            throw new IllegalArgumentException("invalid range: [" + a + ", " + b + ")");
         }
         return a + uniform() * (b-a);
     }
@@ -180,7 +208,7 @@ public final class StdRandom {
      */
     public static boolean bernoulli(double p) {
         if (!(p >= 0.0 && p <= 1.0))
-            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0");
+            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0: " + p);
         return uniform() < p;
     }
 
@@ -240,7 +268,7 @@ public final class StdRandom {
      */
     public static int geometric(double p) {
         if (!(p >= 0.0 && p <= 1.0)) {
-            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0");
+            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0: " + p);
         }
         // using algorithm given by Knuth
         return (int) Math.ceil(Math.log(uniform()) / Math.log(1.0 - p));
@@ -255,9 +283,9 @@ public final class StdRandom {
      */
     public static int poisson(double lambda) {
         if (!(lambda > 0.0))
-            throw new IllegalArgumentException("lambda must be positive");
+            throw new IllegalArgumentException("lambda must be positive: " + lambda);
         if (Double.isInfinite(lambda))
-            throw new IllegalArgumentException("lambda must not be infinite");
+            throw new IllegalArgumentException("lambda must not be infinite: " + lambda);
         // using algorithm given by Knuth
         // see http://en.wikipedia.org/wiki/Poisson_distribution
         int k = 0;
@@ -290,7 +318,7 @@ public final class StdRandom {
      */
     public static double pareto(double alpha) {
         if (!(alpha > 0.0))
-            throw new IllegalArgumentException("alpha must be positive");
+            throw new IllegalArgumentException("alpha must be positive: " + alpha);
         return Math.pow(1 - uniform(), -1.0/alpha) - 1.0;
     }
 
@@ -385,7 +413,7 @@ public final class StdRandom {
      */
     public static double exp(double lambda) {
         if (!(lambda > 0.0))
-            throw new IllegalArgumentException("lambda must be positive");
+            throw new IllegalArgumentException("lambda must be positive: " + lambda);
         return -Math.log(1 - uniform()) / lambda;
     }
 
@@ -396,7 +424,7 @@ public final class StdRandom {
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(Object[] a) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
+        validateNotNull(a);
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int r = i + uniform(n-i);     // between i and n-1
@@ -413,7 +441,7 @@ public final class StdRandom {
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(double[] a) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
+        validateNotNull(a);
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int r = i + uniform(n-i);     // between i and n-1
@@ -430,7 +458,7 @@ public final class StdRandom {
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(int[] a) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
+        validateNotNull(a);
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int r = i + uniform(n-i);     // between i and n-1
@@ -447,7 +475,7 @@ public final class StdRandom {
      * @throws IllegalArgumentException if {@code a} is {@code null}
      */
     public static void shuffle(char[] a) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
+        validateNotNull(a);
         int n = a.length;
         for (int i = 0; i < n; i++) {
             int r = i + uniform(n-i);     // between i and n-1
@@ -464,14 +492,13 @@ public final class StdRandom {
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      * 
      */
     public static void shuffle(Object[] a, int lo, int hi) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo >= hi || hi > a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
-        }
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i);     // between i and hi-1
             Object temp = a[i];
@@ -487,13 +514,12 @@ public final class StdRandom {
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static void shuffle(double[] a, int lo, int hi) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo >= hi || hi > a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
-        }
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i);     // between i and hi-1
             double temp = a[i];
@@ -509,13 +535,12 @@ public final class StdRandom {
      * @param  lo the left endpoint (inclusive)
      * @param  hi the right endpoint (exclusive)
      * @throws IllegalArgumentException if {@code a} is {@code null}
-     * @throws IndexOutOfBoundsException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
+     * @throws IllegalArgumentException unless {@code (0 <= lo) && (lo < hi) && (hi <= a.length)}
      */
     public static void shuffle(int[] a, int lo, int hi) {
-        if (a == null) throw new IllegalArgumentException("argument array is null");
-        if (lo < 0 || lo >= hi || hi > a.length) {
-            throw new IndexOutOfBoundsException("invalid subarray range: [" + lo + ", " + hi + ")");
-        }
+        validateNotNull(a);
+        validateSubarrayIndices(lo, hi, a.length);
+
         for (int i = lo; i < hi; i++) {
             int r = i + uniform(hi-i);     // between i and hi-1
             int temp = a[i];
@@ -567,6 +592,21 @@ public final class StdRandom {
         return perm;
     }
 
+    // throw an IllegalArgumentException if x is null
+    // (x can be of type Object[], double[], int[], ...)
+    private static void validateNotNull(Object x) {
+        if (x == null) {
+            throw new IllegalArgumentException("argument is null");
+        }
+    }
+
+    // throw an exception unless 0 <= lo <= hi <= length
+    private static void validateSubarrayIndices(int lo, int hi, int length) {
+        if (lo < 0 || hi > length || lo > hi) {
+            throw new IllegalArgumentException("subarray indices out of bounds: [" + lo + ", " + hi + ")");
+        }
+    }
+
     /**
      * Unit test.
      *
@@ -587,6 +627,7 @@ public final class StdRandom {
             StdOut.printf("%7.5f ", gaussian(9.0, 0.2));
             StdOut.printf("%1d ",   discrete(probabilities));
             StdOut.printf("%1d ",   discrete(frequencies));
+            StdOut.printf("%11d ",  uniform(100000000000L));
             StdRandom.shuffle(a);
             for (String s : a)
                 StdOut.print(s);

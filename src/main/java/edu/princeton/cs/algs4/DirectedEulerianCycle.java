@@ -127,7 +127,7 @@ public class DirectedEulerianCycle {
     //    - indegree(v) = outdegree(v) for every vertex
     //    - the graph is connected, when viewed as an undirected graph
     //      (ignoring isolated vertices)
-    private static boolean hasEulerianCycle(Digraph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
 
         // Condition 0: at least 1 edge
         if (G.E() == 0) return false;
@@ -160,7 +160,7 @@ public class DirectedEulerianCycle {
         if (hasEulerianCycle() == (cycle() == null)) return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != hasEulerianCycle(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian cycle
         if (cycle == null) return true;

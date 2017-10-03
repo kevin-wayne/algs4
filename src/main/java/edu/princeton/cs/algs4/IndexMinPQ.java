@@ -82,10 +82,10 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @param  i an index
      * @return {@code true} if {@code i} is an index on this priority queue;
      *         {@code false} otherwise
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      */
     public boolean contains(int i) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         return qp[i] != -1;
     }
 
@@ -103,12 +103,12 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i an index
      * @param  key the key to associate with index {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if there already is an item associated
      *         with index {@code i}
      */
     public void insert(int i, Key key) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
         n++;
         qp[i] = n;
@@ -161,11 +161,11 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to return
      * @return the key associated with index {@code i}
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public Key keyOf(int i) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         else return keys[i];
     }
@@ -175,11 +175,11 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void changeKey(int i, Key key) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         keys[i] = key;
         swim(qp[i]);
@@ -191,7 +191,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to change
      * @param  key change the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @deprecated Replaced by {@code changeKey(int, Key)}.
      */
     @Deprecated
@@ -204,12 +204,12 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to decrease
      * @param  key decrease the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if {@code key >= keyOf(i)}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void decreaseKey(int i, Key key) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         if (keys[i].compareTo(key) <= 0)
             throw new IllegalArgumentException("Calling decreaseKey() with given argument would not strictly decrease the key");
@@ -222,12 +222,12 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *
      * @param  i the index of the key to increase
      * @param  key increase the key associated with index {@code i} to this key
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws IllegalArgumentException if {@code key <= keyOf(i)}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void increaseKey(int i, Key key) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         if (keys[i].compareTo(key) >= 0)
             throw new IllegalArgumentException("Calling increaseKey() with given argument would not strictly increase the key");
@@ -239,11 +239,11 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * Remove the key associated with index {@code i}.
      *
      * @param  i the index of the key to remove
-     * @throws IndexOutOfBoundsException unless {@code 0 <= i < maxN}
+     * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void delete(int i) {
-        if (i < 0 || i >= maxN) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         int index = qp[i];
         exch(index, n--);

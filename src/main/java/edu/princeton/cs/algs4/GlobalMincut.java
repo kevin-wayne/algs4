@@ -130,6 +130,7 @@ public class GlobalMincut {
      * vertices of the minimum cut; or {@code false} if the vertex {@code v} is
      * on the second subset.
      * 
+     * @param v the vertex to check
      * @return {@code true} if the vertex {@code v} is on the first subset of
      *         vertices of the minimum cut; or {@code false} if the vertex
      *         {@code v} is on the second subset.
@@ -137,7 +138,6 @@ public class GlobalMincut {
      *             {@code 0} and {@code (G.V() - 1)}
      */
     public boolean cut(int v) {
-        int V = cut.length;
         validateVertex(v);
         return cut[v];
     }

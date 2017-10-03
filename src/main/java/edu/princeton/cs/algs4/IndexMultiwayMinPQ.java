@@ -101,11 +101,11 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Does the priority queue contains the index i ?
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @return true if i is on the priority queue, false if not
 	 */
 	public boolean contains(int i) {
-		if (i < 0 ||i >= nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 ||i >= nmax) throw new IllegalArgumentException();
 		return qp[i+d] != -1;
 	}
 
@@ -123,11 +123,11 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log-d(n))
 	 * @param i an index
 	 * @param key a Key associated with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.lang.IllegalArgumentException if the index is already in the queue
 	 */
 	public void insert(int i, Key key) {
-		if (i < 0 || i >= nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= nmax) throw new IllegalArgumentException();
 		if (contains(i)) throw new IllegalArgumentException("Index already there");
 		keys[i+d] = key;
 		pq[n+d] = i;
@@ -178,12 +178,12 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Gets the key associated with index i
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.lang.IllegalArgumentException if the index is not in the queue
 	 * @return the key associated with index i
 	 */
 	public Key keyOf(int i) {
-		if (i < 0 || i >= nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= nmax) throw new IllegalArgumentException();
 		if (! contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		return keys[i+d];
 	}
@@ -194,11 +194,11 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * If the given key is lower,   Worst case is O(log-d(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.lang.IllegalArgumentException if the index has no key associated with
 	 */
 	public void changeKey(int i, Key key) {
-		if (i < 0 || i >= nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= nmax) throw new IllegalArgumentException();
 		if (! contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		Key tmp = keys[i+d];
 		keys[i+d] = key;
@@ -211,12 +211,12 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log-d(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
 	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	public void decreaseKey(int i, Key key) {
-		if (i < 0 || i >=nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >=nmax) throw new IllegalArgumentException();
 		if (! contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		if (comp.compare(keys[i+d], key) <= 0) throw new IllegalArgumentException("Calling with this argument would not decrease the Key");
 		keys[i+d] = key;
@@ -228,12 +228,12 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(d*log-d(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
 	 * @throws java.lang.IllegalArgumentException if the given key is lower than the current key
 	 */
 	public void increaseKey(int i, Key key) {
-		if (i < 0 || i >=nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >=nmax) throw new IllegalArgumentException();
 		if (! contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		if (comp.compare(keys[i+d], key) >= 0) throw new IllegalArgumentException("Calling with this argument would not increase the Key");
 		keys[i+d] = key;
@@ -244,11 +244,11 @@ public class IndexMultiwayMinPQ<Key> implements Iterable<Integer> {
 	 * Deletes the key associated to the given index
 	 * Worst case is O(d*log-d(n))
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the given index has no key associated with
 	 */
 	public void delete(int i) {
-		if (i < 0 || i >= nmax) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= nmax) throw new IllegalArgumentException();
 		if (! contains(i)) throw new NoSuchElementException("Specified index is not in the queue");
 		int idx = qp[i+d];
 		exch(idx, --n);

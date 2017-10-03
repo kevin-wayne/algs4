@@ -16,6 +16,9 @@
  *
  *   - see also GrayPicture.java for a grayscale version
  *
+ *   - should we add int getRGB(int x, int y) and settRGB(int x, int y, int argb)
+ *     for performance (to avoid creating of Color objects when important)?
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -83,7 +86,6 @@ public final class Picture implements ActionListener {
         this.height = height;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         // set to TYPE_INT_ARGB to support transparency
-        filename = width + "-by-" + height;
     }
 
    /**
@@ -217,7 +219,8 @@ public final class Picture implements ActionListener {
             frame.setContentPane(getJLabel());
             // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setTitle(filename);
+            if (filename == null) frame.setTitle(width + "-by-" + height);
+            else                  frame.setTitle(filename);
             frame.setResizable(false);
             frame.pack();
             frame.setVisible(true);
@@ -245,29 +248,46 @@ public final class Picture implements ActionListener {
         return width;
     }
 
-    private void validateRow(int row) {
+    private void validateRowIndex(int row) {
         if (row < 0 || row >= height())
-            throw new IndexOutOfBoundsException("row must be between 0 and " + (height() - 1) + ": " + row);
+            throw new IllegalArgumentException("row index must be between 0 and " + (height() - 1) + ": " + row);
     }
 
-    private void validateCol(int col) {
+    private void validateColumnIndex(int col) {
         if (col < 0 || col >= width())
-            throw new IndexOutOfBoundsException("col must be between 0 and " + (width() - 1) + ": " + col);
+            throw new IllegalArgumentException("column index must be between 0 and " + (width() - 1) + ": " + col);
     }
 
    /**
-     * Returns the color of pixel ({@code col}, {@code row}).
+     * Returns the color of pixel ({@code col}, {@code row}) as a {@link java.awt.Color}.
      *
      * @param col the column index
      * @param row the row index
      * @return the color of pixel ({@code col}, {@code row})
-     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public Color get(int col, int row) {
-        validateCol(col);
-        validateRow(row);
-        if (isOriginUpperLeft) return new Color(image.getRGB(col, row));
-        else                   return new Color(image.getRGB(col, height - row - 1));
+        validateColumnIndex(col);
+        validateRowIndex(row);
+        int rgb = getRGB(col, row);
+        return new Color(rgb);
+    }
+
+   /**
+     * Returns the color of pixel ({@code col}, {@code row}) as an {@code int}.
+     * Using this method can be more efficient than {@link #get(int, int)} because it does not
+     * create a {@code Color} object.
+     *
+     * @param col the column index
+     * @param row the row index
+     * @return the integer representation of the color of pixel ({@code col}, {@code row})
+     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     */
+    public int getRGB(int col, int row) {
+        validateColumnIndex(col);
+        validateRowIndex(row);
+        if (isOriginUpperLeft) return image.getRGB(col, row);
+        else                   return image.getRGB(col, height - row - 1);
     }
 
    /**
@@ -276,15 +296,30 @@ public final class Picture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @param color the color
-     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      * @throws IllegalArgumentException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
-        validateCol(col);
-        validateRow(row);
+        validateColumnIndex(col);
+        validateRowIndex(row);
         if (color == null) throw new IllegalArgumentException("color argument is null");
-        if (isOriginUpperLeft) image.setRGB(col, row, color.getRGB());
-        else                   image.setRGB(col, height - row - 1, color.getRGB());
+        int rgb = color.getRGB();
+        setRGB(col, row, rgb);
+    }
+
+   /**
+     * Sets the color of pixel ({@code col}, {@code row}) to given color.
+     *
+     * @param col the column index
+     * @param row the row index
+     * @param rgb the integer representation of the color
+     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     */
+    public void setRGB(int col, int row, int rgb) {
+        validateColumnIndex(col);
+        validateRowIndex(row);
+        if (isOriginUpperLeft) image.setRGB(col, row, rgb);
+        else                   image.setRGB(col, height - row - 1, rgb);
     }
 
    /**

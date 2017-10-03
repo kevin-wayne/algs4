@@ -170,7 +170,7 @@ public class EulerianCycle {
     //    - at least one edge
     //    - degree(v) is even for every vertex v
     //    - the graph is connected (ignoring isolated vertices)
-    private static boolean hasEulerianCycle(Graph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Graph G) {
 
         // Condition 0: at least 1 edge
         if (G.E() == 0) return false;
@@ -197,7 +197,7 @@ public class EulerianCycle {
         if (hasEulerianCycle() == (cycle() == null)) return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != hasEulerianCycle(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian cycle
         if (cycle == null) return true;

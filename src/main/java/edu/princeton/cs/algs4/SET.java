@@ -39,7 +39,6 @@ import java.util.TreeSet;
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
- *  This implementation uses a balanced binary search tree. It requires that
  *  For additional documentation, see
  *  <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms in Java, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.

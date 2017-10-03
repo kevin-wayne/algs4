@@ -13,7 +13,7 @@
  *
  *  We use a one-based array to simplify parent and child calculations.
  *
- *  Can be optimized by replacing full exchanges with half exchanges 
+ *  Can be optimized by replacing full exchanges with half exchanges
  *  (ala insertion sort).
  *
  ******************************************************************************/
@@ -50,7 +50,7 @@ import java.util.NoSuchElementException;
 public class MaxPQ<Key> implements Iterable<Key> {
     private Key[] pq;                    // store items at indices 1 to n
     private int n;                       // number of items on priority queue
-    private Comparator<Key> comparator;  // optional Comparator
+    private Comparator<Key> comparator;  // optional comparator
 
     /**
      * Initializes an empty priority queue with the given initial capacity.
@@ -99,7 +99,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
      */
     public MaxPQ(Key[] keys) {
         n = keys.length;
-        pq = (Key[]) new Object[keys.length + 1]; 
+        pq = (Key[]) new Object[keys.length + 1];
         for (int i = 0; i < n; i++)
             pq[i+1] = keys[i];
         for (int k = n/2; k >= 1; k--)
@@ -158,7 +158,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
     public void insert(Key x) {
 
         // double size of array if necessary
-        if (n >= pq.length - 1) resize(2 * pq.length);
+        if (n == pq.length - 1) resize(2 * pq.length);
 
         // add x, and percolate it up to maintain heap invariant
         pq[++n] = x;

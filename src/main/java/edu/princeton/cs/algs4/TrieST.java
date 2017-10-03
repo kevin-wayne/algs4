@@ -72,9 +72,10 @@ public class TrieST<Value> {
      * @param key the key
      * @return the value associated with the given key if the key is in the symbol table
      *     and {@code null} if the key is not in the symbol table
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(String key) {
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         Node x = get(root, key, 0);
         if (x == null) return null;
         return (Value) x.val;
@@ -85,9 +86,10 @@ public class TrieST<Value> {
      * @param key the key
      * @return {@code true} if this symbol table contains {@code key} and
      *     {@code false} otherwise
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(String key) {
+        if (key == null) throw new IllegalArgumentException("argument to contains() is null");
         return get(key) != null;
     }
 
@@ -104,9 +106,10 @@ public class TrieST<Value> {
      * If the value is {@code null}, this effectively deletes the key from the symbol table.
      * @param key the key
      * @param val the value
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(String key, Value val) {
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) delete(key);
         else root = put(root, key, val, 0);
     }
@@ -213,9 +216,10 @@ public class TrieST<Value> {
      * @param query the query string
      * @return the string in the symbol table that is the longest prefix of {@code query},
      *     or {@code null} if no such string
-     * @throws NullPointerException if {@code query} is {@code null}
+     * @throws IllegalArgumentException if {@code query} is {@code null}
      */
     public String longestPrefixOf(String query) {
+        if (query == null) throw new IllegalArgumentException("argument to longestPrefixOf() is null");
         int length = longestPrefixOf(root, query, 0, -1);
         if (length == -1) return null;
         else return query.substring(0, length);
@@ -236,9 +240,10 @@ public class TrieST<Value> {
     /**
      * Removes the key from the set if the key is present.
      * @param key the key
-     * @throws NullPointerException if {@code key} is {@code null}
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(String key) {
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         root = delete(root, key, 0);
     }
 

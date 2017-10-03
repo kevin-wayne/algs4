@@ -381,7 +381,7 @@ import javax.swing.KeyStroke;
  *  It is much less powerful than most user interface libraries provide, but also much simpler.
  *  You can use the following methods to intercept mouse events:
  *  <ul>
- *  <li> {@link #mousePressed()}
+ *  <li> {@link #isMousePressed()}
  *  <li> {@link #mouseX()}
  *  <li> {@link #mouseY()}
  *  </ul>
@@ -430,6 +430,10 @@ import javax.swing.KeyStroke;
  *       {@link Double#POSITIVE_INFINITY}, and {@link Double#NEGATIVE_INFINITY}
  *       as arugments. An object drawn with an <em>x</em>- or <em>y</em>-coordinate
  *       that is NaN will behave as if it is outside the canvas, and will not be visible.
+ *  <li> Due to floating-point issues, an object drawn with an <em>x</em>- or
+ *       <em>y</em>-coordinate that is way outside the canvas (such as the line segment
+ *       from (0.5, –&infin;) to (0.5, &infin;) may not be visible even in the
+ *       part of the canvas where it should be.
  *  </ul>
  *  <p>
  *  <b>Performance tricks.</b>
@@ -611,7 +615,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static JFrame frame;
 
     // mouse state
-    private static boolean mousePressed = false;
+    private static boolean isMousePressed = false;
     private static double mouseX = 0;
     private static double mouseY = 0;
 
@@ -1663,9 +1667,22 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *
      * @return {@code true} if the mouse is being pressed; {@code false} otherwise
      */
+    public static boolean isMousePressed() {
+        synchronized (mouseLock) {
+            return isMousePressed;
+        }
+    }
+
+    /**
+     * Returns true if the mouse is being pressed.
+     *
+     * @return {@code true} if the mouse is being pressed; {@code false} otherwise
+     * @deprecated replaced by {@link #isMousePressed()}
+     */
+    @Deprecated
     public static boolean mousePressed() {
         synchronized (mouseLock) {
-            return mousePressed;
+            return isMousePressed;
         }
     }
 
@@ -1724,7 +1741,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         synchronized (mouseLock) {
             mouseX = StdDraw.userX(e.getX());
             mouseY = StdDraw.userY(e.getY());
-            mousePressed = true;
+            isMousePressed = true;
         }
     }
 
@@ -1734,7 +1751,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     @Override
     public void mouseReleased(MouseEvent e) {
         synchronized (mouseLock) {
-            mousePressed = false;
+            isMousePressed = false;
         }
     }
 
@@ -1794,7 +1811,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             if (keysTyped.isEmpty()) {
                 throw new NoSuchElementException("your program has already processed all keystrokes");
             }
-            return keysTyped.removeLast();
+            return keysTyped.remove(keysTyped.size() - 1);
+            // return keysTyped.removeLast();
         }
     }
 

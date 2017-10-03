@@ -269,7 +269,7 @@ public final class StdAudio {
         try {
             // check if file format is supported
             // (if not, will throw an UnsupportedAudioFileException)
-            AudioInputStream ais = AudioSystem.getAudioInputStream(is);
+            AudioSystem.getAudioInputStream(is);
 
             new Thread(new Runnable() {
                 @Override

@@ -99,10 +99,11 @@ public class Quick {
      * @param  a the array
      * @param  k the rank of the key
      * @return the key of rank {@code k}
+     * @throws IllegalArgumentException unless {@code 0 <= k < a.length}
      */
     public static Comparable select(Comparable[] a, int k) {
         if (k < 0 || k >= a.length) {
-            throw new IndexOutOfBoundsException("Selected element out of bounds");
+            throw new IllegalArgumentException("index is not between 0 and " + a.length + ": " + k);
         }
         StdRandom.shuffle(a);
         int lo = 0, hi = a.length - 1;

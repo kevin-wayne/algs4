@@ -119,10 +119,10 @@ public class SuffixArray {
      * That is, {@code text.substring(sa.index(i))} is the <em>i</em>th smallest suffix.
      * @param i an integer between 0 and <em>n</em>-1
      * @return the index into the original string of the <em>i</em>th smallest suffix
-     * @throws java.lang.IndexOutOfBoundsException unless {@code 0 <= i < n}
+     * @throws java.lang.IllegalArgumentException unless {@code 0 <= i < n}
      */
     public int index(int i) {
-        if (i < 0 || i >= suffixes.length) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= suffixes.length) throw new IllegalArgumentException();
         return suffixes[i].index;
     }
 
@@ -133,15 +133,15 @@ public class SuffixArray {
      * @param i an integer between 1 and <em>n</em>-1
      * @return the length of the longest common prefix of the <em>i</em>th
      * smallest suffix and the <em>i</em>-1st smallest suffix.
-     * @throws java.lang.IndexOutOfBoundsException unless {@code 1 <= i < n}
+     * @throws java.lang.IllegalArgumentException unless {@code 1 <= i < n}
      */
     public int lcp(int i) {
-        if (i < 1 || i >= suffixes.length) throw new IndexOutOfBoundsException();
-        return lcp(suffixes[i], suffixes[i-1]);
+        if (i < 1 || i >= suffixes.length) throw new IllegalArgumentException();
+        return lcpSuffix(suffixes[i], suffixes[i-1]);
     }
 
     // longest common prefix of s and t
-    private static int lcp(Suffix s, Suffix t) {
+    private static int lcpSuffix(Suffix s, Suffix t) {
         int n = Math.min(s.length(), t.length());
         for (int i = 0; i < n; i++) {
             if (s.charAt(i) != t.charAt(i)) return i;
@@ -153,10 +153,10 @@ public class SuffixArray {
      * Returns the <em>i</em>th smallest suffix as a string.
      * @param i the index
      * @return the <em>i</em> smallest suffix as a string
-     * @throws java.lang.IndexOutOfBoundsException unless {@code 0 <= i < n}
+     * @throws java.lang.IllegalArgumentException unless {@code 0 <= i < n}
      */
     public String select(int i) {
-        if (i < 0 || i >= suffixes.length) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= suffixes.length) throw new IllegalArgumentException();
         return suffixes[i].toString();
     }
 

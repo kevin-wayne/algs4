@@ -288,7 +288,7 @@ public class HopcroftKarp {
     // throw an exception if vertex is invalid
     private void validate(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**************************************************************************
