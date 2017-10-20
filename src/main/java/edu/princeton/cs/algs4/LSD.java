@@ -2,7 +2,7 @@
  *  Compilation:  javac LSD.java
  *  Execution:    java LSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
- *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
  *
  *  LSD radix sort
  *
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  array of <em>w</em>-character strings or 32-bit integers using LSD radix sort.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

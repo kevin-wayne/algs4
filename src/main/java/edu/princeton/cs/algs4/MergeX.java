@@ -2,8 +2,8 @@
  *  Compilation:  javac MergeX.java
  *  Execution:    java MergeX < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/22mergesort/tiny.txt
- *                http://algs4.cs.princeton.edu/22mergesort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/22mergesort/tiny.txt
+ *                https://algs4.cs.princeton.edu/22mergesort/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using an
  *  optimized version of mergesort.
@@ -30,7 +30,7 @@ import java.util.Comparator;
  *  The {@code MergeX} class provides static methods for sorting an
  *  array using an optimized version of mergesort.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

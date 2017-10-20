@@ -2,8 +2,8 @@
  *  Compilation:  javac Shell.java
  *  Execution:    java Shell < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21elementary/tiny.txt
- *                http://algs4.cs.princeton.edu/21elementary/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using shellsort.
  *
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  The {@code Shell} class provides static methods for sorting an
  *  array using Shellsort with Knuth's increment sequence (1, 4, 13, 40, ...).
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick

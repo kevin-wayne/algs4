@@ -2,8 +2,8 @@
  *  Compilation:  javac WhiteFilter.java
  *  Execution:    java WhiteFilter whitelist.txt < input.txt
  *  Dependencies: SET In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/35applications/tinyTale.txt
- *                http://algs4.cs.princeton.edu/35applications/list.txt
+ *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyTale.txt
+ *                https://algs4.cs.princeton.edu/35applications/list.txt
  * 
  *  Read in a whitelist of words from a file. Then read in a list of
  *  words from standard input and print out all those words that
@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  printing out each word that appears in the file.
  *  It is useful as a test client for various symbol table implementations.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

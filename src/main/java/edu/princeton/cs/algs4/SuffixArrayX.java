@@ -2,7 +2,7 @@
  *  Compilation:  javac SuffixArrayX.java
  *  Execution:    java SuffixArrayX < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/abra.txt
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/abra.txt
  *  
  *  A data type that computes the suffix array of a string using 3-way
  *  radix quicksort.
@@ -57,7 +57,7 @@ package edu.princeton.cs.algs4;
  *  the suffixes start out in a bad order (e.g., sorted) is likely to be
  *  a bad input for this algorithm with or without the shuffle.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class SuffixArrayX {

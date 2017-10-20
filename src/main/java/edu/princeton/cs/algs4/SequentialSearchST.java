@@ -2,7 +2,7 @@
  *  Compilation:  javac SequentialSearchST.java
  *  Execution:    java SequentialSearchST
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/31elementary/tinyST.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt  
  *  
  *  Symbol table implementation with sequential search in an
  *  unordered linked list of key-value pairs.
@@ -48,7 +48,7 @@ package edu.princeton.cs.algs4;
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

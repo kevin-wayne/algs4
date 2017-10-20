@@ -2,10 +2,10 @@
  *  Compilation:  javac BinarySearch.java
  *  Execution:    java BinarySearch whitelist.txt < input.txt
  *  Dependencies: In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/11model/tinyW.txt
- *                http://algs4.cs.princeton.edu/11model/tinyT.txt
- *                http://algs4.cs.princeton.edu/11model/largeW.txt
- *                http://algs4.cs.princeton.edu/11model/largeT.txt
+ *  Data files:   https://algs4.cs.princeton.edu/11model/tinyW.txt
+ *                https://algs4.cs.princeton.edu/11model/tinyT.txt
+ *                https://algs4.cs.princeton.edu/11model/largeW.txt
+ *                https://algs4.cs.princeton.edu/11model/largeT.txt
  *
  *  % java BinarySearch tinyW.txt < tinyT.txt
  *  50
@@ -33,7 +33,7 @@ import java.util.Arrays;
  *  <p>
  *  The <em>indexOf</em> operations takes logarithmic time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

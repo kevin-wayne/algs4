@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  It includes methods for addition, subtraction, multiplication, division,
  *  conjugation, and other common functions on complex numbers.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

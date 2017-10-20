@@ -3,8 +3,8 @@
  *  Execution:    java DepthFirstOrder digraph.txt
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
  *                EdgeWeightedDigraph.java DirectedEdge.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
- *                http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
  *
  *  Compute preorder and postorder for a digraph or edge-weighted digraph.
  *  Runs in O(E + V) time.
@@ -46,7 +46,7 @@ package edu.princeton.cs.algs4;
  *  operation takes take time proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

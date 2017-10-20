@@ -2,8 +2,8 @@
  *  Compilation:  javac Quick3string.java
  *  Execution:    java Quick3string < input.txt
  *  Dependencies: StdIn.java StdOut.java 
- *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
- *                http://algs4.cs.princeton.edu/51radix/shells.txt
+ *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
+ *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Reads string from standard input and 3-way string quicksort them.
  *
@@ -33,7 +33,7 @@ package edu.princeton.cs.algs4;
  *  array of strings using 3-way radix quicksort.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

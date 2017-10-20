@@ -24,7 +24,7 @@ package edu.princeton.cs.algs4;
  *  number of edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick

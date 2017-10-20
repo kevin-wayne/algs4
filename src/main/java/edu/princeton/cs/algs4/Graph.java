@@ -2,9 +2,9 @@
  *  Compilation:  javac Graph.java        
  *  Execution:    java Graph input.txt
  *  Dependencies: Bag.java Stack.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
- *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
- *                http://algs4.cs.princeton.edu/41graph/largeG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  A graph, implemented using an array of sets.
  *  Parallel edges and self-loops allowed.
@@ -55,7 +55,7 @@ import java.util.NoSuchElementException;
  *  iterating over the vertices adjacent to a given vertex, which takes
  *  time proportional to the number of such vertices.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

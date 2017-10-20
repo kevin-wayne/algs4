@@ -2,9 +2,9 @@
  *  Compilation:  javac EdgeWeightedGraph.java
  *  Execution:    java EdgeWeightedGraph filename.txt
  *  Dependencies: Bag.java Edge.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/largeEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  An edge-weighted undirected graph, implemented using adjacency lists.
  *  Parallel edges and self-loops are permitted.
@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
  *  time proportional to the number of such edges.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

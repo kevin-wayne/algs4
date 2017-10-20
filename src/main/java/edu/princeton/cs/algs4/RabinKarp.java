@@ -43,7 +43,7 @@ import java.util.Random;
  *  This implementation uses the Rabin-Karp algorithm.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class RabinKarp {

@@ -2,7 +2,7 @@
  *  Compilation:  javac FordFulkerson.java
  *  Execution:    java FordFulkerson V E
  *  Dependencies: FlowNetwork.java FlowEdge.java Queue.java
- *  Data files:   http://algs4.cs.princeton.edu/65maxflow/tinyFN.txt
+ *  Data files:   https://algs4.cs.princeton.edu/65maxflow/tinyFN.txt
  *
  *  Ford-Fulkerson algorithm for computing a max flow and 
  *  a min cut using shortest augmenting path rule.
@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  roundoff error can accumulate.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

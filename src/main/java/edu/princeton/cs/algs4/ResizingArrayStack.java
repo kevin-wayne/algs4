@@ -2,7 +2,7 @@
  *  Compilation:  javac ResizingArrayStack.java
  *  Execution:    java ResizingArrayStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *  
  *  Stack implementation with a resizing array.
  *
@@ -33,7 +33,7 @@ import java.util.NoSuchElementException;
  *  constant time in the worst case. 
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

@@ -2,13 +2,13 @@
  *  Compilation:  javac ThreeSumFast.java
  *  Execution:    java ThreeSumFast input.txt
  *  Dependencies: StdOut.java In.java Stopwatch.java
- *  Data files:   http://algs4.cs.princeton.edu/14analysis/1Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/2Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/4Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/8Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/16Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/32Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/1Mints.txt
+ *  Data files:   https://algs4.cs.princeton.edu/14analysis/1Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/2Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/4Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/8Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/16Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/32Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/1Mints.txt
  *
  *  A program with n^2 log n running time. Reads n integers
  *  and counts the number of triples that sum to exactly 0.
@@ -51,7 +51,7 @@ import java.util.Arrays;
  *  This implementation uses sorting and binary search and takes time 
  *  proportional to n^2 log n, where n is the number of integers.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

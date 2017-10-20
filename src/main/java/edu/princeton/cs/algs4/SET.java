@@ -40,7 +40,7 @@ import java.util.TreeSet;
  *  Construction takes constant time.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms in Java, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

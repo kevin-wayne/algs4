@@ -2,7 +2,7 @@
  *  Compilation:  javac SuffixArray.java
  *  Execution:    java SuffixArray < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/abra.txt
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/abra.txt
  *
  *  A data type that computes the suffix array of a string.
  *
@@ -53,11 +53,11 @@ import java.util.Arrays;
  *  For alternate implementations of the same API, see
  *  {@link SuffixArrayX}, which is faster in practice (uses 3-way radix quicksort)
  *  and uses less memory (does not create {@code Suffix} objects)
- *  and <a href = "http://algs4.cs.princeton.edu/63suffix/SuffixArrayJava6.java.html">SuffixArrayJava6.java</a>,
+ *  and <a href = "https://algs4.cs.princeton.edu/63suffix/SuffixArrayJava6.java.html">SuffixArrayJava6.java</a>,
  *  which relies on the constant-time substring extraction method that existed
  *  in Java 6.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class SuffixArray {

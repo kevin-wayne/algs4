@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
   * are zero.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *  See also {@link Vector} for an immutable (dense) vector data type.
  *

@@ -2,8 +2,8 @@
  *  Compilation:  javac DegreesOfSeparation.java
  *  Execution:    java DegreesOfSeparation filename delimiter source
  *  Dependencies: SymbolGraph.java Graph.java BreadthFirstPaths.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/routes.txt
- *                http://algs4.cs.princeton.edu/41graph/movies.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
+ *                https://algs4.cs.princeton.edu/41graph/movies.txt
  *  
  *  
  *  %  java DegreesOfSeparation routes.txt " " "JFK"
@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
  *  each movie to all of the actors that appear in that movie.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

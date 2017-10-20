@@ -4,8 +4,8 @@
  *  Dependencies: EdgeWeightedGraph.java Edge.java UF.java 
  *                IndexMaxPQ.java FlowNetwork.java FlowEdge.java 
  *                FordFulkerson.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
  *
  *  Computes a minimum cut using Stoer-Wagner's algorithm.
  *

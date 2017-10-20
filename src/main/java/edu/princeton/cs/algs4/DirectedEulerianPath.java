@@ -29,7 +29,7 @@ import java.util.Iterator;
  *  {@link EulerianCycle} and {@link EulerianPath}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
  * @author Robert Sedgewick

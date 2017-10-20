@@ -2,8 +2,8 @@
  *  Compilation:  javac DirectedCycle.java
  *  Execution:    java DirectedCycle input.txt
  *  Dependencies: Digraph.java Stack.java StdOut.java In.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
  *
  *  Finds a directed cycle in a digraph.
  *  Runs in O(E + V) time.
@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  digraph is acyclic.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

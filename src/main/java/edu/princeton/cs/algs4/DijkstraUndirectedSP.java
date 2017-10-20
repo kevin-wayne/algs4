@@ -2,9 +2,9 @@
  *  Compilation:  javac DijkstraUndirectedSP.java
  *  Execution:    java DijkstraUndirectedSP input.txt s
  *  Dependencies: EdgeWeightedGraph.java IndexMinPQ.java Stack.java Edge.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/largeEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  Dijkstra's algorithm. Computes the shortest path tree.
  *  Assumes all weights are nonnegative.
@@ -50,7 +50,7 @@ package edu.princeton.cs.algs4;
  *  number of edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *  See {@link DijkstraSP} for a version on edge-weighted digraphs.
  *

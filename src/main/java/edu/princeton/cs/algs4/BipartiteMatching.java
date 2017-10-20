@@ -42,11 +42,11 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> sqrt(<em>V</em>))
  *  using the Hopcroft-Karp algorithm and
- *  <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
+ *  <a href = "https://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
  *  which solves the problem in O(<em>E V</em>) time via a reduction to maxflow.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

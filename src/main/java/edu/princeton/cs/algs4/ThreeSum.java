@@ -2,13 +2,13 @@
  *  Compilation:  javac ThreeSum.java
  *  Execution:    java ThreeSum input.txt
  *  Dependencies: In.java StdOut.java Stopwatch.java
- *  Data files:   http://algs4.cs.princeton.edu/14analysis/1Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/2Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/4Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/8Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/16Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/32Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/1Mints.txt
+ *  Data files:   https://algs4.cs.princeton.edu/14analysis/1Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/2Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/4Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/8Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/16Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/32Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/1Mints.txt
  *
  *  A program with cubic running time. Reads n integers
  *  and counts the number of triples that sum to exactly 0
@@ -35,7 +35,7 @@ package edu.princeton.cs.algs4;
  *  This implementation uses a triply nested loop and takes proportional to n^3,
  *  where n is the number of integers.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

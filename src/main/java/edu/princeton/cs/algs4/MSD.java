@@ -2,8 +2,8 @@
  *  Compilation: javac MSD.java
  *  Execution:   java MSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
- *  Data files:   http://algs4.cs.princeton.edu/51radix/words3.txt
- *                http://algs4.cs.princeton.edu/51radix/shells.txt
+ *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
+ *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using MSD radix sort.
  *
@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  array of extended ASCII strings or integers using MSD radix sort.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

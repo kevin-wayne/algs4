@@ -3,9 +3,9 @@
  *  Execution:    java PrimMST filename.txt
  *  Dependencies: EdgeWeightedGraph.java Edge.java Queue.java
  *                IndexMinPQ.java UF.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/largeEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  Compute a minimum spanning forest using Prim's algorithm.
  *
@@ -57,7 +57,7 @@ package edu.princeton.cs.algs4;
  *  and the {@code edges()} method takes time proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For alternate implementations, see {@link LazyPrimMST}, {@link KruskalMST},
  *  and {@link BoruvkaMST}.

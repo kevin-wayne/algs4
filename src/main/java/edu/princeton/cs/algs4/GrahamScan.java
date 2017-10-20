@@ -2,8 +2,8 @@
  *  Compilation:  javac GrahamaScan.java
  *  Execution:    java GrahamScan < input.txt
  *  Dependencies: Point2D.java
- *  Data files:   http://algs4.cs.princeton.edu/99hull/rs1423.txt
- *                http://algs4.cs.princeton.edu/99hull/kw1260.txt
+ *  Data files:   https://algs4.cs.princeton.edu/99hull/rs1423.txt
+ *                https://algs4.cs.princeton.edu/99hull/kw1260.txt
  * 
  *  Create points from standard input and compute the convex hull using
  *  Graham scan algorithm.
@@ -37,7 +37,7 @@ import java.util.Arrays;
  *  It runs in O(<em>n</em> log <em>n</em>) time in the worst case
  *  and uses O(<em>n</em>) extra memory.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

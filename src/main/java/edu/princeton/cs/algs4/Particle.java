@@ -20,7 +20,7 @@ import java.awt.Color;
  *  This data type is mutable because the position and velocity change.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick

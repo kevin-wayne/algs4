@@ -2,7 +2,7 @@
  *  Compilation:  javac BST.java
  *  Execution:    java BST
  *  Dependencies: StdIn.java StdOut.java Queue.java
- *  Data files:   http://algs4.cs.princeton.edu/32bst/tinyST.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/32bst/tinyST.txt  
  *
  *  A symbol table implemented with a binary search tree.
  * 
@@ -54,7 +54,7 @@ import java.util.NoSuchElementException;
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/32bst">Section 3.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/32bst">Section 3.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link RedBlackBST},
@@ -133,7 +133,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     private Value get(Node x, Key key) {
-        if (key == null) throw new IllegalArgumentException("called get() with a null key");
+        if (key == null) throw new IllegalArgumentException("calls get() with a null key");
         if (x == null) return null;
         int cmp = key.compareTo(x.key);
         if      (cmp < 0) return get(x.left, key);
@@ -152,7 +152,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("calledput() with a null key");
+        if (key == null) throw new IllegalArgumentException("calls put() with a null key");
         if (val == null) {
             delete(key);
             return;
@@ -216,7 +216,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("called delete() with a null key");
+        if (key == null) throw new IllegalArgumentException("calls delete() with a null key");
         root = delete(root, key);
         assert check();
     }
@@ -247,7 +247,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if the symbol table is empty
      */
     public Key min() {
-        if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("calls min() with empty symbol table");
         return min(root).key;
     } 
 
@@ -263,7 +263,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @throws NoSuchElementException if the symbol table is empty
      */
     public Key max() {
-        if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("calls max() with empty symbol table");
         return max(root).key;
     } 
 
@@ -282,7 +282,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      */
     public Key floor(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to floor() is null");
-        if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("calls floor() with empty symbol table");
         Node x = floor(root, key);
         if (x == null) return null;
         else return x.key;
@@ -298,6 +298,18 @@ public class BST<Key extends Comparable<Key>, Value> {
         else return x; 
     } 
 
+    public Key floor2(Key key) {
+        return floor2(root, key, null);
+    }
+
+    private Key floor2(Node x, Key key, Key best) {
+        if (x == null) return best;
+        int cmp = key.compareTo(x.key);
+        if      (cmp  < 0) return floor2(x.left, key, best);
+        else if (cmp  > 0) return floor2(x.right, key, x.key);
+        else               return x.key;
+    } 
+
     /**
      * Returns the smallest key in the symbol table greater than or equal to {@code key}.
      *
@@ -308,7 +320,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      */
     public Key ceiling(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
-        if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
+        if (isEmpty()) throw new NoSuchElementException("calls ceiling() with empty symbol table");
         Node x = ceiling(root, key);
         if (x == null) return null;
         else return x.key;
@@ -336,7 +348,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      */
     public Key select(int k) {
         if (k < 0 || k >= size()) {
-            throw new IllegalArgumentException("called select() with invalid argument: " + k);
+            throw new IllegalArgumentException("argument to select() is invalid: " + k);
         }
         Node x = select(root, k);
         return x.key;
@@ -380,6 +392,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @return all keys in the symbol table
      */
     public Iterable<Key> keys() {
+        if (isEmpty()) return new Queue<Key>();
         return keys(min(), max());
     }
 

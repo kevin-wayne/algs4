@@ -2,8 +2,8 @@
  *  Compilation:  javac QuickX.java
  *  Execution:    java QuickX < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/23quicksort/tiny.txt
- *                http://algs4.cs.princeton.edu/23quicksort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
+ *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *  
  *  Uses the Bentley-McIlroy 3-way partitioning scheme,
  *  chooses the partitioning element using Tukey's ninther,
@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
  *  array using an optimized version of quicksort (using Bentley-McIlroy
  *  3-way partitioning, Tukey's ninther, and cutoff to insertion sort).
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

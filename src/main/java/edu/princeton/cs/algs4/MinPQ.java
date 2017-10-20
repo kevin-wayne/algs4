@@ -2,7 +2,7 @@
  *  Compilation:  javac MinPQ.java
  *  Execution:    java MinPQ < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/24pq/tinyPQ.txt
+ *  Data files:   https://algs4.cs.princeton.edu/24pq/tinyPQ.txt
  *  
  *  Generic min priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order.
@@ -37,7 +37,7 @@ import java.util.NoSuchElementException;
  *  Construction takes time proportional to the specified capacity or the number of
  *  items used to initialize the data structure.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

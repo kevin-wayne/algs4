@@ -2,9 +2,9 @@
  *  Compilation:  javac NonrecursiveDFS.java
  *  Execution:    java NonrecursiveDFS graph.txt s
  *  Dependencies: Graph.java Queue.java Stack.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyCG.txt
- *                http://algs4.cs.princeton.edu/41graph/tinyG.txt
- *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *                https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
  *
  *  Run nonrecurisve depth-first search on an undirected graph.
  *  Runs in O(E + V) time.
@@ -45,7 +45,7 @@ import java.util.Iterator;
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

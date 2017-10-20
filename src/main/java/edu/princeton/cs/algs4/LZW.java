@@ -3,8 +3,8 @@
  *  Execution:    java LZW - < input.txt   (compress)
  *  Execution:    java LZW + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
- *  Data files:   http://algs4.cs.princeton.edu/55compression/abraLZW.txt
- *                http://algs4.cs.princeton.edu/55compression/ababLZW.txt
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/abraLZW.txt
+ *                https://algs4.cs.princeton.edu/55compression/ababLZW.txt
  *
  *  Compress or expand binary input from standard input using LZW.
  *
@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
  *  ASCII alphabet with 12-bit codewords.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick  

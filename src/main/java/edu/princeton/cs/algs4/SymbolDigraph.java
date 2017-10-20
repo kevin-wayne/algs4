@@ -2,7 +2,7 @@
  *  Compilation:  javac SymbolDigraph.java
  *  Execution:    java SymbolDigraph
  *  Dependencies: ST.java Digraph.java In.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/routes.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/routes.txt
  *  
  *  %  java SymbolDigraph routes.txt " "
  *  JFK
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  proportional to log <em>V</em>, where <em>V</em> is the number of vertices.
  *  The <em>nameOf</em> operation takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

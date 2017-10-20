@@ -2,9 +2,9 @@
  *  Compilation:  javac LinkedQueue.java
  *  Execution:    java LinkedQueue < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt  
  *
- *  A generic queue, implemented using a singly-linked list.
+ *  A generic queue, implemented using a singly linked list.
  *
  *  % java Queue < tobe.txt 
  *  to be or not to be (2 left on queue)
@@ -24,12 +24,12 @@ import java.util.NoSuchElementException;
  *  testing if the queue is empty, and iterating through
  *  the items in FIFO order.
  *  <p>
- *  This implementation uses a singly-linked list with a non-static nested class 
+ *  This implementation uses a singly linked list with a non-static nested class 
  *  for linked-list nodes.  See {@link Queue} for a version that uses a static nested class.
  *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

@@ -2,11 +2,11 @@
  *  Compilation:  javac SymbolGraph.java
  *  Execution:    java SymbolGraph filename.txt delimiter
  *  Dependencies: ST.java Graph.java In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/routes.txt
- *                http://algs4.cs.princeton.edu/41graph/movies.txt
- *                http://algs4.cs.princeton.edu/41graph/moviestiny.txt
- *                http://algs4.cs.princeton.edu/41graph/moviesG.txt
- *                http://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
+ *                https://algs4.cs.princeton.edu/41graph/movies.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviestiny.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviesG.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
  *  
  *  %  java SymbolGraph routes.txt " "
  *  JFK
@@ -59,7 +59,7 @@ package edu.princeton.cs.algs4;
  *  proportional to log <em>V</em>, where <em>V</em> is the number of vertices.
  *  The <em>nameOf</em> operation takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

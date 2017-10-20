@@ -2,9 +2,9 @@
  *  Compilation:  javac BreadthFirstDirectedPaths.java
  *  Execution:    java BreadthFirstDirectedPaths digraph.txt s
  *  Dependencies: Digraph.java Queue.java Stack.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Run breadth-first search on a digraph.
  *  Runs in O(E + V) time.
@@ -39,7 +39,7 @@ package edu.princeton.cs.algs4;
  *  It uses extra space (not including the digraph) proportional to <em>V</em>.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

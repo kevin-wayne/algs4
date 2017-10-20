@@ -2,7 +2,7 @@
  *  Compilation:  javac HexDump.java
  *  Execution:    java HexDump < file
  *  Dependencies: BinaryStdIn.java StdOut.java
- *  Data file:    http://algs4.cs.princeton.edu/55compression/abra.txt
+ *  Data file:    https://algs4.cs.princeton.edu/55compression/abra.txt
  *  
  *  Reads in a binary file and writes out the bytes in hex, 16 per line.
  *
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  of a binary file in hexadecimal.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link BinaryDump} and {@link PictureDump}.

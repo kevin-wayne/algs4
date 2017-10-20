@@ -3,10 +3,10 @@
  *  Execution:    java Whitelist whitelist.txt < data.txt
  *  Dependencies: StaticSetOfInts.java In.java StdOut.java
  *
- *  Data files:   http://algs4.cs.princeton.edu/11model/tinyW.txt
- *                http://algs4.cs.princeton.edu/11model/tinyT.txt
- *                http://algs4.cs.princeton.edu/11model/largeW.txt
- *                http://algs4.cs.princeton.edu/11model/largeT.txt
+ *  Data files:   https://algs4.cs.princeton.edu/11model/tinyW.txt
+ *                https://algs4.cs.princeton.edu/11model/tinyT.txt
+ *                https://algs4.cs.princeton.edu/11model/largeW.txt
+ *                https://algs4.cs.princeton.edu/11model/largeT.txt
  *
  *  Whitelist filter.
  *
@@ -35,7 +35,7 @@ package edu.princeton.cs.algs4;
  *  from standard input; and printing to standard output those 
  *  integers not in the whitelist.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

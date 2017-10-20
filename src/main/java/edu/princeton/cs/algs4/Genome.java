@@ -3,7 +3,7 @@
  *  Execution:    java Genome - < input.txt   (compress)
  *  Execution:    java Genome + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
- *  Data files:   http://algs4.cs.princeton.edu/55compression/genomeTiny.txt
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/genomeTiny.txt
  *
  *  Compress or expand a genomic sequence using a 2-bit code.
  *
@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
  *  and expanding a genomic sequence using a 2-bit code.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

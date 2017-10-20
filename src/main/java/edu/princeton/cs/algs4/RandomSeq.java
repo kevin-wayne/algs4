@@ -20,7 +20,7 @@ package edu.princeton.cs.algs4;
  *  The {@code RandomSeq} class is a client that prints out a pseudorandom
  *  sequence of real numbers in a given range.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

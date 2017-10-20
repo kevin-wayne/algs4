@@ -2,9 +2,9 @@
  *  Compilation:  javac Multiway.java
  *  Execution:    java Multiway input1.txt input2.txt input3.txt ...
  *  Dependencies: IndexMinPQ.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/24pq/m1.txt
- *                http://algs4.cs.princeton.edu/24pq/m2.txt
- *                http://algs4.cs.princeton.edu/24pq/m3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/24pq/m1.txt
+ *                https://algs4.cs.princeton.edu/24pq/m2.txt
+ *                https://algs4.cs.princeton.edu/24pq/m3.txt
  * 
  *  Merges together the sorted input stream given as command-line arguments
  *  into a single sorted output stream on standard output.
@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  This implementation uses a {@link IndexMinPQ} to perform the multiway
  *  merge. 
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/24pq">Section 2.4</a>
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

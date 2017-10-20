@@ -3,13 +3,13 @@
  *  Execution:    java CollisionSystem n               (n random particles)
  *                java CollisionSystem < input.txt     (from a file) 
  *  Dependencies: StdDraw.java Particle.java MinPQ.java
- *  Data files:   http://algs4.cs.princeton.edu/61event/diffusion.txt
- *                http://algs4.cs.princeton.edu/61event/diffusion2.txt
- *                http://algs4.cs.princeton.edu/61event/diffusion3.txt
- *                http://algs4.cs.princeton.edu/61event/brownian.txt
- *                http://algs4.cs.princeton.edu/61event/brownian2.txt
- *                http://algs4.cs.princeton.edu/61event/billiards5.txt
- *                http://algs4.cs.princeton.edu/61event/pendulum.txt
+ *  Data files:   https://algs4.cs.princeton.edu/61event/diffusion.txt
+ *                https://algs4.cs.princeton.edu/61event/diffusion2.txt
+ *                https://algs4.cs.princeton.edu/61event/diffusion3.txt
+ *                https://algs4.cs.princeton.edu/61event/brownian.txt
+ *                https://algs4.cs.princeton.edu/61event/brownian2.txt
+ *                https://algs4.cs.princeton.edu/61event/billiards5.txt
+ *                https://algs4.cs.princeton.edu/61event/pendulum.txt
  *  
  *  Creates n random particles and simulates their motion according
  *  to the laws of elastic collisions.
@@ -26,7 +26,7 @@ import java.awt.Color;
  *  This event-based simulation relies on a priority queue.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick

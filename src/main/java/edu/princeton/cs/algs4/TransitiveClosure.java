@@ -2,7 +2,7 @@
  *  Compilation:  javac TransitiveClosure.java
  *  Execution:    java TransitiveClosure filename.txt
  *  Dependencies: Digraph.java DepthFirstDirectedPaths.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
  *
  *  Compute transitive closure of a digraph and support
  *  reachability queries.
@@ -47,7 +47,7 @@ package edu.princeton.cs.algs4;
  *  that runs in <em>E</em> + <em>V</em> time on typical digraphs.
  *
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

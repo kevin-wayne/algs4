@@ -2,7 +2,7 @@
  *  Compilation:  javac TST.java
  *  Execution:    java TST < words.txt
  *  Dependencies: StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
+ *  Data files:   https://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  Symbol table with string keys, implemented using a ternary search
  *  trie (TST).
@@ -57,7 +57,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation uses a ternary search trie.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/52trie">Section 5.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/52trie">Section 5.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class TST<Value> {

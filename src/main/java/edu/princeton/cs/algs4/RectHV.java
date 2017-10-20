@@ -15,7 +15,7 @@ package edu.princeton.cs.algs4;
  *  The rectangle is <em>closed</em>—it includes the points on the boundary.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -40,17 +40,22 @@ public final class RectHV {
      * @throws IllegalArgumentException if {@code xmax < xmin} or {@code ymax < ymin}.
      */
     public RectHV(double xmin, double ymin, double xmax, double ymax) {
-        if (Double.isNaN(xmin) || Double.isNaN(xmax))
-            throw new IllegalArgumentException("x-coordinate cannot be NaN");
-        if (Double.isNaN(ymin) || Double.isNaN(ymax))
-            throw new IllegalArgumentException("y-coordinates cannot be NaN");
-        if (xmax < xmin || ymax < ymin) {
-            throw new IllegalArgumentException("Invalid rectangle");
-        }
         this.xmin = xmin;
         this.ymin = ymin;
         this.xmax = xmax;
         this.ymax = ymax;
+        if (Double.isNaN(xmin) || Double.isNaN(xmax)) {
+            throw new IllegalArgumentException("x-coordinate is NaN: " + toString());
+        }
+        if (Double.isNaN(ymin) || Double.isNaN(ymax)) {
+            throw new IllegalArgumentException("y-coordinate is NaN: " + toString());
+        }
+	if (xmax < xmin) {
+            throw new IllegalArgumentException("xmax < xmin: " + toString());
+        }
+        if (ymax < ymin) {
+            throw new IllegalArgumentException("ymax < ymin: " + toString());
+        }
     }
 
     /**

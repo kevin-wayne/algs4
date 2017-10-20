@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  Construction takes constant time.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/62btree">Section 6.2</a> of
+ *  <a href="https://algs4.cs.princeton.edu/62btree">Section 6.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class BTree<Key extends Comparable<Key>, Value>  {

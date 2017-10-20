@@ -2,8 +2,8 @@
  *  Compilation:  javac Knuth.java
  *  Execution:    java Knuth < list.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/11model/cards.txt
- *                http://algs4.cs.princeton.edu/11model/cardsUnicode.txt
+ *  Data files:   https://algs4.cs.princeton.edu/11model/cards.txt
+ *                https://algs4.cs.princeton.edu/11model/cardsUnicode.txt
  *  
  *  Reads in a list of strings and prints them in random order.
  *  The Knuth (or Fisher-Yates) shuffling algorithm guarantees
@@ -54,7 +54,7 @@ package edu.princeton.cs.algs4;
  *  uniformly distributed numbers between 0 and 1.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  See {@link StdRandom} for versions that shuffle arrays and
  *  subarrays of objects, doubles, and ints.

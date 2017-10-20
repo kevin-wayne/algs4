@@ -2,8 +2,8 @@
  *  Compilation:  javac Cat.java
  *  Execution:    java Cat input0.txt input1.txt ... output.txt
  *  Dependencies: In.java Out.java
- *  Data files:   http://algs4.cs.princeton.edu/11model/in1.txt
- *                http://algs4.cs.princeton.edu/11model/in2.txt
+ *  Data files:   https://algs4.cs.princeton.edu/11model/in1.txt
+ *                https://algs4.cs.princeton.edu/11model/in2.txt
  *
  *  Reads in text files specified as the first command-line 
  *  arguments, concatenates them, and writes the result to
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  The {@code Cat} class provides a client for concatenating the results
  *  of several text files.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

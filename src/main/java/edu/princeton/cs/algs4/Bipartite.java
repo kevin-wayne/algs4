@@ -2,9 +2,9 @@
  *  Compilation:  javac Bipartite.java
  *  Execution:    java  Bipartite V E F
  *  Dependencies: Graph.java 
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
- *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
- *                http://algs4.cs.princeton.edu/41graph/largeG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Given a graph, find either (i) a bipartition or (ii) an odd-length cycle.
  *  Runs in O(E + V) time.
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  See {@link BipartiteX} for a nonrecursive version that uses breadth-first
  *  search.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

@@ -2,7 +2,7 @@
  *  Compilation:  javac LinearProbingHashST.java
  *  Execution:    java LinearProbingHashST < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/34hash/tinyST.txt
+ *  Data files:   https://algs4.cs.princeton.edu/34hash/tinyST.txt
  *  
  *  Symbol-table implementation with linear-probing hash table.
  *
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/34hash">Section 3.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/34hash">Section 3.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link BST}, {@link RedBlackBST}, and

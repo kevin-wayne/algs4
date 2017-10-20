@@ -2,8 +2,8 @@
  *  Compilation:  javac KWIK.java
  *  Execution:    java KWIK file.txt
  *  Dependencies: StdIn.java StdOut.java In.java SuffixArray.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/tale.txt
- *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt 
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt 
  *
  *  Keyword-in-context search.
  *
@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
  *  This is known as <em>keyword-in-context search</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

@@ -2,7 +2,7 @@
  *  Compilation:  javac BinarySearchST.java
  *  Execution:    java BinarySearchST
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/31elementary/tinyST.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt  
  *  
  *  Symbol table implementation with binary search in an ordered array.
  *
@@ -53,7 +53,7 @@ import java.util.NoSuchElementException;
  *  <em>is-empty</em>, <em>minimum</em>, <em>maximum</em>, and <em>select</em>
  *  operations take constant time. Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For other implementations, see {@link ST}, {@link BST},
  *  {@link SequentialSearchST}, {@link RedBlackBST},

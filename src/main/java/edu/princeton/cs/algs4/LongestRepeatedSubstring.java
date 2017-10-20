@@ -2,9 +2,9 @@
  *  Compilation:  javac LongestRepeatedSubstring.java
  *  Execution:    java LongestRepeatedSubstring < file.txt
  *  Dependencies: StdIn.java SuffixArray.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/tale.txt
- *                http://algs4.cs.princeton.edu/63suffix/tinyTale.txt
- *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/tinyTale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *  
  *  Reads a text string from stdin, replaces all consecutive blocks of
  *  whitespace with a single space, and then computes the longest
@@ -35,7 +35,7 @@ package edu.princeton.cs.algs4;
  *  be distinct).
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link LongestCommonSubstring}.

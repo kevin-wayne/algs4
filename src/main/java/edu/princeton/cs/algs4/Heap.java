@@ -2,8 +2,8 @@
  *  Compilation:  javac Heap.java
  *  Execution:    java Heap < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/24pq/tiny.txt
- *                http://algs4.cs.princeton.edu/24pq/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/24pq/tiny.txt
+ *                https://algs4.cs.princeton.edu/24pq/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using heapsort.
  *
@@ -27,7 +27,7 @@ package edu.princeton.cs.algs4;
  *  The {@code Heap} class provides a static methods for heapsorting
  *  an array.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

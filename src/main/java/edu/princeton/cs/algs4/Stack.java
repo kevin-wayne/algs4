@@ -2,9 +2,9 @@
  *  Compilation:  javac Stack.java
  *  Execution:    java Stack < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *
- *  A generic stack, implemented using a singly-linked list.
+ *  A generic stack, implemented using a singly linked list.
  *  Each stack element is of type Item.
  *
  *  This version uses a static nested class Node (to save 8 bytes per
@@ -31,7 +31,7 @@ import java.util.NoSuchElementException;
  *  for peeking at the top item, testing if the stack is empty, and iterating through
  *  the items in LIFO order.
  *  <p>
- *  This implementation uses a singly-linked list with a static nested class for
+ *  This implementation uses a singly linked list with a static nested class for
  *  linked-list nodes. See {@link LinkedStack} for the version from the
  *  textbook that uses a non-static nested class.
  *  See {@link ResizingArrayStack} for a version that uses a resizing array.
@@ -39,7 +39,7 @@ import java.util.NoSuchElementException;
  *  operations all take constant time in the worst case.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

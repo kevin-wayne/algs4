@@ -3,12 +3,12 @@
  *  Execution:    java LinkedBag < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *
- *  A generic bag or multiset, implemented using a singly-linked list.
+ *  A generic bag or multiset, implemented using a singly linked list.
  *
  *  % more tobe.txt 
  *  to be or not to - be - - that - - - is
  *
- *  % java Bag < tobe.txt
+ *  % java LinkedBag < tobe.txt
  *  size of bag = 14
  *  is
  *  -
@@ -37,12 +37,12 @@ import java.util.NoSuchElementException;
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
- *  This implementation uses a singly-linked list with a non-static nested class Node.
+ *  This implementation uses a singly linked list with a non-static nested class Node.
  *  See {@link Bag} for a version that uses a static nested class.
  *  The <em>add</em>, <em>isEmpty</em>, and <em>size</em> operations
  *  take constant time. Iteration takes time proportional to the number of items.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -102,13 +102,26 @@ public class LinkedBag<Item> implements Iterable<Item> {
         return new ListIterator();  
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // an iterator over a linked list
     private class ListIterator implements Iterator<Item> {
-        private Node current = first;
+        private Node current;
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        // creates a new iterator
+        public ListIterator() {
+            current = first;
+        }
 
+        // is there a next item in the iterator?
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        // this method is optional in Iterator interface
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        // returns the next item in the iterator (and advances the iterator)
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;

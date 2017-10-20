@@ -2,9 +2,9 @@
  *  Compilation:  javac CC.java
  *  Execution:    java CC filename.txt
  *  Dependencies: Graph.java StdOut.java Queue.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
- *                http://algs4.cs.princeton.edu/41graph/mediumG.txt
- *                http://algs4.cs.princeton.edu/41graph/largeG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Compute connected components using depth first search.
  *  Runs in O(E + V) time.
@@ -53,7 +53,7 @@ package edu.princeton.cs.algs4;
  *  Afterwards, the <em>id</em>, <em>count</em>, <em>connected</em>,
  *  and <em>size</em> operations take constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

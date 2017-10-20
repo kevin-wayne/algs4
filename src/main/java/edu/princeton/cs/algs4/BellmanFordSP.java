@@ -3,8 +3,8 @@
  *  Execution:    java BellmanFordSP filename.txt s
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java Queue.java
  *                EdgeWeightedDirectedCycle.java
- *  Data files:   http://algs4.cs.princeton.edu/44sp/tinyEWDn.txt
- *                http://algs4.cs.princeton.edu/44sp/mediumEWDnc.txt
+ *  Data files:   https://algs4.cs.princeton.edu/44sp/tinyEWDn.txt
+ *                https://algs4.cs.princeton.edu/44sp/mediumEWDnc.txt
  *
  *  Bellman-Ford shortest path algorithm. Computes the shortest path tree in
  *  edge-weighted digraph G from vertex s, or finds a negative cost cycle
@@ -46,7 +46,7 @@ package edu.princeton.cs.algs4;
  *  method takes time proportional to the number of edges returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick

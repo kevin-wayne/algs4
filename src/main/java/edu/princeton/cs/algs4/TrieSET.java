@@ -2,7 +2,7 @@
  *  Compilation:  javac TrieSET.java
  *  Execution:    java TrieSET < words.txt
  *  Dependencies: StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/52trie/shellsST.txt
+ *  Data files:   https://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
  *  An set for extended ASCII strings, implemented  using a 256-way trie.
  *
@@ -30,7 +30,7 @@ import java.util.Iterator;
  *  of the key (in the worst case). Construction takes constant time.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/52trie">Section 5.2</a> of
+ *  <a href="https://algs4.cs.princeton.edu/52trie">Section 5.2</a> of
  *  <i>Algorithms in Java, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

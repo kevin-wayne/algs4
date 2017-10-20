@@ -2,12 +2,12 @@
  *  Compilation:  javac LookupCSV.java
  *  Execution:    java LookupCSV file.csv keyField valField
  *  Dependencies: ST.java In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/35applications/DJIA.csv
- *                http://algs4.cs.princeton.edu/35applications/UPC.csv
- *                http://algs4.cs.princeton.edu/35applications/amino.csv
- *                http://algs4.cs.princeton.edu/35applications/elements.csv
- *                http://algs4.cs.princeton.edu/35applications/ip.csv
- *                http://algs4.cs.princeton.edu/35applications/morse.csv
+ *  Data files:   https://algs4.cs.princeton.edu/35applications/DJIA.csv
+ *                https://algs4.cs.princeton.edu/35applications/UPC.csv
+ *                https://algs4.cs.princeton.edu/35applications/amino.csv
+ *                https://algs4.cs.princeton.edu/35applications/elements.csv
+ *                https://algs4.cs.princeton.edu/35applications/ip.csv
+ *                https://algs4.cs.princeton.edu/35applications/morse.csv
  *  
  *  Reads in a set of key-value pairs from a two-column CSV file
  *  specified on the command line; then, reads in keys from standard
@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  keys found on standard input. Both keys and values are strings.
  *  The fields to serve as the key and value are taken as command-line arguments.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick

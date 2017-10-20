@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  in the presence of floating-point roundoff error.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

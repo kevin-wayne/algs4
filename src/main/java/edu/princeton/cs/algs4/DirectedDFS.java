@@ -2,9 +2,9 @@
  *  Compilation:  javac DirectedDFS.java
  *  Execution:    java DirectedDFS digraph.txt s
  *  Dependencies: Digraph.java Bag.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/mediumDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/largeDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Determine single-source or multiple-source reachability in a digraph
  *  using depth first search.
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

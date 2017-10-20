@@ -20,7 +20,7 @@ import java.util.Arrays;
  *  The <em>rank</em> and <em>contains</em> operations take
  *  logarithmic time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
