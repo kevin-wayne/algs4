@@ -5,7 +5,7 @@
  *  
  *  This library is for reading binary data from an input stream.
  *
- *  % java BinaryIn http://introcs.cs.princeton.edu/cover.jpg output.jpg
+ *  % java BinaryIn https://introcs.cs.princeton.edu/cover.jpg output.jpg
  *
  ******************************************************************************/
 

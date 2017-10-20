@@ -194,7 +194,7 @@ import java.util.regex.Pattern;
  *  <p>
  *  <b>Reference.</b> 
  *  For additional documentation,
- *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of   
+ *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of   
  *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *

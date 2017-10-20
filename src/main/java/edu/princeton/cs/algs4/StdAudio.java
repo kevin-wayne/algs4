@@ -45,7 +45,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  The audio format uses a sampling rate of 44,100 (CD quality audio), 16-bit, monaural.
  *
  *  <p>
- *  For additional documentation, see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  For additional documentation, see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

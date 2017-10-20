@@ -57,7 +57,7 @@ import java.util.Random;
  *  array or subarray.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://introcs.cs.princeton.edu/22library">Section 2.2</a> of
+ *  see <a href="https://introcs.cs.princeton.edu/22library">Section 2.2</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
  *

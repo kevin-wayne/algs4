@@ -85,7 +85,7 @@ import javax.swing.KeyStroke;
  *  To use standard drawing, you must have {@code StdDraw.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
  *  Otherwise, download
- *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
+ *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
  *  and put a copy in your working directory.
  *  <p>
  *  Now, type the following short program into your editor:
@@ -466,7 +466,7 @@ import javax.swing.KeyStroke;
  *  <p>
  *  <b>Reference.</b>
  *  For additional documentation,
- *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
  *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
