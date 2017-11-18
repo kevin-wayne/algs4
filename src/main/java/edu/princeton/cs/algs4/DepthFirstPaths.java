@@ -39,6 +39,9 @@ package edu.princeton.cs.algs4;
  *  This implementation uses depth-first search.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ *  Each call to {@link #hasPathTo(int)} takes constant time;
+ *  each call to {@link #pathTo(int)} takes time proportional to the length
+ *  of the path.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
