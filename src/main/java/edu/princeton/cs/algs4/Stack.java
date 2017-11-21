@@ -2,8 +2,9 @@
  *  Compilation:  javac Stack.java
  *  Execution:    java Stack < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *
- *  A generic stack, implemented using a singly-linked list.
+ *  A generic stack, implemented using a singly linked list.
  *  Each stack element is of type Item.
  *
  *  This version uses a static nested class Node (to save 8 bytes per
@@ -25,19 +26,20 @@ import java.util.NoSuchElementException;
 
 
 /**
- *  The <tt>Stack</tt> class represents a last-in-first-out (LIFO) stack of generic items.
+ *  The {@code Stack} class represents a last-in-first-out (LIFO) stack of generic items.
  *  It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
  *  for peeking at the top item, testing if the stack is empty, and iterating through
  *  the items in LIFO order.
  *  <p>
- *  This implementation uses a singly-linked list with a static nested class for
+ *  This implementation uses a singly linked list with a static nested class for
  *  linked-list nodes. See {@link LinkedStack} for the version from the
  *  textbook that uses a non-static nested class.
+ *  See {@link ResizingArrayStack} for a version that uses a resizing array.
  *  The <em>push</em>, <em>pop</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -47,7 +49,7 @@ import java.util.NoSuchElementException;
  */
 public class Stack<Item> implements Iterable<Item> {
     private Node<Item> first;     // top of stack
-    private int N;                // size of the stack
+    private int n;                // size of the stack
 
     // helper linked list class
     private static class Node<Item> {
@@ -60,7 +62,7 @@ public class Stack<Item> implements Iterable<Item> {
      */
     public Stack() {
         first = null;
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -78,7 +80,7 @@ public class Stack<Item> implements Iterable<Item> {
      * @return the number of items in this stack
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -91,7 +93,7 @@ public class Stack<Item> implements Iterable<Item> {
         first = new Node<Item>();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
     }
 
     /**
@@ -104,7 +106,7 @@ public class Stack<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;        // save item to return
         first = first.next;            // delete first node
-        N--;
+        n--;
         return item;                   // return the saved item
     }
 
@@ -127,8 +129,10 @@ public class Stack<Item> implements Iterable<Item> {
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (Item item : this)
-            s.append(item + " ");
+        for (Item item : this) {
+            s.append(item);
+            s.append(' ');
+        }
         return s.toString();
     }
        
@@ -168,22 +172,26 @@ public class Stack<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>Stack</tt> data type.
+     * Unit tests the {@code Stack} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        Stack<String> s = new Stack<String>();
+        Stack<String> stack = new Stack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) s.push(item);
-            else if (!s.isEmpty()) StdOut.print(s.pop() + " ");
+            if (!item.equals("-"))
+                stack.push(item);
+            else if (!stack.isEmpty())
+                StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

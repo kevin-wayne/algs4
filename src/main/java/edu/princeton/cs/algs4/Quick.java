@@ -2,8 +2,8 @@
  *  Compilation:  javac Quick.java
  *  Execution:    java Quick < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/23quicksort/tiny.txt
- *                http://algs4.cs.princeton.edu/23quicksort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
+ *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *
  *  Sorts a sequence of strings from standard input using quicksort.
  *   
@@ -22,17 +22,17 @@
  *
  *  Remark: For a type-safe version that uses static generics, see
  *
- *    http://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java
+ *    https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick</tt> class provides static methods for sorting an
+ *  The {@code Quick} class provides static methods for sorting an
  *  array and selecting the ith smallest element in an array using quicksort.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -92,15 +92,18 @@ public class Quick {
     }
 
     /**
-     * Rearranges the array so that a[k] contains the kth smallest key;
-     * a[0] through a[k-1] are less than (or equal to) a[k]; and
-     * a[k+1] through a[N-1] are greater than (or equal to) a[k].
-     * @param a the array
-     * @param k find the kth smallest
+     * Rearranges the array so that {@code a[k]} contains the kth smallest key;
+     * {@code a[0]} through {@code a[k-1]} are less than (or equal to) {@code a[k]}; and
+     * {@code a[k+1]} through {@code a[n-1]} are greater than (or equal to) {@code a[k]}.
+     *
+     * @param  a the array
+     * @param  k the rank of the key
+     * @return the key of rank {@code k}
+     * @throws IllegalArgumentException unless {@code 0 <= k < a.length}
      */
     public static Comparable select(Comparable[] a, int k) {
         if (k < 0 || k >= a.length) {
-            throw new IndexOutOfBoundsException("Selected element out of bounds");
+            throw new IllegalArgumentException("index is not between 0 and " + a.length + ": " + k);
         }
         StdRandom.shuffle(a);
         int lo = 0, hi = a.length - 1;
@@ -158,11 +161,14 @@ public class Quick {
      * and prints them to standard output in ascending order. 
      * Shuffles the array and then prints the strings again to
      * standard output, but this time, using the select method.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
         Quick.sort(a);
         show(a);
+        assert isSorted(a);
 
         // shuffle
         StdRandom.shuffle(a);
@@ -178,7 +184,7 @@ public class Quick {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

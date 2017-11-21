@@ -14,21 +14,22 @@ package edu.princeton.cs.algs4;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 
 /**
  *  <i>Binary standard input</i>. This class provides methods for reading
- *  in bits from standard input, either one bit at a time (as a <tt>boolean</tt>),
- *  8 bits at a time (as a <tt>byte</tt> or <tt>char</tt>),
- *  16 bits at a time (as a <tt>short</tt>), 32 bits at a time
- *  (as an <tt>int</tt> or <tt>float</tt>), or 64 bits at a time (as a
- *  <tt>double</tt> or <tt>long</tt>).
+ *  in bits from standard input, either one bit at a time (as a {@code boolean}),
+ *  8 bits at a time (as a {@code byte} or {@code char}),
+ *  16 bits at a time (as a {@code short}), 32 bits at a time
+ *  (as an {@code int} or {@code float}), or 64 bits at a time (as a
+ *  {@code double} or {@code long}).
  *  <p>
  *  All primitive types are assumed to be represented using their 
  *  standard Java representations, in big-endian (most significant
  *  byte first) order.
  *  <p>
- *  The client should not intermix calls to <tt>BinaryStdIn</tt> with calls
- *  to <tt>StdIn</tt> or <tt>System.in</tt>;
+ *  The client should not intermix calls to {@code BinaryStdIn} with calls
+ *  to {@code StdIn} or {@code System.in};
  *  otherwise unexpected behavior will result.
  *
  *  @author Robert Sedgewick
@@ -68,9 +69,8 @@ public final class BinaryStdIn {
         try {
             in.close();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Could not close BinaryStdIn");
+        catch (IOException ioe) {
+            throw new IllegalStateException("Could not close BinaryStdIn", ioe);
         }
     }
 
@@ -85,11 +85,11 @@ public final class BinaryStdIn {
    /**
      * Reads the next bit of data from standard input and return as a boolean.
      *
-     * @return the next bit of data from standard input as a <tt>boolean</tt>
-     * @throws RuntimeException if standard input is empty
+     * @return the next bit of data from standard input as a {@code boolean}
+     * @throws NoSuchElementException if standard input is empty
      */
     public static boolean readBoolean() {
-        if (isEmpty()) throw new RuntimeException("Reading from empty input stream");
+        if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
         n--;
         boolean bit = ((buffer >> n) & 1) == 1;
         if (n == 0) fillBuffer();
@@ -98,14 +98,14 @@ public final class BinaryStdIn {
 
    /**
      * Reads the next 8 bits from standard input and return as an 8-bit char.
-     * Note that <tt>char</tt> is a 16-bit type;
-     * to read the next 16 bits as a char, use <tt>readChar(16)</tt>.
+     * Note that {@code char} is a 16-bit type;
+     * to read the next 16 bits as a char, use {@code readChar(16)}.
      *
-     * @return the next 8 bits of data from standard input as a <tt>char</tt>
-     * @throws RuntimeException if there are fewer than 8 bits available on standard input
+     * @return the next 8 bits of data from standard input as a {@code char}
+     * @throws NoSuchElementException if there are fewer than 8 bits available on standard input
      */
     public static char readChar() {
-        if (isEmpty()) throw new RuntimeException("Reading from empty input stream");
+        if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
 
         // special case when aligned byte
         if (n == 8) {
@@ -119,7 +119,7 @@ public final class BinaryStdIn {
         x <<= (8 - n);
         int oldN = n;
         fillBuffer();
-        if (isEmpty()) throw new RuntimeException("Reading from empty input stream");
+        if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
         n = oldN;
         x |= (buffer >>> n);
         return (char) (x & 0xff);
@@ -131,9 +131,9 @@ public final class BinaryStdIn {
      * Reads the next r bits from standard input and return as an r-bit character.
      *
      * @param  r number of bits to read.
-     * @return the next r bits of data from standard input as a <tt>char</tt>
-     * @throws IllegalArgumentException if there are fewer than r bits available on standard input
-     * @throws IllegalArgumentException unless 1 &le; r &le; 16
+     * @return the next r bits of data from standard input as a {@code char}
+     * @throws NoSuchElementException if there are fewer than {@code r} bits available on standard input
+     * @throws IllegalArgumentException unless {@code 1 <= r <= 16}
      */
     public static char readChar(int r) {
         if (r < 1 || r > 16) throw new IllegalArgumentException("Illegal value of r = " + r);
@@ -153,12 +153,12 @@ public final class BinaryStdIn {
    /**
      * Reads the remaining bytes of data from standard input and return as a string. 
      *
-     * @return the remaining bytes of data from standard input as a <tt>String</tt>
-     * @throws RuntimeException if standard input is empty or if the number of bits
+     * @return the remaining bytes of data from standard input as a {@code String}
+     * @throws NoSuchElementException if standard input is empty or if the number of bits
      *         available on standard input is not a multiple of 8 (byte-aligned)
      */
     public static String readString() {
-        if (isEmpty()) throw new RuntimeException("Reading from empty input stream");
+        if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
 
         StringBuilder sb = new StringBuilder();
         while (!isEmpty()) {
@@ -172,8 +172,8 @@ public final class BinaryStdIn {
    /**
      * Reads the next 16 bits from standard input and return as a 16-bit short.
      *
-     * @return the next 16 bits of data from standard input as a <tt>short</tt>
-     * @throws RuntimeException if there are fewer than 16 bits available on standard input
+     * @return the next 16 bits of data from standard input as a {@code short}
+     * @throws NoSuchElementException if there are fewer than 16 bits available on standard input
      */
     public static short readShort() {
         short x = 0;
@@ -188,8 +188,8 @@ public final class BinaryStdIn {
    /**
      * Reads the next 32 bits from standard input and return as a 32-bit int.
      *
-     * @return the next 32 bits of data from standard input as a <tt>int</tt>
-     * @throws RuntimeException if there are fewer than 32 bits available on standard input
+     * @return the next 32 bits of data from standard input as a {@code int}
+     * @throws NoSuchElementException if there are fewer than 32 bits available on standard input
      */
     public static int readInt() {
         int x = 0;
@@ -205,9 +205,9 @@ public final class BinaryStdIn {
      * Reads the next r bits from standard input and return as an r-bit int.
      *
      * @param  r number of bits to read.
-     * @return the next r bits of data from standard input as a <tt>int</tt>
-     * @throws IllegalArgumentException if there are fewer than r bits available on standard input
-     * @throws IllegalArgumentException unless 1 &le; r &le; 32
+     * @return the next r bits of data from standard input as a {@code int}
+     * @throws NoSuchElementException if there are fewer than {@code r} bits available on standard input
+     * @throws IllegalArgumentException unless {@code 1 <= r <= 32}
      */
     public static int readInt(int r) {
         if (r < 1 || r > 32) throw new IllegalArgumentException("Illegal value of r = " + r);
@@ -227,8 +227,8 @@ public final class BinaryStdIn {
    /**
      * Reads the next 64 bits from standard input and return as a 64-bit long.
      *
-     * @return the next 64 bits of data from standard input as a <tt>long</tt>
-     * @throws RuntimeException if there are fewer than 64 bits available on standard input
+     * @return the next 64 bits of data from standard input as a {@code long}
+     * @throws NoSuchElementException if there are fewer than 64 bits available on standard input
      */
     public static long readLong() {
         long x = 0;
@@ -244,8 +244,8 @@ public final class BinaryStdIn {
    /**
      * Reads the next 64 bits from standard input and return as a 64-bit double.
      *
-     * @return the next 64 bits of data from standard input as a <tt>double</tt>
-     * @throws RuntimeExceptionArgument if there are fewer than 64 bits available on standard input
+     * @return the next 64 bits of data from standard input as a {@code double}
+     * @throws NoSuchElementException if there are fewer than 64 bits available on standard input
      */
     public static double readDouble() {
         return Double.longBitsToDouble(readLong());
@@ -254,8 +254,8 @@ public final class BinaryStdIn {
    /**
      * Reads the next 32 bits from standard input and return as a 32-bit float.
      *
-     * @return the next 32 bits of data from standard input as a <tt>float</tt>
-     * @throws RuntimeException if there are fewer than 32 bits available on standard input
+     * @return the next 32 bits of data from standard input as a {@code float}
+     * @throws NoSuchElementException if there are fewer than 32 bits available on standard input
      */
     public static float readFloat() {
         return Float.intBitsToFloat(readInt());
@@ -265,18 +265,19 @@ public final class BinaryStdIn {
    /**
      * Reads the next 8 bits from standard input and return as an 8-bit byte.
      *
-     * @return the next 8 bits of data from standard input as a <tt>byte</tt>
-     * @throws RuntimeException if there are fewer than 8 bits available on standard input
+     * @return the next 8 bits of data from standard input as a {@code byte}
+     * @throws NoSuchElementException if there are fewer than 8 bits available on standard input
      */
     public static byte readByte() {
         char c = readChar();
-        byte x = (byte) (c & 0xff);
-        return x;
+        return (byte) (c & 0xff);
     }
     
    /**
      * Test client. Reads in a binary input file from standard input and writes
      * it to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -290,7 +291,7 @@ public final class BinaryStdIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

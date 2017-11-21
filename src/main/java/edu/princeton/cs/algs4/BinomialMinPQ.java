@@ -165,7 +165,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	 * This operation is destructive
 	 * Worst case is O(log(n))
 	 * @param heap a Binomial Heap to be merged with the current heap
-	 * @throws java.util.IllegalArgumentException if the heap in parameter is null
+	 * @throws java.lang.IllegalArgumentException if the heap in parameter is null
 	 * @return the union of two heaps
 	 */
 	public BinomialMinPQ<Key> union(BinomialMinPQ<Key> heap) {
@@ -212,7 +212,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	//Deletes and return the node containing the minimum key
 	private Node eraseMin() {
 		Node min = head;
-		Node previous = new Node();
+		Node previous = null;
 		Node current = head;
 		while (current.sibling != null) {
 			if (greater(min.key, current.sibling.key)) {
@@ -231,13 +231,13 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 	 *************************************************/
 	
 	//Merges two root lists into one, there can be up to 2 Binomial Trees of same order
-	private Node merge(Node h, Node x, Node y) {
-		if (x == null && y == null) return h;
-		else if (x == null)  		h.sibling = merge(y, x, y.sibling);
-		else if (y == null) 		h.sibling = merge(x, x.sibling, y);
-		else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
-		else 						h.sibling = merge(y, x, y.sibling);
-		return h;
+        private Node merge(Node h, Node x, Node y) {
+            if (x == null && y == null) return h;
+            else if (x == null) h.sibling = merge(y, null, y.sibling);
+            else if (y == null) h.sibling = merge(x, x.sibling, null);
+            else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
+            else                        h.sibling = merge(y, x, y.sibling);
+            return h;
 	}
 	
 	/******************************************************************
@@ -263,15 +263,15 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 		//It takes linear time
 		public MyIterator() {
 			data = new BinomialMinPQ<Key>(comp);
-			data.head = clone(head, false, false, null);
+			data.head = clone(head, null);
 		}
 		
-		private Node clone(Node x, boolean isParent, boolean isChild, Node parent) {
+		private Node clone(Node x, Node parent) {
 			if (x == null) return null;
 			Node node = new Node();
 			node.key = x.key;
-			node.sibling = clone(x.sibling, false, false, parent);
-			node.child = clone(x.child, false, true, node);
+			node.sibling = clone(x.sibling, parent);
+			node.child = clone(x.child, node);
 			return node;
 		}
 		
@@ -280,6 +280,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 		}
 		
 		public Key next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return data.delMin();
 		}
 		
@@ -303,7 +304,7 @@ public class BinomialMinPQ<Key> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

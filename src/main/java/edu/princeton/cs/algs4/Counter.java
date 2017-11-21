@@ -1,30 +1,30 @@
 /******************************************************************************
  *  Compilation:  javac Counter.java
- *  Execution:    java Counter N T
+ *  Execution:    java Counter n trials
  *  Dependencies: StdRandom.java StdOut.java
  *
  *  A mutable data type for an integer counter.
  *
- *  The test clients create N counters and performs T increment
+ *  The test clients create n counters and performs trials increment
  *  operations on random counters.
  *
- *  % java Counter 6 600000
- *  0: 99870
- *  1: 99948
- *  2: 99738
- *  3: 100283
- *  4: 100185
- *  5: 99976
+ * java Counter 6 600000
+ *  100140 counter0
+ *  100273 counter1
+ *  99848 counter2
+ *  100129 counter3
+ *  99973 counter4
+ *  99637 counter5
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Counter</tt> class is a mutable data type to encapsulate a counter.
+ *  The {@code Counter} class is a mutable data type to encapsulate a counter.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -73,7 +73,7 @@ public class Counter implements Comparable<Counter> {
      * Compares this counter to the specified counter.
      *
      * @param  that the other counter
-     * @return <tt>0</tt> if the value of this counter equals
+     * @return {@code 0} if the value of this counter equals
      *         the value of that counter; a negative integer if
      *         the value of this counter is less than the value of
      *         that counter; and a positive integer if the value
@@ -89,33 +89,35 @@ public class Counter implements Comparable<Counter> {
 
 
     /**
-     * Reads two command-line integers N and T; creates N counters;
-     * increments T counters at random; and prints results.
+     * Reads two command-line integers n and trials; creates n counters;
+     * increments trials counters at random; and prints results.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
-        int N = Integer.parseInt(args[0]);
-        int T = Integer.parseInt(args[1]);
+        int n = Integer.parseInt(args[0]);
+        int trials = Integer.parseInt(args[1]);
 
-        // create N counters
-        Counter[] hits = new Counter[N];
-        for (int i = 0; i < N; i++) {
+        // create n counters
+        Counter[] hits = new Counter[n];
+        for (int i = 0; i < n; i++) {
             hits[i] = new Counter("counter" + i);
         }
 
-        // increment T counters at random
-        for (int t = 0; t < T; t++) {
-            hits[StdRandom.uniform(N)].increment();
+        // increment trials counters at random
+        for (int t = 0; t < trials; t++) {
+            hits[StdRandom.uniform(n)].increment();
         }
 
         // print results
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             StdOut.println(hits[i]);
         }
     } 
 } 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

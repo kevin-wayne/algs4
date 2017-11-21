@@ -3,8 +3,10 @@
  *  Execution:    java Huffman - < input.txt   (compress)
  *  Execution:    java Huffman + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
- *  Data files:   http://algs4.cs.princeton.edu/55compression/abra.txt
- *                http://algs4.cs.princeton.edu/55compression/tinytinyTale.txt
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/abra.txt
+ *                https://algs4.cs.princeton.edu/55compression/tinytinyTale.txt
+ *                https://algs4.cs.princeton.edu/55compression/medTale.txt
+ *                https://algs4.cs.princeton.edu/55compression/tale.txt
  *
  *  Compress or expand a binary input stream using the Huffman algorithm.
  *
@@ -21,12 +23,12 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Huffman</tt> class provides static methods for compressing
+ *  The {@code Huffman} class provides static methods for compressing
  *  and expanding a binary input using Huffman codes over the 8-bit extended
  *  ASCII alphabet.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -197,8 +199,10 @@ public class Huffman {
     }
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
@@ -209,7 +213,7 @@ public class Huffman {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

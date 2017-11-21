@@ -2,9 +2,9 @@
  *  Compilation:  javac DijkstraUndirectedSP.java
  *  Execution:    java DijkstraUndirectedSP input.txt s
  *  Dependencies: EdgeWeightedGraph.java IndexMinPQ.java Stack.java Edge.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/largeEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  Dijkstra's algorithm. Computes the shortest path tree.
  *  Assumes all weights are nonnegative.
@@ -38,19 +38,19 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>DijkstraUndirectedSP</tt> class represents a data type for solving
+ *  The {@code DijkstraUndirectedSP} class represents a data type for solving
  *  the single-source shortest paths problem in edge-weighted graphs
  *  where the edge weights are nonnegative.
  *  <p>
  *  This implementation uses Dijkstra's algorithm with a binary heap.
  *  The constructor takes time proportional to <em>E</em> log <em>V</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>distTo()</tt> and <tt>hasPathTo()</tt> methods take
- *  constant time and the <tt>pathTo()</tt> method takes time proportional to the
- *  number of edges in the shortest path returned.
+ *  Each call to {@code distTo(int)} and {@code hasPathTo(int)} takes constant time;
+ *  each call to {@code pathTo(int)} takes time proportional to the number of
+ *  edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *  See {@link DijkstraSP} for a version on edge-weighted digraphs.
  *
@@ -64,13 +64,13 @@ public class DijkstraUndirectedSP {
     private IndexMinPQ<Double> pq;    // priority queue of vertices
 
     /**
-     * Computes a shortest-paths tree from the source vertex <tt>s</tt> to every
-     * other vertex in the edge-weighted graph <tt>G</tt>.
+     * Computes a shortest-paths tree from the source vertex {@code s} to every
+     * other vertex in the edge-weighted graph {@code G}.
      *
      * @param  G the edge-weighted digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DijkstraUndirectedSP(EdgeWeightedGraph G, int s) {
         for (Edge e : G.edges()) {
@@ -80,6 +80,9 @@ public class DijkstraUndirectedSP {
 
         distTo = new double[G.V()];
         edgeTo = new Edge[G.V()];
+
+        validateVertex(s);
+
         for (int v = 0; v < G.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
@@ -109,37 +112,43 @@ public class DijkstraUndirectedSP {
     }
 
     /**
-     * Returns the length of a shortest path between the source vertex <tt>s</tt> and
-     * vertex <tt>v</tt>.
+     * Returns the length of a shortest path between the source vertex {@code s} and
+     * vertex {@code v}.
      *
      * @param  v the destination vertex
-     * @return the length of a shortest path between the source vertex <tt>s</tt> and
-     *         the vertex <tt>v</tt>; <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * @return the length of a shortest path between the source vertex {@code s} and
+     *         the vertex {@code v}; {@code Double.POSITIVE_INFINITY} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double distTo(int v) {
+        validateVertex(v);
         return distTo[v];
     }
 
     /**
-     * Returns true if there is a path between the source vertex <tt>s</tt> and
-     * vertex <tt>v</tt>.
+     * Returns true if there is a path between the source vertex {@code s} and
+     * vertex {@code v}.
      *
      * @param  v the destination vertex
-     * @return <tt>true</tt> if there is a path between the source vertex
-     *         <tt>s</tt> to vertex <tt>v</tt>; <tt>false</tt> otherwise
+     * @return {@code true} if there is a path between the source vertex
+     *         {@code s} to vertex {@code v}; {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns a shortest path between the source vertex <tt>s</tt> and vertex <tt>v</tt>.
+     * Returns a shortest path between the source vertex {@code s} and vertex {@code v}.
      *
      * @param  v the destination vertex
-     * @return a shortest path between the source vertex <tt>s</tt> and vertex <tt>v</tt>;
-     *         <tt>null</tt> if no such path
+     * @return a shortest path between the source vertex {@code s} and vertex {@code v};
+     *         {@code null} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Edge> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Edge> path = new Stack<Edge>();
         int x = v;
@@ -202,9 +211,17 @@ public class DijkstraUndirectedSP {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
 
     /**
-     * Unit tests the <tt>DijkstraUndirectedSP</tt> data type.
+     * Unit tests the {@code DijkstraUndirectedSP} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -233,7 +250,7 @@ public class DijkstraUndirectedSP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

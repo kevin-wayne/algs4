@@ -2,6 +2,9 @@
  *  Compilation:  javac GabowSCC.java
  *  Execution:    java GabowSCC V E
  *  Dependencies: Digraph.java Stack.java TransitiveClosure.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Compute the strongly-connected components of a digraph using 
  *  Gabow's algorithm (aka Cheriyan-Mehlhorn algorithm).
@@ -20,7 +23,7 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>GabowSCC</tt> class represents a data type for 
+ *  The {@code GabowSCC} class represents a data type for 
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -43,7 +46,7 @@ package edu.princeton.cs.algs4;
  *  {@link KosarajuSharirSCC} and {@link TarjanSCC}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -61,7 +64,7 @@ public class GabowSCC {
 
 
     /**
-     * Computes the strong components of the digraph <tt>G</tt>.
+     * Computes the strong components of the digraph {@code G}.
      * @param G the digraph
      */
     public GabowSCC(Digraph G) {
@@ -115,22 +118,28 @@ public class GabowSCC {
     }
 
     /**
-     * Are vertices <tt>v</tt> and <tt>w</tt> in the same strong component?
-     * @param v one vertex
-     * @param w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *     strong component, and <tt>false</tt> otherwise
+     * Are vertices {@code v} and {@code w} in the same strong component?
+     * @param  v one vertex
+     * @param  w the other vertex
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         strong component, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean stronglyConnected(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return id[v] == id[w];
     }
 
     /**
-     * Returns the component id of the strong component containing vertex <tt>v</tt>.
-     * @param v the vertex
-     * @return the component id of the strong component containing vertex <tt>v</tt>
+     * Returns the component id of the strong component containing vertex {@code v}.
+     * @param  v the vertex
+     * @return the component id of the strong component containing vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int id(int v) {
+        validateVertex(v);
         return id[v];
     }
 
@@ -146,8 +155,17 @@ public class GabowSCC {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>GabowSCC</tt> data type.
+     * Unit tests the {@code GabowSCC} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -155,12 +173,12 @@ public class GabowSCC {
         GabowSCC scc = new GabowSCC(G);
 
         // number of connected components
-        int M = scc.count();
-        StdOut.println(M + " components");
+        int m = scc.count();
+        StdOut.println(m + " components");
 
         // compute list of vertices in each strong component
-        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[M];
-        for (int i = 0; i < M; i++) {
+        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
+        for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
         for (int v = 0; v < G.V(); v++) {
@@ -168,7 +186,7 @@ public class GabowSCC {
         }
 
         // print results
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
@@ -180,7 +198,7 @@ public class GabowSCC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

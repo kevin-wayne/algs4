@@ -2,6 +2,7 @@
  *  Compilation:  javac LinkedStack.java
  *  Execution:    java LinkedStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *
  *  A generic stack, implemented using a linked list. Each stack
  *  element is of type Item.
@@ -21,26 +22,26 @@ import java.util.NoSuchElementException;
 
 
 /**
- *  The <tt>LinkedStack</tt> class represents a last-in-first-out (LIFO) stack of
+ *  The {@code LinkedStack} class represents a last-in-first-out (LIFO) stack of
  *  generic items.
  *  It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
  *  for peeking at the top item, testing if the stack is empty, and iterating through
  *  the items in LIFO order.
  *  <p>
- *  This implementation uses a singly-linked list with a non-static nested class for 
+ *  This implementation uses a singly linked list with a non-static nested class for 
  *  linked-list nodes. See {@link Stack} for a version that uses a static nested class.
  *  The <em>push</em>, <em>pop</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class LinkedStack<Item> implements Iterable<Item> {
-    private int N;          // size of the stack
+    private int n;          // size of the stack
     private Node first;     // top of stack
 
     // helper linked list class
@@ -54,7 +55,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
      */
     public LinkedStack() {
         first = null;
-        N = 0;
+        n = 0;
         assert check();
     }
 
@@ -71,7 +72,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
      * @return the number of items in the stack
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -83,7 +84,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
         assert check();
     }
 
@@ -96,7 +97,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
         Item item = first.item;        // save item to return
         first = first.next;            // delete first node
-        N--;
+        n--;
         assert check();
         return item;                   // return the saved item
     }
@@ -127,7 +128,9 @@ public class LinkedStack<Item> implements Iterable<Item> {
      * Returns an iterator to this stack that iterates through the items in LIFO order.
      * @return an iterator to this stack that iterates through the items in LIFO order.
      */
-    public Iterator<Item> iterator()  { return new ListIterator();  }
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
 
     // an iterator, doesn't implement remove() since it's optional
     private class ListIterator implements Iterator<Item> {
@@ -148,13 +151,13 @@ public class LinkedStack<Item> implements Iterable<Item> {
     private boolean check() {
 
         // check a few properties of instance variable 'first'
-        if (N < 0) {
+        if (n < 0) {
             return false;
         }
-        if (N == 0) {
+        if (n == 0) {
             if (first != null) return false;
         }
-        else if (N == 1) {
+        else if (n == 1) {
             if (first == null)      return false;
             if (first.next != null) return false;
         }
@@ -163,33 +166,37 @@ public class LinkedStack<Item> implements Iterable<Item> {
             if (first.next == null) return false;
         }
 
-        // check internal consistency of instance variable N
+        // check internal consistency of instance variable n
         int numberOfNodes = 0;
-        for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
+        for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
             numberOfNodes++;
         }
-        if (numberOfNodes != N) return false;
+        if (numberOfNodes != n) return false;
 
         return true;
     }
 
     /**
-     * Unit tests the <tt>LinkedStack</tt> data type.
+     * Unit tests the {@code LinkedStack} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        LinkedStack<String> s = new LinkedStack<String>();
+        LinkedStack<String> stack = new LinkedStack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) s.push(item);
-            else if (!s.isEmpty()) StdOut.print(s.pop() + " ");
+            if (!item.equals("-"))
+                stack.push(item);
+            else if (!stack.isEmpty())
+                StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

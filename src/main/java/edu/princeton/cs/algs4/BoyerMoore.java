@@ -33,14 +33,14 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BoyerMoore</tt> class finds the first occurrence of a pattern string
+ *  The {@code BoyerMoore} class finds the first occurrence of a pattern string
  *  in a text string.
  *  <p>
  *  This implementation uses the Boyer-Moore algorithm (with the bad-character
  *  rule, but not the strong good suffix rule).
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class BoyerMoore {
@@ -93,15 +93,15 @@ public class BoyerMoore {
      *
      * @param  txt the text string
      * @return the index of the first occurrence of the pattern string
-     *         in the text string; N if no such match
+     *         in the text string; n if no such match
      */
     public int search(String txt) {
-        int M = pat.length();
-        int N = txt.length();
+        int m = pat.length();
+        int n = txt.length();
         int skip;
-        for (int i = 0; i <= N - M; i += skip) {
+        for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
-            for (int j = M-1; j >= 0; j--) {
+            for (int j = m-1; j >= 0; j--) {
                 if (pat.charAt(j) != txt.charAt(i+j)) {
                     skip = Math.max(1, j - right[txt.charAt(i+j)]);
                     break;
@@ -109,7 +109,7 @@ public class BoyerMoore {
             }
             if (skip == 0) return i;    // found
         }
-        return N;                       // not found
+        return n;                       // not found
     }
 
 
@@ -119,15 +119,15 @@ public class BoyerMoore {
      *
      * @param  text the text string
      * @return the index of the first occurrence of the pattern string
-     *         in the text string; N if no such match
+     *         in the text string; n if no such match
      */
     public int search(char[] text) {
-        int M = pattern.length;
-        int N = text.length;
+        int m = pattern.length;
+        int n = text.length;
         int skip;
-        for (int i = 0; i <= N - M; i += skip) {
+        for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
-            for (int j = M-1; j >= 0; j--) {
+            for (int j = m-1; j >= 0; j--) {
                 if (pattern[j] != text[i+j]) {
                     skip = Math.max(1, j - right[text[i+j]]);
                     break;
@@ -135,7 +135,7 @@ public class BoyerMoore {
             }
             if (skip == 0) return i;    // found
         }
-        return N;                       // not found
+        return n;                       // not found
     }
 
 
@@ -143,6 +143,8 @@ public class BoyerMoore {
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String pat = args[0];
@@ -170,8 +172,9 @@ public class BoyerMoore {
     }
 }
 
+
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

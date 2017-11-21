@@ -2,8 +2,8 @@
  *  Compilation:  javac DirectedCycle.java
  *  Execution:    java DirectedCycle input.txt
  *  Dependencies: Digraph.java Stack.java StdOut.java In.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
- *                http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
  *
  *  Finds a directed cycle in a digraph.
  *  Runs in O(E + V) time.
@@ -19,7 +19,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DirectedCycle</tt> class represents a data type for 
+ *  The {@code DirectedCycle} class represents a data type for 
  *  determining whether a digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the digraph has
  *  a directed cycle and, and of so, the <em>cycle</em> operation
@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  digraph is acyclic.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -50,7 +50,7 @@ public class DirectedCycle {
     private Stack<Integer> cycle;    // directed cycle (or null if no such cycle)
 
     /**
-     * Determines whether the digraph <tt>G</tt> has a directed cycle and, if so,
+     * Determines whether the digraph {@code G} has a directed cycle and, if so,
      * finds such a cycle.
      * @param G the digraph
      */
@@ -71,7 +71,7 @@ public class DirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            //found new vertex, so recur
+            // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = v;
                 dfs(G, w);
@@ -93,16 +93,16 @@ public class DirectedCycle {
 
     /**
      * Does the digraph have a directed cycle?
-     * @return <tt>true</tt> if the digraph has a directed cycle, <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a directed cycle, {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
     }
 
     /**
-     * Returns a directed cycle if the digraph has a directed cycle, and <tt>null</tt> otherwise.
+     * Returns a directed cycle if the digraph has a directed cycle, and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the digraph has a directed cycle,
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -130,7 +130,9 @@ public class DirectedCycle {
     }
 
     /**
-     * Unit tests the <tt>DirectedCycle</tt> data type.
+     * Unit tests the {@code DirectedCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -154,7 +156,7 @@ public class DirectedCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

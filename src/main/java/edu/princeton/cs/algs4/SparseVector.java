@@ -12,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SparseVector</tt> class represents a <em>d</em>-dimensional mathematical vector.
+ *  The {@code SparseVector} class represents a <em>d</em>-dimensional mathematical vector.
  *  Vectors are mutable: their values can be changed after they are created.
  *  It includes methods for addition, subtraction,
  *  dot product, scalar product, unit vector, and Euclidean norm.
@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
   * are zero.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *  See also {@link Vector} for an immutable (dense) vector data type.
  *
@@ -47,10 +47,10 @@ public class SparseVector {
      *
      * @param  i the index
      * @param  value the new value
-     * @throws IndexOutOfBoundsException unless i is between 0 and d-1
+     * @throws IllegalArgumentException unless i is between 0 and d-1
      */
     public void put(int i, double value) {
-        if (i < 0 || i >= d) throw new IndexOutOfBoundsException("Illegal index");
+        if (i < 0 || i >= d) throw new IllegalArgumentException("Illegal index");
         if (value == 0.0) st.delete(i);
         else              st.put(i, value);
     }
@@ -60,10 +60,10 @@ public class SparseVector {
      *
      * @param  i the index
      * @return the value of the ith coordinate of this vector
-     * @throws IndexOutOfBoundsException unless i is between 0 and d-1
+     * @throws IllegalArgumentException unless i is between 0 and d-1
      */
     public double get(int i) {
-        if (i < 0 || i >= d) throw new IndexOutOfBoundsException("Illegal index");
+        if (i < 0 || i >= d) throw new IllegalArgumentException("Illegal index");
         if (st.contains(i)) return st.get(i);
         else                return 0.0;
     }
@@ -83,6 +83,7 @@ public class SparseVector {
      * @return the dimension of this vector
      * @deprecated Replaced by {@link #dimension()}.
      */
+    @Deprecated
     public int size() {
         return d;
     }
@@ -151,6 +152,7 @@ public class SparseVector {
      * @return the Euclidean norm of this vector
      * @deprecated Replaced by {@link #magnitude()}.
      */
+    @Deprecated
     public double norm() {
         return Math.sqrt(this.dot(this));
     }
@@ -197,7 +199,9 @@ public class SparseVector {
 
 
     /**
-     * Unit tests the <tt>SparseVector</tt> data type.
+     * Unit tests the {@code SparseVector} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         SparseVector a = new SparseVector(10);
@@ -217,7 +221,7 @@ public class SparseVector {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

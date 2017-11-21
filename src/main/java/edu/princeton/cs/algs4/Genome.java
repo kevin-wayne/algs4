@@ -3,6 +3,7 @@
  *  Execution:    java Genome - < input.txt   (compress)
  *  Execution:    java Genome + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/genomeTiny.txt
  *
  *  Compress or expand a genomic sequence using a 2-bit code.
  *
@@ -17,18 +18,17 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Genome</tt> class provides static methods for compressing
+ *  The {@code Genome} class provides static methods for compressing
  *  and expanding a genomic sequence using a 2-bit code.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class Genome {
-    private static final Alphabet DNA = new Alphabet("ACGT");
 
     // Do not instantiate.
     private Genome() { }
@@ -39,12 +39,13 @@ public class Genome {
      * character; and writes the results to standard output.
      */
     public static void compress() { 
+        Alphabet DNA = Alphabet.DNA;
         String s = BinaryStdIn.readString();
-        int N = s.length();
-        BinaryStdOut.write(N);
+        int n = s.length();
+        BinaryStdOut.write(n);
 
         // Write two-bit code for char. 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             int d = DNA.toIndex(s.charAt(i));
             BinaryStdOut.write(d, 2);
         }
@@ -57,9 +58,10 @@ public class Genome {
      * and writes the results to standard output.
      */
     public static void expand() {
-        int N = BinaryStdIn.readInt();
+        Alphabet DNA = Alphabet.DNA;
+        int n = BinaryStdIn.readInt();
         // Read two bits; write char. 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             char c = BinaryStdIn.readChar(2);
             BinaryStdOut.write(DNA.toChar(c), 8);
         }
@@ -68,8 +70,10 @@ public class Genome {
 
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
@@ -80,7 +84,7 @@ public class Genome {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

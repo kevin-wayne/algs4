@@ -2,15 +2,17 @@
  *  Compilation:  javac KosarajuSharirSCC.java
  *  Execution:    java KosarajuSharirSCC filename.txt
  *  Dependencies: Digraph.java TransitiveClosure.java StdOut.java In.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Compute the strongly-connected components of a digraph using the
  *  Kosaraju-Sharir algorithm.
  *
  *  Runs in O(E + V) time.
  *
- *  % java KosarajuSCC tinyDG.txt
- *  5 components
+ *  % java KosarajuSharirSCC tinyDG.txt
+ *  5 strong components
  *  1 
  *  0 2 3 4 5 
  *  9 10 11 12 
@@ -18,7 +20,7 @@
  *  7
  *
  *  % java KosarajuSharirSCC mediumDG.txt 
- *  10 components
+ *  10 strong components
  *  21 
  *  2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49 
  *  14 
@@ -31,7 +33,7 @@
  *  10 
  *
  *  % java -Xss50m KosarajuSharirSCC mediumDG.txt 
- *  25 components
+ *  25 strong components
  *  7 11 32 36 61 84 95 116 121 128 230   ...
  *  28 73 80 104 115 143 149 164 184 185  ...
  *  38 40 200 201 207 218 286 387 418 422 ...
@@ -63,7 +65,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>KosarajuSharirSCC</tt> class represents a data type for 
+ *  The {@code KosarajuSharirSCC} class represents a data type for 
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -86,7 +88,7 @@ package edu.princeton.cs.algs4;
  *  {@link TarjanSCC} and {@link GabowSCC}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -98,7 +100,7 @@ public class KosarajuSharirSCC {
     private int count;            // number of strongly-connected components
 
     /**
-     * Computes the strong components of the digraph <tt>G</tt>.
+     * Computes the strong components of the digraph {@code G}.
      * @param G the digraph
      */
     public KosarajuSharirSCC(Digraph G) {
@@ -138,22 +140,28 @@ public class KosarajuSharirSCC {
     }
 
     /**
-     * Are vertices <tt>v</tt> and <tt>w</tt> in the same strong component?
-     * @param v one vertex
-     * @param w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *     strong component, and <tt>false</tt> otherwise
+     * Are vertices {@code v} and {@code w} in the same strong component?
+     * @param  v one vertex
+     * @param  w the other vertex
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         strong component, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean stronglyConnected(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return id[v] == id[w];
     }
 
     /**
-     * Returns the component id of the strong component containing vertex <tt>v</tt>.
-     * @param v the vertex
-     * @return the component id of the strong component containing vertex <tt>v</tt>
+     * Returns the component id of the strong component containing vertex {@code v}.
+     * @param  v the vertex
+     * @return the component id of the strong component containing vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public int id(int v) {
+        validateVertex(v);
         return id[v];
     }
 
@@ -169,8 +177,17 @@ public class KosarajuSharirSCC {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>KosarajuSharirSCC</tt> data type.
+     * Unit tests the {@code KosarajuSharirSCC} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -178,12 +195,12 @@ public class KosarajuSharirSCC {
         KosarajuSharirSCC scc = new KosarajuSharirSCC(G);
 
         // number of connected components
-        int M = scc.count();
-        StdOut.println(M + " components");
+        int m = scc.count();
+        StdOut.println(m + " strong components");
 
         // compute list of vertices in each strong component
-        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[M];
-        for (int i = 0; i < M; i++) {
+        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
+        for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
         for (int v = 0; v < G.V(); v++) {
@@ -191,7 +208,7 @@ public class KosarajuSharirSCC {
         }
 
         // print results
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
@@ -203,7 +220,7 @@ public class KosarajuSharirSCC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

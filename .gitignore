@@ -1,3 +1,57 @@
-/build/*
-/target/*
+# OS generated files
+.DS_Store
+Thumbs.db
+*~
+# Thumbnails
+._*
+
+### Java ###
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Gradle Files
+.gradle
+.m2
+
+# Build output directies
+build/
+/target
+
+### Eclipse project file ###
+.metadata
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+.loadpath
+.launch
+.cproject
+
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea
+out
+test-output
+
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# files intended to be ignored
 *IGNORE

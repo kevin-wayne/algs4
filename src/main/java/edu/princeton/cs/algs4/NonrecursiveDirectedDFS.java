@@ -2,7 +2,9 @@
  *  Compilation:  javac NonrecursiveDirectedDFS.java
  *  Execution:    java NonrecursiveDirectedDFS digraph.txt s
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Run nonrecurisve depth-first search on an directed graph.
  *  Runs in O(E + V) time.
@@ -23,7 +25,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>NonrecursiveDirectedDFS</tt> class represents a data type for finding
+ *  The {@code NonrecursiveDirectedDFS} class represents a data type for finding
  *  the vertices reachable from a source vertex <em>s</em> in the digraph.
  *  <p>
  *  This implementation uses a nonrecursive version of depth-first search
@@ -33,7 +35,7 @@ import java.util.Iterator;
  *  It uses extra space (not including the digraph) proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -42,12 +44,14 @@ import java.util.Iterator;
 public class NonrecursiveDirectedDFS {
     private boolean[] marked;  // marked[v] = is there an s->v path?
     /**
-     * Computes the vertices reachable from the source vertex <tt>s</tt> in the digraph <tt>G</tt>.
-     * @param G the digraph
-     * @param s the source vertex
+     * Computes the vertices reachable from the source vertex {@code s} in the digraph {@code G}.
+     * @param  G the digraph
+     * @param  s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public NonrecursiveDirectedDFS(Digraph G, int s) {
         marked = new boolean[G.V()];
+        validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
@@ -80,17 +84,28 @@ public class NonrecursiveDirectedDFS {
     }
 
     /**
-     * Is vertex <tt>v</tt> reachable from the source vertex <tt>s</tt>?
-     * @param v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is reachable from the source vertex <tt>s</tt>,
-     *    and <tt>false</tt> otherwise
+     * Is vertex {@code v} reachable from the source vertex {@code s}?
+     * @param  v the vertex
+     * @return {@code true} if vertex {@code v} is reachable from the source vertex {@code s},
+     *         and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean marked(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>NonrecursiveDirectedDFS</tt> data type.
+     * Unit tests the {@code NonrecursiveDirectedDFS} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -103,11 +118,10 @@ public class NonrecursiveDirectedDFS {
         StdOut.println();
     }
 
-
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

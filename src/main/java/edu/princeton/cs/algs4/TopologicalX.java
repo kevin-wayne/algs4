@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TopologicalX</tt> class represents a data type for 
+ *  The {@code TopologicalX} class represents a data type for 
  *  determining a topological order of a directed acyclic graph (DAG).
  *  Recall, a digraph has a topological order if and only if it is a DAG.
  *  The <em>hasOrder</em> operation determines whether the digraph has
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  See {@link Topological} for a recursive version that uses depth-first search.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -39,10 +39,10 @@ package edu.princeton.cs.algs4;
  */
 public class TopologicalX {
     private Queue<Integer> order;     // vertices in topological order
-    private int[] rank;               // rank[v] = order where vertex v appers in order
+    private int[] ranks;              // ranks[v] = order where vertex v appers in order
 
     /**
-     * Determines whether the digraph <tt>G</tt> has a topological order and, if so,
+     * Determines whether the digraph {@code G} has a topological order and, if so,
      * finds such a topological order.
      * @param G the digraph
      */
@@ -55,7 +55,7 @@ public class TopologicalX {
         }
 
         // initialize 
-        rank = new int[G.V()]; 
+        ranks = new int[G.V()]; 
         order = new Queue<Integer>();
         int count = 0;
 
@@ -64,10 +64,10 @@ public class TopologicalX {
         for (int v = 0; v < G.V(); v++)
             if (indegree[v] == 0) queue.enqueue(v);
 
-        for (int j = 0; !queue.isEmpty(); j++) {
+        while (!queue.isEmpty()) {
             int v = queue.dequeue();
             order.enqueue(v);
-            rank[v] = count++;
+            ranks[v] = count++;
             for (int w : G.adj(v)) {
                 indegree[w]--;
                 if (indegree[w] == 0) queue.enqueue(w);
@@ -83,7 +83,7 @@ public class TopologicalX {
     }
 
     /**
-     * Determines whether the edge-weighted digraph <tt>G</tt> has a
+     * Determines whether the edge-weighted digraph {@code G} has a
      * topological order and, if so, finds such a topological order.
      * @param G the digraph
      */
@@ -96,7 +96,7 @@ public class TopologicalX {
         }
 
         // initialize 
-        rank = new int[G.V()]; 
+        ranks = new int[G.V()]; 
         order = new Queue<Integer>();
         int count = 0;
 
@@ -105,10 +105,10 @@ public class TopologicalX {
         for (int v = 0; v < G.V(); v++)
             if (indegree[v] == 0) queue.enqueue(v);
 
-        for (int j = 0; !queue.isEmpty(); j++) {
+        while (!queue.isEmpty()) {
             int v = queue.dequeue();
             order.enqueue(v);
-            rank[v] = count++;
+            ranks[v] = count++;
             for (DirectedEdge e : G.adj(v)) {
                 int w = e.to();
                 indegree[w]--;
@@ -126,10 +126,10 @@ public class TopologicalX {
 
     /**
      * Returns a topological order if the digraph has a topologial order,
-     * and <tt>null</tt> otherwise.
+     * and {@code null} otherwise.
      * @return a topological order of the vertices (as an interable) if the
      *    digraph has a topological order (or equivalently, if the digraph is a DAG),
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> order() {
         return order;
@@ -137,24 +137,25 @@ public class TopologicalX {
 
     /**
      * Does the digraph have a topological order?
-     * @return <tt>true</tt> if the digraph has a topological order (or equivalently,
-     *    if the digraph is a DAG), and <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a topological order (or equivalently,
+     *    if the digraph is a DAG), and {@code false} otherwise
      */
     public boolean hasOrder() {
         return order != null;
     }
 
     /**
-     * The the rank of vertex <tt>v</tt> in the topological order;
+     * The the rank of vertex {@code v} in the topological order;
      * -1 if the digraph is not a DAG
-     * @return the position of vertex <tt>v</tt> in a topological order
+     *
+     * @param v vertex
+     * @return the position of vertex {@code v} in a topological order
      *    of the digraph; -1 if the digraph is not a DAG
-     * @throws IndexOutOfBoundsException unless <tt>v</tt> is between 0 and
-     *    <em>V</em> &minus; 1
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int rank(int v) {
         validateVertex(v);
-        if (hasOrder()) return rank[v];
+        if (hasOrder()) return ranks[v];
         else            return -1;
     }
 
@@ -245,15 +246,17 @@ public class TopologicalX {
         return true;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-        int V = rank.length;
+        int V = ranks.length;
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
-     * Unit tests the <tt>TopologicalX</tt> data type.
+     * Unit tests the {@code TopologicalX} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -316,7 +319,7 @@ public class TopologicalX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

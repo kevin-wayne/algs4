@@ -10,11 +10,11 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Date</tt> class is an immutable data type to encapsulate a
+ *  The {@code Date} class is an immutable data type to encapsulate a
  *  date (day, month, and year).
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -112,7 +112,7 @@ public class Date implements Comparable<Date> {
      * Compares two dates chronologically.
      *
      * @param  that the other date
-     * @return <tt>true</tt> if this date is after that date; <tt>false</tt> otherwise
+     * @return {@code true} if this date is after that date; {@code false} otherwise
      */
     public boolean isAfter(Date that) {
         return compareTo(that) > 0;
@@ -122,7 +122,7 @@ public class Date implements Comparable<Date> {
      * Compares two dates chronologically.
      *
      * @param  that the other date
-     * @return <tt>true</tt> if this date is before that date; <tt>false</tt> otherwise
+     * @return {@code true} if this date is before that date; {@code false} otherwise
      */
     public boolean isBefore(Date that) {
         return compareTo(that) < 0;
@@ -131,7 +131,7 @@ public class Date implements Comparable<Date> {
     /**
      * Compares two dates chronologically.
      *
-     * @return the value <tt>0</tt> if the argument date is equal to this date;
+     * @return the value {@code 0} if the argument date is equal to this date;
      *         a negative integer if this date is chronologically less than
      *         the argument date; and a positive ineger if this date is chronologically
      *         after the argument date
@@ -161,7 +161,7 @@ public class Date implements Comparable<Date> {
      * Compares this date to the specified date.
      *
      * @param  other the other date
-     * @return <tt>true</tt> if this date equals <tt>other</tt>; <tt>false</tt> otherwise
+     * @return {@code true} if this date equals {@code other}; {@code false} otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -175,7 +175,7 @@ public class Date implements Comparable<Date> {
     /**
      * Returns an integer hash code for this date.
      *
-     * @return a hash code for this date
+     * @return an integer hash code for this date
      */
     @Override
     public int hashCode() {
@@ -187,7 +187,9 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Unit tests the <tt>Date</tt> data type.
+     * Unit tests the {@code Date} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Date today = new Date(2, 25, 2004);
@@ -213,7 +215,7 @@ public class Date implements Comparable<Date> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

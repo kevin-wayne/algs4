@@ -10,17 +10,17 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Interval2D</tt> class represents a closed two-dimensional interval,
- *  which represents all points (x, y) with both xleft <= x <= xright and
- *  yleft <= y <= right.
+ *  The {@code Interval2D} class represents a closed two-dimensional interval,
+ *  which represents all points (x, y) with both {@code xmin <= x <= xmax} and
+ *  {@code ymin <= y <= ymax}.
  *  Two-dimensional intervals are immutable: their values cannot be changed
  *  after they are created.
- *  The class <code>Interval2D</code> includes methods for checking whether
+ *  The class {@code Interval2D} includes methods for checking whether
  *  a two-dimensional interval contains a point and determining whether
  *  two two-dimensional intervals intersect.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -72,7 +72,7 @@ public class Interval2D {
     /**
      * Returns a string representation of this two-dimensional interval.
      * @return a string representation of this two-dimensional interval
-     *    in the form [xleft, xright] x [yleft, yright]
+     *    in the form [xmin, xmax] x [ymin, ymax]
      */
     public String toString() {
         return x + " x " + y;
@@ -106,34 +106,36 @@ public class Interval2D {
      * Draws this two-dimensional interval to standard draw.
      */
     public void draw() {
-        double xc = (x.left() + x.right()) / 2.0;
-        double yc = (y.left() + y.right()) / 2.0;
+        double xc = (x.min() + x.max()) / 2.0;
+        double yc = (y.min() + y.max()) / 2.0;
         StdDraw.rectangle(xc, yc, x.length() / 2.0, y.length() / 2.0);
     }
 
     /**
-     * Unit tests the <tt>Interval2D</tt> data type.
+     * Unit tests the {@code Interval2D} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        double xlo = Double.parseDouble(args[0]);
-        double xhi = Double.parseDouble(args[1]);
-        double ylo = Double.parseDouble(args[2]);
-        double yhi = Double.parseDouble(args[3]);
-        int T = Integer.parseInt(args[4]);
+        double xmin = Double.parseDouble(args[0]);
+        double xmax = Double.parseDouble(args[1]);
+        double ymin = Double.parseDouble(args[2]);
+        double ymax = Double.parseDouble(args[3]);
+        int trials = Integer.parseInt(args[4]);
 
-        Interval1D xinterval = new Interval1D(xlo, xhi);
-        Interval1D yinterval = new Interval1D(ylo, yhi);
-        Interval2D box = new Interval2D(xinterval, yinterval);
+        Interval1D xInterval = new Interval1D(xmin, xmax);
+        Interval1D yInterval = new Interval1D(ymin, ymax);
+        Interval2D box = new Interval2D(xInterval, yInterval);
         box.draw();
 
         Counter counter = new Counter("hits");
-        for (int t = 0; t < T; t++) {
+        for (int t = 0; t < trials; t++) {
             double x = StdRandom.uniform(0.0, 1.0);
             double y = StdRandom.uniform(0.0, 1.0);
-            Point2D p = new Point2D(x, y);
+            Point2D point = new Point2D(x, y);
 
-            if (box.contains(p)) counter.increment();
-            else                 p.draw();
+            if (box.contains(point)) counter.increment();
+            else                     point.draw();
         }
 
         StdOut.println(counter);
@@ -142,7 +144,7 @@ public class Interval2D {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

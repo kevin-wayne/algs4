@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DirectedCycleX</tt> class represents a data type for 
+ *  The {@code DirectedCycleX} class represents a data type for 
  *  determining whether a digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the digraph has
  *  a directed cycle and, and of so, the <em>cycle</em> operation
@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  *  when the digraph is acyclic.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -53,7 +53,7 @@ public class DirectedCycleX {
         for (int v = 0; v < G.V(); v++)
             if (indegree[v] == 0) queue.enqueue(v);
 
-        for (int j = 0; !queue.isEmpty(); j++) {
+        while (!queue.isEmpty()) {
             int v = queue.dequeue();
             for (int w : G.adj(v)) {
                 indegree[w]--;
@@ -97,9 +97,9 @@ public class DirectedCycleX {
     }
 
     /**
-     * Returns a directed cycle if the digraph has a directed cycle, and <tt>null</tt> otherwise.
+     * Returns a directed cycle if the digraph has a directed cycle, and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the digraph has a directed cycle,
-     *    and <tt>null</tt> otherwise
+     *    and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -107,7 +107,7 @@ public class DirectedCycleX {
 
     /**
      * Does the digraph have a directed cycle?
-     * @return <tt>true</tt> if the digraph has a directed cycle, <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has a directed cycle, {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
@@ -170,7 +170,7 @@ public class DirectedCycleX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

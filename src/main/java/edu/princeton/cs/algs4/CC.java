@@ -2,7 +2,9 @@
  *  Compilation:  javac CC.java
  *  Execution:    java CC filename.txt
  *  Dependencies: Graph.java StdOut.java Queue.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Compute connected components using depth first search.
  *  Runs in O(E + V) time.
@@ -21,12 +23,16 @@
  *  1 components
  *  0 1 2 3 4 5 6 7 8 9 10 ...
  *
+ *  Note: This implementation uses a recursive DFS. To avoid needing
+ *        a potentially very large stack size, replace with a non-recurisve
+ *        DFS ala NonrecursiveDFS.java.
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>CC</tt> class represents a data type for 
+ *  The {@code CC} class represents a data type for 
  *  determining the connected components in an undirected graph.
  *  The <em>id</em> operation determines in which connected component
  *  a given vertex lies; the <em>connected</em> operation
@@ -47,7 +53,7 @@ package edu.princeton.cs.algs4;
  *  Afterwards, the <em>id</em>, <em>count</em>, <em>connected</em>,
  *  and <em>size</em> operations take constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -60,7 +66,7 @@ public class CC {
     private int count;          // number of connected components
 
     /**
-     * Computes the connected components of the undirected graph <tt>G</tt>.
+     * Computes the connected components of the undirected graph {@code G}.
      *
      * @param G the undirected graph
      */
@@ -76,7 +82,24 @@ public class CC {
         }
     }
 
-    // depth-first search
+    /**
+     * Computes the connected components of the edge-weighted graph {@code G}.
+     *
+     * @param G the edge-weighted graph
+     */
+    public CC(EdgeWeightedGraph G) {
+        marked = new boolean[G.V()];
+        id = new int[G.V()];
+        size = new int[G.V()];
+        for (int v = 0; v < G.V(); v++) {
+            if (!marked[v]) {
+                dfs(G, v);
+                count++;
+            }
+        }
+    }
+
+    // depth-first search for a Graph
     private void dfs(Graph G, int v) {
         marked[v] = true;
         id[v] = count;
@@ -88,64 +111,100 @@ public class CC {
         }
     }
 
+    // depth-first search for an EdgeWeightedGraph
+    private void dfs(EdgeWeightedGraph G, int v) {
+        marked[v] = true;
+        id[v] = count;
+        size[count]++;
+        for (Edge e : G.adj(v)) {
+            int w = e.other(v);
+            if (!marked[w]) {
+                dfs(G, w);
+            }
+        }
+    }
+
+
     /**
-     * Returns the component id of the connected component containing vertex <tt>v</tt>.
+     * Returns the component id of the connected component containing vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the component id of the connected component containing vertex <tt>v</tt>
+     * @return the component id of the connected component containing vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int id(int v) {
+        validateVertex(v);
         return id[v];
     }
 
     /**
-     * Returns the number of vertices in the connected component containing vertex <tt>v</tt>.
+     * Returns the number of vertices in the connected component containing vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the number of vertices in the connected component containing vertex <tt>v</tt>
+     * @return the number of vertices in the connected component containing vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int size(int v) {
+        validateVertex(v);
         return size[id[v]];
     }
 
     /**
-     * Returns the number of connected components in the graph <tt>G</tt>.
+     * Returns the number of connected components in the graph {@code G}.
      *
-     * @return the number of connected components in the graph <tt>G</tt>
+     * @return the number of connected components in the graph {@code G}
      */
     public int count() {
         return count;
     }
 
     /**
-     * Returns true if vertices <tt>v</tt> and <tt>w</tt> are in the same
+     * Returns true if vertices {@code v} and {@code w} are in the same
      * connected component.
      *
      * @param  v one vertex
      * @param  w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *         connected component; <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         connected component; {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean connected(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return id(v) == id(w);
     }
 
     /**
-     * Returns true if vertices <tt>v</tt> and <tt>w</tt> are in the same
+     * Returns true if vertices {@code v} and {@code w} are in the same
      * connected component.
      *
      * @param  v one vertex
      * @param  w the other vertex
-     * @return <tt>true</tt> if vertices <tt>v</tt> and <tt>w</tt> are in the same
-     *         connected component; <tt>false</tt> otherwise
+     * @return {@code true} if vertices {@code v} and {@code w} are in the same
+     *         connected component; {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      * @deprecated Replaced by {@link #connected(int, int)}.
      */
+    @Deprecated
     public boolean areConnected(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return id(v) == id(w);
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>CC</tt> data type.
+     * Unit tests the {@code CC} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -153,12 +212,12 @@ public class CC {
         CC cc = new CC(G);
 
         // number of connected components
-        int M = cc.count();
-        StdOut.println(M + " components");
+        int m = cc.count();
+        StdOut.println(m + " components");
 
         // compute list of vertices in each connected component
-        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[M];
-        for (int i = 0; i < M; i++) {
+        Queue<Integer>[] components = (Queue<Integer>[]) new Queue[m];
+        for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
         for (int v = 0; v < G.V(); v++) {
@@ -166,7 +225,7 @@ public class CC {
         }
 
         // print results
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }
@@ -176,7 +235,7 @@ public class CC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

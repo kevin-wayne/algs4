@@ -2,9 +2,9 @@
  *  Compilation:  javac LinkedQueue.java
  *  Execution:    java LinkedQueue < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt  
  *
- *  A generic queue, implemented using a singly-linked list.
+ *  A generic queue, implemented using a singly linked list.
  *
  *  % java Queue < tobe.txt 
  *  to be or not to be (2 left on queue)
@@ -17,26 +17,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>LinkedQueue</tt> class represents a first-in-first-out (FIFO)
+ *  The {@code LinkedQueue} class represents a first-in-first-out (FIFO)
  *  queue of generic items.
  *  It supports the usual <em>enqueue</em> and <em>dequeue</em>
  *  operations, along with methods for peeking at the first item,
  *  testing if the queue is empty, and iterating through
  *  the items in FIFO order.
  *  <p>
- *  This implementation uses a singly-linked list with a non-static nested class 
+ *  This implementation uses a singly linked list with a non-static nested class 
  *  for linked-list nodes.  See {@link Queue} for a version that uses a static nested class.
  *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class LinkedQueue<Item> implements Iterable<Item> {
-    private int N;         // number of elements on queue
+    private int n;         // number of elements on queue
     private Node first;    // beginning of queue
     private Node last;     // end of queue
 
@@ -52,7 +52,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
     public LinkedQueue() {
         first = null;
         last  = null;
-        N = 0;
+        n = 0;
         assert check();
     }
 
@@ -69,7 +69,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return N;     
+        return n;     
     }
 
     /**
@@ -93,7 +93,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         last.next = null;
         if (isEmpty()) first = last;
         else           oldlast.next = last;
-        N++;
+        n++;
         assert check();
     }
 
@@ -106,7 +106,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) throw new NoSuchElementException("Queue underflow");
         Item item = first.item;
         first = first.next;
-        N--;
+        n--;
         if (isEmpty()) last = null;   // to avoid loitering
         assert check();
         return item;
@@ -125,14 +125,14 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     // check internal invariants
     private boolean check() {
-        if (N < 0) {
+        if (n < 0) {
             return false;
         }
-        else if (N == 0) {
+        else if (n == 0) {
             if (first != null) return false;
             if (last  != null) return false;
         }
-        else if (N == 1) {
+        else if (n == 1) {
             if (first == null || last == null) return false;
             if (first != last)                 return false;
             if (first.next != null)            return false;
@@ -143,12 +143,12 @@ public class LinkedQueue<Item> implements Iterable<Item> {
             if (first.next == null) return false;
             if (last.next  != null) return false;
 
-            // check internal consistency of instance variable N
+            // check internal consistency of instance variable n
             int numberOfNodes = 0;
-            for (Node x = first; x != null && numberOfNodes <= N; x = x.next) {
+            for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
                 numberOfNodes++;
             }
-            if (numberOfNodes != N) return false;
+            if (numberOfNodes != n) return false;
 
             // check internal consistency of instance variable last
             Node lastNode = first;
@@ -187,21 +187,25 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>LinkedQueue</tt> data type.
+     * Unit tests the {@code LinkedQueue} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        LinkedQueue<String> q = new LinkedQueue<String>();
+        LinkedQueue<String> queue = new LinkedQueue<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) q.enqueue(item);
-            else if (!q.isEmpty()) StdOut.print(q.dequeue() + " ");
+            if (!item.equals("-"))
+                queue.enqueue(item);
+            else if (!queue.isEmpty())
+                StdOut.print(queue.dequeue() + " ");
         }
-        StdOut.println("(" + q.size() + " left on queue)");
+        StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

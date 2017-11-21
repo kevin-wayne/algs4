@@ -2,7 +2,10 @@
  *  Compilation:  javac DepthFirstPaths.java
  *  Execution:    java DepthFirstPaths G s
  *  Dependencies: Graph.java Stack.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *                https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Run depth first search on an undirected graph.
  *  Runs in O(E + V) time.
@@ -29,16 +32,19 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstPaths</tt> class represents a data type for finding
+ *  The {@code DepthFirstPaths} class represents a data type for finding
  *  paths from a source vertex <em>s</em> to every other vertex
  *  in an undirected graph.
  *  <p>
  *  This implementation uses depth-first search.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ *  Each call to {@link #hasPathTo(int)} takes constant time;
+ *  each call to {@link #pathTo(int)} takes time proportional to the length
+ *  of the path.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -50,14 +56,16 @@ public class DepthFirstPaths {
     private final int s;         // source vertex
 
     /**
-     * Computes a path between <tt>s</tt> and every other vertex in graph <tt>G</tt>.
+     * Computes a path between {@code s} and every other vertex in graph {@code G}.
      * @param G the graph
      * @param s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DepthFirstPaths(Graph G, int s) {
         this.s = s;
         edgeTo = new int[G.V()];
         marked = new boolean[G.V()];
+        validateVertex(s);
         dfs(G, s);
     }
 
@@ -73,22 +81,26 @@ public class DepthFirstPaths {
     }
 
     /**
-     * Is there a path between the source vertex <tt>s</tt> and vertex <tt>v</tt>?
+     * Is there a path between the source vertex {@code s} and vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a path, {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
     /**
-     * Returns a path between the source vertex <tt>s</tt> and vertex <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
-     * @param v the vertex
+     * Returns a path between the source vertex {@code s} and vertex {@code v}, or
+     * {@code null} if no such path.
+     * @param  v the vertex
      * @return the sequence of vertices on a path between the source vertex
-     *   <tt>s</tt> and vertex <tt>v</tt>, as an Iterable
+     *         {@code s} and vertex {@code v}, as an Iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<Integer>();
         for (int x = v; x != s; x = edgeTo[x])
@@ -97,8 +109,17 @@ public class DepthFirstPaths {
         return path;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>DepthFirstPaths</tt> data type.
+     * Unit tests the {@code DepthFirstPaths} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -126,7 +147,7 @@ public class DepthFirstPaths {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,7 +2,9 @@
  *  Compilation:  javac Digraph.java
  *  Execution:    java Digraph filename.txt
  *  Dependencies: Bag.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt  
  *
  *  A graph, implemented using an array of lists.
  *  Parallel edges and self-loops are permitted.
@@ -27,11 +29,10 @@
 
 package edu.princeton.cs.algs4;
 
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Digraph</tt> class represents a directed graph of vertices
+ *  The {@code Digraph} class represents a directed graph of vertices
  *  named 0 through <em>V</em> - 1.
  *  It supports the following two primary operations: add an edge to the digraph,
  *  iterate over all of the vertices adjacent from a given vertex.
@@ -44,7 +45,7 @@ import java.util.NoSuchElementException;
  *  time proportional to the number of such vertices.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -63,7 +64,7 @@ public class Digraph {
      * Initializes an empty digraph with <em>V</em> vertices.
      *
      * @param  V the number of vertices
-     * @throws IllegalArgumentException if V < 0
+     * @throws IllegalArgumentException if {@code V < 0}
      */
     public Digraph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
@@ -83,20 +84,21 @@ public class Digraph {
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
      *
      * @param  in the input stream
-     * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException if the input stream is in the wrong format
      */
     public Digraph(In in) {
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
             indegree = new int[V];
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
             }
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("Number of edges in a Digraph must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be nonnegative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
@@ -104,7 +106,7 @@ public class Digraph {
             }
         }
         catch (NoSuchElementException e) {
-            throw new InputMismatchException("Invalid input format in Digraph constructor");
+            throw new IllegalArgumentException("invalid input format in Digraph constructor", e);
         }
     }
 
@@ -149,18 +151,18 @@ public class Digraph {
     }
 
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
-     * Adds the directed edge v->w to this digraph.
+     * Adds the directed edge v→w to this digraph.
      *
      * @param  v the tail vertex
      * @param  w the head vertex
-     * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
+     * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -171,11 +173,11 @@ public class Digraph {
     }
 
     /**
-     * Returns the vertices adjacent from vertex <tt>v</tt> in this digraph.
+     * Returns the vertices adjacent from vertex {@code v} in this digraph.
      *
      * @param  v the vertex
-     * @return the vertices adjacent from vertex <tt>v</tt> in this digraph, as an iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -183,12 +185,12 @@ public class Digraph {
     }
 
     /**
-     * Returns the number of directed edges incident from vertex <tt>v</tt>.
-     * This is known as the <em>outdegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident from vertex {@code v}.
+     * This is known as the <em>outdegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the outdegree of vertex <tt>v</tt>               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @return the outdegree of vertex {@code v}               
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int outdegree(int v) {
         validateVertex(v);
@@ -196,12 +198,12 @@ public class Digraph {
     }
 
     /**
-     * Returns the number of directed edges incident to vertex <tt>v</tt>.
-     * This is known as the <em>indegree</em> of vertex <tt>v</tt>.
+     * Returns the number of directed edges incident to vertex {@code v}.
+     * This is known as the <em>indegree</em> of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the indegree of vertex <tt>v</tt>               
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @return the indegree of vertex {@code v}               
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int indegree(int v) {
         validateVertex(v);
@@ -214,13 +216,13 @@ public class Digraph {
      * @return the reverse of the digraph
      */
     public Digraph reverse() {
-        Digraph R = new Digraph(V);
+        Digraph reverse = new Digraph(V);
         for (int v = 0; v < V; v++) {
             for (int w : adj(v)) {
-                R.addEdge(w, v);
+                reverse.addEdge(w, v);
             }
         }
-        return R;
+        return reverse;
     }
 
     /**
@@ -243,7 +245,9 @@ public class Digraph {
     }
 
     /**
-     * Unit tests the <tt>Digraph</tt> data type.
+     * Unit tests the {@code Digraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -254,7 +258,7 @@ public class Digraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

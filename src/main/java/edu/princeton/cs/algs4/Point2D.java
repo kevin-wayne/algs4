@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac Point2D.java
- *  Execution:    java Point2D x0 y0 N
+ *  Execution:    java Point2D x0 y0 n
  *  Dependencies: StdDraw.java StdRandom.java
  *
  *  Immutable point data type for points in the plane.
@@ -14,7 +14,7 @@ import java.util.Comparator;
 
 
 /**
- *  The <tt>Point</tt> class is an immutable data type to encapsulate a
+ *  The {@code Point} class is an immutable data type to encapsulate a
  *  two-dimensional point with real-value coordinates.
  *  <p>
  *  Note: in order to deal with the difference behavior of double and 
@@ -22,7 +22,7 @@ import java.util.Comparator;
  *  any coordinates that are -0.0 to +0.0.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -52,9 +52,9 @@ public final class Point2D implements Comparable<Point2D> {
      * Initializes a new point (x, y).
      * @param x the x-coordinate
      * @param y the y-coordinate
-     * @throws IllegalArgumentException if either <tt>x</tt> or <tt>y</tt>
-     *    is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt> or
-     *    <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if either {@code x} or {@code y}
+     *    is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY} or
+     *    {@code Double.NEGATIVE_INFINITY}
      */
     public Point2D(double x, double y) {
         if (Double.isInfinite(x) || Double.isInfinite(y))
@@ -94,7 +94,7 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Returns the angle of this point in polar coordinates.
-     * @return the angle (in radians) of this point in polar coordiantes (between -pi/2 and pi/2)
+     * @return the angle (in radians) of this point in polar coordiantes (between –&pi; and &pi;)
      */
     public double theta() {
         return Math.atan2(y, x);
@@ -102,7 +102,7 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Returns the angle between this point and that point.
-     * @return the angle in radians (between -pi and pi) between this point and that point (0 if equal)
+     * @return the angle in radians (between –&pi; and &pi;) between this point and that point (0 if equal)
      */
     private double angleTo(Point2D that) {
         double dx = that.x - this.x;
@@ -111,11 +111,11 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Returns true if a->b->c is a counterclockwise turn.
+     * Returns true if a→b→c is a counterclockwise turn.
      * @param a first point
      * @param b second point
      * @param c third point
-     * @return { -1, 0, +1 } if a->b->c is a { clockwise, collinear; counterclocwise } turn.
+     * @return { -1, 0, +1 } if a→b→c is a { clockwise, collinear; counterclocwise } turn.
      */
     public static int ccw(Point2D a, Point2D b, Point2D c) {
         double area2 = (b.x-a.x)*(c.y-a.y) - (b.y-a.y)*(c.x-a.x);
@@ -160,11 +160,11 @@ public final class Point2D implements Comparable<Point2D> {
     /**
      * Compares two points by y-coordinate, breaking ties by x-coordinate.
      * Formally, the invoking point (x0, y0) is less than the argument point (x1, y1)
-     * if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+     * if and only if either {@code y0 < y1} or if {@code y0 == y1} and {@code x0 < x1}.
      *
      * @param  that the other point
-     * @return the value <tt>0</tt> if this string is equal to the argument
-     *         string (precisely when <tt>equals()</tt> returns <tt>true</tt>);
+     * @return the value {@code 0} if this string is equal to the argument
+     *         string (precisely when {@code equals()} returns {@code true});
      *         a negative integer if this point is less than the argument
      *         point; and a positive integer if this point is greater than the
      *         argument point
@@ -178,7 +178,7 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Compares two points by polar angle (between 0 and 2pi) with respect to this point.
+     * Compares two points by polar angle (between 0 and 2&pi;) with respect to this point.
      *
      * @return the comparator
      */
@@ -187,7 +187,7 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
     /**
-     * Compares two points by atan2() angle (between -pi and pi) with respect to this point.
+     * Compares two points by atan2() angle (between –&pi; and &pi;) with respect to this point.
      *
      * @return the comparator
      */
@@ -280,8 +280,8 @@ public final class Point2D implements Comparable<Point2D> {
      * Compares this point to the specified point.
      *       
      * @param  other the other point
-     * @return <tt>true</tt> if this point equals <tt>other</tt>;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this point equals {@code other};
+     *         {@code false} otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -330,18 +330,22 @@ public final class Point2D implements Comparable<Point2D> {
 
     /**
      * Unit tests the point data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int x0 = Integer.parseInt(args[0]);
         int y0 = Integer.parseInt(args[1]);
-        int N = Integer.parseInt(args[2]);
+        int n = Integer.parseInt(args[2]);
 
         StdDraw.setCanvasSize(800, 800);
         StdDraw.setXscale(0, 100);
         StdDraw.setYscale(0, 100);
-        StdDraw.setPenRadius(.005);
-        Point2D[] points = new Point2D[N];
-        for (int i = 0; i < N; i++) {
+        StdDraw.setPenRadius(0.005);
+        StdDraw.enableDoubleBuffering();
+
+        Point2D[] points = new Point2D[n];
+        for (int i = 0; i < n; i++) {
             int x = StdRandom.uniform(100);
             int y = StdRandom.uniform(100);
             points[i] = new Point2D(x, y);
@@ -351,7 +355,7 @@ public final class Point2D implements Comparable<Point2D> {
         // draw p = (x0, x1) in red
         Point2D p = new Point2D(x0, y0);
         StdDraw.setPenColor(StdDraw.RED);
-        StdDraw.setPenRadius(.02);
+        StdDraw.setPenRadius(0.02);
         p.draw();
 
 
@@ -359,15 +363,16 @@ public final class Point2D implements Comparable<Point2D> {
         StdDraw.setPenRadius();
         StdDraw.setPenColor(StdDraw.BLUE);
         Arrays.sort(points, p.polarOrder());
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             p.drawTo(points[i]);
-            StdDraw.show(100);
+            StdDraw.show();
+            StdDraw.pause(100);
         }
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,8 +2,8 @@
  *  Compilation:  javac MergeX.java
  *  Execution:    java MergeX < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/22mergesort/tiny.txt
- *                http://algs4.cs.princeton.edu/22mergesort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/22mergesort/tiny.txt
+ *                https://algs4.cs.princeton.edu/22mergesort/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using an
  *  optimized version of mergesort.
@@ -27,10 +27,10 @@ package edu.princeton.cs.algs4;
 import java.util.Comparator;
 
 /**
- *  The <tt>MergeX</tt> class provides static methods for sorting an
+ *  The {@code MergeX} class provides static methods for sorting an
  *  array using an optimized version of mergesort.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -130,7 +130,9 @@ public class MergeX {
 
     /**
      * Rearranges the array in ascending order, using the provided order.
+     *
      * @param a the array to be sorted
+     * @param comparator the comparator that defines the total order
      */
     public static void sort(Object[] a, Comparator comparator) {
         Object[] aux = a.clone();
@@ -218,6 +220,8 @@ public class MergeX {
      * Reads in a sequence of strings from standard input; mergesorts them
      * (using an optimized version of mergesort); 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -227,7 +231,7 @@ public class MergeX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

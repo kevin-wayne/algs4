@@ -2,10 +2,10 @@
  *  Compilation:  javac FileIndex.java
  *  Execution:    java FileIndex file1.txt file2.txt file3.txt ...
  *  Dependencies: ST.java SET.java In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/35applications/ex1.txt
- *                http://algs4.cs.princeton.edu/35applications/ex2.txt
- *                http://algs4.cs.princeton.edu/35applications/ex3.txt
- *                http://algs4.cs.princeton.edu/35applications/ex4.txt
+ *  Data files:   https://algs4.cs.princeton.edu/35applications/ex1.txt
+ *                https://algs4.cs.princeton.edu/35applications/ex2.txt
+ *                https://algs4.cs.princeton.edu/35applications/ex3.txt
+ *                https://algs4.cs.princeton.edu/35applications/ex4.txt
  *
  *  % java FileIndex ex*.txt
  *  age
@@ -30,11 +30,11 @@ package edu.princeton.cs.algs4;
 import java.io.File;
 
 /**
- *  The <tt>FileIndex</tt> class provides a client for indexing a set of files,
+ *  The {@code FileIndex} class provides a client for indexing a set of files,
  *  specified as command-line arguments. It takes queries from standard input
  *  and prints each file that contains the given query.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick
@@ -81,7 +81,7 @@ public class FileIndex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

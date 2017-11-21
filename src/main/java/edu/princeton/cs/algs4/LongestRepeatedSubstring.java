@@ -2,8 +2,9 @@
  *  Compilation:  javac LongestRepeatedSubstring.java
  *  Execution:    java LongestRepeatedSubstring < file.txt
  *  Dependencies: StdIn.java SuffixArray.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/tinyTale.txt
- *                http://algs4.cs.princeton.edu/63suffix/mobydick.txt
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/tinyTale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *  
  *  Reads a text string from stdin, replaces all consecutive blocks of
  *  whitespace with a single space, and then computes the longest
@@ -28,13 +29,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LongestRepeatedSubstring</tt> class provides a {@link SuffixArray}
+ *  The {@code LongestRepeatedSubstring} class provides a {@link SuffixArray}
  *  client for computing the longest repeated substring of a string that
  *  appears at least twice. The repeated substrings may overlap (but must
  *  be distinct).
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link LongestCommonSubstring}.
@@ -59,14 +60,14 @@ public class LongestRepeatedSubstring {
      * Returns the longest repeated substring of the specified string.
      *
      * @param  text the string
-     * @return the longest repeated substring that appears in <tt>text</tt>;
+     * @return the longest repeated substring that appears in {@code text};
      *         the empty string if no such string
      */
     public static String lrs(String text) {
-        int N = text.length();
+        int n = text.length();
         SuffixArray sa = new SuffixArray(text);
         String lrs = "";
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < n; i++) {
             int length = sa.lcp(i);
             if (length > lrs.length()) {
                 // lrs = sa.select(i).substring(0, length);
@@ -77,7 +78,9 @@ public class LongestRepeatedSubstring {
     }
 
     /**
-     * Unit tests the <tt>lrs()</tt> method.
+     * Unit tests the {@code lrs()} method.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String text = StdIn.readAll().replaceAll("\\s+", " ");
@@ -86,7 +89,7 @@ public class LongestRepeatedSubstring {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

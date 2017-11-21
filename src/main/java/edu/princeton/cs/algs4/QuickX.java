@@ -1,7 +1,9 @@
 /******************************************************************************
  *  Compilation:  javac QuickX.java
- *  Execution:    java QuickX N
+ *  Execution:    java QuickX < input.txt
  *  Dependencies: StdOut.java StdIn.java
+ *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
+ *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *  
  *  Uses the Bentley-McIlroy 3-way partitioning scheme,
  *  chooses the partitioning element using Tukey's ninther,
@@ -16,18 +18,23 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>QuickX</tt> class provides static methods for sorting an
+ *  The {@code QuickX} class provides static methods for sorting an
  *  array using an optimized version of quicksort (using Bentley-McIlroy
  *  3-way partitioning, Tukey's ninther, and cutoff to insertion sort).
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class QuickX {
-    private static final int CUTOFF = 8;  // cutoff to insertion sort, must be >= 1
+
+    // cutoff to insertion sort, must be >= 1
+    private static final int INSERTION_SORT_CUTOFF = 8;
+
+    // cutoff to median-of-3 partitioning
+    private static final int MEDIAN_OF_3_CUTOFF = 40;
 
     // This class should not be instantiated.
     private QuickX() { }
@@ -41,24 +48,24 @@ public class QuickX {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) { 
-        int N = hi - lo + 1;
+        int n = hi - lo + 1;
 
         // cutoff to insertion sort
-        if (N <= CUTOFF) {
+        if (n <= INSERTION_SORT_CUTOFF) {
             insertionSort(a, lo, hi);
             return;
         }
 
         // use median-of-3 as partitioning element
-        else if (N <= 40) {
-            int m = median3(a, lo, lo + N/2, hi);
+        else if (n <= MEDIAN_OF_3_CUTOFF) {
+            int m = median3(a, lo, lo + n/2, hi);
             exch(a, m, lo);
         }
 
         // use Tukey ninther as partitioning element
         else  {
-            int eps = N/8;
-            int mid = lo + N/2;
+            int eps = n/8;
+            int mid = lo + n/2;
             int m1 = median3(a, lo, lo + eps, lo + eps + eps);
             int m2 = median3(a, mid - eps, mid, mid + eps);
             int m3 = median3(a, hi - eps - eps, hi - eps, hi); 
@@ -155,17 +162,20 @@ public class QuickX {
      * Reads in a sequence of strings from standard input; quicksorts them
      * (using an optimized version of quicksort); 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
         QuickX.sort(a);
+        assert isSorted(a);
         show(a);
     }
 
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

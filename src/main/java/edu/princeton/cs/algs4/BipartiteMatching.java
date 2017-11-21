@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BipartiteMatching</tt> class represents a data type for computing a
+ *  The {@code BipartiteMatching} class represents a data type for computing a
  *  <em>maximum (cardinality) matching</em> and a
  *  <em>minimum (cardinality) vertex cover</em> in a bipartite graph.
  *  A <em>bipartite graph</em> in a graph whose vertices can be partitioned
@@ -42,11 +42,11 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> sqrt(<em>V</em>))
  *  using the Hopcroft-Karp algorithm and
- *  <a href = "http://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>, which solves the problem in
- *  O(<em>E V</em>) time via a reduction to maxflow.
+ *  <a href = "https://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
+ *  which solves the problem in O(<em>E V</em>) time via a reduction to maxflow.
  *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -69,7 +69,7 @@ public class BipartiteMatching {
      * in a bipartite graph.
      *
      * @param  G the bipartite graph
-     * @throws IllegalArgumentException if <tt>G</tt> is not bipartite
+     * @throws IllegalArgumentException if {@code G} is not bipartite
      */
     public BipartiteMatching(Graph G) {
         bipartition = new BipartiteX(G);
@@ -116,16 +116,20 @@ public class BipartiteMatching {
     }
 
 
-    // is there an augmenting path?
-    // an alternating path is a path whose edges belong alternately to the matching and not to the matching
-    // an augmenting path is an alternating path that starts and ends at unmatched vertices
-    //
-    // if so, upon termination edgeTo[] contains a parent-link representation of such a path
-    // if not, upon terminatation marked[] specifies the subset of vertices reachable via an alternating
-    // path from one side of the bipartition
-    //
-    // this implementation finds a shortest augmenting path (fewest number of edges), though there
-    // is no particular advantage to do so here
+    /*
+     * is there an augmenting path?
+     *   - if so, upon termination adj[] contains the level graph;
+     *   - if not, upon termination marked[] specifies those vertices reachable via an alternating
+     *     path from one side of the bipartition
+     *
+     * an alternating path is a path whose edges belong alternately to the matching and not
+     * to the matching
+     *
+     * an augmenting path is an alternating path that starts and ends at unmatched vertices
+     *
+     * this implementation finds a shortest augmenting path (fewest number of edges), though there
+     * is no particular advantage to do so here
+     */
     private boolean hasAugmentingPath(Graph G) {
         marked = new boolean[V];
 
@@ -148,13 +152,11 @@ public class BipartiteMatching {
             for (int w : G.adj(v)) {
 
                 // either (1) forward edge not in matching or (2) backward edge in matching
-                if (isResidualGraphEdge(v, w)) {
-                    if (!marked[w]) {
-                        edgeTo[w] = v;
-                        marked[w] = true;
-                        if (!isMatched(w)) return true;
-                        queue.enqueue(w);
-                    }
+                if (isResidualGraphEdge(v, w) && !marked[w]) {
+                    edgeTo[w] = v;
+                    marked[w] = true;
+                    if (!isMatched(w)) return true;
+                    queue.enqueue(w);
                 }
             }
         }
@@ -174,9 +176,9 @@ public class BipartiteMatching {
      * the maximum matching computed by the algorithm.
      *
      * @param  v the vertex
-     * @return the vertex to which vertex <tt>v</tt> is matched in the
-     *         maximum matching; <tt>-1</tt> if the vertex is not matched
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return the vertex to which vertex {@code v} is matched in the
+     *         maximum matching; {@code -1} if the vertex is not matched
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      *
      */
     public int mate(int v) {
@@ -189,9 +191,9 @@ public class BipartiteMatching {
      * computed by the algorithm.
      *
      * @param  v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is matched in maximum matching;
-     *         <tt>false</tt> otherwise
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return {@code true} if vertex {@code v} is matched in maximum matching;
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      *
      */
     public boolean isMatched(int v) {
@@ -213,8 +215,8 @@ public class BipartiteMatching {
      * That is, the number of edges in a maximum matching is equal to one half
      * of the number of vertices in the graph (so that every vertex is matched).
      *
-     * @return <tt>true</tt> if the graph contains a perfect matching;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the graph contains a perfect matching;
+     *         {@code false} otherwise
      */
     public boolean isPerfect() {
         return cardinality * 2 == V;
@@ -225,9 +227,9 @@ public class BipartiteMatching {
      * computed by the algorithm.
      *
      * @param  v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is in the minimum vertex cover;
-     *         <tt>false</tt> otherwise
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt>
+     * @return {@code true} if vertex {@code v} is in the minimum vertex cover;
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean inMinVertexCover(int v) {
         validate(v);
@@ -236,7 +238,7 @@ public class BipartiteMatching {
 
     private void validate(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**************************************************************************
@@ -298,11 +300,13 @@ public class BipartiteMatching {
     }
 
     /**
-     * Unit tests the <tt>HopcroftKarp</tt> data type.
-     * Takes three command-line arguments <tt>V1</tt>, <tt>V2</tt>, and <tt>E</tt>;
-     * creates a random bipartite graph with <tt>V1</tt> + <tt>V2</tt> vertices
-     * and <tt>E</tt> edges; computes a maximum matching and minimum vertex cover;
+     * Unit tests the {@code HopcroftKarp} data type.
+     * Takes three command-line arguments {@code V1}, {@code V2}, and {@code E};
+     * creates a random bipartite graph with {@code V1} + {@code V2} vertices
+     * and {@code E} edges; computes a maximum matching and minimum vertex cover;
      * and prints the results.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);
@@ -341,7 +345,7 @@ public class BipartiteMatching {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

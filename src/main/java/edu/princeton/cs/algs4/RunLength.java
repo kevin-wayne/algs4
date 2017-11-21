@@ -3,6 +3,9 @@
  *  Execution:    java RunLength - < input.txt   (compress)
  *  Execution:    java RunLength + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/4runs.bin
+ *                https://algs4.cs.princeton.edu/55compression/q32x48.bin
+ *                https://algs4.cs.princeton.edu/55compression/q64x96.bin
  *
  *  Compress or expand binary input from standard input using
  *  run-length encoding.
@@ -22,12 +25,12 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>RunLength</tt> class provides static methods for compressing
+ *  The {@code RunLength} class provides static methods for compressing
  *  and expanding a binary input using run-length coding with 8-bit
  *  run lengths.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -86,8 +89,10 @@ public class RunLength {
 
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
@@ -98,7 +103,7 @@ public class RunLength {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

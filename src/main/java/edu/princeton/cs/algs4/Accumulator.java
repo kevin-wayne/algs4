@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Accumulator</tt> class is a data type for computing the running
+ *  The {@code Accumulator} class is a data type for computing the running
  *  mean, sample standard deviation, and sample variance of a stream of real
  *  numbers. It provides an example of a mutable data type and a streaming
  *  algorithm.
@@ -27,7 +27,7 @@ package edu.princeton.cs.algs4;
  *  The amount of memory is constant - the data values are not stored.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -68,6 +68,7 @@ public class Accumulator {
      * @return the sample variance of the data values
      */
     public double var() {
+        if (n <= 1) return Double.NaN;
         return sum / (n - 1);
     }
 
@@ -88,11 +89,13 @@ public class Accumulator {
     }
 
     /**
-     * Unit tests the <tt>Accumulator</tt> data type.
+     * Unit tests the {@code Accumulator} data type.
      * Reads in a stream of real number from standard input;
      * adds them to the accumulator; and prints the mean,
      * sample standard deviation, and sample variance to standard
      * output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Accumulator stats = new Accumulator();
@@ -101,7 +104,7 @@ public class Accumulator {
             stats.addDataValue(x);
         }
 
-        StdOut.printf("N      = %d\n",   stats.count());
+        StdOut.printf("n      = %d\n",   stats.count());
         StdOut.printf("mean   = %.5f\n", stats.mean());
         StdOut.printf("stddev = %.5f\n", stats.stddev());
         StdOut.printf("var    = %.5f\n", stats.var());
@@ -109,7 +112,7 @@ public class Accumulator {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

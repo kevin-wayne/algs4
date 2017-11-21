@@ -2,6 +2,7 @@
  *  Compilation:  javac FordFulkerson.java
  *  Execution:    java FordFulkerson V E
  *  Dependencies: FlowNetwork.java FlowEdge.java Queue.java
+ *  Data files:   https://algs4.cs.princeton.edu/65maxflow/tinyFN.txt
  *
  *  Ford-Fulkerson algorithm for computing a max flow and 
  *  a min cut using shortest augmenting path rule.
@@ -11,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>FordFulkerson</tt> class represents a data type for computing a
+ *  The {@code FordFulkerson} class represents a data type for computing a
  *  <em>maximum st-flow</em> and <em>minimum st-cut</em> in a flow
  *  network.
  *  <p>
@@ -22,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  proportional to <em>V</em>, where <em>V</em> is the number of vertices
  *  and <em>E</em> is the number of edges. In practice, the algorithm will
  *  run much faster.
- *  Afterwards, the <tt>inCut()</tt> and <tt>value()</tt> methods take
+ *  Afterwards, the {@code inCut()} and {@code value()} methods take
  *  constant time.
  *  <p>
  *  If the capacities and initial flow values are all integers, then this
@@ -31,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  roundoff error can accumulate.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -40,25 +41,27 @@ package edu.princeton.cs.algs4;
 public class FordFulkerson {
     private static final double FLOATING_POINT_EPSILON = 1E-11;
 
+    private final int V;          // number of vertices
     private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
     private FlowEdge[] edgeTo;    // edgeTo[v] = last edge on shortest residual s->v path
     private double value;         // current value of max flow
   
     /**
-     * Compute a maximum flow and minimum cut in the network <tt>G</tt>
-     * from vertex <tt>s</tt> to vertex <tt>t</tt>.
+     * Compute a maximum flow and minimum cut in the network {@code G}
+     * from vertex {@code s} to vertex {@code t}.
      *
      * @param  G the flow network
      * @param  s the source vertex
      * @param  t the sink vertex
-     * @throws IndexOutOfBoundsException unless 0 <= s < V
-     * @throws IndexOutOfBoundsException unless 0 <= t < V
-     * @throws IllegalArgumentException if s = t
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
+     * @throws IllegalArgumentException if {@code s == t}
      * @throws IllegalArgumentException if initial flow is infeasible
      */
     public FordFulkerson(FlowNetwork G, int s, int t) {
-        validate(s, G.V());
-        validate(t, G.V());
+        V = G.V();
+        validate(s);
+        validate(t);
         if (s == t)               throw new IllegalArgumentException("Source equals sink");
         if (!isFeasible(G, s, t)) throw new IllegalArgumentException("Initial flow is infeasible");
 
@@ -94,21 +97,22 @@ public class FordFulkerson {
     }
 
     /**
-     * Returns true if the specified vertex is on the <tt>s</tt> side of the mincut.
+     * Returns true if the specified vertex is on the {@code s} side of the mincut.
      *
-     * @return <tt>true</tt> if vertex <tt>v</tt> is on the <tt>s</tt> side of the micut;
-     *         <tt>false</tt> otherwise
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @param  v vertex
+     * @return {@code true} if vertex {@code v} is on the {@code s} side of the micut;
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean inCut(int v)  {
-        validate(v, marked.length);
+        validate(v);
         return marked[v];
     }
 
-    // throw an exception if v is outside prescibed range
-    private void validate(int v, int V)  {
+    // throw an IllegalArgumentException if v is outside prescibed range
+    private void validate(int v)  {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
 
@@ -231,7 +235,9 @@ public class FordFulkerson {
 
 
     /**
-     * Unit tests the <tt>FordFulkerson</tt> data type.
+     * Unit tests the {@code FordFulkerson} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -265,7 +271,7 @@ public class FordFulkerson {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

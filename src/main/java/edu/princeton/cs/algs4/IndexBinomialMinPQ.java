@@ -48,10 +48,10 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexBinomialMinPQ(int N) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");
@@ -61,11 +61,11 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	}
 	
     /**
-     * Initializes an empty indexed priority queue with indices between 0 and N-1
+     * Initializes an empty indexed priority queue with indices between {@code 0} to {@code N-1}
      * Worst case is O(n)
-     * @param N number of keys in the priority queue, index from 0 to N-1
+     * @param N number of keys in the priority queue, index from {@code 0} to {@code N-1}
      * @param comparator a Comparator over the keys
-     * @throws java.lang.IllegalArgumentException if N < 0
+     * @throws java.lang.IllegalArgumentException if {@code N < 0}
      */
 	public IndexBinomialMinPQ(int N, Comparator<Key> comparator) {
 		if (N < 0) throw new IllegalArgumentException("Cannot create a priority queue of negative size");
@@ -87,11 +87,11 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Does the priority queue contains the index i ?
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @return true if i is on the priority queue, false if not
 	 */
 	public boolean contains(int i) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		else return nodes[i] != null;
 	}
 
@@ -115,11 +115,11 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log(n))
 	 * @param i an index
 	 * @param key a Key associated with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index is already in the queue
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the index is already in the queue
 	 */
 	public void insert(int i, Key key) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		if (contains(i)) throw new IllegalArgumentException("Specified index is already in the queue");
 		Node<Key> x = new Node<Key>();
 		x.key = key;
@@ -200,13 +200,13 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Gets the key associated with index i
 	 * Worst case is O(1)
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index is not in the queue
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the index is not in the queue
 	 * @return the key associated with index i
 	 */
 	
 	public Key keyOf(int i) {
-		if (i < 0 || i >= n) throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) throw new IllegalArgumentException();
 		if (!contains(i)) throw new IllegalArgumentException("Specified index is not in the queue");
 		return nodes[i].key;
 	}
@@ -216,12 +216,12 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
-	 * @throws java.util.IllegalArgumentException if the index has no key associated with
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the index has no key associated with
 	 */
 	
 	public void changeKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new IllegalArgumentException("Specified index is not in the queue");
 		if (greater(nodes[i].key, key))  decreaseKey(i, key);
 		else 							 increaseKey(i, key);
@@ -232,13 +232,13 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is greater than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is greater than the current key
 	 */
 	
 	public void decreaseKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		if (greater(key, nodes[i].key))  throw new IllegalArgumentException("Calling with this argument would not decrease the key");
 		Node<Key> x = nodes[i];
@@ -251,13 +251,13 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Worst case is O(log(n))
 	 * @param i an index
 	 * @param key the key to associate with i
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the index has no key associated with
-	 * @throws java.util.IllegalArgumentException if the given key is lower than the current key
+	 * @throws java.lang.IllegalArgumentException if the given key is lower than the current key
 	 */
 	
 	public void increaseKey(int i, Key key) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		if (greater(nodes[i].key, key))  throw new IllegalArgumentException("Calling with this argument would not increase the key");
 		delete(i);
@@ -268,12 +268,12 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	 * Deletes the key associated the given index
 	 * Worst case is O(log(n))
 	 * @param i an index
-	 * @throws java.lang.IndexOutOfBoundsException if the specified index is invalid
+	 * @throws java.lang.IllegalArgumentException if the specified index is invalid
 	 * @throws java.util.NoSuchElementException if the given index has no key associated with
 	 */
 	
 	public void delete(int i) {
-		if (i < 0 || i >= n) 		throw new IndexOutOfBoundsException();
+		if (i < 0 || i >= n) 		throw new IllegalArgumentException();
 		if (!contains(i))			throw new NoSuchElementException("Specified index is not in the queue");
 		toTheRoot(i);
 		Node<Key> x = erase(i);
@@ -357,7 +357,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	private Node<Key> erase(int i) {
 		Node<Key> reference = nodes[i];
 		Node<Key> x = head;
-		Node<Key> previous = new Node<Key>();
+		Node<Key> previous = null;
 		while (x != reference) {
 			previous = x;
 			x = x.sibling;
@@ -371,7 +371,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	//Deletes and return the node containing the minimum key
 	private Node<Key> eraseMin() {
 		Node<Key> min = head;
-		Node<Key> previous = new Node<Key>();
+		Node<Key> previous = null;
 		Node<Key> current = head;
 		while (current.sibling != null) {
 			if (greater(min.key, current.sibling.key)) {
@@ -393,8 +393,8 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 	//Merges two root lists into one, there can be up to 2 Binomial Trees of same order
 	private Node<Key> merge(Node<Key> h, Node<Key> x, Node<Key> y) {
 		if (x == null && y == null) return h;
-		else if (x == null) 		h.sibling = merge(y, x, y.sibling);
-		else if (y == null) 		h.sibling = merge(x, x.sibling, y);
+		else if (x == null) 		h.sibling = merge(y, null, y.sibling);
+		else if (y == null) 		h.sibling = merge(x, x.sibling, null);
 		else if (x.order < y.order) h.sibling = merge(x, x.sibling, y);
 		else 						h.sibling = merge(y, x, y.sibling);
 		return h;
@@ -458,18 +458,18 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 		//It takes linear time
 		public MyIterator() {
 			data = new IndexBinomialMinPQ<Key>(n, comparator);
-			data.head = clone(head, false, false, null);
+			data.head = clone(head, null);
 		}
 		
-		private Node<Key> clone(Node<Key> x, boolean isParent, boolean isChild, Node<Key> parent) {
+		private Node<Key> clone(Node<Key> x, Node<Key> parent) {
 			if (x == null) return null;
 			Node<Key> node = new Node<Key>();
 			node.index = x.index;
 			node.key = x.key;
 			data.nodes[node.index] = node;
 			node.parent = parent;
-			node.sibling = clone(x.sibling, false, false, parent);
-			node.child = clone(x.child, false, true, node);
+			node.sibling = clone(x.sibling, parent);
+			node.child = clone(x.child, node);
 			return node;
 		}
 		
@@ -478,6 +478,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 		}
 		
 		public Integer next() {
+                        if (!hasNext()) throw new NoSuchElementException();
 			return data.delMin();
 		}
 		
@@ -501,7 +502,7 @@ public class IndexBinomialMinPQ<Key> implements Iterable<Integer> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

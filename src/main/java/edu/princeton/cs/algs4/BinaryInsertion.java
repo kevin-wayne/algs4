@@ -2,8 +2,8 @@
  *  Compilation:  javac BinaryInsertion.java
  *  Execution:    java BinaryInsertion < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
- *                http://algs4.cs.princeton.edu/21sort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using 
  *  binary insertion sort with half exchanges.
@@ -24,21 +24,19 @@
 
 package edu.princeton.cs.algs4;
 
-import java.util.Comparator;
-
 /**
- *  The <tt>BinaryInsertion</tt> class provides a static method for sorting an
+ *  The {@code BinaryInsertion} class provides a static method for sorting an
  *  array using an optimized binary insertion sort with half exchanges.
  *  <p>
- *  This implementation makes ~ N lg N compares for any array of length N.
+ *  This implementation makes ~ n lg n compares for any array of length n.
  *  However, in the worst case, the running time is quadratic because the
- *  number of array accesses can be proportional to N^2 (e.g, if the array
+ *  number of array accesses can be proportional to n^2 (e.g, if the array
  *  is reverse sorted). As such, it is not suitable for sorting large
  *  arrays (unless the number of inversions is small).
  *  <p>
  *  The sorting algorithm is stable and uses O(1) extra memory.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Ivan Pesin
@@ -55,8 +53,8 @@ public class BinaryInsertion {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = 1; i < N; i++) {
+        int n = a.length;
+        for (int i = 1; i < n; i++) {
 
             // binary search to determine index j at which to insert a[i]
             Comparable v = a[i];
@@ -79,26 +77,12 @@ public class BinaryInsertion {
 
 
    /***************************************************************************
-    *  Helper sorting functions.
+    *  Helper sorting function.
     ***************************************************************************/
     
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
-    }
-
-    // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    // exchange a[i] and a[j]  (for indirect sort)
-    private static void exch(int[] a, int i, int j) {
-        int swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
     }
 
    /***************************************************************************
@@ -125,6 +109,8 @@ public class BinaryInsertion {
     /**
      * Reads in a sequence of strings from standard input; insertion sorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -134,7 +120,7 @@ public class BinaryInsertion {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

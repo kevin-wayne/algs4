@@ -2,7 +2,9 @@
  *  Compilation:  javac NonrecursiveDFS.java
  *  Execution:    java NonrecursiveDFS graph.txt s
  *  Dependencies: Graph.java Queue.java Stack.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyCG.txt
+ *                https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
  *
  *  Run nonrecurisve depth-first search on an undirected graph.
  *  Runs in O(E + V) time.
@@ -33,7 +35,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>NonrecursiveDFS</tt> class represents a data type for finding
+ *  The {@code NonrecursiveDFS} class represents a data type for finding
  *  the vertices connected to a source vertex <em>s</em> in the undirected
  *  graph.
  *  <p>
@@ -43,7 +45,7 @@ import java.util.Iterator;
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -52,12 +54,15 @@ import java.util.Iterator;
 public class NonrecursiveDFS {
     private boolean[] marked;  // marked[v] = is there an s-v path?
     /**
-     * Computes the vertices connected to the source vertex <tt>s</tt> in the graph <tt>G</tt>.
+     * Computes the vertices connected to the source vertex {@code s} in the graph {@code G}.
      * @param G the graph
      * @param s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public NonrecursiveDFS(Graph G, int s) {
         marked = new boolean[G.V()];
+
+        validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
@@ -90,17 +95,28 @@ public class NonrecursiveDFS {
     }
 
     /**
-     * Is vertex <tt>v</tt> connected to the source vertex <tt>s</tt>?
+     * Is vertex {@code v} connected to the source vertex {@code s}?
      * @param v the vertex
-     * @return <tt>true</tt> if vertex <tt>v</tt> is connected to the source vertex <tt>s</tt>,
-     *    and <tt>false</tt> otherwise
+     * @return {@code true} if vertex {@code v} is connected to the source vertex {@code s},
+     *    and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean marked(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>NonrecursiveDFS</tt> data type.
+     * Unit tests the {@code NonrecursiveDFS} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -117,7 +133,7 @@ public class NonrecursiveDFS {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

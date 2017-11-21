@@ -2,6 +2,8 @@
  *  Compilation:  javac Count.java
  *  Execution:    java Count alpha < input.txt
  *  Dependencies: Alphabet.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/50strings/abra.txt
+ *                https://algs4.cs.princeton.edu/50strings/pi.txt
  *
  *  Create an alphabet specified on the command line, read in a 
  *  sequence of characters over that alphabet (ignoring characters
@@ -33,12 +35,12 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Count</tt> class provides an {@link Alphabet} client for reading
+ *  The {@code Count} class provides an {@link Alphabet} client for reading
  *  in a piece of text and computing the frequency of occurrence of each
  *  character over a given alphabet.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -54,10 +56,12 @@ public class Count {
      * occurrence of each character over the alphabet specified as a
      * commmand-line argument; and prints the frequencies to standard
      * output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Alphabet alphabet = new Alphabet(args[0]);
-        int R = alphabet.R();
+        final int R = alphabet.radix();
         int[] count = new int[R];
         while (StdIn.hasNextChar()) {
             char c = StdIn.readChar();
@@ -71,7 +75,7 @@ public class Count {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

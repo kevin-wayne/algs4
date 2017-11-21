@@ -2,11 +2,11 @@
  *  Compilation:  javac SymbolGraph.java
  *  Execution:    java SymbolGraph filename.txt delimiter
  *  Dependencies: ST.java Graph.java In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/routes.txt
- *                http://algs4.cs.princeton.edu/41graph/movies.txt
- *                http://algs4.cs.princeton.edu/41graph/moviestiny.txt
- *                http://algs4.cs.princeton.edu/41graph/moviesG.txt
- *                http://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
+ *                https://algs4.cs.princeton.edu/41graph/movies.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviestiny.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviesG.txt
+ *                https://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
  *  
  *  %  java SymbolGraph routes.txt " "
  *  JFK
@@ -44,7 +44,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SymbolGraph</tt> class represents an undirected graph, where the
+ *  The {@code SymbolGraph} class represents an undirected graph, where the
  *  vertex names are arbitrary strings.
  *  By providing mappings between string vertex names and integers,
  *  it serves as a wrapper around the
@@ -55,11 +55,11 @@ package edu.princeton.cs.algs4;
  *  This implementation uses an {@link ST} to map from strings to integers,
  *  an array to map from integers to strings, and a {@link Graph} to store
  *  the underlying graph.
- *  The <em>index</em> and <em>contains</em> operations take time 
+ *  The <em>indexOf</em> and <em>contains</em> operations take time 
  *  proportional to log <em>V</em>, where <em>V</em> is the number of vertices.
- *  The <em>name</em> operation takes constant time.
+ *  The <em>nameOf</em> operation takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
 public class SymbolGraph {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Graph G;
+    private Graph graph;             // the underlying graph
 
     /**  
      * Initializes a graph from a file using the specified delimiter.
@@ -102,42 +102,69 @@ public class SymbolGraph {
 
         // second pass builds the graph by connecting first vertex on each
         // line to all others
-        G = new Graph(st.size());
+        graph = new Graph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++) {
                 int w = st.get(a[i]);
-                G.addEdge(v, w);
+                graph.addEdge(v, w);
             }
         }
     }
 
     /**
-     * Does the graph contain the vertex named <tt>s</tt>?
+     * Does the graph contain the vertex named {@code s}?
      * @param s the name of a vertex
-     * @return <tt>true</tt> if <tt>s</tt> is the name of a vertex, and <tt>false</tt> otherwise
+     * @return {@code true} if {@code s} is the name of a vertex, and {@code false} otherwise
      */
     public boolean contains(String s) {
         return st.contains(s);
     }
 
     /**
-     * Returns the integer associated with the vertex named <tt>s</tt>.
+     * Returns the integer associated with the vertex named {@code s}.
      * @param s the name of a vertex
-     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named <tt>s</tt>
+     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named {@code s}
+     * @deprecated Replaced by {@link #indexOf(String)}.
      */
+    @Deprecated
     public int index(String s) {
         return st.get(s);
     }
 
+
     /**
-     * Returns the name of the vertex associated with the integer <tt>v</tt>.
-     * @param v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
-     * @return the name of the vertex associated with the integer <tt>v</tt>
+     * Returns the integer associated with the vertex named {@code s}.
+     * @param s the name of a vertex
+     * @return the integer (between 0 and <em>V</em> - 1) associated with the vertex named {@code s}
      */
+    public int indexOf(String s) {
+        return st.get(s);
+    }
+
+    /**
+     * Returns the name of the vertex associated with the integer {@code v}.
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @return the name of the vertex associated with the integer {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @deprecated Replaced by {@link #nameOf(int)}.
+     */
+    @Deprecated
     public String name(int v) {
+        validateVertex(v);
+        return keys[v];
+    }
+
+    /**
+     * Returns the name of the vertex associated with the integer {@code v}.
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @return the name of the vertex associated with the integer {@code v}
+     */
+    public String nameOf(int v) {
+        validateVertex(v);
         return keys[v];
     }
 
@@ -145,25 +172,45 @@ public class SymbolGraph {
      * Returns the graph assoicated with the symbol graph. It is the client's responsibility
      * not to mutate the graph.
      * @return the graph associated with the symbol graph
+     * @deprecated Replaced by {@link #graph()}.
      */
+    @Deprecated
     public Graph G() {
-        return G;
+        return graph;
+    }
+
+    /**
+     * Returns the graph assoicated with the symbol graph. It is the client's responsibility
+     * not to mutate the graph.
+     * @return the graph associated with the symbol graph
+     */
+    public Graph graph() {
+        return graph;
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+         int V = graph.V();
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
 
     /**
-     * Unit tests the <tt>SymbolGraph</tt> data type.
+     * Unit tests the {@code SymbolGraph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String filename  = args[0];
         String delimiter = args[1];
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
-        Graph G = sg.G();
+        Graph graph = sg.graph();
         while (StdIn.hasNextLine()) {
             String source = StdIn.readLine();
             if (sg.contains(source)) {
                 int s = sg.index(source);
-                for (int v : G.adj(s)) {
+                for (int v : graph.adj(s)) {
                     StdOut.println("   " + sg.name(v));
                 }
             }
@@ -175,7 +222,7 @@ public class SymbolGraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

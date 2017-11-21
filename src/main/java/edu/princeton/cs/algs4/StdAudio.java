@@ -15,14 +15,18 @@
 
 package edu.princeton.cs.algs4;
 
-import java.applet.AudioClip;
+import javax.sound.sampled.Clip;
+
+// for playing midi sound files on some older systems
 import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.MalformedURLException;
 
 import java.io.File;
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.IOException;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.sound.sampled.AudioFileFormat;
@@ -41,8 +45,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  The audio format uses a sampling rate of 44,100 (CD quality audio), 16-bit, monaural.
  *
  *  <p>
- *  For additional documentation, see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
+ *  For additional documentation, see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  <i>Computer Science: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -90,7 +94,6 @@ public final class StdAudio {
         }
         catch (LineUnavailableException e) {
             System.out.println(e.getMessage());
-            System.exit(1);
         }
 
         // no sound gets made before this call
@@ -111,7 +114,7 @@ public final class StdAudio {
      * If the sample is outside the range, it will be clipped.
      *
      * @param  sample the sample to play
-     * @throws IllegalArgumentException if the sample is <tt>Double.NaN</tt>
+     * @throws IllegalArgumentException if the sample is {@code Double.NaN}
      */
     public static void play(double sample) {
 
@@ -137,10 +140,11 @@ public final class StdAudio {
      * If a sample is outside the range, it will be clipped.
      *
      * @param  samples the array of samples to play
-     * @throws IllegalArgumentException if any sample is <tt>Double.NaN</tt>
+     * @throws IllegalArgumentException if any sample is {@code Double.NaN}
+     * @throws IllegalArgumentException if {@code samples} is {@code null}
      */
     public static void play(double[] samples) {
-        if (samples == null) throw new NullPointerException("argument to play() is null");
+        if (samples == null) throw new IllegalArgumentException("argument to play() is null");
         for (int i = 0; i < samples.length; i++) {
             play(samples[i]);
         }
@@ -155,54 +159,13 @@ public final class StdAudio {
      */
     public static double[] read(String filename) {
         byte[] data = readByte(filename);
-        int N = data.length;
-        double[] d = new double[N/2];
-        for (int i = 0; i < N/2; i++) {
+        int n = data.length;
+        double[] d = new double[n/2];
+        for (int i = 0; i < n/2; i++) {
             d[i] = ((short) (((data[2*i+1] & 0xFF) << 8) + (data[2*i] & 0xFF))) / ((double) MAX_16_BIT);
         }
         return d;
     }
-
-    /**
-     * Plays an audio file (in .wav, .mid, or .au format) in a background thread.
-     *
-     * @param filename the name of the audio file
-     */
-    public static void play(String filename) {
-        URL url = null;
-        try {
-            File file = new File(filename);
-            if (file.canRead()) url = file.toURI().toURL();
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        // URL url = StdAudio.class.getResource(filename);
-        if (url == null) throw new RuntimeException("audio " + filename + " not found");
-        AudioClip clip = Applet.newAudioClip(url);
-        clip.play();
-    }
-
-    /**
-     * Plays an audio file (in .wav, .mid, or .au format) in a loop in a background thread.
-     *
-     * @param  filename the name of the audio file
-     */
-    public static void loop(String filename) {
-        URL url = null;
-        try {
-            File file = new File(filename);
-            if (file.canRead()) url = file.toURI().toURL();
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        // URL url = StdAudio.class.getResource(filename);
-        if (url == null) throw new RuntimeException("audio " + filename + " not found");
-        AudioClip clip = Applet.newAudioClip(url);
-        clip.loop();
-    }
-
 
     // return data as a byte array
     private static byte[] readByte(String filename) {
@@ -214,40 +177,47 @@ public final class StdAudio {
             File file = new File(filename);
             if (file.exists()) {
                 ais = AudioSystem.getAudioInputStream(file);
-                data = new byte[ais.available()];
-                ais.read(data);
+                int bytesToRead = ais.available();
+                data = new byte[bytesToRead];
+                int bytesRead = ais.read(data);
+                if (bytesToRead != bytesRead)
+                    throw new IllegalStateException("read only " + bytesRead + " of " + bytesToRead + " bytes"); 
             }
 
             // try to read from URL
             else {
                 URL url = StdAudio.class.getResource(filename);
                 ais = AudioSystem.getAudioInputStream(url);
-                data = new byte[ais.available()];
-                ais.read(data);
+                int bytesToRead = ais.available();
+                data = new byte[bytesToRead];
+                int bytesRead = ais.read(data);
+                if (bytesToRead != bytesRead)
+                    throw new IllegalStateException("read only " + bytesRead + " of " + bytesToRead + " bytes"); 
             }
         }
         catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException("Could not read " + filename);
+            throw new IllegalArgumentException("could not read '" + filename + "'", e);
         }
 
         catch (UnsupportedAudioFileException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(filename + " in unsupported audio format");
+            throw new IllegalArgumentException("unsupported audio format: '" + filename + "'", e);
         }
 
         return data;
     }
-
-
 
     /**
      * Saves the double array as an audio file (using .wav or .au format).
      *
      * @param  filename the name of the audio file
      * @param  samples the array of samples
+     * @throws IllegalArgumentException if unable to save {@code filename}
+     * @throws IllegalArgumentException if {@code samples} is {@code null}
      */
     public static void save(String filename, double[] samples) {
+        if (samples == null) {
+            throw new IllegalArgumentException("samples[] is null");
+        }
 
         // assumes 44,100 samples per second
         // use 16-bit audio, mono, signed PCM, little Endian
@@ -270,34 +240,169 @@ public final class StdAudio {
                 AudioSystem.write(ais, AudioFileFormat.Type.AU, new File(filename));
             }
             else {
-                throw new RuntimeException("File format not supported: " + filename);
+                throw new IllegalArgumentException("unsupported audio format: '" + filename + "'");
             }
         }
-        catch (IOException e) {
-            System.out.println(e);
-            System.exit(1);
+        catch (IOException ioe) {
+            throw new IllegalArgumentException("unable to save file '" + filename + "'", ioe);
         }
     }
 
 
 
+    /**
+     * Plays an audio file (in .wav, .mid, or .au format) in a background thread.
+     *
+     * @param filename the name of the audio file
+     * @throws IllegalArgumentException if unable to play {@code filename}
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     */
+    public static synchronized void play(final String filename) {
+        if (filename == null) throw new IllegalArgumentException();
+
+        InputStream is = StdAudio.class.getResourceAsStream(filename);
+        if (is == null) {
+            throw new IllegalArgumentException("could not read '" + filename + "'");
+        }
+
+        // code adapted from: http://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
+        try {
+            // check if file format is supported
+            // (if not, will throw an UnsupportedAudioFileException)
+            AudioSystem.getAudioInputStream(is);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    stream(filename);
+                }
+           }).start();
+        }
+
+        // let's try Applet.newAudioClip() instead
+        catch (UnsupportedAudioFileException e) {
+            playApplet(filename);
+            return;
+        }
+
+        // something else went wrong
+        catch (IOException ioe) {
+            throw new IllegalArgumentException("could not play '" + filename + "'", ioe);
+        }
+
+    }
+
+
+    // play sound file using Applet.newAudioClip();
+    private static void playApplet(String filename) {
+        URL url = null;
+        try {
+            File file = new File(filename);
+            if(file.canRead()) url = file.toURI().toURL();
+        }
+        catch (MalformedURLException e) {
+            throw new IllegalArgumentException("could not play '" + filename + "'", e);
+        }
+
+        // URL url = StdAudio.class.getResource(filename);
+        if (url == null) {
+            throw new IllegalArgumentException("could not play '" + filename + "'");
+        }
+
+        AudioClip clip = Applet.newAudioClip(url);
+        clip.play();
+    }
+
+    // https://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
+    // play a wav or aif file
+    // javax.sound.sampled.Clip fails for long clips (on some systems)
+    private static void stream(String filename) {
+        SourceDataLine line = null;
+        int BUFFER_SIZE = 4096; // 4K buffer
+
+        try {
+            InputStream is = StdAudio.class.getResourceAsStream(filename);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(is);
+            AudioFormat audioFormat = ais.getFormat();
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
+            line = (SourceDataLine) AudioSystem.getLine(info);
+            line.open(audioFormat);
+            line.start();
+            byte[] samples = new byte[BUFFER_SIZE];
+            int count = 0;
+            while ((count = ais.read(samples, 0, BUFFER_SIZE)) != -1) {
+                line.write(samples, 0, count);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+        catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (line != null) {
+                line.drain();
+                line.close();
+            }
+        }
+    }
+
+    /**
+     * Loops an audio file (in .wav, .mid, or .au format) in a background thread.
+     *
+     * @param filename the name of the audio file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     */
+    public static synchronized void loop(String filename) {
+        if (filename == null) throw new IllegalArgumentException();
+
+        // code adapted from: http://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
+        try {
+            Clip clip = AudioSystem.getClip();
+            InputStream is = StdAudio.class.getResourceAsStream(filename);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(is);
+            clip.open(ais);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        }
+        catch (UnsupportedAudioFileException e) {
+            throw new IllegalArgumentException("unsupported audio format: '" + filename + "'", e);
+        }
+        catch (LineUnavailableException e) {
+            throw new IllegalArgumentException("could not play '" + filename + "'", e);
+        }
+        catch (IOException e) {
+            throw new IllegalArgumentException("could not play '" + filename + "'", e);
+        }
+    }
+
 
    /***************************************************************************
-    * Unit tests <tt>StdAudio</tt>.
+    * Unit tests {@code StdAudio}.
     ***************************************************************************/
 
     // create a note (sine wave) of the given frequency (Hz), for the given
     // duration (seconds) scaled to the given volume (amplitude)
     private static double[] note(double hz, double duration, double amplitude) {
-        int N = (int) (StdAudio.SAMPLE_RATE * duration);
-        double[] a = new double[N+1];
-        for (int i = 0; i <= N; i++)
+        int n = (int) (StdAudio.SAMPLE_RATE * duration);
+        double[] a = new double[n+1];
+        for (int i = 0; i <= n; i++)
             a[i] = amplitude * Math.sin(2 * Math.PI * i * hz / StdAudio.SAMPLE_RATE);
         return a;
     }
 
     /**
      * Test client - play an A major scale to standard audio.
+     *
+     * @param args the command-line arguments
+     */
+    /**
+     * Test client - play an A major scale to standard audio.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         
@@ -318,14 +423,11 @@ public final class StdAudio {
         // need to call this in non-interactive stuff so the program doesn't terminate
         // until all the sound leaves the speaker.
         StdAudio.close(); 
-
-        // need to terminate a Java program with sound
-        System.exit(0);
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

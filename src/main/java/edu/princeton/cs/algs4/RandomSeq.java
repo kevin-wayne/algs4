@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac RandomSeq.java
- *  Execution:    java RandomSeq N lo hi
+ *  Execution:    java RandomSeq n lo hi
  *  Dependencies: StdOut.java
  *
  *  Prints N numbers between lo and hi.
@@ -17,10 +17,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>RandomSeq</tt> class is a client that prints out a pseudorandom
+ *  The {@code RandomSeq} class is a client that prints out a pseudorandom
  *  sequence of real numbers in a given range.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -33,18 +33,20 @@ public class RandomSeq {
 
 
     /**
-     * Reads in two command-line arguments lo and hi and prints N uniformly
+     * Reads in two command-line arguments lo and hi and prints n uniformly
      * random real numbers in [lo, hi) to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
         // command-line arguments
-        int N = Integer.parseInt(args[0]);
+        int n = Integer.parseInt(args[0]);
 
         // for backward compatibility with Intro to Programming in Java version of RandomSeq
         if (args.length == 1) {
-            // generate and print N numbers between 0.0 and 1.0
-            for (int i = 0; i < N; i++) {
+            // generate and print n numbers between 0.0 and 1.0
+            for (int i = 0; i < n; i++) {
                 double x = StdRandom.uniform();
                 StdOut.println(x);
             }
@@ -54,8 +56,8 @@ public class RandomSeq {
             double lo = Double.parseDouble(args[1]);
             double hi = Double.parseDouble(args[2]);
 
-            // generate and print N numbers between lo and hi
-            for (int i = 0; i < N; i++) {
+            // generate and print n numbers between lo and hi
+            for (int i = 0; i < n; i++) {
                 double x = StdRandom.uniform(lo, hi);
                 StdOut.printf("%.2f\n", x);
             }
@@ -68,7 +70,7 @@ public class RandomSeq {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -28,7 +28,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>NFA</tt> class provides a data type for creating a
+ *  The {@code NFA} class provides a data type for creating a
  *  <em>nondeterministic finite state automaton</em> (NFA) from a regular
  *  expression and testing whether a given string is matched by that regular
  *  expression.
@@ -42,13 +42,13 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation builds the NFA using a digraph and a stack
  *  and simulates the NFA using digraph search (see the textbook for details).
- *  The constructor takes time proportional to <em>M</em>, where <em>M</em>
+ *  The constructor takes time proportional to <em>m</em>, where <em>m</em>
  *  is the number of characters in the regular expression.
- *  The <em>recognizes</em> method takes time proportional to <em>M N</em>,
- *  where <em>N</em> is the number of characters in the text.
+ *  The <em>recognizes</em> method takes time proportional to <em>m n</em>,
+ *  where <em>n</em> is the number of characters in the text.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/54regexp">Section 5.4</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/54regexp">Section 5.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -56,9 +56,9 @@ package edu.princeton.cs.algs4;
  */
 public class NFA { 
 
-    private Digraph G;         // digraph of epsilon transitions
+    private Digraph graph;     // digraph of epsilon transitions
     private String regexp;     // regular expression
-    private int M;             // number of characters in regular expression
+    private final int m;       // number of characters in regular expression
 
     /**
      * Initializes the NFA from the specified regular expression.
@@ -67,10 +67,10 @@ public class NFA {
      */
     public NFA(String regexp) {
         this.regexp = regexp;
-        M = regexp.length();
+        m = regexp.length();
         Stack<Integer> ops = new Stack<Integer>(); 
-        G = new Digraph(M+1); 
-        for (int i = 0; i < M; i++) { 
+        graph = new Digraph(m+1); 
+        for (int i = 0; i < m; i++) { 
             int lp = i; 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|') 
                 ops.push(i); 
@@ -80,8 +80,8 @@ public class NFA {
                 // 2-way or operator
                 if (regexp.charAt(or) == '|') { 
                     lp = ops.pop();
-                    G.addEdge(lp, or+1);
-                    G.addEdge(or, i);
+                    graph.addEdge(lp, or+1);
+                    graph.addEdge(or, i);
                 }
                 else if (regexp.charAt(or) == '(')
                     lp = or;
@@ -89,12 +89,12 @@ public class NFA {
             } 
 
             // closure operator (uses 1-character lookahead)
-            if (i < M-1 && regexp.charAt(i+1) == '*') { 
-                G.addEdge(lp, i+1); 
-                G.addEdge(i+1, lp); 
+            if (i < m-1 && regexp.charAt(i+1) == '*') { 
+                graph.addEdge(lp, i+1); 
+                graph.addEdge(i+1, lp); 
             } 
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')') 
-                G.addEdge(i, i+1);
+                graph.addEdge(i, i+1);
         }
         if (ops.size() != 0)
             throw new IllegalArgumentException("Invalid regular expression");
@@ -104,13 +104,13 @@ public class NFA {
      * Returns true if the text is matched by the regular expression.
      * 
      * @param  txt the text
-     * @return <tt>true</tt> if the text is matched by the regular expression,
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the text is matched by the regular expression,
+     *         {@code false} otherwise
      */
     public boolean recognizes(String txt) {
-        DirectedDFS dfs = new DirectedDFS(G, 0);
+        DirectedDFS dfs = new DirectedDFS(graph, 0);
         Bag<Integer> pc = new Bag<Integer>();
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < graph.V(); v++)
             if (dfs.marked(v)) pc.add(v);
 
         // Compute possible NFA states for txt[i+1]
@@ -120,13 +120,13 @@ public class NFA {
 
             Bag<Integer> match = new Bag<Integer>();
             for (int v : pc) {
-                if (v == M) continue;
+                if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
                     match.add(v+1); 
             }
-            dfs = new DirectedDFS(G, match); 
+            dfs = new DirectedDFS(graph, match); 
             pc = new Bag<Integer>();
-            for (int v = 0; v < G.V(); v++)
+            for (int v = 0; v < graph.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
 
             // optimization if no states reachable
@@ -135,12 +135,14 @@ public class NFA {
 
         // check for accept state
         for (int v : pc)
-            if (v == M) return true;
+            if (v == m) return true;
         return false;
     }
 
     /**
-     * Unit tests the <tt>NFA</tt> data type.
+     * Unit tests the {@code NFA} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String regexp = "(" + args[0] + ")";
@@ -152,7 +154,7 @@ public class NFA {
 } 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

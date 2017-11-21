@@ -27,14 +27,14 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Vector</tt> class represents a <em>d</em>-dimensional Euclidean vector.
+ *  The {@code Vector} class represents a <em>d</em>-dimensional Euclidean vector.
  *  Vectors are immutable: their values cannot be changed after they are created.
  *  It includes methods for addition, subtraction,
  *  dot product, scalar product, unit vector, Euclidean norm, and the Euclidean
  *  distance between two vectors.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -78,6 +78,7 @@ public class Vector {
      * @return the dimension of this vector
      * @deprecated Replaced by {@link #dimension()}.
      */
+    @Deprecated
     public int length() {
         return d;
     }
@@ -132,7 +133,7 @@ public class Vector {
      * Returns the sum of this vector and the specified vector.
      *
      * @param  that the vector to add to this vector
-     * @return the vector whose value is <tt>(this + that)</tt>
+     * @return the vector whose value is {@code (this + that)}
      * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public Vector plus(Vector that) {
@@ -147,7 +148,7 @@ public class Vector {
      * Returns the difference between this vector and the specified vector.
      *
      * @param  that the vector to subtract from this vector
-     * @return the vector whose value is <tt>(this - that)</tt>
+     * @return the vector whose value is {@code (this - that)}
      * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
     public Vector minus(Vector that) {
@@ -172,9 +173,10 @@ public class Vector {
      * Returns the scalar-vector product of this vector and the specified scalar
      *
      * @param  alpha the scalar
-     * @return the vector whose value is <tt>(alpha * this)</tt>
+     * @return the vector whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
+    @Deprecated
     public Vector times(double alpha) {
         Vector c = new Vector(d);
         for (int i = 0; i < d; i++)
@@ -186,7 +188,7 @@ public class Vector {
      * Returns the scalar-vector product of this vector and the specified scalar
      *
      * @param  alpha the scalar
-     * @return the vector whose value is <tt>(alpha * this)</tt>
+     * @return the vector whose value is {@code (alpha * this)}
      */
     public Vector scale(double alpha) {
         Vector c = new Vector(d);
@@ -221,7 +223,9 @@ public class Vector {
     }
 
     /**
-     * Unit tests the <tt>Vector</tt> data type.
+     * Unit tests the {@code Vector} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         double[] xdata = { 1.0, 2.0, 3.0, 4.0 };
@@ -247,7 +251,7 @@ public class Vector {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

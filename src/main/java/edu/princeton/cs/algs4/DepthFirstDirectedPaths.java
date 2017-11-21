@@ -1,13 +1,16 @@
 /******************************************************************************
  *  Compilation:  javac DepthFirstDirectedPaths.java
- *  Execution:    java DepthFirstDirectedPaths G s
+ *  Execution:    java DepthFirstDirectedPaths digraph.txt s
  *  Dependencies: Digraph.java Stack.java
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
  *  Determine reachability in a digraph from a given vertex using
- *  depth first search.
+ *  depth-first search.
  *  Runs in O(E + V) time.
  *
- *  % tinyDG.txt 3
+ *  % java DepthFirstDirectedPaths tinyDG.txt 3
  *  3 to 0:  3-5-4-2-0
  *  3 to 1:  3-5-4-2-0-1
  *  3 to 2:  3-5-4-2
@@ -27,17 +30,20 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstDirectedPaths</tt> class represents a data type for finding
+ *  The {@code DepthFirstDirectedPaths} class represents a data type for finding
  *  directed paths from a source vertex <em>s</em> to every
  *  other vertex in the digraph.
  *  <p>
  *  This implementation uses depth-first search.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ *  Each call to {@link #hasPathTo(int)} takes constant time;
+ *  each call to {@link #pathTo(int)} takes time proportional to the length
+ *  of the path returned.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,  
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of  
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of  
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -49,14 +55,16 @@ public class DepthFirstDirectedPaths {
     private final int s;       // source vertex
 
     /**
-     * Computes a directed path from <tt>s</tt> to every other vertex in digraph <tt>G</tt>.
-     * @param G the digraph
-     * @param s the source vertex
+     * Computes a directed path from {@code s} to every other vertex in digraph {@code G}.
+     * @param  G the digraph
+     * @param  s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DepthFirstDirectedPaths(Digraph G, int s) {
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
         this.s = s;
+        validateVertex(s);
         dfs(G, s);
     }
 
@@ -71,24 +79,28 @@ public class DepthFirstDirectedPaths {
     }
 
     /**
-     * Is there a directed path from the source vertex <tt>s</tt> to vertex <tt>v</tt>?
-     * @param v the vertex
-     * @return <tt>true</tt> if there is a directed path from the source
-     *   vertex <tt>s</tt> to vertex <tt>v</tt>, <tt>false</tt> otherwise
+     * Is there a directed path from the source vertex {@code s} to vertex {@code v}?
+     * @param  v the vertex
+     * @return {@code true} if there is a directed path from the source
+     *         vertex {@code s} to vertex {@code v}, {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
     
     /**
-     * Returns a directed path from the source vertex <tt>s</tt> to vertex <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
-     * @param v the vertex
+     * Returns a directed path from the source vertex {@code s} to vertex {@code v}, or
+     * {@code null} if no such path.
+     * @param  v the vertex
      * @return the sequence of vertices on a directed path from the source vertex
-     *   <tt>s</tt> to vertex <tt>v</tt>, as an Iterable
+     *         {@code s} to vertex {@code v}, as an Iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<Integer>();
         for (int x = v; x != s; x = edgeTo[x])
@@ -97,8 +109,17 @@ public class DepthFirstDirectedPaths {
         return path;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>DepthFirstDirectedPaths</tt> data type.
+     * Unit tests the {@code DepthFirstDirectedPaths} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -128,7 +149,7 @@ public class DepthFirstDirectedPaths {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

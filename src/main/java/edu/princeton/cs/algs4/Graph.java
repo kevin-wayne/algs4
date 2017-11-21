@@ -1,8 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac Graph.java        
  *  Execution:    java Graph input.txt
- *  Dependencies: Bag.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *  Dependencies: Bag.java Stack.java In.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  A graph, implemented using an array of sets.
  *  Parallel edges and self-loops allowed.
@@ -34,14 +36,18 @@
 
 package edu.princeton.cs.algs4;
 
+import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Graph</tt> class represents an undirected graph of vertices
- *  named 0 through <em>V</em> - 1.
+ *  The {@code Graph} class represents an undirected graph of vertices
+ *  named 0 through <em>V</em> – 1.
  *  It supports the following two primary operations: add an edge to the graph,
  *  iterate over all of the vertices adjacent to a vertex. It also provides
  *  methods for returning the number of vertices <em>V</em> and the number
  *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
+ *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
+ *  adjacency list of <em>v</em> twice and contributes two to the degree
+ *  of <em>v</em>.
  *  <p>
  *  This implementation uses an adjacency-lists representation, which 
  *  is a vertex-indexed array of {@link Bag} objects.
@@ -49,7 +55,7 @@ package edu.princeton.cs.algs4;
  *  iterating over the vertices adjacent to a given vertex, which takes
  *  time proportional to the number of such vertices.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -63,11 +69,11 @@ public class Graph {
     private Bag<Integer>[] adj;
     
     /**
-     * Initializes an empty graph with <tt>V</tt> vertices and 0 edges.
+     * Initializes an empty graph with {@code V} vertices and 0 edges.
      * param V the number of vertices
      *
      * @param  V number of vertices
-     * @throws IllegalArgumentException if <tt>V</tt> < 0
+     * @throws IllegalArgumentException if {@code V < 0}
      */
     public Graph(int V) {
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
@@ -80,28 +86,42 @@ public class Graph {
     }
 
     /**  
-     * Initializes a graph from an input stream.
+     * Initializes a graph from the specified input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
      *
      * @param  in the input stream
-     * @throws IndexOutOfBoundsException if the endpoints of any edge are not in prescribed range
+     * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
+     * @throws IllegalArgumentException if the input stream is in the wrong format
      */
     public Graph(In in) {
-        this(in.readInt());
-        int E = in.readInt();
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-        for (int i = 0; i < E; i++) {
-            int v = in.readInt();
-            int w = in.readInt();
-            addEdge(v, w);
+        try {
+            this.V = in.readInt();
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
+            adj = (Bag<Integer>[]) new Bag[V];
+            for (int v = 0; v < V; v++) {
+                adj[v] = new Bag<Integer>();
+            }
+            int E = in.readInt();
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
+            for (int i = 0; i < E; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
+                addEdge(v, w); 
+            }
+        }
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
     }
 
+
     /**
-     * Initializes a new graph that is a deep copy of <tt>G</tt>.
+     * Initializes a new graph that is a deep copy of {@code G}.
      *
      * @param  G the graph to copy
      */
@@ -138,10 +158,10 @@ public class Graph {
         return E;
     }
 
-    // throw an IndexOutOfBoundsException unless 0 <= v < V
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
         if (v < 0 || v >= V)
-            throw new IndexOutOfBoundsException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
     /**
@@ -149,7 +169,7 @@ public class Graph {
      *
      * @param  v one vertex in the edge
      * @param  w the other vertex in the edge
-     * @throws IndexOutOfBoundsException unless both 0 <= v < V and 0 <= w < V
+     * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
     public void addEdge(int v, int w) {
         validateVertex(v);
@@ -161,11 +181,11 @@ public class Graph {
 
 
     /**
-     * Returns the vertices adjacent to vertex <tt>v</tt>.
+     * Returns the vertices adjacent to vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the vertices adjacent to vertex <tt>v</tt>, as an iterable
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @return the vertices adjacent to vertex {@code v}, as an iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
@@ -173,11 +193,11 @@ public class Graph {
     }
 
     /**
-     * Returns the degree of vertex <tt>v</tt>.
+     * Returns the degree of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the degree of vertex <tt>v</tt>
-     * @throws IndexOutOfBoundsException unless 0 <= v < V
+     * @return the degree of vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int degree(int v) {
         validateVertex(v);
@@ -206,7 +226,9 @@ public class Graph {
 
 
     /**
-     * Unit tests the <tt>Graph</tt> data type.
+     * Unit tests the {@code Graph} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -217,7 +239,7 @@ public class Graph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -12,7 +12,7 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>StaticSETofInts</tt> class represents a set of integers.
+ *  The {@code StaticSETofInts} class represents a set of integers.
  *  It supports searching for a given integer is in the set. It accomplishes
  *  this by keeping the set of integers in a sorted array and using
  *  binary search to find the given integer.
@@ -20,7 +20,7 @@ import java.util.Arrays;
  *  The <em>rank</em> and <em>contains</em> operations take
  *  logarithmic time in the worst case.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -81,7 +81,7 @@ public class StaticSETofInts {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

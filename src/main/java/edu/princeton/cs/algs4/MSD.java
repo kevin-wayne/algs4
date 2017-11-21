@@ -2,6 +2,8 @@
  *  Compilation: javac MSD.java
  *  Execution:   java MSD < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
+ *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using MSD radix sort.
  *
@@ -26,11 +28,11 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>MSD</tt> class provides static methods for sorting an
+ *  The {@code MSD} class provides static methods for sorting an
  *  array of extended ASCII strings or integers using MSD radix sort.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -51,9 +53,9 @@ public class MSD {
      * @param a the array to be sorted
      */
     public static void sort(String[] a) {
-        int N = a.length;
-        String[] aux = new String[N];
-        sort(a, 0, N-1, 0, aux);
+        int n = a.length;
+        String[] aux = new String[n];
+        sort(a, 0, n-1, 0, aux);
     }
 
     // return dth character of s, -1 if d = length of string
@@ -132,9 +134,9 @@ public class MSD {
      * @param a the array to be sorted
      */
     public static void sort(int[] a) {
-        int N = a.length;
-        int[] aux = new int[N];
-        sort(a, 0, N-1, 0, aux);
+        int n = a.length;
+        int[] aux = new int[n];
+        sort(a, 0, n-1, 0, aux);
     }
 
     // MSD sort from a[lo] to a[hi], starting at the dth byte
@@ -191,7 +193,7 @@ public class MSD {
                 sort(a, lo + count[r], lo + count[r+1] - 1, d+1, aux);
     }
 
-    // insertion sort a[lo..hi], starting at dth character
+    // TODO: insertion sort a[lo..hi], starting at dth character
     private static void insertion(int[] a, int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && a[j] < a[j-1]; j--)
@@ -210,18 +212,20 @@ public class MSD {
      * Reads in a sequence of extended ASCII strings from standard input;
      * MSD radix sorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        int N = a.length;
+        int n = a.length;
         sort(a);
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             StdOut.println(a[i]);
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,8 +2,8 @@
  *  Compilation:  javac Heap.java
  *  Execution:    java Heap < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/24pq/tiny.txt
- *                http://algs4.cs.princeton.edu/24pq/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/24pq/tiny.txt
+ *                https://algs4.cs.princeton.edu/24pq/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using heapsort.
  *
@@ -24,10 +24,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Heap</tt> class provides a static methods for heapsorting
+ *  The {@code Heap} class provides a static methods for heapsorting
  *  an array.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -43,12 +43,12 @@ public class Heap {
      * @param pq the array to be sorted
      */
     public static void sort(Comparable[] pq) {
-        int N = pq.length;
-        for (int k = N/2; k >= 1; k--)
-            sink(pq, k, N);
-        while (N > 1) {
-            exch(pq, 1, N--);
-            sink(pq, 1, N);
+        int n = pq.length;
+        for (int k = n/2; k >= 1; k--)
+            sink(pq, k, n);
+        while (n > 1) {
+            exch(pq, 1, n--);
+            sink(pq, 1, n);
         }
     }
 
@@ -56,10 +56,10 @@ public class Heap {
     * Helper functions to restore the heap invariant.
     ***************************************************************************/
 
-    private static void sink(Comparable[] pq, int k, int N) {
-        while (2*k <= N) {
+    private static void sink(Comparable[] pq, int k, int n) {
+        while (2*k <= n) {
             int j = 2*k;
-            if (j < N && less(pq, j, j+1)) j++;
+            if (j < n && less(pq, j, j+1)) j++;
             if (!less(pq, k, j)) break;
             exch(pq, k, j);
             k = j;
@@ -80,22 +80,6 @@ public class Heap {
         pq[j-1] = swap;
     }
 
-    // is v < w ?
-    private static boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
-    }
-        
-
-   /***************************************************************************
-    *  Check if array is sorted - useful for debugging.
-    ***************************************************************************/
-    private static boolean isSorted(Comparable[] a) {
-        for (int i = 1; i < a.length; i++)
-            if (less(a[i], a[i-1])) return false;
-        return true;
-    }
-
-
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
@@ -106,6 +90,8 @@ public class Heap {
     /**
      * Reads in a sequence of strings from standard input; heapsorts them; 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -115,7 +101,7 @@ public class Heap {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

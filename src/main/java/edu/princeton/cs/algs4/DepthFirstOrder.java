@@ -1,10 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac DepthFirstOrder.java
- *  Execution:    java DepthFirstOrder filename.txt
+ *  Execution:    java DepthFirstOrder digraph.txt
  *  Dependencies: Digraph.java Queue.java Stack.java StdOut.java
  *                EdgeWeightedDigraph.java DirectedEdge.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
- *                http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDAG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
  *
  *  Compute preorder and postorder for a digraph or edge-weighted digraph.
  *  Runs in O(E + V) time.
@@ -34,7 +34,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DepthFirstOrder</tt> class represents a data type for 
+ *  The {@code DepthFirstOrder} class represents a data type for 
  *  determining depth-first search ordering of the vertices in a digraph
  *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
  *  <p>
@@ -45,9 +45,8 @@ package edu.princeton.cs.algs4;
  *  Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
  *  operation takes take time proportional to <em>V</em>.
  *  <p>
- *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -63,7 +62,7 @@ public class DepthFirstOrder {
     private int postCounter;           // counter for postorder numbering
 
     /**
-     * Determines a depth-first order for the digraph <tt>G</tt>.
+     * Determines a depth-first order for the digraph {@code G}.
      * @param G the digraph
      */
     public DepthFirstOrder(Digraph G) {
@@ -74,10 +73,12 @@ public class DepthFirstOrder {
         marked    = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
             if (!marked[v]) dfs(G, v);
+
+        assert check();
     }
 
     /**
-     * Determines a depth-first order for the edge-weighted digraph <tt>G</tt>.
+     * Determines a depth-first order for the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      */
     public DepthFirstOrder(EdgeWeightedDigraph G) {
@@ -120,20 +121,24 @@ public class DepthFirstOrder {
     }
 
     /**
-     * Returns the preorder number of vertex <tt>v</tt>.
-     * @param v the vertex
-     * @return the preorder number of vertex <tt>v</tt>
+     * Returns the preorder number of vertex {@code v}.
+     * @param  v the vertex
+     * @return the preorder number of vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int pre(int v) {
+        validateVertex(v);
         return pre[v];
     }
 
     /**
-     * Returns the postorder number of vertex <tt>v</tt>.
-     * @param v the vertex
-     * @return the postorder number of vertex <tt>v</tt>
+     * Returns the postorder number of vertex {@code v}.
+     * @param  v the vertex
+     * @return the postorder number of vertex {@code v}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int post(int v) {
+        validateVertex(v);
         return post[v];
     }
 
@@ -166,7 +171,7 @@ public class DepthFirstOrder {
 
 
     // check that pre() and post() are consistent with pre(v) and post(v)
-    private boolean check(Digraph G) {
+    private boolean check() {
 
         // check that post(v) is consistent with post()
         int r = 0;
@@ -188,12 +193,20 @@ public class DepthFirstOrder {
             r++;
         }
 
-
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>DepthFirstOrder</tt> data type.
+     * Unit tests the {@code DepthFirstOrder} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -230,7 +243,7 @@ public class DepthFirstOrder {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -56,12 +56,12 @@ import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import java.util.LinkedList;
 import java.util.TreeSet;
 import java.util.NoSuchElementException;
-
 import javax.imageio.ImageIO;
 
 import javax.swing.ImageIcon;
@@ -82,10 +82,10 @@ import javax.swing.KeyStroke;
  *  user interaction via the keyboard and mouse.
  *  <p>
  *  <b>Getting started.</b>
- *  To use standard drawing, you must have <tt>StdDraw.class</tt> in your
+ *  To use standard drawing, you must have {@code StdDraw.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
  *  Otherwise, download
- *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
+ *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
  *  and put a copy in your working directory.
  *  <p>
  *  Now, type the following short program into your editor:
@@ -103,7 +103,7 @@ import javax.swing.KeyStroke;
  *  If you compile and execute the program, you should see a window
  *  appear with a thick magenta line and a blue point.
  *  This program illustrates the two main types of methods in standard
- *  drawing&mdash;methods that draw geometric shapes and methods that
+ *  drawing—methods that draw geometric shapes and methods that
  *  control drawing parameters.
  *  The methods {@code StdDraw.line()} and {@code StdDraw.point()}
  *  draw lines and points; the methods {@code StdDraw.setPenRadius()}
@@ -211,7 +211,9 @@ import javax.swing.KeyStroke;
  *  you can use this method with one of these predefined colors in standard drawing:
  *  {@link #BLACK}, {@link #BLUE}, {@link #CYAN}, {@link #DARK_GRAY}, {@link #GRAY},
  *  {@link #GREEN}, {@link #LIGHT_GRAY}, {@link #MAGENTA}, {@link #ORANGE},
- *  {@link #PINK}, {@link #RED}, {@link #WHITE}, and {@link #YELLOW}.
+ *  {@link #PINK}, {@link #RED}, {@link #WHITE}, {@link #YELLOW},
+ *  {@link #BOOK_BLUE}, {@link #BOOK_LIGHT_BLUE}, {@link #BOOK_RED}, and
+ *  {@link #PRINCETON_ORANGE}.
  *  For example, {@code StdDraw.setPenColor(StdDraw.MAGENTA)} sets the
  *  pen color to magenta.
  *  <p>
@@ -285,18 +287,18 @@ import javax.swing.KeyStroke;
  *  <ul>
  *  <li> {@link #picture(double x, double y, String filename)}
  *  <li> {@link #picture(double x, double y, String filename, double degrees)}
- *  <li> {@link #picture(double x, double y, String filename, double width)}
- *  <li> {@link #picture(double x, double y, String filename, double width, double degrees)}
+ *  <li> {@link #picture(double x, double y, String filename, double scaledWidth, double scaledHeight)}
+ *  <li> {@link #picture(double x, double y, String filename, double scaledWidth, double scaledHeight, double degrees)}
  *  </ul>
  *  <p>
  *  These methods draw the specified image, centered at (<em>x</em>, <em>y</em>).
  *  The supported image formats are JPEG, PNG, and GIF.
  *  The image will display at its native size, independent of the coordinate system.
  *  Optionally, you can rotate the image a specified number of degrees counterclockwise
- *  or rescale it to fit inside a width-by-height pixel bounding box.
+ *  or rescale it to fit snugly inside a width-by-height bounding box.
  *  <p>
  *  <b>Saving to a file.</b>
- *  You save your image to a file using the <em>File -> Save</em> menu option.
+ *  You save your image to a file using the <em>File → Save</em> menu option.
  *  You can also save a file programatically using the following method:
  *  <ul>
  *  <li> {@link #save(String filename)}
@@ -317,46 +319,69 @@ import javax.swing.KeyStroke;
  *  The first method clears the canvas to white; the second method
  *  allows you to specify a color of your choice. For example,
  *  {@code StdDraw.clear(StdDraw.LIGHT_GRAY)} clears the canvas to a shade
- *  of gray. Most often, these two methods are used in conjunction with animation mode.
+ *  of gray.
  *  <p>
- *  <b>Animations.</b>
- *  Animation mode is one of the trickier features of standard drawing.
- *  The following two methods control the way in which objects are drawn:
+ *  <b>Computer animations and double buffering.</b>
+ *  Double buffering is one of the most powerful features of standard drawing,
+ *  enabling computer animations.
+ *  The following methods control the way in which objects are drawn:
  *  <ul>
+ *  <li> {@link #enableDoubleBuffering()}
+ *  <li> {@link #disableDoubleBuffering()}
  *  <li> {@link #show()}
- *  <li> {@link #show(int t)}
+ *  <li> {@link #pause(int t)}
  *  </ul>
  *  <p>
- *  By default, animation mode is off, which means that as soon as you
+ *  By default, double buffering is disabled, which means that as soon as you
  *  call a drawing
- *  method&mdash;such as {@code point()} or {@code line()}&mdash;the
- *  results appear on the screen. {@code StdDraw.show()} turns off
- *  animation mode.
+ *  method—such as {@code point()} or {@code line()}—the
+ *  results appear on the screen.
  *  <p>
- *  You can call {@link #show(int t)} to turn on animation mode. This
- *  defers all drawing to the screen until you are aready to display them.
- *  Once you are ready to display them,
- *  you call {@link #show(int t)} again, which transfer the offscreen
- *  drawing to the screen and waits for the specified number of milliseconds.
- *  In conjuction with {@link #clear()}, you can create the illusion
- *  of movement by iterating the following three steps:
+ *  When double buffering is enabled by calling {@link #enableDoubleBuffering()},
+ *  all drawing takes place on the <em>offscreen canvas</em>. The offscreen canvas
+ *  is not displayed. Only when you call
+ *  {@link #show()} does your drawing get copied from the offscreen canvas to
+ *  the onscreen canvas, where it is displayed in the standard drawing window. You 
+ *  can think of double buffering as collecting all of the lines, points, shapes,
+ *  and text that you tell it to draw, and then drawing them all
+ *  <em>simultaneously</em>, upon request.
+ *  <p>
+ *  The most important use of double buffering is to produce computer
+ *  animations, creating the illusion of motion by rapidly
+ *  displaying static drawings. To produce an animation, repeat
+ *  the following four steps:
  *  <ul>
- *  <li> Clear the background canvas.
- *  <li> Draw geometric objects.
- *  <li> Show the drawing and wait for a short while.
+ *  <li> Clear the offscreen canvas.
+ *  <li> Draw objects on the offscreen canvas.
+ *  <li> Copy the offscreen canvas to the onscreen canvas.
+ *  <li> Wait for a short while.
  *  </ul>
  *  <p>
- *  Waiting for a short while is essential; otherwise, the drawing will appear
- *  and disappear so quickly that your animation will flicker.
+ *  The {@link #clear()}, {@link #show()}, and {@link #pause(int t)} methods
+ *  support the first, third, and fourth of these steps, respectively.
  *  <p>
- *  Here is a simple example of an animation:
+ *  For example, this code fragment animates two balls moving in a circle.
+ *  <pre>
+ *   StdDraw.setScale(-2, +2);
+ *   StdDraw.enableDoubleBuffering();
+ *
+ *   for (double t = 0.0; true; t += 0.02) {
+ *       double x = Math.sin(t);
+ *       double y = Math.cos(t);
+ *       StdDraw.clear();
+ *       StdDraw.filledCircle(x, y, 0.05);
+ *       StdDraw.filledCircle(-x, -y, 0.05);
+ *       StdDraw.show();
+ *       StdDraw.pause(20);
+ *   }
+ *  </pre>
  *  <p>
  *  <b>Keyboard and mouse inputs.</b>
  *  Standard drawing has very basic support for keyboard and mouse input.
  *  It is much less powerful than most user interface libraries provide, but also much simpler.
  *  You can use the following methods to intercept mouse events:
  *  <ul>
- *  <li> {@link #mousePressed()}
+ *  <li> {@link #isMousePressed()}
  *  <li> {@link #mouseX()}
  *  <li> {@link #mouseY()}
  *  </ul>
@@ -396,36 +421,36 @@ import javax.swing.KeyStroke;
  *  To avoid clutter, the API doesn't explicitly refer to arguments that are
  *  null, infinity, or NaN.
  *  <ul>
- *  <li> Any method that is passed a {@code null} argument will throw a
- *       {@link NullPointerException}.
+ *  <li> Any method that is passed a {@code null} argument will throw an
+ *       {@link IllegalArgumentException}.
  *  <li> Except as noted in the APIs, drawing an object outside (or partly outside)
- *       the canvas is permitted&mdash;however, only the part of the object that
+ *       the canvas is permitted—however, only the part of the object that
  *       appears inside the canvas will be visible.
  *  <li> Except as noted in the APIs, all methods accept {@link Double#NaN},
  *       {@link Double#POSITIVE_INFINITY}, and {@link Double#NEGATIVE_INFINITY}
  *       as arugments. An object drawn with an <em>x</em>- or <em>y</em>-coordinate
  *       that is NaN will behave as if it is outside the canvas, and will not be visible.
+ *  <li> Due to floating-point issues, an object drawn with an <em>x</em>- or
+ *       <em>y</em>-coordinate that is way outside the canvas (such as the line segment
+ *       from (0.5, –&infin;) to (0.5, &infin;) may not be visible even in the
+ *       part of the canvas where it should be.
  *  </ul>
  *  <p>
  *  <b>Performance tricks.</b>
  *  Standard drawing is capable of drawing large amounts of data.
  *  Here are a few tricks and tips:
  *  <ul>
- *  <li> Use <em>animation mode</em> for static drawing with a large
+ *  <li> Use <em>double buffering</em> for static drawing with a large
  *       number of objects.
- *       That is, call {@code StdDraw.show(0)} before
- *       and after the sequence of drawing commands.
- *       The bottleneck operation is not drawing the geometric
- *       shapes but rather drawing them to the screen. By using animation
- *       mode, you draw all of the shapes to an offscreen buffer, then copy
- *       them all at once to the screen.
- *  <li> When using <em>animation mode</em>, call {@code show()}
- *       only once per frame, not after drawing each object.
+ *       That is, call {@link #enableDoubleBuffering()} before
+ *       the sequence of drawing commands and call {@link #show()} afterwards.
+ *       Incrementally displaying a complex drawing while it is being
+ *       created can be intolerably inefficient on many computer systems.
+ *  <li> When drawing computer animations, call {@code show()}
+ *       only once per frame, not after drawing each individual object.
  *  <li> If you call {@code picture()} multiple times with the same filename,
  *       Java will cache the image, so you do not incur the cost of reading
  *       from a file each time.
- *  <li> Do not call {@code setFont()} in an animation loop (unless you really
- *       need to change the font in each iteration). It can cause flicker.
  *  </ul>
  *  <p>
  *  <b>Known bugs and issues.</b>
@@ -441,8 +466,8 @@ import javax.swing.KeyStroke;
  *  <p>
  *  <b>Reference.</b>
  *  For additional documentation,
- *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Introduction to Programming in Java: An Interdisciplinary Approach</em>
+ *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -533,6 +558,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      */
     public static final Color BOOK_RED = new Color(150, 35, 31);
 
+    /**
+     * Shade of orange used in Princeton University's identity.
+     * It is PMS 158. The RGB values are approximately (245, 128, 37).
+     */
+    public static final Color PRINCETON_ORANGE = new Color(245, 128, 37);
+
     // default colors
     private static final Color DEFAULT_PEN_COLOR   = BLACK;
     private static final Color DEFAULT_CLEAR_COLOR = WHITE;
@@ -584,7 +615,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static JFrame frame;
 
     // mouse state
-    private static boolean mousePressed = false;
+    private static boolean isMousePressed = false;
     private static double mouseX = 0;
     private static double mouseY = 0;
 
@@ -593,10 +624,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     // set of key codes currently pressed down
     private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
-
-    // time in milliseconds (from currentTimeMillis()) when we can draw again
-    // used to control the frame rate
-    private static long nextDraw = -1;  
 
     // singleton pattern: client can't instantiate
     private StdDraw() { }
@@ -627,11 +654,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *
      * @param  canvasWidth the width as a number of pixels
      * @param  canvasHeight the height as a number of pixels
-     * @throws IllegalArgumentException unless both {@code width} and
-     *         {@code height} are positive
+     * @throws IllegalArgumentException unless both {@code canvasWidth} and
+     *         {@code canvasHeight} are positive
      */
     public static void setCanvasSize(int canvasWidth, int canvasHeight) {
-        if (width <= 0 || height <= 0) throw new IllegalArgumentException("width and height must be positive");
+        if (canvasWidth <= 0 || canvasHeight <= 0)
+            throw new IllegalArgumentException("width and height must be positive");
         width = canvasWidth;
         height = canvasHeight;
         init();
@@ -855,16 +883,16 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Sets the pen color to the specified color.
      * <p>
      * The predefined pen colors are
-     * <tt>StdDraw.BLACK</tt>, <tt>StdDraw.BLUE</tt>, <tt>StdDraw.CYAN</tt>,
-     * <tt>StdDraw.DARK_GRAY</tt>, <tt>StdDraw.GRAY</tt>, <tt>StdDraw.GREEN</tt>,
-     * <tt>StdDraw.LIGHT_GRAY</tt>, <tt>StdDraw.MAGENTA</tt>, <tt>StdDraw.ORANGE</tt>,
-     * <tt>StdDraw.PINK</tt>, <tt>StdDraw.RED</tt>, <tt>StdDraw.WHITE</tt>, and
-     * <tt>StdDraw.YELLOW</tt>.
+     * {@code StdDraw.BLACK}, {@code StdDraw.BLUE}, {@code StdDraw.CYAN},
+     * {@code StdDraw.DARK_GRAY}, {@code StdDraw.GRAY}, {@code StdDraw.GREEN},
+     * {@code StdDraw.LIGHT_GRAY}, {@code StdDraw.MAGENTA}, {@code StdDraw.ORANGE},
+     * {@code StdDraw.PINK}, {@code StdDraw.RED}, {@code StdDraw.WHITE}, and
+     * {@code StdDraw.YELLOW}.
      *
      * @param color the color to make the pen
      */
     public static void setPenColor(Color color) {
-        if (color == null) throw new NullPointerException();
+        if (color == null) throw new IllegalArgumentException();
         penColor = color;
         offscreen.setColor(penColor);
     }
@@ -907,7 +935,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param font the font
      */
     public static void setFont(Font font) {
-        if (font == null) throw new NullPointerException();
+        if (font == null) throw new IllegalArgumentException();
         StdDraw.font = font;
     }
 
@@ -1161,7 +1189,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Draws a polygon with the vertices 
      * (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>),
      * (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), ...,
-     * (<em>x</em><sub><em>n</em>&minus;1</sub>, <em>y</em><sub><em>n</em>&minus;1</sub>).
+     * (<em>x</em><sub><em>n</em>–1</sub>, <em>y</em><sub><em>n</em>–1</sub>).
      *
      * @param  x an array of all the <em>x</em>-coordinates of the polygon
      * @param  y an array of all the <em>y</em>-coordinates of the polygon
@@ -1169,12 +1197,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void polygon(double[] x, double[] y) {
-        if (x == null) throw new NullPointerException();
-        if (y == null) throw new NullPointerException();
+        if (x == null) throw new IllegalArgumentException("x-coordinate array is null");
+        if (y == null) throw new IllegalArgumentException("y-coordinate array is null");
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
         int n = n1;
+        if (n == 0) return;
+
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
         for (int i = 0; i < n; i++)
@@ -1188,7 +1218,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Draws a polygon with the vertices 
      * (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>),
      * (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), ...,
-     * (<em>x</em><sub><em>n</em>&minus;1</sub>, <em>y</em><sub><em>n</em>&minus;1</sub>).
+     * (<em>x</em><sub><em>n</em>–1</sub>, <em>y</em><sub><em>n</em>–1</sub>).
      *
      * @param  x an array of all the <em>x</em>-coordinates of the polygon
      * @param  y an array of all the <em>y</em>-coordinates of the polygon
@@ -1196,12 +1226,14 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *         are of the same length
      */
     public static void filledPolygon(double[] x, double[] y) {
-        if (x == null) throw new NullPointerException();
-        if (y == null) throw new NullPointerException();
+        if (x == null) throw new IllegalArgumentException("x-coordinate array is null");
+        if (y == null) throw new IllegalArgumentException("y-coordinate array is null");
         int n1 = x.length;
         int n2 = y.length;
         if (n1 != n2) throw new IllegalArgumentException("arrays must be of the same length");
         int n = n1;
+        if (n == 0) return;
+
         GeneralPath path = new GeneralPath();
         path.moveTo((float) scaleX(x[0]), (float) scaleY(y[0]));
         for (int i = 0; i < n; i++)
@@ -1215,10 +1247,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
    /***************************************************************************
     *  Drawing images.
     ***************************************************************************/
-
     // get an image from the given filename
     private static Image getImage(String filename) {
-        if (filename == null) throw new NullPointerException();
+        if (filename == null) throw new IllegalArgumentException();
 
         // to read from file
         ImageIcon icon = new ImageIcon(filename);
@@ -1229,7 +1260,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
                 URL url = new URL(filename);
                 icon = new ImageIcon(url);
             }
-            catch (Exception e) {
+            catch (MalformedURLException e) {
                 /* not a url */
             }
         }
@@ -1251,6 +1282,49 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         return icon.getImage();
     }
 
+   /***************************************************************************
+    * [Summer 2016] Should we update to use ImageIO instead of ImageIcon()?
+    *               Seems to have some issues loading images on some systems
+    *               and slows things down on other systems.
+    *               especially if you don't call ImageIO.setUseCache(false)
+    *               One advantage is that it returns a BufferedImage.
+    ***************************************************************************/
+/*
+    private static BufferedImage getImage(String filename) {
+        if (filename == null) throw new IllegalArgumentException();
+
+        // from a file or URL
+        try {
+            URL url = new URL(filename);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
+        }
+
+        // in case file is inside a .jar (classpath relative to StdDraw)
+        try {
+            URL url = StdDraw.class.getResource(filename);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
+        }
+
+        // in case file is inside a .jar (classpath relative to root of jar)
+        try {
+            URL url = StdDraw.class.getResource("/" + filename);
+            BufferedImage image = ImageIO.read(url);
+            return image;
+        } 
+        catch (IOException e) {
+            // ignore
+        }
+        throw new IllegalArgumentException("image " + filename + " not found");
+    }
+*/
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>).
      * The supported image formats are JPEG, PNG, and GIF.
@@ -1265,9 +1339,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename) {
+        // BufferedImage image = getImage(filename);
         Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
+        // int ws = image.getWidth();    // can call only if image is a BufferedImage
+        // int hs = image.getHeight();
         int ws = image.getWidth(null);
         int hs = image.getHeight(null);
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
@@ -1288,9 +1365,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename, double degrees) {
+        // BufferedImage image = getImage(filename);
         Image image = getImage(filename);
         double xs = scaleX(x);
         double ys = scaleY(y);
+        // int ws = image.getWidth();    // can call only if image is a BufferedImage
+        // int hs = image.getHeight();
         int ws = image.getWidth(null);
         int hs = image.getHeight(null);
         if (ws < 0 || hs < 0) throw new IllegalArgumentException("image " + filename + " is corrupt");
@@ -1310,15 +1390,15 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
      * @param  filename the name of the image/picture, e.g., "ball.gif"
-     * @param  scaledWidth the width of the scaled image in pixels
-     * @param  scaledHeight the height of the scaled image in pixels
+     * @param  scaledWidth the width of the scaled image (in screen coordinates)
+     * @param  scaledHeight the height of the scaled image (in screen coordinates)
      * @throws IllegalArgumentException if either {@code scaledWidth}
      *         or {@code scaledHeight} is negative
      * @throws IllegalArgumentException if the image filename is invalid
      */
     public static void picture(double x, double y, String filename, double scaledWidth, double scaledHeight) {
         Image image = getImage(filename);
-        if (scaledWidth < 0) throw new IllegalArgumentException("width is negative: " + scaledWidth);
+        if (scaledWidth  < 0) throw new IllegalArgumentException("width  is negative: " + scaledWidth);
         if (scaledHeight < 0) throw new IllegalArgumentException("height is negative: " + scaledHeight);
         double xs = scaleX(x);
         double ys = scaleY(y);
@@ -1344,8 +1424,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
      * @param  filename the name of the image/picture, e.g., "ball.gif"
-     * @param  scaledWidth the width of the scaled image in pixels
-     * @param  scaledHeight the height of the scaled image in pixels
+     * @param  scaledWidth the width of the scaled image (in screen coordinates)
+     * @param  scaledHeight the height of the scaled image (in screen coordinates)
      * @param  degrees is the number of degrees to rotate counterclockwise
      * @throws IllegalArgumentException if either {@code scaledWidth}
      *         or {@code scaledHeight} is negative
@@ -1384,7 +1464,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text to write
      */
     public static void text(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1404,7 +1484,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  degrees is the number of degrees to rotate counterclockwise
      */
     public static void text(double x, double y, String text, double degrees) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         double xs = scaleX(x);
         double ys = scaleY(y);
         offscreen.rotate(Math.toRadians(-degrees), xs, ys);
@@ -1420,7 +1500,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text
      */
     public static void textLeft(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1438,7 +1518,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * @param  text the text to write
      */
     public static void textRight(double x, double y, String text) {
-        if (text == null) throw new NullPointerException();
+        if (text == null) throw new IllegalArgumentException();
         offscreen.setFont(font);
         FontMetrics metrics = offscreen.getFontMetrics();
         double xs = scaleX(x);
@@ -1452,56 +1532,63 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 
     /**
-     * Display on screen, pause for t milliseconds, and turn on
-     * <em>animation mode</em>: subsequent calls to
-     * drawing methods such as {@code line()}, {@code circle()}, and {@code square()}
-     * will not be displayed on screen until the next call to {@code show()}.
-     * This is useful for producing animations (clear the screen, draw a bunch of shapes,
-     * display on screen for a fixed amount of time, and repeat). It also speeds up
-     * drawing a huge number of shapes (call {@code show(0)} to defer drawing
-     * on screen, draw the shapes, and call {@code show(0)} to display them all
-     * on screen at once).
+     * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
+     * and enables double buffering.
      * @param t number of milliseconds
+     * @deprecated replaced by {@link #enableDoubleBuffering()}, {@link #show()}, and {@link #pause(int t)}
      */
+    @Deprecated
     public static void show(int t) {
-        // sleep until the next time we're allowed to draw
-        long millis = System.currentTimeMillis();
-        if (millis < nextDraw) {
-            try {
-                Thread.sleep(nextDraw - millis);
-            }
-            catch (InterruptedException e) {
-                System.out.println("Error sleeping");
-            }
-            millis = nextDraw;
-        }
-
-        defer = false;
-        draw();
-        defer = true;
-
-        // when are we allowed to draw again
-        nextDraw = millis + t;
+        show();
+        pause(t);
+        enableDoubleBuffering();
     }
 
     /**
-     * Display on-screen and turn off animation mode:
-     * subsequent calls to
-     * drawing methods such as {@code line()}, {@code circle()},
-     * and {@code square()} will be displayed on screen when called.
-     * This is the default.
+     * Pause for t milliseconds. This method is intended to support computer animations.
+     * @param t number of milliseconds
+     */
+    public static void pause(int t) {
+        try {
+            Thread.sleep(t);
+        }
+        catch (InterruptedException e) {
+            System.out.println("Error sleeping");
+        }
+    }
+
+    /**
+     * Copies offscreen buffer to onscreen buffer. There is no reason to call
+     * this method unless double buffering is enabled.
      */
     public static void show() {
-        defer = false;
-        nextDraw = -1;
-        draw();
+        onscreen.drawImage(offscreenImage, 0, 0, null);
+        frame.repaint();
     }
 
     // draw onscreen if defer is false
     private static void draw() {
-        if (defer) return;
-        onscreen.drawImage(offscreenImage, 0, 0, null);
-        frame.repaint();
+        if (!defer) show();
+    }
+
+    /**
+     * Enable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be deffered until the next call
+     * to show(). Useful for animations.
+     */
+    public static void enableDoubleBuffering() {
+        defer = true;
+    }
+
+    /**
+     * Disable double buffering. All subsequent calls to 
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be displayed on screen when called.
+     * This is the default.
+     */
+    public static void disableDoubleBuffering() {
+        defer = false;
     }
 
 
@@ -1512,17 +1599,17 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Saves the drawing to using the specified filename.
      * The supported image formats are JPEG and PNG;
-     * the filename suffix must be <tt>.jpg</tt> or <tt>.png</tt>.
+     * the filename suffix must be {@code .jpg} or {@code .png}.
      *
      * @param  filename the name of the file with one of the required suffixes
      */
     public static void save(String filename) {
-        if (filename == null) throw new NullPointerException();
+        if (filename == null) throw new IllegalArgumentException();
         File file = new File(filename);
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
 
         // png files
-        if (suffix.toLowerCase().equals("png")) {
+        if ("png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(onscreenImage, suffix, file);
             }
@@ -1533,7 +1620,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         // need to change from ARGB to RGB for JPEG
         // reference: http://archives.java.sun.com/cgi-bin/wa?A2=ind0404&L=java2d-interest&D=0&P=2727
-        else if (suffix.toLowerCase().equals("jpg")) {
+        else if ("jpg".equalsIgnoreCase(suffix)) {
             WritableRaster raster = onscreenImage.getRaster();
             WritableRaster newRaster;
             newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
@@ -1578,11 +1665,24 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Returns true if the mouse is being pressed.
      *
-     * @return <tt>true</tt> if the mouse is being pressed; <tt>false</tt> otherwise
+     * @return {@code true} if the mouse is being pressed; {@code false} otherwise
      */
+    public static boolean isMousePressed() {
+        synchronized (mouseLock) {
+            return isMousePressed;
+        }
+    }
+
+    /**
+     * Returns true if the mouse is being pressed.
+     *
+     * @return {@code true} if the mouse is being pressed; {@code false} otherwise
+     * @deprecated replaced by {@link #isMousePressed()}
+     */
+    @Deprecated
     public static boolean mousePressed() {
         synchronized (mouseLock) {
-            return mousePressed;
+            return isMousePressed;
         }
     }
 
@@ -1613,19 +1713,25 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * This method cannot be called directly.
      */
     @Override
-    public void mouseClicked(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseEntered(MouseEvent e) { }
+    public void mouseEntered(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
      */
     @Override
-    public void mouseExited(MouseEvent e) { }
+    public void mouseExited(MouseEvent e) {
+        // this body is intentionally left empty
+    }
 
     /**
      * This method cannot be called directly.
@@ -1635,7 +1741,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         synchronized (mouseLock) {
             mouseX = StdDraw.userX(e.getX());
             mouseY = StdDraw.userY(e.getY());
-            mousePressed = true;
+            isMousePressed = true;
         }
     }
 
@@ -1645,7 +1751,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     @Override
     public void mouseReleased(MouseEvent e) {
         synchronized (mouseLock) {
-            mousePressed = false;
+            isMousePressed = false;
         }
     }
 
@@ -1679,8 +1785,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Returns true if the user has typed a key (that has not yet been processed).
      *
-     * @return <tt>true</tt> if the user has typed a key (that has not yet been processed
-     *         by {@link #nextKeyTyped()}; <tt>false</tt> otherwise
+     * @return {@code true} if the user has typed a key (that has not yet been processed
+     *         by {@link #nextKeyTyped()}; {@code false} otherwise
      */
     public static boolean hasNextKeyTyped() {
         synchronized (keyLock) {
@@ -1705,7 +1811,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             if (keysTyped.isEmpty()) {
                 throw new NoSuchElementException("your program has already processed all keystrokes");
             }
-            return keysTyped.removeLast();
+            return keysTyped.remove(keysTyped.size() - 1);
+            // return keysTyped.removeLast();
         }
     }
 
@@ -1718,8 +1825,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * See {@link KeyEvent} for a description of key codes.
      *
      * @param  keycode the key to check if it is being pressed
-     * @return <tt>true</tt> if {@code keycode} is currently being pressed;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code keycode} is currently being pressed;
+     *         {@code false} otherwise
      */
     public static boolean isKeyPressed(int keycode) {
         synchronized (keyLock) {
@@ -1763,21 +1870,23 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     /**
      * Test client.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        StdDraw.square(.2, .8, .1);
-        StdDraw.filledSquare(.8, .8, .2);
-        StdDraw.circle(.8, .2, .2);
+        StdDraw.square(0.2, 0.8, 0.1);
+        StdDraw.filledSquare(0.8, 0.8, 0.2);
+        StdDraw.circle(0.8, 0.2, 0.2);
 
         StdDraw.setPenColor(StdDraw.BOOK_RED);
-        StdDraw.setPenRadius(.02);
-        StdDraw.arc(.8, .2, .1, 200, 45);
+        StdDraw.setPenRadius(0.02);
+        StdDraw.arc(0.8, 0.2, 0.1, 200, 45);
 
         // draw a blue diamond
         StdDraw.setPenRadius();
         StdDraw.setPenColor(StdDraw.BOOK_BLUE);
-        double[] x = { .1, .2, .3, .2 };
-        double[] y = { .2, .3, .2, .1 };
+        double[] x = { 0.1, 0.2, 0.3, 0.2 };
+        double[] y = { 0.2, 0.3, 0.2, 0.1 };
         StdDraw.filledPolygon(x, y);
 
         // text
@@ -1790,7 +1899,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

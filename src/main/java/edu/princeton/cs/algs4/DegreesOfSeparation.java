@@ -2,8 +2,8 @@
  *  Compilation:  javac DegreesOfSeparation.java
  *  Execution:    java DegreesOfSeparation filename delimiter source
  *  Dependencies: SymbolGraph.java Graph.java BreadthFirstPaths.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/41graph/routes.txt
- *                http://algs4.cs.princeton.edu/41graph/movies.txt
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
+ *                https://algs4.cs.princeton.edu/41graph/movies.txt
  *  
  *  
  *  %  java DegreesOfSeparation routes.txt " " "JFK"
@@ -52,7 +52,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DegreesOfSeparation</tt> class provides a client for finding
+ *  The {@code DegreesOfSeparation} class provides a client for finding
  *  the degree of separation between one distinguished individual and
  *  every other individual in a social network.
  *  As an example, if the social network consists of actors in which
@@ -68,7 +68,7 @@ package edu.princeton.cs.algs4;
  *  each movie to all of the actors that appear in that movie.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -88,6 +88,8 @@ public class DegreesOfSeparation {
      *  Each line in the file contains the name of a vertex, followed by a
      *  list of the names of the vertices adjacent to that vertex,
      *  separated by the delimiter.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String filename  = args[0];
@@ -97,22 +99,22 @@ public class DegreesOfSeparation {
         // StdOut.println("Source: " + source);
 
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
-        Graph G = sg.G();
+        Graph G = sg.graph();
         if (!sg.contains(source)) {
             StdOut.println(source + " not in database.");
             return;
         }
 
-        int s = sg.index(source);
+        int s = sg.indexOf(source);
         BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
 
         while (!StdIn.isEmpty()) {
             String sink = StdIn.readLine();
             if (sg.contains(sink)) {
-                int t = sg.index(sink);
+                int t = sg.indexOf(sink);
                 if (bfs.hasPathTo(t)) {
                     for (int v : bfs.pathTo(t)) {
-                        StdOut.println("   " + sg.name(v));
+                        StdOut.println("   " + sg.nameOf(v));
                     }
                 }
                 else {
@@ -127,7 +129,7 @@ public class DegreesOfSeparation {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

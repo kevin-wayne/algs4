@@ -12,8 +12,8 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>LinearRegression</tt> class performs a simple linear regression
- *  on an set of <em>N</em> data points (<em>y<sub>i</sub></em>, <em>x<sub>i</sub></em>).
+ *  The {@code LinearRegression} class performs a simple linear regression
+ *  on an set of <em>n</em> data points (<em>y<sub>i</sub></em>, <em>x<sub>i</sub></em>).
  *  That is, it fits a straight line <em>y</em> = &alpha; + &beta; <em>x</em>,
  *  (where <em>y</em> is the response variable, <em>x</em> is the predictor variable,
  *  &alpha; is the <em>y-intercept</em>, and &beta; is the <em>slope</em>)
@@ -26,13 +26,12 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class LinearRegression {
-    private final int N;
     private final double intercept, slope;
-    private final double R2;
-    private final double svar, svar0, svar1;
+    private final double r2;
+    private final double svar0, svar1;
 
    /**
-     * Performs a linear regression on the data points <tt>(y[i], x[i])</tt>.
+     * Performs a linear regression on the data points {@code (y[i], x[i])}.
      *
      * @param  x the values of the predictor variable
      * @param  y the corresponding values of the response variable
@@ -42,22 +41,21 @@ public class LinearRegression {
         if (x.length != y.length) {
             throw new IllegalArgumentException("array lengths are not equal");
         }
-        N = x.length;
+        int n = x.length;
 
         // first pass
         double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++) {
             sumx  += x[i];
-        for (int i = 0; i < N; i++)
             sumx2 += x[i]*x[i];
-        for (int i = 0; i < N; i++)
             sumy  += y[i];
-        double xbar = sumx / N;
-        double ybar = sumy / N;
+        }
+        double xbar = sumx / n;
+        double ybar = sumy / n;
 
         // second pass: compute summary statistics
         double xxbar = 0.0, yybar = 0.0, xybar = 0.0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             xxbar += (x[i] - xbar) * (x[i] - xbar);
             yybar += (y[i] - ybar) * (y[i] - ybar);
             xybar += (x[i] - xbar) * (y[i] - ybar);
@@ -68,17 +66,17 @@ public class LinearRegression {
         // more statistical analysis
         double rss = 0.0;      // residual sum of squares
         double ssr = 0.0;      // regression sum of squares
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             double fit = slope*x[i] + intercept;
             rss += (fit - y[i]) * (fit - y[i]);
             ssr += (fit - ybar) * (fit - ybar);
         }
 
-        int degreesOfFreedom = N-2;
-        R2    = ssr / yybar;
-        svar  = rss / degreesOfFreedom;
+        int degreesOfFreedom = n-2;
+        r2    = ssr / yybar;
+        double svar  = rss / degreesOfFreedom;
         svar1 = svar / xxbar;
-        svar0 = svar/N + xbar*xbar*svar1;
+        svar0 = svar/n + xbar*xbar*svar1;
     }
 
    /**
@@ -106,7 +104,7 @@ public class LinearRegression {
      *         which is a real number between 0 and 1
      */
     public double R2() {
-        return R2;
+        return r2;
     }
 
    /**
@@ -128,12 +126,12 @@ public class LinearRegression {
     }
 
    /**
-     * Returns the expected response <tt>y</tt> given the value of the predictor
-     * variable <tt>x</tt>.
+     * Returns the expected response {@code y} given the value of the predictor
+     * variable {@code x}.
      *
      * @param  x the value of the predictor variable
-     * @return the expected response <tt>y</tt> given the value of the predictor
-     *         variable <tt>x</tt>
+     * @return the expected response {@code y} given the value of the predictor
+     *         variable {@code x}
      */
     public double predict(double x) {
         return slope*x + intercept;
@@ -147,17 +145,16 @@ public class LinearRegression {
      *         <em>R</em><sup>2</sup>
      */
     public String toString() {
-        String s = "";
-        s += String.format("%.2f N + %.2f", slope(), intercept());
-        return s + "  (R^2 = " + String.format("%.3f", R2()) + ")";
+        StringBuilder s = new StringBuilder();
+        s.append(String.format("%.2f n + %.2f", slope(), intercept()));
+        s.append("  (R^2 = " + String.format("%.3f", R2()) + ")");
+        return s.toString();
     }
-
 
 }
 
-
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

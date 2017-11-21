@@ -32,7 +32,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>KMP</tt> class finds the first occurrence of a pattern string
+ *  The {@code KMP} class finds the first occurrence of a pattern string
  *  in a text string.
  *  <p>
  *  This implementation uses a version of the Knuth-Morris-Pratt substring search
@@ -42,7 +42,7 @@ package edu.princeton.cs.algs4;
  *  is the alphabet size.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class KMP {
@@ -62,14 +62,14 @@ public class KMP {
         this.pat = pat;
 
         // build DFA from pattern
-        int M = pat.length();
-        dfa = new int[R][M]; 
+        int m = pat.length();
+        dfa = new int[R][m]; 
         dfa[pat.charAt(0)][0] = 1; 
-        for (int X = 0, j = 1; j < M; j++) {
+        for (int x = 0, j = 1; j < m; j++) {
             for (int c = 0; c < R; c++) 
-                dfa[c][j] = dfa[c][X];     // Copy mismatch cases. 
+                dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
             dfa[pat.charAt(j)][j] = j+1;   // Set match case. 
-            X = dfa[pat.charAt(j)][X];     // Update restart state. 
+            x = dfa[pat.charAt(j)][x];     // Update restart state. 
         } 
     } 
 
@@ -86,14 +86,14 @@ public class KMP {
             this.pattern[j] = pattern[j];
 
         // build DFA from pattern
-        int M = pattern.length;
-        dfa = new int[R][M]; 
+        int m = pattern.length;
+        dfa = new int[R][m]; 
         dfa[pattern[0]][0] = 1; 
-        for (int X = 0, j = 1; j < M; j++) {
+        for (int x = 0, j = 1; j < m; j++) {
             for (int c = 0; c < R; c++) 
-                dfa[c][j] = dfa[c][X];     // Copy mismatch cases. 
+                dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
             dfa[pattern[j]][j] = j+1;      // Set match case. 
-            X = dfa[pattern[j]][X];        // Update restart state. 
+            x = dfa[pattern[j]][x];        // Update restart state. 
         } 
     } 
 
@@ -108,14 +108,14 @@ public class KMP {
     public int search(String txt) {
 
         // simulate operation of DFA on text
-        int M = pat.length();
-        int N = txt.length();
+        int m = pat.length();
+        int n = txt.length();
         int i, j;
-        for (i = 0, j = 0; i < N && j < M; i++) {
+        for (i = 0, j = 0; i < n && j < m; i++) {
             j = dfa[txt.charAt(i)][j];
         }
-        if (j == M) return i - M;    // found
-        return N;                    // not found
+        if (j == m) return i - m;    // found
+        return n;                    // not found
     }
 
     /**
@@ -129,14 +129,14 @@ public class KMP {
     public int search(char[] text) {
 
         // simulate operation of DFA on text
-        int M = pattern.length;
-        int N = text.length;
+        int m = pattern.length;
+        int n = text.length;
         int i, j;
-        for (i = 0, j = 0; i < N && j < M; i++) {
+        for (i = 0, j = 0; i < n && j < m; i++) {
             j = dfa[text[i]][j];
         }
-        if (j == M) return i - M;    // found
-        return N;                    // not found
+        if (j == m) return i - m;    // found
+        return n;                    // not found
     }
 
 
@@ -144,6 +144,8 @@ public class KMP {
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String pat = args[0];
@@ -173,7 +175,7 @@ public class KMP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

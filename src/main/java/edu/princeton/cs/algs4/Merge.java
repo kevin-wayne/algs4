@@ -2,8 +2,8 @@
  *  Compilation:  javac Merge.java
  *  Execution:    java Merge < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/22mergesort/tiny.txt
- *                http://algs4.cs.princeton.edu/22mergesort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/22mergesort/tiny.txt
+ *                https://algs4.cs.princeton.edu/22mergesort/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using mergesort.
  *   
@@ -24,10 +24,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Merge</tt> class provides static methods for sorting an
+ *  The {@code Merge} class provides static methods for sorting an
  *  array using mergesort.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For an optimized version, see {@link MergeX}.
  *
@@ -84,7 +84,7 @@ public class Merge {
 
 
    /***************************************************************************
-    *  Helper sorting functions.
+    *  Helper sorting function.
     ***************************************************************************/
     
     // is v < w ?
@@ -92,14 +92,6 @@ public class Merge {
         return v.compareTo(w) < 0;
     }
         
-    // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-
    /***************************************************************************
     *  Check if array is sorted - useful for debugging.
     ***************************************************************************/
@@ -138,17 +130,17 @@ public class Merge {
     /**
      * Returns a permutation that gives the elements in the array in ascending order.
      * @param a the array
-     * @return a permutation <tt>p[]</tt> such that <tt>a[p[0]]</tt>, <tt>a[p[1]]</tt>,
-     *    ..., <tt>a[p[N-1]]</tt> are in ascending order
+     * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
+     *    ..., {@code a[p[N-1]]} are in ascending order
      */
     public static int[] indexSort(Comparable[] a) {
-        int N = a.length;
-        int[] index = new int[N];
-        for (int i = 0; i < N; i++)
+        int n = a.length;
+        int[] index = new int[n];
+        for (int i = 0; i < n; i++)
             index[i] = i;
 
-        int[] aux = new int[N];
-        sort(a, index, aux, 0, N-1);
+        int[] aux = new int[n];
+        sort(a, index, aux, 0, n-1);
         return index;
     }
 
@@ -171,6 +163,8 @@ public class Merge {
     /**
      * Reads in a sequence of strings from standard input; mergesorts them; 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -180,7 +174,7 @@ public class Merge {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

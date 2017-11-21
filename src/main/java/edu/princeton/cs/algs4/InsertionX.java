@@ -2,8 +2,8 @@
  *  Compilation:  javac InsertionX.java
  *  Execution:    java InsertionX < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
- *                http://algs4.cs.princeton.edu/21sort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using an optimized
  *  version of insertion sort that uses half exchanges instead of 
@@ -25,11 +25,11 @@
 
 package edu.princeton.cs.algs4;
 /**
- *  The <tt>InsertionX</tt> class provides static methods for sorting
+ *  The {@code InsertionX} class provides static methods for sorting
  *  an array using an optimized version of insertion sort (with half exchanges
  *  and a sentinel).
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -46,11 +46,11 @@ public class InsertionX {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
+        int n = a.length;
 
         // put smallest element in position to serve as sentinel
         int exchanges = 0;
-        for (int i = N-1; i > 0; i--) {
+        for (int i = n-1; i > 0; i--) {
             if (less(a[i], a[i-1])) {
                 exch(a, i, i-1);
                 exchanges++;
@@ -60,7 +60,7 @@ public class InsertionX {
 
 
         // insertion sort with half-exchanges
-        for (int i = 2; i < N; i++) {
+        for (int i = 2; i < n; i++) {
             Comparable v = a[i];
             int j = i;
             while (less(v, a[j-1])) {
@@ -110,6 +110,8 @@ public class InsertionX {
     /**
      * Reads in a sequence of strings from standard input; insertion sorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -120,7 +122,7 @@ public class InsertionX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,7 +2,7 @@
  *  Compilation:  javac ResizingArrayStack.java
  *  Execution:    java ResizingArrayStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/13stacks/tobe.txt
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *  
  *  Stack implementation with a resizing array.
  *
@@ -20,7 +20,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>ResizingArrayStack</tt> class represents a last-in-first-out (LIFO) stack
+ *  The {@code ResizingArrayStack} class represents a last-in-first-out (LIFO) stack
  *  of generic items.
  *  It supports the usual <em>push</em> and <em>pop</em> operations, along with methods
  *  for peeking at the top item, testing if the stack is empty, and iterating through
@@ -33,7 +33,7 @@ import java.util.NoSuchElementException;
  *  constant time in the worst case. 
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -41,7 +41,7 @@ import java.util.NoSuchElementException;
  */
 public class ResizingArrayStack<Item> implements Iterable<Item> {
     private Item[] a;         // array of items
-    private int N;            // number of elements on stack
+    private int n;            // number of elements on stack
 
 
     /**
@@ -49,7 +49,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public ResizingArrayStack() {
         a = (Item[]) new Object[2];
-        N = 0;
+        n = 0;
     }
 
     /**
@@ -57,7 +57,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      * @return true if this stack is empty; false otherwise
      */
     public boolean isEmpty() {
-        return N == 0;
+        return n == 0;
     }
 
     /**
@@ -65,27 +65,34 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      * @return the number of items in the stack
      */
     public int size() {
-        return N;
+        return n;
     }
 
 
     // resize the underlying array holding the elements
     private void resize(int capacity) {
-        assert capacity >= N;
+        assert capacity >= n;
+
+        // textbook implementation
         Item[] temp = (Item[]) new Object[capacity];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             temp[i] = a[i];
         }
         a = temp;
+
+       // alternative implementation
+       // a = java.util.Arrays.copyOf(a, capacity);
     }
+
+
 
     /**
      * Adds the item to this stack.
      * @param item the item to add
      */
     public void push(Item item) {
-        if (N == a.length) resize(2*a.length);    // double size of array if necessary
-        a[N++] = item;                            // add item
+        if (n == a.length) resize(2*a.length);    // double size of array if necessary
+        a[n++] = item;                            // add item
     }
 
     /**
@@ -95,11 +102,11 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public Item pop() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        Item item = a[N-1];
-        a[N-1] = null;                              // to avoid loitering
-        N--;
+        Item item = a[n-1];
+        a[n-1] = null;                              // to avoid loitering
+        n--;
         // shrink size of array if necessary
-        if (N > 0 && N == a.length/4) resize(a.length/2);
+        if (n > 0 && n == a.length/4) resize(a.length/2);
         return item;
     }
 
@@ -111,7 +118,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      */
     public Item peek() {
         if (isEmpty()) throw new NoSuchElementException("Stack underflow");
-        return a[N-1];
+        return a[n-1];
     }
 
     /**
@@ -127,7 +134,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         private int i;
 
         public ReverseArrayIterator() {
-            i = N-1;
+            i = n-1;
         }
 
         public boolean hasNext() {
@@ -146,21 +153,23 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
 
     /**
-     * Unit tests the <tt>Stack</tt> data type.
+     * Unit tests the {@code Stack} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        ResizingArrayStack<String> s = new ResizingArrayStack<String>();
+        ResizingArrayStack<String> stack = new ResizingArrayStack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
-            if (!item.equals("-")) s.push(item);
-            else if (!s.isEmpty()) StdOut.print(s.pop() + " ");
+            if (!item.equals("-")) stack.push(item);
+            else if (!stack.isEmpty()) StdOut.print(stack.pop() + " ");
         }
-        StdOut.println("(" + s.size() + " left on stack)");
+        StdOut.println("(" + stack.size() + " left on stack)");
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

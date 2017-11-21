@@ -2,8 +2,10 @@
  *  Compilation:  javac ClosestPair.java
  *  Execution:    java ClosestPair < input.txt
  *  Dependencies: Point2D.java
+ *  Data files:   https://algs4.cs.princeton.edu/99hull/rs1423.txt
+ *                https://algs4.cs.princeton.edu/99hull/kw1260.txt
  *  
- *  Given N points in the plane, find the closest pair in N log N time.
+ *  Given n points in the plane, find the closest pair in n log n time.
  *
  *  Note: could speed it up by comparing square of Euclidean distances
  *  instead of Euclidean distances.
@@ -15,18 +17,18 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>ClosestPair</tt> data type computes a closest pair of points
- *  in a set of <em>N</em> points in the plane and provides accessor methods 
+ *  The {@code ClosestPair} data type computes a closest pair of points
+ *  in a set of <em>n</em> points in the plane and provides accessor methods 
  *  for getting the closest pair of points and the distance between them.
  *  The distance between two points is their Euclidean distance.
  *  <p>
  *  This implementation uses a divide-and-conquer algorithm. 
- *  It runs in O(<em>N</em> log <em>N</em>) time in the worst case and uses
- *  O(<em>N</em>) extra space.
+ *  It runs in O(<em>n</em> log <em>n</em>) time in the worst case and uses
+ *  O(<em>n</em>) extra space.
  *  <p>
  *  See also {@link FarthestPair}.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99hull">Section 9.9</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99hull">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -42,21 +44,26 @@ public class ClosestPair {
      * Computes the closest pair of points in the specified array of points.
      *
      * @param  points the array of points
-     * @throws NullPointerException if <tt>points</tt> is <tt>null</tt> or if any
-     *         entry in <tt>points[]</tt> is <tt>null</tt>
+     * @throws IllegalArgumentException if {@code points} is {@code null} or if any
+     *         entry in {@code points[]} is {@code null}
      */
     public ClosestPair(Point2D[] points) {
-        int N = points.length;
-        if (N <= 1) return;
+        if (points == null) throw new IllegalArgumentException("constructor argument is null");
+        for (int i = 0; i < points.length; i++) {
+            if (points[i] == null) throw new IllegalArgumentException("array element " + i + " is null");
+        }
+
+        int n = points.length;
+        if (n <= 1) return;
 
         // sort by x-coordinate (breaking ties by y-coordinate)
-        Point2D[] pointsByX = new Point2D[N];
-        for (int i = 0; i < N; i++)
+        Point2D[] pointsByX = new Point2D[n];
+        for (int i = 0; i < n; i++)
             pointsByX[i] = points[i];
         Arrays.sort(pointsByX, Point2D.X_ORDER);
 
         // check for coincident points
-        for (int i = 0; i < N-1; i++) {
+        for (int i = 0; i < n-1; i++) {
             if (pointsByX[i].equals(pointsByX[i+1])) {
                 bestDistance = 0.0;
                 best1 = pointsByX[i];
@@ -66,14 +73,14 @@ public class ClosestPair {
         }
 
         // sort by y-coordinate (but not yet sorted) 
-        Point2D[] pointsByY = new Point2D[N];
-        for (int i = 0; i < N; i++)
+        Point2D[] pointsByY = new Point2D[n];
+        for (int i = 0; i < n; i++)
             pointsByY[i] = pointsByX[i];
 
         // auxiliary array
-        Point2D[] aux = new Point2D[N];
+        Point2D[] aux = new Point2D[n];
 
-        closest(pointsByX, pointsByY, aux, 0, N-1);
+        closest(pointsByX, pointsByY, aux, 0, n-1);
     }
 
     // find closest pair of points in pointsByX[lo..hi]
@@ -94,17 +101,17 @@ public class ClosestPair {
         // merge back so that pointsByY[lo..hi] are sorted by y-coordinate
         merge(pointsByY, aux, lo, mid, hi);
 
-        // aux[0..M-1] = sequence of points closer than delta, sorted by y-coordinate
-        int M = 0;
+        // aux[0..m-1] = sequence of points closer than delta, sorted by y-coordinate
+        int m = 0;
         for (int i = lo; i <= hi; i++) {
             if (Math.abs(pointsByY[i].x() - median.x()) < delta)
-                aux[M++] = pointsByY[i];
+                aux[m++] = pointsByY[i];
         }
 
         // compare each point to its neighbors with y-coordinate closer than delta
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             // a geometric packing argument shows that this loop iterates at most 7 times
-            for (int j = i+1; (j < M) && (aux[j].y() - aux[i].y() < delta); j++) {
+            for (int j = i+1; (j < m) && (aux[j].y() - aux[i].y() < delta); j++) {
                 double distance = aux[i].distanceTo(aux[j]);
                 if (distance < delta) {
                     delta = distance;
@@ -124,7 +131,7 @@ public class ClosestPair {
      * Returns one of the points in the closest pair of points.
      *
      * @return one of the two points in the closest pair of points;
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D either() {
         return best1;
@@ -134,7 +141,7 @@ public class ClosestPair {
      * Returns the other point in the closest pair of points.
      *
      * @return the other point in the closest pair of points
-     *         <tt>null</tt> if no such point (because there are fewer than 2 points)
+     *         {@code null} if no such point (because there are fewer than 2 points)
      */
     public Point2D other() {
         return best2;
@@ -144,7 +151,7 @@ public class ClosestPair {
      * Returns the Eucliden distance between the closest pair of points.
      *
      * @return the Euclidean distance between the closest pair of points
-     *         <tt>Double.POSITIVE_INFINITY</tt> if no such pair of points
+     *         {@code Double.POSITIVE_INFINITY} if no such pair of points
      *         exist (because there are fewer than 2 points)
      */
     public double distance() {
@@ -177,16 +184,18 @@ public class ClosestPair {
 
 
    /**
-     * Unit tests the <tt>ClosestPair</tt> data type.
-     * Reads in an integer <tt>N</tt> and <tt>N</tt> points (specified by
+     * Unit tests the {@code ClosestPair} data type.
+     * Reads in an integer {@code n} and {@code n} points (specified by
      * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
      * computes a closest pair of points; and prints the pair to standard
      * output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        int N = StdIn.readInt();
-        Point2D[] points = new Point2D[N];
-        for (int i = 0; i < N; i++) {
+        int n = StdIn.readInt();
+        Point2D[] points = new Point2D[n];
+        for (int i = 0; i < n; i++) {
             double x = StdIn.readDouble();
             double y = StdIn.readDouble();
             points[i] = new Point2D(x, y);
@@ -198,7 +207,7 @@ public class ClosestPair {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

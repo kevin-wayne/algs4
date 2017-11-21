@@ -19,10 +19,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Average</tt> class provides a client for reading in a sequence
+ *  The {@code Average} class provides a client for reading in a sequence
  *  of real numbers and printing out their average.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/11model">Section 1.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/11model">Section 1.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -36,6 +36,8 @@ public class Average {
     /**
      * Reads in a sequence of real numbers from standard input and prints
      * out their average to standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         int count = 0;       // number input values
@@ -57,7 +59,7 @@ public class Average {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

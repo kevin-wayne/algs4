@@ -18,13 +18,13 @@ import java.util.Locale;
  *  This class provides methods for printing strings and numbers to standard output.
  *  <p>
  *  <b>Getting started.</b>
- *  To use this class, you must have <tt>StdOut.class</tt> in your
+ *  To use this class, you must have {@code StdOut.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
  *  Otherwise, download
- *  <a href = "http://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
+ *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
  *  and put a copy in your working directory.
  *  <p>
- *  Here is an example program that uses <code>StdOut</code>:
+ *  Here is an example program that uses {@code StdOut}:
  *  <pre>
  *   public class TestStdOut {
  *       public static void main(String[] args) {
@@ -38,22 +38,22 @@ import java.util.Locale;
  *  </pre>
  *  <p>
  *  <b>Differences with System.out.</b>
- *  The behavior of <code>StdOut</code> is similar to that of {@link System#out},
+ *  The behavior of {@code StdOut} is similar to that of {@link System#out},
  *  but there are a few subtle differences:
  *  <ul>
- *  <li> <code>StdOut</code> coerces the character-set encoding to UTF-8,
+ *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
  *       which is a standard character encoding for Unicode.
- *  <li> <code>StdOut</code> coerces the locale to {@link Locale#US},
+ *  <li> {@code StdOut} coerces the locale to {@link Locale#US},
  *       for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
  *       and floating-point literals.
- *  <li> <code>StdOut</code> <em>flushes</em> standard output after each call to
- *       <code>print()</code> so that text will appear immediately in the terminal.
+ *  <li> {@code StdOut} <em>flushes</em> standard output after each call to
+ *       {@code print()} so that text will appear immediately in the terminal.
  *  </ul>
  *  <p>
  *  <b>Reference.</b>
  *  For additional documentation,
- *  see <a href="http://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Introduction to Programming in Java: An Interdisciplinary Approach</em>
+ *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -304,7 +304,9 @@ public final class StdOut {
     }
 
    /**
-     * Unit tests some of the methods in <tt>StdOut</tt>.
+     * Unit tests some of the methods in {@code StdOut}.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -318,7 +320,7 @@ public final class StdOut {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

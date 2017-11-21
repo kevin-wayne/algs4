@@ -2,6 +2,8 @@
  *  Compilation:  javac DirectedEulerianPath.java
  *  Execution:    java DirectedEulerianPath V E
  *  Dependencies: Digraph.java Stack.java StdOut.java
+ *                BreadthFirstPaths.java
+ *                DigraphGenerator.java StdRandom.java
  *
  *  Find an Eulerian path in a digraph, if one exists.
  *
@@ -12,7 +14,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>DirectedEulerianPath</tt> class represents a data type
+ *  The {@code DirectedEulerianPath} class represents a data type
  *  for finding an Eulerian path in a digraph.
  *  An <em>Eulerian path</em> is a path (not necessarily simple) that
  *  uses every edge in the digraph exactly once.
@@ -27,7 +29,7 @@ import java.util.Iterator;
  *  {@link EulerianCycle} and {@link EulerianPath}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
  * @author Robert Sedgewick
@@ -93,7 +95,7 @@ public class DirectedEulerianPath {
      * Returns the sequence of vertices on an Eulerian path.
      * 
      * @return the sequence of vertices on an Eulerian path;
-     *         <tt>null</tt> if no such path
+     *         {@code null} if no such path
      */
     public Iterable<Integer> path() {
         return path;
@@ -102,8 +104,8 @@ public class DirectedEulerianPath {
     /**
      * Returns true if the digraph has an Eulerian path.
      * 
-     * @return <tt>true</tt> if the digraph has an Eulerian path;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has an Eulerian path;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianPath() {
         return path != null;
@@ -132,8 +134,7 @@ public class DirectedEulerianPath {
     //      (and one vertex v may have indegree(v) = outdegree(v) + 1)
     //    - the graph is connected, when viewed as an undirected graph
     //      (ignoring isolated vertices)
-    // This method is solely for unit testing.
-    private static boolean hasEulerianPath(Digraph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
         if (G.E() == 0) return true;
 
         // Condition 1: indegree(v) == outdegree(v) for every vertex,
@@ -167,7 +168,7 @@ public class DirectedEulerianPath {
         if (hasEulerianPath() == (path() == null)) return false;
 
         // hashEulerianPath() returns correct value
-        if (hasEulerianPath() != hasEulerianPath(G)) return false;
+        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian path
         if (path == null) return true;
@@ -203,7 +204,9 @@ public class DirectedEulerianPath {
     }
 
     /**
-     * Unit tests the <tt>DirectedEulerianPath</tt> data type.
+     * Unit tests the {@code DirectedEulerianPath} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
@@ -250,7 +253,7 @@ public class DirectedEulerianPath {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

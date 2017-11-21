@@ -2,8 +2,8 @@
  *  Compilation:  javac MergeBU.java
  *  Execution:    java MergeBU < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/22mergesort/tiny.txt
- *                http://algs4.cs.princeton.edu/22mergesort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/22mergesort/tiny.txt
+ *                https://algs4.cs.princeton.edu/22mergesort/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using
  *  bottom-up mergesort.
@@ -25,10 +25,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>MergeBU</tt> class provides static methods for sorting an
+ *  The {@code MergeBU} class provides static methods for sorting an
  *  array using bottom-up mergesort.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -63,14 +63,13 @@ public class MergeBU {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
-        Comparable[] aux = new Comparable[N];
-        for (int n = 1; n < N; n = n+n) {
-            for (int i = 0; i < N-n; i += n+n) {
-                int lo = i;
-                int m  = i+n-1;
-                int hi = Math.min(i+n+n-1, N-1);
-                merge(a, aux, lo, m, hi);
+        int n = a.length;
+        Comparable[] aux = new Comparable[n];
+        for (int len = 1; len < n; len *= 2) {
+            for (int lo = 0; lo < n-len; lo += len+len) {
+                int mid  = lo+len-1;
+                int hi = Math.min(lo+len+len-1, n-1);
+                merge(a, aux, lo, mid, hi);
             }
         }
         assert isSorted(a);
@@ -83,13 +82,6 @@ public class MergeBU {
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
-    }
-
-   // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
     }
 
 
@@ -112,6 +104,8 @@ public class MergeBU {
     /**
      * Reads in a sequence of strings from standard input; bottom-up
      * mergesorts them; and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -121,7 +115,7 @@ public class MergeBU {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

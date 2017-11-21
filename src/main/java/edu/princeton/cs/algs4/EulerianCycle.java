@@ -16,7 +16,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EulerianCycle</tt> class represents a data type
+ *  The {@code EulerianCycle} class represents a data type
  *  for finding an Eulerian cycle or path in a graph.
  *  An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
  *  uses every edge in the graph exactly once.
@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  {@link DirectedEulerianCycle} and {@link DirectedEulerianPath}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
  *  @author Robert Sedgewick
@@ -135,7 +135,7 @@ public class EulerianCycle {
      * Returns the sequence of vertices on an Eulerian cycle.
      * 
      * @return the sequence of vertices on an Eulerian cycle;
-     *         <tt>null</tt> if no such cycle
+     *         {@code null} if no such cycle
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -144,8 +144,8 @@ public class EulerianCycle {
     /**
      * Returns true if the graph has an Eulerian cycle.
      * 
-     * @return <tt>true</tt> if the graph has an Eulerian cycle;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the graph has an Eulerian cycle;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianCycle() {
         return cycle != null;
@@ -170,7 +170,7 @@ public class EulerianCycle {
     //    - at least one edge
     //    - degree(v) is even for every vertex v
     //    - the graph is connected (ignoring isolated vertices)
-    private static boolean hasEulerianCycle(Graph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Graph G) {
 
         // Condition 0: at least 1 edge
         if (G.E() == 0) return false;
@@ -197,7 +197,7 @@ public class EulerianCycle {
         if (hasEulerianCycle() == (cycle() == null)) return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != hasEulerianCycle(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian cycle
         if (cycle == null) return true;
@@ -241,7 +241,9 @@ public class EulerianCycle {
 
 
     /**
-     * Unit tests the <tt>EulerianCycle</tt> data type.
+     * Unit tests the {@code EulerianCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
@@ -288,7 +290,7 @@ public class EulerianCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

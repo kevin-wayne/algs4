@@ -1,9 +1,12 @@
 /******************************************************************************
  *  Compilation:  javac BreadthFirstDirectedPaths.java
- *  Execution:    java BreadthFirstDirectedPaths V E
+ *  Execution:    java BreadthFirstDirectedPaths digraph.txt s
  *  Dependencies: Digraph.java Queue.java Stack.java
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
+ *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
- *  Run breadth first search on a digraph.
+ *  Run breadth-first search on a digraph.
  *  Runs in O(E + V) time.
  *
  *  % java BreadthFirstDirectedPaths tinyDG.txt 3
@@ -26,17 +29,20 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BreadthDirectedFirstPaths</tt> class represents a data type for finding
+ *  The {@code BreadthDirectedFirstPaths} class represents a data type for finding
  *  shortest paths (number of edges) from a source vertex <em>s</em>
  *  (or set of source vertices) to every other vertex in the digraph.
  *  <p>
  *  This implementation uses breadth-first search.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
+ *  Each call to {@link #distTo(int)} and {@link #hasPathTo(int)} takes constant time;
+ *  each call to {@link #pathTo(int)} takes time proportional to the length
+ *  of the path.
  *  It uses extra space (not including the digraph) proportional to <em>V</em>.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -49,9 +55,10 @@ public class BreadthFirstDirectedPaths {
     private int[] distTo;      // distTo[v] = length of shortest s->v path
 
     /**
-     * Computes the shortest path from <tt>s</tt> and every other vertex in graph <tt>G</tt>.
+     * Computes the shortest path from {@code s} and every other vertex in graph {@code G}.
      * @param G the digraph
      * @param s the source vertex
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public BreadthFirstDirectedPaths(Digraph G, int s) {
         marked = new boolean[G.V()];
@@ -59,14 +66,17 @@ public class BreadthFirstDirectedPaths {
         edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             distTo[v] = INFINITY;
+        validateVertex(s);
         bfs(G, s);
     }
 
     /**
-     * Computes the shortest path from any one of the source vertices in <tt>sources</tt>
-     * to every other vertex in graph <tt>G</tt>.
+     * Computes the shortest path from any one of the source vertices in {@code sources}
+     * to every other vertex in graph {@code G}.
      * @param G the digraph
      * @param sources the source vertices
+     * @throws IllegalArgumentException unless each vertex {@code v} in
+     *         {@code sources} satisfies {@code 0 <= v < V}
      */
     public BreadthFirstDirectedPaths(Digraph G, Iterable<Integer> sources) {
         marked = new boolean[G.V()];
@@ -74,6 +84,7 @@ public class BreadthFirstDirectedPaths {
         edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
             distTo[v] = INFINITY;
+        validateVertices(sources);
         bfs(G, sources);
     }
 
@@ -118,31 +129,38 @@ public class BreadthFirstDirectedPaths {
     }
 
     /**
-     * Is there a directed path from the source <tt>s</tt> (or sources) to vertex <tt>v</tt>?
+     * Is there a directed path from the source {@code s} (or sources) to vertex {@code v}?
      * @param v the vertex
-     * @return <tt>true</tt> if there is a directed path, <tt>false</tt> otherwise
+     * @return {@code true} if there is a directed path, {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return marked[v];
     }
 
     /**
-     * Returns the number of edges in a shortest path from the source <tt>s</tt>
-     * (or sources) to vertex <tt>v</tt>?
+     * Returns the number of edges in a shortest path from the source {@code s}
+     * (or sources) to vertex {@code v}?
      * @param v the vertex
      * @return the number of edges in a shortest path
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int distTo(int v) {
+        validateVertex(v);
         return distTo[v];
     }
 
     /**
-     * Returns a shortest path from <tt>s</tt> (or sources) to <tt>v</tt>, or
-     * <tt>null</tt> if no such path.
+     * Returns a shortest path from {@code s} (or sources) to {@code v}, or
+     * {@code null} if no such path.
      * @param v the vertex
      * @return the sequence of vertices on a shortest path, as an Iterable
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> pathTo(int v) {
+        validateVertex(v);
+
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<Integer>();
         int x;
@@ -152,8 +170,31 @@ public class BreadthFirstDirectedPaths {
         return path;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertices(Iterable<Integer> vertices) {
+        if (vertices == null) {
+            throw new IllegalArgumentException("argument is null");
+        }
+        int V = marked.length;
+        for (int v : vertices) {
+            if (v < 0 || v >= V) {
+                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            }
+        }
+    }
+
+
     /**
-     * Unit tests the <tt>BreadthFirstDirectedPaths</tt> data type.
+     * Unit tests the {@code BreadthFirstDirectedPaths} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -184,7 +225,7 @@ public class BreadthFirstDirectedPaths {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -12,13 +12,12 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 import java.util.Comparator;
 
-
 /**
- *  The <tt>Transaction</tt> class is an immutable data type to encapsulate a
+ *  The {@code Transaction} class is an immutable data type to encapsulate a
  *  commercial transaction with a customer name, date, and amount.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -36,34 +35,31 @@ public class Transaction implements Comparable<Transaction> {
      * @param  who the person involved in this transaction
      * @param  when the date of this transaction
      * @param  amount the amount of this transaction
-     * @throws IllegalArgumentException if <tt>amount</tt> 
-     *         is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt>,
-     *         or <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if {@code amount} 
+     *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
+     *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String who, Date when, double amount) {
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
         this.who    = who;
         this.when   = when;
-        if (amount == 0.0) this.amount = 0.0;  // to handle -0.0
-        else               this.amount = amount;
+        this.amount = amount;
     }
 
     /**
      * Initializes a new transaction by parsing a string of the form NAME DATE AMOUNT.
      *
      * @param  transaction the string to parse
-     * @throws IllegalArgumentException if <tt>amount</tt> 
-     *         is <tt>Double.NaN</tt>, <tt>Double.POSITIVE_INFINITY</tt>,
-     *         or <tt>Double.NEGATIVE_INFINITY</tt>
+     * @throws IllegalArgumentException if {@code amount} 
+     *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
+     *         or {@code Double.NEGATIVE_INFINITY}
      */
     public Transaction(String transaction) {
         String[] a = transaction.split("\\s+");
         who    = a[0];
         when   = new Date(a[1]);
-        double value = Double.parseDouble(a[2]);
-        if (value == 0.0) amount = 0.0;  // convert -0.0 0.0
-        else              amount = value;
+        amount = Double.parseDouble(a[2]);
         if (Double.isNaN(amount) || Double.isInfinite(amount))
             throw new IllegalArgumentException("Amount cannot be NaN or infinite");
     }
@@ -114,16 +110,14 @@ public class Transaction implements Comparable<Transaction> {
      *         equal to, or greater than } the amount of that transaction
      */
     public int compareTo(Transaction that) {
-        if      (this.amount < that.amount) return -1;
-        else if (this.amount > that.amount) return +1;
-        else                                return  0;
+        return Double.compare(this.amount, that.amount);
     }    
 
     /**
      * Compares this transaction to the specified object.
      *
      * @param  other the other transaction
-     * @return true if this transaction is equal to <tt>other</tt>; false otherwise
+     * @return true if this transaction is equal to {@code other}; false otherwise
      */
     @Override
     public boolean equals(Object other) {
@@ -142,11 +136,12 @@ public class Transaction implements Comparable<Transaction> {
      * @return a hash code for this transaction
      */
     public int hashCode() {
-        int hash = 17;
+        int hash = 1;
         hash = 31*hash + who.hashCode();
         hash = 31*hash + when.hashCode();
         hash = 31*hash + ((Double) amount).hashCode();
         return hash;
+        // return Objects.hash(who, when, amount);
     }
 
     /**
@@ -178,15 +173,15 @@ public class Transaction implements Comparable<Transaction> {
 
         @Override
         public int compare(Transaction v, Transaction w) {
-            if      (v.amount < w.amount) return -1;
-            else if (v.amount > w.amount) return +1;
-            else                          return  0;
+            return Double.compare(v.amount, w.amount);
         }
     }
 
 
     /**
-     * Unit tests the <tt>Transaction</tt> data type.
+     * Unit tests the {@code Transaction} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Transaction[] a = new Transaction[4];
@@ -225,7 +220,7 @@ public class Transaction implements Comparable<Transaction> {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

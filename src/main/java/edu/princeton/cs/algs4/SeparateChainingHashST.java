@@ -1,7 +1,8 @@
 /******************************************************************************
  *  Compilation:  javac SeparateChainingHashST.java
- *  Execution:    java SeparateChainingHashST
+ *  Execution:    java SeparateChainingHashST < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/34hash/tinyST.txt
  *
  *  A symbol table implemented with a separate-chaining hash table.
  * 
@@ -10,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SeparateChainingHashST</tt> class represents a symbol table of generic
+ *  The {@code SeparateChainingHashST} class represents a symbol table of generic
  *  key-value pairs.
  *  It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.
@@ -19,38 +20,31 @@ package edu.princeton.cs.algs4;
  *  when associating a value with a key that is already in the symbol table,
  *  the convention is to replace the old value with the new value.
  *  Unlike {@link java.util.Map}, this class uses the convention that
- *  values cannot be <tt>null</tt>&mdash;setting the
- *  value associated with a key to <tt>null</tt> is equivalent to deleting the key
+ *  values cannot be {@code null}—setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
  *  This implementation uses a separate chaining hash table. It requires that
- *  the key type overrides the <tt>equals()</tt> and <tt>hashCode()</tt> methods.
+ *  the key type overrides the {@code equals()} and {@code hashCode()} methods.
  *  The expected time per <em>put</em>, <em>contains</em>, or <em>remove</em>
  *  operation is constant, subject to the uniform hashing assumption.
  *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
  *  Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/34hash">Section 3.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/34hash">Section 3.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For other implementations, see {@link ST}, {@link BinarySearchST},
  *  {@link SequentialSearchST}, {@link BST}, {@link RedBlackBST}, and
  *  {@link LinearProbingHashST},
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
  */
 public class SeparateChainingHashST<Key, Value> {
     private static final int INIT_CAPACITY = 4;
 
-    // largest prime <= 2^i for i = 3 to 31
-    // not currently used for doubling and shrinking
-    // private static final int[] PRIMES = {
-    //    7, 13, 31, 61, 127, 251, 509, 1021, 2039, 4093, 8191, 16381,
-    //    32749, 65521, 131071, 262139, 524287, 1048573, 2097143, 4194301,
-    //    8388593, 16777213, 33554393, 67108859, 134217689, 268435399,
-    //    536870909, 1073741789, 2147483647
-    // };
-
-    private int N;                                // number of key-value pairs
-    private int M;                                // hash table size
+    private int n;                                // number of key-value pairs
+    private int m;                                // hash table size
     private SequentialSearchST<Key, Value>[] st;  // array of linked-list symbol tables
 
 
@@ -62,32 +56,33 @@ public class SeparateChainingHashST<Key, Value> {
     } 
 
     /**
-     * Initializes an empty symbol table with <tt>M</tt> chains.
-     * @param M the initial number of chains
+     * Initializes an empty symbol table with {@code m} chains.
+     * @param m the initial number of chains
      */
-    public SeparateChainingHashST(int M) {
-        this.M = M;
-        st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[M];
-        for (int i = 0; i < M; i++)
+    public SeparateChainingHashST(int m) {
+        this.m = m;
+        st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[m];
+        for (int i = 0; i < m; i++)
             st[i] = new SequentialSearchST<Key, Value>();
     } 
 
-    // resize the hash table to have the given number of chains b rehashing all of the keys
+    // resize the hash table to have the given number of chains,
+    // rehashing all of the keys
     private void resize(int chains) {
         SeparateChainingHashST<Key, Value> temp = new SeparateChainingHashST<Key, Value>(chains);
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (Key key : st[i].keys()) {
                 temp.put(key, st[i].get(key));
             }
         }
-        this.M  = temp.M;
-        this.N  = temp.N;
+        this.m  = temp.m;
+        this.n  = temp.n;
         this.st = temp.st;
     }
 
-    // hash value between 0 and M-1
+    // hash value between 0 and m-1
     private int hash(Key key) {
-        return (key.hashCode() & 0x7fffffff) % M;
+        return (key.hashCode() & 0x7fffffff) % m;
     } 
 
     /**
@@ -96,14 +91,14 @@ public class SeparateChainingHashST<Key, Value> {
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return N;
+        return n;
     } 
 
     /**
      * Returns true if this symbol table is empty.
      *
-     * @return <tt>true</tt> if this symbol table is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this symbol table is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return size() == 0;
@@ -113,12 +108,12 @@ public class SeparateChainingHashST<Key, Value> {
      * Returns true if this symbol table contains the specified key.
      *
      * @param  key the key
-     * @return <tt>true</tt> if this symbol table contains <tt>key</tt>;
-     *         <tt>false</tt> otherwise
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return {@code true} if this symbol table contains {@code key};
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public boolean contains(Key key) {
-        if (key == null) throw new NullPointerException("argument to contains() is null");
+        if (key == null) throw new IllegalArgumentException("argument to contains() is null");
         return get(key) != null;
     } 
 
@@ -126,12 +121,12 @@ public class SeparateChainingHashST<Key, Value> {
      * Returns the value associated with the specified key in this symbol table.
      *
      * @param  key the key
-     * @return the value associated with <tt>key</tt> in the symbol table;
-     *         <tt>null</tt> if no such value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @return the value associated with {@code key} in the symbol table;
+     *         {@code null} if no such value
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new NullPointerException("argument to get() is null");
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         int i = hash(key);
         return st[i].get(key);
     } 
@@ -140,24 +135,24 @@ public class SeparateChainingHashST<Key, Value> {
      * Inserts the specified key-value pair into the symbol table, overwriting the old 
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
-     * if the specified value is <tt>null</tt>.
+     * if the specified value is {@code null}.
      *
      * @param  key the key
      * @param  val the value
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new NullPointerException("first argument to put() is null");
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
         }
 
         // double table size if average length of list >= 10
-        if (N >= 10*M) resize(2*M);
+        if (n >= 10*m) resize(2*m);
 
         int i = hash(key);
-        if (!st[i].contains(key)) N++;
+        if (!st[i].contains(key)) n++;
         st[i].put(key, val);
     } 
 
@@ -166,23 +161,23 @@ public class SeparateChainingHashST<Key, Value> {
      * (if the key is in this symbol table).    
      *
      * @param  key the key
-     * @throws NullPointerException if <tt>key</tt> is <tt>null</tt>
+     * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new NullPointerException("argument to delete() is null");
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
 
         int i = hash(key);
-        if (st[i].contains(key)) N--;
+        if (st[i].contains(key)) n--;
         st[i].delete(key);
 
         // halve table size if average length of list <= 2
-        if (M > INIT_CAPACITY && N <= 2*M) resize(M/2);
+        if (m > INIT_CAPACITY && n <= 2*m) resize(m/2);
     } 
 
     // return keys in symbol table as an Iterable
     public Iterable<Key> keys() {
         Queue<Key> queue = new Queue<Key>();
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < m; i++) {
             for (Key key : st[i].keys())
                 queue.enqueue(key);
         }
@@ -191,7 +186,9 @@ public class SeparateChainingHashST<Key, Value> {
 
 
     /**
-     * Unit tests the <tt>SeparateChainingHashST</tt> data type.
+     * Unit tests the {@code SeparateChainingHashST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) { 
         SeparateChainingHashST<String, Integer> st = new SeparateChainingHashST<String, Integer>();
@@ -209,7 +206,7 @@ public class SeparateChainingHashST<Key, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

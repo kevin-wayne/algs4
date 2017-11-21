@@ -2,7 +2,7 @@
  *  Compilation:  javac TransitiveClosure.java
  *  Execution:    java TransitiveClosure filename.txt
  *  Dependencies: Digraph.java DepthFirstDirectedPaths.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/42digraph/tinyDG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/42digraph/tinyDG.txt
  *
  *  Compute transitive closure of a digraph and support
  *  reachability queries.
@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>TransitiveClosure</tt> class represents a data type for 
+ *  The {@code TransitiveClosure} class represents a data type for 
  *  computing the transitive closure of a digraph.
  *  <p>
  *  This implementation runs depth-first search from each vertex.
@@ -47,7 +47,7 @@ package edu.princeton.cs.algs4;
  *  that runs in <em>E</em> + <em>V</em> time on typical digraphs.
  *
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -57,7 +57,7 @@ public class TransitiveClosure {
     private DirectedDFS[] tc;  // tc[v] = reachable from v
 
     /**
-     * Computes the transitive closure of the digraph <tt>G</tt>.
+     * Computes the transitive closure of the digraph {@code G}.
      * @param G the digraph
      */
     public TransitiveClosure(Digraph G) {
@@ -67,18 +67,31 @@ public class TransitiveClosure {
     }
 
     /**
-     * Is there a directed path from vertex <tt>v</tt> to vertex <tt>w</tt> in the digraph?
-     * @param v the source vertex
-     * @param w the target vertex
-     * @return <tt>true</tt> if there is a directed path from <tt>v</tt> to <tt>w</tt>,
-     *    <tt>false</tt> otherwise
+     * Is there a directed path from vertex {@code v} to vertex {@code w} in the digraph?
+     * @param  v the source vertex
+     * @param  w the target vertex
+     * @return {@code true} if there is a directed path from {@code v} to {@code w},
+     *         {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
+     * @throws IllegalArgumentException unless {@code 0 <= w < V}
      */
     public boolean reachable(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         return tc[v].marked(w);
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = tc.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>TransitiveClosure</tt> data type.
+     * Unit tests the {@code TransitiveClosure} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -107,7 +120,7 @@ public class TransitiveClosure {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -13,14 +13,14 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 
 /**
- *  The <tt>Particle</tt> class represents a particle moving in the unit box,
+ *  The {@code Particle} class represents a particle moving in the unit box,
  *  with a given position, velocity, radius, and mass. Methods are provided
  *  for moving the particle and for predicting and resolvling elastic
  *  collisions with vertical walls, horizontal walls, and other particles.
  *  This data type is mutable because the position and velocity change.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -29,12 +29,12 @@ import java.awt.Color;
 public class Particle {
     private static final double INFINITY = Double.POSITIVE_INFINITY;
 
-    private double rx, ry;    // position
-    private double vx, vy;    // velocity
-    private double radius;    // radius
-    private double mass;      // mass
-    private Color color;      // color
-    private int count;        // number of collisions so far
+    private double rx, ry;        // position
+    private double vx, vy;        // velocity
+    private int count;            // number of collisions so far
+    private final double radius;  // radius
+    private final double mass;    // mass
+    private final Color color;    // color
 
 
     /**
@@ -66,8 +66,8 @@ public class Particle {
     public Particle() {
         rx     = StdRandom.uniform(0.0, 1.0);
         ry     = StdRandom.uniform(0.0, 1.0);
-        vx     = StdRandom.uniform(-.005, 0.005);
-        vy     = StdRandom.uniform(-.005, 0.005);
+        vx     = StdRandom.uniform(-0.005, 0.005);
+        vy     = StdRandom.uniform(-0.005, 0.005);
         radius = 0.01;
         mass   = 0.5;
         color  = Color.BLACK;
@@ -113,7 +113,7 @@ public class Particle {
      * @param  that the other particle
      * @return the amount of time for this particle to collide with the specified
      *         particle, assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particles will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particles will not collide
      */
     public double timeToHit(Particle that) {
         if (this == that) return INFINITY;
@@ -138,7 +138,7 @@ public class Particle {
      *
      * @return the amount of time for this particle to collide with a vertical wall,
      *         assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particle will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a vertical wall
      */
     public double timeToHitVerticalWall() {
@@ -153,7 +153,7 @@ public class Particle {
      *
      * @return the amount of time for this particle to collide with a horizontal wall,
      *         assuming no interening collisions; 
-     *         <tt>Double.POSITIVE_INFINITY</tt> if the particle will not collide
+     *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a horizontal wall
      */
     public double timeToHitHorizontalWall() {
@@ -177,10 +177,12 @@ public class Particle {
         double dvdr = dx*dvx + dy*dvy;             // dv dot dr
         double dist = this.radius + that.radius;   // distance between particle centers at collison
 
-        // normal force F, and in x and y directions
-        double F = 2 * this.mass * that.mass * dvdr / ((this.mass + that.mass) * dist);
-        double fx = F * dx / dist;
-        double fy = F * dy / dist;
+        // magnitude of normal force
+        double magnitude = 2 * this.mass * that.mass * dvdr / ((this.mass + that.mass) * dist);
+
+        // normal force, and in x and y directions
+        double fx = magnitude * dx / dist;
+        double fy = magnitude * dy / dist;
 
         // update velocities according to normal force
         this.vx += fx / this.mass;
@@ -226,7 +228,7 @@ public class Particle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

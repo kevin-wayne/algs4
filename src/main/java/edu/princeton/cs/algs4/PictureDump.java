@@ -20,11 +20,11 @@ import java.awt.Color;
 
 
 /**
- *  The <tt>PictureDump</tt> class provides a client for displaying the contents
+ *  The {@code PictureDump} class provides a client for displaying the contents
  *  of a binary file as a black-and-white picture.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link BinaryDump} and {@link HexDump}.
@@ -42,6 +42,8 @@ public class PictureDump {
      * them to standard drawing output as a width-by-height picture,
      * using black for 1 and white for 0 (and red for any leftover
      * pixels).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int width = Integer.parseInt(args[0]);
@@ -64,7 +66,7 @@ public class PictureDump {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

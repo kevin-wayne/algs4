@@ -3,6 +3,8 @@
  *  Execution:    java LZW - < input.txt   (compress)
  *  Execution:    java LZW + < input.txt   (expand)
  *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/55compression/abraLZW.txt
+ *                https://algs4.cs.princeton.edu/55compression/ababLZW.txt
  *
  *  Compress or expand binary input from standard input using LZW.
  *
@@ -19,12 +21,12 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LZW</tt> class provides static methods for compressing
+ *  The {@code LZW} class provides static methods for compressing
  *  and expanding a binary input using LZW compression over the 8-bit extended
  *  ASCII alphabet with 12-bit codewords.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick  
@@ -93,8 +95,10 @@ public class LZW {
     }
 
     /**
-     * Sample client that calls <tt>compress()</tt> if the command-line
-     * argument is "-" an <tt>expand()</tt> if it is "+".
+     * Sample client that calls {@code compress()} if the command-line
+     * argument is "-" an {@code expand()} if it is "+".
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         if      (args[0].equals("-")) compress();
@@ -105,7 +109,7 @@ public class LZW {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

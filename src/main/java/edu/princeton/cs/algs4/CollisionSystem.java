@@ -1,10 +1,17 @@
 /******************************************************************************
  *  Compilation:  javac CollisionSystem.java
- *  Execution:    java CollisionSystem N               (N random particles)
+ *  Execution:    java CollisionSystem n               (n random particles)
  *                java CollisionSystem < input.txt     (from a file) 
  *  Dependencies: StdDraw.java Particle.java MinPQ.java
+ *  Data files:   https://algs4.cs.princeton.edu/61event/diffusion.txt
+ *                https://algs4.cs.princeton.edu/61event/diffusion2.txt
+ *                https://algs4.cs.princeton.edu/61event/diffusion3.txt
+ *                https://algs4.cs.princeton.edu/61event/brownian.txt
+ *                https://algs4.cs.princeton.edu/61event/brownian2.txt
+ *                https://algs4.cs.princeton.edu/61event/billiards5.txt
+ *                https://algs4.cs.princeton.edu/61event/pendulum.txt
  *  
- *  Creates N random particles and simulates their motion according
+ *  Creates n random particles and simulates their motion according
  *  to the laws of elastic collisions.
  *
  ******************************************************************************/
@@ -14,22 +21,23 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 
 /**
- *  The <tt>CollisionSystem</tt> class represents a collection of particles
+ *  The {@code CollisionSystem} class represents a collection of particles
  *  moving in the unit box, according to the laws of elastic collision.
  *  This event-based simulation relies on a priority queue.
  *  <p>
  *  For additional documentation, 
- *  see <a href="http://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class CollisionSystem {
-    private MinPQ<Event> pq;        // the priority queue
-    private double t  = 0.0;        // simulation clock time
-    private double hz = 0.5;        // number of redraw events per clock tick
-    private Particle[] particles;   // the array of particles
+    private final static double HZ = 0.5;    // number of redraw events per clock tick
+
+    private MinPQ<Event> pq;          // the priority queue
+    private double t  = 0.0;          // simulation clock time
+    private Particle[] particles;     // the array of particles
 
     /**
      * Initializes a system with the specified collection of particles.
@@ -65,9 +73,10 @@ public class CollisionSystem {
         for (int i = 0; i < particles.length; i++) {
             particles[i].draw();
         }
-        StdDraw.show(20);
+        StdDraw.show();
+        StdDraw.pause(20);
         if (t < limit) {
-            pq.insert(new Event(t + 1.0 / hz, null, null));
+            pq.insert(new Event(t + 1.0 / HZ, null, null));
         }
     }
 
@@ -144,9 +153,7 @@ public class CollisionSystem {
 
         // compare times when two events will occur
         public int compareTo(Event that) {
-            if      (this.time < that.time) return -1;
-            else if (this.time > that.time) return +1;
-            else                            return  0;
+            return Double.compare(this.time, that.time);
         }
         
         // has any collision occurred between when event was created and now?
@@ -160,10 +167,12 @@ public class CollisionSystem {
 
 
     /**
-     * Unit tests the <tt>CollisionSystem</tt> data type.
+     * Unit tests the {@code CollisionSystem} data type.
      * Reads in the particle collision system from a standard input
-     * (or generates <tt>N</tt> random particles if a command-line integer
+     * (or generates {@code N} random particles if a command-line integer
      * is specified); simulates the system.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -173,25 +182,25 @@ public class CollisionSystem {
         // StdDraw.setXscale(1.0/22.0, 21.0/22.0);
         // StdDraw.setYscale(1.0/22.0, 21.0/22.0);
 
-        // turn on animation mode
-        StdDraw.show(0);
+        // enable double buffering
+        StdDraw.enableDoubleBuffering();
 
         // the array of particles
         Particle[] particles;
 
-        // create N random particles
+        // create n random particles
         if (args.length == 1) {
-            int N = Integer.parseInt(args[0]);
-            particles = new Particle[N];
-            for (int i = 0; i < N; i++)
+            int n = Integer.parseInt(args[0]);
+            particles = new Particle[n];
+            for (int i = 0; i < n; i++)
                 particles[i] = new Particle();
         }
 
         // or read from standard input
         else {
-            int N = StdIn.readInt();
-            particles = new Particle[N];
-            for (int i = 0; i < N; i++) {
+            int n = StdIn.readInt();
+            particles = new Particle[n];
+            for (int i = 0; i < n; i++) {
                 double rx     = StdIn.readDouble();
                 double ry     = StdIn.readDouble();
                 double vx     = StdIn.readDouble();
@@ -214,7 +223,7 @@ public class CollisionSystem {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

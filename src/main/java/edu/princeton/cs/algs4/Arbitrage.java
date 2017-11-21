@@ -3,7 +3,7 @@
  *  Execution:    java Arbitrage < input.txt
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java
  *                BellmanFordSP.java
- *  Data file:    http://algs4.cs.princeton.edu/44sp/rates.txt
+ *  Data file:    https://algs4.cs.princeton.edu/44sp/rates.txt
  *
  *  Arbitrage detection.
  *
@@ -25,7 +25,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Arbitrage</tt> class provides a client that finds an arbitrage
+ *  The {@code Arbitrage} class provides a client that finds an arbitrage
  *  opportunity in a currency exchange table by constructing a
  *  complete-digraph representation of the exchange table and then finding
  *  a negative cycle in the digraph.
@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  worst case, where <em>V</em> is the number of currencies.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -50,6 +50,8 @@ public class Arbitrage {
     /**
      *  Reads the currency exchange table from standard input and
      *  prints an arbitrage opportunity to standard output (if one exists).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -86,7 +88,7 @@ public class Arbitrage {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

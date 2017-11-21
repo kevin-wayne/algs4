@@ -31,13 +31,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Complex</tt> class represents a complex number.
+ *  The {@code Complex} class represents a complex number.
  *  Complex numbers are immutable: their values cannot be changed after they
  *  are created.
  *  It includes methods for addition, subtraction, multiplication, division,
  *  conjugation, and other common functions on complex numbers.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -71,7 +71,6 @@ public class Complex {
         return re + " + " + im + "i";
     }
 
-    // return abs/modulus/magnitude and angle/phase/argument
     /**
      * Returns the absolute value of this complex number.
      * This quantity is also known as the <em>modulus</em> or <em>magnitude</em>.
@@ -84,7 +83,7 @@ public class Complex {
 
     /**
      * Returns the phase of this complex number.
-     * This quantity is also known as the <em>ange</em> or <em>argument</em>.
+     * This quantity is also known as the <em>angle</em> or <em>argument</em>.
      *
      * @return the phase of this complex number, a real number between -pi and pi
      */
@@ -96,7 +95,7 @@ public class Complex {
      * Returns the sum of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this + that)</tt>
+     * @return the complex number whose value is {@code (this + that)}
      */
     public Complex plus(Complex that) {
         double real = this.re + that.re;
@@ -109,7 +108,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this - that)</tt>
+     * @return the complex number whose value is {@code (this - that)}
      */
     public Complex minus(Complex that) {
         double real = this.re - that.re;
@@ -121,7 +120,7 @@ public class Complex {
      * Returns the product of this complex number and the specified complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this * that)</tt>
+     * @return the complex number whose value is {@code (this * that)}
      */
     public Complex times(Complex that) {
         double real = this.re * that.re - this.im * that.im;
@@ -133,7 +132,7 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the complex number whose value is <tt>(alpha * this)</tt>
+     * @return the complex number whose value is {@code (alpha * this)}
      */
     public Complex scale(double alpha) {
         return new Complex(alpha * re, alpha * im);
@@ -143,9 +142,10 @@ public class Complex {
      * Returns the product of this complex number and the specified scalar.
      *
      * @param  alpha the scalar
-     * @return the complex number whose value is <tt>(alpha * this)</tt>
-     * @deprecated Use {@link #scale(double)} instead.
+     * @return the complex number whose value is {@code (alpha * this)}
+     * @deprecated Replaced by {@link #scale(double)}.
      */
+    @Deprecated
     public Complex times(double alpha) {
         return new Complex(alpha * re, alpha * im);
     }
@@ -162,7 +162,7 @@ public class Complex {
     /**
      * Returns the reciprocal of this complex number.
      *
-     * @return the complex number whose value is <tt>(1 / this)</tt>
+     * @return the complex number whose value is {@code (1 / this)}
      */
     public Complex reciprocal() {
         double scale = re*re + im*im;
@@ -192,7 +192,7 @@ public class Complex {
      * this complex number.
      *
      * @param  that the other complex number
-     * @return the complex number whose value is <tt>(this / that)</tt>
+     * @return the complex number whose value is {@code (this / that)}
      */
     public Complex divides(Complex that) {
         return this.times(that.reciprocal());
@@ -236,7 +236,9 @@ public class Complex {
     
 
     /**
-     * Unit tests the <tt>Complex</tt> data type.
+     * Unit tests the {@code Complex} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Complex a = new Complex(5.0, 6.0);
@@ -260,7 +262,7 @@ public class Complex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,6 +2,7 @@
  *  Compilation:  javac SuffixArrayX.java
  *  Execution:    java SuffixArrayX < input.txt
  *  Dependencies: StdIn.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/abra.txt
  *  
  *  A data type that computes the suffix array of a string using 3-way
  *  radix quicksort.
@@ -28,8 +29,8 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>SuffixArrayX</tt> class represents a suffix array of a string of
- *  length <em>N</em>.
+ *  The {@code SuffixArrayX} class represents a suffix array of a string of
+ *  length <em>n</em>.
  *  It supports the <em>selecting</em> the <em>i</em>th smallest suffix,
  *  getting the <em>index</em> of the <em>i</em>th smallest suffix,
  *  computing the length of the <em>longest common prefix</em> between the
@@ -56,7 +57,7 @@ package edu.princeton.cs.algs4;
  *  the suffixes start out in a bad order (e.g., sorted) is likely to be
  *  a bad input for this algorithm with or without the shuffle.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class SuffixArrayX {
@@ -64,21 +65,21 @@ public class SuffixArrayX {
 
     private final char[] text;
     private final int[] index;   // index[i] = j means text.substring(j) is ith largest suffix
-    private final int N;         // number of characters in text
+    private final int n;         // number of characters in text
 
     /**
-     * Initializes a suffix array for the given <tt>text</tt> string.
+     * Initializes a suffix array for the given {@code text} string.
      * @param text the input string
      */
     public SuffixArrayX(String text) {
-        N = text.length();
+        n = text.length();
         text = text + '\0';
         this.text = text.toCharArray();
-        this.index = new int[N];
-        for (int i = 0; i < N; i++)
+        this.index = new int[n];
+        for (int i = 0; i < n; i++)
             index[i] = i;
 
-        sort(0, N-1, 0);
+        sort(0, n-1, 0);
     }
 
     // 3-way string quicksort lo..hi starting at dth character
@@ -113,12 +114,12 @@ public class SuffixArrayX {
                 exch(j, j-1);
     }
 
-    // is text[i+d..N) < text[j+d..N) ?
+    // is text[i+d..n) < text[j+d..n) ?
     private boolean less(int i, int j, int d) {
         if (i == j) return false;
         i = i + d;
         j = j + d;
-        while (i < N && j < N) {
+        while (i < n && j < n) {
             if (text[i] < text[j]) return true;
             if (text[i] > text[j]) return false;
             i++;
@@ -139,39 +140,39 @@ public class SuffixArrayX {
      * @return the length of the input string
      */
     public int length() {
-        return N;
+        return n;
     }
 
 
     /**
      * Returns the index into the original string of the <em>i</em>th smallest suffix.
-     * That is, <tt>text.substring(sa.index(i))</tt> is the <em>i</em> smallest suffix.
-     * @param i an integer between 0 and <em>N</em>-1
+     * That is, {@code text.substring(sa.index(i))} is the <em>i</em> smallest suffix.
+     * @param i an integer between 0 and <em>n</em>-1
      * @return the index into the original string of the <em>i</em>th smallest suffix
-     * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
+     * @throws java.lang.IllegalArgumentException unless {@code 0 <=i < n}
      */
     public int index(int i) {
-        if (i < 0 || i >= N) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= n) throw new IllegalArgumentException();
         return index[i];
     }
 
     /**
      * Returns the length of the longest common prefix of the <em>i</em>th
      * smallest suffix and the <em>i</em>-1st smallest suffix.
-     * @param i an integer between 1 and <em>N</em>-1
+     * @param i an integer between 1 and <em>n</em>-1
      * @return the length of the longest common prefix of the <em>i</em>th
      * smallest suffix and the <em>i</em>-1st smallest suffix.
-     * @throws java.lang.IndexOutOfBoundsException unless 1 &le; <em>i</em> &lt; <em>N</em>
+     * @throws java.lang.IllegalArgumentException unless {@code 1 <= i < n}
      */
     public int lcp(int i) {
-        if (i < 1 || i >= N) throw new IndexOutOfBoundsException();
+        if (i < 1 || i >= n) throw new IllegalArgumentException();
         return lcp(index[i], index[i-1]);
     }
 
-    // longest common prefix of text[i..N) and text[j..N)
+    // longest common prefix of text[i..n) and text[j..n)
     private int lcp(int i, int j) {
         int length = 0;
-        while (i < N && j < N) {
+        while (i < n && j < n) {
             if (text[i] != text[j]) return length;
             i++;
             j++;
@@ -184,22 +185,22 @@ public class SuffixArrayX {
      * Returns the <em>i</em>th smallest suffix as a string.
      * @param i the index
      * @return the <em>i</em> smallest suffix as a string
-     * @throws java.lang.IndexOutOfBoundsException unless 0 &le; <em>i</em> &lt; <Em>N</em>
+     * @throws java.lang.IllegalArgumentException unless {@code 0 <= i < n}
      */
     public String select(int i) {
-        if (i < 0 || i >= N) throw new IndexOutOfBoundsException();
-        return new String(text, index[i], N - index[i]);
+        if (i < 0 || i >= n) throw new IllegalArgumentException();
+        return new String(text, index[i], n - index[i]);
     }
 
     /**
-     * Returns the number of suffixes strictly less than the <tt>query</tt> string.
-     * We note that <tt>rank(select(i))</tt> equals <tt>i</tt> for each <tt>i</tt>
-     * between 0 and <em>N</em>-1. 
+     * Returns the number of suffixes strictly less than the {@code query} string.
+     * We note that {@code rank(select(i))} equals {@code i} for each {@code i}
+     * between 0 and <em>n</em>-1. 
      * @param query the query string
-     * @return the number of suffixes strictly less than <tt>query</tt>
+     * @return the number of suffixes strictly less than {@code query}
      */
     public int rank(String query) {
-        int lo = 0, hi = N - 1;
+        int lo = 0, hi = n - 1;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
             int cmp = compare(query, index[mid]);
@@ -210,24 +211,26 @@ public class SuffixArrayX {
         return lo;
     } 
 
-    // is query < text[i..N) ?
+    // is query < text[i..n) ?
     private int compare(String query, int i) {
-        int M = query.length();
+        int m = query.length();
         int j = 0;
-        while (i < N && j < M) {
+        while (i < n && j < m) {
             if (query.charAt(j) != text[i]) return query.charAt(j) - text[i];
             i++;
             j++;
 
         }
-        if (i < N) return -1;
-        if (j < M) return +1;
+        if (i < n) return -1;
+        if (j < m) return +1;
         return 0;
     }
 
 
     /**
-     * Unit tests the <tt>SuffixArrayx</tt> data type.
+     * Unit tests the {@code SuffixArrayx} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String s = StdIn.readAll().replaceAll("\n", " ").trim();
@@ -268,7 +271,7 @@ public class SuffixArrayX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

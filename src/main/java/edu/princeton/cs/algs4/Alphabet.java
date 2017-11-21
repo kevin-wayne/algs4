@@ -39,7 +39,7 @@ public class Alphabet {
     /**
      *  The DNA alphabet { A, C, T, G }.
      */
-    public static final Alphabet DNA = new Alphabet("ACTG");
+    public static final Alphabet DNA = new Alphabet("ACGT");
 
     /**
      *  The lowercase alphabet { a, b, c, ..., z }.
@@ -80,7 +80,7 @@ public class Alphabet {
 
     private char[] alphabet;     // the characters in the alphabet
     private int[] inverse;       // indices
-    private int R;               // the radix of the alphabet
+    private final int R;         // the radix of the alphabet
 
     /**
      * Initializes a new alphabet from the given set of characters.
@@ -112,12 +112,12 @@ public class Alphabet {
     /**
      * Initializes a new alphabet using characters 0 through R-1.
      *
-     * @param R the number of characters in the alphabet (the radix)
+     * @param radix the number of characters in the alphabet (the radix R)
      */
-    private Alphabet(int R) {
+    private Alphabet(int radix) {
+        this.R = radix;
         alphabet = new char[R];
         inverse = new int[R];
-        this.R = R;
 
         // can't use char since R can be as big as 65,536
         for (int i = 0; i < R; i++)
@@ -137,8 +137,8 @@ public class Alphabet {
      * Returns true if the argument is a character in this alphabet.
      *
      * @param  c the character
-     * @return <tt>true</tt> if <tt>c</tt> is a character in this alphabet;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if {@code c} is a character in this alphabet;
+     *         {@code false} otherwise
      */
     public boolean contains(char c) {
         return inverse[c] != -1;
@@ -148,8 +148,19 @@ public class Alphabet {
      * Returns the number of characters in this alphabet (the radix).
      * 
      * @return the number of characters in this alphabet
+     * @deprecated Replaced by {@link #radix()}.
      */
+    @Deprecated
     public int R() {
+        return R;
+    }
+
+    /**
+     * Returns the number of characters in this alphabet (the radix).
+     * 
+     * @return the number of characters in this alphabet
+     */
+    public int radix() {
         return R;
     }
 
@@ -169,8 +180,8 @@ public class Alphabet {
      * Returns the index corresponding to the argument character.
      * 
      * @param  c the character
-     * @return the index corresponding to the character <tt>c</tt>
-     * @throws IllegalArgumentException unless <tt>c</tt> is a character in this alphabet
+     * @return the index corresponding to the character {@code c}
+     * @throws IllegalArgumentException unless {@code c} is a character in this alphabet
      */
     public int toIndex(char c) {
         if (c >= inverse.length || inverse[c] == -1) {
@@ -183,8 +194,8 @@ public class Alphabet {
      * Returns the indices corresponding to the argument characters.
      * 
      * @param  s the characters
-     * @return the indices corresponding to the characters <tt>s</tt>
-     * @throws IllegalArgumentException unless every character in <tt>s</tt>
+     * @return the indices corresponding to the characters {@code s}
+     * @throws IllegalArgumentException unless every character in {@code s}
      *         is a character in this alphabet
      */
     public int[] toIndices(String s) {
@@ -199,13 +210,12 @@ public class Alphabet {
      * Returns the character corresponding to the argument index.
      * 
      * @param  index the index
-     * @return the character corresponding to the index <tt>index</tt>
-     * @throws IllegalArgumentException unless <tt>index</tt> is between <tt>0</tt>
-     *         and <tt>R - 1</tt>
+     * @return the character corresponding to the index {@code index}
+     * @throws IllegalArgumentException unless {@code 0 <= index < R}
      */
     public char toChar(int index) {
         if (index < 0 || index >= R) {
-            throw new IndexOutOfBoundsException("Alphabet index out of bounds");
+            throw new IllegalArgumentException("index must be between 0 and " + R + ": " + index);
         }
         return alphabet[index];
     }
@@ -214,9 +224,9 @@ public class Alphabet {
      * Returns the characters corresponding to the argument indices.
      * 
      * @param  indices the indices
-     * @return the characters corresponding to the indices <tt>indices</tt>
-     * @throws IllegalArgumentException unless every index is between <tt>0</tt>
-     *         and <tt>R - 1</tt>
+     * @return the characters corresponding to the indices {@code indices}
+     * @throws IllegalArgumentException unless {@code 0 < indices[i] < R}
+     *         for every {@code i}
      */
     public String toChars(int[] indices) {
         StringBuilder s = new StringBuilder(indices.length);
@@ -226,7 +236,9 @@ public class Alphabet {
     }
 
     /**
-     * Unit tests the <tt>Alphabet</tt> data type.
+     * Unit tests the {@code Alphabet} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int[]  encoded1 = Alphabet.BASE64.toIndices("NowIsTheTimeForAllGoodMen");
@@ -244,7 +256,7 @@ public class Alphabet {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

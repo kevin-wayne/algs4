@@ -2,8 +2,8 @@
  *  Compilation:  javac Quick3way.java
  *  Execution:    java Quick3way < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/23quicksort/tiny.txt
- *                http://algs4.cs.princeton.edu/23quicksort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
+ *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using 3-way quicksort.
  *   
@@ -24,10 +24,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick3way</tt> class provides static methods for sorting an
+ *  The {@code Quick3way} class provides static methods for sorting an
  *  array using quicksort with 3-way partitioning.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -77,11 +77,6 @@ public class Quick3way {
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
-
-    // does v == w ?
-    private static boolean eq(Comparable v, Comparable w) {
-        return v.compareTo(w) == 0;
-    }
         
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
@@ -116,6 +111,8 @@ public class Quick3way {
     /**
      * Reads in a sequence of strings from standard input; 3-way
      * quicksorts them; and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -126,7 +123,7 @@ public class Quick3way {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

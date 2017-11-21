@@ -2,8 +2,8 @@
  *  Compilation:  javac Shell.java
  *  Execution:    java Shell < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
- *                http://algs4.cs.princeton.edu/21sort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *   
  *  Sorts a sequence of strings from standard input using shellsort.
  *
@@ -31,10 +31,10 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Shell</tt> class provides static methods for sorting an
+ *  The {@code Shell} class provides static methods for sorting an
  *  array using Shellsort with Knuth's increment sequence (1, 4, 13, 40, ...).
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick
@@ -50,15 +50,15 @@ public class Shell {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        int N = a.length;
+        int n = a.length;
 
         // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ... 
         int h = 1;
-        while (h < N/3) h = 3*h + 1; 
+        while (h < n/3) h = 3*h + 1; 
 
         while (h >= 1) {
             // h-sort the array
-            for (int i = h; i < N; i++) {
+            for (int i = h; i < n; i++) {
                 for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
                     exch(a, j, j-h);
                 }
@@ -114,6 +114,8 @@ public class Shell {
     /**
      * Reads in a sequence of strings from standard input; Shellsorts them; 
      * and prints them to standard output in ascending order. 
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
@@ -124,7 +126,7 @@ public class Shell {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

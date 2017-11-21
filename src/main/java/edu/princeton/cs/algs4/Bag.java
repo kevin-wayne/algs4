@@ -3,7 +3,7 @@
  *  Execution:    java Bag < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *
- *  A generic bag or multiset, implemented using a singly-linked list.
+ *  A generic bag or multiset, implemented using a singly linked list.
  *
  *  % more tobe.txt 
  *  to be or not to - be - - that - - - is
@@ -33,17 +33,18 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The <tt>Bag</tt> class represents a bag (or multiset) of 
+ *  The {@code Bag} class represents a bag (or multiset) of 
  *  generic items. It supports insertion and iterating over the 
  *  items in arbitrary order.
  *  <p>
- *  This implementation uses a singly-linked list with a static nested class Node.
+ *  This implementation uses a singly linked list with a static nested class Node.
  *  See {@link LinkedBag} for the version from the
  *  textbook that uses a non-static nested class.
+ *  See {@link ResizingArrayBag} for a version that uses a resizing array.
  *  The <em>add</em>, <em>isEmpty</em>, and <em>size</em> operations
  *  take constant time. Iteration takes time proportional to the number of items.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -53,7 +54,7 @@ import java.util.NoSuchElementException;
  */
 public class Bag<Item> implements Iterable<Item> {
     private Node<Item> first;    // beginning of bag
-    private int N;               // number of elements in bag
+    private int n;               // number of elements in bag
 
     // helper linked list class
     private static class Node<Item> {
@@ -66,14 +67,14 @@ public class Bag<Item> implements Iterable<Item> {
      */
     public Bag() {
         first = null;
-        N = 0;
+        n = 0;
     }
 
     /**
      * Returns true if this bag is empty.
      *
-     * @return <tt>true</tt> if this bag is empty;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if this bag is empty;
+     *         {@code false} otherwise
      */
     public boolean isEmpty() {
         return first == null;
@@ -85,7 +86,7 @@ public class Bag<Item> implements Iterable<Item> {
      * @return the number of items in this bag
      */
     public int size() {
-        return N;
+        return n;
     }
 
     /**
@@ -98,7 +99,7 @@ public class Bag<Item> implements Iterable<Item> {
         first = new Node<Item>();
         first.item = item;
         first.next = oldfirst;
-        N++;
+        n++;
     }
 
 
@@ -131,7 +132,9 @@ public class Bag<Item> implements Iterable<Item> {
     }
 
     /**
-     * Unit tests the <tt>Bag</tt> data type.
+     * Unit tests the {@code Bag} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         Bag<String> bag = new Bag<String>();
@@ -146,11 +149,10 @@ public class Bag<Item> implements Iterable<Item> {
         }
     }
 
-
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

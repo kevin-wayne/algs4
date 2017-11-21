@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>DijkstraAllPairsSP</tt> class represents a data type for solving the
+ *  The {@code DijkstraAllPairsSP} class represents a data type for solving the
  *  all-pairs shortest paths problem in edge-weighted digraphs
  *  where the edge weights are nonnegative.
  *  <p>
@@ -19,12 +19,12 @@ package edu.princeton.cs.algs4;
  *  The constructor takes time proportional to <em>V</em> (<em>E</em> log <em>V</em>)
  *  and uses space proprtional to <em>V</em><sup>2</sup>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>dist()</tt> and <tt>hasPath()</tt> methods take
- *  constant time and the <tt>path()</tt> method takes time proportional to the
+ *  Afterwards, the {@code dist()} and {@code hasPath()} methods take
+ *  constant time and the {@code path()} method takes time proportional to the
  *  number of edges in the shortest path returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -35,10 +35,10 @@ public class DijkstraAllPairsSP {
 
     /**
      * Computes a shortest paths tree from each vertex to to every other vertex in
-     * the edge-weighted digraph <tt>G</tt>.
+     * the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      * @throws IllegalArgumentException if an edge weight is negative
-     * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public DijkstraAllPairsSP(EdgeWeightedDigraph G) {
         all  = new DijkstraSP[G.V()];
@@ -47,41 +47,61 @@ public class DijkstraAllPairsSP {
     }
 
     /**
-     * Returns a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>.
-     * @param s the source vertex
-     * @param t the destination vertex
-     * @return a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>
-     *    as an iterable of edges, and <tt>null</tt> if no such path
+     * Returns a shortest path from vertex {@code s} to vertex {@code t}.
+     * @param  s the source vertex
+     * @param  t the destination vertex
+     * @return a shortest path from vertex {@code s} to vertex {@code t}
+     *         as an iterable of edges, and {@code null} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
      */
     public Iterable<DirectedEdge> path(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         return all[s].pathTo(t);
     }
 
     /**
-     * Is there a path from the vertex <tt>s</tt> to vertex <tt>t</tt>?
-     * @param s the source vertex
-     * @param t the destination vertex
-     * @return <tt>true</tt> if there is a path from vertex <tt>s</tt> 
-     *    to vertex <tt>t</tt>, and <tt>false</tt> otherwise
+     * Is there a path from the vertex {@code s} to vertex {@code t}?
+     * @param  s the source vertex
+     * @param  t the destination vertex
+     * @return {@code true} if there is a path from vertex {@code s} 
+     *         to vertex {@code t}, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
      */
     public boolean hasPath(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         return dist(s, t) < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns the length of a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>.
-     * @param s the source vertex
-     * @param t the destination vertex
-     * @return the length of a shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>;
-     *    <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * Returns the length of a shortest path from vertex {@code s} to vertex {@code t}.
+     * @param  s the source vertex
+     * @param  t the destination vertex
+     * @return the length of a shortest path from vertex {@code s} to vertex {@code t};
+     *         {@code Double.POSITIVE_INFINITY} if no such path
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
+     * @throws IllegalArgumentException unless {@code 0 <= t < V}
      */
     public double dist(int s, int t) {
+        validateVertex(s);
+        validateVertex(t);
         return all[s].distTo(t);
     }
+
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = all.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

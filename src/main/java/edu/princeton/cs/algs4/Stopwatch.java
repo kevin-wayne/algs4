@@ -14,13 +14,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Stopwatch</tt> data type is for measuring
+ *  The {@code Stopwatch} data type is for measuring
  *  the time that elapses between the start and end of a
  *  programming task (wall-clock time).
  *
  *  See {@link StopwatchCPU} for a version that measures CPU time.
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -52,13 +52,15 @@ public class Stopwatch {
 
     
     /**
-     * Unit tests the <tt>Stopwatch</tt> data type.
-     * Takes a command-line argument <tt>n</tt> and computes the 
-     * sum of the square roots of the first <tt>n</tt> positive integers,
-     * first using <tt>Math.sqrt()</tt>, then using <tt>Math.pow()</tt>.
+     * Unit tests the {@code Stopwatch} data type.
+     * Takes a command-line argument {@code n} and computes the 
+     * sum of the square roots of the first {@code n} positive integers,
+     * first using {@code Math.sqrt()}, then using {@code Math.pow()}.
      * It prints to standard output the sum and the amount of time to
      * compute the sum. Note that the discrete sum can be approximated by
      * an integral - the sum should be approximately 2/3 * (n^(3/2) - 1).
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
@@ -84,7 +86,7 @@ public class Stopwatch {
 } 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

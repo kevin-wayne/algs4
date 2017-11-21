@@ -2,6 +2,9 @@
  *  Compilation:  javac Bipartite.java
  *  Execution:    java  Bipartite V E F
  *  Dependencies: Graph.java 
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Given a graph, find either (i) a bipartition or (ii) an odd-length cycle.
  *  Runs in O(E + V) time.
@@ -13,7 +16,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The <tt>Bipartite</tt> class represents a data type for 
+ *  The {@code Bipartite} class represents a data type for 
  *  determining whether an undirected graph is bipartite or whether
  *  it has an odd-length cycle.
  *  The <em>isBipartite</em> operation determines whether the graph is
@@ -31,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  See {@link BipartiteX} for a nonrecursive version that uses breadth-first
  *  search.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -94,35 +97,36 @@ public class Bipartite {
     /**
      * Returns true if the graph is bipartite.
      *
-     * @return <tt>true</tt> if the graph is bipartite; <tt>false</tt> otherwise
+     * @return {@code true} if the graph is bipartite; {@code false} otherwise
      */
     public boolean isBipartite() {
         return isBipartite;
     }
  
     /**
-     * Returns the side of the bipartite that vertex <tt>v</tt> is on.
+     * Returns the side of the bipartite that vertex {@code v} is on.
      *
      * @param  v the vertex
-     * @return the side of the bipartition that vertex <tt>v</tt> is on; two vertices
+     * @return the side of the bipartition that vertex {@code v} is on; two vertices
      *         are in the same side of the bipartition if and only if they have the
      *         same color
-     * @throws IllegalArgumentException unless <tt>0 &le; v &lt; V</tt> 
+     * @throws IllegalArgumentException unless {@code 0 <= v < V} 
      * @throws UnsupportedOperationException if this method is called when the graph
      *         is not bipartite
      */
     public boolean color(int v) {
+        validateVertex(v);
         if (!isBipartite)
-            throw new UnsupportedOperationException("Graph is not bipartite");
+            throw new UnsupportedOperationException("graph is not bipartite");
         return color[v];
     }
 
     /**
      * Returns an odd-length cycle if the graph is not bipartite, and
-     * <tt>null</tt> otherwise.
+     * {@code null} otherwise.
      *
      * @return an odd-length cycle if the graph is not bipartite
-     *         (and hence has an odd-length cycle), and <tt>null</tt>
+     *         (and hence has an odd-length cycle), and {@code null}
      *         otherwise
      */
     public Iterable<Integer> oddCycle() {
@@ -159,8 +163,17 @@ public class Bipartite {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = marked.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>Bipartite</tt> data type.
+     * Unit tests the {@code Bipartite} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V1 = Integer.parseInt(args[0]);
@@ -200,7 +213,7 @@ public class Bipartite {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,15 +2,15 @@
  *  Compilation:  javac ThreeSumFast.java
  *  Execution:    java ThreeSumFast input.txt
  *  Dependencies: StdOut.java In.java Stopwatch.java
- *  Data files:   http://algs4.cs.princeton.edu/14analysis/1Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/2Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/4Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/8Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/16Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/32Kints.txt
- *                http://algs4.cs.princeton.edu/14analysis/1Mints.txt
+ *  Data files:   https://algs4.cs.princeton.edu/14analysis/1Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/2Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/4Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/8Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/16Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/32Kints.txt
+ *                https://algs4.cs.princeton.edu/14analysis/1Mints.txt
  *
- *  A program with N^2 log N running time. Read in N integers
+ *  A program with n^2 log n running time. Reads n integers
  *  and counts the number of triples that sum to exactly 0.
  *
  *  Limitations
@@ -44,14 +44,14 @@ package edu.princeton.cs.algs4;
 import java.util.Arrays;
 
 /**
- *  The <tt>ThreeSumFast</tt> class provides static methods for counting
+ *  The {@code ThreeSumFast} class provides static methods for counting
  *  and printing the number of triples in an array of distinct integers that
  *  sum to 0 (ignoring integer overflow).
  *  <p>
  *  This implementation uses sorting and binary search and takes time 
- *  proportional to N^2 log N, where N is the number of integers.
+ *  proportional to n^2 log n, where n is the number of integers.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -70,16 +70,18 @@ public class ThreeSumFast {
     }
 
     /**
-     * Prints to standard output the (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0.
+     * Prints to standard output the (i, j, k) with {@code i < j < k}
+     * such that {@code a[i] + a[j] + a[k] == 0}.
+     *
      * @param a the array of integers
      * @throws IllegalArgumentException if the array contains duplicate integers
      */
     public static void printAll(int[] a) {
-        int N = a.length;
+        int n = a.length;
         Arrays.sort(a);
         if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
                 int k = Arrays.binarySearch(a, -(a[i] + a[j]));
                 if (k > j) StdOut.println(a[i] + " " + a[j] + " " + a[k]);
             }
@@ -87,39 +89,44 @@ public class ThreeSumFast {
     } 
 
     /**
-     * Returns the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0.
+     * Returns the number of triples (i, j, k) with {@code i < j < k}
+     * such that {@code a[i] + a[j] + a[k] == 0}.
+     *
      * @param a the array of integers
-     * @return the number of triples (i, j, k) with i < j < k such that a[i] + a[j] + a[k] == 0
+     * @return the number of triples (i, j, k) with {@code i < j < k}
+     * such that {@code a[i] + a[j] + a[k] == 0}
      */
     public static int count(int[] a) {
-        int N = a.length;
+        int n = a.length;
         Arrays.sort(a);
         if (containsDuplicates(a)) throw new IllegalArgumentException("array contains duplicate integers");
-        int cnt = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = i+1; j < N; j++) {
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
                 int k = Arrays.binarySearch(a, -(a[i] + a[j]));
-                if (k > j) cnt++;
+                if (k > j) count++;
             }
         }
-        return cnt;
+        return count;
     } 
 
     /**
      * Reads in a sequence of distinct integers from a file, specified as a command-line argument;
      * counts the number of triples sum to exactly zero; prints out the time to perform
      * the computation.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args)  { 
         In in = new In(args[0]);
         int[] a = in.readAllInts();
-        int cnt = count(a);
-        StdOut.println(cnt);
+        int count = count(a);
+        StdOut.println(count);
     } 
 } 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

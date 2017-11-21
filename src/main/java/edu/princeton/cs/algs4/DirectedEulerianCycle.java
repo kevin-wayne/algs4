@@ -2,6 +2,8 @@
  *  Compilation:  javac DirectedEulerianCycle.java
  *  Execution:    java DirectedEulerianCycle V E
  *  Dependencies: Digraph.java Stack.java StdOut.java
+ *                BreadthFirstPaths.java
+ *                DigraphGenerator.java StdRandom.java
  *
  *  Find an Eulerian cycle in a digraph, if one exists.
  *
@@ -12,7 +14,7 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The <tt>DirectedEulerianCycle</tt> class represents a data type
+ *  The {@code DirectedEulerianCycle} class represents a data type
  *  for finding an Eulerian cycle or path in a digraph.
  *  An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
  *  uses every edge in the digraph exactly once.
@@ -28,7 +30,7 @@ import java.util.Iterator;
  *  {@link EulerianCycle} and {@link EulerianPath}.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
  *  @author Robert Sedgewick
@@ -88,7 +90,7 @@ public class DirectedEulerianCycle {
      * Returns the sequence of vertices on an Eulerian cycle.
      * 
      * @return the sequence of vertices on an Eulerian cycle;
-     *         <tt>null</tt> if no such cycle
+     *         {@code null} if no such cycle
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -97,8 +99,8 @@ public class DirectedEulerianCycle {
     /**
      * Returns true if the digraph has an Eulerian cycle.
      * 
-     * @return <tt>true</tt> if the digraph has an Eulerian cycle;
-     *         <tt>false</tt> otherwise
+     * @return {@code true} if the digraph has an Eulerian cycle;
+     *         {@code false} otherwise
      */
     public boolean hasEulerianCycle() {
         return cycle != null;
@@ -125,7 +127,7 @@ public class DirectedEulerianCycle {
     //    - indegree(v) = outdegree(v) for every vertex
     //    - the graph is connected, when viewed as an undirected graph
     //      (ignoring isolated vertices)
-    private static boolean hasEulerianCycle(Digraph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
 
         // Condition 0: at least 1 edge
         if (G.E() == 0) return false;
@@ -158,7 +160,7 @@ public class DirectedEulerianCycle {
         if (hasEulerianCycle() == (cycle() == null)) return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != hasEulerianCycle(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
 
         // nothing else to check if no Eulerian cycle
         if (cycle == null) return true;
@@ -195,7 +197,9 @@ public class DirectedEulerianCycle {
 
 
     /**
-     * Unit tests the <tt>DirectedEulerianCycle</tt> data type.
+     * Unit tests the {@code DirectedEulerianCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
@@ -247,7 +251,7 @@ public class DirectedEulerianCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

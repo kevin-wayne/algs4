@@ -2,6 +2,8 @@
  *  Compilation:  javac LongestCommonSubstring.java
  *  Execution:    java  LongestCommonSubstring file1.txt file2.txt
  *  Dependencies: SuffixArray.java In.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *  
  *  Read in two text files and find the longest substring that
  *  appears in both texts.
@@ -14,17 +16,17 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LongestCommonSubstring</tt> class provides a {@link SuffixArray}
+ *  The {@code LongestCommonSubstring} class provides a {@link SuffixArray}
  *  client for computing the longest common substring that appears in two
  *  given strings.
  *  <p>
  *  This implementation computes the suffix array of each string and applies a
  *  merging operation to determine the longest common substring.
  *  For an alternate implementation, see
- *  <a href = "http://algs4.cs.princeton.edu/63suffix/LongestCommonSubstringConcatenate.java.html">LongestCommonSubstringConcatenate.java</a>.
+ *  <a href = "https://algs4.cs.princeton.edu/63suffix/LongestCommonSubstringConcatenate.java.html">LongestCommonSubstringConcatenate.java</a>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *     
@@ -64,7 +66,7 @@ public class LongestCommonSubstring {
      * @param  s one string
      * @param  t the other string
      * @return the longest common string that appears as a substring
-     *         in both <tt>s</tt> and <tt>t</tt>; the empty string
+     *         in both {@code s} and {@code t}; the empty string
      *         if no such string
      */
     public static String lcs(String s, String t) {
@@ -86,10 +88,12 @@ public class LongestCommonSubstring {
     }
 
     /**
-     * Unit tests the <tt>lcs()</tt> method.
+     * Unit tests the {@code lcs()} method.
      * Reads in two strings from files specified as command-line arguments;
      * computes the longest common substring; and prints the results to
      * standard output.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in1 = new In(args[0]);
@@ -102,7 +106,7 @@ public class LongestCommonSubstring {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

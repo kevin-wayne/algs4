@@ -3,7 +3,7 @@
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
 This <a href = "https://github.com/kevin-wayne/algs4">public repository</a>
 contains the Java <a href = "http://algs4.cs.princeton.edu/code/">source code</a>
-for the algorithms in the textbook
+for the algorithms and clients in the textbook
 <a href = "http://amzn.to/13VNJi7">Algorithms, 4th Edition</a> by Robert Sedgewick and Kevin Wayne.
 This is the official version&mdash;it is actively maintained and updated by the authors.
 The programs are organized in the package <code>edu.princeton.cs.algs4</code>.
@@ -30,6 +30,7 @@ This repository is intended for use with either the <a href = "https://maven.apa
 or <a href = "https://gradle.org">Gradle</a> build managers.
 It can be run from either the command line or integrated into
 Eclipse, NetBeans, and IntelliJ.
+You can also access it via <a href = "https://bintray.com/algs4/maven/algs4">Bintray</a>.
 
 ## Coursera Algorithms, Part I and II students
 
@@ -39,7 +40,7 @@ However, please do not store solutions to programming assignments in public repo
 
 ## Copyright
 
-Copyright &copy; 2000&ndash;2015 by Robert Sedgewick and Kevin Wayne.
+Copyright &copy; 2000&ndash;2017 by Robert Sedgewick and Kevin Wayne.
 
 ## License
 
@@ -54,11 +55,12 @@ data structures in this repository were contributed by others. If interested, pl
 follow the same style as the code in the repository and thoroughly test your
 code before contacting us.
 
-## Support for other programming languaages
+## Support for other programming languages
 
 Some of the code in this repository has been translated to other languages:
 <ul>
-<a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a>
+<li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
+<li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
 </ul>
 
 

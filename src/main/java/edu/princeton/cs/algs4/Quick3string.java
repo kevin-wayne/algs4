@@ -2,6 +2,8 @@
  *  Compilation:  javac Quick3string.java
  *  Execution:    java Quick3string < input.txt
  *  Dependencies: StdIn.java StdOut.java 
+ *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
+ *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Reads string from standard input and 3-way string quicksort them.
  *
@@ -27,11 +29,11 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Quick3string</tt> class provides static methods for sorting an
+ *  The {@code Quick3string} class provides static methods for sorting an
  *  array of strings using 3-way radix quicksort.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -130,24 +132,26 @@ public class Quick3string {
      * Reads in a sequence of fixed-length strings from standard input;
      * 3-way radix quicksorts them;
      * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
         // read in the strings from standard input
         String[] a = StdIn.readAllStrings();
-        int N = a.length;
+        int n = a.length;
 
         // sort the strings
         sort(a);
 
         // print the results
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             StdOut.println(a[i]);
     }
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -12,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>EdgeWeightedDirectedCycle</tt> class represents a data type for 
+ *  The {@code EdgeWeightedDirectedCycle} class represents a data type for 
  *  determining whether an edge-weighted digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the edge-weighted
  *  digraph has a directed cycle and, if so, the <em>cycle</em> operation
@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  *  digraph is acyclic.
  *  <p>
  *  For additional documentation,   
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -43,7 +43,7 @@ public class EdgeWeightedDirectedCycle {
     private Stack<DirectedEdge> cycle;    // directed cycle (or null if no such cycle)
 
     /**
-     * Determines whether the edge-weighted digraph <tt>G</tt> has a directed cycle and,
+     * Determines whether the edge-weighted digraph {@code G} has a directed cycle and,
      * if so, finds such a cycle.
      * @param G the edge-weighted digraph
      */
@@ -55,7 +55,7 @@ public class EdgeWeightedDirectedCycle {
             if (!marked[v]) dfs(G, v);
 
         // check that digraph has a cycle
-        assert check(G);
+        assert check();
     }
 
     // check that algorithm computes either the topological order or finds a directed cycle
@@ -68,7 +68,7 @@ public class EdgeWeightedDirectedCycle {
             // short circuit if directed cycle found
             if (cycle != null) return;
 
-            //found new vertex, so recur
+            // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = e;
                 dfs(G, w);
@@ -77,11 +77,14 @@ public class EdgeWeightedDirectedCycle {
             // trace back directed cycle
             else if (onStack[w]) {
                 cycle = new Stack<DirectedEdge>();
-                while (e.from() != w) {
-                    cycle.push(e);
-                    e = edgeTo[e.from()];
+
+                DirectedEdge f = e;
+                while (f.from() != w) {
+                    cycle.push(f);
+                    f = edgeTo[f.from()];
                 }
-                cycle.push(e);
+                cycle.push(f);
+
                 return;
             }
         }
@@ -91,8 +94,8 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Does the edge-weighted digraph have a directed cycle?
-     * @return <tt>true</tt> if the edge-weighted digraph has a directed cycle,
-     * <tt>false</tt> otherwise
+     * @return {@code true} if the edge-weighted digraph has a directed cycle,
+     * {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
@@ -100,9 +103,9 @@ public class EdgeWeightedDirectedCycle {
 
     /**
      * Returns a directed cycle if the edge-weighted digraph has a directed cycle,
-     * and <tt>null</tt> otherwise.
+     * and {@code null} otherwise.
      * @return a directed cycle (as an iterable) if the edge-weighted digraph
-     *    has a directed cycle, and <tt>null</tt> otherwise
+     *    has a directed cycle, and {@code null} otherwise
      */
     public Iterable<DirectedEdge> cycle() {
         return cycle;
@@ -110,7 +113,7 @@ public class EdgeWeightedDirectedCycle {
 
 
     // certify that digraph is either acyclic or has a directed cycle
-    private boolean check(EdgeWeightedDigraph G) {
+    private boolean check() {
 
         // edge-weighted digraph is cyclic
         if (hasCycle()) {
@@ -138,7 +141,9 @@ public class EdgeWeightedDirectedCycle {
     }
 
     /**
-     * Unit tests the <tt>EdgeWeightedDirectedCycle</tt> data type.
+     * Unit tests the {@code EdgeWeightedDirectedCycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
@@ -190,7 +195,7 @@ public class EdgeWeightedDirectedCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

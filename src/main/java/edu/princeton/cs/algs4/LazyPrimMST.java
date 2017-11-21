@@ -3,9 +3,9 @@
  *  Execution:    java LazyPrimMST filename.txt
  *  Dependencies: EdgeWeightedGraph.java Edge.java Queue.java
  *                MinPQ.java UF.java In.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/43mst/tinyEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/mediumEWG.txt
- *                http://algs4.cs.princeton.edu/43mst/largeEWG.txt
+ *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
+ *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  Compute a minimum spanning forest using a lazy version of Prim's 
  *  algorithm.
@@ -42,13 +42,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LazyPrimMST</tt> class represents a data type for computing a
+ *  The {@code LazyPrimMST} class represents a data type for computing a
  *  <em>minimum spanning tree</em> in an edge-weighted graph.
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The <tt>weight()</tt> method returns the 
- *  weight of a minimum spanning tree and the <tt>edges()</tt> method
+ *  in each connected component. The {@code weight()} method returns the 
+ *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
  *  This implementation uses a lazy version of <em>Prim's algorithm</em>
@@ -56,11 +56,11 @@ package edu.princeton.cs.algs4;
  *  The constructor takes time proportional to <em>E</em> log <em>E</em>
  *  and extra space (not including the graph) proportional to <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <tt>weight()</tt> method takes constant time
- *  and the <tt>edges()</tt> method takes time proportional to <em>V</em>.
+ *  Afterwards, the {@code weight()} method takes constant time
+ *  and the {@code edges()} method takes time proportional to <em>V</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For alternate implementations, see {@link PrimMST}, {@link KruskalMST},
  *  and {@link BoruvkaMST}.
@@ -192,7 +192,9 @@ public class LazyPrimMST {
     
     
     /**
-     * Unit tests the <tt>LazyPrimMST</tt> data type.
+     * Unit tests the {@code LazyPrimMST} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -207,7 +209,7 @@ public class LazyPrimMST {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

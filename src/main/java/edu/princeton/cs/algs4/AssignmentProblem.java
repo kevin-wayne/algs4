@@ -1,21 +1,18 @@
 /******************************************************************************
  *  Compilation:  javac AssignmentProblem.java
- *  Execution:    java AssignmentProblem N
+ *  Execution:    java AssignmentProblem n
  *  Dependencies: DijkstraSP.java DirectedEdge.java
  *
- *  Solve an N-by-N assignment problem in N^3 log N time using the
+ *  Solve an n-by-n assignment problem in n^3 log n time using the
  *  successive shortest path algorithm.
- *
- *  Assumes N-by-N cost matrix is nonnegative.
- *  TODO: remove this assumption
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>AssignmentProblem</tt> class represents a data type for computing
- *  an optimal solution to an <em>N</em>-by-<em>N</em> <em>assignment problem</em>.
+ *  The {@code AssignmentProblem} class represents a data type for computing
+ *  an optimal solution to an <em>n</em>-by-<em>n</em> <em>assignment problem</em>.
  *  The assignment problem is to find a minimum weight matching in an
  *  edge-weighted complete bipartite graph.
  *  <p>
@@ -24,25 +21,23 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation uses the <em>successive shortest paths algorithm</em>.
  *  The order of growth of the running time in the worst case is
- *  O(<em>N</em>^3 log <em>N</em>) to solve an <em>N</em>-by-<em>N</em>
+ *  O(<em>n</em>^3 log <em>n</em>) to solve an <em>n</em>-by-<em>n</em>
  *  instance.
  *  <p>
- *  See also {@link WeightedBipartiteMatching}, which solves the problem
- *  in O(<em>E V</em> log <em>V</em>) time in the worst case
- *  for bipartite graphs with <em>V</em> vertices and <em>E</em> edges.
- *  <p>
  *  For additional documentation, see
- *  <a href="http://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
+ *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
 public class AssignmentProblem {
+    private static final double FLOATING_POINT_EPSILON = 1E-14;
     private static final int UNMATCHED = -1;
 
-    private int N;              // number of rows and columns
-    private double[][] weight;  // the N-by-N cost matrix
+    private int n;              // number of rows and columns
+    private double[][] weight;  // the n-by-n cost matrix
+    private double minWeight;   // minimum value of any weight
     private double[] px;        // px[i] = dual variable for row i
     private double[] py;        // py[j] = dual variable for col j
     private int[] xy;           // xy[i] = j means i-j is a match
@@ -51,35 +46,38 @@ public class AssignmentProblem {
     /**
      * Determines an optimal solution to the assignment problem.
      *
-     * @param  weight the <em>N</em>-by-<em>N</em> matrix of weights
+     * @param  weight the <em>n</em>-by-<em>n</em> matrix of weights
      * @throws IllegalArgumentException unless all weights are nonnegative
-     * @throws NullPointerException if <tt>weight</tt> is <tt>null</tt>
+     * @throws IllegalArgumentException if {@code weight} is {@code null}
      */ 
     public AssignmentProblem(double[][] weight) {
-        N = weight.length;
-        this.weight = new double[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (!(weight[i][j] >= 0.0))
-                    throw new IllegalArgumentException("weights must be nonnegative");
+        if (weight == null) throw new IllegalArgumentException("constructor argument is null");
+
+        n = weight.length;
+        this.weight = new double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (Double.isNaN(weight[i][j]))
+                    throw new IllegalArgumentException("weight " + i + "-" + j  + " is NaN");
+                if (weight[i][j] < minWeight) minWeight = weight[i][j];
                 this.weight[i][j] = weight[i][j];
             }
         }
 
         // dual variables
-        px = new double[N];
-        py = new double[N];
+        px = new double[n];
+        py = new double[n];
 
         // initial matching is empty
-        xy = new int[N];
-        yx = new int[N];
-        for (int i = 0; i < N; i++)
+        xy = new int[n];
+        yx = new int[n];
+        for (int i = 0; i < n; i++)
              xy[i] = UNMATCHED;
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < n; j++)
              yx[j] = UNMATCHED;
 
-        // add N edges to matching
-        for (int k = 0; k < N; k++) {
+        // add n edges to matching
+        for (int k = 0; k < n; k++) {
             assert isDualFeasible();
             assert isComplementarySlack();
             augment();
@@ -91,20 +89,20 @@ public class AssignmentProblem {
     private void augment() {
 
         // build residual graph
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(2*N+2);
-        int s = 2*N, t = 2*N+1;
-        for (int i = 0; i < N; i++) {
+        EdgeWeightedDigraph G = new EdgeWeightedDigraph(2*n+2);
+        int s = 2*n, t = 2*n+1;
+        for (int i = 0; i < n; i++) {
             if (xy[i] == UNMATCHED)
                 G.addEdge(new DirectedEdge(s, i, 0.0));
         }
-        for (int j = 0; j < N; j++) {
+        for (int j = 0; j < n; j++) {
             if (yx[j] == UNMATCHED)
-                G.addEdge(new DirectedEdge(N+j, t, py[j]));
+                G.addEdge(new DirectedEdge(n+j, t, py[j]));
         }
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (xy[i] == j) G.addEdge(new DirectedEdge(N+j, i, 0.0));
-                else            G.addEdge(new DirectedEdge(i, N+j, reducedCost(i, j)));
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (xy[i] == j) G.addEdge(new DirectedEdge(n+j, i, 0.0));
+                else            G.addEdge(new DirectedEdge(i, n+j, reducedCost(i, j)));
             }
         }
 
@@ -113,31 +111,39 @@ public class AssignmentProblem {
 
         // augment along alternating path
         for (DirectedEdge e : spt.pathTo(t)) {
-            int i = e.from(), j = e.to() - N;
-            if (i < N) {
+            int i = e.from(), j = e.to() - n;
+            if (i < n) {
                 xy[i] = j;
                 yx[j] = i;
             }
         }
 
         // update dual variables
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < n; i++)
             px[i] += spt.distTo(i);
-        for (int j = 0; j < N; j++)
-            py[j] += spt.distTo(N+j);
+        for (int j = 0; j < n; j++)
+            py[j] += spt.distTo(n+j);
     }
 
     // reduced cost of i-j
+    // (subtracting off minWeight reweights all weights to be non-negative)
     private double reducedCost(int i, int j) {
-        return weight[i][j] + px[i] - py[j];
+        double reducedCost = (weight[i][j] - minWeight) + px[i] - py[j];
+
+        // to avoid issues with floating-point precision
+        double magnitude = Math.abs(weight[i][j]) + Math.abs(px[i]) + Math.abs(py[j]);
+        if (Math.abs(reducedCost) <= FLOATING_POINT_EPSILON * magnitude) return 0.0;
+
+        assert reducedCost >= 0.0;
+        return reducedCost;
     }
 
     /**
      * Returns the dual optimal value for the specified row.
      *
      * @param  i the row index
-     * @return the dual optimal value for row <tt>i</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
+     * @return the dual optimal value for row {@code i}
+     * @throws IllegalArgumentException unless {@code 0 <= i < n}
      *
      */
     // dual variable for row i
@@ -150,8 +156,8 @@ public class AssignmentProblem {
      * Returns the dual optimal value for the specified column.
      *
      * @param  j the column index
-     * @return the dual optimal value for column <tt>j</tt>
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; j &lt; N</tt>
+     * @return the dual optimal value for column {@code j}
+     * @throws IllegalArgumentException unless {@code 0 <= j < n}
      *
      */
     public double dualCol(int j) {
@@ -163,8 +169,8 @@ public class AssignmentProblem {
      * Returns the column associated with the specified row in the optimal solution.
      *
      * @param  i the row index
-     * @return the column matched to row <tt>i</tt> in the optimal solution
-     * @throws IndexOutOfBoundsException unless <tt>0 &le; i &lt; N</tt>
+     * @return the column matched to row {@code i} in the optimal solution
+     * @throws IllegalArgumentException unless {@code 0 <= i < n}
      *
      */
     public int sol(int i) {
@@ -180,7 +186,7 @@ public class AssignmentProblem {
      */
     public double weight() {
         double total = 0.0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             if (xy[i] != UNMATCHED)
                 total += weight[i][xy[i]];
         }
@@ -188,7 +194,7 @@ public class AssignmentProblem {
     }
 
     private void validate(int i) {
-        if (i < 0 || i >= N) throw new IndexOutOfBoundsException();
+        if (i < 0 || i >= n) throw new IllegalArgumentException("index is not between 0 and " + (n-1) + ": " + i);
     }
 
 
@@ -201,8 +207,8 @@ public class AssignmentProblem {
     // check that dual variables are feasible
     private boolean isDualFeasible() {
         // check that all edges have >= 0 reduced cost
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (reducedCost(i, j) < 0) {
                     StdOut.println("Dual variables are not feasible");
                     return false;
@@ -216,7 +222,7 @@ public class AssignmentProblem {
     private boolean isComplementarySlack() {
 
         // check that all matched edges have 0-reduced cost
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             if ((xy[i] != UNMATCHED) && (reducedCost(i, xy[i]) != 0)) {
                 StdOut.println("Primal and dual variables are not complementary slack");
                 return false;
@@ -229,8 +235,8 @@ public class AssignmentProblem {
     private boolean isPerfectMatching() {
 
         // check that xy[] is a perfect matching
-        boolean[] perm = new boolean[N];
-        for (int i = 0; i < N; i++) {
+        boolean[] perm = new boolean[n];
+        for (int i = 0; i < n; i++) {
             if (perm[xy[i]]) {
                 StdOut.println("Not a perfect matching");
                 return false;
@@ -239,13 +245,13 @@ public class AssignmentProblem {
         }
 
         // check that xy[] and yx[] are inverses
-        for (int j = 0; j < N; j++) {
+        for (int j = 0; j < n; j++) {
             if (xy[yx[j]] != j) {
                 StdOut.println("xy[] and yx[] are not inverses");
                 return false;
             }
         }
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             if (yx[xy[i]] != i) {
                 StdOut.println("xy[] and yx[] are not inverses");
                 return false;
@@ -261,19 +267,21 @@ public class AssignmentProblem {
     }
 
     /**
-     * Unit tests the <tt>AssignmentProblem</tt> data type.
-     * Takes a command-line argument N; creates a random N-by-N matrix;
-     * solves the N-by-N assignment problem; and prints the optimal
+     * Unit tests the {@code AssignmentProblem} data type.
+     * Takes a command-line argument n; creates a random n-by-n matrix;
+     * solves the n-by-n assignment problem; and prints the optimal
      * solution.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
-        // create random N-by-N matrix
-        int N = Integer.parseInt(args[0]);
-        double[][] weight = new double[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                weight[i][j] = 100 + StdRandom.uniform(900);
+        // create random n-by-n matrix
+        int n = Integer.parseInt(args[0]);
+        double[][] weight = new double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                weight[i][j] = StdRandom.uniform(900) + 100;  // 3 digits
             }
         }
 
@@ -282,10 +290,10 @@ public class AssignmentProblem {
         StdOut.printf("weight = %.0f\n", assignment.weight());
         StdOut.println();
 
-        // print N-by-N matrix and optimal solution
-        if (N <= 20) return;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
+        // print n-by-n matrix and optimal solution
+        if (n >= 20) return;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (j == assignment.sol(i))
                     StdOut.printf("*%.0f ", weight[i][j]);
                 else
@@ -298,7 +306,7 @@ public class AssignmentProblem {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

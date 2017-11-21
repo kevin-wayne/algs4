@@ -3,8 +3,8 @@
  *  Execution:    java BellmanFordSP filename.txt s
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java Queue.java
  *                EdgeWeightedDirectedCycle.java
- *  Data files:   http://algs4.cs.princeton.edu/44sp/tinyEWDn.txt
- *                http://algs4.cs.princeton.edu/44sp/mediumEWDnc.txt
+ *  Data files:   https://algs4.cs.princeton.edu/44sp/tinyEWDn.txt
+ *                https://algs4.cs.princeton.edu/44sp/mediumEWDnc.txt
  *
  *  Bellman-Ford shortest path algorithm. Computes the shortest path tree in
  *  edge-weighted digraph G from vertex s, or finds a negative cost cycle
@@ -30,7 +30,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>BellmanFordSP</tt> class represents a data type for solving the
+ *  The {@code BellmanFordSP} class represents a data type for solving the
  *  single-source shortest paths problem in edge-weighted digraphs with
  *  no negative cycles. 
  *  The edge weights can be positive, negative, or zero.
@@ -41,12 +41,13 @@ package edu.princeton.cs.algs4;
  *  The constructor takes time proportional to <em>V</em> (<em>V</em> + <em>E</em>)
  *  in the worst case, where <em>V</em> is the number of vertices and <em>E</em>
  *  is the number of edges.
- *  Afterwards, the <tt>distTo()</tt>, <tt>hasPathTo()</tt>, and <tt>hasNegativeCycle()</tt>
- *  methods take constant time; the <tt>pathTo()</tt> and <tt>negativeCycle()</tt>
- *  method takes time proportional to the number of edges returned.
+ *  Each call to {@code distTo(int)} and {@code hasPathTo(int)},
+ *  {@code hasNegativeCycle} takes constant time;
+ *  each call to {@code pathTo(int)} and {@code negativeCycle()}
+ *  takes time proportional to length of the path returned.
  *  <p>
  *  For additional documentation,    
- *  see <a href="http://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
  *
  *  @author Robert Sedgewick
@@ -61,11 +62,11 @@ public class BellmanFordSP {
     private Iterable<DirectedEdge> cycle;  // negative cycle (or null if no such cycle)
 
     /**
-     * Computes a shortest paths tree from <tt>s</tt> to every other vertex in
-     * the edge-weighted digraph <tt>G</tt>.
+     * Computes a shortest paths tree from {@code s} to every other vertex in
+     * the edge-weighted digraph {@code G}.
      * @param G the acyclic digraph
      * @param s the source vertex
-     * @throws IllegalArgumentException unless 0 &le; <tt>s</tt> &le; <tt>V</tt> - 1
+     * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
     public BellmanFordSP(EdgeWeightedDigraph G, int s) {
         distTo  = new double[G.V()];
@@ -108,19 +109,19 @@ public class BellmanFordSP {
     }
 
     /**
-     * Is there a negative cycle reachable from the source vertex <tt>s</tt>?
-     * @return <tt>true</tt> if there is a negative cycle reachable from the
-     *    source vertex <tt>s</tt>, and <tt>false</tt> otherwise
+     * Is there a negative cycle reachable from the source vertex {@code s}?
+     * @return {@code true} if there is a negative cycle reachable from the
+     *    source vertex {@code s}, and {@code false} otherwise
      */
     public boolean hasNegativeCycle() {
         return cycle != null;
     }
 
     /**
-     * Returns a negative cycle reachable from the source vertex <tt>s</tt>, or <tt>null</tt>
+     * Returns a negative cycle reachable from the source vertex {@code s}, or {@code null}
      * if there is no such cycle.
-     * @return a negative cycle reachable from the soruce vertex <tt>s</tt> 
-     *    as an iterable of edges, and <tt>null</tt> if there is no such cycle
+     * @return a negative cycle reachable from the soruce vertex {@code s} 
+     *    as an iterable of edges, and {@code null} if there is no such cycle
      */
     public Iterable<DirectedEdge> negativeCycle() {
         return cycle;
@@ -139,38 +140,44 @@ public class BellmanFordSP {
     }
 
     /**
-     * Returns the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>.
-     * @param v the destination vertex
-     * @return the length of a shortest path from the source vertex <tt>s</tt> to vertex <tt>v</tt>;
-     *    <tt>Double.POSITIVE_INFINITY</tt> if no such path
+     * Returns the length of a shortest path from the source vertex {@code s} to vertex {@code v}.
+     * @param  v the destination vertex
+     * @return the length of a shortest path from the source vertex {@code s} to vertex {@code v};
+     *         {@code Double.POSITIVE_INFINITY} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle reachable
-     *    from the source vertex <tt>s</tt>
+     *         from the source vertex {@code s}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public double distTo(int v) {
+        validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         return distTo[v];
     }
 
     /**
-     * Is there a path from the source <tt>s</tt> to vertex <tt>v</tt>?
-     * @param v the destination vertex
-     * @return <tt>true</tt> if there is a path from the source vertex
-     *    <tt>s</tt> to vertex <tt>v</tt>, and <tt>false</tt> otherwise
+     * Is there a path from the source {@code s} to vertex {@code v}?
+     * @param  v the destination vertex
+     * @return {@code true} if there is a path from the source vertex
+     *         {@code s} to vertex {@code v}, and {@code false} otherwise
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public boolean hasPathTo(int v) {
+        validateVertex(v);
         return distTo[v] < Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Returns a shortest path from the source <tt>s</tt> to vertex <tt>v</tt>.
-     * @param v the destination vertex
-     * @return a shortest path from the source <tt>s</tt> to vertex <tt>v</tt>
-     *    as an iterable of edges, and <tt>null</tt> if no such path
+     * Returns a shortest path from the source {@code s} to vertex {@code v}.
+     * @param  v the destination vertex
+     * @return a shortest path from the source {@code s} to vertex {@code v}
+     *         as an iterable of edges, and {@code null} if no such path
      * @throws UnsupportedOperationException if there is a negative cost cycle reachable
-     *    from the source vertex <tt>s</tt>
+     *         from the source vertex {@code s}
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<DirectedEdge> pathTo(int v) {
+        validateVertex(v);
         if (hasNegativeCycle())
             throw new UnsupportedOperationException("Negative cost cycle exists");
         if (!hasPathTo(v)) return null;
@@ -245,8 +252,17 @@ public class BellmanFordSP {
         return true;
     }
 
+    // throw an IllegalArgumentException unless {@code 0 <= v < V}
+    private void validateVertex(int v) {
+        int V = distTo.length;
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     /**
-     * Unit tests the <tt>BellmanFordSP</tt> data type.
+     * Unit tests the {@code BellmanFordSP} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -282,7 +298,7 @@ public class BellmanFordSP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

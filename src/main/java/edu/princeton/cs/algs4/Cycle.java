@@ -2,6 +2,9 @@
  *  Compilation:  javac Cycle.java
  *  Execution:    java  Cycle filename.txt
  *  Dependencies: Graph.java Stack.java In.java StdOut.java
+ *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
+ *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt  
  *
  *  Identifies a cycle.
  *  Runs in O(E + V) time.
@@ -20,7 +23,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>Cycle</tt> class represents a data type for 
+ *  The {@code Cycle} class represents a data type for 
  *  determining whether an undirected graph has a cycle.
  *  The <em>hasCycle</em> operation determines whether the graph has
  *  a cycle and, if so, the <em>cycle</em> operation returns one.
@@ -33,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  the <em>cycle</em> operation takes time proportional
  *  to the length of the cycle.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -45,7 +48,7 @@ public class Cycle {
     private Stack<Integer> cycle;
 
     /**
-     * Determines whether the undirected graph <tt>G</tt> has a cycle and,
+     * Determines whether the undirected graph {@code G} has a cycle and,
      * if so, finds such a cycle.
      *
      * @param G the undirected graph
@@ -105,18 +108,18 @@ public class Cycle {
     }
 
     /**
-     * Returns true if the graph <tt>G</tt> has a cycle.
+     * Returns true if the graph {@code G} has a cycle.
      *
-     * @return <tt>true</tt> if the graph has a cycle; <tt>false</tt> otherwise
+     * @return {@code true} if the graph has a cycle; {@code false} otherwise
      */
     public boolean hasCycle() {
         return cycle != null;
     }
 
      /**
-     * Returns a cycle in the graph <tt>G</tt>.
-     * @return a cycle if the graph <tt>G</tt> has a cycle,
-     *         and <tt>null</tt> otherwise
+     * Returns a cycle in the graph {@code G}.
+     * @return a cycle if the graph {@code G} has a cycle,
+     *         and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;
@@ -147,7 +150,9 @@ public class Cycle {
     }
 
     /**
-     * Unit tests the <tt>Cycle</tt> data type.
+     * Unit tests the {@code Cycle} data type.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -169,7 +174,7 @@ public class Cycle {
 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

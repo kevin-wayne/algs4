@@ -2,7 +2,8 @@
  *  Compilation:  javac KWIK.java
  *  Execution:    java KWIK file.txt
  *  Dependencies: StdIn.java StdOut.java In.java SuffixArray.java
- *  Data files:   http://algs4.cs.princeton.edu/63suffix/tale.txt
+ *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt 
  *
  *  Keyword-in-context search.
  *
@@ -37,12 +38,12 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>KWIK</tt> class provides a {@link SuffixArray} client for computing
+ *  The {@code KWIK} class provides a {@link SuffixArray} client for computing
  *  all occurrences of a keyword in a given string, with surrounding context.
  *  This is known as <em>keyword-in-context search</em>.
  *  <p>
  *  For additional documentation,
- *  see <a href="http://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -60,6 +61,8 @@ public class KWIK {
      * use queries, printing all occurrences of the given query
      * string in the text string with k characters of surrounding
      * context on either side.
+     *
+     * @param args the command-line arguments
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
@@ -67,7 +70,7 @@ public class KWIK {
 
         // read in text
         String text = in.readAll().replaceAll("\\s+", " ");
-        int N = text.length();
+        int n = text.length();
 
         // build suffix array
         SuffixArray sa = new SuffixArray(text);
@@ -75,12 +78,12 @@ public class KWIK {
         // find all occurrences of queries and give context
         while (StdIn.hasNextLine()) {
             String query = StdIn.readLine();
-            for (int i = sa.rank(query); i < N; i++) {
+            for (int i = sa.rank(query); i < n; i++) {
                 int from1 = sa.index(i);
-                int to1   = Math.min(N, from1 + query.length());
+                int to1   = Math.min(n, from1 + query.length());
                 if (!query.equals(text.substring(from1, to1))) break;
                 int from2 = Math.max(0, sa.index(i) - context);
-                int to2   = Math.min(N, sa.index(i) + context + query.length());
+                int to2   = Math.min(n, sa.index(i) + context + query.length());
                 StdOut.println(text.substring(from2, to2));
             }
             StdOut.println();
@@ -89,7 +92,7 @@ public class KWIK {
 } 
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

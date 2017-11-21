@@ -2,8 +2,8 @@
  *  Compilation:  javac LookupIndex.java
  *  Execution:    java LookupIndex movies.txt "/"
  *  Dependencies: ST.java Queue.java In.java StdIn.java StdOut.java
- *  Data files:   http://algs4.cs.princeton.edu/35applications/aminoI.csv
- *                http://algs4.cs.princeton.edu/35applications/movies.txt
+ *  Data files:   https://algs4.cs.princeton.edu/35applications/aminoI.csv
+ *                https://algs4.cs.princeton.edu/35applications/movies.txt
  *
  *  % java LookupIndex aminoI.csv ","
  *  Serine
@@ -36,13 +36,13 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The <tt>LookupIndex</tt> class provides a data-driven client for reading in a
+ *  The {@code LookupIndex} class provides a data-driven client for reading in a
  *  key-value pairs from a file; then, printing the values corresponding to the
  *  keys found on standard input. Keys are strings; values are lists of strings.
  *  The separating delimiter is taken as a command-line argument. This client
  *  is sometimes known as an <em>inverted index</em>.
  *  <p>
- *  For additional documentation, see <a href="http://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick
@@ -92,7 +92,7 @@ public class LookupIndex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2015, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
