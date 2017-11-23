@@ -41,9 +41,10 @@ package edu.princeton.cs.algs4;
  *  The constructor takes time proportional to <em>V</em> (<em>V</em> + <em>E</em>)
  *  in the worst case, where <em>V</em> is the number of vertices and <em>E</em>
  *  is the number of edges.
- *  Afterwards, the {@code distTo()}, {@code hasPathTo()}, and {@code hasNegativeCycle()}
- *  methods take constant time; the {@code pathTo()} and {@code negativeCycle()}
- *  method takes time proportional to the number of edges returned.
+ *  Each call to {@code distTo(int)} and {@code hasPathTo(int)},
+ *  {@code hasNegativeCycle} takes constant time;
+ *  each call to {@code pathTo(int)} and {@code negativeCycle()}
+ *  takes time proportional to length of the path returned.
  *  <p>
  *  For additional documentation,    
  *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    

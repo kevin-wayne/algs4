@@ -30,9 +30,9 @@ package edu.princeton.cs.algs4;
  *  This implementation uses a topological-sort based algorithm.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the {@code distTo()} and {@code hasPathTo()} methods take
- *  constant time and the {@code pathTo()} method takes time proportional to the
- *  number of edges in the longest path returned.
+ *  Each call to {@code distTo(int)} and {@code hasPathTo(int)} takes constant time;
+ *  each call to {@code pathTo(int)} takes time proportional to the number of
+ *  edges in the shortest path returned.
  *  <p>
  *  For additional documentation,   
  *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   

@@ -5,7 +5,7 @@
  *
  *  Data type for manipulating individual pixels of an image. The original
  *  image can be read from a file in jpg, gif, or png format, or the
- *  user can create a blank image of a given size. Includes methods for
+ *  user can create a blank image of a given dimension. Includes methods for
  *  displaying the image in a window on the screen or saving to a file.
  *
  *  % java Picture mandrill.jpg
@@ -15,9 +15,6 @@
  *   - pixel (x, y) is column x and row y, where (0, 0) is upper left
  *
  *   - see also GrayPicture.java for a grayscale version
- *
- *   - should we add int getRGB(int x, int y) and settRGB(int x, int y, int argb)
- *     for performance (to avoid creating of Color objects when important)?
  *
  ******************************************************************************/
 
@@ -40,20 +37,42 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 
 /**
  *  This class provides methods for manipulating individual pixels of
- *  an image. The original image can be read from a {@code .jpg}, {@code .gif},
- *  or {@code .png} file or the user can create a blank image of a given size.
+ *  an image using the RGB color format. The alpha component (for transparency)
+ *  is not currently supported.
+ *  The original image can be read from a {@code PNG}, {@code GIF},
+ *  or {@code JPEG} file or the user can create a blank image of a given dimension.
  *  This class includes methods for displaying the image in a window on
  *  the screen or saving it to a file.
  *  <p>
  *  Pixel (<em>col</em>, <em>row</em>) is column <em>col</em> and row <em>row</em>.
  *  By default, the origin (0, 0) is the pixel in the top-left corner,
  *  which is a common convention in image processing.
- *  The method {@code setOriginLowerLeft()} change the origin to the lower left.
+ *  The method {@link #setOriginLowerLeft()} change the origin to the lower left.
+ *  <p>
+ *  The {@code get()} and {@code set()} methods use {@link Color} objects to get
+ *  or set the color of the specified pixel.
+ *  The {@code getRGB()} and {@code setRGB()} methods use a 32-bit {@code int}
+ *  to encode the color, thereby avoiding the need to create temporary
+ *  {@code Color} objects. The red (R), green (G), and blue (B) components 
+ *  are encoded using the least significant 24 bits.
+ *  Given a 32-bit {@code int} encoding the color, the following code extracts
+ *  the RGB components:
+ * <blockquote><pre>
+ *  int r = (rgb >> 16) & 0xFF;
+ *  int g = (rgb >>  8) & 0xFF;
+ *  int b = (rgb >>  0) & 0xFF;
+ *  </pre></blockquote> 
+ *  Given the RGB components (8-bits each) of a color,
+ *  the following statement packs it into a 32-bit {@code int}:
+ * <blockquote><pre>
+ *  int rgb = (r << 16) + (g << 8) + (b << 0);
+ * </pre></blockquote> 
  *  <p>
  *  For additional documentation, see
  *  <a href="https://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
@@ -71,7 +90,7 @@ public final class Picture implements ActionListener {
     private final int width, height;           // width and height
 
    /**
-     * Initializes a blank {@code width}-by-{@code height} picture, with {@code width} columns
+     * Creates a {@code width}-by-{@code height} picture, with {@code width} columns
      * and {@code height} rows, where each pixel is black.
      *
      * @param width the width of the picture
@@ -80,16 +99,16 @@ public final class Picture implements ActionListener {
      * @throws IllegalArgumentException if {@code height} is negative
      */
     public Picture(int width, int height) {
-        if (width  < 0) throw new IllegalArgumentException("width must be nonnegative");
-        if (height < 0) throw new IllegalArgumentException("height must be nonnegative");
+        if (width  < 0) throw new IllegalArgumentException("width must be non-negative");
+        if (height < 0) throw new IllegalArgumentException("height must be non-negative");
         this.width  = width;
         this.height = height;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        // set to TYPE_INT_ARGB to support transparency
+        // set to TYPE_INT_ARGB here and in next constructor to support transparency
     }
 
    /**
-     * Initializes a new picture that is a deep copy of the argument picture.
+     * Creates a new picture that is a deep copy of the argument picture.
      *
      * @param  picture the picture to copy
      * @throws IllegalArgumentException if {@code picture} is {@code null}
@@ -101,13 +120,14 @@ public final class Picture implements ActionListener {
         height = picture.height();
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         filename = picture.filename;
+        isOriginUpperLeft = picture.isOriginUpperLeft;
         for (int col = 0; col < width(); col++)
             for (int row = 0; row < height(); row++)
-                image.setRGB(col, row, picture.get(col, row).getRGB());
+                image.setRGB(col, row, picture.image.getRGB(col, row));
     }
 
    /**
-     * Initializes a picture by reading from a file or URL.
+     * Creates a picture by reading an image from a file or URL.
      *
      * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
      * @throws IllegalArgumentException if cannot read image
@@ -146,7 +166,7 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Initializes a picture by reading in a .png, .gif, or .jpg from a file.
+     * Creates a picture by reading the image from a PNG, GIF, or JPEG file.
      *
      * @param file the file
      * @throws IllegalArgumentException if cannot read image
@@ -170,8 +190,8 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Returns a JLabel containing this picture, for embedding in a JPanel,
-     * JFrame or other GUI widget.
+     * Returns a {@link JLabel} containing this picture, for embedding in a {@link JPanel},
+     * {@link JFrame} or other GUI widget.
      *
      * @return the {@code JLabel}
      */
@@ -275,8 +295,8 @@ public final class Picture implements ActionListener {
 
    /**
      * Returns the color of pixel ({@code col}, {@code row}) as an {@code int}.
-     * Using this method can be more efficient than {@link #get(int, int)} because it does not
-     * create a {@code Color} object.
+     * Using this method can be more efficient than {@link #get(int, int)} because
+     * it does not create a {@code Color} object.
      *
      * @param col the column index
      * @param row the row index
@@ -338,7 +358,7 @@ public final class Picture implements ActionListener {
         if (this.height() != that.height()) return false;
         for (int col = 0; col < width(); col++)
             for (int row = 0; row < height(); row++)
-                if (!this.get(col, row).equals(that.get(col, row))) return false;
+                if (this.getRGB(col, row) != that.getRGB(col, row)) return false;
         return true;
     }
 

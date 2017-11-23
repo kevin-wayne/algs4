@@ -58,7 +58,7 @@ package edu.princeton.cs.algs4;
  */
 public class Topological {
     private Iterable<Integer> order;  // topological order
-    private int[] rank;               // rank[v] = position of vertex v in topological order
+    private int[] rank;               // rank[v] = rank of vertex v in order
 
     /**
      * Determines whether the digraph {@code G} has a topological order and, if so,
