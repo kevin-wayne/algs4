@@ -53,7 +53,7 @@ public class Quick3way {
         if (hi <= lo) return;
         int lt = lo, gt = hi;
         Comparable v = a[lo];
-        int i = lo;
+        int i = lo + 1;
         while (i <= gt) {
             int cmp = a[i].compareTo(v);
             if      (cmp < 0) exch(a, lt++, i++);

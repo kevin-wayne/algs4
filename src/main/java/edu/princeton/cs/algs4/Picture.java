@@ -74,6 +74,9 @@ import javax.swing.KeyStroke;
  *  int rgb = (r << 16) + (g << 8) + (b << 0);
  * </pre></blockquote> 
  *  <p>
+ *  A <em>W</em>-by-<en>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
+ *  since the color of each pixel is encoded as a 32-bit <code>int</code>.
+ *  <p>
  *  For additional documentation, see
  *  <a href="https://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i>
@@ -362,6 +365,29 @@ public final class Picture implements ActionListener {
         return true;
     }
 
+   /**
+     * Returns a string representation of this picture.
+     * The result is a <code>width</code>-by-<code>height</code> matrix of pixels,
+     * where the color of a pixel is represented using 6 hex digits to encode
+     * the red, green, and blue components.
+     *
+     * @return a string representation of this picture
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(width +"-by-" + height + " picture (RGB values given in hex)\n");
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                int rgb = 0;
+                if (isOriginUpperLeft) rgb = image.getRGB(col, row);
+                else                   rgb = image.getRGB(col, height - row - 1);
+                sb.append(String.format("#%06X ", rgb & 0xFFFFFF));
+            }
+            sb.append("\n");
+        }
+        return sb.toString().trim();
+    }
+
     /**
      * This operation is not supported because pictures are mutable.
      *
@@ -420,7 +446,6 @@ public final class Picture implements ActionListener {
             save(chooser.getDirectory() + File.separator + chooser.getFile());
         }
     }
-
 
    /**
      * Unit tests this {@code Picture} data type.

@@ -36,9 +36,9 @@
  *  Remark
  *  ------
  *    - Relies on randomness of nextDouble() method in java.util.Random
- *      to generate pseudorandom numbers in [0, 1).
+ *      to generate pseudo-random numbers in [0, 1).
  *
- *    - This library allows you to set and get the pseudorandom number seed.
+ *    - This library allows you to set and get the pseudo-random number seed.
  *
  *    - See http://www.honeylocust.com/RngPack/ for an industrial
  *      strength random number generator in Java.
@@ -52,9 +52,16 @@ import java.util.Random;
 /**
  *  The {@code StdRandom} class provides static methods for generating
  *  random number from various discrete and continuous distributions, 
- *  including Bernoulli, uniform, Gaussian, exponential, pareto,
+ *  including uniform, Bernoulli, geometric, Gaussian, exponential, Pareto,
  *  Poisson, and Cauchy. It also provides method for shuffling an
- *  array or subarray.
+ *  array or subarray and generating random permutations.
+ *  <p>
+ *  By convention, all intervals are half open. For example,
+ *  <code>uniform(-1.0, 1.0)</code> returns a random number between
+ *  <code>-1.0</code> (inclusive) and <code>1.0</code> (exclusive).
+ *  Similarly, <code>shuffle(a, lo, hi)</code> shuffles the <code>hi - lo</code>
+ *  elements in the array <code>a[]</code>, starting at index <code>lo</code>
+ *  (inclusive) and ending at index <code>hi</code> (exclusive).
  *  <p>
  *  For additional documentation,
  *  see <a href="https://introcs.cs.princeton.edu/22library">Section 2.2</a> of
@@ -80,7 +87,7 @@ public final class StdRandom {
     private StdRandom() { }
 
     /**
-     * Sets the seed of the pseudorandom number generator.
+     * Sets the seed of the pseudo-random number generator.
      * This method enables you to produce the same sequence of "random"
      * number for each execution of the program.
      * Ordinarily, you should call this method at most once per program.
@@ -93,7 +100,7 @@ public final class StdRandom {
     }
 
     /**
-     * Returns the seed of the pseudorandom number generator.
+     * Returns the seed of the pseudo-random number generator.
      *
      * @return the seed
      */
@@ -126,7 +133,7 @@ public final class StdRandom {
     /**
      * Returns a random long integer uniformly in [0, n).
      * 
-     * @param n number of possible long integers
+     * @param n number of possible {@code long} integers
      * @return a random long integer uniformly between 0 (inclusive) and {@code n} (exclusive)
      * @throws IllegalArgumentException if {@code n <= 0}
      */
