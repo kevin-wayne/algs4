@@ -36,19 +36,24 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public final class BinaryStdIn {
-    private static BufferedInputStream in = new BufferedInputStream(System.in);
-    private static final int EOF = -1;    // end of file
+    private static final int EOF = -1;      // end of file
 
-    private static int buffer;            // one character buffer
-    private static int n;                 // number of bits left in buffer
-
-    // static initializer
-    static {
-        fillBuffer();
-    }
+    private static BufferedInputStream in;  // input stream
+    private static int buffer;              // one character buffer
+    private static int n;                   // number of bits left in buffer
+    private static boolean isInitialized;   // has BinaryStdIn been called for first time?
 
     // don't instantiate
     private BinaryStdIn() { }
+
+    // fill buffer
+    private static void initialize() {
+        in = new BufferedInputStream(System.in);
+        buffer = 0;
+        n = 0;
+        fillBuffer();
+        isInitialized = true;
+    }
 
     private static void fillBuffer() {
         try {
@@ -66,8 +71,10 @@ public final class BinaryStdIn {
      * Close this input stream and release any associated system resources.
      */
     public static void close() {
+        if (!isInitialized) initialize();
         try {
             in.close();
+            isInitialized = false;
         }
         catch (IOException ioe) {
             throw new IllegalStateException("Could not close BinaryStdIn", ioe);
@@ -79,6 +86,7 @@ public final class BinaryStdIn {
      * @return true if and only if standard input is empty
      */
     public static boolean isEmpty() {
+        if (!isInitialized) initialize();
         return buffer == EOF;
     }
 

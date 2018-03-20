@@ -33,18 +33,28 @@ import java.io.IOException;
  *  @author Kevin Wayne
  */
 public final class BinaryStdOut {
-    private static BufferedOutputStream out = new BufferedOutputStream(System.out);
-
-    private static int buffer;     // 8-bit buffer of bits to write out
-    private static int n;          // number of bits remaining in buffer
+    private static BufferedOutputStream out;  // output stream (standard output)
+    private static int buffer;                // 8-bit buffer of bits to write
+    private static int n;                     // number of bits remaining in buffer
+    private static boolean isInitialized;     // has BinaryStdOut been called for first time?
 
     // don't instantiate
     private BinaryStdOut() { }
+
+    // initialize BinaryStdOut
+    private static void initialize() {
+        out = new BufferedOutputStream(System.out);
+        buffer = 0;
+        n = 0;
+        isInitialized = true;
+    }
 
    /**
      * Writes the specified bit to standard output.
      */
     private static void writeBit(boolean bit) {
+        if (!isInitialized) initialize();
+
         // add bit to buffer
         buffer <<= 1;
         if (bit) buffer |= 1;
@@ -58,6 +68,8 @@ public final class BinaryStdOut {
      * Writes the 8-bit byte to standard output.
      */
     private static void writeByte(int x) {
+        if (!isInitialized) initialize();
+
         assert x >= 0 && x < 256;
 
         // optimized if byte-aligned
@@ -80,6 +92,8 @@ public final class BinaryStdOut {
 
     // write out any remaining bits in buffer to standard output, padding with 0s
     private static void clearBuffer() {
+        if (!isInitialized) initialize();
+
         if (n == 0) return;
         if (n > 0) buffer <<= (8 - n);
         try {
@@ -114,6 +128,7 @@ public final class BinaryStdOut {
         flush();
         try {
             out.close();
+            isInitialized = false;
         }
         catch (IOException e) {
             e.printStackTrace();

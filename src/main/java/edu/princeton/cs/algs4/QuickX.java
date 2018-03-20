@@ -5,24 +5,21 @@
  *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
  *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *  
- *  Uses the Bentley-McIlroy 3-way partitioning scheme,
- *  chooses the partitioning element using Tukey's ninther,
- *  and cuts off to insertion sort.
- *
- *  Reference: Engineering a Sort Function by Jon L. Bentley
- *  and M. Douglas McIlroy. Softwae-Practice and Experience,
- *  Vol. 23 (11), 1249-1265 (November 1993).
+ *  Uses the Hoare's 2-way partitioning scheme, chooses the partitioning
+ *  element using median-of-3, and cuts off to insertion sort.
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code QuickX} class provides static methods for sorting an
- *  array using an optimized version of quicksort (using Bentley-McIlroy
- *  3-way partitioning, Tukey's ninther, and cutoff to insertion sort).
+ *  The {@code QuickX} class provides static methods for sorting an array
+ *  using an optimized version of quicksort (using Hoare's 2-way partitioning
+ *  algorithm, median-of-3 to choose the partitioning element, and cutoff
+ *  to insertion sort).
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/23quick">Section 2.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -33,9 +30,6 @@ public class QuickX {
     // cutoff to insertion sort, must be >= 1
     private static final int INSERTION_SORT_CUTOFF = 8;
 
-    // cutoff to median-of-3 partitioning
-    private static final int MEDIAN_OF_3_CUTOFF = 40;
-
     // This class should not be instantiated.
     private QuickX() { }
 
@@ -44,74 +38,61 @@ public class QuickX {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
+        // StdRandom.shuffle(a);
         sort(a, 0, a.length - 1);
+        assert isSorted(a);
     }
 
+    // quicksort the subarray from a[lo] to a[hi]
     private static void sort(Comparable[] a, int lo, int hi) { 
-        int n = hi - lo + 1;
+        if (hi <= lo) return;
 
-        // cutoff to insertion sort
+        // cutoff to insertion sort (Insertion.sort() uses half-open intervals)
+        int n = hi - lo + 1;
         if (n <= INSERTION_SORT_CUTOFF) {
-            insertionSort(a, lo, hi);
+            Insertion.sort(a, lo, hi + 1);
             return;
         }
 
-        // use median-of-3 as partitioning element
-        else if (n <= MEDIAN_OF_3_CUTOFF) {
-            int m = median3(a, lo, lo + n/2, hi);
-            exch(a, m, lo);
-        }
+        int j = partition(a, lo, hi);
+        sort(a, lo, j-1);
+        sort(a, j+1, hi);
+    }
 
-        // use Tukey ninther as partitioning element
-        else  {
-            int eps = n/8;
-            int mid = lo + n/2;
-            int m1 = median3(a, lo, lo + eps, lo + eps + eps);
-            int m2 = median3(a, mid - eps, mid, mid + eps);
-            int m3 = median3(a, hi - eps - eps, hi - eps, hi); 
-            int ninther = median3(a, m1, m2, m3);
-            exch(a, ninther, lo);
-        }
+    // partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
+    // and return the index j.
+    private static int partition(Comparable[] a, int lo, int hi) {
+        int n = hi - lo + 1;
+        int m = median3(a, lo, lo + n/2, hi);
+        exch(a, m, lo);
 
-        // Bentley-McIlroy 3-way partitioning
-        int i = lo, j = hi+1;
-        int p = lo, q = hi+1;
+        int i = lo;
+        int j = hi + 1;
         Comparable v = a[lo];
-        while (true) {
-            while (less(a[++i], v))
-                if (i == hi) break;
-            while (less(v, a[--j]))
-                if (j == lo) break;
 
-            // pointers cross
-            if (i == j && eq(a[i], v))
-                exch(a, ++p, i);
-            if (i >= j) break;
-
-            exch(a, i, j);
-            if (eq(a[i], v)) exch(a, ++p, i);
-            if (eq(a[j], v)) exch(a, --q, j);
+        // a[lo] is unique largest element
+        while (less(a[++i], v)) {
+            if (i == hi) { exch(a, lo, hi); return hi; }
         }
 
+        // a[lo] is unique smallest element
+        while (less(v, a[--j])) {
+            if (j == lo + 1) return lo;
+        }
 
-        i = j + 1;
-        for (int k = lo; k <= p; k++)
-            exch(a, k, j--);
-        for (int k = hi; k >= q; k--)
-            exch(a, k, i++);
+        // the main loop
+        while (i < j) { 
+            exch(a, i, j);
+            while (less(a[++i], v)) ;
+            while (less(v, a[--j])) ;
+        }
 
-        sort(a, lo, j);
-        sort(a, i, hi);
+        // put partitioning item v at a[j]
+        exch(a, lo, j);
+
+        // now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
+        return j;
     }
-
-
-    // sort from a[lo] to a[hi] using insertion sort
-    private static void insertionSort(Comparable[] a, int lo, int hi) {
-        for (int i = lo; i <= hi; i++)
-            for (int j = i; j > lo && less(a[j], a[j-1]); j--)
-                exch(a, j, j-1);
-    }
-
 
     // return the index of the median element among a[i], a[j], and a[k]
     private static int median3(Comparable[] a, int i, int j, int k) {
@@ -129,11 +110,6 @@ public class QuickX {
         return v.compareTo(w) < 0;
     }
 
-    // does v == w ?
-    private static boolean eq(Comparable v, Comparable w) {
-        return v.compareTo(w) == 0;
-    }
-        
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -160,7 +136,7 @@ public class QuickX {
 
     /**
      * Reads in a sequence of strings from standard input; quicksorts them
-     * (using an optimized version of quicksort); 
+     * (using an optimized version of 2-way quicksort); 
      * and prints them to standard output in ascending order. 
      *
      * @param args the command-line arguments

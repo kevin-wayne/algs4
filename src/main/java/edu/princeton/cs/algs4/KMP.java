@@ -36,10 +36,10 @@ package edu.princeton.cs.algs4;
  *  in a text string.
  *  <p>
  *  This implementation uses a version of the Knuth-Morris-Pratt substring search
- *  algorithm. The version takes time as space proportional to
- *  <em>N</em> + <em>M R</em> in the worst case, where <em>N</em> is the length
- *  of the text string, <em>M</em> is the length of the pattern, and <em>R</em>
- *  is the alphabet size.
+ *  algorithm. The version takes time proportional to <em>n</em> + <em>m R</em>
+ *  in the worst case, where <em>n</em> is the length of the text string,
+ *  <em>m</em> is the length of the pattern, and <em>R</em> is the alphabet size.
+ *  It uses extra space proportional to <em>m R</em>.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/53substring">Section 5.3</a> of
