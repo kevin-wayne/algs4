@@ -515,11 +515,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Return the kth smallest key in the symbol table.
-     * @param k the order statistic
-     * @return the {@code k}th smallest key in the symbol table
+     * Return the key in the symbol table whose rank is {@code k}.
+     * This is the (k+1)st smallest key in the symbol table. 
+     *
+     * @param  k the order statistic
+     * @return the key in the symbol table of rank {@code k}
      * @throws IllegalArgumentException unless {@code k} is between 0 and
-     *     <em>n</em>–1
+     *        <em>n</em>–1
      */
     public Key select(int k) {
         if (k < 0 || k >= size()) {

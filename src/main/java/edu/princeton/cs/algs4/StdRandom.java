@@ -210,7 +210,7 @@ public final class StdRandom {
      *
      * @param  p the probability of returning {@code true}
      * @return {@code true} with probability {@code p} and
-     *         {@code false} with probability {@code p}
+     *         {@code false} with probability {@code 1 - p}
      * @throws IllegalArgumentException unless {@code 0} &le; {@code p} &le; {@code 1.0}
      */
     public static boolean bernoulli(double p) {
@@ -266,6 +266,8 @@ public final class StdRandom {
     /**
      * Returns a random integer from a geometric distribution with success
      * probability <em>p</em>.
+     * The integer represents the number of independent trials
+     * before the first success.
      * 
      * @param  p the parameter of the geometric distribution
      * @return a random integer from a geometric distribution with success
@@ -274,8 +276,11 @@ public final class StdRandom {
      * @throws IllegalArgumentException unless {@code p >= 0.0} and {@code p <= 1.0}
      */
     public static int geometric(double p) {
-        if (!(p >= 0.0 && p <= 1.0)) {
-            throw new IllegalArgumentException("probability p must be between 0.0 and 1.0: " + p);
+        if (!(p >= 0)) {
+            throw new IllegalArgumentException("probability p must be greater than 0: " + p);
+        }
+        if (!(p <= 1.0)) {
+            throw new IllegalArgumentException("probability p must not be larger than 1: " + p);
         }
         // using algorithm given by Knuth
         return (int) Math.ceil(Math.log(uniform()) / Math.log(1.0 - p));
