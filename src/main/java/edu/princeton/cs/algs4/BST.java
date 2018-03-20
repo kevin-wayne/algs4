@@ -339,7 +339,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     } 
 
     /**
-     * Return the kth smallest key in the symbol table.
+     * Return the (k+1)th smallest key in the symbol table
      *
      * @param  k the order statistic
      * @return the {@code k}th smallest key in the symbol table
