@@ -92,9 +92,8 @@ public class SymbolGraph {
                     st.put(a[i], st.size());
             }
         }
-        StdOut.println("Done reading " + filename);
 
-        // inverted index to get string keys in an aray
+        // inverted index to get string keys in an array
         keys = new String[st.size()];
         for (String name : st.keys()) {
             keys[st.get(name)] = name;
@@ -112,6 +111,8 @@ public class SymbolGraph {
                 graph.addEdge(v, w);
             }
         }
+        
+        StdOut.println("Done reading " + filename);
     }
 
     /**
