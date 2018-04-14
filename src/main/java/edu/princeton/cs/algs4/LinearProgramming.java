@@ -285,7 +285,15 @@ public class LinearProgramming {
 
 
     private static void test(double[][] A, double[] b, double[] c) {
-        LinearProgramming lp = new LinearProgramming(A, b, c);
+        LinearProgramming lp;
+        try {
+            lp = new LinearProgramming(A, b, c);
+        }
+        catch (ArithmeticException e) {
+            System.out.println(e);
+            return;
+        }
+
         StdOut.println("value = " + lp.value());
         double[] x = lp.primal();
         for (int i = 0; i < x.length; i++)
@@ -354,19 +362,19 @@ public class LinearProgramming {
 
         StdOut.println("----- test 1 --------------------");
         test1();
+        StdOut.println();
+
         StdOut.println("----- test 2 --------------------");
         test2();
+        StdOut.println();
+
         StdOut.println("----- test 3 --------------------");
-        try {
-            test3();
-        }
-        catch (ArithmeticException e) {
-            System.out.println(e);
-        }
+        test3();
+        StdOut.println();
 
         StdOut.println("----- test 4 --------------------");
         test4();
-
+        StdOut.println();
 
         StdOut.println("----- test random ---------------");
         int m = Integer.parseInt(args[0]);
@@ -382,13 +390,13 @@ public class LinearProgramming {
             for (int j = 0; j < n; j++)
                 A[i][j] = StdRandom.uniform(100);
         LinearProgramming lp = new LinearProgramming(A, b, c);
-        StdOut.println(lp.value());
+        test(A, b, c);
     }
 
 }
 
 /******************************************************************************
- *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

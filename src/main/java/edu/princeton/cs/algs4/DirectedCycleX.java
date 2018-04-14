@@ -14,7 +14,7 @@ package edu.princeton.cs.algs4;
  *  The {@code DirectedCycleX} class represents a data type for 
  *  determining whether a digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the digraph has
- *  a directed cycle and, and of so, the <em>cycle</em> operation
+ *  a simple directed cycle and, if so, the <em>cycle</em> operation
  *  returns one.
  *  <p>
  *  This implementation uses a nonrecursive, queue-based algorithm.
@@ -170,7 +170,7 @@ public class DirectedCycleX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

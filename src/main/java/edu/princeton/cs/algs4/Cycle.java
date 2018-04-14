@@ -24,7 +24,7 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code Cycle} class represents a data type for 
- *  determining whether an undirected graph has a cycle.
+ *  determining whether an undirected graph has a simple cycle.
  *  The <em>hasCycle</em> operation determines whether the graph has
  *  a cycle and, if so, the <em>cycle</em> operation returns one.
  *  <p>
@@ -174,7 +174,7 @@ public class Cycle {
 
 
 /******************************************************************************
- *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

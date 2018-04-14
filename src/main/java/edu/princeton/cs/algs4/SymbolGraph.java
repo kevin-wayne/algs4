@@ -92,9 +92,8 @@ public class SymbolGraph {
                     st.put(a[i], st.size());
             }
         }
-        StdOut.println("Done reading " + filename);
 
-        // inverted index to get string keys in an aray
+        // inverted index to get string keys in an array
         keys = new String[st.size()];
         for (String name : st.keys()) {
             keys[st.get(name)] = name;
@@ -222,7 +221,7 @@ public class SymbolGraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2016, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
