@@ -63,7 +63,7 @@ public class AcyclicLP {
             distTo[v] = Double.NEGATIVE_INFINITY;
         distTo[s] = 0.0;
 
-        // relax vertices in toplogical order
+        // relax vertices in topological order
         Topological topological = new Topological(G);
         if (!topological.hasOrder())
             throw new IllegalArgumentException("Digraph is not acyclic.");
