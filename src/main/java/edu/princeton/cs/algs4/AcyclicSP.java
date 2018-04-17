@@ -62,7 +62,7 @@ public class AcyclicSP {
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
 
-        // visit vertices in toplogical order
+        // visit vertices in topological order
         Topological topological = new Topological(G);
         if (!topological.hasOrder())
             throw new IllegalArgumentException("Digraph is not acyclic.");
