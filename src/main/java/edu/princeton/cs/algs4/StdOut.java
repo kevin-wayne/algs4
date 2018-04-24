@@ -85,7 +85,11 @@ public final class StdOut {
 
    /**
      * Closes standard output.
+     * @deprecated Calling close() will permanently disable standard output;
+     *             subsequent calls to StdOut.println() or System.out.println()
+     *             will no longer produce output on standard output.
      */
+    @Deprecated
     public static void close() {
         out.close();
     }

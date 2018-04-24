@@ -182,9 +182,6 @@ public class FenwickTree {
             }
 
         }
-
-
-        StdOut.close();
     }
 
 

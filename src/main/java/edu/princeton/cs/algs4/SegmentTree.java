@@ -329,9 +329,6 @@ public class SegmentTree {
             }
 
         }
-
-
-        StdOut.close();
     }
 
 }
