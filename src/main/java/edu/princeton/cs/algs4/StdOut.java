@@ -39,7 +39,7 @@ import java.util.Locale;
  *  <p>
  *  <b>Differences with System.out.</b>
  *  The behavior of {@code StdOut} is similar to that of {@link System#out},
- *  but there are a few subtle differences:
+ *  but there are a few technical differences:
  *  <ul>
  *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
  *       which is a standard character encoding for Unicode.
@@ -85,7 +85,7 @@ public final class StdOut {
 
    /**
      * Closes standard output.
-     * @deprecated Calling close() will permanently disable standard output;
+     * @deprecated Calling close() permanently disables standard output;
      *             subsequent calls to StdOut.println() or System.out.println()
      *             will no longer produce output on standard output.
      */
