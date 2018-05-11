@@ -42,7 +42,7 @@ public class FordFulkerson {
     private static final double FLOATING_POINT_EPSILON = 1E-11;
 
     private final int V;          // number of vertices
-    private boolean[] marked;     // marked[v] = true if s->v path in residual graph
+    private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
     private FlowEdge[] edgeTo;    // edgeTo[v] = last edge on shortest residual s->v path
     private double value;         // current value of max flow
   

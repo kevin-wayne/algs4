@@ -62,7 +62,7 @@ public class BipartiteMatching {
                                          //         = -1 if v is not in current matching
     private boolean[] inMinVertexCover;  // inMinVertexCover[v] = true iff v is in min vertex cover
     private boolean[] marked;            // marked[v] = true iff v is reachable via alternating path
-    private int[] edgeTo;                // edgeTo[v] = w if v-w is last edge on path to w
+    private int[] edgeTo;                // edgeTo[w] = v if v-w is last edge on path to w
 
     /**
      * Determines a maximum matching (and a minimum vertex cover)
