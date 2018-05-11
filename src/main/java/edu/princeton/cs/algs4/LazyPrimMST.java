@@ -73,7 +73,7 @@ public class LazyPrimMST {
 
     private double weight;       // total weight of MST
     private Queue<Edge> mst;     // edges in the MST
-    private boolean[] marked;    // marked[v] = true if v on tree
+    private boolean[] marked;    // marked[v] = true iff v on tree
     private MinPQ<Edge> pq;      // edges with one endpoint in tree
 
     /**

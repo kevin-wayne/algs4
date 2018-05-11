@@ -30,9 +30,9 @@ package edu.princeton.cs.algs4;
  *  also important, but all known algorithms for this more general problem
  *  are substantially more complicated.
  *  <p>
- *  This implementation uses the <em>alternating path algorithm</em>.
- *  It is equivalent to reducing to the maximum flow problem and running
- *  the augmenting path algorithm on the resulting flow network, but it
+ *  This implementation uses the <em>alternating-path algorithm</em>.
+ *  It is equivalent to reducing to the maximum-flow problem and running
+ *  the augmenting-path algorithm on the resulting flow network, but it
  *  does so with less overhead.
  *  The order of growth of the running time in the worst case is
  *  (<em>E</em> + <em>V</em>) <em>V</em>,
@@ -62,7 +62,7 @@ public class BipartiteMatching {
                                          //         = -1 if v is not in current matching
     private boolean[] inMinVertexCover;  // inMinVertexCover[v] = true iff v is in min vertex cover
     private boolean[] marked;            // marked[v] = true iff v is reachable via alternating path
-    private int[] edgeTo;                // edgeTo[v] = w if v-w is last edge on path to w
+    private int[] edgeTo;                // edgeTo[v] = last edge on alternating path to v
 
     /**
      * Determines a maximum matching (and a minimum vertex cover)

@@ -50,7 +50,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class DepthFirstDirectedPaths {
-    private boolean[] marked;  // marked[v] = true if v is reachable from s
+    private boolean[] marked;  // marked[v] = true iff v is reachable from s
     private int[] edgeTo;      // edgeTo[v] = last edge on path from s to v
     private final int s;       // source vertex
 
