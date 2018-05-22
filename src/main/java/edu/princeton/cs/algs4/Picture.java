@@ -399,15 +399,16 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Saves the picture to a file in a standard image format.
-     * The filetype must be .png or .jpg.
+     * Saves the picture to a file in either PNG or JPEG format.
+     * The filetype extension must be either .png or .jpg.
      *
-     * @param filename the name of the file
+     * @param name the name of the file
      * @throws IllegalArgumentException if {@code name} is {@code null}
      */
-    public void save(String filename) {
-        if (filename == null) throw new IllegalArgumentException("argument to save() is null");
-        save(new File(filename));
+    public void save(String name) {
+        if (name == null) throw new IllegalArgumentException("argument to save() is null");
+        save(new File(name));
+        filename = name;
     }
 
    /**

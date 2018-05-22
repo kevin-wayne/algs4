@@ -9,7 +9,6 @@
  *  Given a graph, find either (i) a bipartition or (ii) an odd-length cycle.
  *  Runs in O(E + V) time.
  *
- *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;

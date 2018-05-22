@@ -50,7 +50,7 @@ public final class RectHV {
         if (Double.isNaN(ymin) || Double.isNaN(ymax)) {
             throw new IllegalArgumentException("y-coordinate is NaN: " + toString());
         }
-	if (xmax < xmin) {
+        if (xmax < xmin) {
             throw new IllegalArgumentException("xmax < xmin: " + toString());
         }
         if (ymax < ymin) {

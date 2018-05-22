@@ -219,7 +219,7 @@ public class Polynomial {
         String s = coef[degree] + "x^" + degree;
         for (int i = degree - 1; i >= 0; i--) {
             if      (coef[i] == 0) continue;
-            else if (coef[i]  > 0) s = s + " + " + ( coef[i]);
+            else if (coef[i]  > 0) s = s + " + " + (coef[i]);
             else if (coef[i]  < 0) s = s + " - " + (-coef[i]);
             if      (i == 1) s = s + "x";
             else if (i >  1) s = s + "x^" + i;
@@ -262,8 +262,7 @@ public class Polynomial {
         StdOut.println("p(3)        = " + p.evaluate(3));
         StdOut.println("p'(x)       = " + p.differentiate());
         StdOut.println("p''(x)      = " + p.differentiate().differentiate());
-   }
-
+    }
 }
 
 /******************************************************************************

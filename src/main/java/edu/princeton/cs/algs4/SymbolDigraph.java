@@ -164,7 +164,7 @@ public class SymbolDigraph {
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-         int V = graph.V();
+        int V = graph.V();
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }

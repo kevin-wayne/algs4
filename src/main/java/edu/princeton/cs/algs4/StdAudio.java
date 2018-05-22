@@ -276,7 +276,7 @@ public final class StdAudio {
                 public void run() {
                     stream(filename);
                 }
-           }).start();
+            }).start();
         }
 
         // let's try Applet.newAudioClip() instead
@@ -298,7 +298,7 @@ public final class StdAudio {
         URL url = null;
         try {
             File file = new File(filename);
-            if(file.canRead()) url = file.toURI().toURL();
+            if (file.canRead()) url = file.toURI().toURL();
         }
         catch (MalformedURLException e) {
             throw new IllegalArgumentException("could not play '" + filename + "'", e);

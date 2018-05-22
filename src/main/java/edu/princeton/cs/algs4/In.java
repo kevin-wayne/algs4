@@ -297,7 +297,8 @@ public final class In {
             return ch.charAt(0);
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attempts to read a 'char' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attempts to read a 'char' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }  
 
@@ -329,7 +330,8 @@ public final class In {
             return scanner.next();
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attempts to read a 'String' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attempts to read a 'String' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -347,10 +349,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read an 'int' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read an 'int' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read an 'int' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read an 'int' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -368,10 +372,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read a 'double' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'double' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read a 'double' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read a 'double' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -389,10 +395,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read a 'float' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'float' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read a 'float' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read a 'float' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -410,10 +418,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read a 'long' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'long' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read a 'long' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read a 'long' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -431,10 +441,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read a 'short' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'short' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read a 'short' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read a 'short' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -454,10 +466,12 @@ public final class In {
         }
         catch (InputMismatchException e) {
             String token = scanner.next();
-            throw new InputMismatchException("attempts to read a 'byte' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'byte' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attemps to read a 'byte' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attemps to read a 'byte' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
@@ -477,10 +491,12 @@ public final class In {
             if ("false".equalsIgnoreCase(token)) return false;
             if ("1".equals(token))               return true;
             if ("0".equals(token))               return false;
-            throw new InputMismatchException("attempts to read a 'boolean' value from input stream, but the next token is \"" + token + "\"");
+            throw new InputMismatchException("attempts to read a 'boolean' value from the input stream, "
+                                           + "but the next token is \"" + token + "\"");
         }
         catch (NoSuchElementException e) {
-            throw new NoSuchElementException("attempts to read a 'boolean' value from input stream, but there are no more tokens available");
+            throw new NoSuchElementException("attempts to read a 'boolean' value from the input stream, "
+                                           + "but no more tokens are available");
         }
     }
 
