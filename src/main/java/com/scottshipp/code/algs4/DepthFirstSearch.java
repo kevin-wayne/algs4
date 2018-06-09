@@ -47,12 +47,4 @@ public class DepthFirstSearch {
         path.add(edgeTo[v]);
         return path;
     }
-
-    public void sout() {
-        System.out.println("i   edgeTo");
-        for(int i : edgeTo) {
-            System.out.println(i + "     " + edgeTo[i]);
-        }
-    }
-
 }
