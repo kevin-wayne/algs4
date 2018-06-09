@@ -75,12 +75,38 @@
 							</execution>
 						</executions>
 					</plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.21.0</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.junit.platform</groupId>
+                                <artifactId>junit-platform-surefire-provider</artifactId>
+                                <version>${junit.platform.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
 				</plugins>
 			</build>
 			<repositories>
 			</repositories>
 		</profile>
 	</profiles>
+	<properties>
+		<junit.jupiter.version>5.2.0</junit.jupiter.version>
+		<junit.platform.version>1.2.0</junit.platform.version>
+	</properties>
 	<dependencies>
-	</dependencies>  
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+	</dependencies>
 </project>
