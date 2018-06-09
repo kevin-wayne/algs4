@@ -1,69 +1,24 @@
-## Overview
+# ALGORITHMS
 
-<IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
-This <a href = "https://github.com/kevin-wayne/algs4">public repository</a>
-contains the Java <a href = "http://algs4.cs.princeton.edu/code/">source code</a>
-for the algorithms and clients in the textbook
-<a href = "http://amzn.to/13VNJi7">Algorithms, 4th Edition</a> by Robert Sedgewick and Kevin Wayne.
-This is the official version&mdash;it is actively maintained and updated by the authors.
-The programs are organized in the package <code>edu.princeton.cs.algs4</code>.
-If you need only the class files (and not the source code), you can use
-<a href = "http://algs4.cs.princeton.edu/code/algs4.jar">algs4.jar</a> instead.
+This is a fork of kevin-wayne/algs4, the code from the popular textbook _Algorithms_, 4th Edition, by Kevin Wayne and Robert Sedgewick.
 
-<br>
+## How is this different?
 
-## Design goals
+My fork is mostly the same but I am updating the repository using modern Java standards.
 
-Our original goal was to cover the <em>50 algorithms that every programmer should know</em>.
-We use the word <em>programmer</em> to refer to anyone engaged in trying to accomplish
-something with the help of a computer, including scientists, engineers, and applications
-developers, not to mention college students in science, engineering, and computer science.
-The code is optimized for clarity, portability, and efficiency. While some of our 
-implementations are as fast as (or faster than) their counterparts in <tt>java.util</tt>,
-our main goal is to express the core algorithmic ideas in an elegant and simple manner.
-While we embrace some advanced Java features (such as generics and iterators),
-we avoid those that interfere with the exposition (such as inheritance and concurrency).
+The codebase uses SLF4J for logging JUnit 5 to unit test the code I've touched. Unit tests have been added in the idiomatic location (src/test/java).
 
-## Build managers
+Data files are provided separately as a zip download on the [online book site](https://algs4.cs.princeton.edu/home/) but I am copying the ones I'm using into the idiomatic location (src/main/resources).
 
-This repository is intended for use with either the <a href = "https://maven.apache.org">Maven</a>
-or <a href = "https://gradle.org">Gradle</a> build managers.
-It can be run from either the command line or integrated into
-Eclipse, NetBeans, and IntelliJ.
-You can also access it via <a href = "https://bintray.com/algs4/maven/algs4">Bintray</a>.
+I have also added some new packages, found under the namespace _com.scottshipp.code_. Included in this, I have been working on the *exercises* given in the [online book site](https://algs4.cs.princeton.edu/home/). In some cases, I am also practicing re-implementing fundamental algorithms on paper, then manually copying my paper-written code into the appropriate package where I unit test it. 
 
-## Coursera Algorithms, Part I and II students
+I'm doing that to re-learn algorithms and keep sharp.
 
-Feel free to use this public repository to develop solutions to the programming assignments.
-However, please do not store solutions to programming assignments in public repositories.
+After all, the tag line for _Algorithms_ is:
 
-
-## Copyright
-
-Copyright &copy; 2000&ndash;2017 by Robert Sedgewick and Kevin Wayne.
-
-## License
-
-This code is released under GPLv3.
-
-## Contribute to this repository
-
-This <a href = "http://algs4.cs.princeton.edu/code/wishlist.txt">wishlist.txt</a>
-contains a list of algorithms and data structures that we would
-like to add to the repository. Indeed, several of the algorithms and
-data structures in this repository were contributed by others. If interested, please
-follow the same style as the code in the repository and thoroughly test your
-code before contacting us.
-
-## Support for other programming languages
-
-Some of the code in this repository has been translated to other languages:
-<ul>
-<li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
-<li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
-</ul>
-
-
-## Credits
-
-Thanks to Peter Korgan for Maven and Gradle support.
+```
+essential information that
+every serious programmer
+needs to know about
+algorithms and data structures
+```
