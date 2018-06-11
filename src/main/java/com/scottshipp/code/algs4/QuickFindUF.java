@@ -22,16 +22,12 @@ public class QuickFindUF {
             return;
         }
         int oldValue = id[p];
-        boolean newConnection = false;
         for(int i = 0; i < id.length; i++) {
             if(id[i] == oldValue) {
                 id[i] = id[q];
-                newConnection = true;
             }
         }
-        if(newConnection) {
-            count--;
-        }
+        count--;
     }
 
     int find(int n) {
