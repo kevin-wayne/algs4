@@ -120,8 +120,10 @@ public class WeightedQuickUnionUF {
      */
     public int find(int p) {
         validate(p);
-        while (p != parent[p])
+        while (p != parent[p]) {
+            parent[p] = parent[parent[p]];
             p = parent[p];
+        }
         return p;
     }
 
