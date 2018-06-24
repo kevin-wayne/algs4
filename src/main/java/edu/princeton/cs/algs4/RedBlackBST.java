@@ -309,7 +309,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             if (isRed(h.left))
                 h = rotateRight(h);
             if (key.compareTo(h.key) == 0 && (h.right == null))
-                return null;
+                return h.left;
             if (!isRed(h.right) && !isRed(h.right.left))
                 h = moveRedRight(h);
             if (key.compareTo(h.key) == 0) {
