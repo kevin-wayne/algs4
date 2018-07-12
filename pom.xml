@@ -36,6 +36,22 @@
 				<role>author</role>
 			</roles>
 		</developer>
+		<developer>
+			<id>scott</id>
+			<name>Scott Shipp</name>
+			<email>scottashipp@outlook.com</email>
+			<url>https://code.scottshipp.com</url>
+			<organization>Scott Shipp</organization>
+			<organizationUrl>http://www.scottshipp.com</organizationUrl>
+			<roles>
+				<role>author</role>
+				<role>developer</role>
+			</roles>
+			<timezone>UTC/GMT -7:00 hours</timezone>
+			<properties>
+				<picUrl>https://www.cs.princeton.edu/~wayne/contact/KevinWayne.jpg</picUrl>
+			</properties>
+		</developer>
 	</developers>
 	<issueManagement>
 		<system>github.com</system>
