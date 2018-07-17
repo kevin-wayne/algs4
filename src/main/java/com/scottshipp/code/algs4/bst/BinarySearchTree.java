@@ -5,6 +5,8 @@ import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
@@ -503,40 +505,8 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return keys;
     }
 
-    public Iterable<Key> reverseZigZagOrder2() {
-        Stack<Key> keys = new Stack<>();
-        Queue<Queue<Node>> nodes = new Queue<>();
-        Queue<Node> initial = new Queue<>();
-        initial.enqueue(root);
-        nodes.enqueue(initial);
-        Direction direction = RIGHT;
-        while(!nodes.isEmpty()) {
-            direction = direction.next();
-            Queue<Node> current = nodes.dequeue();
-            Queue<Node> next = new Queue<>();
-            while(!current.isEmpty()) {
-                Node currentNode = current.dequeue();
-                keys.push(currentNode.key);
-                if(direction == LEFT) {
-                    if(currentNode.left != null) {
-                        next.enqueue(currentNode.left);
-                    }
-                    if(currentNode.right != null) {
-                        next.enqueue(currentNode.right);
-                    }
-                } else {
-                    if(currentNode.right != null) {
-                        next.enqueue(currentNode.right);
-                    }
-                    if(currentNode.left != null) {
-                        next.enqueue(currentNode.left);
-                    }
-                }
-            }
-            if(!next.isEmpty()) {
-                nodes.enqueue(next);
-            }
-        }
+    public Iterable<Key> mirroredInOrder() {
+        List<Key> keys = new ArrayList<>();
         return keys;
     }
 
