@@ -14,9 +14,8 @@ class BinarySearchTreeTest {
     private BinarySearchTree<String, Integer> st;
     @BeforeEach
     void setup() {
-        // populate BST with tinyST
-
         st = new BinarySearchTree<>();
+        // populate BST with tinyST
         In in = new In("anotherTinyST.txt");
         for (int i = 0; !in.isEmpty(); i++) {
             String key = in.readString();
@@ -89,11 +88,11 @@ class BinarySearchTreeTest {
     @Test
     public void testReverseZigZagTraversal() {
         StringBuilder sb = new StringBuilder();
-        for (String s : st.reverseZigZagOrder2()) {
+        for (String s : st.reverseZigZagOrder()) {
             sb.append(s + " ");
         }
         logger.info(sb.toString());
-        assertEquals("P L M E R X T A ", sb.toString());
+        assertEquals("L P M E X R T A ", sb.toString());
     }
 
     @Test
@@ -105,6 +104,16 @@ class BinarySearchTreeTest {
         }
         logger.info(sb.toString());
         assertEquals("L P M C H R A E X S ", sb.toString());
+    }
+
+    @Test
+    public void testMirroredInOrder() {
+        StringBuilder sb = new StringBuilder();
+        for (String s : st.mirroredInOrder()) {
+            sb.append(s + " ");
+        }
+        logger.info(sb.toString());
+        assertEquals("", sb.toString());
     }
 }
 
