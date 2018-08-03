@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BinarySearchTreeTest {
-    private static Logger logger = Logger.getLogger(BinarySearchTreeTest.class.toString());
+class BSTTraversalTest {
+    private static Logger logger = Logger.getLogger(BSTTraversalTest.class.toString());
 
     private BinarySearchTree<String, Integer> st;
     @BeforeEach
@@ -113,7 +113,17 @@ class BinarySearchTreeTest {
             sb.append(s + " ");
         }
         logger.info(sb.toString());
-        assertEquals("", sb.toString());
+        assertEquals("X T R P M L E A ", sb.toString());
+    }
+
+    @Test
+    public void testInOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        for (String s : st.inOrder()) {
+            sb.append(s + " ");
+        }
+        logger.info(sb.toString());
+        assertEquals("A E L M P R T X ", sb.toString());
     }
 }
 
