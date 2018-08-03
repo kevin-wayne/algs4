@@ -8,10 +8,8 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 import java.util.logging.Logger;
-
-import static com.scottshipp.code.algs4.bst.BinarySearchTree.Direction.LEFT;
-import static com.scottshipp.code.algs4.bst.BinarySearchTree.Direction.RIGHT;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     private static Logger logger = Logger.getLogger(BinarySearchTree.class.toString());
@@ -140,6 +138,49 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         x.left = deleteMin(x.left);
         x.size = size(x.left) + size(x.right) + 1;
         return x;
+    }
+
+    public Key findMin() {
+        return findMin(root);
+    }
+
+    private Key findMin(Node node) {
+        if(node.left == null) {
+            return node.key;
+        } else {
+            return findMin(node.left);
+        }
+    }
+
+    public Key findSecondLeast() {
+        class Recursive<I> {
+            private Key least = null;
+            private Key secondLeast = null;
+
+            private I func;
+        }
+
+        Recursive<Consumer<Node>> recursive = new Recursive<>();
+    recursive.func =
+        (Node node) -> {
+          if (node.left != null) {
+            recursive.func.accept(node.left);
+          }
+          if (recursive.least == null) {
+            recursive.least = node.key;
+          } else {
+              if (recursive.secondLeast == null) {
+                  recursive.secondLeast = node.key;
+              }
+              return;
+          }
+          if (node.right != null) {
+            recursive.func.accept(node.right);
+          }
+        };
+
+        recursive.func.accept(root);
+        return recursive.secondLeast;
     }
 
     /**
@@ -505,9 +546,46 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return keys;
     }
 
+    public Iterable<Key> inOrder() {
+        List<Key> keys = new ArrayList<>();
+        inOrder(root, keys);
+        return keys;
+    }
+
+    private void inOrder(Node node, List<Key> keys) {
+        if(node == null) {
+            return;
+        }
+        inOrder(node.left, keys);
+        keys.add(node.key);
+        inOrder(node.right, keys);
+    }
+
+    /**
+     * Yes it's not a binary search tree anymore once mirrored.
+     *
+     * @return the keys of the mirrored tree
+     */
     public Iterable<Key> mirroredInOrder() {
         List<Key> keys = new ArrayList<>();
+        mirror();
+        inOrder(root, keys);
         return keys;
+    }
+
+    private void mirror() {
+        mirror(root);
+    }
+
+    private void mirror(Node source) {
+        if(source == null) {
+            return;
+        }
+        Node temp = source.left;
+        source.left = source.right;
+        source.right = temp;
+        mirror(source.left);
+        mirror(source.right);
     }
 
     /*************************************************************************
