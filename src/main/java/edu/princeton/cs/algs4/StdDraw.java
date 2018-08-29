@@ -82,9 +82,11 @@ import javax.swing.KeyStroke;
  *  user interaction via the keyboard and mouse.
  *  <p>
  *  <b>Getting started.</b>
- *  To use standard drawing, you must have {@code StdDraw.class} in your
+ *  To use this class, you must have {@code StdDraw.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
- *  Otherwise, download
+ *  Otherwise, either download
+ *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ *  and add to your Java classpath or download
  *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
  *  and put a copy in your working directory.
  *  <p>

@@ -1399,12 +1399,12 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
         // create one drawing window
         Draw draw1 = new Draw("Test client 1");
-        draw1.square(.2, .8, .1);
-        draw1.filledSquare(.8, .8, .2);
-        draw1.circle(.8, .2, .2);
+        draw1.square(0.2, 0.8, 0.1);
+        draw1.filledSquare(0.8, 0.8, 0.2);
+        draw1.circle(0.8, 0.2, 0.2);
         draw1.setPenColor(Draw.MAGENTA);
-        draw1.setPenRadius(.02);
-        draw1.arc(.8, .2, .1, 200, 45);
+        draw1.setPenRadius(0.02);
+        draw1.arc(0.8, 0.2, 0.1, 200, 45);
 
 
         // create another one
@@ -1413,8 +1413,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         // draw a blue diamond
         draw2.setPenRadius();
         draw2.setPenColor(Draw.BLUE);
-        double[] x = { .1, .2, .3, .2 };
-        double[] y = { .2, .3, .2, .1 };
+        double[] x = { 0.1, 0.2, 0.3, 0.2 };
+        double[] y = { 0.2, 0.3, 0.2, 0.1 };
         draw2.filledPolygon(x, y);
 
         // text

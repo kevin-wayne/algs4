@@ -30,7 +30,16 @@ import java.util.regex.Pattern;
  *  </ul>
  *  <p>
  *  Generally, it is best not to mix functions from the different
- *  categories in the same program. 
+ *  categories in the same program.
+ *  <p>
+ *  <b>Getting started.</b>
+ *  To use this class, you must have {@code StdIn.class} in your
+ *  Java classpath. If you used our autoinstaller, you should be all set.
+ *  Otherwise, either download
+ *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ *  and add to your Java classpath or download
+ *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdIn.java">StdIn.java</a>
+ *  and put a copy in your working directory.
  *  <p>
  *  <b>Reading tokens from standard input and converting to numbers and strings.</b>
  *  You can use the following methods to read numbers, strings, and booleans
@@ -71,7 +80,6 @@ import java.util.regex.Pattern;
  *      double value = StdIn.readDouble();
  *      StdOut.println(value);
  *  }
- *  StdOut.println(sum);
  *  </pre>
  *  <p>
  *  <b>Reading characters from standard input.</b>
@@ -175,7 +183,7 @@ import java.util.regex.Pattern;
  *  {@code Scanner} was introduced, this class was re-implemented to use {@code Scanner}.
  *  <p>
  *  <b>Using standard input.</b>
- *  Standard input is fundamental operating system abstraction, on Mac OS X,
+ *  Standard input is a fundamental operating system abstraction on Mac OS X,
  *  Windows, and Linux.
  *  The methods in {@code StdIn} are <em>blocking</em>, which means that they
  *  will wait until you enter input on standard input.

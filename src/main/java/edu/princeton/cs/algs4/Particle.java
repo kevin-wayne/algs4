@@ -124,6 +124,7 @@ public class Particle {
         double dvdr = dx*dvx + dy*dvy;
         if (dvdr > 0) return INFINITY;
         double dvdv = dvx*dvx + dvy*dvy;
+        if (dvdv == 0) return INFINITY;
         double drdr = dx*dx + dy*dy;
         double sigma = this.radius + that.radius;
         double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);

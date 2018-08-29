@@ -20,7 +20,9 @@ import java.util.Locale;
  *  <b>Getting started.</b>
  *  To use this class, you must have {@code StdOut.class} in your
  *  Java classpath. If you used our autoinstaller, you should be all set.
- *  Otherwise, download
+ *  Otherwise, either download
+ *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ *  and add to your Java classpath or download
  *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
  *  and put a copy in your working directory.
  *  <p>
