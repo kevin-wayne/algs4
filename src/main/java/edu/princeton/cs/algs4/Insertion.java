@@ -5,7 +5,7 @@
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
- *  Sorts a sequence of strings from standard input using insertion sort.
+ *  Sorts a sequence of strings from standard input using insertion primary_sort.
  *
  *  % more tiny.txt
  *  S O R T E X A M P L E
@@ -27,7 +27,7 @@ import java.util.Comparator;
 
 /**
  *  The {@code Insertion} class provides static methods for sorting an
- *  array using insertion sort.
+ *  array using insertion primary_sort.
  *  <p>
  *  This implementation makes ~ 1/2 n^2 compares and exchanges in
  *  the worst case, so it is not suitable for sorting large arbitrary arrays.
@@ -156,7 +156,7 @@ public class Insertion {
         a[j] = swap;
     }
 
-    // exchange a[i] and a[j]  (for indirect sort)
+    // exchange a[i] and a[j]  (for indirect primary_sort)
     private static void exch(int[] a, int i, int j) {
         int swap = a[i];
         a[i] = a[j];

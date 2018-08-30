@@ -37,7 +37,7 @@ import java.util.Comparator;
  *  @author Kevin Wayne
  */
 public class MergeX {
-    private static final int CUTOFF = 7;  // cutoff to insertion sort
+    private static final int CUTOFF = 7;  // cutoff to insertion primary_sort
 
     // This class should not be instantiated.
     private MergeX() { }
@@ -94,7 +94,7 @@ public class MergeX {
         assert isSorted(a);
     }
 
-    // sort from a[lo] to a[hi] using insertion sort
+    // primary_sort from a[lo] to a[hi] using insertion primary_sort
     private static void insertionSort(Comparable[] a, int lo, int hi) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1]); j--)
@@ -178,7 +178,7 @@ public class MergeX {
         merge(src, dst, lo, mid, hi, comparator);
     }
 
-    // sort from a[lo] to a[hi] using insertion sort
+    // primary_sort from a[lo] to a[hi] using insertion primary_sort
     private static void insertionSort(Object[] a, int lo, int hi, Comparator comparator) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1], comparator); j--)

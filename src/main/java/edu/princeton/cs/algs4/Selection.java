@@ -5,7 +5,7 @@
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *   
- *  Sorts a sequence of strings from standard input using selection sort.
+ *  Sorts a sequence of strings from standard input using selection primary_sort.
  *   
  *  % more tiny.txt
  *  S O R T E X A M P L E
@@ -27,7 +27,7 @@ import java.util.Comparator;
 
 /**
  *  The {@code Selection} class provides static methods for sorting an
- *  array using selection sort.
+ *  array using selection primary_sort.
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.

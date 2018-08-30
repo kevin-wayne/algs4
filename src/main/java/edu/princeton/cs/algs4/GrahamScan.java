@@ -72,7 +72,7 @@ public class GrahamScan {
         // (alternatively, could do easily in linear time)
         Arrays.sort(a);
 
-        // sort by polar angle with respect to base point a[0],
+        // primary_sort by polar angle with respect to base point a[0],
         // breaking ties by distance to a[0]
         Arrays.sort(a, 1, n, a[0].polarOrder());
 

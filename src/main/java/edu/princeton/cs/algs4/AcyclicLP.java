@@ -27,7 +27,7 @@ package edu.princeton.cs.algs4;
  *  single-source longest paths problem in edge-weighted directed
  *  acyclic graphs (DAGs). The edge weights can be positive, negative, or zero.
  *  <p>
- *  This implementation uses a topological-sort based algorithm.
+ *  This implementation uses a topological-primary_sort based algorithm.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  Each call to {@code distTo(int)} and {@code hasPathTo(int)} takes constant time;

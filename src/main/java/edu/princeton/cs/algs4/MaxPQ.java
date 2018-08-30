@@ -14,7 +14,7 @@
  *  We use a one-based array to simplify parent and child calculations.
  *
  *  Can be optimized by replacing full exchanges with half exchanges
- *  (ala insertion sort).
+ *  (ala insertion primary_sort).
  *
  ******************************************************************************/
 

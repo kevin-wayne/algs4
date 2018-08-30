@@ -4,7 +4,7 @@
  *  Dependencies: StdIn.java StdOut.java 
  *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
  *
- *  LSD radix sort
+ *  LSD radix primary_sort
  *
  *    - Sort a String[] array of n extended ASCII strings (R = 256), each of length w.
  *
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code LSD} class provides static methods for sorting an
- *  array of <em>w</em>-character strings or 32-bit integers using LSD radix sort.
+ *  array of <em>w</em>-character strings or 32-bit integers using LSD radix primary_sort.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/51radix">Section 5.1</a> of
@@ -58,7 +58,7 @@ public class LSD {
         String[] aux = new String[n];
 
         for (int d = w-1; d >= 0; d--) {
-            // sort by key-indexed counting on dth character
+            // primary_sort by key-indexed counting on dth character
 
             // compute frequency counts
             int[] count = new int[R+1];
@@ -81,7 +81,7 @@ public class LSD {
 
    /**
      * Rearranges the array of 32-bit integers in ascending order.
-     * This is about 2-3x faster than Arrays.sort().
+     * This is about 2-3x faster than Arrays.primary_sort().
      *
      * @param a the array to be sorted
      */
@@ -145,7 +145,7 @@ public class LSD {
         for (int i = 0; i < n; i++)
             assert a[i].length() == w : "Strings must have fixed length";
 
-        // sort the strings
+        // primary_sort the strings
         sort(a, w);
 
         // print results

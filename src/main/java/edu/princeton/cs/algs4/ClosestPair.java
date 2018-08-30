@@ -56,7 +56,7 @@ public class ClosestPair {
         int n = points.length;
         if (n <= 1) return;
 
-        // sort by x-coordinate (breaking ties by y-coordinate)
+        // primary_sort by x-coordinate (breaking ties by y-coordinate)
         Point2D[] pointsByX = new Point2D[n];
         for (int i = 0; i < n; i++)
             pointsByX[i] = points[i];
@@ -72,7 +72,7 @@ public class ClosestPair {
             }
         }
 
-        // sort by y-coordinate (but not yet sorted) 
+        // primary_sort by y-coordinate (but not yet sorted)
         Point2D[] pointsByY = new Point2D[n];
         for (int i = 0; i < n; i++)
             pointsByY[i] = pointsByX[i];

@@ -94,7 +94,7 @@ public class BinarySearch {
         In in = new In(args[0]);
         int[] whitelist = in.readAllInts();
 
-        // sort the array
+        // primary_sort the array
         Arrays.sort(whitelist);
 
         // read integer key from standard input; print if not in whitelist

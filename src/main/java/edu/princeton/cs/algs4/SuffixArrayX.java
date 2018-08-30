@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  and determining the <em>rank</em> of a query string (which is the number
  *  of suffixes strictly less than the query string).
  *  <p>
- *  This implementation uses 3-way radix quicksort to sort the array of suffixes.
+ *  This implementation uses 3-way radix quicksort to primary_sort the array of suffixes.
  *  For a simpler (but less efficient) implementations of the same API, see
  *  {@link SuffixArray}.
  *  The <em>index</em> and <em>length</em> operations takes constant time
@@ -61,7 +61,7 @@ package edu.princeton.cs.algs4;
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 public class SuffixArrayX {
-    private static final int CUTOFF =  5;   // cutoff to insertion sort (any value between 0 and 12)
+    private static final int CUTOFF =  5;   // cutoff to insertion primary_sort (any value between 0 and 12)
 
     private final char[] text;
     private final int[] index;   // index[i] = j means text.substring(j) is ith largest suffix
@@ -85,7 +85,7 @@ public class SuffixArrayX {
     // 3-way string quicksort lo..hi starting at dth character
     private void sort(int lo, int hi, int d) { 
 
-        // cutoff to insertion sort for small subarrays
+        // cutoff to insertion primary_sort for small subarrays
         if (hi <= lo + CUTOFF) {
             insertion(lo, hi, d);
             return;
@@ -107,7 +107,7 @@ public class SuffixArrayX {
         sort(gt+1, hi, d);
     }
 
-    // sort from a[lo] to a[hi], starting at the dth character
+    // primary_sort from a[lo] to a[hi], starting at the dth character
     private void insertion(int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && less(index[j], index[j-1], d); j--)

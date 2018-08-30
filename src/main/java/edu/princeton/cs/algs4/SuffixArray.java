@@ -43,7 +43,7 @@ import java.util.Arrays;
  *  <p>
  *  This implementation uses a nested class {@code Suffix} to represent
  *  a suffix of a string (using constant time and space) and
- *  {@code Arrays.sort()} to sort the array of suffixes.
+ *  {@code Arrays.primary_sort()} to primary_sort the array of suffixes.
  *  The <em>index</em> and <em>length</em> operations takes constant time 
  *  in the worst case. The <em>lcp</em> operation takes time proportional to the
  *  length of the longest common prefix.

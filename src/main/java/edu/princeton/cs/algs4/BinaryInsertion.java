@@ -6,7 +6,7 @@
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using 
- *  binary insertion sort with half exchanges.
+ *  binary insertion primary_sort with half exchanges.
  *
  *  % more tiny.txt
  *  S O R T E X A M P L E
@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code BinaryInsertion} class provides a static method for sorting an
- *  array using an optimized binary insertion sort with half exchanges.
+ *  array using an optimized binary insertion primary_sort with half exchanges.
  *  <p>
  *  This implementation makes ~ n lg n compares for any array of length n.
  *  However, in the worst case, the running time is quadratic because the
@@ -65,7 +65,7 @@ public class BinaryInsertion {
                 else                 lo = mid + 1;
             }
 
-            // insetion sort with "half exchanges"
+            // insetion primary_sort with "half exchanges"
             // (insert a[i] at index j and shift a[j], ..., a[i-1] to right)
             for (int j = i; j > lo; --j)
                 a[j] = a[j-1];

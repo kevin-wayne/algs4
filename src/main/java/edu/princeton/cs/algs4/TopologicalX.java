@@ -291,7 +291,7 @@ public class TopologicalX {
             StdOut.println("Not a DAG");
         }
 
-        // or give topologial sort
+        // or give topologial primary_sort
         else {
             StdOut.print("Topological order: ");
             for (int v : topological1.order()) {
@@ -306,7 +306,7 @@ public class TopologicalX {
             StdOut.println("Not a DAG");
         }
 
-        // or give topologial sort
+        // or give topologial primary_sort
         else {
             StdOut.print("Topological order: ");
             for (int v : topological2.order()) {

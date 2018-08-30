@@ -57,7 +57,7 @@ public class Shell {
         while (h < n/3) h = 3*h + 1; 
 
         while (h >= 1) {
-            // h-sort the array
+            // h-primary_sort the array
             for (int i = h; i < n; i++) {
                 for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
                     exch(a, j, j-h);

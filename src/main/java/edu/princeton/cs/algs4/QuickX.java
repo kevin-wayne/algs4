@@ -7,7 +7,7 @@
  *  
  *  Uses the Bentley-McIlroy 3-way partitioning scheme,
  *  chooses the partitioning element using Tukey's ninther,
- *  and cuts off to insertion sort.
+ *  and cuts off to insertion primary_sort.
  *
  *  Reference: Engineering a Sort Function by Jon L. Bentley
  *  and M. Douglas McIlroy. Softwae-Practice and Experience,
@@ -20,7 +20,7 @@ package edu.princeton.cs.algs4;
 /**
  *  The {@code QuickX} class provides static methods for sorting an
  *  array using an optimized version of quicksort (using Bentley-McIlroy
- *  3-way partitioning, Tukey's ninther, and cutoff to insertion sort).
+ *  3-way partitioning, Tukey's ninther, and cutoff to insertion primary_sort).
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  */
 public class QuickX {
 
-    // cutoff to insertion sort, must be >= 1
+    // cutoff to insertion primary_sort, must be >= 1
     private static final int INSERTION_SORT_CUTOFF = 8;
 
     // cutoff to median-of-3 partitioning
@@ -50,7 +50,7 @@ public class QuickX {
     private static void sort(Comparable[] a, int lo, int hi) { 
         int n = hi - lo + 1;
 
-        // cutoff to insertion sort
+        // cutoff to insertion primary_sort
         if (n <= INSERTION_SORT_CUTOFF) {
             insertionSort(a, lo, hi);
             return;
@@ -105,7 +105,7 @@ public class QuickX {
     }
 
 
-    // sort from a[lo] to a[hi] using insertion sort
+    // primary_sort from a[lo] to a[hi] using insertion primary_sort
     private static void insertionSort(Comparable[] a, int lo, int hi) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1]); j--)

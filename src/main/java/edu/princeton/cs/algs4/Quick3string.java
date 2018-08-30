@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class Quick3string {
-    private static final int CUTOFF =  15;   // cutoff to insertion sort
+    private static final int CUTOFF =  15;   // cutoff to insertion primary_sort
 
     // do not instantiate
     private Quick3string() { } 
@@ -67,7 +67,7 @@ public class Quick3string {
     // 3-way string quicksort a[lo..hi] starting at dth character
     private static void sort(String[] a, int lo, int hi, int d) { 
 
-        // cutoff to insertion sort for small subarrays
+        // cutoff to insertion primary_sort for small subarrays
         if (hi <= lo + CUTOFF) {
             insertion(a, lo, hi, d);
             return;
@@ -89,7 +89,7 @@ public class Quick3string {
         sort(a, gt+1, hi, d);
     }
 
-    // sort from a[lo] to a[hi], starting at the dth character
+    // primary_sort from a[lo] to a[hi], starting at the dth character
     private static void insertion(String[] a, int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
             for (int j = i; j > lo && less(a[j], a[j-1], d); j--)
@@ -141,7 +141,7 @@ public class Quick3string {
         String[] a = StdIn.readAllStrings();
         int n = a.length;
 
-        // sort the strings
+        // primary_sort the strings
         sort(a);
 
         // print the results

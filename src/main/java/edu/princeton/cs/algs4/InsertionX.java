@@ -6,7 +6,7 @@
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *  
  *  Sorts a sequence of strings from standard input using an optimized
- *  version of insertion sort that uses half exchanges instead of 
+ *  version of insertion primary_sort that uses half exchanges instead of
  *  full exchanges to reduce data movement..
  *
  *  % more tiny.txt
@@ -26,7 +26,7 @@
 package edu.princeton.cs.algs4;
 /**
  *  The {@code InsertionX} class provides static methods for sorting
- *  an array using an optimized version of insertion sort (with half exchanges
+ *  an array using an optimized version of insertion primary_sort (with half exchanges
  *  and a sentinel).
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
@@ -59,7 +59,7 @@ public class InsertionX {
         if (exchanges == 0) return;
 
 
-        // insertion sort with half-exchanges
+        // insertion primary_sort with half-exchanges
         for (int i = 2; i < n; i++) {
             Comparable v = a[i];
             int j = i;
