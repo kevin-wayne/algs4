@@ -6,6 +6,8 @@
  *  Dijkstra's algorithm run from each vertex. 
  *  Takes time proportional to E V log V and space proportional to EV.
  *
+ *  % java DijkstraAllPairsSP tinyEWD.txt
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -98,6 +100,52 @@ public class DijkstraAllPairsSP {
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
 
+
+    /**
+     * Unit tests the {@code DijkstraAllPairsSP} data type.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) {
+
+        // read edge-weighted digraph
+        In in = new In(args[0]);
+        EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
+
+        // compute shortest paths between all pairs of vertices
+        DijkstraAllPairsSP spt = new DijkstraAllPairsSP(G);
+
+        // print all-pairs shortest path distances
+        StdOut.printf("  ");
+        for (int v = 0; v < G.V(); v++) {
+            StdOut.printf("%6d ", v);
+        }
+        StdOut.println();
+        for (int v = 0; v < G.V(); v++) {
+            StdOut.printf("%3d: ", v);
+            for (int w = 0; w < G.V(); w++) {
+                if (spt.hasPath(v, w)) StdOut.printf("%6.2f ", spt.dist(v, w));
+                else StdOut.printf("  Inf ");
+            }
+            StdOut.println();
+        }
+        StdOut.println();
+
+        // print all-pairs shortest paths
+        for (int v = 0; v < G.V(); v++) {
+            for (int w = 0; w < G.V(); w++) {
+                if (spt.hasPath(v, w)) {
+                    StdOut.printf("%d to %d (%5.2f)  ", v, w, spt.dist(v, w));
+                    for (DirectedEdge e : spt.path(v, w))
+                        StdOut.print(e + "  ");
+                    StdOut.println();
+                }
+                else {
+                    StdOut.printf("%d to %d no path\n", v, w);
+                }
+            }
+        }
+    }
 }
 
 /******************************************************************************
