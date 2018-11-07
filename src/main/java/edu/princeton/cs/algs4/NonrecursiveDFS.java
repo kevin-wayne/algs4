@@ -12,7 +12,7 @@
  *  Explores the vertices in exactly the same order as DepthFirstSearch.java.
  *
  *  %  java Graph tinyCG.txt
- *  6 8
+ *  6 vertices, 8 edges
  *  0: 2 1 5 
  *  1: 0 2 
  *  2: 0 1 3 4 
@@ -21,18 +21,12 @@
  *  5: 3 0 
  *
  *  %  java NonrecursiveDFS tinyCG.txt 0
- *  0 to 0 (0):  0
- *  0 to 1 (1):  0-1
- *  0 to 2 (1):  0-2
- *  0 to 3 (2):  0-2-3
- *  0 to 4 (2):  0-2-4
- *  0 to 5 (1):  0-5
+ *  0 1 2 3 4 5
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
-import java.util.Iterator;
 
 /**
  *  The {@code NonrecursiveDFS} class represents a data type for finding
@@ -64,32 +58,17 @@ public class NonrecursiveDFS {
 
         validateVertex(s);
 
-        // to be able to iterate over each adjacency list, keeping track of which
-        // vertex in each adjacency list needs to be explored next
-        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            adj[v] = G.adj(v).iterator();
 
         // depth-first search using an explicit stack
         Stack<Integer> stack = new Stack<Integer>();
         marked[s] = true;
         stack.push(s);
         while (!stack.isEmpty()) {
-            int v = stack.peek();
-            if (adj[v].hasNext()) {
-                int w = adj[v].next();
-                // StdOut.printf("check %d\n", w);
-                if (!marked[w]) {
-                    // discovered vertex w for the first time
-                    marked[w] = true;
-                    // edgeTo[w] = v;
+            int v = stack.pop();
+            marked[v] = true;
+            for (int w: G.adj(v)) {
+                if (!marked[w])
                     stack.push(w);
-                    // StdOut.printf("dfs(%d)\n", w);
-                }
-            }
-            else {
-                // StdOut.printf("%d done\n", v);
-                stack.pop();
             }
         }
     }
