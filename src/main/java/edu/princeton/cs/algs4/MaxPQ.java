@@ -177,7 +177,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
         Key max = pq[1];
         exch(1, n--);
         sink(1);
-        pq[n+1] = null;     // to avoid loiterig and help with garbage collection
+        pq[n+1] = null;     // to avoid loiteing and help with garbage collection
         if ((n > 0) && (n == (pq.length - 1) / 4)) resize(pq.length / 2);
         assert isMaxHeap();
         return max;

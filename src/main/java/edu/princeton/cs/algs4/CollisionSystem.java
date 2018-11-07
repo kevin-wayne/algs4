@@ -176,11 +176,7 @@ public class CollisionSystem {
      */
     public static void main(String[] args) {
 
-        StdDraw.setCanvasSize(800, 800);
-
-        // remove the border
-        // StdDraw.setXscale(1.0/22.0, 21.0/22.0);
-        // StdDraw.setYscale(1.0/22.0, 21.0/22.0);
+        StdDraw.setCanvasSize(600, 600);
 
         // enable double buffering
         StdDraw.enableDoubleBuffering();

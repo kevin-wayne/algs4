@@ -454,7 +454,7 @@ public final class StdStats {
 
    /**
      * Plots the points (0, <em>a</em><sub>0</sub>), (1, <em>a</em><sub>1</sub>), ...,
-     * (<em>n</em>–1, <em>a</em><sub><em>n</em>–1</sub>) to standard draw.
+     * (<em>n</em>-1, <em>a</em><sub><em>n</em>-1</sub>) to standard draw.
      *
      * @param a the array of values
      */

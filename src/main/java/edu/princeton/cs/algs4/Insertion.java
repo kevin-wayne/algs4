@@ -57,7 +57,7 @@ public class Insertion {
      */
     public static void sort(Comparable[] a) {
         int n = a.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
                 exch(a, j, j-1);
             }
@@ -73,7 +73,7 @@ public class Insertion {
      * @param hi right endpoint (exclusive)
      */
     public static void sort(Comparable[] a, int lo, int hi) {
-        for (int i = lo; i < hi; i++) {
+        for (int i = lo + 1; i < hi; i++) {
             for (int j = i; j > lo && less(a[j], a[j-1]); j--) {
                 exch(a, j, j-1);
             }
@@ -88,7 +88,7 @@ public class Insertion {
      */
     public static void sort(Object[] a, Comparator comparator) {
         int n = a.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1], comparator); j--) {
                 exch(a, j, j-1);
             }
@@ -105,7 +105,7 @@ public class Insertion {
      * @param comparator the comparator specifying the order
      */
     public static void sort(Object[] a, int lo, int hi, Comparator comparator) {
-        for (int i = lo; i < hi; i++) {
+        for (int i = lo + 1; i < hi; i++) {
             for (int j = i; j > lo && less(a[j], a[j-1], comparator); j--) {
                 exch(a, j, j-1);
             }
@@ -128,7 +128,7 @@ public class Insertion {
         for (int i = 0; i < n; i++)
             index[i] = i;
 
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i < n; i++)
             for (int j = i; j > 0 && less(a[index[j]], a[index[j-1]]); j--)
                 exch(index, j, j-1);
 
@@ -172,7 +172,7 @@ public class Insertion {
 
     // is the array a[lo..hi) sorted
     private static boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int i = lo+1; i < hi; i++)
+        for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i-1])) return false;
         return true;
     }
@@ -183,7 +183,7 @@ public class Insertion {
 
     // is the array a[lo..hi) sorted
     private static boolean isSorted(Object[] a, int lo, int hi, Comparator comparator) {
-        for (int i = lo+1; i < hi; i++)
+        for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i-1], comparator)) return false;
         return true;
     }
