@@ -93,11 +93,17 @@ public class DigraphGenerator {
 
     /**
      * Returns the complete digraph on {@code V} vertices.
+     * In a complete digraph, every pair of distinct vertices is connected
+     * by two antiparallel edges. There are {@code V*(V-1)} edges.
      * @param V the number of vertices
      * @return the complete digraph on {@code V} vertices
      */
     public static Digraph complete(int V) {
-        return simple(V, V*(V-1));
+        Digraph G = new Digraph(V);
+        for (int v = 0; v < V; v++)
+            for (int w = 0; w < V; w++)
+                    if (v != w) G.addEdge(v, w);
+        return G;
     }
 
     /**
@@ -150,6 +156,27 @@ public class DigraphGenerator {
     }
 
     /**
+     * Returns a complete rooted-in DAG on {@code V} vertices.
+     * A rooted in-tree is a DAG in which there is a single vertex
+     * reachable from every other vertex. A complete rooted in-DAG
+     * has V*(V-1)/2 edges.
+     * @param V the number of vertices
+     * @return a complete rooted-in DAG on {@code V} vertices
+     */
+    public static Digraph completeRootedInDAG(int V) {
+        Digraph G = new Digraph(V);
+        int[] vertices = new int[V];
+        for (int i = 0; i < V; i++)
+            vertices[i] = i;
+        StdRandom.shuffle(vertices);
+        for (int i = 0; i < V; i++)
+            for (int j = i+1; j < V; j++)
+                 G.addEdge(vertices[i], vertices[j]);
+
+        return G;
+    }
+
+    /**
      * Returns a random rooted-in DAG on {@code V} vertices and {@code E} edges.
      * A rooted in-tree is a DAG in which there is a single vertex
      * reachable from every other vertex.
@@ -187,6 +214,26 @@ public class DigraphGenerator {
                 G.addEdge(vertices[v], vertices[w]);
             }
         }
+        return G;
+    }
+
+    /**
+     * Returns a complete rooted-out DAG on {@code V} vertices.
+     * A rooted out-tree is a DAG in which every vertex is reachable
+     * from a single vertex. A complete rooted in-DAG has V*(V-1)/2 edges.
+     * @param V the number of vertices
+     * @return a complete rooted-out DAG on {@code V} vertices
+     */
+    public static Digraph completeRootedOutDAG(int V) {
+        Digraph G = new Digraph(V);
+        int[] vertices = new int[V];
+        for (int i = 0; i < V; i++)
+            vertices[i] = i;
+        StdRandom.shuffle(vertices);
+        for (int i = 0; i < V; i++)
+            for (int j = i+1; j < V; j++)
+                 G.addEdge(vertices[j], vertices[i]);
+
         return G;
     }
 

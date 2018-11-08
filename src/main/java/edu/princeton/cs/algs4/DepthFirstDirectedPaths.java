@@ -42,6 +42,7 @@ package edu.princeton.cs.algs4;
  *  of the path returned.
  *  It uses extra space (not including the graph) proportional to <em>V</em>.
  *  <p>
+ *  See {@link DepthFirstDirectedPaths} for a nonrecursive implementation.
  *  For additional documentation,  
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of  
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 

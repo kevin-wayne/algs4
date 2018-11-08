@@ -27,6 +27,7 @@ package edu.princeton.cs.algs4;
  *  {@link DepthFirstPaths} and {@link BreadthFirstPaths}.
  *  <p>
  *  This implementation uses depth-first search.
+ *  See {@link NonrecursiveDFS} for a non-recursive version.
  *  The constructor takes time proportional to <em>V</em> + <em>E</em>
  *  (in the worst case),
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
