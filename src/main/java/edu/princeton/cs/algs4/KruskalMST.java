@@ -2,7 +2,7 @@
  *  Compilation:  javac KruskalMST.java
  *  Execution:    java  KruskalMST filename.txt
  *  Dependencies: EdgeWeightedGraph.java Edge.java Queue.java
- *                UF.java In.java StdOut.java
+ *                MinPQ.java UF.java In.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
