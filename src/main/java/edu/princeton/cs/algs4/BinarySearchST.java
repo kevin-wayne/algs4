@@ -77,12 +77,14 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * Initializes an empty symbol table with the specified initial capacity.
      * @param capacity the maximum capacity
      */
+    @SuppressWarnings("unchecked")
     public BinarySearchST(int capacity) { 
         keys = (Key[]) new Comparable[capacity]; 
         vals = (Value[]) new Object[capacity]; 
     }   
 
     // resize the underlying arrays
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         assert capacity >= n;
         Key[]   tempk = (Key[])   new Comparable[capacity];
