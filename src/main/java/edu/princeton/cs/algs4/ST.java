@@ -223,6 +223,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
         ST<String, Integer> st = new ST<String, Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
+            if(key.equals("q")) break;  // q is stop input 
             st.put(key, i);
         }
         for (String s : st.keys())
