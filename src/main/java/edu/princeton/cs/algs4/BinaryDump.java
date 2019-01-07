@@ -1,10 +1,10 @@
 /******************************************************************************
  *  Compilation:  javac BinaryDump.java
- *  Execution:    java BinaryDump N < file
+ *  Execution:    java BinaryDump n < file
  *  Dependencies: BinaryStdIn.java
- *  Data file:    http://introcs.cs.princeton.edu/stdlib/abra.txt
+ *  Data file:    https://introcs.cs.princeton.edu/stdlib/abra.txt
  *  
- *  Reads in a binary file and writes out the bits, N per line.
+ *  Reads in a binary file and writes out the bits, n per line.
  *
  *  % more abra.txt 
  *  ABRACADABRA!
@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  *  {@code od} (octal dump) and {@code hexdump} (hexadecimal dump).
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compression">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link HexDump} and {@link PictureDump}.

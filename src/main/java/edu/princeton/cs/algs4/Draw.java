@@ -296,6 +296,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         frame.setResizable(false);
         // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
+        frame.setFocusTraversalKeysEnabled(false);  // to recognize VK_TAB with isKeyPressed()
         frame.setTitle(name);
         frame.setJMenuBar(createMenuBar());
         frame.pack();

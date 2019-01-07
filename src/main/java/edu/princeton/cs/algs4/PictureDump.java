@@ -24,7 +24,7 @@ import java.awt.Color;
  *  of a binary file as a black-and-white picture.
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/55compress">Section 5.5</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/55compression">Section 5.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
  *  See also {@link BinaryDump} and {@link HexDump}.

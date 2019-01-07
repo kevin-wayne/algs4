@@ -355,7 +355,7 @@ public final class StdRandom {
      */
     public static int discrete(double[] probabilities) {
         if (probabilities == null) throw new IllegalArgumentException("argument array is null");
-        double EPSILON = 1E-14;
+        double EPSILON = 1.0E-14;
         double sum = 0.0;
         for (int i = 0; i < probabilities.length; i++) {
             if (!(probabilities[i] >= 0.0))

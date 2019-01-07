@@ -699,6 +699,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
         frame.setContentPane(draw);
         frame.addKeyListener(std);    // JLabel cannot get keyboard focus
+        frame.setFocusTraversalKeysEnabled(false);  // allow VK_TAB with isKeyPressed()
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
         // frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
