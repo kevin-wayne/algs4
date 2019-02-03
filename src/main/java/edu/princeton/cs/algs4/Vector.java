@@ -93,7 +93,7 @@ public class Vector {
     }
 
     /**
-     * Returns the do product of this vector with the specified vector.
+     * Returns the dot product of this vector with the specified vector.
      *
      * @param  that the other vector
      * @return the dot product of this vector and that vector
