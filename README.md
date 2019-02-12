@@ -40,7 +40,7 @@ However, please do not store solutions to programming assignments in public repo
 
 ## Copyright
 
-Copyright &copy; 2000&ndash;2017 by Robert Sedgewick and Kevin Wayne.
+Copyright &copy; 2000&ndash;2019 by Robert Sedgewick and Kevin Wayne.
 
 ## License
 
