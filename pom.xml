@@ -4,7 +4,7 @@
 	<groupId>edu.princeton.cs</groupId>
 	<artifactId>algs4</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0.0</version>
+	<version>1.0.0.1</version>
 	<name>algs4</name>
 	<licenses>
 		<license>
@@ -36,11 +36,24 @@
 				<role>author</role>
 			</roles>
 		</developer>
+                <developer>
+			<id>vahbuna</id>
+			<roles>
+				<role>student</role>
+			</roles>
+		</developer>
 	</developers>
 	<issueManagement>
 		<system>github.com</system>
 		<url>https://github.com/kevin-wayne/algs4/issues</url>
 	</issueManagement>
+        <build>
+            <resources>
+                <resource>
+                    <directory>src/main/resources</directory>
+                </resource>
+            </resources>
+        </build>
 	<profiles>
 		<profile>
 			<id>main-build</id>
