@@ -1,5 +1,10 @@
 ## Changes
 * Added Sattolo
+
+## Assignments
+Name|Score|Comments
+---|---|---
+Percolation|100|Test 2 (bonus): failed memory test for n = 64
 ## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">

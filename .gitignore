@@ -55,3 +55,4 @@ atlassian-ide-plugin.xml
 
 # files intended to be ignored
 *IGNORE
+/nbproject/

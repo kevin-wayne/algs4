@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac Sattolo.java
- *  Execution:    java org.updates.algs.Sattolo < list.txt
- *  Dependencies: StdIn.java StdOut.java
+ *  Execution:    java edu.updates.algs.Sattolo < list.txt
+ *  Dependencies: StdIn.java
  *  Data files:   src/main/resources/data/cards.txt
  *  
  *  Reads in a list of strings and prints a uniformly random cycle
@@ -17,7 +17,7 @@
  *  3
  *
  ******************************************************************************/
-package org.updates.algs;
+package edu.updates.algs;
 
 import edu.princeton.cs.algs4.StdIn;
 
