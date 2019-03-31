@@ -17,10 +17,11 @@
  *
  *****************************************************************************/
 
-// package edu.assignment;
+package edu.assignment;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 /**
  *
@@ -31,17 +32,25 @@ public class Permutation {
         if (args.length == 1) {
             int k = Integer.parseInt(args[0]);
             int count = k;
+            int elements = k;
             RandomizedQueue<String> ranq = new RandomizedQueue<String>();
             while (count > 0 && !StdIn.isEmpty()) {
-                    ranq.enqueue(StdIn.readString());
-                    count--;
+                elements++;
+                ranq.enqueue(StdIn.readString());
+                count--;
             }
             if (count == 0) {
                 while (!StdIn.isEmpty()) {
+                    elements++;
                     if (k > 0) {
-                        StdOut.println(ranq.dequeue());
+                        int choice = StdRandom.uniform(elements);
+                        if (choice < elements / 2) {
+                            ranq.dequeue();
+                        } else {
+                            StdOut.println(ranq.dequeue());
+                            k--;
+                        }
                         ranq.enqueue(StdIn.readString());
-                        k--;
                     } else {
                         StdIn.readString();
                     }
