@@ -6,7 +6,7 @@ Name|Score|Comments
 ---|---|---
 Percolation|100|Test 2 (bonus): failed memory test for n = 64
 Deques and Randomized Queues|86|Test 3 (bonus): check that maximum size created
-||is equal to k ==> passed
+ | |is equal to k ==> passed
 ## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
