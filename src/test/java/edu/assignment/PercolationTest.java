@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.In;
 
 /**
  *
- * @author anu
+ * @author vahbuna
  */
 public class PercolationTest {
     private Percolation grid;
