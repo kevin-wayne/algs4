@@ -1,5 +1,6 @@
 ## Changes
 * Added Sattolo
+* Reservoir Sampling
 
 ## Assignments
 Name|Score|Comments
