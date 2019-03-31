@@ -31,34 +31,25 @@ public class Permutation {
     public static void main(final String[] args) {
         if (args.length == 1) {
             int k = Integer.parseInt(args[0]);
-            int count = k;
-            int elements = k;
+            int count = 0;
             RandomizedQueue<String> ranq = new RandomizedQueue<String>();
-            while (count > 0 && !StdIn.isEmpty()) {
-                elements++;
-                ranq.enqueue(StdIn.readString());
-                count--;
-            }
-            if (count == 0) {
-                while (!StdIn.isEmpty()) {
-                    elements++;
-                    if (k > 0) {
-                        int choice = StdRandom.uniform(elements);
-                        if (choice < elements / 2) {
-                            ranq.dequeue();
-                        } else {
-                            StdOut.println(ranq.dequeue());
-                            k--;
-                        }
+            while (!StdIn.isEmpty()) {
+                count++;
+                if (ranq.size() < k) {
+                    ranq.enqueue(StdIn.readString());
+                } else {
+                    int choice = StdRandom.uniform(count);
+                    if (choice < k) {
+                        ranq.dequeue();
                         ranq.enqueue(StdIn.readString());
                     } else {
                         StdIn.readString();
                     }
                 }
             }
-            while (k > 0) {
+
+            while (ranq.size() > 0) {
                 StdOut.println(ranq.dequeue());
-                k--;
             }
         }
     }
