@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author anu
+ * @author vahbuna
  */
 public class BruteCollinearPointsTest {
 

@@ -23,101 +23,57 @@ public class FastCollinearPoints {
     /**
      * collinear lines.
      */
-    private LineSegment[] lineSegments;
+    private final LineSegment[] lineArray;
 
-    private class Data implements Comparable<Data> {
-        private final Point pointA;
-        private final Point pointB;
-        private final double slope;
-
-        Data(final Point pointa, final Point pointb, final double slope) {
-            pointA = pointa;
-            pointB = pointb;
-            this.slope = slope;
-        }
-
-        @Override
-        public int compareTo(final Data that) {
-            if (Double.compare(this.slope, that.slope) == 0
-                    && pointB.compareTo(that.pointB) == 0) {
-                return pointA.compareTo(that.pointA);
-            } else if (Double.compare(this.slope, that.slope) == 0) {
-                return pointB.compareTo(that.pointB);
-            }
-
-            return Double.compare(this.slope, that.slope);
-        }
-    }
 
     public FastCollinearPoints(final Point[] points) {
         if (points == null) {
             throw new IllegalArgumentException();
         }
 
+        Point[] newPoints = new Point[points.length];
+
         for (int i = 0; i < points.length; i++) {
             if (points[i] == null) {
                 throw new IllegalArgumentException();
             }
+            newPoints[i] = points[i];
         }
 
-        final ArrayList<Data> dataPoints = new ArrayList<Data>();
-        Arrays.sort(points);
+        Arrays.sort(newPoints);
 
-        for (int i = 1; i < points.length; i++) {
-            if (points[i].compareTo(points[i - 1]) == 0) {
+        for (int i = 1; i < newPoints.length; i++) {
+            if (newPoints[i].compareTo(newPoints[i - 1]) == 0) {
                 throw new IllegalArgumentException();
             }
         }
 
-        for (int i = 0; i <= points.length - 4; i++) {
-            Arrays.sort(points, i + 1, points.length, points[i].slopeOrder());
-            for (int j = points.length - 1; j >= i + 3; j--) {
-                if (isEqual(points[i], points[j],
-                        points[j - 1], points[j - 2])) {
-                    double slope = points[i].slopeTo(points[j]);
-                    Data temp = new Data(points[i], points[j], slope);
-                    dataPoints.add(temp);
-                    j = j - 3;
-                    while (j >= i + 3
+        ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
+        for (int i = 0; i < newPoints.length; i++) {
+            Point reference = newPoints[i];
+            Arrays.sort(newPoints, 0, newPoints.length, reference.slopeOrder());
+            int j = newPoints.length - 1;
+            while (j >= 2) {
+                if (isEqual(reference, newPoints[j],
+                        newPoints[j - 1], newPoints[j - 2])) {
+                    Point max = newPoints[j];
+                    double slope = reference.slopeTo(max);
+                    int k = j - 3;
+                    while (k >= 0
                             && Double.compare(slope,
-                                    points[i].slopeTo(points[j])) == 0) {
-                        j--;
+                                    reference.slopeTo(newPoints[k])) == 0) {
+                        k--;
                     }
-                    j++;
+                    if (reference.compareTo(newPoints[k + 1]) < 0) {
+                        lineSegments.add(new LineSegment(reference, max));
+                    }
+                    j = k + 1;
                 }
+                j--;
             }
-            Arrays.sort(points, i + 1, points.length);
+            Arrays.sort(newPoints, 0, newPoints.length);
         }
-        Arrays.sort(dataPoints.toArray());
-        lineSegments = new LineSegment[dataPoints.size()];
-        if (!dataPoints.isEmpty()) {
-            Data comp = null;
-            int index = 0;
-            for (int i = 0; i < dataPoints.size() - 1; i++) {
-                Data done = dataPoints.get(i);
-                Data dtwo = dataPoints.get(i + 1);
-                if (comp != null && comp.pointB.compareTo(dtwo.pointB) == 0
-                        && Double.compare(comp.slope, dtwo.slope) == 0) {
-                    ;
-                } else if (done.pointB.compareTo(dtwo.pointB) == 0
-                        && Double.compare(done.slope, dtwo.slope) == 0) {
-                    lineSegments[index++] = new LineSegment(done.pointA,
-                        done.pointB);
-                    comp = done;
-                } else if (comp == null) {
-                    lineSegments[index++] = new LineSegment(done.pointA,
-                        done.pointB);
-                    comp = null;
-                }
-            }
-
-            Data done = dataPoints.get(dataPoints.size() - 1);
-            if (comp == null) {
-                lineSegments[index++] = new LineSegment(done.pointA,
-                        done.pointB);
-            }
-            resize(index);
-        }
+        lineArray = lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
 
     /**
@@ -139,7 +95,7 @@ public class FastCollinearPoints {
      * @return count
      */
     public int numberOfSegments()  {
-        return lineSegments.length;
+        return lineArray.length;
     }
 
     /**
@@ -147,18 +103,6 @@ public class FastCollinearPoints {
      * @return the segments found
      */
     public LineSegment[] segments() {
-        return lineSegments.clone();
-    }
-
-    /**
-     * update the array size.
-     * @param capacity new size
-     */
-    private void resize(final int capacity) {
-        LineSegment[] temp = new LineSegment[capacity];
-        for (int i = 0; i < capacity; i++) {
-            temp[i] = lineSegments[i];
-        }
-        lineSegments = temp;
+        return lineArray.clone();
     }
 }

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package edu.assignment.collinear;
 
 import edu.princeton.cs.algs4.In;
@@ -11,11 +12,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author anu
+ * @author vahbuna
  */
 public class FastCollinearPointsTest {
 
-        @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void nullList() {
         FastCollinearPoints temp = new FastCollinearPoints(null);
     }
@@ -113,8 +114,8 @@ public class FastCollinearPointsTest {
             System.out.println(answer[j].toString());
         }
     }
-    
-        @Test
+
+    @Test
     public void noLines() {
         In in = new In("data/collinear/random23.txt");
         int n = in.readInt();
