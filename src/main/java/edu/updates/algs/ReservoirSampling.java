@@ -72,7 +72,7 @@ public class ReservoirSampling {
      * @return reservoir
      */
     public String[] getSamples() {
-        return reservoir;
+        return reservoir.clone();
     }
 
     public static void main(final String[] args) {
