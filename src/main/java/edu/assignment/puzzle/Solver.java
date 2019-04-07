@@ -38,10 +38,13 @@ public class Solver {
         private final  Board current;
         private final int moves;
         private final Board previous;
+        private final int currentManhattan;
+
         SearchNode(final Board currentBoard) {
             this.current = currentBoard;
             moves = 0;
             previous = null;
+            currentManhattan = currentBoard.manhattan();
         }
 
         SearchNode(final Board currentBoard, final Board previousBoard,
@@ -49,18 +52,19 @@ public class Solver {
             this.current = currentBoard;
             this.moves = totalMoves;
             this.previous = previousBoard;
+            currentManhattan = currentBoard.manhattan();
         }
 
         @Override
         public int compareTo(final SearchNode that) {
-            if ((current.manhattan() + moves)
-                    == (that.current.manhattan() + that.moves)) {
+            if ((currentManhattan + moves)
+                    == (that.currentManhattan + that.moves)) {
                 // return current.hamming() - that.current.hamming();
-                return current.manhattan() - that.current.manhattan();
+                return currentManhattan - that.currentManhattan;
             }
 
-            return (current.manhattan() + moves
-                    - that.current.manhattan() - that.moves);
+            return (currentManhattan + moves
+                    - that.currentManhattan - that.moves);
         }
     }
 
@@ -110,8 +114,8 @@ public class Solver {
             solution.push(answer.current);
             while (!visited.isEmpty()) {
                 SearchNode temp = visited.pop();
-                if ((temp.current.equals(answer.previous))
-                        && temp.moves + 1 == answer.moves) {
+                if (temp.moves + 1 == answer.moves
+                        && temp.current == answer.previous) {
                     solution.push(temp.current);
                     answer = temp;
                 }
