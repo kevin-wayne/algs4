@@ -7,7 +7,6 @@ package edu.assignment.kdtree;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Point2D;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -47,11 +46,11 @@ public class KdTreeTest {
             brute.insert(p);
         }
 
-        Point2D search = new Point2D(0.7, 0.9);
+        Point2D search = new Point2D(0.208, 0.66);
         assertFalse(brute.contains(search));
 
         Point2D answer = brute.nearest(search);
-        Point2D expectedAnswer = new Point2D(0.793893, 0.904508);
+        Point2D expectedAnswer = new Point2D(0.024472, 0.654508);
         assertTrue(expectedAnswer.equals(answer));
     }
 }

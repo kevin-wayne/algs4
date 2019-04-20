@@ -115,10 +115,7 @@ public class KdTree {
             return start;
         }
 
-        int cmp = Double.compare(point.x(), start.p.x());
-        if (orientation < 0) {
-            cmp = Double.compare(point.y(), start.p.y());
-        }
+        int cmp = orientationCmp(start.p, point, orientation);
 
         if (cmp < 0) {
             if (orientation > 0) {
@@ -203,9 +200,7 @@ public class KdTree {
             throw new IllegalArgumentException();
         }
 
-        ArrayList<Point2D> answer = new ArrayList<Point2D>();
-        find(root, rect, 1, answer);
-        return answer;
+        return find(root, rect, 1);
     }
 
     /**
@@ -213,30 +208,35 @@ public class KdTree {
      * @param start start node
      * @param rect rectangle
      * @param orientation orientation of split
-     * @param answer number of points
+     * @return number of points
      */
-    private void find(final Node start, final RectHV rect,
-            final int orientation, ArrayList<Point2D> answer) {
+    private ArrayList<Point2D> find(final Node start, final RectHV rect,
+            final int orientation) {
         if (start == null) {
-            return;
-        }
-
-        if (rect.contains(start.p)) {
-            answer.add(start.p);
+            return new ArrayList<Point2D>(1);
         }
 
         if (start.rect.intersects(rect)) {
-            find(start.lb, rect, -1 * orientation, answer);
-            find(start.rt, rect, -1 * orientation, answer);
+            ArrayList<Point2D> answer = find(start.lb,
+                    rect, -1 * orientation);
+            answer.addAll(find(start.rt, rect, -1 * orientation));
+
+            if (rect.contains(start.p)) {
+                answer.add(start.p);
+            }
+            return answer;
         } else {
-            int cmp = Double.compare(rect.ymin(), start.p.y());
+            int cmp;
             if (orientation > 0) {
                 cmp = Double.compare(rect.xmin(), start.p.x());
-            }
-            if (cmp < 0) {
-                find(start.lb, rect, -1 * orientation, answer);
             } else {
-                find(start.rt, rect, -1 * orientation, answer);
+                 cmp = Double.compare(rect.ymin(), start.p.y());
+            }
+
+            if (cmp < 0) {
+                return find(start.lb, rect, -1 * orientation);
+            } else {
+                return find(start.rt, rect, -1 * orientation);
             }
         }
     }
@@ -255,43 +255,45 @@ public class KdTree {
             return null;
         }
 
-        Point2D minPoint = near(root, p, root.p, 1);
-        return minPoint;
+        return near(root, p, root.p, 1, root.p.distanceSquaredTo(p));
     }
 
     /**
-     * recursively search for a point
+     * recursively search for a point.
      * @param start point in space being compared
      * @param key point
      * @param nearPoint nearest point
      * @param orientation horizontal or vertical
+     * @param minDistance minimum distance calculated this far
      * @return the nearest point
      */
     private Point2D near(final Node start, final Point2D key, Point2D nearPoint,
-            final int orientation) {
-        if (start == null) {
-            return nearPoint;
+            final int orientation, double minDistance) {
+
+        double temp = start.p.distanceSquaredTo(key);
+        if (Double.compare(temp, minDistance) < 0) {
+            nearPoint = start.p;
+            minDistance = temp;
         }
-        double minDistance = nearPoint.distanceSquaredTo(key);
-        // if (Double.compare(start.rect.distanceSquaredTo(key),
-          //      minDistance) <= 0) {
-            if (Double.compare(start.p.distanceSquaredTo(key),
-                    minDistance) <= 0) {
-                nearPoint = start.p;
-            }
-            int cmp = orientationCmp(start.p, key, orientation);
-            if (cmp < 0) {
-                nearPoint = near(start.lb, key, nearPoint,
-                       -1 * orientation);
-                nearPoint = near(start.rt, key, nearPoint,
-                       -1 * orientation);
-            } else {
-                nearPoint = near(start.rt, key, nearPoint,
-                       -1 * orientation);
-                nearPoint = near(start.lb, key, nearPoint,
-                       -1 * orientation);
-            }
-        //}
+        int cmp = orientationCmp(start.p, key, orientation);
+
+        Node first = start.lb;
+        Node second = start.rt;
+
+        if (cmp > 0) {
+            first = start.rt;
+            second = start.lb;
+        }
+        if (first != null) {
+            nearPoint = near(first, key, nearPoint, -1 * orientation,
+                    minDistance);
+            minDistance = nearPoint.distanceSquaredTo(key);
+        }
+
+        if (second != null && Double.compare(start.rect.distanceSquaredTo(key),
+                minDistance) < 0) {
+            return near(second, key, nearPoint, -1 * orientation, minDistance);
+        }
         return nearPoint;
     }
 
