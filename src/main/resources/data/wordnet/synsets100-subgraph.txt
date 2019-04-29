@@ -1,0 +1,100 @@
+0,C-reactive_protein CRP,a byproduct of inflammation; a globulin that is found in the blood in some cases of acute inflammation  
+1,Christmas_factor factor_IX,coagulation factor whose absence is associated with hemophilia B  
+2,Hageman_factor factor_XII,coagulation factor whose deficiency results in prolongation of clotting time of venous blood  
+3,actin,one of the proteins into which actomyosin can be split; can exist in either a globular or a fibrous form  
+4,albumin albumen,a simple water-soluble protein found in many animal tissues and liquids  
+5,alpha_globulin,a globulin in blood plasma or serum that is alkaline and has great electrophoretic mobility  
+6,antihemophilic_factor antihaemophilic_factor antihemophilic_globulin antihaemophilic_globulin factor_VIII Hemofil,a coagulation factor (trade name Hemofil) whose absence is associated with hemophilia A  
+7,calcium_ion factor_IV,ion of calcium; a factor in the clotting of blood  
+8,casein,a milk protein used in making e.g. plastics and adhesives  
+9,change,a thing that is different; "he inspected several changes before selecting one"  
+10,chondrin,a substance that resembles gelatin and is obtained by boiling cartilage in water  
+11,coagulation_factor clotting_factor,any of the factors in the blood whose actions are essential for blood coagulation  
+12,collagen,a fibrous scleroprotein in bone and cartilage and tendon and other connective tissue; yields gelatin on boiling  
+13,corn_gluten,gluten prepared from corn  
+14,elastin,a fibrous scleroprotein found in elastic tissues such as the walls of arteries  
+15,entity,that which is perceived or known or inferred to have its own distinct existence (living or nonliving)  
+16,enzyme,any of several complex proteins that are produced by cells and act as catalysts in specific biochemical reactions  
+17,ferritin,a protein containing 20% iron that is found in the intestines and liver and spleen; it is one of the chief forms in which iron is stored in the body  
+18,fibrin,a white insoluble fibrous protein formed by the action of thrombin on fibrinogen when blood clots; it forms a network that traps red cells and platelets  
+19,fibrinase factor_XIII,in the clotting of blood thrombin catalyzes factor XIII into its active form (fibrinase) which causes fibrin to form a stable clot  
+20,fibrinogen factor_I,a protein present in blood plasma; converts to fibrin when blood clots  
+21,filaggrin,the main protein of the keratohyalin granules; "the specific target of the immune response in rheumatoid arthritis is filaggrin"  
+22,freshener,anything that freshens  
+23,gamma_globulin human_gamma_globulin,a plasma protein containing the immunoglobulins that are responsible for immune responses  
+24,gelatin gelatine,a colorless water-soluble glutinous protein obtained from animal tissues such as bone and skin  
+25,globin hematohiston haematohiston,a colorless protein obtained by removing heme from hemoglobin; the oxygen carrying compound in red blood cells  
+26,globulin,a family of proteins found in blood and milk and muscle and in plant seed  
+27,glutamic_oxalacetic_transaminase glutamic_oxaloacetic_transaminase,an enzyme involved in transamination  
+28,glutelin,a simple protein found in the seeds of cereals  
+29,gluten,a protein substance that remains when starch is removed from cereal grains; gives cohesiveness to dough  
+30,growth_factor,a protein that is involved in cell differentiation and growth  
+31,haptoglobin,a protein in plasma that binds free hemoglobin and removes it (as from wounds)  
+32,histone,a simple protein containing mainly basic amino acids; present in cell nuclei in association with nucleic acids  
+33,horror,something that inspires horror; something horrible; "the painting that others found so beautiful was a horror to him"  
+34,immunoglobulin Ig immune_serum_globulin immune_gamma_globulin immune_globulin,a class of proteins produced in lymph tissue in vertebrates and that function as antibodies in the immune response  
+35,immunoglobulin_A IgA,one of the most common of the five major classes of immunoglobulins; the chief antibody in the membranes of the gastrointestinal and respiratory tracts  
+36,immunoglobulin_D IgD,one of the five major classes of immunoglobulins; present in blood serum in small amounts  
+37,immunoglobulin_E IgE,one of the five major classes of immunoglobulins; present primarily in the skin and mucous membranes  
+38,immunoglobulin_G IgG,one of the five major classes of immunoglobulins; the main antibody defense against bacteria  
+39,immunoglobulin_M IgM,one of the five major classes of immunoglobulins; involved in fighting blood infections and in triggering production of immunoglobulin G  
+40,iodoprotein iodinated_protein,a protein that contains iodine  
+41,jimdandy jimhickey crackerjack,something excellent of its kind; "the bike was a jimdandy"  
+42,keratin ceratin,a fibrous scleroprotein that occurs in the outer layer of the skin and in horny tissues such as hair, feathers, nails, and hooves  
+43,lactalbumin,albumin occurring in milk  
+44,macromolecule supermolecule,any very large complex molecule; found only in plants and animals  
+45,molecule,(physics and chemistry) the simplest structural unit of an element or compound  
+46,myosin,the commonest protein in muscle; a globulin that combines with actin to form actomyosin  
+47,nerve_growth_factor NGF,a protein that is involved in the growth of peripheral nerve cells  
+48,nucleoprotein,any of several substances found in the nuclei of all living cells; consists of a protein bound to a nucleic acid  
+49,opsin,retinal protein formed by the action of light on rhodopsin  
+50,pacifier,anything that serves to pacify  
+51,phosphoprotein,containing chemically bound phosphoric acid  
+52,physical_entity,an entity that has physical existence  
+53,plasma_protein,any of the proteins in blood plasma  
+54,plasma_thromboplastin_antecedent factor_XI,coagulation factor whose deficiency results in a hemorrhagic tendency  
+55,proaccelerin prothrombin_accelerator accelerator_factor factor_V,a coagulation factor  
+56,proconvertin cothromboplastin stable_factor factor_VII,a coagulation factor formed in the kidney under the influence of vitamin K  
+57,prolamine,a simple protein found in plants  
+58,prostate_specific_antigen PSA,a protein manufactured exclusively by the prostate gland; PSA is produced for the ejaculate where it liquifies the semen and allows sperm cells to swim freely; elevated levels of PSA in blood serum are associated with benign prostatic hyperplasia and prostate cancer  
+59,protamine,a simple protein found in fish sperm; rich in arginine; simpler in composition than globulin or albumin; counteracts the anticoagulant effect of heparin  
+60,protein,any of a large group of nitrogenous organic compounds that are essential constituents of living cells; consist of polymers of amino acids; essential in the diet of animals for growth and for repair of tissues; can be obtained from meat and eggs and milk and legumes; "a diet high in protein"  
+61,protein_molecule,any large molecule containing chains of amino acids linked by peptide bonds  
+62,proteome,the full complement of proteins produced by a particular genome  
+63,prothrombin factor_II,a protein in blood plasma that is the inactive precursor of thrombin  
+64,prothrombinase factor_X,coagulation factor that is converted to an enzyme that converts prothrombin to thrombin in a reaction that depends on calcium ions and other coagulation factors  
+65,reagin,an immunoglobulin E that is formed as an antibody against allergens (such as pollen); attaches to cell membranes causing the release of histamine and other substances responsible for the local inflammation characteristic of an allergy  
+66,recombinant_protein,a protein derived from recombinant DNA  
+67,reductase,an enzyme that catalyses the biochemical reduction of some specified substance  
+68,rennin chymosin,an enzyme that occurs in gastric juice; causes milk to coagulate  
+69,ribonuclease ribonucleinase RNase,a transferase that catalyzes the hydrolysis of ribonucleic acid  
+70,ricin ricin_toxin,a toxic protein extracted from castor beans; used as a chemical reagent; can be used as a bioweapon; "one milligram of ricin can kill an adult"  
+71,scleroprotein albuminoid,a simple protein found in horny and cartilaginous tissues and in the lens of the eye  
+72,secretase,a set of enzymes believed to snip pieces off a longer protein producing fragments of amyloid protein that bunch up and create amyloid protein plaques in brain tissue (the pathological hallmark of Alzheimer's)  
+73,security_blanket,anything that an adult person uses to reduce anxiety  
+74,serum_albumin,albumin occurring in blood serum; serves to maintain the somatic pressure of the blood  
+75,serum_globulin,globulins occurring in blood serum and containing most of the antibodies of the blood  
+76,simple_protein,a protein that yields only amino acids when hydrolyzed  
+77,stinker,anything that gives off an offensive odor (especially a cheap cigar)  
+78,streptodornase,an enzyme produced by some hemolytic strains of streptococcus that dissolves fibrinous secretions from infections; used medicinally (often in combination with streptokinase)  
+79,streptokinase,an enzyme produced by some strains of streptococcus that can liquefy blood clots by converting plasminogen to plasmin; used medicinally in some cases of myocardial infarction and pulmonary embolism  
+80,superoxide_dismutase SOD,an enzyme that catalyzes the conversion of superoxide into hydrogen peroxide and oxygen; "oxygen free radicals are normally removed in our bodies by the superoxide dismutase enzymes"  
+81,telomerase,an enzyme in eukaryotic cells that can add telomeres to the ends of chromosomes after they divide  
+82,tetanus_immunoglobulin tetanus_immune_globulin,sterile solution of globulins derived from the blood plasma of a person who has been immunized for tetanus; provides short-term immunization against tetanus in cases of possible exposure to the tetanus bacillus  
+83,thing,an entity that is not named specifically; "I couldn't tell what the thing was"  
+84,thing,a separate and self-contained entity  
+85,thromboplastin thrombokinase factor_III,an enzyme liberated from blood platelets that converts prothrombin into thrombin as blood starts to clot  
+86,thyroglobulin,an iodine containing protein that is obtained from the thyroid gland and exhibits the general properties of the globulins  
+87,thyroprotein,a preparation made from iodinated protein and having an action similar to thyroxine  
+88,transaminase aminotransferase aminopherase,a class of transferases that catalyze transamination (that transfer an amino group from an amino acid to another compound)  
+89,transferase,any of various enzymes that move a chemical group from one compound to another compound  
+90,transferrin beta_globulin siderophilin,a globulin in blood plasma that carries iron  
+91,trypsin,an enzyme of pancreatic origin; catalyzes the hydrolysis of proteins to smaller polypeptide units  
+92,trypsinogen,inactive precursor of trypsin; a substance secreted by the pancreas and converted to active trypsin by enterokinase in the small intestine  
+93,unit building_block,a single undivided natural thing occurring in the composition of something else; "units of nucleic acids"  
+94,unit_cell,the smallest group of atoms or molecules whose repetition at regular intervals in three dimensions produces the lattices of a crystal  
+95,urease,an enzyme that catalyzes the hydrolysis of urea into carbon dioxide and ammonia; is present in intestinal bacteria  
+96,variable,something that is likely to vary; something that is subject to variation; "the weather is one variable to be considered"  
+97,whacker whopper,something especially big or impressive of its kind  
+98,wheat_gluten,gluten prepared from wheat  
+99,zymase,a complex of enzymes that cause glycolysis; originally found in yeast but also present in higher organisms  
