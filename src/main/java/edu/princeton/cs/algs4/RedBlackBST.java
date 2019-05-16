@@ -93,14 +93,14 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     /**
      * Initializes an empty symbol table.
      */
-    public RedBlackBST() {
+     public RedBlackBST() {
     }
 
    /***************************************************************************
     *  Node helper methods.
     ***************************************************************************/
     // is node x red; false if x is null ?
-    private boolean isRed(Node x) {
+        private boolean isRed(Node x) {
         if (x == null) return false;
         return x.color == RED;
     }

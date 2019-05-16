@@ -3,6 +3,9 @@ package com.zhaoshuai.sort.merge_sort;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ * 原地归并的抽象方法
+ */
 public class Merge {
     private static Comparable[] aux;
     public static void merge(Comparable[]a ,int lo,int mid,int hi){
@@ -62,8 +65,7 @@ public class Merge {
     }
 
     public static void main(String args[]){
-
-        String [] a= In.readStrings();
+        String [] a= {"M","E","R","G","E","S","O","R","T","E","X","A","M","P","L","E"};
         sort(a);
         assert  isSorted(a);
         show(a);
