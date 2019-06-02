@@ -761,8 +761,8 @@ public final class In {
         // read one line at a time from absolute OS X / Linux path
         System.out.println("readLine() from absolute OS X / Linux path");
         System.out.println("---------------------------------------------------------------------------");
-        in = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
         try {
+            in = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
             while (!in.isEmpty()) {
                 String s = in.readLine();
                 System.out.println(s);
