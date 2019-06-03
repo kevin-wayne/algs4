@@ -63,4 +63,10 @@ public class SeamCarverTest {
         int[] answer = new int[] {1, 2, 1, 2, 1, 0};
         seam.removeHorizontalSeam(answer);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidSeam() {
+        int[] answer = new int[] {-1, 0, 1, 0, -1};
+        seam.removeVerticalSeam(answer);
+    }
 }

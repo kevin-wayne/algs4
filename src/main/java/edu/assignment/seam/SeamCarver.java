@@ -32,6 +32,9 @@ public class SeamCarver {
      * @param picture input image
      */
     public SeamCarver(final Picture picture) {
+        if (picture == null) {
+            throw new java.lang.IllegalArgumentException();
+        }
         width = picture.width();
         height = picture.height();
         energies = new double[width][height];
@@ -262,7 +265,7 @@ public class SeamCarver {
      * @param seam input
      */
     public void removeHorizontalSeam(final int[] seam) {
-        checkForErrors(seam);
+        checkForErrors(seam, this.height);
 
         if (this.height <= 1 || seam.length != this.width) {
             throw new java.lang.IllegalArgumentException();
@@ -288,7 +291,9 @@ public class SeamCarver {
             if (seam[i] - 1 >= 0) {
                 energies[i][seam[i] - 1] = calculateEnergy(i, seam[i] - 1);
             }
-            energies[i][seam[i]] = calculateEnergy(i, seam[i]);
+            if (seam[i] >= 0 && seam[i] < height) {
+                energies[i][seam[i]] = calculateEnergy(i, seam[i]);
+            }
         }
     }
 
@@ -297,7 +302,7 @@ public class SeamCarver {
      * @param seam input
      */
     public    void removeVerticalSeam(final int[] seam) {
-        checkForErrors(seam);
+        checkForErrors(seam, this.width);
 
         if (this.width <= 1 || seam.length != this.height) {
             throw new java.lang.IllegalArgumentException();
@@ -333,13 +338,21 @@ public class SeamCarver {
     /**
      * validate arguments for seam removal.
      * @param seam array
+     * @param maxVal upper limit for a seam value
      */
-    private void checkForErrors(final int[] seam) {
+    private void checkForErrors(final int[] seam, int maxVal) {
         if (seam == null) {
             throw new java.lang.IllegalArgumentException();
         }
 
+        if (seam[0] < 0 || seam[0] >= maxVal) {
+                throw new java.lang.IllegalArgumentException();
+        }
+
         for (int i = 1; i < seam.length; i++) {
+            if (seam[i] < 0 || seam[i] >= maxVal) {
+                throw new java.lang.IllegalArgumentException();
+            }
             if (Math.abs(seam[i] - seam[i - 1]) > 1d) {
                 throw new java.lang.IllegalArgumentException();
             }
