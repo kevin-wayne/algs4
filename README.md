@@ -9,8 +9,9 @@ Percolation|100|Test 2 (bonus): failed memory test for n = 64
 Deques and Randomized Queues|100|Test 3 (bonus): check that maximum size created is equal to k ==> passed
 Collinear|100|
 8 Puzzle|100|
-Kd-Trees|87|
+Kd-Trees|100|
 WordNet|89|
+Seam Carving|86|
 ## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
