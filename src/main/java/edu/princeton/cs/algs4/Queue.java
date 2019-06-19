@@ -138,11 +138,11 @@ public class Queue<Item> implements Iterable<Item> {
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
     public Iterator<Item> iterator()  {
-        return new ListIterator<Item>(first);  
+        return new ListIterator(first);  
     }
 
     // an iterator, doesn't implement remove() since it's optional
-    private class ListIterator<Item> implements Iterator<Item> {
+    private class ListIterator implements Iterator<Item> {
         private Node<Item> current;
 
         public ListIterator(Node<Item> first) {

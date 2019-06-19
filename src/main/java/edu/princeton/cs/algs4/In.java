@@ -169,10 +169,10 @@ public final class In {
                 return;
             }
 
-            // next try for files included in jar
+            // resource relative to .class file
             URL url = getClass().getResource(name);
 
-            // try this as well
+            // resource relative to classloader root
             if (url == null) {
                 url = getClass().getClassLoader().getResource(name);
             }
@@ -666,7 +666,7 @@ public final class In {
      */
     public static void main(String[] args) {
         In in;
-        String urlName = "https://introcs.cs.princeton.edu/stdlib/InTest.txt";
+        String urlName = "https://introcs.cs.princeton.edu/java/stdlib/InTest.txt";
 
         // read from a URL
         System.out.println("readAll() from URL " + urlName);
@@ -761,8 +761,8 @@ public final class In {
         // read one line at a time from absolute OS X / Linux path
         System.out.println("readLine() from absolute OS X / Linux path");
         System.out.println("---------------------------------------------------------------------------");
-        in = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
         try {
+            in = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
             while (!in.isEmpty()) {
                 String s = in.readLine();
                 System.out.println(s);
