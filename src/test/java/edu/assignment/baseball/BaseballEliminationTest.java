@@ -9,17 +9,20 @@ import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
  * @author vahbuna
  */
 public class BaseballEliminationTest {
-    private BaseballElimination baseballGames;
-    
-    @Before
-    public void readFile() {
+    private static BaseballElimination baseballGames;
+    private static BaseballElimination baseballGamesV2;
+
+    @BeforeClass
+    public static void readFile() {
         baseballGames = new BaseballElimination("data/baseball/teams4.txt");
+        baseballGamesV2 = new BaseballElimination("data/baseball/teams5.txt");
     }
 
     @Test
@@ -44,6 +47,30 @@ public class BaseballEliminationTest {
 
     @Test
     public void testAgainst() {
-        Assert.assertEquals(2, baseballGames.against("Montreal", "Philadelphia"));
-    }   
+        Assert.assertEquals(2, baseballGames.against("Montreal",
+                "Philadelphia"));
+    }
+
+    @Test
+    public void testElimination() {
+        Assert.assertTrue(baseballGamesV2.isEliminated("Detroit"));
+        Assert.assertFalse(baseballGamesV2.isEliminated("Boston"));
+        Assert.assertFalse(baseballGamesV2.isEliminated("Baltimore"));
+        for (String team : baseballGames.teams()) {
+            if (baseballGames.isEliminated(team)) {
+                System.out.print(team + " is eliminated by the subset R = { ");
+                for (String t : baseballGames.certificateOfElimination(team)) {
+                    System.out.print(t + " ");
+                }
+                System.out.println("}");
+            } else {
+                System.out.println(team + " is not eliminated");
+            }
+        }
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void teamNotFound() {
+        baseballGames.losses("California");
+    }
 }
