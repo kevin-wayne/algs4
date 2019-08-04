@@ -139,6 +139,7 @@ public class TST<Value> {
             throw new IllegalArgumentException("calls put() with null key");
         }
         if (!contains(key)) n++;
+        else if(val == null) n--;       // delete existing key
         root = put(root, key, val, 0);
     }
 
