@@ -57,9 +57,9 @@ public final class StdAudio {
      */
     public static final int SAMPLE_RATE = 44100;
 
-    private static final int BYTES_PER_SAMPLE = 2;                // 16-bit audio
-    private static final int BITS_PER_SAMPLE = 16;                // 16-bit audio
-    private static final double MAX_16_BIT = Short.MAX_VALUE;     // 32,767
+    private static final int BYTES_PER_SAMPLE = 2;       // 16-bit audio
+    private static final int BITS_PER_SAMPLE = 16;       // 16-bit audio
+    private static final double MAX_16_BIT = 32768;
     private static final int SAMPLE_BUFFER_SIZE = 4096;
 
     private static final int MONO   = 1;
@@ -168,6 +168,7 @@ public final class StdAudio {
 
         // convert to bytes
         short s = (short) (MAX_16_BIT * sample);
+        if (sample == 1.0) s = Short.MAX_VALUE;   // special case since 32768 not a short
         buffer[bufferSize++] = (byte) s;
         buffer[bufferSize++] = (byte) (s >> 8);   // little endian
 
@@ -291,6 +292,7 @@ public final class StdAudio {
         byte[] data = new byte[2 * samples.length];
         for (int i = 0; i < samples.length; i++) {
             int temp = (short) (samples[i] * MAX_16_BIT);
+            if (samples[i] == 1.0) temp = Short.MAX_VALUE;   // special case since 32768 not a short
             data[2*i + 0] = (byte) temp;
             data[2*i + 1] = (byte) (temp >> 8);   // little endian
         }

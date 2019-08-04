@@ -684,6 +684,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      *
      * @param  x the x-coordinate of the center of the circle
      * @param  y the y-coordinate of the center of the circle
+     * @param  radius the radius of the circle
      * @throws IllegalArgumentException if {@code radius} is negative
      * @throws IllegalArgumentException if any argument is either NaN or infinite
      */

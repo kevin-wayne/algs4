@@ -62,17 +62,17 @@ import javax.swing.KeyStroke;
  *  Given a 32-bit {@code int} encoding the color, the following code extracts
  *  the RGB components:
  * <blockquote><pre>
- *  int r = (rgb >> 16) & 0xFF;
- *  int g = (rgb >>  8) & 0xFF;
- *  int b = (rgb >>  0) & 0xFF;
+ *  int r = (rgb &gt;&gt; 16) &amp; 0xFF;
+ *  int g = (rgb &gt;&gt;  8) &amp; 0xFF;
+ *  int b = (rgb &gt;&gt;  0) &amp; 0xFF;
  *  </pre></blockquote> 
  *  Given the RGB components (8-bits each) of a color,
  *  the following statement packs it into a 32-bit {@code int}:
  * <blockquote><pre>
- *  int rgb = (r << 16) + (g << 8) + (b << 0);
+ *  int rgb = (r &lt;&lt; 16) + (g &lt;&lt; 8) + (b &lt;&lt; 0);
  * </pre></blockquote> 
  *  <p>
- *  A <em>W</em>-by-<en>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
+ *  A <em>W</em>-by-<em>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
  *  since the color of each pixel is encoded as a 32-bit <code>int</code>.
  *  <p>
  *  For additional documentation, see

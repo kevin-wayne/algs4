@@ -63,7 +63,7 @@ import javax.swing.KeyStroke;
  *  8-bit {@code int} to encode the grayscale value, thereby avoiding the need to
  *  create temporary {@code Color} objects.
  *  <p>
- *  A <em>W</em>-by-<en>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
+ *  A <em>W</em>-by-<em>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
  *  since the color of each pixel is encoded as a 32-bit <code>int</code>
  *  (even though, in principle, only ~ <em>W H</em> bytes are needed).
  *  <p>
