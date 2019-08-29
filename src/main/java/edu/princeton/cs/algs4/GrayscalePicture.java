@@ -122,31 +122,40 @@ public final class GrayscalePicture implements ActionListener {
    /**
      * Creates a grayscale picture by reading an image from a file or URL.
      *
-     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @param  name the name of the file (.png, .gif, or .jpg) or URL.
      * @throws IllegalArgumentException if cannot read image
-     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code name} is {@code null}
      */
-    public GrayscalePicture(String filename) {
-        if (filename == null) throw new IllegalArgumentException("constructor argument is null");
-        this.filename = filename;
+    public GrayscalePicture(String name) {
+        if (name == null) throw new IllegalArgumentException("constructor argument is null");
+        this.filename = name;
         try {
             // try to read from file in working directory
-            File file = new File(filename);
+            File file = new File(name);
             if (file.isFile()) {
                 image = ImageIO.read(file);
             }
 
-            // now try to read from file in same directory as this .class file
             else {
-                URL url = getClass().getResource(filename);
+
+                // resource relative to .class file
+                URL url = getClass().getResource(name);
+
+                // resource relative to classloader root
                 if (url == null) {
-                    url = new URL(filename);
+                    url = getClass().getClassLoader().getResource(name);
                 }
+     
+                // or URL from web
+                if (url == null) {
+                    url = new URL(name);
+                }
+        
                 image = ImageIO.read(url);
             }
 
             if (image == null) {
-                throw new IllegalArgumentException("could not read image file: " + filename);
+                throw new IllegalArgumentException("could not read image: " + name);
             }
 
             width  = image.getWidth(null);
@@ -162,7 +171,7 @@ public final class GrayscalePicture implements ActionListener {
             }
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("could not open image file: " + filename, ioe);
+            throw new IllegalArgumentException("could not open image: " + name, ioe);
         }
     }
 
