@@ -1619,7 +1619,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
         // notify all listeners
         for (DrawListener listener : listeners)
-            listener.keyPressed(e.getKeyCode());
+            listener.keyReleased(e.getKeyCode());
     }
 
 
