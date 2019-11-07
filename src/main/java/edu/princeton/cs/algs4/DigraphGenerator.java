@@ -136,11 +136,10 @@ public class DigraphGenerator {
         return G;
     }
 
-    // tournament
     /**
      * Returns a random tournament digraph on {@code V} vertices. A tournament digraph
-     * is a DAG in which for every two vertices, there is one directed edge.
-     * A tournament is an oriented complete graph.
+     * is a digraph in which, for every pair of vertices, there is one and only one
+     * directed edge connecting them. A tournament is an oriented complete graph.
      * @param V the number of vertices
      * @return a random tournament digraph on {@code V} vertices
      */
