@@ -218,19 +218,26 @@ public class MinPQ<Key> implements Iterable<Key> {
         pq[j] = swap;
     }
 
-    // is pq[1..N] a min heap?
+    // is pq[1..n] a min heap?
     private boolean isMinHeap() {
-        return isMinHeap(1);
+        for (int i = 1; i <= n; i++) {
+            if (pq[i] == null) return false;
+        }
+        for (int i = n+1; i < pq.length; i++) {
+            if (pq[i] != null) return false;
+        }
+        if (pq[0] != null) return false;
+        return isMinHeapOrdered(1);
     }
 
     // is subtree of pq[1..n] rooted at k a min heap?
-    private boolean isMinHeap(int k) {
+    private boolean isMinHeapOrdered(int k) {
         if (k > n) return true;
         int left = 2*k;
         int right = 2*k + 1;
         if (left  <= n && greater(k, left))  return false;
         if (right <= n && greater(k, right)) return false;
-        return isMinHeap(left) && isMinHeap(right);
+        return isMinHeapOrdered(left) && isMinHeapOrdered(right);
     }
 
 

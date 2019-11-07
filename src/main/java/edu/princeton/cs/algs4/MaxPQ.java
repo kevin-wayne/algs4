@@ -177,7 +177,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
         Key max = pq[1];
         exch(1, n--);
         sink(1);
-        pq[n+1] = null;     // to avoid loiteing and help with garbage collection
+        pq[n+1] = null;     // to avoid loitering and help with garbage collection
         if ((n > 0) && (n == (pq.length - 1) / 4)) resize(pq.length / 2);
         assert isMaxHeap();
         return max;
@@ -223,19 +223,26 @@ public class MaxPQ<Key> implements Iterable<Key> {
         pq[j] = swap;
     }
 
-    // is pq[1..N] a max heap?
+    // is pq[1..n] a max heap?
     private boolean isMaxHeap() {
-        return isMaxHeap(1);
+        for (int i = 1; i <= n; i++) {
+            if (pq[i] == null) return false;
+        }
+        for (int i = n+1; i < pq.length; i++) {
+            if (pq[i] != null) return false;
+        }
+        if (pq[0] != null) return false;
+        return isMaxHeapOrdered(1);
     }
 
     // is subtree of pq[1..n] rooted at k a max heap?
-    private boolean isMaxHeap(int k) {
+    private boolean isMaxHeapOrdered(int k) {
         if (k > n) return true;
         int left = 2*k;
         int right = 2*k + 1;
         if (left  <= n && less(k, left))  return false;
         if (right <= n && less(k, right)) return false;
-        return isMaxHeap(left) && isMaxHeap(right);
+        return isMaxHeapOrdered(left) && isMaxHeapOrdered(right);
     }
 
 
