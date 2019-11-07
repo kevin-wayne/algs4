@@ -5,13 +5,16 @@
  *
  *  Standard drawing library. This class provides a basic capability for
  *  creating drawings with your programs. It uses a simple graphics model that
- *  allows you to create drawings consisting of points, lines, and curves
- *  in a window on your computer and to save the drawings to a file.
+ *  allows you to create drawings consisting of geometric shapes (e.g.,
+ *  points, lines, circles, rectangles) in a window on your computer
+ *  and to save the drawings to a file.
  *
  *  Todo
  *  ----
  *    -  Add support for gradient fill, etc.
- *    -  Fix setCanvasSize() so that it can only be called once.
+ *    -  Fix setCanvasSize() so that it can be called only once.
+ *    -  Should setCanvasSize() reset xScale(), yScale(), penRadius(),
+ *       penColor(), and font()
  *    -  On some systems, drawing a line (or other shape) that extends way
  *       beyond canvas (e.g., to infinity) dimensions does not get drawn.
  *

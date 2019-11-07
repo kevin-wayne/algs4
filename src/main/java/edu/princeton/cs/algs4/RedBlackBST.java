@@ -582,7 +582,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *
      * @param  lo minimum endpoint
      * @param  hi maximum endpoint
-     * @return all keys in the sybol table between {@code lo} 
+     * @return all keys in the symbol table between {@code lo} 
      *    (inclusive) and {@code hi} (inclusive) as an {@code Iterable}
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *    is {@code null}
@@ -613,7 +613,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      *
      * @param  lo minimum endpoint
      * @param  hi maximum endpoint
-     * @return the number of keys in the sybol table between {@code lo} 
+     * @return the number of keys in the symbol table between {@code lo} 
      *    (inclusive) and {@code hi} (inclusive)
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *    is {@code null}
