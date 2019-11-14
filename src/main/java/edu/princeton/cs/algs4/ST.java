@@ -94,12 +94,26 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     /**
      * Removes the specified key and its associated value from this symbol table     
      * (if the key is in this symbol table).
+     * This is equivalent to {@code remove()}, but we plan to deprecate {@code delete()}.
      *
      * @param  key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("calls delete() with null key");
+        st.remove(key);
+    }
+
+    /**
+     * Removes the specified key and its associated value from this symbol table     
+     * (if the key is in this symbol table).
+     * This is equivalent to {@code delete()}, but we plan to deprecate {@code delete()}.
+     *
+     * @param  key the key
+     * @throws IllegalArgumentException if {@code key} is {@code null}
+     */
+    public void remove(Key key) {
+        if (key == null) throw new IllegalArgumentException("calls remove() with null key");
         st.remove(key);
     }
 
@@ -231,7 +245,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

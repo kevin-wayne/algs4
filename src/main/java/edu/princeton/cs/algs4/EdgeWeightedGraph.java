@@ -24,6 +24,8 @@
 
 package edu.princeton.cs.algs4;
 
+import java.util.NoSuchElementException;
+
 /**
  *  The {@code EdgeWeightedGraph} class represents an edge-weighted
  *  graph of vertices named 0 through <em>V</em> – 1, where each
@@ -100,22 +102,36 @@ public class EdgeWeightedGraph {
      * with each entry separated by whitespace.
      *
      * @param  in the input stream
+     * @throws IllegalArgumentException if {@code in} is {@code null}
      * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      */
     public EdgeWeightedGraph(In in) {
-        this(in.readInt());
-        int E = in.readInt();
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-        for (int i = 0; i < E; i++) {
-            int v = in.readInt();
-            int w = in.readInt();
-            validateVertex(v);
-            validateVertex(w);
-            double weight = in.readDouble();
-            Edge e = new Edge(v, w, weight);
-            addEdge(e);
+        if (in == null) throw new IllegalArgumentException("argument is null");
+
+        try {
+            V = in.readInt();
+            adj = (Bag<Edge>[]) new Bag[V];
+            for (int v = 0; v < V; v++) {
+                adj[v] = new Bag<Edge>();
+            }
+
+            int E = in.readInt();
+            if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+            for (int i = 0; i < E; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
+                double weight = in.readDouble();
+                Edge e = new Edge(v, w, weight);
+                addEdge(e);
+            }
+        }   
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in EdgeWeightedGraph constructor", e);
         }
+
     }
 
     /**
@@ -262,7 +278,7 @@ public class EdgeWeightedGraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

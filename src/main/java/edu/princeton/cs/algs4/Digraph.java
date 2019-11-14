@@ -84,11 +84,13 @@ public class Digraph {
      * followed by <em>E</em> pairs of vertices, with each entry separated by whitespace.
      *
      * @param  in the input stream
+     * @throws IllegalArgumentException if {@code in} is {@code null}
      * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      * @throws IllegalArgumentException if the input stream is in the wrong format
      */
     public Digraph(In in) {
+        if (in == null) throw new IllegalArgumentException("argument is null");
         try {
             this.V = in.readInt();
             if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
@@ -114,12 +116,26 @@ public class Digraph {
      * Initializes a new digraph that is a deep copy of the specified digraph.
      *
      * @param  G the digraph to copy
+     * @throws IllegalArgumentException if {@code G} is {@code null}
      */
     public Digraph(Digraph G) {
-        this(G.V());
+        if (G == null) throw new IllegalArgumentException("argument is null");
+
+        this.V = G.V();
         this.E = G.E();
+        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+
+        // update indegrees
+        indegree = new int[V];
         for (int v = 0; v < V; v++)
             this.indegree[v] = G.indegree(v);
+
+        // update adjacency lists
+        adj = (Bag<Integer>[]) new Bag[V];
+        for (int v = 0; v < V; v++) {
+            adj[v] = new Bag<Integer>();
+        }
+
         for (int v = 0; v < G.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
@@ -258,7 +274,7 @@ public class Digraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -95,12 +95,25 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 
     /**
      * Removes the specified key from this set (if the set contains the specified key).
+     * This is equivalent to {@code remove()}, but we plan to deprecate {@code delete()}.
      *
      * @param  key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
         if (key == null) throw new IllegalArgumentException("called delete() with a null key");
+        set.remove(key);
+    }
+
+    /**
+     * Removes the specified key from this set (if the set contains the specified key).
+     * This is equivalent to {@code delete()}, but we plan to deprecate {@code delete()}.
+     *
+     * @param  key the key
+     * @throws IllegalArgumentException if {@code key} is {@code null}
+     */
+    public void remove(Key key) {
+        if (key == null) throw new IllegalArgumentException("called remove() with a null key");
         set.remove(key);
     }
 
@@ -332,7 +345,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

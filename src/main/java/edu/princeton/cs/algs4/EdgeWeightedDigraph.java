@@ -12,6 +12,8 @@
 
 package edu.princeton.cs.algs4;
 
+import java.util.NoSuchElementException;
+
 /**
  *  The {@code EdgeWeightedDigraph} class represents a edge-weighted
  *  digraph of vertices named 0 through <em>V</em> - 1, where each
@@ -87,20 +89,34 @@ public class EdgeWeightedDigraph {
      * with each entry separated by whitespace.
      *
      * @param  in the input stream
+     * @throws IllegalArgumentException if {@code in} is {@code null}
      * @throws IllegalArgumentException if the endpoints of any edge are not in prescribed range
      * @throws IllegalArgumentException if the number of vertices or edges is negative
      */
     public EdgeWeightedDigraph(In in) {
-        this(in.readInt());
-        int E = in.readInt();
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
-        for (int i = 0; i < E; i++) {
-            int v = in.readInt();
-            int w = in.readInt();
-            validateVertex(v);
-            validateVertex(w);
-            double weight = in.readDouble();
-            addEdge(new DirectedEdge(v, w, weight));
+        if (in == null) throw new IllegalArgumentException("argument is null");
+        try {
+            this.V = in.readInt();
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
+            indegree = new int[V];
+            adj = (Bag<DirectedEdge>[]) new Bag[V];
+            for (int v = 0; v < V; v++) {
+                adj[v] = new Bag<DirectedEdge>();
+            }
+
+            int E = in.readInt();
+            if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+            for (int i = 0; i < E; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
+                double weight = in.readDouble();
+                addEdge(new DirectedEdge(v, w, weight));
+            }
+        }   
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in EdgeWeightedDigraph constructor", e);
         }
     }
 
@@ -256,7 +272,7 @@ public class EdgeWeightedDigraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
