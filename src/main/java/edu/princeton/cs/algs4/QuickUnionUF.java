@@ -15,65 +15,47 @@ package edu.princeton.cs.algs4;
 /**
  *  The {@code QuickUnionUF} class represents a <em>union–find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
- *  It supports the <em>union</em> and <em>find</em> operations,
- *  along with a <em>connected</em> operation for determining whether
- *  two sites are in the same component and a <em>count</em> operation that
- *  returns the total number of components.
+ *  It supports the classic <em>union</em> and <em>find</em> operations,
+ *  along with a <em>count</em> operation that returns the total number
+ *  of sets.
  *  <p>
- *  The union–find data type models connectivity among a set of <em>n</em>
- *  sites, named 0 through <em>n</em>–1.
- *  The <em>is-connected-to</em> relation must be an 
- *  <em>equivalence relation</em>:
+ *  The union-find data type models a collection of sets containing
+ *  <em>n</em> elements, with each element in exactly one set.
+ *  The elements are named 0 through <em>n</em>–1.
+ *  Initially, there are <em>n</em> sets, with each element in its
+ *  own set. The <em>cannonical elemement</em> of a set
+ *  (also known as the <em>root</em>, <em>identifier</em>,
+ *  <em>leader</em>, or <em>set representative</em>)
+ *  is one distinguished element in the set. Here is a summary of
+ *  the operations:
  *  <ul>
- *  <li> <em>Reflexive</em>: <em>p</em> is connected to <em>p</em>.
- *  <li> <em>Symmetric</em>: If <em>p</em> is connected to <em>q</em>,
- *       then <em>q</em> is connected to <em>p</em>.
- *  <li> <em>Transitive</em>: If <em>p</em> is connected to <em>q</em>
- *       and <em>q</em> is connected to <em>r</em>, then
- *       <em>p</em> is connected to <em>r</em>.
+ *  <li><em>find</em>(<em>p</em>) returns the canonical element
+ *      of the set containing <em>p</em>. The <em>find</em> operation
+ *      returns the same value for two elements if and only if
+ *      they are in the same set.
+ *  <li><em>union</em>(<em>p</em>, <em>q</em>) merges the set
+ *      containing element <em>p</em> with the set containing
+ *      element <em>q</em>. That is, if <em>p</em> and <em>q</em>
+ *      are in different sets, replace these two sets
+ *      with a new set that is the union of the two.
+ *  <li><em>count</em>() returns the number of sets.
  *  </ul>
  *  <p>
- *  An equivalence relation partitions the sites into
- *  <em>equivalence classes</em> (or <em>components</em>). In this case,
- *  two sites are in the same component if and only if they are connected.
- *  Both sites and components are identified with integers between 0 and
- *  <em>n</em>–1. 
- *  Initially, there are <em>n</em> components, with each site in its
- *  own component.  The <em>component identifier</em> of a component
- *  (also known as the <em>root</em>, <em>canonical element</em>, <em>leader</em>,
- *  or <em>set representative</em>) is one of the sites in the component:
- *  two sites have the same component identifier if and only if they are
- *  in the same component.
- *  <ul>
- *  <li><em>union</em>(<em>p</em>, <em>q</em>) adds a
- *      connection between the two sites <em>p</em> and <em>q</em>.
- *      If <em>p</em> and <em>q</em> are in different components,
- *      then it replaces
- *      these two components with a new component that is the union of
- *      the two.
- *  <li><em>find</em>(<em>p</em>) returns the component
- *      identifier of the component containing <em>p</em>.
- *  <li><em>connected</em>(<em>p</em>, <em>q</em>)
- *      returns true if both <em>p</em> and <em>q</em>
- *      are in the same component, and false otherwise.
- *  <li><em>count</em>() returns the number of components.
- *  </ul>
+ *  The canonical element of a set can change only when the set
+ *  itself changes during a call to <em>union</em>&mdash;it cannot
+ *  change during a call to either <em>find</em> or <em>count</em>.
  *  <p>
- *  The component identifier of a component can change
- *  only when the component itself changes during a call to
- *  <em>union</em>—it cannot change during a call
- *  to <em>find</em>, <em>connected</em>, or <em>count</em>.
+ *  This implementation uses <em>quick union</em>.
+ *  The constructor takes &Theta;(<em>n</em>) time, where
+ *  <em>n</em> is the number of sites.
+ *  The <em>union</em> and <em>find</em> operations take
+ *  &Theta;(<em>n</em>) time in the worst case.
+ *  The <em>count</em> operation takes &Theta;(1) time.
  *  <p>
- *  This implementation uses quick union.
- *  Initializing a data structure with <em>n</em> sites takes linear time.
- *  Afterwards, the <em>union</em>, <em>find</em>, and <em>connected</em>
- *  operations  take linear time (in the worst case) and the
- *  <em>count</em> operation takes constant time.
- *  For alternate implementations of the same API, see
+ *  For alternative implementations of the same API, see
  *  {@link UF}, {@link QuickFindUF}, and {@link WeightedQuickUnionUF}.
- *
- *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/15uf">Section 1.5</a> of
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/15uf">Section 1.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -84,11 +66,11 @@ public class QuickUnionUF {
     private int count;     // number of components
 
     /**
-     * Initializes an empty union–find data structure with {@code n} sites
-     * {@code 0} through {@code n-1}. Each site is initially in its own 
-     * component.
+     * Initializes an empty union-find data structure with
+     * {@code n} elements {@code 0} through {@code n-1}. 
+     * Initially, each elements is in its own set.
      *
-     * @param  n the number of sites
+     * @param  n the number of elements
      * @throws IllegalArgumentException if {@code n < 0}
      */
     public QuickUnionUF(int n) {
@@ -100,19 +82,19 @@ public class QuickUnionUF {
     }
 
     /**
-     * Returns the number of components.
+     * Returns the number of sets.
      *
-     * @return the number of components (between {@code 1} and {@code n})
+     * @return the number of sets (between {@code 1} and {@code n})
      */
     public int count() {
         return count;
     }
   
     /**
-     * Returns the component identifier for the component containing site {@code p}.
+     * Returns the canonical element of the set containing element {@code p}.
      *
-     * @param  p the integer representing one object
-     * @return the component identifier for the component containing site {@code p}
+     * @param  p an element
+     * @return the canonical element of the set containing {@code p}
      * @throws IllegalArgumentException unless {@code 0 <= p < n}
      */
     public int find(int p) {
@@ -131,26 +113,27 @@ public class QuickUnionUF {
     }
 
     /**
-     * Returns true if the the two sites are in the same component.
-     *
-     * @param  p the integer representing one site
-     * @param  q the integer representing the other site
-     * @return {@code true} if the two sites {@code p} and {@code q} are in the same component;
+     * Returns true if the two elements are in the same set.
+     * 
+     * @param  p one element
+     * @param  q the other element
+     * @return {@code true} if {@code p} and {@code q} are in the same set;
      *         {@code false} otherwise
      * @throws IllegalArgumentException unless
      *         both {@code 0 <= p < n} and {@code 0 <= q < n}
+     * @deprecated Replace with two calls to {@link #find(int)}.
      */
+    @Deprecated
     public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
 
-  
     /**
-     * Merges the component containing site {@code p} with the 
-     * the component containing site {@code q}.
+     * Merges the set containing element {@code p} with the 
+     * the set containing element {@code q}.
      *
-     * @param  p the integer representing one site
-     * @param  q the integer representing the other site
+     * @param  p one element
+     * @param  q the other element
      * @throws IllegalArgumentException unless
      *         both {@code 0 <= p < n} and {@code 0 <= q < n}
      */
@@ -163,11 +146,12 @@ public class QuickUnionUF {
     }
 
     /**
-     * Reads in a sequence of pairs of integers (between 0 and n-1) from standard input, 
-     * where each integer represents some object;
-     * if the sites are in different components, merge the two components
+     * Reads in a an integer {@code n} and a sequence of pairs of integers
+     * (between {@code 0} and {@code n-1}) from standard input, where each integer
+     * in the pair represents some element;
+     * if the elements are in different sets, merge the two sets
      * and print the pair to standard output.
-     *
+     * 
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
@@ -176,7 +160,7 @@ public class QuickUnionUF {
         while (!StdIn.isEmpty()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
-            if (uf.connected(p, q)) continue;
+            if (uf.find(p) == uf.find(q)) continue;
             uf.union(p, q);
             StdOut.println(p + " " + q);
         }

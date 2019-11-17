@@ -153,7 +153,7 @@ public class GlobalMincut {
      */
     private void makeCut(int t, UF uf) {
         for (int v = 0; v < cut.length; v++) {
-            cut[v] = uf.connected(v, t);
+            cut[v] = (uf.find(v) == uf.find(t));
         }
     }
 
