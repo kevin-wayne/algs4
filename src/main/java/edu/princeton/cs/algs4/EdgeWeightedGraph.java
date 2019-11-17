@@ -32,17 +32,24 @@ import java.util.NoSuchElementException;
  *  undirected edge is of type {@link Edge} and has a real-valued weight.
  *  It supports the following two primary operations: add an edge to the graph,
  *  iterate over all of the edges incident to a vertex. It also provides
- *  methods for returning the number of vertices <em>V</em> and the number
- *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
+ *  methods for returning the degree of a vertex, the number of vertices
+ *  <em>V</em> in the graph, and the number of edges <em>E</em> in the graph.
+ *  Parallel edges and self-loops are permitted.
  *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
  *  adjacency list of <em>v</em> twice and contributes two to the degree
  *  of <em>v</em>.
  *  <p>
- *  This implementation uses an adjacency-lists representation, which 
+ *  This implementation uses an <em>adjacency-lists representation</em>, which
  *  is a vertex-indexed array of {@link Bag} objects.
- *  All operations take constant time (in the worst case) except
- *  iterating over the edges incident to a given vertex, which takes
- *  time proportional to the number of such edges.
+ *  It uses &Theta;(<em>E</em> + <em>V</em>) space, where <em>E</em> is
+ *  the number of edges and <em>V</em> is the number of vertices.
+ *  All instance methods take &Theta;(1) time. (Though, iterating over
+ *  the edges returned by {@link #adj(int)} takes time proportional
+ *  to the degree of the vertex.)
+ *  Constructing an empty edge-weighted graph with <em>V</em> vertices takes
+ *  &Theta;(<em>V</em>) time; constructing a edge-weighted graph with
+ *  <em>E</em> edges and <em>V</em> vertices takes
+ *  &Theta;(<em>E</em> + <em>V</em>) time. 
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of

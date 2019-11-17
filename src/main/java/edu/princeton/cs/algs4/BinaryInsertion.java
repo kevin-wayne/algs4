@@ -28,16 +28,20 @@ package edu.princeton.cs.algs4;
  *  The {@code BinaryInsertion} class provides a static method for sorting an
  *  array using an optimized binary insertion sort with half exchanges.
  *  <p>
- *  This implementation makes ~ n lg n compares for any array of length n.
- *  However, in the worst case, the running time is quadratic because the
- *  number of array accesses can be proportional to n^2 (e.g, if the array
- *  is reverse sorted). As such, it is not suitable for sorting large
- *  arrays (unless the number of inversions is small).
+ *  In the worst case, this implementation makes
+ *  ~ <em>n</em> log<sub>2</sub><em>n</em> compares to sort an array of length
+ *  <em>n</em>. However, in the worst case, the running time is
+ *  &Theta;(<em>n</em><sup>2</sup>) because the number of array accesses
+ *  can be quadratic.
+ *  As such, it is not suitable for sorting large arrays
+ *  (unless the number of inversions is small).
  *  <p>
- *  The sorting algorithm is stable and uses O(1) extra memory.
+ *  This sorting algorithm is stable.
+ *  It uses &Theta;(1) extra memory (not including the input array).
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a>
+ *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Ivan Pesin
  *  @author Robert Sedgewick

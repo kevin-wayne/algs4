@@ -30,17 +30,16 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code DepthFirstDirectedPaths} class represents a data type for finding
- *  directed paths from a source vertex <em>s</em> to every
+ *  The {@code DepthFirstDirectedPaths} class represents a data type for
+ *  finding directed paths from a source vertex <em>s</em> to every
  *  other vertex in the digraph.
  *  <p>
  *  This implementation uses depth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Each call to {@link #hasPathTo(int)} takes constant time;
- *  each call to {@link #pathTo(int)} takes time proportional to the length
- *  of the path returned.
- *  It uses extra space (not including the graph) proportional to <em>V</em>.
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time in the
+ *  worst case, where <em>V</em> is the number of vertices and <em>E</em>
+ *  is the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
  *  See {@link DepthFirstDirectedPaths} for a nonrecursive implementation.
  *  For additional documentation,  

@@ -43,19 +43,26 @@ import java.util.NoSuchElementException;
  *  named 0 through <em>V</em> – 1.
  *  It supports the following two primary operations: add an edge to the graph,
  *  iterate over all of the vertices adjacent to a vertex. It also provides
- *  methods for returning the number of vertices <em>V</em> and the number
- *  of edges <em>E</em>. Parallel edges and self-loops are permitted.
+ *  methods for returning the degree of a vertex, the number of vertices
+ *  <em>V</em> in the graph, and the number of edges <em>E</em> in the graph.
+ *  Parallel edges and self-loops are permitted.
  *  By convention, a self-loop <em>v</em>-<em>v</em> appears in the
  *  adjacency list of <em>v</em> twice and contributes two to the degree
  *  of <em>v</em>.
  *  <p>
- *  This implementation uses an adjacency-lists representation, which 
+ *  This implementation uses an <em>adjacency-lists representation</em>, which
  *  is a vertex-indexed array of {@link Bag} objects.
- *  All operations take constant time (in the worst case) except
- *  iterating over the vertices adjacent to a given vertex, which takes
- *  time proportional to the number of such vertices.
+ *  It uses &Theta;(<em>E</em> + <em>V</em>) space, where <em>E</em> is
+ *  the number of edges and <em>V</em> is the number of vertices.
+ *  All instance methods take &Theta;(1) time. (Though, iterating over
+ *  the vertices returned by {@link #adj(int)} takes time proportional
+ *  to the degree of the vertex.)
+ *  Constructing an empty graph with <em>V</em> vertices takes
+ *  &Theta;(<em>V</em>) time; constructing a graph with <em>E</em> edges
+ *  and <em>V</em> vertices takes &Theta;(<em>E</em> + <em>V</em>) time. 
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

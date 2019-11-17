@@ -29,17 +29,16 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code BreadthDirectedFirstPaths} class represents a data type for finding
- *  shortest paths (number of edges) from a source vertex <em>s</em>
+ *  The {@code BreadthDirectedFirstPaths} class represents a data type for
+ *  finding shortest paths (number of edges) from a source vertex <em>s</em>
  *  (or set of source vertices) to every other vertex in the digraph.
  *  <p>
  *  This implementation uses breadth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Each call to {@link #distTo(int)} and {@link #hasPathTo(int)} takes constant time;
- *  each call to {@link #pathTo(int)} takes time proportional to the length
- *  of the path.
- *  It uses extra space (not including the digraph) proportional to <em>V</em>.
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time in the
+ *  worst case, where <em>V</em> is the number of vertices and <em>E</em> is
+ *  the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
  *  For additional documentation, 
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of 

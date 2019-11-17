@@ -25,9 +25,19 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code Merge} class provides static methods for sorting an
- *  array using mergesort.
+ *  array using a top-down, recursive version of <em>mergesort</em>.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
+ *  This implementation takes &Theta;(<em>n</em> log <em>n</em>) time
+ *  to sort any array of length <em>n</em> (assuming comparisons
+ *  take constant time). It makes between
+ *  ~ &frac12; <em>n</em> log<sub>2</sub> <em>n</em> and
+ *  ~ 1 <em>n</em> log<sub>2</sub> <em>n</em> compares.
+ *  <p>
+ *  This sorting algorithm is stable.
+ *  It uses &Theta;(<em>n</em>) extra memory (not including the input array).
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  For an optimized version, see {@link MergeX}.
  *

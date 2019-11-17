@@ -24,10 +24,19 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Heap} class provides a static methods for heapsorting
- *  an array.
+ *  The {@code Heap} class provides a static method to sort an array
+ *  using <em>heapsort</em>.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
+ *  This implementation takes &Theta;(<em>n</em> log <em>n</em>) time
+ *  to sort any array of length <em>n</em> (assuming comparisons
+ *  take constant time). It makes at most 
+ *  2 <em>n</em> log<sub>2</sub> <em>n</em> compares.
+ *  <p>
+ *  This sorting algorithm is not stable.
+ *  It uses &Theta;(1) extra memory (not including the input array).
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

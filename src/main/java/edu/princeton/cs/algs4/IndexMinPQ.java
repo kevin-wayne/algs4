@@ -28,12 +28,12 @@ import java.util.NoSuchElementException;
  *  keys with integers in the given range.
  *  The <em>insert</em>, <em>delete-the-minimum</em>, <em>delete</em>,
  *  <em>change-key</em>, <em>decrease-key</em>, and <em>increase-key</em>
- *  operations take logarithmic time.
- *  The <em>is-empty</em>, <em>size</em>, <em>min-index</em>, <em>min-key</em>,
- *  <em>contains</em>, and <em>key-of</em> operations take constant time.
+ *  operations take &Theta;(log <em>n</em>) time in the worst case,
+ *  where <em>n</em> is the number of elements in the priority queue.
  *  Construction takes time proportional to the specified capacity.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

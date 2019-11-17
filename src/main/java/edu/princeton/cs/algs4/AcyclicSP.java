@@ -26,11 +26,12 @@ package edu.princeton.cs.algs4;
  *  graphs (DAGs). The edge weights can be positive, negative, or zero.
  *  <p>
  *  This implementation uses a topological-sort based algorithm.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Each call to {@code distTo(int)} and {@code hasPathTo(int)} takes constant time;
- *  each call to {@code pathTo(int)} takes time proportional to the number of
- *  edges in the shortest path returned.
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time in the
+ *  worst case, where <em>V</em> is the number of vertices and
+ *  <em>E</em> is the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the
+ *  edge-weighted digraph).
  *  <p>
  *  For additional documentation,    
  *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    

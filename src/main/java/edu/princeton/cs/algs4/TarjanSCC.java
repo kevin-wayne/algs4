@@ -31,19 +31,18 @@ package edu.princeton.cs.algs4;
  *  determines whether two vertices are in the same strong component;
  *  and the <em>count</em> operation determines the number of strong
  *  components.
-
+ *  <p>
  *  The <em>component identifier</em> of a component is one of the
  *  vertices in the strong component: two vertices have the same component
  *  identifier if and only if they are in the same strong component.
-
  *  <p>
  *  This implementation uses Tarjan's algorithm.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>
- *  (in the worst case),
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <em>id</em>, <em>count</em>, and <em>areStronglyConnected</em>
- *  operations take constant time.
- *  For alternate implementations of the same API, see
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
+ *  where <em>V</em> is the number of vertices and <em>E</em> is the
+ *  number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ *  For alternative implementations of the same API, see
  *  {@link KosarajuSharirSCC} and {@link GabowSCC}.
  *  <p>
  *  For additional documentation,

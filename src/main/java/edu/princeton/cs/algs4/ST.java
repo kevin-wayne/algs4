@@ -31,17 +31,19 @@ import java.util.TreeMap;
  *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
- *  This implementation uses a balanced binary search tree. It requires that
+ *  This implementation uses a red-black BST. It requires that
  *  the key type implements the {@code Comparable} interface and calls the
  *  {@code compareTo()} and method to compare two keys. It does not call either
  *  {@code equals()} or {@code hashCode()}.
- *  The <em>put</em>, <em>contains</em>, <em>remove</em>, <em>minimum</em>,
- *  <em>maximum</em>, <em>ceiling</em>, and <em>floor</em> operations each take
- *  logarithmic time in the worst case.
- *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
- *  Construction takes constant time.
+ *  The <em>put</em>, <em>get</em>, <em>contains</em>, <em>remove</em>,
+ *  <em>minimum</em>, <em>maximum</em>, <em>ceiling</em>, and <em>floor</em>
+ *  operations each take &Theta;(log <em>n</em>) time in the worst case,
+ *  where <em>n</em> is the number of key-value pairs in the symbol table.
+ *  The <em>size</em> and <em>is-empty</em> operations take &Theta;(1) time.
+ *  Construction takes &Theta;(1) time.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

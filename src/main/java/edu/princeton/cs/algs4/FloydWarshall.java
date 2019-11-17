@@ -26,11 +26,11 @@ package edu.princeton.cs.algs4;
  *  or a negative cycle.
  *  <p>
  *  This implementation uses the Floyd-Warshall algorithm.
- *  The constructor takes time proportional to <em>V</em><sup>3</sup> in the
- *  worst case, where <em>V</em> is the number of vertices.
- *  Afterwards, the {@code dist()}, {@code hasPath()}, and {@code hasNegativeCycle()}
- *  methods take constant time; the {@code path()} and {@code negativeCycle()}
- *  method takes time proportional to the number of edges returned.
+ *  The constructor takes &Theta;(<em>V</em><sup>3</sup>) time,
+ *  where <em>V</em> is the number of vertices.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em><sup>2</sup>) extra space
+ *  (not including the edge-weighted digraph).
  *  <p>
  *  For additional documentation,    
  *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    

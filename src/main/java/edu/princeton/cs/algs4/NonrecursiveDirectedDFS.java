@@ -30,9 +30,11 @@ import java.util.Iterator;
  *  <p>
  *  This implementation uses a nonrecursive version of depth-first search
  *  with an explicit stack.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  It uses extra space (not including the digraph) proportional to <em>V</em>.
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time in the
+ *  worst case, where <em>V</em> is the number of vertices and <em>E</em>
+ *  is the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of

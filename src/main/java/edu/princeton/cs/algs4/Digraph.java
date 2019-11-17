@@ -36,13 +36,22 @@ import java.util.NoSuchElementException;
  *  named 0 through <em>V</em> - 1.
  *  It supports the following two primary operations: add an edge to the digraph,
  *  iterate over all of the vertices adjacent from a given vertex.
+ *  It also provides
+ *  methods for returning the indegree or outdegree of a vertex, 
+ *  the number of vertices <em>V</em> in the digraph, 
+ *  the number of edges <em>E</em> in the digraph, and the reverse digraph.
  *  Parallel edges and self-loops are permitted.
  *  <p>
- *  This implementation uses an adjacency-lists representation, which 
+ *  This implementation uses an <em>adjacency-lists representation</em>, which
  *  is a vertex-indexed array of {@link Bag} objects.
- *  All operations take constant time (in the worst case) except
- *  iterating over the vertices adjacent from a given vertex, which takes
- *  time proportional to the number of such vertices.
+ *  It uses &Theta;(<em>E</em> + <em>V</em>) space, where <em>E</em> is
+ *  the number of edges and <em>V</em> is the number of vertices.
+ *  All instance methods take &Theta;(1) time. (Though, iterating over
+ *  the vertices returned by {@link #adj(int)} takes time proportional
+ *  to the outdegree of the vertex.)
+ *  Constructing an empty digraph with <em>V</em> vertices takes
+ *  &Theta;(<em>V</em>) time; constructing a digraph with <em>E</em> edges
+ *  and <em>V</em> vertices takes &Theta;(<em>E</em> + <em>V</em>) time.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of

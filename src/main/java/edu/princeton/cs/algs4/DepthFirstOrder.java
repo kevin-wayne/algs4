@@ -39,11 +39,11 @@ package edu.princeton.cs.algs4;
  *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
  *  <p>
  *  This implementation uses depth-first search.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>
- *  (in the worst case),
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <em>preorder</em>, <em>postorder</em>, and <em>reverse postorder</em>
- *  operation takes take time proportional to <em>V</em>.
+ *  Each constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
+ *  where <em>V</em> is the number of vertices and <em>E</em> is the
+ *  number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of

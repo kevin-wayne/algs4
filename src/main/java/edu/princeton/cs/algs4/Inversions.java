@@ -16,10 +16,12 @@ package edu.princeton.cs.algs4;
  *  {@code j} such that {@code i < j} and {@code a[i] > a[j]}.
  *  <p>
  *  This implementation uses a generalization of mergesort. The <em>count</em>
- *  operation takes time proportional to <em>n</em> log <em>n</em>,
- *  where <em>n</em> is the number of keys in the array.
+ *  operation takes &Theta;(<em>n</em> log <em>n</em>) time to count the
+ *  number of inversions in any array of length <em>n</em> (assuming
+ *  comparisons take constant time).
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/22mergesort">Section 2.2</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

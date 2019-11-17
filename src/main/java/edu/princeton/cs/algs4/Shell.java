@@ -7,12 +7,6 @@
  *   
  *  Sorts a sequence of strings from standard input using shellsort.
  *
- *  Uses increment sequence proposed by Sedgewick and Incerpi.
- *  The nth element of the sequence is the smallest integer >= 2.5^n
- *  that is relatively prime to all previous terms in the sequence.
- *  For example, incs[4] is 41 because 2.5^4 = 39.0625 and 41 is
- *  the next integer that is relatively prime to 3, 7, and 16.
- *   
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
@@ -32,9 +26,17 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code Shell} class provides static methods for sorting an
- *  array using Shellsort with Knuth's increment sequence (1, 4, 13, 40, ...).
+ *  array using <em>Shellsort</em> with
+ *  <a href = "https://oeis.org/A003462"> Knuth's increment sequence</a>
+ *  (1, 4, 13, 40, ...). In the worst case, this implementation makes
+ *  &Theta;(<em>n</em><sup>3/2</sup>) compares and exchanges to sort
+ *  an array of length <em>n</em>.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  This sorting algorithm is not stable.
+ *  It uses &Theta;(1) extra memory (not including the input array).
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  
  *  @author Robert Sedgewick

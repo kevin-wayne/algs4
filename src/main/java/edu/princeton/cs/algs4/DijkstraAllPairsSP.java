@@ -18,12 +18,12 @@ package edu.princeton.cs.algs4;
  *  where the edge weights are nonnegative.
  *  <p>
  *  This implementation runs Dijkstra's algorithm from each vertex.
- *  The constructor takes time proportional to <em>V</em> (<em>E</em> log <em>V</em>)
- *  and uses space proprtional to <em>V</em><sup>2</sup>,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the {@code dist()} and {@code hasPath()} methods take
- *  constant time and the {@code path()} method takes time proportional to the
- *  number of edges in the shortest path returned.
+ *  The constructor takes &Theta;(<em>V</em> (<em>E</em> log <em>V</em>)) time
+ *  in the worst case, where <em>V</em> is the number of vertices and
+ *  <em>E</em> is the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em><sup>2</sup>) extra space (not including the
+ *  edge-weighted digraph).
  *  <p>
  *  For additional documentation,    
  *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    

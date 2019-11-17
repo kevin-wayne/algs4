@@ -37,12 +37,12 @@ package edu.princeton.cs.algs4;
 
  *  <p>
  *  This implementation uses the Gabow's algorithm.
- *  The constructor takes time proportional to <em>V</em> + <em>E</em>
- *  (in the worst case),
- *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
- *  Afterwards, the <em>id</em>, <em>count</em>, and <em>areStronglyConnected</em>
- *  operations take constant time.
- *  For alternate implementations of the same API, see
+ *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
+ *  where <em>V</em> is the number of vertices and <em>E</em> is
+ *  the number of edges.
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ *  For alternative implementations of the same API, see
  *  {@link KosarajuSharirSCC} and {@link TarjanSCC}.
  *  <p>
  *  For additional documentation,

@@ -22,10 +22,12 @@ package edu.princeton.cs.algs4;
  *  uses every edge in the graph exactly once.
  *  <p>
  *  This implementation uses a nonrecursive depth-first search.
- *  The constructor runs in O(<Em>E</em> + <em>V</em>) time,
- *  and uses O(<em>E</em> + <em>V</em>) extra space, where <em>E</em> is the
- *  number of edges and <em>V</em> the number of vertices
- *  All other methods take O(1) time.
+ *  The constructor takes &Theta;(<em>E</em> + <em>V</em>) time in the worst
+ *  case, where <em>E</em> is the number of edges and <em>V</em> is the
+ *  number of vertices
+ *  Each instance method takes &Theta;(1) time.
+ *  It uses &Theta;(<em>E</em> + <em>V</em>) extra space in the worst case
+ *  (not including the graph).
  *  <p>
  *  To compute Eulerian paths in graphs, see {@link EulerianPath}.
  *  To compute Eulerian cycles and paths in digraphs, see

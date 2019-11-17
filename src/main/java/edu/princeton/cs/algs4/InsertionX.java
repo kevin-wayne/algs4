@@ -29,7 +29,16 @@ package edu.princeton.cs.algs4;
  *  an array using an optimized version of insertion sort (with half exchanges
  *  and a sentinel).
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ *  In the worst case, this implementation makes ~ 1/2 <em>n</em><sup>2</sup>
+ *  compares to sort an array of length <em>n</em>.
+ *  So, it is not suitable for sorting large arrays
+ *  (unless the number of inversions is small).
+ *  <p>
+ *  This sorting algorithm is stable.
+ *  It uses &Theta;(1) extra memory (not including the input array).
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

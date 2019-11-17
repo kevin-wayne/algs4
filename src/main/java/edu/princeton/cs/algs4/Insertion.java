@@ -29,13 +29,15 @@ import java.util.Comparator;
  *  The {@code Insertion} class provides static methods for sorting an
  *  array using insertion sort.
  *  <p>
- *  This implementation makes ~ 1/2 n^2 compares and exchanges in
- *  the worst case, so it is not suitable for sorting large arbitrary arrays.
- *  More precisely, the number of exchanges is exactly equal to the number
- *  of inversions. So, for example, it sorts a partially-sorted array
+ *  In the worst case, this implementation makes ~ &frac12; <em>n</em><sup>2</sup>
+ *  compares and ~ &frac12; <em>n</em><sup>2</sup> exchanges to sort an array
+ *  of length <em>n</em>. So, it is not suitable for sorting large arbitrary
+ *  arrays. More precisely, the number of exchanges is exactly equal to the
+ *  number of inversions. So, for example, it sorts a partially-sorted array
  *  in linear time.
  *  <p>
- *  The sorting algorithm is stable and uses O(1) extra memory.
+ *  This sorting algorithm is stable.
+ *  It uses &Theta;(1) extra memory (not including the input array).
  *  <p>
  *  See <a href="https://algs4.cs.princeton.edu/21elementary/InsertionPedantic.java.html">InsertionPedantic.java</a>
  *  for a version that eliminates the compiler warning.
