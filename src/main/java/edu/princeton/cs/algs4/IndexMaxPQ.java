@@ -42,6 +42,7 @@ import java.util.NoSuchElementException;
  *  @param <Key> the generic type of key on this priority queue
  */
 public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer> {
+    private int maxN;        // maximum number of elements on PQ
     private int n;           // number of elements on PQ
     private int[] pq;        // binary heap using 1-based indexing
     private int[] qp;        // inverse of pq - qp[pq[i]] = pq[qp[i]] = i
@@ -56,6 +57,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      */
     public IndexMaxPQ(int maxN) {
         if (maxN < 0) throw new IllegalArgumentException();
+        this.maxN = maxN;
         n = 0;
         keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
         pq   = new int[maxN + 1];
@@ -83,6 +85,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      */
     public boolean contains(int i) {
+        validateIndex(i);
         return qp[i] != -1;
     }
 
@@ -105,6 +108,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      *         associated with index {@code i}
      */
     public void insert(int i, Key key) {
+        validateIndex(i);
         if (contains(i)) throw new IllegalArgumentException("index is already in the priority queue");
         n++;
         qp[i] = n;
@@ -163,6 +167,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public Key keyOf(int i) {
+        validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         else return keys[i];
     }
@@ -175,6 +180,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws IllegalArgumentException unless {@code 0 <= i < maxN}
      */
     public void changeKey(int i, Key key) {
+        validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         keys[i] = key;
         swim(qp[i]);
@@ -191,6 +197,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      */
     @Deprecated
     public void change(int i, Key key) {
+        validateIndex(i);
         changeKey(i, key);
     }
 
@@ -204,9 +211,12 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void increaseKey(int i, Key key) {
+        validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
-        if (keys[i].compareTo(key) >= 0)
-            throw new IllegalArgumentException("Calling increaseKey() with given argument would not strictly increase the key");
+        if (keys[i].compareTo(key) == 0)
+            throw new IllegalArgumentException("Calling increaseKey() with a key equal to the key in the priority queue");
+        if (keys[i].compareTo(key) > 0)
+            throw new IllegalArgumentException("Calling increaseKey() with a key that is strictly less than the key in the priority queue");
 
         keys[i] = key;
         swim(qp[i]);
@@ -222,10 +232,12 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void decreaseKey(int i, Key key) {
+        validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
-        if (keys[i].compareTo(key) <= 0)
-            throw new IllegalArgumentException("Calling decreaseKey() with given argument would not strictly decrease the key");
-
+        if (keys[i].compareTo(key) == 0)
+            throw new IllegalArgumentException("Calling decreaseKey() with a key equal to the key in the priority queue");
+        if (keys[i].compareTo(key) < 0)
+            throw new IllegalArgumentException("Calling decreaseKey() with a key that is strictly greater than the key in the priority queue");
         keys[i] = key;
         sink(qp[i]);
     }
@@ -238,6 +250,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
      * @throws NoSuchElementException no key is associated with index {@code i}
      */
     public void delete(int i) {
+        validateIndex(i);
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         int index = qp[i];
         exch(index, n--);
@@ -247,6 +260,11 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
         qp[i] = -1;
     }
 
+    // throw an IllegalArgumentException if i is an invalid index
+    private void validateIndex(int i) {
+        if (i < 0) throw new IllegalArgumentException("index is negative: " + i);
+        if (i >= maxN) throw new IllegalArgumentException("index >= capacity: " + i);
+    }
 
    /***************************************************************************
     * General helper functions.
