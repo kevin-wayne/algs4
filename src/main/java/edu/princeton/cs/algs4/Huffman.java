@@ -118,15 +118,9 @@ public class Huffman {
 
         // initialze priority queue with singleton trees
         MinPQ<Node> pq = new MinPQ<Node>();
-        for (char i = 0; i < R; i++)
-            if (freq[i] > 0)
-                pq.insert(new Node(i, freq[i], null, null));
-
-        // special case in case there is only one character with a nonzero frequency
-        if (pq.size() == 1) {
-            if (freq['\0'] == 0) pq.insert(new Node('\0', 0, null, null));
-            else                 pq.insert(new Node('\1', 0, null, null));
-        }
+        for (char c = 0; c < R; c++)
+            if (freq[c] > 0)
+                pq.insert(new Node(c, freq[c], null, null));
 
         // merge two smallest trees
         while (pq.size() > 1) {
