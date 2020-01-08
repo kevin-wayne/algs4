@@ -47,7 +47,7 @@ public class LSD {
     private LSD() { }
 
    /**  
-     * Rearranges the array of W-character strings in ascending order.
+     * Rearranges the array of w-character strings in ascending order.
      *
      * @param a the array to be sorted
      * @param w the number of characters per string

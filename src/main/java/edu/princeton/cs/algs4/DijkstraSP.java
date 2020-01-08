@@ -37,11 +37,11 @@ package edu.princeton.cs.algs4;
  *  single-source shortest paths problem in edge-weighted digraphs
  *  where the edge weights are nonnegative.
  *  <p>
- *  This implementation uses Dijkstra's algorithm with a binary heap.
- *  The constructor takes &Theta;(<em>E</em> log <em>V</em>) time in the
- *  worst case, where <em>V</em> is the number of vertices and
- *  <em>E</em> is the number of edges.
- *  Each instance method takes &Theta;(1) time.
+ *  This implementation uses <em>Dijkstra's algorithm</em> with a
+ *  <em>binary heap</em>. The constructor takes
+ *  &Theta;(<em>E</em> log <em>V</em>) time in the worst case,
+ *  where <em>V</em> is the number of vertices and <em>E</em> is
+ *  the number of edges. Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the
  *  edge-weighted digraph).
  *  <p>

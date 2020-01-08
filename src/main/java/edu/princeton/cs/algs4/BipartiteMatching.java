@@ -34,16 +34,17 @@ package edu.princeton.cs.algs4;
  *  It is equivalent to reducing to the maximum-flow problem and running
  *  the augmenting-path algorithm on the resulting flow network, but it
  *  does so with less overhead.
- *  The order of growth of the running time in the worst case is
- *  (<em>E</em> + <em>V</em>) <em>V</em>,
- *  where <em>E</em> is the number of edges and <em>V</em> is the number
- *  of vertices in the graph. It uses extra space (not including the graph)
- *  proportional to <em>V</em>.
+ *  The constructor takes <em>O</em>((<em>E</em> + <em>V</em>) <em>V</em>)
+ *  time, where <em>E</em> is the number of edges and <em>V</em> is the
+ *  number of vertices in the graph.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
- *  See also {@link HopcroftKarp}, which solves the problem in  O(<em>E</em> sqrt(<em>V</em>))
- *  using the Hopcroft-Karp algorithm and
+ *  See also {@link HopcroftKarp}, which solves the problem in
+ *  <em>O</em>(<em>E</em> sqrt(<em>V</em>)) using the Hopcroft-Karp
+ *  algorithm and
  *  <a href = "https://algs4.cs.princeton.edu/65reductions/BipartiteMatchingToMaxflow.java.html">BipartiteMatchingToMaxflow</a>,
- *  which solves the problem in O(<em>E V</em>) time via a reduction to maxflow.
+ *  which solves the problem in <em>O</em>((<em>E</em> + <em>V</em>) <em>V</em>)
+ *  time via a reduction to maxflow.
  *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>

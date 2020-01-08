@@ -39,16 +39,20 @@ package edu.princeton.cs.algs4;
  *  value associated with a key to {@code null} is equivalent to deleting the key
  *  from the symbol table.
  *  <p>
- *  This implementation uses a singly-linked list and sequential search.
  *  It relies on the {@code equals()} method to test whether two keys
  *  are equal. It does not call either the {@code compareTo()} or
  *  {@code hashCode()} method. 
- *  The <em>put</em> and <em>delete</em> operations take linear time; the
- *  <em>get</em> and <em>contains</em> operations takes linear time in the worst case.
- *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
- *  Construction takes constant time.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
+ *  This implementation uses a <em>singly linked list</em> and
+ *  <em>sequential search</em>.
+ *  The <em>put</em> and <em>delete</em> operations take &Theta;(<em>n</em>).
+ *  The <em>get</em> and <em>contains</em> operations takes &Theta;(<em>n</em>)
+ *  time in the worst case.
+ *  The <em>size</em>, and <em>is-empty</em> operations take &Theta;(1) time.
+ *  Construction takes &Theta;(1) time.
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/31elementary">Section 3.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

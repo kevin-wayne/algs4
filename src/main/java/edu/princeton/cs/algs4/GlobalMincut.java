@@ -22,38 +22,28 @@
 package edu.princeton.cs.algs4;
 
 /**
- * The {@code GlobalMincut} class represents a data type for computing a
- * <em>global minimum cut</em> in an edge-weighted graph where the edge
- * weights are nonnegative. A <em>cut</em> is a partition of the set
- * of vertices of a graph into two nonempty subsets. An edge that has one
- * endpoint in each subset of a cut is a <em>crossing edge</em>. The weight
- * of a cut is the sum of the weights of its crossing edges.
- * A <em>global minimum cut</em> is a cut for which the weight is not
- * larger than the weight of any other cut.
- * <p>
- * The {@code weight()} method returns the weight of the minimum cut and the
- * {@code cut(int v)} method determines if a vertex {@code v} is on the first or
- * on the second subset of vertices of the minimum cut.
- * <p>
- * This is an implementation of <em>Stoer–Wagner's algorithm</em> using an index
- * priority queue and the union-find data type in order to simplify dealing with
- * contracting edges. Precisely, the index priority queue is an instance of
- * {@link IndexMaxPQ} which is based on a binary heap. As a consequence, the
- * constructor takes <em>O</em>(<em>V</em> (<em>V</em> + <em> E</em> ) log <em>
- * V </em>) time and <em>O</em>(<em>V</em>) extra space (not including the
- * graph), where <em>V</em> is the number of vertices and <em>E</em> is the
- * number of edges. However, this time can be reduced to <em>O</em>(<em>V E</em>
- * + <em> V<sup>2</sup></em> log <em>V</em>) by using an index priority queue
- * implemented using Fibonacci heaps.
- * <p>
- * Afterwards, the {@code weight()} and {@code cut(int v)} methods take constant
- * time.
- * <p>
- * For additional documentation, see
- * <ul>
- * <li>M. Stoer and F. Wagner (1997). A simple min-cut algorithm. <em>Journal of
- * the ACM </em>, 44(4):585-591.
- * </ul>
+ *  The {@code GlobalMincut} class represents a data type for computing a
+ *  <em>global minimum cut</em> in a graph with non-negative edge weights.
+ *  A <em>cut</em> is a partition of the vertices into two nonempty subsets.
+ *  An edge that has one
+ *  endpoint in each subset of a cut is a <em>crossing edge</em>. The weight
+ *  of a cut is the sum of the weights of its crossing edges.
+ *  A <em>global minimum cut</em> whose weight is no larger than the weight
+ *  of any other cut.
+ *  <p>
+ *  This is an implementation of <em>Stoer-Wagner's algorithm</em>.
+ *  The constructor takes
+ *  <em>O</em>(<em>V</em> (<em>V</em> + <em>E</em>) log <em>V</em>) time,
+ *  where <em>V</em> is the number of vertices and <em>E</em> is the
+ *  number of edges. 
+ *  The <em>weight</em> and <em>isCut</em> methods take &Theta;(1) time.
+ *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
+ *  <p>
+ *  For additional documentation, see
+ *  <ul>
+ *  <li>M. Stoer and F. Wagner (1997). A simple min-cut algorithm. <em>Journal of
+ *  the ACM </em>, 44(4):585-591.
+ *  </ul>
  * 
  * @author Marcelo Silva
  */
@@ -89,11 +79,12 @@ public class GlobalMincut {
     }
 
     /**
-     * Computes a minimum cut of an edge-weighted graph.
+     * Computes a minimum cut in an edge-weighted graph.
      * 
      * @param G the edge-weighted graph
      * @throws IllegalArgumentException if the number of vertices of {@code G}
-     *             is less than {@code 2} or if anny edge weight is negative
+     *             is less than {@code 2}.
+     * @throws IllegalArgumentException if any edge weight is negative
      */
     public GlobalMincut(EdgeWeightedGraph G) {
         V = G.V();
@@ -126,16 +117,17 @@ public class GlobalMincut {
     }
 
     /**
-     * Returns {@code true} if the vertex {@code v} is on the first subset of
-     * vertices of the minimum cut; or {@code false} if the vertex {@code v} is
-     * on the second subset.
+     * Returns {@code true} if the vertex {@code v} is one side of the
+     * mincut and {@code false} otherwise. An edge <em>v</em>-<em>w</em>
+     * crosses the mincut if and only if <em>v</em> and <em>w</em> have
+     * opposite parity.
      * 
      * @param v the vertex to check
      * @return {@code true} if the vertex {@code v} is on the first subset of
      *         vertices of the minimum cut; or {@code false} if the vertex
      *         {@code v} is on the second subset.
      * @throws IllegalArgumentException unless vertex {@code v} is between
-     *             {@code 0} and {@code (G.V() - 1)}
+     *             {@code 0 <= v < V}
      */
     public boolean cut(int v) {
         validateVertex(v);
@@ -143,8 +135,8 @@ public class GlobalMincut {
     }
 
     /**
-     * Makes a cut for the current edge-weighted graph by partitioning its set
-     * of vertices into two nonempty subsets. The vertices connected to the
+     * Makes a cut for the current edge-weighted graph by partitioning its
+     * vertices into two nonempty subsets. The vertices connected to the
      * vertex {@code t} belong to the first subset. Other vertices not connected
      * to {@code t} belong to the second subset.
      * 
