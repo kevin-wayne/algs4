@@ -210,7 +210,7 @@ public class LazyPrimMST {
 }
 
 /******************************************************************************
- *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -723,6 +723,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             String key = StdIn.readString();
             st.put(key, i);
         }
+        StdOut.println();
         for (String s : st.keys())
             StdOut.println(s + " " + st.get(s));
         StdOut.println();
@@ -730,7 +731,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

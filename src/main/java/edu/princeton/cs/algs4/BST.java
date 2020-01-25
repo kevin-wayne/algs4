@@ -537,8 +537,6 @@ public class BST<Key extends Comparable<Key>, Value> {
         BST<String, Integer> st = new BST<String, Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
-            if ((st.size() > 1) && (st.floor(key) != st.floor2(key)))
-                throw new RuntimeException("floor() function inconsistent");
             st.put(key, i);
         }
 
@@ -553,7 +551,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2019, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
