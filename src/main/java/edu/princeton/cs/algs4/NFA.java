@@ -119,6 +119,7 @@ public class NFA {
                 throw new IllegalArgumentException("text contains the metacharacter '" + txt.charAt(i) + "'");
 
             Bag<Integer> match = new Bag<Integer>();
+            match.add(0);
             for (int v : pc) {
                 if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
@@ -126,11 +127,13 @@ public class NFA {
             }
             dfs = new DirectedDFS(graph, match); 
             pc = new Bag<Integer>();
-            for (int v = 0; v < graph.V(); v++)
-                if (dfs.marked(v)) pc.add(v);
+            for (int v = 0; v < graph.V(); v++){
+                if (dfs.marked(v)){
+                    pc.add(v);
+                    if(v==m)    return true;
+                }
+            }
 
-            // optimization if no states reachable
-            if (pc.size() == 0) return false;
         }
 
         // check for accept state
