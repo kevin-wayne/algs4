@@ -10,7 +10,7 @@
  *  % more tinyST.txt
  *  S E A R C H E X A M P L E
  *
- *  % java SequentialSearchST < tiny.txt 
+ *  % java SequentialSearchST < tinyST.txt 
  *  L 11
  *  P 10
  *  M 9
