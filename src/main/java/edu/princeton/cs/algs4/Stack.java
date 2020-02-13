@@ -143,14 +143,14 @@ public class Stack<Item> implements Iterable<Item> {
      * @return an iterator to this stack that iterates through the items in LIFO order
      */
     public Iterator<Item> iterator() {
-        return new ListIterator(first);
+        return new LinkedIterator(first);
     }
 
     // an iterator, doesn't implement remove() since it's optional
-    private class ListIterator implements Iterator<Item> {
+    private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 
-        public ListIterator(Node<Item> first) {
+        public LinkedIterator(Node<Item> first) {
             current = first;
         }
 

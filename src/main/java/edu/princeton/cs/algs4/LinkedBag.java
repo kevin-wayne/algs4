@@ -99,15 +99,15 @@ public class LinkedBag<Item> implements Iterable<Item> {
      * Returns an iterator that iterates over the items in the bag.
      */
     public Iterator<Item> iterator()  {
-        return new ListIterator();  
+        return new LinkedIterator();  
     }
 
     // an iterator over a linked list
-    private class ListIterator implements Iterator<Item> {
+    private class LinkedIterator implements Iterator<Item> {
         private Node current;
 
         // creates a new iterator
-        public ListIterator() {
+        public LinkedIterator() {
             current = first;
         }
 
