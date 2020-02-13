@@ -146,7 +146,7 @@ public class QuickUnionUF {
     }
 
     /**
-     * Reads in a an integer {@code n} and a sequence of pairs of integers
+     * Reads an integer {@code n} and a sequence of pairs of integers
      * (between {@code 0} and {@code n-1}) from standard input, where each integer
      * in the pair represents some element;
      * if the elements are in different sets, merge the two sets
