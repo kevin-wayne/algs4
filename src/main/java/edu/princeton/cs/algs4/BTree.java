@@ -181,7 +181,15 @@ public class BTree<Key extends Comparable<Key>, Value>  {
         else {
             for (j = 0; j < h.m; j++) {
                 if ((j+1 == h.m) || less(key, h.children[j+1].key)) {
+                    int k = j ;
                     Node u = insert(h.children[j++].next, key, val, ht-1);
+                    
+                    // update key
+                    Node nextNode = h.children[k].next ;
+                    if (null != nextNode ) {
+                   	    h.children[k].key = nextNode.children[0].key ;
+                    }
+                    
                     if (u == null) return null;
                     t.key = u.children[0].key;
                     t.next = u;
