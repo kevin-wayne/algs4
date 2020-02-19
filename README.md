@@ -62,7 +62,7 @@ Some of the code in this repository has been translated to other languages:
 <li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
 <li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
 <li><a href = "https://github.com/itu-algorithms/itu.algs4">Python</a> by ITU Copenhagen
-<li><a href = "https://github.com/shellfly/algs-py">Python</a> by Li Hao
+<li><a href = "https://github.com/shellfly/algs4-py">Python</a> by Li Hao
 <li><a href = "https://github.com/shellfly/algo">Go</a> by Li Hao
 </ul>
 
