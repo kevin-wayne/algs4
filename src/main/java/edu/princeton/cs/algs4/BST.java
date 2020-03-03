@@ -346,30 +346,32 @@ public class BST<Key extends Comparable<Key>, Value> {
     } 
 
     /**
-     * Return the key in the symbol table whose rank is {@code k}.
-     * This is the (k+1)st smallest key in the symbol table.
+     * Return the key in the symbol table of a given {@code rank}.
+     * This key has the property that there are {@code rank} keys in
+     * the symbol table that are smaller. In other words, this key is the
+     * ({@code rank}+1)st smallest key in the symbol table.
      *
-     * @param  k the order statistic
-     * @return the key in the symbol table of rank {@code k}
-     * @throws IllegalArgumentException unless {@code k} is between 0 and
+     * @param  rank the order statistic
+     * @return the key in the symbol table of given {@code rank}
+     * @throws IllegalArgumentException unless {@code rank} is between 0 and
      *        <em>n</em>–1
      */
-    public Key select(int k) {
-        if (k < 0 || k >= size()) {
-            throw new IllegalArgumentException("argument to select() is invalid: " + k);
+    public Key select(int rank) {
+        if (rank < 0 || rank >= size()) {
+            throw new IllegalArgumentException("argument to select() is invalid: " + rank);
         }
-        Node x = select(root, k);
-        return x.key;
+        return select(root, rank);
     }
 
-    // Return key of rank k. 
-    private Node select(Node x, int k) {
-        if (x == null) return null; 
-        int t = size(x.left); 
-        if      (t > k) return select(x.left,  k); 
-        else if (t < k) return select(x.right, k-t-1); 
-        else            return x; 
-    } 
+    // Return key in BST rooted at x of given rank.
+    // Precondition: rank is in legal range.
+    private Key select(Node x, int rank) {
+        if (x == null) return null;
+        int leftSize = size(x.left);
+        if      (leftSize > rank) return select(x.left,  rank);
+        else if (leftSize < rank) return select(x.right, rank - leftSize - 1); 
+        else                      return x.key;
+    }
 
     /**
      * Return the number of keys in the symbol table strictly less than {@code key}.
