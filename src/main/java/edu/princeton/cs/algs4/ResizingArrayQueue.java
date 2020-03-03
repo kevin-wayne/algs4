@@ -72,11 +72,11 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
     // resize the underlying array
     private void resize(int capacity) {
         assert capacity >= n;
-        Item[] temp = (Item[]) new Object[capacity];
+        Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
-            temp[i] = q[(first + i) % q.length];
+            copy[i] = q[(first + i) % q.length];
         }
-        q = temp;
+        q = copy;
         first = 0;
         last  = n;
     }

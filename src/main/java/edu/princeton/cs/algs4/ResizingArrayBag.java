@@ -60,10 +60,10 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
     // resize the underlying array holding the elements
     private void resize(int capacity) {
         assert capacity >= n;
-        Item[] temp = (Item[]) new Object[capacity];
+        Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++)
-            temp[i] = a[i];
-        a = temp;
+            copy[i] = a[i];
+        a = copy;
     }
 
     /**

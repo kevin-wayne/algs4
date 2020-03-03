@@ -74,11 +74,11 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         assert capacity >= n;
 
         // textbook implementation
-        Item[] temp = (Item[]) new Object[capacity];
+        Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
-            temp[i] = a[i];
+            copy[i] = a[i];
         }
-        a = temp;
+        a = copy;
 
        // alternative implementation
        // a = java.util.Arrays.copyOf(a, capacity);
