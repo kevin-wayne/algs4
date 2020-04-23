@@ -47,10 +47,8 @@ package edu.princeton.cs.algs4;
  */
 public class KMP {
     private final int R;       // the radix
+    private final int m;       // length of pattern
     private int[][] dfa;       // the KMP automoton
-
-    private char[] pattern;    // either the character array for the pattern
-    private String pat;        // or the pattern string
 
     /**
      * Preprocesses the pattern string.
@@ -59,10 +57,9 @@ public class KMP {
      */
     public KMP(String pat) {
         this.R = 256;
-        this.pat = pat;
+        this.m = pat.length();
 
         // build DFA from pattern
-        int m = pat.length();
         dfa = new int[R][m]; 
         dfa[pat.charAt(0)][0] = 1; 
         for (int x = 0, j = 1; j < m; j++) {
@@ -81,9 +78,7 @@ public class KMP {
      */
     public KMP(char[] pattern, int R) {
         this.R = R;
-        this.pattern = new char[pattern.length];
-        for (int j = 0; j < pattern.length; j++)
-            this.pattern[j] = pattern[j];
+        this.m = pattern.length;
 
         // build DFA from pattern
         int m = pattern.length;
@@ -108,7 +103,6 @@ public class KMP {
     public int search(String txt) {
 
         // simulate operation of DFA on text
-        int m = pat.length();
         int n = txt.length();
         int i, j;
         for (i = 0, j = 0; i < n && j < m; i++) {
@@ -129,7 +123,6 @@ public class KMP {
     public int search(char[] text) {
 
         // simulate operation of DFA on text
-        int m = pattern.length;
         int n = text.length;
         int i, j;
         for (i = 0, j = 0; i < n && j < m; i++) {
