@@ -185,11 +185,9 @@ public class BreadthFirstDirectedPaths {
         int V = marked.length;
         for (Integer v : vertices) {
             if (v == null) {
-                throw new IllegalArgumentException("vertex " + v + " is null");
+                throw new IllegalArgumentException("vertex is null");
             }
-            if (v < 0 || v >= V) {
-                throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
-            }
+            validateVertex(v);
         }
     }
 
