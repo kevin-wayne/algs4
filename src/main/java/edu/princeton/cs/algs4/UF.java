@@ -35,7 +35,7 @@ package edu.princeton.cs.algs4;
  *  <em>n</em> elements, with each element in exactly one set.
  *  The elements are named 0 through <em>n</em>–1.
  *  Initially, there are <em>n</em> sets, with each element in its
- *  own set. The <em>cannonical elemement</em> of a set
+ *  own set. The <em>canonical element</em> of a set
  *  (also known as the <em>root</em>, <em>identifier</em>,
  *  <em>leader</em>, or <em>set representative</em>)
  *  is one distinguished element in the set. Here is a summary of
@@ -66,7 +66,7 @@ package edu.princeton.cs.algs4;
  *  The <em>count</em> operation takes &Theta;(1) time.
  *  Moreover, starting from an empty data structure with <em>n</em> sites,
  *  any intermixed sequence of <em>m</em> <em>union</em> and <em>find</em>
- *  operations takes <em>O</em>(m &alpha;(<em>n</em>)) time,
+ *  operations takes <em>O</em>(<em>m</em> &alpha;(<em>n</em>)) time,
  *  where &alpha;(<em>n</em>) is the inverse of
  *  <a href = "https://en.wikipedia.org/wiki/Ackermann_function#Inverse">Ackermann's function</a>.
  *  <p>
