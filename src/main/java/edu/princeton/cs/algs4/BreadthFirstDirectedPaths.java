@@ -182,7 +182,6 @@ public class BreadthFirstDirectedPaths {
         if (vertices == null) {
             throw new IllegalArgumentException("argument is null");
         }
-        int V = marked.length;
         for (Integer v : vertices) {
             if (v == null) {
                 throw new IllegalArgumentException("vertex is null");
