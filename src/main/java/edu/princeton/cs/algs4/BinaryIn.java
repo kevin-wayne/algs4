@@ -213,7 +213,8 @@ public final class BinaryIn {
 
 
    /**
-     * Reads the next r bits from this binary input stream and return as an r-bit character.
+     * Reads the next <em>r</em> bits from this binary input stream and return
+     * as an <em>r</em>-bit character.
      *
      * @param  r number of bits to read
      * @return the next {@code r} bits of data from this binary input streamt as a {@code char}
@@ -288,7 +289,8 @@ public final class BinaryIn {
     }
 
    /**
-     * Reads the next r bits from this binary input stream return as an r-bit int.
+     * Reads the next <em>r</em> bits from this binary input stream return
+     * as an <em>r</em>-bit int.
      *
      * @param  r number of bits to read
      * @return the next {@code r} bits of data from this binary input stream as a {@code int}

@@ -197,7 +197,7 @@ public final class BinaryOut {
     }
 
    /**
-     * Writes the r-bit int to the binary output stream.
+     * Writes the <em>r</em>-bit int to the binary output stream.
      *
      * @param  x the {@code int} to write
      * @param  r the number of relevant bits in the char
@@ -270,7 +270,7 @@ public final class BinaryOut {
     }
 
    /**
-     * Writes the r-bit char to the binary output stream.
+     * Writes the <em>r</em>-bit char to the binary output stream.
      *
      * @param  x the {@code char} to write
      * @param  r the number of relevant bits in the char
@@ -304,7 +304,7 @@ public final class BinaryOut {
 
 
    /**
-     * Writes the string of r-bit characters to the binary output stream.
+     * Writes the string of <em>r</em>-bit characters to the binary output stream.
      * @param  s the {@code String} to write
      * @param  r the number of relevants bits in each character
      * @throws IllegalArgumentException unless r is between 1 and 16

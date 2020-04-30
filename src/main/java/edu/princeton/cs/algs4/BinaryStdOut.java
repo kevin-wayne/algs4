@@ -164,7 +164,7 @@ public final class BinaryStdOut {
     }
 
    /**
-     * Writes the r-bit int to standard output.
+     * Writes the <em>r</em>-bit int to standard output.
      * @param x the {@code int} to write.
      * @param r the number of relevant bits in the char.
      * @throws IllegalArgumentException if {@code r} is not between 1 and 32.
@@ -238,7 +238,7 @@ public final class BinaryStdOut {
     }
 
    /**
-     * Writes the r-bit char to standard output.
+     * Writes the <em>r</em>-bit char to standard output.
      * @param x the {@code char} to write.
      * @param r the number of relevant bits in the char.
      * @throws IllegalArgumentException if {@code r} is not between 1 and 16.
@@ -269,7 +269,7 @@ public final class BinaryStdOut {
     }
 
    /**
-     * Writes the string of r-bit characters to standard output.
+     * Writes the string of <em>r</em>-bit characters to standard output.
      * @param s the {@code String} to write.
      * @param r the number of relevants bits in each character.
      * @throws IllegalArgumentException if r is not between 1 and 16.
