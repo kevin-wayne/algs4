@@ -19,7 +19,7 @@ package edu.princeton.cs.algs4;
  *  along with a <em>count</em> operation that returns the total number
  *  of sets.
  *  <p>
- *  The union-find data type models a collection of sets containing
+ *  The union–find data type models a collection of sets containing
  *  <em>n</em> elements, with each element in exactly one set.
  *  The elements are named 0 through <em>n</em>–1.
  *  Initially, there are <em>n</em> sets, with each element in its
