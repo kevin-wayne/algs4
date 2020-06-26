@@ -39,7 +39,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation uses a queue-based implementation of 
  *  the Bellman-Ford-Moore algorithm.
- *  The constructor takes &Theta;(<em>V</em> (<em>V</em> + <em>E</em>)) time
+ *  The constructor takes &Theta;(<em>E</em> <em>V</em>) time
  *  in the worst case, where <em>V</em> is the number of vertices and
  *  <em>E</em> is the number of edges. In practice, it performs much better.
  *  Each instance method takes &Theta;(1) time.
