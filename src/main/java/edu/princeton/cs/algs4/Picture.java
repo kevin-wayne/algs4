@@ -229,6 +229,10 @@ public final class Picture implements ActionListener {
    /**
      * Displays the picture in a window on the screen.
      */
+
+    // getMenuShortcutKeyMask() deprecated in Java 10 but its replacement
+    // getMenuShortcutKeyMaskEx() is not available in Java 8
+    @SuppressWarnings("deprecation") 
     public void show() {
 
         // create the GUI for viewing the image if needed
@@ -240,7 +244,6 @@ public final class Picture implements ActionListener {
             menuBar.add(menu);
             JMenuItem menuItem1 = new JMenuItem(" Save...   ");
             menuItem1.addActionListener(this);
-            // use getMenuShortcutKeyMaskEx() in Java 10 (getMenuShortcutKeyMask() deprecated)           
             menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
                                      Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
             menu.add(menuItem1);
