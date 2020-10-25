@@ -30,6 +30,9 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class ResizingArrayBag<Item> implements Iterable<Item> {
+    // initial capacity of underlying resizing array
+    private static final int INIT_CAPACITY = 8;
+
     private Item[] a;         // array of items
     private int n;            // number of elements on bag
 
@@ -37,7 +40,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
      * Initializes an empty bag.
      */
     public ResizingArrayBag() {
-        a = (Item[]) new Object[2];
+        a = (Item[]) new Object[INIT_CAPACITY];
         n = 0;
     }
 

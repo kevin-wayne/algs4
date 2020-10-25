@@ -40,6 +40,10 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class ResizingArrayStack<Item> implements Iterable<Item> {
+
+    // initial capacity of underlying resizing array
+    private static final int INIT_CAPACITY = 8;
+
     private Item[] a;         // array of items
     private int n;            // number of elements on stack
 
@@ -48,7 +52,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
      * Initializes an empty stack.
      */
     public ResizingArrayStack() {
-        a = (Item[]) new Object[2];
+        a = (Item[]) new Object[INIT_CAPACITY];
         n = 0;
     }
 

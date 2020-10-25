@@ -37,6 +37,9 @@ import java.util.NoSuchElementException;
  *  @author Kevin Wayne
  */
 public class ResizingArrayQueue<Item> implements Iterable<Item> {
+    // initial capacity of underlying resizing array
+    private static final int INIT_CAPACITY = 8;
+
     private Item[] q;       // queue elements
     private int n;          // number of elements on queue
     private int first;      // index of first element of queue
@@ -47,7 +50,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
      * Initializes an empty queue.
      */
     public ResizingArrayQueue() {
-        q = (Item[]) new Object[2];
+        q = (Item[]) new Object[INIT_CAPACITY];
         n = 0;
         first = 0;
         last = 0;
