@@ -46,7 +46,8 @@ import java.util.NoSuchElementException;
  *  is a vertex-indexed array of {@link Bag} objects.
  *  It uses &Theta;(<em>E</em> + <em>V</em>) space, where <em>E</em> is
  *  the number of edges and <em>V</em> is the number of vertices.
- *  All instance methods take &Theta;(1) time. (Though, iterating over
+ *  The <code>reverse()</code> method takes &Theta;(<em>E</em> + <em>V</em>) time
+ *  and space; all other instancce methods take &Theta;(1) time. (Though, iterating over
  *  the vertices returned by {@link #adj(int)} takes time proportional
  *  to the outdegree of the vertex.)
  *  Constructing an empty digraph with <em>V</em> vertices takes
