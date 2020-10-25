@@ -60,7 +60,7 @@ public class DirectedCycle {
             if (!marked[v] && cycle == null) dfs(G, v);
     }
 
-    // check that algorithm computes either the topological order or finds a directed cycle
+    // run DFS and find a directed cycle (if one exists)
     private void dfs(Digraph G, int v) {
         onStack[v] = true;
         marked[v] = true;
