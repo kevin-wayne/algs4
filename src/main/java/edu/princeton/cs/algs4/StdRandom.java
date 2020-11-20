@@ -354,12 +354,12 @@ public final class StdRandom {
      * @throws IllegalArgumentException unless {@code probabilities[i] >= 0.0} for each index {@code i}
      */
     public static int discrete(double[] probabilities) {
-        if (probabilities == null) throw new IllegalArgumentException("argument array is null");
+        if (probabilities == null) throw new IllegalArgumentException("argument array must not be null");
         double EPSILON = 1.0E-14;
         double sum = 0.0;
         for (int i = 0; i < probabilities.length; i++) {
             if (!(probabilities[i] >= 0.0))
-                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + probabilities[i]);
+                throw new IllegalArgumentException("array entry " + i + " must be non-negative: " + probabilities[i]);
             sum += probabilities[i];
         }
         if (sum > 1.0 + EPSILON || sum < 1.0 - EPSILON)
@@ -389,11 +389,11 @@ public final class StdRandom {
      * @throws IllegalArgumentException if sum of frequencies exceeds {@code Integer.MAX_VALUE} (2<sup>31</sup> - 1)
      */
     public static int discrete(int[] frequencies) {
-        if (frequencies == null) throw new IllegalArgumentException("argument array is null");
+        if (frequencies == null) throw new IllegalArgumentException("argument array must not be null");
         long sum = 0;
         for (int i = 0; i < frequencies.length; i++) {
             if (frequencies[i] < 0)
-                throw new IllegalArgumentException("array entry " + i + " must be nonnegative: " + frequencies[i]);
+                throw new IllegalArgumentException("array entry " + i + " must be non-negative: " + frequencies[i]);
             sum += frequencies[i];
         }
         if (sum == 0)
@@ -570,7 +570,7 @@ public final class StdRandom {
      *         of {@code 0}, {@code 1}, ..., {@code n-1}
      */
     public static int[] permutation(int n) {
-        if (n < 0) throw new IllegalArgumentException("argument is negative");
+        if (n < 0) throw new IllegalArgumentException("n must be non-negative: " + n);
         int[] perm = new int[n];
         for (int i = 0; i < n; i++)
             perm[i] = i;
@@ -589,8 +589,8 @@ public final class StdRandom {
      *         of {@code k} of the elements from {@code 0}, {@code 1}, ..., {@code n-1}
      */
     public static int[] permutation(int n, int k) {
-        if (n < 0) throw new IllegalArgumentException("argument is negative");
-        if (k < 0 || k > n) throw new IllegalArgumentException("k must be between 0 and n");
+        if (n < 0) throw new IllegalArgumentException("n must be non-negative: " + n);
+        if (k < 0 || k > n) throw new IllegalArgumentException("k must be between 0 and n: " + k);
         int[] perm = new int[k];
         for (int i = 0; i < k; i++) {
             int r = uniform(i+1);    // between 0 and i
@@ -608,7 +608,7 @@ public final class StdRandom {
     // (x can be of type Object[], double[], int[], ...)
     private static void validateNotNull(Object x) {
         if (x == null) {
-            throw new IllegalArgumentException("argument is null");
+            throw new IllegalArgumentException("argument must not be null");
         }
     }
 
