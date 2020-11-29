@@ -56,10 +56,11 @@ public class ClosestPair {
         int n = points.length;
         if (n <= 1) return;
 
-        // sort by x-coordinate (breaking ties by y-coordinate)
+        // sort by x-coordinate (breaking ties by y-coordinate via stability)
         Point2D[] pointsByX = new Point2D[n];
         for (int i = 0; i < n; i++)
             pointsByX[i] = points[i];
+        Arrays.sort(pointsByX, Point2D.Y_ORDER);
         Arrays.sort(pointsByX, Point2D.X_ORDER);
 
         // check for coincident points
