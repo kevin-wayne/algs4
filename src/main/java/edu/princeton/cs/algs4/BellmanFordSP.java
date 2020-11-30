@@ -54,6 +54,9 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class BellmanFordSP {
+    // for floating-point precision issues
+    private static final double EPSILON = 1E-14;
+
     private double[] distTo;               // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;         // edgeTo[v] = last edge on shortest s->v path
     private boolean[] onQueue;             // onQueue[v] = is v currently on the queue?
@@ -93,7 +96,7 @@ public class BellmanFordSP {
     private void relax(EdgeWeightedDigraph G, int v) {
         for (DirectedEdge e : G.adj(v)) {
             int w = e.to();
-            if (distTo[w] > distTo[v] + e.weight()) {
+            if (distTo[w] > distTo[v] + e.weight() + EPSILON) {
                 distTo[w] = distTo[v] + e.weight();
                 edgeTo[w] = e;
                 if (!onQueue[w]) {
