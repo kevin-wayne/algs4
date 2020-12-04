@@ -19,7 +19,7 @@ package edu.princeton.cs.algs4;
  *  to insertion sort).
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/23quick">Section 2.3</a> of
+ *  see <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
