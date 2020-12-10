@@ -57,7 +57,7 @@ public class Insertion {
      * Rearranges the array in ascending order, using the natural order.
      * @param a the array to be sorted
      */
-    public static void sort(Comparable[] a) {
+    public static <T extends Comparable<T>> void sort(T[] a) {
         int n = a.length;
         for (int i = 1; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
@@ -74,7 +74,7 @@ public class Insertion {
      * @param lo left endpoint (inclusive)
      * @param hi right endpoint (exclusive)
      */
-    public static void sort(Comparable[] a, int lo, int hi) {
+    public static <T extends Comparable<T>> void sort(T[] a, int lo, int hi) {
         for (int i = lo + 1; i < hi; i++) {
             for (int j = i; j > lo && less(a[j], a[j-1]); j--) {
                 exch(a, j, j-1);
@@ -88,7 +88,7 @@ public class Insertion {
      * @param a the array
      * @param comparator the comparator specifying the order
      */
-    public static void sort(Object[] a, Comparator comparator) {
+    public static <T> void sort(T[] a, Comparator<T> comparator) {
         int n = a.length;
         for (int i = 1; i < n; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1], comparator); j--) {
@@ -106,7 +106,7 @@ public class Insertion {
      * @param hi right endpoint (exclusive)
      * @param comparator the comparator specifying the order
      */
-    public static void sort(Object[] a, int lo, int hi, Comparator comparator) {
+    public static <T> void sort(T[] a, int lo, int hi, Comparator<T> comparator) {
         for (int i = lo + 1; i < hi; i++) {
             for (int j = i; j > lo && less(a[j], a[j-1], comparator); j--) {
                 exch(a, j, j-1);
@@ -124,7 +124,7 @@ public class Insertion {
      * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
      *    ..., {@code a[p[n-1]]} are in ascending order
      */
-    public static int[] indexSort(Comparable[] a) {
+    public static <T extends Comparable<T>> int[] indexSort(T[] a) {
         int n = a.length;
         int[] index = new int[n];
         for (int i = 0; i < n; i++)
@@ -142,12 +142,12 @@ public class Insertion {
     ***************************************************************************/
     
     // is v < w ?
-    private static boolean less(Comparable v, Comparable w) {
+    private static <T extends Comparable<T>> boolean less(T v, T w) {
         return v.compareTo(w) < 0;
     }
 
     // is v < w ?
-    private static boolean less(Object v, Object w, Comparator comparator) {
+    private static <T> boolean less(T v, T w, Comparator<T> comparator) {
         return comparator.compare(v, w) < 0;
     }
         
@@ -168,32 +168,32 @@ public class Insertion {
    /***************************************************************************
     *  Check if array is sorted - useful for debugging.
     ***************************************************************************/
-    private static boolean isSorted(Comparable[] a) {
+    private static <T extends Comparable<T>> boolean isSorted(T[] a) {
         return isSorted(a, 0, a.length);
     }
 
     // is the array a[lo..hi) sorted
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
+    private static <T extends Comparable<T>> boolean isSorted(T[] a, int lo, int hi) {
         for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i-1])) return false;
         return true;
     }
 
-    private static boolean isSorted(Object[] a, Comparator comparator) {
+    private static <T> boolean isSorted(T[] a, Comparator<T> comparator) {
         return isSorted(a, 0, a.length, comparator);
     }
 
     // is the array a[lo..hi) sorted
-    private static boolean isSorted(Object[] a, int lo, int hi, Comparator comparator) {
+    private static <T> boolean isSorted(T[] a, int lo, int hi, Comparator<T> comparator) {
         for (int i = lo + 1; i < hi; i++)
             if (less(a[i], a[i-1], comparator)) return false;
         return true;
     }
 
    // print array to standard output
-    private static void show(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+    private static <T extends Comparable<T>> void show(T[] a) {
+        for (T item : a) {
+            StdOut.println(item);
         }
     }
 
