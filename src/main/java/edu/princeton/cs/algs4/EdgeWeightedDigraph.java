@@ -59,7 +59,7 @@ public class EdgeWeightedDigraph {
      * @throws IllegalArgumentException if {@code V < 0}
      */
     public EdgeWeightedDigraph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be non-negative");
         this.V = V;
         this.E = 0;
         this.indegree = new int[V];
@@ -78,7 +78,7 @@ public class EdgeWeightedDigraph {
      */
     public EdgeWeightedDigraph(int V, int E) {
         this(V);
-        if (E < 0) throw new IllegalArgumentException("Number of edges in a Digraph must be nonnegative");
+        if (E < 0) throw new IllegalArgumentException("Number of edges in a Digraph must be non-negative");
         for (int i = 0; i < E; i++) {
             int v = StdRandom.uniform(V);
             int w = StdRandom.uniform(V);
@@ -104,7 +104,7 @@ public class EdgeWeightedDigraph {
         if (in == null) throw new IllegalArgumentException("argument is null");
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be non-negative");
             indegree = new int[V];
             adj = (Bag<DirectedEdge>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
@@ -112,7 +112,7 @@ public class EdgeWeightedDigraph {
             }
 
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("Number of edges must be non-negative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();

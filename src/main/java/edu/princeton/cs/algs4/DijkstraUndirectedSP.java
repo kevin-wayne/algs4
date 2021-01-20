@@ -7,7 +7,7 @@
  *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
  *  Dijkstra's algorithm. Computes the shortest path tree.
- *  Assumes all weights are nonnegative.
+ *  Assumes all weights are non-negative.
  *
  *  % java DijkstraUndirectedSP tinyEWG.txt 6
  *  6 to 0 (0.58)  6-0 0.58000
@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
 /**
  *  The {@code DijkstraUndirectedSP} class represents a data type for solving
  *  the single-source shortest paths problem in edge-weighted graphs
- *  where the edge weights are nonnegative.
+ *  where the edge weights are non-negative.
  *  <p>
  *  This implementation uses Dijkstra's algorithm with a binary heap.
  *  The constructor takes &Theta;(<em>E</em> log <em>V</em>) time in the
@@ -166,7 +166,7 @@ public class DijkstraUndirectedSP {
     // (ii) for all edge e = v-w on the SPT: distTo[w] == distTo[v] + e.weight()
     private boolean check(EdgeWeightedGraph G, int s) {
 
-        // check that edge weights are nonnegative
+        // check that edge weights are non-negative
         for (Edge e : G.edges()) {
             if (e.weight() < 0) {
                 System.err.println("negative edge weight detected");

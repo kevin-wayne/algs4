@@ -41,8 +41,8 @@ public class Edge implements Comparable<Edge> {
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public Edge(int v, int w, double weight) {
-        if (v < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
-        if (w < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
+        if (v < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
+        if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
         this.v = v;
         this.w = w;

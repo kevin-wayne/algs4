@@ -77,7 +77,7 @@ public class Digraph {
      * @throws IllegalArgumentException if {@code V < 0}
      */
     public Digraph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be non-negative");
         this.V = V;
         this.E = 0;
         indegree = new int[V];
@@ -103,14 +103,14 @@ public class Digraph {
         if (in == null) throw new IllegalArgumentException("argument is null");
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be nonnegative");
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Digraph must be non-negative");
             indegree = new int[V];
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
             }
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Digraph must be non-negative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
@@ -133,7 +133,7 @@ public class Digraph {
 
         this.V = G.V();
         this.E = G.E();
-        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be non-negative");
 
         // update indegrees
         indegree = new int[V];

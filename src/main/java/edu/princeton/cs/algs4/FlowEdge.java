@@ -165,7 +165,7 @@ public class FlowEdge {
      * @throws IllegalArgumentException if {@code delta} is {@code NaN}
      */
     public void addResidualFlowTo(int vertex, double delta) {
-        if (!(delta >= 0.0)) throw new IllegalArgumentException("Delta must be nonnegative");
+        if (!(delta >= 0.0)) throw new IllegalArgumentException("Delta must be non-negative");
 
         if      (vertex == v) flow -= delta;           // backward edge
         else if (vertex == w) flow += delta;           // forward edge

@@ -15,7 +15,8 @@ package edu.princeton.cs.algs4;
  *  provides methods for accessing the two endpoints of the directed edge and
  *  the weight.
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -38,8 +39,8 @@ public class DirectedEdge {
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public DirectedEdge(int v, int w, double weight) {
-        if (v < 0) throw new IllegalArgumentException("Vertex names must be nonnegative integers");
-        if (w < 0) throw new IllegalArgumentException("Vertex names must be nonnegative integers");
+        if (v < 0) throw new IllegalArgumentException("Vertex names must be non-negative integers");
+        if (w < 0) throw new IllegalArgumentException("Vertex names must be non-negative integers");
         if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
         this.v = v;
         this.w = w;

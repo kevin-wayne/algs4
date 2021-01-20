@@ -72,7 +72,7 @@ public class EdgeWeightedGraph {
      * @throws IllegalArgumentException if {@code V < 0}
      */
     public EdgeWeightedGraph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
         this.V = V;
         this.E = 0;
         adj = (Bag<Edge>[]) new Bag[V];
@@ -91,7 +91,7 @@ public class EdgeWeightedGraph {
      */
     public EdgeWeightedGraph(int V, int E) {
         this(V);
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+        if (E < 0) throw new IllegalArgumentException("Number of edges must be non-negative");
         for (int i = 0; i < E; i++) {
             int v = StdRandom.uniform(V);
             int w = StdRandom.uniform(V);
@@ -124,7 +124,7 @@ public class EdgeWeightedGraph {
             }
 
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("Number of edges must be non-negative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();

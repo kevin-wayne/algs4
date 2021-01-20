@@ -46,7 +46,7 @@ public class FlowNetwork {
      * @throws IllegalArgumentException if {@code V < 0}
      */
     public FlowNetwork(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices in a Graph must be non-negative");
         this.V = V;
         this.E = 0;
         adj = (Bag<FlowEdge>[]) new Bag[V];
@@ -64,7 +64,7 @@ public class FlowNetwork {
      */
     public FlowNetwork(int V, int E) {
         this(V);
-        if (E < 0) throw new IllegalArgumentException("Number of edges must be nonnegative");
+        if (E < 0) throw new IllegalArgumentException("Number of edges must be non-negative");
         for (int i = 0; i < E; i++) {
             int v = StdRandom.uniform(V);
             int w = StdRandom.uniform(V);
@@ -86,7 +86,7 @@ public class FlowNetwork {
     public FlowNetwork(In in) {
         this(in.readInt());
         int E = in.readInt();
-        if (E < 0) throw new IllegalArgumentException("number of edges must be nonnegative");
+        if (E < 0) throw new IllegalArgumentException("number of edges must be non-negative");
         for (int i = 0; i < E; i++) {
             int v = in.readInt();
             int w = in.readInt();

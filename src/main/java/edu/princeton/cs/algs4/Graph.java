@@ -83,7 +83,7 @@ public class Graph {
      * @throws IllegalArgumentException if {@code V < 0}
      */
     public Graph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
         this.V = V;
         this.E = 0;
         adj = (Bag<Integer>[]) new Bag[V];
@@ -108,13 +108,13 @@ public class Graph {
         if (in == null) throw new IllegalArgumentException("argument is null");
         try {
             this.V = in.readInt();
-            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be nonnegative");
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be non-negative");
             adj = (Bag<Integer>[]) new Bag[V];
             for (int v = 0; v < V; v++) {
                 adj[v] = new Bag<Integer>();
             }
             int E = in.readInt();
-            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be nonnegative");
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be non-negative");
             for (int i = 0; i < E; i++) {
                 int v = in.readInt();
                 int w = in.readInt();
@@ -138,7 +138,7 @@ public class Graph {
     public Graph(Graph G) {
         this.V = G.V();
         this.E = G.E();
-        if (V < 0) throw new IllegalArgumentException("Number of vertices must be nonnegative");
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
 
         // update adjacency lists
         adj = (Bag<Integer>[]) new Bag[V];

@@ -15,7 +15,7 @@ package edu.princeton.cs.algs4;
 /**
  *  The {@code DijkstraAllPairsSP} class represents a data type for solving the
  *  all-pairs shortest paths problem in edge-weighted digraphs
- *  where the edge weights are nonnegative.
+ *  where the edge weights are non-negative.
  *  <p>
  *  This implementation runs Dijkstra's algorithm from each vertex.
  *  The constructor takes &Theta;(<em>V</em> (<em>E</em> log <em>V</em>)) time

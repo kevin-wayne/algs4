@@ -622,10 +622,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     private static double mouseY = 0;
 
     // queue of typed key characters
-    private static LinkedList<Character> keysTyped = new LinkedList<Character>();
+    private static LinkedList<Character> keysTyped;
 
     // set of key codes currently pressed down
-    private static TreeSet<Integer> keysDown = new TreeSet<Integer>();
+    private static TreeSet<Integer> keysDown;
 
     // singleton pattern: client can't instantiate
     private StdDraw() { }
@@ -685,6 +685,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         setPenRadius();
         setFont();
         clear();
+
+        // initialize keystroke buffers
+        keysTyped = new LinkedList<Character>();
+        keysDown = new TreeSet<Integer>();
 
         // add antialiasing
         RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
