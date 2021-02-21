@@ -58,8 +58,12 @@ public class Cycle {
      * @param G the undirected graph
      */
     public Cycle(Graph G) {
-        if (hasSelfLoop(G)) return;
+        // need special case to identify parallel edge as a cycle
         if (hasParallelEdges(G)) return;
+
+        // don't need special case to identify self-loop as a cycle
+        // if (hasSelfLoop(G)) return;
+
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
         for (int v = 0; v < G.V(); v++)
