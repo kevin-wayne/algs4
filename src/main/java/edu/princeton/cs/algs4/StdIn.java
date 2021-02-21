@@ -338,7 +338,7 @@ public final class StdIn {
 
 
    /**
-     * Reads the next token  and returns the {@code String}.
+     * Reads the next token from standard input and returns it as a {@code String}.
      *
      * @return the next {@code String}
      * @throws NoSuchElementException if standard input is empty
