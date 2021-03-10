@@ -50,6 +50,13 @@ package edu.princeton.cs.algs4;
  *  For an industrial-strength numerical linear algebra library,
  *  see <a href = "http://math.nist.gov/javanumerics/jama/">JAMA</a>. 
  *  <p>
+ *  This computes correct results if all arithmetic performed is
+ *  without floating-point rounding error or arithmetic overflow.  
+ *  In practice, there will be floating-point rounding error;
+ *  partial pivoting helps prevent accumulated floating-point rounding
+ *  errors from growing out of control (though it does not
+ *  provide any guarantees).
+ *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a>
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.

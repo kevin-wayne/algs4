@@ -73,9 +73,13 @@ package edu.princeton.cs.algs4;
  *  It is not the most memory efficient implementation because it uses
  *  objects to represents complex numbers and it it re-allocates memory
  *  for the subarray, instead of doing in-place or reusing a single temporary array.
- *  
  *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ *  This computes correct results if all arithmetic performed is
+ *  without floating-point rounding error or arithmetic overflow.  
+ *  In practice, there will be floating-point rounding error.
+ *  <p>
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick

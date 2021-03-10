@@ -24,10 +24,11 @@ package edu.princeton.cs.algs4;
  *  The {@code inCut()} and {@code value()} methods take &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the network).
  *  <p>
- *  If the capacities and initial flow values are all integers, then this
- *  implementation guarantees to compute an integer-valued maximum flow.
- *  If the capacities are floating-point numbers, then floating-point
- *  roundoff error can accumulate.
+ *  This correctly computes the maxflow and mincut if all arithmetic
+ *  performed is without floating-point rounding error or arithmetic
+ *  overflow. This is guaranteed to be the case if all edge capacities
+ *  and initial flow values are integers and the value of the maxflow
+ *  does not exceeds 2<sup>52</sup>.
  *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of

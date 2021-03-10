@@ -29,6 +29,9 @@ package edu.princeton.cs.algs4;
  *  It includes methods for addition, subtraction, multiplication, composition,
  *  differentiation, and evaluation.
  *  <p>
+ *  This computes correct results if all arithmetic performed is
+ *  without overflow.
+ *  <p> 
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.

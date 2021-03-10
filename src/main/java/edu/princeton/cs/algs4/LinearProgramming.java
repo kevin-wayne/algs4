@@ -27,8 +27,13 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This is a bare-bones implementation of the <em>simplex algorithm</em>.
  *  It uses Bland's rule to determing the entering and leaving variables.
- *  It is not suitable for use on large inputs. It is also not robust
- *  in the presence of floating-point roundoff error.
+ *  It is not suitable for use on large inputs. 
+ *  <p>
+ *  This computes correct results if all arithmetic performed is
+ *  without floating-point rounding error or arithmetic overflow.
+ *  In practice, there will be floating-point rounding error
+ *  and this implementation is not robust in the presence of 
+ *  such errors.
  *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/65reductions">Section 6.5</a>
