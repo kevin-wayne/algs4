@@ -149,7 +149,7 @@ public class TrieSET implements Iterable<String> {
 
     /**
      * Returns all of the keys in the set that match {@code pattern},
-     * where . symbol is treated as a wildcard character.
+     * where the character '.' is interpreted as a wildcard character.
      * @param pattern the pattern
      * @return all of the keys in the set that match {@code pattern},
      *     as an iterable, where . is treated as a wildcard character.
