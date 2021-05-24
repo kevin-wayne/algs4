@@ -36,6 +36,8 @@
 
 package edu.princeton.cs.algs4;
 
+import java.util.Arrays;
+
 /**
  *  The {@code KruskalMST} class represents a data type for computing a
  *  <em>minimum spanning tree</em> in an edge-weighted graph.
@@ -52,6 +54,12 @@ package edu.princeton.cs.algs4;
  *  the worst case.
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>E</em>) extra space (not including the graph).
+ *  <p>
+ *  This {@code weight()} method correctly computes the weight of the MST
+ *  if all arithmetic performed is without floating-point rounding error
+ *  or arithmetic overflow.
+ *  This is the case if all edge weights are non-negative integers
+ *  and the weight of the MST does not exceed 2<sup>52</sup>.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
@@ -73,21 +81,26 @@ public class KruskalMST {
      * @param G the edge-weighted graph
      */
     public KruskalMST(EdgeWeightedGraph G) {
-        // more efficient to build heap by passing array of edges
-        MinPQ<Edge> pq = new MinPQ<Edge>();
-        for (Edge e : G.edges()) {
-            pq.insert(e);
+
+        // create array of edges, sorted by weight
+        Edge[] edges = new Edge[G.E()];
+        int t = 0;
+        for (Edge e: G.edges()) {
+            edges[t++] = e;
         }
+        Arrays.sort(edges);
 
         // run greedy algorithm
         UF uf = new UF(G.V());
-        while (!pq.isEmpty() && mst.size() < G.V() - 1) {
-            Edge e = pq.delMin();
+        for (int i = 0; i < G.E() && mst.size() < G.V() - 1; i++) {
+            Edge e = edges[i];
             int v = e.either();
             int w = e.other(v);
-            if (uf.find(v) != uf.find(w)) { // v-w does not create a cycle
-                uf.union(v, w);  // merge v and w components
-                mst.enqueue(e);  // add edge e to mst
+
+            // v-w does not create a cycle
+            if (uf.find(v) != uf.find(w)) {
+                uf.union(v, w);     // merge v and w components
+                mst.enqueue(e);     // add edge e to mst
                 weight += e.weight();
             }
         }

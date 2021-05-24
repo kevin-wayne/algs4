@@ -42,6 +42,12 @@ package edu.princeton.cs.algs4;
  *  It uses &Theta;(<em>V</em>) extra space (not including the
  *  edge-weighted graph).
  *  <p>
+ *  This {@code weight()} method correctly computes the weight of the MST
+ *  if all arithmetic performed is without floating-point rounding error
+ *  or arithmetic overflow.
+ *  This is the case if all edge weights are non-negative integers
+ *  and the weight of the MST does not exceed 2<sup>52</sup>.
+ *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
