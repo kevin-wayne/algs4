@@ -162,7 +162,8 @@ public class BreadthFirstPaths {
      * Returns the number of edges in a shortest path between the source vertex {@code s}
      * (or sources) and vertex {@code v}?
      * @param v the vertex
-     * @return the number of edges in a shortest path
+     * @return the number of edges in such a shortest path
+     *         (or {@code Integer.MAX_VALUE} if there is no such path)
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int distTo(int v) {
