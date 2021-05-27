@@ -157,7 +157,7 @@ public final class Picture implements ActionListener {
                     url = getClass().getClassLoader().getResource(name);
                 }
 
-                // or URL from web
+                // or URL from web or jar
                 if (url == null) {
                     url = new URL(name);
                 }
