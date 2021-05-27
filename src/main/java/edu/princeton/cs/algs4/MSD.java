@@ -183,7 +183,7 @@ public class MSD {
             a[i] = aux[i - lo];
 
         // no more bits
-        if (d == 4) return;
+        if (d == 3) return;
 
         // special case for most significant byte
         if (d == 0 && count[R/2] > 0)
