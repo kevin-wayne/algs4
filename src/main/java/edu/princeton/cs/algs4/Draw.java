@@ -1389,7 +1389,6 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         // ensure there is a window for listenting to events
         show();
         listeners.add(listener);
-        frame.addKeyListener(this);
         frame.addMouseListener(this);
         frame.addMouseMotionListener(this);
         frame.setFocusable(true); 
