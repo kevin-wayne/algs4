@@ -322,7 +322,18 @@ public final class StdAudio {
         }
     }
 
-
+    /**
+     * Plays an audio file (in .wav, .mid, or .au format) in a background thread.
+     *
+     * @param filename the name of the audio file
+     * @throws IllegalArgumentException if unable to play {@code filename}
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @deprecated replaced by {@link #playInBackground(String filename)}
+     */
+    @Deprecated
+    public static synchronized void play(String filename) {
+        playInBackground(filename);
+    }
 
     /**
      * Plays an audio file (in .wav, .mid, or .au format) in a background thread.
@@ -331,7 +342,7 @@ public final class StdAudio {
      * @throws IllegalArgumentException if unable to play {@code filename}
      * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
-    public static synchronized void play(final String filename) {
+    public static synchronized void playInBackground(final String filename) {
         new Thread(new Runnable() {
             public void run() {
                 AudioInputStream ais = getAudioInputStreamFromFile(filename);
@@ -380,8 +391,20 @@ public final class StdAudio {
      *
      * @param filename the name of the audio file
      * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @deprecated replaced by {@link #loopInBackground(String filename)}
      */
+    @Deprecated
     public static synchronized void loop(String filename) {
+        loopInBackground(filename);
+    }
+
+    /**
+     * Loops an audio file (in .wav, .mid, or .au format) in a background thread.
+     *
+     * @param filename the name of the audio file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     */
+    public static synchronized void loopInBackground(String filename) {
         if (filename == null) throw new IllegalArgumentException();
 
         final AudioInputStream ais = getAudioInputStreamFromFile(filename);
