@@ -133,8 +133,8 @@ public class Date implements Comparable<Date> {
      *
      * @return the value {@code 0} if the argument date is equal to this date;
      *         a negative integer if this date is chronologically less than
-     *         the argument date; and a positive ineger if this date is chronologically
-     *         after the argument date
+     *         the argument date; and a positive integer if this date is
+     *         chronologically after the argument date
      */
     @Override
     public int compareTo(Date that) {

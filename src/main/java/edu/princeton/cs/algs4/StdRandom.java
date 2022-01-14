@@ -63,6 +63,11 @@ import java.util.Random;
  *  elements in the array <code>a[]</code>, starting at index <code>lo</code>
  *  (inclusive) and ending at index <code>hi</code> (exclusive).
  *  <p>
+ *  The methods all take constant expected time, except those that involve arrays.
+ *  The <em>shuffle</em> method takes time linear in the subarray to be shuffled;
+ *  the <em>discrete</em> methods take time linear in the length of the argument
+ *  array.
+ *  <p>
  *  For additional documentation,
  *  see <a href="https://introcs.cs.princeton.edu/22library">Section 2.2</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i>

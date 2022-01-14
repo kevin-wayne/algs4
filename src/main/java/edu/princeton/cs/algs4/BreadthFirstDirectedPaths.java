@@ -75,6 +75,7 @@ public class BreadthFirstDirectedPaths {
      * @param G the digraph
      * @param sources the source vertices
      * @throws IllegalArgumentException if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code sources} contains no vertices
      * @throws IllegalArgumentException unless each vertex {@code v} in
      *         {@code sources} satisfies {@code 0 <= v < V}
      */

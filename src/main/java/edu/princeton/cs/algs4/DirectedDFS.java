@@ -65,6 +65,7 @@ public class DirectedDFS {
      * @param G the graph
      * @param sources the source vertices
      * @throws IllegalArgumentException if {@code sources} is {@code null}
+     * @throws IllegalArgumentException if {@code sources} contains no vertices
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      *         for each vertex {@code s} in {@code sources}
      */
