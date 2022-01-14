@@ -124,6 +124,8 @@ public class NFA {
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
                     match.add(v+1); 
             }
+            if (match.isEmpty()) continue;
+
             dfs = new DirectedDFS(graph, match); 
             pc = new Bag<Integer>();
             for (int v = 0; v < graph.V(); v++)
