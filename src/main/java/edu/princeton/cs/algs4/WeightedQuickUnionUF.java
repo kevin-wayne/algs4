@@ -70,7 +70,7 @@ public class WeightedQuickUnionUF {
     /**
      * Initializes an empty union-find data structure with
      * {@code n} elements {@code 0} through {@code n-1}. 
-     * Initially, each elements is in its own set.
+     * Initially, each element is in its own set.
      *
      * @param  n the number of elements
      * @throws IllegalArgumentException if {@code n < 0}
