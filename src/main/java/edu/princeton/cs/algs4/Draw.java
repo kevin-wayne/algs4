@@ -1335,18 +1335,13 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
             }
         }
 
-        // need to change from ARGB to RGB for jpeg
-        // reference: http://archives.java.sun.com/cgi-bin/wa?A2=ind0404&L=java2d-interest&D=0&P=2727
+        // need to change from ARGB to RGB for JPEG
         else if ("jpg".equalsIgnoreCase(suffix)) {
-            WritableRaster raster = offscreenImage.getRaster();
-            WritableRaster newRaster;
-            newRaster = raster.createWritableChild(0, 0, width, height, 0, 0, new int[] {0, 1, 2});
-            DirectColorModel cm = (DirectColorModel) offscreenImage.getColorModel();
-            DirectColorModel newCM = new DirectColorModel(cm.getPixelSize(),
-                                                          cm.getRedMask(),
-                                                          cm.getGreenMask(),
-                                                          cm.getBlueMask());
-            BufferedImage rgbBuffer = new BufferedImage(newCM, newRaster, false,  null);
+            // Credit to arnabanimesh for simpler ARGB to RGB conversion
+            BufferedImage rgbBuffer = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_RGB);
+            Graphics2D rgb2d = rgbBuffer.createGraphics();
+            rgb2d.drawImage(onscreenImage, 0, 0, null);
+            rgb2d.dispose();
             try {
                 ImageIO.write(rgbBuffer, suffix, file);
             }
