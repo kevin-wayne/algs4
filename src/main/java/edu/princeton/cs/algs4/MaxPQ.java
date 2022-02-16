@@ -194,7 +194,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
 
     private void swim(int k) {
         while (k > 1 && less(k/2, k)) {
-            exch(k, k/2);
+            exch(k/2, k);
             k = k/2;
         }
     }
