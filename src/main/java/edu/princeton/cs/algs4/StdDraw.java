@@ -213,9 +213,10 @@ import javax.swing.KeyStroke;
  *  The first method allows you to specify colors using the RGB color system.
  *  This <a href = "http://johndyer.name/lab/colorpicker/">color picker</a>
  *  is a convenient way to find a desired color.
+ *  <p>
  *  The second method allows you to specify colors using the
- *  {@link Color} data type that is discussed in Chapter 3. Until then,
- *  you can use this method with one of these predefined colors in standard drawing:
+ *  {@link Color} data type, which is defined in Java's {@link java.awt} pacakge.
+ *  A number of colors are predefined in standard drawing:
  *  {@link #BLACK}, {@link #BLUE}, {@link #CYAN}, {@link #DARK_GRAY}, {@link #GRAY},
  *  {@link #GREEN}, {@link #LIGHT_GRAY}, {@link #MAGENTA}, {@link #ORANGE},
  *  {@link #PINK}, {@link #RED}, {@link #WHITE}, {@link #YELLOW},
@@ -235,7 +236,7 @@ import javax.swing.KeyStroke;
  *  This sets the canvas size to be <em>width</em>-by-<em>height</em> pixels.
  *  It also erases the current drawing and resets the coordinate system,
  *  pen radius, pen color, and font back to their default values.
- *  Ordinarly, this method is called once, at the very beginning of a program.
+ *  Ordinarly, this method is called only once, at the very beginning of a program.
  *  For example, {@code StdDraw.setCanvasSize(800, 800)}
  *  sets the canvas size to be 800-by-800 pixels.
  *  <p>
@@ -280,10 +281,16 @@ import javax.swing.KeyStroke;
  *  <li> {@link #setFont(Font font)}
  *  </ul>
  *  <p>
- *  You use the {@link Font} data type to specify the font. This allows you to
+ *  To specify the font, you use the {@link Font} data type,
+ *  which is defined in Java's {@link java.awt} package.
+ *  This allows you to
  *  choose the face, size, and style of the font. For example, the following
  *  code fragment sets the font to Arial Bold, 60 point.
+ *  The <code>import</code> statement allows you to refer to <code>Font</code>
+ *  directly, without needing the fully qualified name <code>java.awt.Font</code>.
  *  <pre>
+ *   import java.awt.Font;
+ *   ...
  *   Font font = new Font("Arial", Font.BOLD, 60);
  *   StdDraw.setFont(font);
  *   StdDraw.text(0.5, 0.5, "Hello, World");
@@ -422,7 +429,7 @@ import javax.swing.KeyStroke;
  *  </ul>
  *  <p>
  *  These methods are useful when you want to temporarily change a
- *  control parameter and reset it back to its original value.
+ *  control parameter and, later, reset it back to its original value.
  *  <p>
  *  <b>Corner cases.</b>
  *  Here are some corner cases.
@@ -430,15 +437,15 @@ import javax.swing.KeyStroke;
  *  <li> Drawing an object outside (or partly outside) the canvas is permitted.
  *       However, only the part of the object that appears inside the canvas
  *       will be visible.
+ *  <li> Due to floating-point issues, an object drawn with an <em>x</em>- or
+ *       <em>y</em>-coordinate that is way outside the canvas (such as the line segment
+ *       from (0.5, –10^308) to (0.5, 10^308) may not be visible even in the
+ *       part of the canvas where it should be.
  *  <li> Any method that is passed a {@code null} argument will throw an
  *       {@link IllegalArgumentException}.
  *  <li> Any method that is passed a {@link Double#NaN},
  *       {@link Double#POSITIVE_INFINITY}, or {@link Double#NEGATIVE_INFINITY}
  *       argument will throw an {@link IllegalArgumentException}.
- *  <li> Due to floating-point issues, an object drawn with an <em>x</em>- or
- *       <em>y</em>-coordinate that is way outside the canvas (such as the line segment
- *       from (0.5, –10^308) to (0.5, 10^308) may not be visible even in the
- *       part of the canvas where it should be.
  *  </ul>
  *  <p>
  *  <b>Performance tricks.</b>
