@@ -395,11 +395,12 @@ public class BST<Key extends Comparable<Key>, Value> {
     } 
 
     /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
+     * Returns all keys in the symbol table in ascending order,
+     * as an {@code Iterable}.
      * To iterate over all of the keys in the symbol table named {@code st},
      * use the foreach notation: {@code for (Key key : st.keys())}.
      *
-     * @return all keys in the symbol table
+     * @return all keys in the symbol table in ascending order
      */
     public Iterable<Key> keys() {
         if (isEmpty()) return new Queue<Key>();
@@ -407,13 +408,13 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns all keys in the symbol table in the given range,
-     * as an {@code Iterable}.
+     * Returns all keys in the symbol table in the given range
+     * in ascending order, as an {@code Iterable}.
      *
      * @param  lo minimum endpoint
      * @param  hi maximum endpoint
      * @return all keys in the symbol table between {@code lo} 
-     *         (inclusive) and {@code hi} (inclusive)
+     *         (inclusive) and {@code hi} (inclusive) in ascending order
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *         is {@code null}
      */

@@ -345,8 +345,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         Node x = h.left;
         h.left = x.right;
         x.right = h;
-        x.color = x.right.color;
-        x.right.color = RED;
+        x.color = h.color;
+        h.color = RED;
         x.size = h.size;
         h.size = size(h.left) + size(h.right) + 1;
         return x;
@@ -359,8 +359,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         Node x = h.right;
         h.right = x.left;
         x.left = h;
-        x.color = x.left.color;
-        x.left.color = RED;
+        x.color = h.color;
+        h.color = RED;
         x.size = h.size;
         h.size = size(h.left) + size(h.right) + 1;
         return x;
@@ -578,10 +578,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     ***************************************************************************/
 
     /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
+     * Returns all keys in the symbol table in ascending order as an {@code Iterable}.
      * To iterate over all of the keys in the symbol table named {@code st},
      * use the foreach notation: {@code for (Key key : st.keys())}.
-     * @return all keys in the symbol table as an {@code Iterable}
+     * @return all keys in the symbol table in ascending order
      */
     public Iterable<Key> keys() {
         if (isEmpty()) return new Queue<Key>();
@@ -589,13 +589,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns all keys in the symbol table in the given range,
+     * Returns all keys in the symbol table in the given range in ascending order,
      * as an {@code Iterable}.
      *
      * @param  lo minimum endpoint
      * @param  hi maximum endpoint
      * @return all keys in the symbol table between {@code lo} 
-     *    (inclusive) and {@code hi} (inclusive) as an {@code Iterable}
+     *    (inclusive) and {@code hi} (inclusive) in ascending order
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *    is {@code null}
      */

@@ -153,26 +153,27 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Returns all keys in this symbol table.
+     * Returns all keys in this symbol table in ascending order,
+     * as an {@code Iterable}.
      * <p>
      * To iterate over all of the keys in the symbol table named {@code st},
      * use the foreach notation: {@code for (Key key : st.keys())}.
      *
-     * @return all keys in this symbol table
+     * @return all keys in this symbol table in ascending order
      */
     public Iterable<Key> keys() {
         return st.keySet();
     }
 
     /**
-     * Returns all of the keys in this symbol table.
+     * Returns all keys in this symbol table in ascending order.
      * To iterate over all of the keys in a symbol table named {@code st}, use the
      * foreach notation: {@code for (Key key : st)}.
      * <p>
      * This method is provided for backward compatibility with the version from
      * <em>Introduction to Programming in Java: An Interdisciplinary Approach.</em>
      *
-     * @return     an iterator to all of the keys in this symbol table
+     * @return     all keys in this symbol table in ascending order
      * @deprecated Replaced by {@link #keys()}.
      */
     @Deprecated
