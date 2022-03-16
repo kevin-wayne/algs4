@@ -4,7 +4,7 @@
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java Queue.java
  *                EdgeWeightedDirectedCycle.java
  *  Data files:   https://algs4.cs.princeton.edu/44sp/tinyEWDn.txt
- *                https://algs4.cs.princeton.edu/44sp/mediumEWDnc.txt
+ *                https://algs4.cs.princeton.edu/44sp/mediumEWD.txt
  *
  *  Bellman-Ford shortest path algorithm. Computes the shortest path tree in
  *  edge-weighted digraph G from vertex s, or finds a negative cost cycle
