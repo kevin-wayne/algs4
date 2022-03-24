@@ -74,7 +74,7 @@ public class AVLTreeST<Key extends Comparable<Key>, Value> {
     /**
      * This class represents an inner node of the AVL tree.
      */
-    private class Node {
+    protected class Node {
         private final Key key;   // the key
         private Value val;       // the associated value
         private int height;      // height of the subtree
