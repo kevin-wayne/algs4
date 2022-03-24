@@ -40,22 +40,13 @@ import java.util.NoSuchElementException;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class LinkedStack<Item> implements Iterable<Item> {
-    private int n;          // size of the stack
-    private Node first;     // top of stack
-
-    // helper linked list class
-    private class Node {
-        private Item item;
-        private Node next;
-    }
+public class LinkedStack<Item> extends LinkedStackIMPL<Item> implements Iterable<Item> {
 
     /**
      * Initializes an empty stack.
      */
     public LinkedStack() {
-        first = null;
-        n = 0;
+        super();
         assert check();
     }
 
@@ -146,35 +137,6 @@ public class LinkedStack<Item> implements Iterable<Item> {
         }
     }
 
-
-    // check internal invariants
-    private boolean check() {
-
-        // check a few properties of instance variable 'first'
-        if (n < 0) {
-            return false;
-        }
-        if (n == 0) {
-            if (first != null) return false;
-        }
-        else if (n == 1) {
-            if (first == null)      return false;
-            if (first.next != null) return false;
-        }
-        else {
-            if (first == null)      return false;
-            if (first.next == null) return false;
-        }
-
-        // check internal consistency of instance variable n
-        int numberOfNodes = 0;
-        for (Node x = first; x != null && numberOfNodes <= n; x = x.next) {
-            numberOfNodes++;
-        }
-        if (numberOfNodes != n) return false;
-
-        return true;
-    }
 
     /**
      * Unit tests the {@code LinkedStack} data type.
