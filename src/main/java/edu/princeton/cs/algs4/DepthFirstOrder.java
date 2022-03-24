@@ -58,8 +58,6 @@ public class DepthFirstOrder {
     private int[] post;                // post[v]   = postorder number of v
     private Queue<Integer> preorder;   // vertices in preorder
     private Queue<Integer> postorder;  // vertices in postorder
-    private int preCounter;            // counter or preorder numbering
-    private int postCounter;           // counter for postorder numbering
 
     /**
      * Determines a depth-first order for the digraph {@code G}.
@@ -93,6 +91,8 @@ public class DepthFirstOrder {
 
     // run DFS in digraph G from vertex v and compute preorder/postorder
     private void dfs(Digraph G, int v) {
+        // counter or preorder numbering
+        int preCounter=0;
         marked[v] = true;
         pre[v] = preCounter++;
         preorder.enqueue(v);
@@ -102,11 +102,15 @@ public class DepthFirstOrder {
             }
         }
         postorder.enqueue(v);
+//        counter for postorder numbering
+        int postCounter=0;
         post[v] = postCounter++;
     }
 
     // run DFS in edge-weighted digraph G from vertex v and compute preorder/postorder
     private void dfs(EdgeWeightedDigraph G, int v) {
+        // counter or preorder numbering
+        int preCounter=0;
         marked[v] = true;
         pre[v] = preCounter++;
         preorder.enqueue(v);
@@ -117,6 +121,8 @@ public class DepthFirstOrder {
             }
         }
         postorder.enqueue(v);
+//        counter for postorder numbering
+        int postCounter=0;
         post[v] = postCounter++;
     }
 
