@@ -247,6 +247,7 @@ public class Complex {
     public static void main(String[] args) {
         Complex a = new Complex(5.0, 6.0);
         Complex b = new Complex(-3.0, 4.0);
+        ComplexTrignometric math_obj = new ComplexTrignometric();
 
         StdOut.println("a            = " + a);
         StdOut.println("b            = " + b);
@@ -260,7 +261,7 @@ public class Complex {
         StdOut.println("(a / b) * b  = " + a.divides(b).times(b));
         StdOut.println("conj(a)      = " + a.conjugate());
         StdOut.println("|a|          = " + a.abs());
-        StdOut.println("tan(a)       = " + a.tan());
+        StdOut.println("tan(a)       = " + math_obj.tan());
     }
 
 }
