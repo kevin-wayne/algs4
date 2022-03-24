@@ -93,7 +93,7 @@ public class RabinKarp {
     }
 
     // Las Vegas version: does pat[] match txt[i..i-m+1] ?
-    private boolean check(String txt, int i) {
+    private boolean checkForPatternString(String txt,int i) {
         for (int j = 0; j < m; j++) 
             if (pat.charAt(j) != txt.charAt(i + j)) 
                 return false; 
@@ -101,7 +101,7 @@ public class RabinKarp {
     }
 
     // Monte Carlo version: always return true
-    // private boolean check(int i) {
+    // private boolean checkForPatternString(int i) {
     //    return true;
     //}
  
@@ -118,19 +118,19 @@ public class RabinKarp {
         if (n < m) return n;
         long txtHash = hash(txt, m); 
 
-        // check for match at offset 0
-        if ((patHash == txtHash) && check(txt, 0))
+        // checkForPatternString for match at offset 0
+        if ((patHash == txtHash) && checkForPatternString(txt, 0))
             return 0;
 
-        // check for hash match; if hash match, check for exact match
+        // checkForPatternString for hash match; if hash match, checkForPatternString for exact match
         for (int i = m; i < n; i++) {
-            // Remove leading digit, add trailing digit, check for match. 
+            // Remove leading digit, add trailing digit, checkForPatternString for match.
             txtHash = (txtHash + q - RM*txt.charAt(i-m) % q) % q; 
             txtHash = (txtHash*R + txt.charAt(i)) % q; 
 
             // match
             int offset = i - m + 1;
-            if ((patHash == txtHash) && check(txt, offset))
+            if ((patHash == txtHash) && checkForPatternString(txt, offset))
                 return offset;
         }
 

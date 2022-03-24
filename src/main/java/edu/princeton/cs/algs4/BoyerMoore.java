@@ -46,10 +46,9 @@ package edu.princeton.cs.algs4;
 public class BoyerMoore {
     private final int R;     // the radix
     private int[] right;     // the bad-character skip array
-
     private char[] pattern;  // store the pattern as a character array
     private String pat;      // or as a string
-
+    private int skip;
     /**
      * Preprocesses the pattern string.
      *
@@ -98,7 +97,6 @@ public class BoyerMoore {
     public int search(String txt) {
         int m = pat.length();
         int n = txt.length();
-        int skip;
         for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
             for (int j = m-1; j >= 0; j--) {
@@ -124,7 +122,6 @@ public class BoyerMoore {
     public int search(char[] text) {
         int m = pattern.length;
         int n = text.length;
-        int skip;
         for (int i = 0; i <= n - m; i += skip) {
             skip = 0;
             for (int j = m-1; j >= 0; j--) {

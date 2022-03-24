@@ -210,33 +210,6 @@ public class Complex {
     public Complex exp() {
         return new Complex(Math.exp(re) * Math.cos(im), Math.exp(re) * Math.sin(im));
     }
-
-    /**
-     * Returns the complex sine of this complex number.
-     *
-     * @return the complex sine of this complex number
-     */
-    public Complex sin() {
-        return new Complex(Math.sin(re) * Math.cosh(im), Math.cos(re) * Math.sinh(im));
-    }
-
-    /**
-     * Returns the complex cosine of this complex number.
-     *
-     * @return the complex cosine of this complex number
-     */
-    public Complex cos() {
-        return new Complex(Math.cos(re) * Math.cosh(im), -Math.sin(re) * Math.sinh(im));
-    }
-
-    /**
-     * Returns the complex tangent of this complex number.
-     *
-     * @return the complex tangent of this complex number
-     */
-    public Complex tan() {
-        return sin().divides(cos());
-    }
     
 
     /**
@@ -247,6 +220,7 @@ public class Complex {
     public static void main(String[] args) {
         Complex a = new Complex(5.0, 6.0);
         Complex b = new Complex(-3.0, 4.0);
+        ComplexTrignometric math_obj = new ComplexTrignometric();
 
         StdOut.println("a            = " + a);
         StdOut.println("b            = " + b);
@@ -260,7 +234,7 @@ public class Complex {
         StdOut.println("(a / b) * b  = " + a.divides(b).times(b));
         StdOut.println("conj(a)      = " + a.conjugate());
         StdOut.println("|a|          = " + a.abs());
-        StdOut.println("tan(a)       = " + a.tan());
+        StdOut.println("tan(a)       = " + math_obj.tan());
     }
 
 }

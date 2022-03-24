@@ -69,11 +69,10 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class LazyPrimMST {
+public class LazyPrimMST extends LazyPrimMSTWeighted {
     private static final double FLOATING_POINT_EPSILON = 1E-12;
+    protected double weight;       // total weight of MST
 
-    private double weight;       // total weight of MST
-    private Queue<Edge> mst;     // edges in the MST
     private boolean[] marked;    // marked[v] = true iff v on tree
     private MinPQ<Edge> pq;      // edges with one endpoint in tree
 
@@ -82,7 +81,7 @@ public class LazyPrimMST {
      * @param G the edge-weighted graph
      */
     public LazyPrimMST(EdgeWeightedGraph G) {
-        mst = new Queue<Edge>();
+        super();
         pq = new MinPQ<Edge>();
         marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)     // run Prim from all vertices to
@@ -111,17 +110,12 @@ public class LazyPrimMST {
     private void scan(EdgeWeightedGraph G, int v) {
         assert !marked[v];
         marked[v] = true;
+        getWeightedGraph(G,v);
+    }
+
+    private void getWeightedGraph(EdgeWeightedGraph G,int v){
         for (Edge e : G.adj(v))
             if (!marked[e.other(v)]) pq.insert(e);
-    }
-        
-    /**
-     * Returns the edges in a minimum spanning tree (or forest).
-     * @return the edges in a minimum spanning tree (or forest) as
-     *    an iterable of edges
-     */
-    public Iterable<Edge> edges() {
-        return mst;
     }
 
     /**

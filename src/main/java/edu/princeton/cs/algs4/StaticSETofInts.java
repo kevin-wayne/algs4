@@ -26,7 +26,8 @@ import java.util.Arrays;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class StaticSETofInts {
+public class
+StaticSETofInts {
     private int[] a;
 
     /**

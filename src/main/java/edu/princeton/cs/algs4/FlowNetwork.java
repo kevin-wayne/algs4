@@ -35,7 +35,6 @@ package edu.princeton.cs.algs4;
  */
 public class FlowNetwork {
     private static final String NEWLINE = System.getProperty("line.separator");
-
     private final int V;
     private int E;
     private Bag<FlowEdge>[] adj;
