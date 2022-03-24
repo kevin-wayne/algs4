@@ -160,6 +160,13 @@ public class BoruvkaMST {
         }
 
         // check that it is a minimal spanning forest (cut optimality conditions)
+        if(checkIfMinimalSpanningForest(G)) return false;
+
+        return true;
+    }
+
+    private boolean checkIfMinimalSpanningForest(EdgeWeightedGraph G){
+        UF uf;
         for (Edge e : edges()) {
 
             // all edges in MST except e
@@ -175,14 +182,13 @@ public class BoruvkaMST {
                 if (uf.find(x) != uf.find(y)) {
                     if (f.weight() < e.weight()) {
                         System.err.println("Edge " + f + " violates cut optimality conditions");
-                        return false;
+                        return true;
                     }
                 }
             }
 
         }
-
-        return true;
+        return false;
     }
 
     /**
