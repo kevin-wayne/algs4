@@ -114,7 +114,18 @@ public class NFA {
             if (dfs.marked(v)) pc.add(v);
 
         // Compute possible NFA states for txt[i+1]
-        for (int i = 0; i < txt.length(); i++) {
+        pc=computeNFA(txt,pc);
+        if(pc==null) return false;
+
+        // check for accept state
+        for (int v : pc)
+            if (v == m) return true;
+        return false;
+    }
+
+    private Bag<Integer> computeNFA(String txt,Bag<Integer> pc){
+        DirectedDFS dfs;
+        for (int i=0; i < txt.length(); i++) {
             if (txt.charAt(i) == '*' || txt.charAt(i) == '|' || txt.charAt(i) == '(' || txt.charAt(i) == ')')
                 throw new IllegalArgumentException("text contains the metacharacter '" + txt.charAt(i) + "'");
 
@@ -122,23 +133,19 @@ public class NFA {
             for (int v : pc) {
                 if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
-                    match.add(v+1); 
+                    match.add(v+1);
             }
             if (match.isEmpty()) continue;
 
-            dfs = new DirectedDFS(graph, match); 
-            pc = new Bag<Integer>();
+            dfs = new DirectedDFS(graph, match);
+            pc= new Bag<Integer>();
             for (int v = 0; v < graph.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
 
             // optimization if no states reachable
-            if (pc.size() == 0) return false;
+            if (pc.size() == 0) return null;
         }
-
-        // check for accept state
-        for (int v : pc)
-            if (v == m) return true;
-        return false;
+        return pc;
     }
 
     /**
