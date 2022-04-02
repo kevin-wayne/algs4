@@ -318,6 +318,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public Key floor(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to floor() is null"); 
+        if (isEmpty()) throw new NoSuchElementException("called floor() with empty symbol table");
         int i = rank(key);
         if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
         if (i == 0) throw new NoSuchElementException("argument to floor() is too small");
@@ -334,6 +335,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public Key ceiling(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null"); 
+        if (isEmpty()) throw new NoSuchElementException("called ceiling() with empty symbol table");
         int i = rank(key);
         if (i == n) throw new NoSuchElementException("argument to ceiling() is too large");
         else return keys[i];
