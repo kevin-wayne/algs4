@@ -55,8 +55,6 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DirectColorModel;
-import java.awt.image.WritableRaster;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,9 +76,10 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 /**
+ *  <p><b>Overview.</b>
  *  The {@code StdDraw} class provides a basic capability for
  *  creating drawings with your programs. It uses a simple graphics model that
- *  allows you to create drawings consisting of points, lines, squares, 
+ *  allows you to create drawings consisting of points, lines, squares,
  *  circles, and other geometric shapes in a window on your computer and
  *  to save the drawings to a file. Standard drawing also includes
  *  facilities for text, color, pictures, and animation, along with
@@ -95,7 +94,7 @@ import javax.swing.KeyStroke;
  *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdDraw.java">StdDraw.java</a>
  *  and put a copy in your working directory.
  *  <p>
- *  Now, type the following short program into your editor:
+ *  Now, cut-and-paste the following short program into your editor:
  *  <pre>
  *   public class TestStdDraw {
  *       public static void main(String[] args) {
@@ -225,6 +224,15 @@ import javax.swing.KeyStroke;
  *  For example, {@code StdDraw.setPenColor(StdDraw.MAGENTA)} sets the
  *  pen color to magenta.
  *  <p>
+ *  <b>Window title.</b>
+ *  By default, the stanard drawing window title is "Standard Draw".
+ *  You can change the title with the following method:
+ *  <ul>
+ *  <li> {@link #setTitle(String title)}
+ *  </ul>
+ *  <p>
+ *  This sets the standard drawing window title to the specified string.
+ *  <p>
  *  <b>Canvas size.</b>
  *  By default, all drawing takes places in a 512-by-512 canvas.
  *  The canvas does not include the window title or window border.
@@ -250,7 +258,7 @@ import javax.swing.KeyStroke;
  *  <li> {@link #setScale(double min, double max)}
  *  </ul>
  *  <p>
- *  The arguments are the coordinates of the minimum and maximum 
+ *  The arguments are the coordinates of the minimum and maximum
  *  <em>x</em>- or <em>y</em>-coordinates that will appear in the canvas.
  *  For example, if you  wish to use the default coordinate system but
  *  leave a small margin, you can call {@code StdDraw.setScale(-.05, 1.05)}.
@@ -306,22 +314,22 @@ import javax.swing.KeyStroke;
  *  </ul>
  *  <p>
  *  These methods draw the specified image, centered at (<em>x</em>, <em>y</em>).
- *  The supported image formats are JPEG, PNG, and GIF.
+ *  The image must be in a supported file format (typically JPEG, PNG, GIF TIFF, and BMP).
  *  The image will display at its native size, independent of the coordinate system.
  *  Optionally, you can rotate the image a specified number of degrees counterclockwise
  *  or rescale it to fit snugly inside a width-by-height bounding box.
  *  <p>
  *  <b>Saving to a file.</b>
- *  You save your image to a file using the <em>File → Save</em> menu option.
+ *  You can save your image to a file using the <em>File → Save</em> menu option.
  *  You can also save a file programatically using the following method:
  *  <ul>
  *  <li> {@link #save(String filename)}
  *  </ul>
  *  <p>
- *  The supported image formats are JPEG and PNG. The filename must have either the
- *  extension .jpg or .png.
- *  We recommend using PNG for drawing that consist solely of geometric shapes and JPEG 
- *  for drawings that contains pictures.
+ *  You can save the drawing to a file in a supported file format
+ *  (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  We recommend using PNG for drawing that consist solely of geometric shapes
+ *  and JPEG for drawings that contains pictures.
  *  <p>
  *  <b>Clearing the canvas.</b>
  *  To clear the entire drawing canvas, you can use the following methods:
@@ -355,7 +363,7 @@ import javax.swing.KeyStroke;
  *  all drawing takes place on the <em>offscreen canvas</em>. The offscreen canvas
  *  is not displayed. Only when you call
  *  {@link #show()} does your drawing get copied from the offscreen canvas to
- *  the onscreen canvas, where it is displayed in the standard drawing window. You 
+ *  the onscreen canvas, where it is displayed in the standard drawing window. You
  *  can think of double buffering as collecting all of the lines, points, shapes,
  *  and text that you tell it to draw, and then drawing them all
  *  <em>simultaneously</em>, upon request.
@@ -580,6 +588,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     // current pen color
     private static Color penColor;
 
+    // default title of standard drawing window
+    private static final String DEFAULT_WINDOW_TITLE = "Standard Draw";
+
+    // current title of standard drawing window
+    private static String windowTitle = DEFAULT_WINDOW_TITLE;
+
     // default canvas size is DEFAULT_SIZE-by-DEFAULT_SIZE
     private static final int DEFAULT_SIZE = 512;
     private static int width  = DEFAULT_SIZE;
@@ -716,7 +730,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
         // frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-        frame.setTitle("Standard Draw");
+        frame.setTitle(windowTitle);
         frame.setJMenuBar(createMenuBar());
         frame.pack();
         frame.requestFocusInWindow();
@@ -738,7 +752,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
    /***************************************************************************
-    *  User and screen coordinate systems.
+    *  Input validation helper methods.
     ***************************************************************************/
 
     // throw an IllegalArgumentException if x is NaN or infinite
@@ -757,6 +771,26 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         if (x == null) throw new IllegalArgumentException(name + " is null");
     }
 
+
+   /***************************************************************************
+    *  Set the title of standard drawing window.
+    ***************************************************************************/
+
+    /**
+     * Sets the title of the standard drawing window to the specified string.
+     *
+     * @param  title the title
+     * @throws IllegalArgumentException if {@code title} is {@code null}
+     */
+    public static void setTitle(String title) {
+        validateNotNull(title, "title");
+        frame.setTitle(title);
+        windowTitle = title;
+    }
+
+   /***************************************************************************
+    *  User and screen coordinate systems.
+    ***************************************************************************/
 
     /**
      * Sets the <em>x</em>-scale to be the default (between 0.0 and 1.0).
@@ -1297,7 +1331,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 
     /**
-     * Draws a polygon with the vertices 
+     * Draws a polygon with the vertices
      * (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>),
      * (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), ...,
      * (<em>x</em><sub><em>n</em>–1</sub>, <em>y</em><sub><em>n</em>–1</sub>).
@@ -1331,7 +1365,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Draws a filled polygon with the vertices 
+     * Draws a filled polygon with the vertices
      * (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>),
      * (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), ...,
      * (<em>x</em><sub><em>n</em>–1</sub>, <em>y</em><sub><em>n</em>–1</sub>).
@@ -1419,7 +1453,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             URL url = new URL(filename);
             BufferedImage image = ImageIO.read(url);
             return image;
-        } 
+        }
         catch (IOException e) {
             // ignore
         }
@@ -1429,7 +1463,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             URL url = StdDraw.class.getResource(filename);
             BufferedImage image = ImageIO.read(url);
             return image;
-        } 
+        }
         catch (IOException e) {
             // ignore
         }
@@ -1439,7 +1473,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
             URL url = StdDraw.class.getResource("/" + filename);
             BufferedImage image = ImageIO.read(url);
             return image;
-        } 
+        }
         catch (IOException e) {
             // ignore
         }
@@ -1448,7 +1482,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 */
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>).
-     * The supported image formats are JPEG, PNG, and GIF.
+     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
      * As an optimization, the picture is cached, so there is no performance
      * penalty for redrawing the same image multiple times (e.g., in an animation).
      * However, if you change the picture file after drawing it, subsequent
@@ -1482,7 +1516,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>),
      * rotated given number of degrees.
-     * The supported image formats are JPEG, PNG, and GIF.
+     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1518,7 +1552,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>),
      * rescaled to the specified bounding box.
-     * The supported image formats are JPEG, PNG, and GIF.
+     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1560,7 +1594,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>), rotated
      * given number of degrees, and rescaled to the specified bounding box.
-     * The supported image formats are JPEG, PNG, and GIF.
+     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1742,7 +1776,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Enables double buffering. All subsequent calls to 
+     * Enables double buffering. All subsequent calls to
      * drawing methods such as {@code line()}, {@code circle()},
      * and {@code square()} will be deferred until the next call
      * to show(). Useful for animations.
@@ -1752,7 +1786,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
-     * Disables double buffering. All subsequent calls to 
+     * Disables double buffering. All subsequent calls to
      * drawing methods such as {@code line()}, {@code circle()},
      * and {@code square()} will be displayed on screen when called.
      * This is the default.
@@ -1768,44 +1802,32 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     /**
      * Saves the drawing to using the specified filename.
-     * The supported image formats are JPEG and PNG;
-     * the filename suffix must be {@code .jpg} or {@code .png}.
+     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
      *
-     * @param  filename the name of the file with one of the required suffixes
+     * @param  filename the name of the file with one of the required format
      * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
     public static void save(String filename) {
         validateNotNull(filename, "filename");
+        if (filename.length() == 0) throw new IllegalArgumentException("argument to save() is the empty string");
         File file = new File(filename);
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
+        if (!filename.contains(".")) suffix = "";
 
-        // png files
-        if ("png".equalsIgnoreCase(suffix)) {
-            try {
-                ImageIO.write(onscreenImage, suffix, file);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            // if the file format supports transparency (such as PNG or GIF)
+            if (ImageIO.write(onscreenImage, suffix, file)) return;
+
+            // if the file format does not support transparency (such as JPEG or BMP)
+            BufferedImage saveImage = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_RGB);
+            saveImage.createGraphics().drawImage(onscreenImage, 0, 0, Color.WHITE, null);
+            if (ImageIO.write(saveImage, suffix, file)) return;
+
+            // failed to save the file; probably wrong format
+            System.out.printf("Error: the filetype '%s' is not supported\n", suffix);
         }
-
-        // need to change from ARGB to RGB for JPEG
-        else if ("jpg".equalsIgnoreCase(suffix)) {
-            // Credit to arnabanimesh for simpler ARGB to RGB conversion
-            BufferedImage rgbBuffer = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_RGB);
-            Graphics2D rgb2d = rgbBuffer.createGraphics();
-            rgb2d.drawImage(onscreenImage, 0, 0, null);
-            rgb2d.dispose();
-            try {
-                ImageIO.write(rgbBuffer, suffix, file);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        else {
-            System.out.println("Invalid image file type: " + suffix);
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -2037,7 +2059,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     ***************************************************************************/
 
     private static class RetinaImageIcon extends ImageIcon {
-    
+
         public RetinaImageIcon(Image image) {
             super(image);
         }
@@ -2098,7 +2120,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
