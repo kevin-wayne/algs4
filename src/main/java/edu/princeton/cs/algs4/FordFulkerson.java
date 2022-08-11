@@ -4,7 +4,7 @@
  *  Dependencies: FlowNetwork.java FlowEdge.java Queue.java
  *  Data files:   https://algs4.cs.princeton.edu/65maxflow/tinyFN.txt
  *
- *  Ford-Fulkerson algorithm for computing a max flow and 
+ *  Ford-Fulkerson algorithm for computing a max flow and
  *  a min cut using shortest augmenting path rule.
  *
  ******************************************************************************/
@@ -44,7 +44,7 @@ public class FordFulkerson {
     private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
     private FlowEdge[] edgeTo;    // edgeTo[v] = last edge on shortest residual s->v path
     private double value;         // current value of max flow
-  
+
     /**
      * Compute a maximum flow and minimum cut in the network {@code G}
      * from vertex {@code s} to vertex {@code t}.
@@ -76,7 +76,7 @@ public class FordFulkerson {
 
             // augment flow
             for (int v = t; v != s; v = edgeTo[v].other(v)) {
-                edgeTo[v].addResidualFlowTo(v, bottle); 
+                edgeTo[v].addResidualFlowTo(v, bottle);
             }
 
             value += bottle;
@@ -115,7 +115,7 @@ public class FordFulkerson {
     }
 
 
-    // is there an augmenting path? 
+    // is there an augmenting path?
     // if so, upon termination edgeTo[] will contain a parent-link representation of such a path
     // this implementation finds a shortest augmenting path (fewest number of edges),
     // which performs well both in theory and in practice
@@ -270,7 +270,7 @@ public class FordFulkerson {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -27,7 +27,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code FrequencyCounter} class provides a client for 
+ *  The {@code FrequencyCounter} class provides a client for
  *  reading in a sequence of words and printing a word (exceeding
  *  a given length) that occurs most frequently. It is useful as
  *  a test client for various symbol table implementations.
@@ -86,7 +86,7 @@ public class FrequencyCounter {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac Quick3string.java
  *  Execution:    java Quick3string < input.txt
- *  Dependencies: StdIn.java StdOut.java 
+ *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
  *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
@@ -43,9 +43,9 @@ public class Quick3string {
     private static final int CUTOFF =  15;   // cutoff to insertion sort
 
     // do not instantiate
-    private Quick3string() { } 
+    private Quick3string() { }
 
-    /**  
+    /**
      * Rearranges the array of strings in ascending order.
      *
      * @param a the array to be sorted
@@ -57,7 +57,7 @@ public class Quick3string {
     }
 
     // return the dth character of s, -1 if d = length of s
-    private static int charAt(String s, int d) { 
+    private static int charAt(String s, int d) {
         assert d >= 0 && d <= s.length();
         if (d == s.length()) return -1;
         return s.charAt(d);
@@ -65,7 +65,7 @@ public class Quick3string {
 
 
     // 3-way string quicksort a[lo..hi] starting at dth character
-    private static void sort(String[] a, int lo, int hi, int d) { 
+    private static void sort(String[] a, int lo, int hi, int d) {
 
         // cutoff to insertion sort for small subarrays
         if (hi <= lo + CUTOFF) {
@@ -83,7 +83,7 @@ public class Quick3string {
             else              i++;
         }
 
-        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
+        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
         sort(a, lo, lt-1, d);
         if (v >= 0) sort(a, lt, gt, d+1);
         sort(a, gt+1, hi, d);
@@ -107,7 +107,7 @@ public class Quick3string {
     // DEPRECATED BECAUSE OF SLOW SUBSTRING EXTRACTION IN JAVA 7
     // private static boolean less(String v, String w, int d) {
     //    assert v.substring(0, d).equals(w.substring(0, d));
-    //    return v.substring(d).compareTo(w.substring(d)) < 0; 
+    //    return v.substring(d).compareTo(w.substring(d)) < 0;
     // }
 
     // is v less than w, starting at character d
@@ -151,7 +151,7 @@ public class Quick3string {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

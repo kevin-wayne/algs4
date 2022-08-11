@@ -5,21 +5,21 @@
  *  Data files:   https://algs4.cs.princeton.edu/24pq/m1.txt
  *                https://algs4.cs.princeton.edu/24pq/m2.txt
  *                https://algs4.cs.princeton.edu/24pq/m3.txt
- * 
+ *
  *  Merges together the sorted input stream given as command-line arguments
  *  into a single sorted output stream on standard output.
  *
- *  % more m1.txt 
+ *  % more m1.txt
  *  A B C F G I I Z
  *
- *  % more m2.txt 
+ *  % more m2.txt
  *  B D H P Q Q
- * 
- *  % more m3.txt 
+ *
+ *  % more m3.txt
  *  A B E F J N
  *
- *  % java Multiway m1.txt m2.txt m3.txt 
- *  A A B B B C D E F F G H I I J N P Q Q Z 
+ *  % java Multiway m1.txt m2.txt m3.txt
+ *  A A B B B C D E F F G H I I J N P Q Q Z
  *
  ******************************************************************************/
 
@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  *  sorted text files and merging them together into a single sorted
  *  text stream.
  *  This implementation uses a {@link IndexMinPQ} to perform the multiway
- *  merge. 
+ *  merge.
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/24pq">Section 2.4</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -39,7 +39,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 
-public class Multiway { 
+public class Multiway {
 
     // This class should not be instantiated.
     private Multiway() { }
@@ -52,7 +52,7 @@ public class Multiway {
             if (!streams[i].isEmpty())
                 pq.insert(i, streams[i].readString());
 
-        // Extract and print min and read next from its stream. 
+        // Extract and print min and read next from its stream.
         while (!pq.isEmpty()) {
             StdOut.print(pq.minKey() + " ");
             int i = pq.delMin();
@@ -81,7 +81,7 @@ public class Multiway {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

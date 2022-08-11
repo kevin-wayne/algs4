@@ -3,7 +3,7 @@
  *  Execution:    java ST < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyST.txt
- *  
+ *
  *  Sorted symbol table implementation using a java.util.TreeMap.
  *  Does not allow duplicates.
  *
@@ -80,7 +80,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * Inserts the specified key-value pair into the symbol table, overwriting the old
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
      * if the specified value is {@code null}.
@@ -96,7 +96,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Removes the specified key and its associated value from this symbol table     
+     * Removes the specified key and its associated value from this symbol table
      * (if the key is in this symbol table).
      * This is equivalent to {@code remove()}, but we plan to deprecate {@code delete()}.
      *
@@ -109,7 +109,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
     }
 
     /**
-     * Removes the specified key and its associated value from this symbol table     
+     * Removes the specified key and its associated value from this symbol table
      * (if the key is in this symbol table).
      * This is equivalent to {@code delete()}, but we plan to deprecate {@code delete()}.
      *
@@ -250,7 +250,7 @@ public class ST<Key extends Comparable<Key>, Value> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

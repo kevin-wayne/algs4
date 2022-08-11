@@ -27,7 +27,7 @@
  *  ...
  *
  *  % java DijkstraUndirectedSP largeEWG.txt 0
- *  0 to 0 (0.00)  
+ *  0 to 0 (0.00)
  *  0 to 1 (0.78)  0-460790 0.00190  460790-696678 0.00173   ...   1-826350 0.00191
  *  0 to 2 (0.61)  0-15786  0.00130  15786-53370   0.00113   ...   2-793420 0.00040
  *  0 to 3 (0.31)  0-460790 0.00190  460790-752483 0.00194   ...   3-698373 0.00172
@@ -50,9 +50,9 @@ package edu.princeton.cs.algs4;
  *  It uses &Theta;(<em>V</em>) extra space (not including the
  *  edge-weighted graph).
  *  <p>
- *  For additional documentation,    
- *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  See {@link DijkstraSP} for a version on edge-weighted digraphs.
  *  <p>
  *  This correctly computes shortest paths if all arithmetic performed is
@@ -259,7 +259,7 @@ public class DijkstraUndirectedSP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,13 +2,13 @@
  *  Compilation:  javac BinarySearchST.java
  *  Execution:    java BinarySearchST
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt  
- *  
+ *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt
+ *
  *  Symbol table implementation with binary search in an ordered array.
  *
  *  % more tinyST.txt
  *  S E A R C H E X A M P L E
- *  
+ *
  *  % java BinarySearchST < tinyST.txt
  *  A 8
  *  C 4
@@ -82,10 +82,10 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * Initializes an empty symbol table with the specified initial capacity.
      * @param capacity the maximum capacity
      */
-    public BinarySearchST(int capacity) { 
-        keys = (Key[]) new Comparable[capacity]; 
-        vals = (Value[]) new Object[capacity]; 
-    }   
+    public BinarySearchST(int capacity) {
+        keys = (Key[]) new Comparable[capacity];
+        vals = (Value[]) new Object[capacity];
+    }
 
     // resize the underlying arrays
     private void resize(int capacity) {
@@ -142,12 +142,12 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to get() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         if (isEmpty()) return null;
-        int i = rank(key); 
+        int i = rank(key);
         if (i < n && keys[i].compareTo(key) == 0) return vals[i];
         return null;
-    } 
+    }
 
     /**
      * Returns the number of keys in this symbol table strictly less than {@code key}.
@@ -157,23 +157,23 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public int rank(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to rank() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to rank() is null");
 
-        int lo = 0, hi = n-1; 
-        while (lo <= hi) { 
-            int mid = lo + (hi - lo) / 2; 
+        int lo = 0, hi = n-1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
             int cmp = key.compareTo(keys[mid]);
-            if      (cmp < 0) hi = mid - 1; 
-            else if (cmp > 0) lo = mid + 1; 
-            else return mid; 
-        } 
+            if      (cmp < 0) hi = mid - 1;
+            else if (cmp > 0) lo = mid + 1;
+            else return mid;
+        }
         return lo;
-    } 
+    }
 
 
 
     /**
-     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * Inserts the specified key-value pair into the symbol table, overwriting the old
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
      * if the specified value is {@code null}.
@@ -183,7 +183,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val)  {
-        if (key == null) throw new IllegalArgumentException("first argument to put() is null"); 
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
 
         if (val == null) {
             delete(key);
@@ -210,7 +210,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         n++;
 
         assert check();
-    } 
+    }
 
     /**
      * Removes the specified key and associated value from this symbol table
@@ -220,7 +220,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to delete() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         if (isEmpty()) return;
 
         // compute rank
@@ -244,7 +244,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         if (n > 0 && n == keys.length/4) resize(keys.length/2);
 
         assert check();
-    } 
+    }
 
     /**
      * Removes the smallest key and associated value from this symbol table.
@@ -279,7 +279,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      */
     public Key min() {
         if (isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
-        return keys[0]; 
+        return keys[0];
     }
 
     /**
@@ -317,7 +317,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key floor(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to floor() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to floor() is null");
         int i = rank(key);
         if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
         if (i == 0) throw new NoSuchElementException("argument to floor() is too small");
@@ -333,7 +333,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Key ceiling(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         int i = rank(key);
         if (i == n) throw new NoSuchElementException("argument to ceiling() is too large");
         else return keys[i];
@@ -344,14 +344,14 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param lo minimum endpoint
      * @param hi maximum endpoint
-     * @return the number of keys in this symbol table between {@code lo} 
+     * @return the number of keys in this symbol table between {@code lo}
      *         (inclusive) and {@code hi} (inclusive)
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *         is {@code null}
      */
     public int size(Key lo, Key hi) {
-        if (lo == null) throw new IllegalArgumentException("first argument to size() is null"); 
-        if (hi == null) throw new IllegalArgumentException("second argument to size() is null"); 
+        if (lo == null) throw new IllegalArgumentException("first argument to size() is null");
+        if (hi == null) throw new IllegalArgumentException("second argument to size() is null");
 
         if (lo.compareTo(hi) > 0) return 0;
         if (contains(hi)) return rank(hi) - rank(lo) + 1;
@@ -375,21 +375,21 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param lo minimum endpoint
      * @param hi maximum endpoint
-     * @return all keys in this symbol table between {@code lo} 
+     * @return all keys in this symbol table between {@code lo}
      *         (inclusive) and {@code hi} (inclusive)
      * @throws IllegalArgumentException if either {@code lo} or {@code hi}
      *         is {@code null}
      */
     public Iterable<Key> keys(Key lo, Key hi) {
-        if (lo == null) throw new IllegalArgumentException("first argument to keys() is null"); 
-        if (hi == null) throw new IllegalArgumentException("second argument to keys() is null"); 
+        if (lo == null) throw new IllegalArgumentException("first argument to keys() is null");
+        if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
-        Queue<Key> queue = new Queue<Key>(); 
+        Queue<Key> queue = new Queue<Key>();
         if (lo.compareTo(hi) > 0) return queue;
-        for (int i = rank(lo); i < rank(hi); i++) 
+        for (int i = rank(lo); i < rank(hi); i++)
             queue.enqueue(keys[i]);
         if (contains(hi)) queue.enqueue(keys[rank(hi)]);
-        return queue; 
+        return queue;
     }
 
 
@@ -423,7 +423,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         BinarySearchST<String, Integer> st = new BinarySearchST<String, Integer>();
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
@@ -435,7 +435,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

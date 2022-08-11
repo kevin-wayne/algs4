@@ -26,7 +26,7 @@ import java.io.IOException;
  *  The client must {@code flush()} the output stream when finished writing bits.
  *  <p>
  *  The client should not intermix calls to {@code BinaryStdOut} with calls
- *  to {@code StdOut} or {@code System.out}; otherwise unexpected behavior 
+ *  to {@code StdOut} or {@code System.out}; otherwise unexpected behavior
  *  will result.
  *
  *  @author Robert Sedgewick
@@ -62,7 +62,7 @@ public final class BinaryStdOut {
         // if buffer is full (8 bits), write out as a single byte
         n++;
         if (n == 8) clearBuffer();
-    } 
+    }
 
    /**
      * Writes the 8-bit byte to standard output.
@@ -142,7 +142,7 @@ public final class BinaryStdOut {
      */
     public static void write(boolean x) {
         writeBit(x);
-    } 
+    }
 
    /**
      * Writes the 8-bit byte to standard output.
@@ -299,7 +299,7 @@ public final class BinaryStdOut {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

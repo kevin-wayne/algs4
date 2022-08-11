@@ -4,7 +4,7 @@
  *  Dependencies: Digraph.java
  *
  *  A digraph generator.
- *  
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -57,8 +57,8 @@ public class DigraphGenerator {
         Digraph G = new Digraph(V);
         SET<Edge> set = new SET<Edge>();
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(v, w);
             if ((v != w) && !set.contains(e)) {
                 set.add(e);
@@ -69,7 +69,7 @@ public class DigraphGenerator {
     }
 
    /**
-     * Returns a random simple digraph on {@code V} vertices, with an 
+     * Returns a random simple digraph on {@code V} vertices, with an
      * edge between any two vertices with probability {@code p}. This is sometimes
      * referred to as the Erdos-Renyi random digraph model.
      * This implementations takes time propotional to V^2 (even if {@code p} is small).
@@ -125,8 +125,8 @@ public class DigraphGenerator {
             vertices[i] = i;
         StdRandom.shuffle(vertices);
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(v, w);
             if ((v < w) && !set.contains(e)) {
                 set.add(e);
@@ -198,15 +198,15 @@ public class DigraphGenerator {
 
         // one edge pointing from each vertex, other than the root = vertices[V-1]
         for (int v = 0; v < V-1; v++) {
-            int w = StdRandom.uniform(v+1, V);
+            int w = StdRandom.uniformInt(v+1, V);
             Edge e = new Edge(v, w);
             set.add(e);
             G.addEdge(vertices[v], vertices[w]);
         }
 
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(v, w);
             if ((v < w) && !set.contains(e)) {
                 set.add(e);
@@ -259,15 +259,15 @@ public class DigraphGenerator {
 
         // one edge pointing from each vertex, other than the root = vertices[V-1]
         for (int v = 0; v < V-1; v++) {
-            int w = StdRandom.uniform(v+1, V);
+            int w = StdRandom.uniformInt(v+1, V);
             Edge e = new Edge(w, v);
             set.add(e);
             G.addEdge(vertices[w], vertices[v]);
         }
 
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(w, v);
             if ((v < w) && !set.contains(e)) {
                 set.add(e);
@@ -370,7 +370,7 @@ public class DigraphGenerator {
         Digraph G = new Digraph(V);
         int[] vertices = new int[E];
         for (int i = 0; i < E; i++)
-            vertices[i] = StdRandom.uniform(V);
+            vertices[i] = StdRandom.uniformInt(V);
         for (int i = 0; i < E-1; i++) {
             G.addEdge(vertices[i], vertices[i+1]);
         }
@@ -395,7 +395,7 @@ public class DigraphGenerator {
         Digraph G = new Digraph(V);
         int[] vertices = new int[E+1];
         for (int i = 0; i < E+1; i++)
-            vertices[i] = StdRandom.uniform(V);
+            vertices[i] = StdRandom.uniformInt(V);
         for (int i = 0; i < E; i++) {
             G.addEdge(vertices[i], vertices[i+1]);
         }
@@ -405,10 +405,10 @@ public class DigraphGenerator {
    /**
      * Returns a random simple digraph on {@code V} vertices, {@code E}
      * edges and (at least) {@code c} strong components. The vertices are randomly
-     * assigned integer labels between {@code 0} and {@code c-1} (corresponding to 
+     * assigned integer labels between {@code 0} and {@code c-1} (corresponding to
      * strong components). Then, a strong component is creates among the vertices
      * with the same label. Next, random edges (either between two vertices with
-     * the same labels or from a vetex with a smaller label to a vertex with a 
+     * the same labels or from a vetex with a smaller label to a vertex with a
      * larger label). The number of components will be equal to the number of
      * distinct labels that are assigned to vertices.
      *
@@ -435,7 +435,7 @@ public class DigraphGenerator {
 
         int[] label = new int[V];
         for (int v = 0; v < V; v++)
-            label[v] = StdRandom.uniform(c);
+            label[v] = StdRandom.uniformInt(c);
 
         // make all vertices with label c a strong component by
         // combining a rooted in-tree and a rooted out-tree
@@ -457,7 +457,7 @@ public class DigraphGenerator {
 
             // rooted-in tree with root = vertices[count-1]
             for (int v = 0; v < count-1; v++) {
-                int w = StdRandom.uniform(v+1, count);
+                int w = StdRandom.uniformInt(v+1, count);
                 Edge e = new Edge(w, v);
                 set.add(e);
                 G.addEdge(vertices[w], vertices[v]);
@@ -465,7 +465,7 @@ public class DigraphGenerator {
 
             // rooted-out tree with root = vertices[count-1]
             for (int v = 0; v < count-1; v++) {
-                int w = StdRandom.uniform(v+1, count);
+                int w = StdRandom.uniformInt(v+1, count);
                 Edge e = new Edge(v, w);
                 set.add(e);
                 G.addEdge(vertices[v], vertices[w]);
@@ -473,8 +473,8 @@ public class DigraphGenerator {
         }
 
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(v, w);
             if (!set.contains(e) && v != w && label[v] <= label[w]) {
                 set.add(e);
@@ -549,7 +549,7 @@ public class DigraphGenerator {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

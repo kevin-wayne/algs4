@@ -4,7 +4,7 @@
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/11model/cards.txt
  *                https://algs4.cs.princeton.edu/11model/cardsUnicode.txt
- *  
+ *
  *  Reads in a list of strings and prints them in random order.
  *  The Knuth (or Fisher-Yates) shuffling algorithm guarantees
  *  to rearrange the elements in uniformly random order, under
@@ -27,11 +27,11 @@
  *  KH
  *
  *  % more cardsUnicode.txt
- *  2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♣ 
- *  2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♦ 
- *  2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♥ 
- *  2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠ A♠ 
- * 
+ *  2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♣
+ *  2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♦
+ *  2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♥
+ *  2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠ A♠
+ *
  *  % java Knuth < cardsUnicode.txt
  *  2♠
  *  K♥
@@ -46,7 +46,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Knuth} class provides a client for reading in a 
+ *  The {@code Knuth} class provides a client for reading in a
  *  sequence of strings and <em>shuffling</em> them using the Knuth (or Fisher-Yates)
  *  shuffling algorithm. This algorithm guarantees to rearrange the
  *  elements in uniformly random order, under
@@ -62,7 +62,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Knuth { 
+public class Knuth {
 
     // this class should not be instantiated
     private Knuth() { }
@@ -122,7 +122,7 @@ public class Knuth {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

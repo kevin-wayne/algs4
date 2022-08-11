@@ -99,7 +99,7 @@ public final class BinaryOut {
         // if buffer is full (8 bits), write out as a single byte
         n++;
         if (n == 8) clearBuffer();
-    } 
+    }
 
    /**
      * Writes the 8-bit byte to the binary output stream.
@@ -175,7 +175,7 @@ public final class BinaryOut {
      */
     public void write(boolean x) {
         writeBit(x);
-    } 
+    }
 
    /**
      * Writes the 8-bit byte to the binary output stream.
@@ -341,7 +341,7 @@ public final class BinaryOut {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

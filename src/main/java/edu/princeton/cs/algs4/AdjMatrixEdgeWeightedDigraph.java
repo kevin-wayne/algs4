@@ -5,7 +5,7 @@
  *
  *  An edge-weighted digraph, implemented using an adjacency matrix.
  *  Parallel edges are disallowed; self-loops are allowed.
- *  
+ *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
@@ -41,7 +41,7 @@ public class AdjMatrixEdgeWeightedDigraph {
     private final int V;
     private int E;
     private DirectedEdge[][] adj;
-    
+
     /**
      * Initializes an empty edge-weighted digraph with {@code V} vertices and 0 edges.
      * @param V the number of vertices
@@ -68,9 +68,9 @@ public class AdjMatrixEdgeWeightedDigraph {
 
         // can be inefficient
         while (this.E != E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
-            double weight = Math.round(100 * StdRandom.uniform()) / 100.0;
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
+            double weight = 0.01 * StdRandom.uniformInt(0, 100);
             addEdge(new DirectedEdge(v, w, weight));
         }
     }
@@ -192,7 +192,7 @@ public class AdjMatrixEdgeWeightedDigraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

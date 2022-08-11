@@ -3,12 +3,12 @@
  *  Execution:    java MaxPQ < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/24pq/tinyPQ.txt
- *  
+ *
  *  Generic max priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order,
  *  but the generic Key type must still be Comparable.
  *
- *  % java MaxPQ < tinyPQ.txt 
+ *  % java MaxPQ < tinyPQ.txt
  *  Q X P (6 left on pq)
  *
  *  We use a one-based array to simplify parent and child calculations.
@@ -34,9 +34,9 @@ import java.util.NoSuchElementException;
  *  This implementation uses a <em>binary heap</em>.
  *  The <em>insert</em> and <em>delete-the-maximum</em> operations take
  *  &Theta;(log <em>n</em>) amortized time, where <em>n</em> is the number
- *  of elements in the priority queue. This is an amortized bound 
+ *  of elements in the priority queue. This is an amortized bound
  *  (and not a worst-case bound) because of array resizing operations.
- *  The <em>min</em>, <em>size</em>, and <em>is-empty</em> operations take 
+ *  The <em>min</em>, <em>size</em>, and <em>is-empty</em> operations take
  *  &Theta;(1) time in the worst case.
  *  Construction takes time proportional to the specified capacity or the
  *  number of items used to initialize the data structure.
@@ -110,7 +110,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
             sink(k);
         assert isMaxHeap();
     }
-      
+
 
 
     /**
@@ -306,7 +306,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

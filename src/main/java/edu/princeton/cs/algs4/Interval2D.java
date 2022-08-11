@@ -2,7 +2,7 @@
  *  Compilation:  javac Interval2D.java
  *  Execution:    java Interval2D
  *  Dependencies: StdOut.java Interval1D.java StdDraw.java
- *  
+ *
  *  2-dimensional interval data type.
  *
  ******************************************************************************/
@@ -19,9 +19,9 @@ package edu.princeton.cs.algs4;
  *  a two-dimensional interval contains a point and determining whether
  *  two two-dimensional intervals intersect.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -68,7 +68,7 @@ public class Interval2D {
     public double area() {
         return x.length() * y.length();
     }
-        
+
     /**
      * Returns a string representation of this two-dimensional interval.
      * @return a string representation of this two-dimensional interval
@@ -91,10 +91,10 @@ public class Interval2D {
         return this.x.equals(that.x) && this.y.equals(that.y);
     }
 
- 
+
     /**
-     * Returns an integer hash code for this interval.  
-     * @return an integer hash code for this interval 
+     * Returns an integer hash code for this interval.
+     * @return an integer hash code for this interval
      */
     public int hashCode() {
         int hash1 = x.hashCode();
@@ -130,8 +130,8 @@ public class Interval2D {
 
         Counter counter = new Counter("hits");
         for (int t = 0; t < trials; t++) {
-            double x = StdRandom.uniform(0.0, 1.0);
-            double y = StdRandom.uniform(0.0, 1.0);
+            double x = StdRandom.uniformDouble(0.0, 1.0);
+            double y = StdRandom.uniformDouble(0.0, 1.0);
             Point2D point = new Point2D(x, y);
 
             if (box.contains(point)) counter.increment();
@@ -144,7 +144,7 @@ public class Interval2D {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

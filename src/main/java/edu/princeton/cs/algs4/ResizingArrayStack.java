@@ -3,10 +3,10 @@
  *  Execution:    java ResizingArrayStack < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
- *  
+ *
  *  Stack implementation with a resizing array.
  *
- *  % more tobe.txt 
+ *  % more tobe.txt
  *  to be or not to - be - - that - - - is
  *
  *  % java ResizingArrayStack < tobe.txt
@@ -30,7 +30,7 @@ import java.util.NoSuchElementException;
  *  when it is full and halves the underlying array when it is one-quarter full.
  *  The <em>push</em> and <em>pop</em> operations take constant amortized time.
  *  The <em>size</em>, <em>peek</em>, and <em>is-empty</em> operations takes
- *  constant time in the worst case. 
+ *  constant time in the worst case.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/13stacks">Section 1.3</a> of
@@ -173,7 +173,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

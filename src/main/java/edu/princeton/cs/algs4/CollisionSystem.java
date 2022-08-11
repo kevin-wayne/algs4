@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac CollisionSystem.java
  *  Execution:    java CollisionSystem n               (n random particles)
- *                java CollisionSystem < input.txt     (from a file) 
+ *                java CollisionSystem < input.txt     (from a file)
  *  Dependencies: StdDraw.java Particle.java MinPQ.java
  *  Data files:   https://algs4.cs.princeton.edu/61event/diffusion.txt
  *                https://algs4.cs.princeton.edu/61event/diffusion2.txt
@@ -10,7 +10,7 @@
  *                https://algs4.cs.princeton.edu/61event/brownian2.txt
  *                https://algs4.cs.princeton.edu/61event/billiards5.txt
  *                https://algs4.cs.princeton.edu/61event/pendulum.txt
- *  
+ *
  *  Creates n random particles and simulates their motion according
  *  to the laws of elastic collisions.
  *
@@ -25,9 +25,9 @@ import java.awt.Color;
  *  moving in the unit box, according to the laws of elastic collision.
  *  This event-based simulation relies on a priority queue.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -80,14 +80,14 @@ public class CollisionSystem {
         }
     }
 
-      
+
     /**
      * Simulates the system of particles for the specified amount of time.
      *
      * @param  limit the amount of time
      */
     public void simulate(double limit) {
-        
+
         // initialize PQ with collision events and redraw event
         pq = new MinPQ<Event>();
         for (int i = 0; i < particles.length; i++) {
@@ -97,7 +97,7 @@ public class CollisionSystem {
 
 
         // the main event-driven simulation loop
-        while (!pq.isEmpty()) { 
+        while (!pq.isEmpty()) {
 
             // get impending event, discard if invalidated
             Event e = pq.delMin();
@@ -138,8 +138,8 @@ public class CollisionSystem {
         private final double time;         // time that event is scheduled to occur
         private final Particle a, b;       // particles involved in event, possibly null
         private final int countA, countB;  // collision counts at event creation
-                
-        
+
+
         // create a new event to occur at time t involving a and b
         public Event(double t, Particle a, Particle b) {
             this.time = t;
@@ -155,14 +155,14 @@ public class CollisionSystem {
         public int compareTo(Event that) {
             return Double.compare(this.time, that.time);
         }
-        
+
         // has any collision occurred between when event was created and now?
         public boolean isValid() {
             if (a != null && a.count() != countA) return false;
             if (b != null && b.count() != countB) return false;
             return true;
         }
-   
+
     }
 
 
@@ -215,11 +215,11 @@ public class CollisionSystem {
         CollisionSystem system = new CollisionSystem(particles);
         system.simulate(10000);
     }
-      
+
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

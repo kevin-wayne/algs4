@@ -3,12 +3,12 @@
  *  Execution:    java TopM m < input.txt
  *  Dependencies: MinPQ.java Transaction.java StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/24pq/tinyBatch.txt
- * 
+ *
  *  Given an integer m from the command line and an input stream where
  *  each line contains a String and a long value, this MinPQ client
  *  prints the m lines whose numbers are the highest.
- * 
- *  % java TopM 5 < tinyBatch.txt 
+ *
+ *  % java TopM 5 < tinyBatch.txt
  *  Thompson    2/27/2000  4747.08
  *  vonNeumann  2/12/1994  4732.35
  *  vonNeumann  1/11/1999  4409.74
@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class TopM {   
+public class TopM {
 
     // This class should not be instantiated.
     private TopM() { }
@@ -45,17 +45,17 @@ public class TopM {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        int m = Integer.parseInt(args[0]); 
+        int m = Integer.parseInt(args[0]);
         MinPQ<Transaction> pq = new MinPQ<Transaction>(m+1);
 
         while (StdIn.hasNextLine()) {
-            // Create an entry from the next line and put on the PQ. 
+            // Create an entry from the next line and put on the PQ.
             String line = StdIn.readLine();
             Transaction transaction = new Transaction(line);
-            pq.insert(transaction); 
+            pq.insert(transaction);
 
             // remove minimum if m+1 entries on the PQ
-            if (pq.size() > m) 
+            if (pq.size() > m)
                 pq.delMin();
         }   // top m entries are on the PQ
 
@@ -65,12 +65,12 @@ public class TopM {
             stack.push(transaction);
         for (Transaction transaction : stack)
             StdOut.println(transaction);
-    } 
-} 
+    }
+}
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

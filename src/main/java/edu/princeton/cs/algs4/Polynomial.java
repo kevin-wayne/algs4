@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This computes correct results if all arithmetic performed is
  *  without overflow.
- *  <p> 
+ *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -143,9 +143,9 @@ public class Polynomial {
     }
 
 
-    /**       
+    /**
      * Compares this polynomial to the specified polynomial.
-     *       
+     *
      * @param  other the other polynoimal
      * @return {@code true} if this polynomial equals {@code other};
      *         {@code false} otherwise
@@ -235,7 +235,7 @@ public class Polynomial {
      *
      * @param args the command-line arguments (none)
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         Polynomial zero = new Polynomial(0, 0);
 
         Polynomial p1   = new Polynomial(4, 3);
@@ -269,7 +269,7 @@ public class Polynomial {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

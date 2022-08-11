@@ -8,18 +8,18 @@
  *  KMP algorithm.
  *
  *  % java KMP abracadabra abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
- *  pattern:               abracadabra          
+ *  text:    abacadabrabracabracadabrabrabracad
+ *  pattern:               abracadabra
  *
  *  % java KMP rab abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
+ *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:         rab
  *
  *  % java KMP bcara abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
+ *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:                                   bcara
  *
- *  % java KMP rabrabracad abacadabrabracabracadabrabrabracad 
+ *  % java KMP rabrabracad abacadabrabracabracadabrabrabracad
  *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:                        rabrabracad
  *
@@ -60,15 +60,15 @@ public class KMP {
         this.m = pat.length();
 
         // build DFA from pattern
-        dfa = new int[R][m]; 
-        dfa[pat.charAt(0)][0] = 1; 
+        dfa = new int[R][m];
+        dfa[pat.charAt(0)][0] = 1;
         for (int x = 0, j = 1; j < m; j++) {
-            for (int c = 0; c < R; c++) 
-                dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
-            dfa[pat.charAt(j)][j] = j+1;   // Set match case. 
-            x = dfa[pat.charAt(j)][x];     // Update restart state. 
-        } 
-    } 
+            for (int c = 0; c < R; c++)
+                dfa[c][j] = dfa[c][x];     // Copy mismatch cases.
+            dfa[pat.charAt(j)][j] = j+1;   // Set match case.
+            x = dfa[pat.charAt(j)][x];     // Update restart state.
+        }
+    }
 
     /**
      * Preprocesses the pattern string.
@@ -82,15 +82,15 @@ public class KMP {
 
         // build DFA from pattern
         int m = pattern.length;
-        dfa = new int[R][m]; 
-        dfa[pattern[0]][0] = 1; 
+        dfa = new int[R][m];
+        dfa[pattern[0]][0] = 1;
         for (int x = 0, j = 1; j < m; j++) {
-            for (int c = 0; c < R; c++) 
-                dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
-            dfa[pattern[j]][j] = j+1;      // Set match case. 
-            x = dfa[pattern[j]][x];        // Update restart state. 
-        } 
-    } 
+            for (int c = 0; c < R; c++)
+                dfa[c][j] = dfa[c][x];     // Copy mismatch cases.
+            dfa[pattern[j]][j] = j+1;      // Set match case.
+            x = dfa[pattern[j]][x];        // Update restart state.
+        }
+    }
 
     /**
      * Returns the index of the first occurrrence of the pattern string
@@ -133,7 +133,7 @@ public class KMP {
     }
 
 
-    /** 
+    /**
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
@@ -168,7 +168,7 @@ public class KMP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

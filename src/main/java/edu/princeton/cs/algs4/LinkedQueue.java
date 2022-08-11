@@ -2,11 +2,11 @@
  *  Compilation:  javac LinkedQueue.java
  *  Execution:    java LinkedQueue < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt  
+ *  Data files:   https://algs4.cs.princeton.edu/13stacks/tobe.txt
  *
  *  A generic queue, implemented using a singly linked list.
  *
- *  % java Queue < tobe.txt 
+ *  % java Queue < tobe.txt
  *  to be or not to be (2 left on queue)
  *
  ******************************************************************************/
@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
  *  testing if the queue is empty, and iterating through
  *  the items in FIFO order.
  *  <p>
- *  This implementation uses a singly linked list with a non-static nested class 
+ *  This implementation uses a singly linked list with a non-static nested class
  *  for linked-list nodes.  See {@link Queue} for a version that uses a static nested class.
  *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
@@ -69,7 +69,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
      * @return the number of items in this queue
      */
     public int size() {
-        return n;     
+        return n;
     }
 
     /**
@@ -121,7 +121,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         for (Item item : this)
             s.append(item + " ");
         return s.toString();
-    } 
+    }
 
     // check internal invariants
     private boolean check() {
@@ -159,15 +159,15 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         }
 
         return true;
-    } 
- 
+    }
+
 
     /**
      * Returns an iterator that iterates over the items in this queue in FIFO order.
      * @return an iterator that iterates over the items in this queue in FIFO order
      */
     public Iterator<Item> iterator()  {
-        return new LinkedIterator();  
+        return new LinkedIterator();
     }
 
     // an iterator, doesn't implement remove() since it's optional
@@ -180,7 +180,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }
@@ -205,7 +205,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -4,8 +4,8 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
- *  
- *  Sorts a sequence of strings from standard input using 
+ *
+ *  Sorts a sequence of strings from standard input using
  *  binary insertion sort with half exchanges.
  *
  *  % more tiny.txt
@@ -64,7 +64,7 @@ public class BinaryInsertion {
             Comparable v = a[i];
             int lo = 0, hi = i;
             while (lo < hi) {
-                int mid = lo + (hi - lo) / 2; 
+                int mid = lo + (hi - lo) / 2;
                 if (less(v, a[mid])) hi = mid;
                 else                 lo = mid + 1;
             }
@@ -83,7 +83,7 @@ public class BinaryInsertion {
    /***************************************************************************
     *  Helper sorting function.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -124,7 +124,7 @@ public class BinaryInsertion {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

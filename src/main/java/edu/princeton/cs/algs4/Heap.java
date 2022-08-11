@@ -4,7 +4,7 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/24pq/tiny.txt
  *                https://algs4.cs.princeton.edu/24pq/words3.txt
- *  
+ *
  *  Sorts a sequence of strings from standard input using heapsort.
  *
  *  % more tiny.txt
@@ -29,7 +29,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  This implementation takes &Theta;(<em>n</em> log <em>n</em>) time
  *  to sort any array of length <em>n</em> (assuming comparisons
- *  take constant time). It makes at most 
+ *  take constant time). It makes at most
  *  2 <em>n</em> log<sub>2</sub> <em>n</em> compares.
  *  <p>
  *  This sorting algorithm is not stable.
@@ -102,8 +102,8 @@ public class Heap {
     }
 
     /**
-     * Reads in a sequence of strings from standard input; heapsorts them; 
-     * and prints them to standard output in ascending order. 
+     * Reads in a sequence of strings from standard input; heapsorts them;
+     * and prints them to standard output in ascending order.
      *
      * @param args the command-line arguments
      */
@@ -115,7 +115,7 @@ public class Heap {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

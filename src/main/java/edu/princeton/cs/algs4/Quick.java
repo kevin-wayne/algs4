@@ -6,7 +6,7 @@
  *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
  *
  *  Sorts a sequence of strings from standard input using quicksort.
- *   
+ *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
@@ -15,7 +15,7 @@
  *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
- *       
+ *
  *  % java Quick < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
@@ -33,7 +33,7 @@ package edu.princeton.cs.algs4;
  *  array and selecting the ith smallest element in an array using quicksort.
  *  <p>
  *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a>   
+ *  <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -55,7 +55,7 @@ public class Quick {
     }
 
     // quicksort the subarray from a[lo] to a[hi]
-    private static void sort(Comparable[] a, int lo, int hi) { 
+    private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
         int j = partition(a, lo, hi);
         sort(a, lo, j-1);
@@ -69,7 +69,7 @@ public class Quick {
         int i = lo;
         int j = hi + 1;
         Comparable v = a[lo];
-        while (true) { 
+        while (true) {
 
             // find item on lo to swap
             while (less(a[++i], v)) {
@@ -124,13 +124,13 @@ public class Quick {
    /***************************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         if (v == w) return false;   // optimization when reference equals
         return v.compareTo(w) < 0;
     }
-        
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -161,8 +161,8 @@ public class Quick {
     }
 
     /**
-     * Reads in a sequence of strings from standard input; quicksorts them; 
-     * and prints them to standard output in ascending order. 
+     * Reads in a sequence of strings from standard input; quicksorts them;
+     * and prints them to standard output in ascending order.
      * Shuffles the array and then prints the strings again to
      * standard output, but this time, using the select method.
      *
@@ -188,7 +188,7 @@ public class Quick {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -17,6 +17,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
+ *  <p><b>Overview.</b>
  *  The {@code StdIn} class provides static methods for reading strings
  *  and numbers from standard input.
  *  These functions fall into one of four categories:
@@ -90,7 +91,7 @@ import java.util.regex.Pattern;
  *  </ul>
  *  <p>
  *  The first method returns true if standard input has more input (including whitespace).
- *  The second method reads and returns the next character of input on standard 
+ *  The second method reads and returns the next character of input on standard
  *  input (possibly a whitespace character).
  *  <p>
  *  As an example, the following code fragment reads characters from standard input,
@@ -110,7 +111,7 @@ import java.util.regex.Pattern;
  *  </ul>
  *  <p>
  *  The first method returns true if standard input has more input (including whitespace).
- *  The second method reads and returns the remaining portion of 
+ *  The second method reads and returns the remaining portion of
  *  the next line of input on standard input (possibly whitespace),
  *  discarding the trailing line separator.
  *  <p>
@@ -156,11 +157,11 @@ import java.util.regex.Pattern;
  *  </pre>
  *  <p>
  *  <b>Differences with Scanner.</b>
- *  {@code StdIn} and {@link Scanner} are both designed to parse 
+ *  {@code StdIn} and {@link Scanner} are both designed to parse
  *  tokens and convert them to primitive types and strings.
  *  The main differences are summarized below:
  *  <ul>
- *  <li> {@code StdIn} is a set of static methods and reads 
+ *  <li> {@code StdIn} is a set of static methods and reads
  *       reads input from only standard input. It is suitable for use before
  *       a programmer knows about objects.
  *       See {@link In} for an object-oriented version that handles
@@ -189,20 +190,20 @@ import java.util.regex.Pattern;
  *  will wait until you enter input on standard input.
  *  If your program has a loop that repeats until standard input is empty,
  *  you must signal that the input is finished.
- *  To do so, depending on your operating system and IDE, 
+ *  To do so, depending on your operating system and IDE,
  *  use either {@code <Ctrl-d>} or {@code <Ctrl-z>}, on its own line.
  *  If you are redirecting standard input from a file, you will not need
  *  to do anything to signal that the input is finished.
  *  <p>
  *  <b>Known bugs.</b>
- *  Java's UTF-8 encoding does not recognize the optional 
+ *  Java's UTF-8 encoding does not recognize the optional
  *  <a href = "http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058">byte-order mask</a>.
  *  If the input begins with the optional byte-order mask, {@code StdIn}
  *  will have an extra character {@code \}{@code uFEFF} at the beginning.
  *  <p>
- *  <b>Reference.</b> 
+ *  <b>Reference.</b>
  *  For additional documentation,
- *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of   
+ *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
  *  <em>Computer Science: An Interdisciplinary Approach</em>
  *  by Robert Sedgewick and Kevin Wayne.
  *
@@ -213,7 +214,7 @@ import java.util.regex.Pattern;
 public final class StdIn {
 
     /*** begin: section (1 of 2) of code duplicated from In to StdIn. */
-    
+
     // assume Unicode UTF-8 encoding
     private static final String CHARSET_NAME = "UTF-8";
 
@@ -233,7 +234,7 @@ public final class StdIn {
     /*** end: section (1 of 2) of code duplicated from In to StdIn. */
 
     private static Scanner scanner;
- 
+
     // it doesn't make sense to instantiate this class
     private StdIn() { }
 
@@ -242,7 +243,7 @@ public final class StdIn {
 
    /**
      * Returns true if standard input is empty (except possibly for whitespace).
-     * Use this method to know whether the next call to {@link #readString()}, 
+     * Use this method to know whether the next call to {@link #readString()},
      * {@link #readDouble()}, etc will succeed.
      *
      * @return {@code true} if standard input is empty (except possibly
@@ -317,8 +318,7 @@ public final class StdIn {
             throw new NoSuchElementException("attempts to read a 'char' value from standard input, "
                                            + "but no more tokens are available");
         }
-    }  
-
+    }
 
    /**
      * Reads and returns the remainder of the input, as a string.
@@ -585,10 +585,9 @@ public final class StdIn {
             vals[i] = Double.parseDouble(fields[i]);
         return vals;
     }
-    
+
     //// end: section (2 of 2) of code duplicated from In to StdIn
-    
-    
+
     // do this once when StdIn is initialized
     static {
         resync();
@@ -600,7 +599,7 @@ public final class StdIn {
     private static void resync() {
         setScanner(new Scanner(new java.io.BufferedInputStream(System.in), CHARSET_NAME));
     }
-    
+
     private static void setScanner(Scanner scanner) {
         StdIn.scanner = scanner;
         StdIn.scanner.useLocale(LOCALE);
@@ -672,7 +671,7 @@ public final class StdIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

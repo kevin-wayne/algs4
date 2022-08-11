@@ -65,8 +65,8 @@ public class GraphGenerator {
         Graph G = new Graph(V);
         SET<Edge> set = new SET<Edge>();
         while (G.E() < E) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             Edge e = new Edge(v, w);
             if ((v != w) && !set.contains(e)) {
                 set.add(e);
@@ -77,7 +77,7 @@ public class GraphGenerator {
     }
 
     /**
-     * Returns a random simple graph on {@code V} vertices, with an 
+     * Returns a random simple graph on {@code V} vertices, with an
      * edge between any two vertices with probability {@code p}. This is sometimes
      * referred to as the Erdos-Renyi random graph model.
      * @param V the number of vertices
@@ -139,8 +139,8 @@ public class GraphGenerator {
 
         SET<Edge> set = new SET<Edge>();
         while (G.E() < E) {
-            int i = StdRandom.uniform(V1);
-            int j = V1 + StdRandom.uniform(V2);
+            int i = StdRandom.uniformInt(V1);
+            int j = V1 + StdRandom.uniformInt(V2);
             Edge e = new Edge(vertices[i], vertices[j]);
             if (!set.contains(e)) {
                 set.add(e);
@@ -244,7 +244,7 @@ public class GraphGenerator {
         Graph G = new Graph(V);
         int[] vertices = new int[E];
         for (int i = 0; i < E; i++)
-            vertices[i] = StdRandom.uniform(V);
+            vertices[i] = StdRandom.uniformInt(V);
         for (int i = 0; i < E-1; i++) {
             G.addEdge(vertices[i], vertices[i+1]);
         }
@@ -269,7 +269,7 @@ public class GraphGenerator {
         Graph G = new Graph(V);
         int[] vertices = new int[E+1];
         for (int i = 0; i < E+1; i++)
-            vertices[i] = StdRandom.uniform(V);
+            vertices[i] = StdRandom.uniformInt(V);
         for (int i = 0; i < E; i++) {
             G.addEdge(vertices[i], vertices[i+1]);
         }
@@ -375,7 +375,7 @@ public class GraphGenerator {
         // with labeled trees on V vertices
         int[] prufer = new int[V-2];
         for (int i = 0; i < V-2; i++)
-            prufer[i] = StdRandom.uniform(V);
+            prufer[i] = StdRandom.uniformInt(V);
 
         // degree of vertex v = 1 + number of times it appers in Prufer sequence
         int[] degree = new int[V];
@@ -470,7 +470,7 @@ public class GraphGenerator {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

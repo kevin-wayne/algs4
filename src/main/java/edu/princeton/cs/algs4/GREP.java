@@ -6,7 +6,7 @@
  *
  *  This program takes an RE as a command-line argument and prints
  *  the lines from standard input having some substring that
- *  is in the language described by the RE. 
+ *  is in the language described by the RE.
  *
  *  % more tinyL.txt
  *  AC
@@ -52,20 +52,20 @@ public class GREP {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         String regexp = "(.*" + args[0] + ".*)";
         NFA nfa = new NFA(regexp);
-        while (StdIn.hasNextLine()) { 
+        while (StdIn.hasNextLine()) {
             String line = StdIn.readLine();
             if (nfa.recognizes(line)) {
                 StdOut.println(line);
             }
         }
-    } 
-} 
+    }
+}
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

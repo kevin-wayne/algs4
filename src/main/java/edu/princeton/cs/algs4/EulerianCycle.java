@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- * 
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  *  @author Nate Liu
@@ -66,7 +66,7 @@ public class EulerianCycle {
 
     /**
      * Computes an Eulerian cycle in the specified graph, if one exists.
-     * 
+     *
      * @param G the graph
      */
     public EulerianCycle(Graph G) {
@@ -76,7 +76,7 @@ public class EulerianCycle {
 
         // necessary condition: all vertices have even degree
         // (this test is needed or it might find an Eulerian path instead of cycle)
-        for (int v = 0; v < G.V(); v++) 
+        for (int v = 0; v < G.V(); v++)
             if (G.degree(v) % 2 != 0)
                 return;
 
@@ -135,7 +135,7 @@ public class EulerianCycle {
 
     /**
      * Returns the sequence of vertices on an Eulerian cycle.
-     * 
+     *
      * @return the sequence of vertices on an Eulerian cycle;
      *         {@code null} if no such cycle
      */
@@ -145,7 +145,7 @@ public class EulerianCycle {
 
     /**
      * Returns true if the graph has an Eulerian cycle.
-     * 
+     *
      * @return {@code true} if the graph has an Eulerian cycle;
      *         {@code false} otherwise
      */
@@ -265,7 +265,7 @@ public class EulerianCycle {
 
         // self loop
         Graph G4 = new Graph(V);
-        int v4 = StdRandom.uniform(V);
+        int v4 = StdRandom.uniformInt(V);
         G4.addEdge(v4, v4);
         unitTest(G4, "single self loop");
 
@@ -292,7 +292,7 @@ public class EulerianCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

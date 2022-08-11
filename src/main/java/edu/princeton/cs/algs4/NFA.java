@@ -54,7 +54,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class NFA { 
+public class NFA {
 
     private Digraph graph;     // digraph of epsilon transitions
     private String regexp;     // regular expression
@@ -68,17 +68,17 @@ public class NFA {
     public NFA(String regexp) {
         this.regexp = regexp;
         m = regexp.length();
-        Stack<Integer> ops = new Stack<Integer>(); 
-        graph = new Digraph(m+1); 
-        for (int i = 0; i < m; i++) { 
-            int lp = i; 
-            if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|') 
-                ops.push(i); 
+        Stack<Integer> ops = new Stack<Integer>();
+        graph = new Digraph(m+1);
+        for (int i = 0; i < m; i++) {
+            int lp = i;
+            if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|')
+                ops.push(i);
             else if (regexp.charAt(i) == ')') {
-                int or = ops.pop(); 
+                int or = ops.pop();
 
                 // 2-way or operator
-                if (regexp.charAt(or) == '|') { 
+                if (regexp.charAt(or) == '|') {
                     lp = ops.pop();
                     graph.addEdge(lp, or+1);
                     graph.addEdge(or, i);
@@ -86,23 +86,23 @@ public class NFA {
                 else if (regexp.charAt(or) == '(')
                     lp = or;
                 else assert false;
-            } 
+            }
 
             // closure operator (uses 1-character lookahead)
-            if (i < m-1 && regexp.charAt(i+1) == '*') { 
-                graph.addEdge(lp, i+1); 
-                graph.addEdge(i+1, lp); 
-            } 
-            if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')') 
+            if (i < m-1 && regexp.charAt(i+1) == '*') {
+                graph.addEdge(lp, i+1);
+                graph.addEdge(i+1, lp);
+            }
+            if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')')
                 graph.addEdge(i, i+1);
         }
         if (ops.size() != 0)
             throw new IllegalArgumentException("Invalid regular expression");
-    } 
+    }
 
     /**
      * Returns true if the text is matched by the regular expression.
-     * 
+     *
      * @param  txt the text
      * @return {@code true} if the text is matched by the regular expression,
      *         {@code false} otherwise
@@ -122,11 +122,11 @@ public class NFA {
             for (int v : pc) {
                 if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
-                    match.add(v+1); 
+                    match.add(v+1);
             }
             if (match.isEmpty()) continue;
 
-            dfs = new DirectedDFS(graph, match); 
+            dfs = new DirectedDFS(graph, match);
             pc = new Bag<Integer>();
             for (int v = 0; v < graph.V(); v++)
                 if (dfs.marked(v)) pc.add(v);
@@ -153,10 +153,10 @@ public class NFA {
         StdOut.println(nfa.recognizes(txt));
     }
 
-} 
+}
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

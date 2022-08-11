@@ -2,7 +2,7 @@
  *  Compilation:  javac LinearRegression.java
  *  Execution:    java  LinearRegression
  *  Dependencies: none
- *  
+ *
  *  Compute least squares solution to y = beta * x + alpha.
  *  Simple linear regression.
  *
@@ -154,7 +154,7 @@ public class LinearRegression {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

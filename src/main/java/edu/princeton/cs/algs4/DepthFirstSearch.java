@@ -9,11 +9,11 @@
  *  Runs in O(E + V) time.
  *
  *  % java DepthFirstSearch tinyG.txt 0
- *  0 1 2 3 4 5 6 
+ *  0 1 2 3 4 5 6
  *  NOT connected
  *
  *  % java DepthFirstSearch tinyG.txt 9
- *  9 10 11 12 
+ *  9 10 11 12
  *  NOT connected
  *
  ******************************************************************************/
@@ -21,7 +21,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code DepthFirstSearch} class represents a data type for 
+ *  The {@code DepthFirstSearch} class represents a data type for
  *  determining the vertices connected to a given source vertex <em>s</em>
  *  in an undirected graph. For versions that find the paths, see
  *  {@link DepthFirstPaths} and {@link BreadthFirstPaths}.
@@ -32,10 +32,10 @@ package edu.princeton.cs.algs4;
  *  case, where <em>V</em> is the number of vertices and <em>E</em>
  *  is the number of edges.
  *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the graph). 
+ *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
  *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -118,7 +118,7 @@ public class DepthFirstSearch {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 /**
  *  The {@code IndexMinPQ} class represents an indexed priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-minimum</em>
- *  operations, along with <em>delete</em> and <em>change-the-key</em> 
+ *  operations, along with <em>delete</em> and <em>change-the-key</em>
  *  methods. In order to let the client refer to keys on the priority queue,
  *  an integer between {@code 0} and {@code maxN - 1}
  *  is associated with each key—the client uses this integer to specify
@@ -373,7 +373,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

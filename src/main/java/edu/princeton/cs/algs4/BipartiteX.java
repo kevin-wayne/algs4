@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac BipartiteX.java
  *  Execution:    java  Bipartite V E F
- *  Dependencies: Graph.java 
+ *  Dependencies: Graph.java
  *
  *  Given a graph, find either (i) a bipartition or (ii) an odd-length cycle.
  *  Runs in O(E + V) time.
@@ -13,7 +13,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  The {@code BipartiteX} class represents a data type for 
+ *  The {@code BipartiteX} class represents a data type for
  *  determining whether an undirected graph is <em>bipartite</em> or whether
  *  it has an <em>odd-length cycle</em>.
  *  A graph is bipartite if and only if it has no odd-length cycle.
@@ -31,7 +31,7 @@ package edu.princeton.cs.algs4;
  *  See {@link Bipartite} for a recursive version that uses depth-first search.
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -67,7 +67,7 @@ public class BipartiteX {
         assert check(G);
     }
 
-    private void bfs(Graph G, int s) { 
+    private void bfs(Graph G, int s) {
         Queue<Integer> q = new Queue<Integer>();
         color[s] = WHITE;
         marked[s] = true;
@@ -116,7 +116,7 @@ public class BipartiteX {
     public boolean isBipartite() {
         return isBipartite;
     }
- 
+
     /**
      * Returns the side of the bipartite that vertex {@code v} is on.
      *
@@ -124,7 +124,7 @@ public class BipartiteX {
      * @return the side of the bipartition that vertex {@code v} is on; two vertices
      *         are in the same side of the bipartition if and only if they have the
      *         same color
-     * @throws IllegalArgumentException unless {@code 0 <= v < V} 
+     * @throws IllegalArgumentException unless {@code 0 <= v < V}
      * @throws UnsupportedOperationException if this method is called when the graph
      *         is not bipartite
      */
@@ -145,7 +145,7 @@ public class BipartiteX {
      *         otherwise
      */
     public Iterable<Integer> oddCycle() {
-        return cycle; 
+        return cycle;
     }
 
     private boolean check(Graph G) {
@@ -199,8 +199,8 @@ public class BipartiteX {
         // V2 vertices on right side, and E edges; then add F random edges
         Graph G = GraphGenerator.bipartite(V1, V2, E);
         for (int i = 0; i < F; i++) {
-            int v = StdRandom.uniform(V1 + V2);
-            int w = StdRandom.uniform(V1 + V2);
+            int v = StdRandom.uniformInt(V1 + V2);
+            int w = StdRandom.uniformInt(V1 + V2);
             G.addEdge(v, w);
         }
 
@@ -227,7 +227,7 @@ public class BipartiteX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

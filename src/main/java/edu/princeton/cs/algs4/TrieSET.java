@@ -153,14 +153,14 @@ public class TrieSET implements Iterable<String> {
      * @param pattern the pattern
      * @return all of the keys in the set that match {@code pattern},
      *     as an iterable, where . is treated as a wildcard character.
-     */  
+     */
     public Iterable<String> keysThatMatch(String pattern) {
         Queue<String> results = new Queue<String>();
         StringBuilder prefix = new StringBuilder();
         collect(root, prefix, pattern, results);
         return results;
     }
-        
+
     private void collect(Node x, StringBuilder prefix, String pattern, Queue<String> results) {
         if (x == null) return;
         int d = prefix.length();
@@ -286,7 +286,7 @@ public class TrieSET implements Iterable<String> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

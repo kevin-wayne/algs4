@@ -8,23 +8,23 @@
  *                https://algs4.cs.princeton.edu/35applications/elements.csv
  *                https://algs4.cs.princeton.edu/35applications/ip.csv
  *                https://algs4.cs.princeton.edu/35applications/morse.csv
- *  
+ *
  *  Reads in a set of key-value pairs from a two-column CSV file
  *  specified on the command line; then, reads in keys from standard
  *  input and prints out corresponding values.
- * 
- *  % java LookupCSV amino.csv 0 3     % java LookupCSV ip.csv 0 1 
- *  TTA                                www.google.com 
- *  Leucine                            216.239.41.99 
- *  ABC                               
- *  Not found                          % java LookupCSV ip.csv 1 0 
- *  TCT                                216.239.41.99 
- *  Serine                             www.google.com 
- *                                 
- *  % java LookupCSV amino.csv 3 0     % java LookupCSV DJIA.csv 0 1 
- *  Glycine                            29-Oct-29 
- *  GGG                                252.38 
- *                                     20-Oct-87 
+ *
+ *  % java LookupCSV amino.csv 0 3     % java LookupCSV ip.csv 0 1
+ *  TTA                                www.google.com
+ *  Leucine                            216.239.41.99
+ *  ABC
+ *  Not found                          % java LookupCSV ip.csv 1 0
+ *  TCT                                216.239.41.99
+ *  Serine                             www.google.com
+ *
+ *  % java LookupCSV amino.csv 3 0     % java LookupCSV DJIA.csv 0 1
+ *  Glycine                            29-Oct-29
+ *  GGG                                252.38
+ *                                     20-Oct-87
  *                                     1738.74
  *
  *
@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
@@ -75,7 +75,7 @@ public class LookupCSV {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

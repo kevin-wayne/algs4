@@ -318,7 +318,7 @@ public class BipartiteMatching {
         if (G.V() < 1000) StdOut.println(G);
 
         BipartiteMatching matching = new BipartiteMatching(G);
-        
+
         // print maximum matching
         StdOut.printf("Number of edges in max matching        = %d\n", matching.size());
         StdOut.printf("Number of vertices in min vertex cover = %d\n", matching.size());
@@ -346,7 +346,7 @@ public class BipartiteMatching {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -12,10 +12,8 @@
  *
  *  Remarks
  *  -------
- *   - pixel (x, y) is column x and row y, where (0, 0) is upper left
- *
  *   - uses BufferedImage.TYPE_INT_RGB because BufferedImage.TYPE_BYTE_GRAY
- *     seems to do some undesirable olor correction when calling getRGB() and
+ *     seems to do some undesirable color correction when calling getRGB() and
  *     setRGB()
  *
  ******************************************************************************/
@@ -52,8 +50,9 @@ import javax.swing.KeyStroke;
  *  the screen or saving it to a file.
  *  <p>
  *  Pixel (<em>col</em>, <em>row</em>) is column <em>col</em> and row <em>row</em>.
- *  By default, the origin (0, 0) is the pixel in the top-left corner,
- *  which is a common convention in image processing.
+ *  By default, the origin (0, 0) is the pixel in the top-left corner.
+ *  These are common conventions in image processing and consistent with Java's
+ *  {@link java.awt.image.BufferedImage} data type.
  *  The method {@link #setOriginLowerLeft()} change the origin to the lower left.
  *  <p>
  *  The {@code get()} and {@code set()} methods use {@link Color} objects to get
@@ -81,6 +80,7 @@ public final class GrayscalePicture implements ActionListener {
     private JFrame frame;                      // on-screen view
     private String filename;                   // name of file
     private boolean isOriginUpperLeft = true;  // location of origin
+    private boolean isVisible = false;         // is the frame visible?
     private final int width, height;           // width and height
 
    /**
@@ -145,12 +145,12 @@ public final class GrayscalePicture implements ActionListener {
                 if (url == null) {
                     url = getClass().getClassLoader().getResource(name);
                 }
-     
+
                 // or URL from web
                 if (url == null) {
                     url = new URL(name);
                 }
-        
+
                 image = ImageIO.read(url);
             }
 
@@ -175,7 +175,7 @@ public final class GrayscalePicture implements ActionListener {
         }
     }
 
-     // Returns a grayscale version of the given color as a Color object.
+    // Returns a grayscale version of the given color as a Color object.
     private static Color toGray(Color color) {
         int r = color.getRed();
         int g = color.getGreen();
@@ -239,11 +239,30 @@ public final class GrayscalePicture implements ActionListener {
             else                  frame.setTitle(filename);
             frame.setResizable(false);
             frame.pack();
-            frame.setVisible(true);
         }
 
         // draw
+        frame.setVisible(true);
+        isVisible = true;
         frame.repaint();
+    }
+
+   /**
+     * Hides the window on the screen.
+     */
+    public void hide() {
+        if (frame != null) {
+            isVisible = false;
+            frame.setVisible(false);
+        }
+    }
+
+   /**
+     * Is the window containing the picture visible?
+     * @return {@code true} if the picture is visible, and {@code false} otherwise
+     */
+    public boolean isVisible() {
+        return isVisible;
     }
 
    /**
@@ -474,9 +493,8 @@ public final class GrayscalePicture implements ActionListener {
 
 }
 
-
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

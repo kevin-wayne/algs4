@@ -4,7 +4,7 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
- *  
+ *
  *  Sorts a sequence of strings from standard input using insertion sort.
  *
  *  % more tiny.txt
@@ -140,7 +140,7 @@ public class Insertion {
    /***************************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -150,7 +150,7 @@ public class Insertion {
     private static boolean less(Object v, Object w, Comparator comparator) {
         return comparator.compare(v, w) < 0;
     }
-        
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -211,7 +211,7 @@ public class Insertion {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

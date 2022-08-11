@@ -2,7 +2,7 @@
  *  Compilation:  javac Interval1D.java
  *  Execution:    java Interval1D
  *  Dependencies: StdOut.java
- *  
+ *
  *  1-dimensional interval data type.
  *
  ******************************************************************************/
@@ -19,9 +19,9 @@ import java.util.Comparator;
  *  The class {@code Interval1D} includes methods for checking whether
  *  an interval contains a point and determining whether two intervals intersect.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -81,7 +81,7 @@ public class Interval1D {
      * @deprecated Replaced by {@link #min()}.
      */
     @Deprecated
-    public double left() { 
+    public double left() {
         return min;
     }
 
@@ -91,7 +91,7 @@ public class Interval1D {
      * @deprecated Replaced by {@link #max()}.
      */
     @Deprecated
-    public double right() { 
+    public double right() {
         return max;
     }
 
@@ -100,7 +100,7 @@ public class Interval1D {
      *
      * @return the min endpoint of this interval
      */
-    public double min() { 
+    public double min() {
         return min;
     }
 
@@ -109,7 +109,7 @@ public class Interval1D {
      *
      * @return the max endpoint of this interval
      */
-    public double max() { 
+    public double max() {
         return max;
     }
 
@@ -233,7 +233,7 @@ public class Interval1D {
         for (int i = 0; i < intervals.length; i++)
             StdOut.println(intervals[i]);
         StdOut.println();
-        
+
         StdOut.println("Sort by min endpoint");
         Arrays.sort(intervals, Interval1D.MIN_ENDPOINT_ORDER);
         for (int i = 0; i < intervals.length; i++)
@@ -255,7 +255,7 @@ public class Interval1D {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -11,7 +11,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code TopologicalX} class represents a data type for 
+ *  The {@code TopologicalX} class represents a data type for
  *  determining a topological order of a <em>directed acyclic graph</em> (DAG).
  *  A digraph has a topological order if and only if it is a DAG.
  *  The <em>hasOrder</em> operation determines whether the digraph has
@@ -54,8 +54,8 @@ public class TopologicalX {
             indegree[v] = G.indegree(v);
         }
 
-        // initialize 
-        ranks = new int[G.V()]; 
+        // initialize
+        ranks = new int[G.V()];
         order = new Queue<Integer>();
         int count = 0;
 
@@ -95,8 +95,8 @@ public class TopologicalX {
             indegree[v] = G.indegree(v);
         }
 
-        // initialize 
-        ranks = new int[G.V()]; 
+        // initialize
+        ranks = new int[G.V()];
         order = new Queue<Integer>();
         int count = 0;
 
@@ -275,8 +275,8 @@ public class TopologicalX {
 
         // add F extra edges
         for (int i = 0; i < F; i++) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
             G1.addEdge(v, w);
             G2.addEdge(new DirectedEdge(v, w, 0.0));
         }
@@ -319,7 +319,7 @@ public class TopologicalX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

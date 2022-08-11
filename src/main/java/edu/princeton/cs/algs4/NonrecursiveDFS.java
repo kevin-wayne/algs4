@@ -12,26 +12,26 @@
  *  Explores the vertices in exactly the same order as DepthFirstSearch.java.
  *
  *  %  java Graph tinyG.txt
- *  13 vertices, 13 edges 
- *  0: 6 2 1 5 
- *  1: 0 
- *  2: 0 
- *  3: 5 4 
- *  4: 5 6 3 
- *  5: 3 4 0 
- *  6: 0 4 
- *  7: 8 
- *  8: 7 
- *  9: 11 10 12 
- *  10: 9 
- *  11: 9 12 
- *  12: 11 9 
+ *  13 vertices, 13 edges
+ *  0: 6 2 1 5
+ *  1: 0
+ *  2: 0
+ *  3: 5 4
+ *  4: 5 6 3
+ *  5: 3 4 0
+ *  6: 0 4
+ *  7: 8
+ *  8: 7
+ *  9: 11 10 12
+ *  10: 9
+ *  11: 9 12
+ *  12: 11 9
  *
  *  % java NonrecursiveDFS tinyG.txt 0
- *  0 1 2 3 4 5 6 
+ *  0 1 2 3 4 5 6
  *
  * % java NonrecursiveDFS tinyG.txt 9
- * 9 10 11 12 
+ * 9 10 11 12
  *
  ******************************************************************************/
 
@@ -51,10 +51,10 @@ import java.util.Iterator;
  *  case, where <em>V</em> is the number of vertices and <em>E</em> is the
  *  number of edges.
  *  The {@link #marked(int)} instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the graph). 
+ *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
  *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -142,7 +142,7 @@ public class NonrecursiveDFS {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

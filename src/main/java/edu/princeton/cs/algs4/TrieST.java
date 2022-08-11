@@ -7,7 +7,7 @@
  *  A string symbol table for extended ASCII strings, implemented
  *  using a 256-way trie.
  *
- *  % java TrieST < shellsST.txt 
+ *  % java TrieST < shellsST.txt
  *  by 4
  *  sea 6
  *  sells 1
@@ -309,7 +309,7 @@ public class TrieST<Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

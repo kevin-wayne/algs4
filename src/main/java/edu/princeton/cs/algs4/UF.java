@@ -129,7 +129,7 @@ public class UF {
     public int count() {
         return count;
     }
-  
+
     /**
      * Returns true if the two elements are in the same set.
      *
@@ -145,9 +145,9 @@ public class UF {
     public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
-  
+
     /**
-     * Merges the set containing element {@code p} with the 
+     * Merges the set containing element {@code p} with the
      * the set containing element {@code q}.
      *
      * @param  p one element
@@ -174,7 +174,7 @@ public class UF {
     private void validate(int p) {
         int n = parent.length;
         if (p < 0 || p >= n) {
-            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));  
+            throw new IllegalArgumentException("index " + p + " is not between 0 and " + (n-1));
         }
     }
 
@@ -203,7 +203,7 @@ public class UF {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

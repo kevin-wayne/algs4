@@ -4,7 +4,7 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
  *                https://algs4.cs.princeton.edu/21elementary/words3.txt
- *   
+ *
  *  Sorts a sequence of strings from standard input using shellsort.
  *
  *  % more tiny.txt
@@ -12,10 +12,10 @@
  *
  *  % java Shell < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
- *    
+ *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
- *  
+ *
  *  % java Shell < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
@@ -54,9 +54,9 @@ public class Shell {
     public static void sort(Comparable[] a) {
         int n = a.length;
 
-        // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ... 
+        // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ...
         int h = 1;
-        while (h < n/3) h = 3*h + 1; 
+        while (h < n/3) h = 3*h + 1;
 
         while (h >= 1) {
             // h-sort the array
@@ -65,7 +65,7 @@ public class Shell {
                     exch(a, j, j-h);
                 }
             }
-            assert isHsorted(a, h); 
+            assert isHsorted(a, h);
             h /= 3;
         }
         assert isSorted(a);
@@ -76,12 +76,12 @@ public class Shell {
    /***************************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
-        
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -114,8 +114,8 @@ public class Shell {
     }
 
     /**
-     * Reads in a sequence of strings from standard input; Shellsorts them; 
-     * and prints them to standard output in ascending order. 
+     * Reads in a sequence of strings from standard input; Shellsorts them;
+     * and prints them to standard output in ascending order.
      *
      * @param args the command-line arguments
      */
@@ -128,7 +128,7 @@ public class Shell {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

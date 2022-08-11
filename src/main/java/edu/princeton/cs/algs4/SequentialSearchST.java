@@ -2,15 +2,15 @@
  *  Compilation:  javac SequentialSearchST.java
  *  Execution:    java SequentialSearchST
  *  Dependencies: StdIn.java StdOut.java
- *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt  
- *  
+ *  Data files:   https://algs4.cs.princeton.edu/31elementary/tinyST.txt
+ *
  *  Symbol table implementation with sequential search in an
  *  unordered linked list of key-value pairs.
  *
  *  % more tinyST.txt
  *  S E A R C H E X A M P L E
  *
- *  % java SequentialSearchST < tinyST.txt 
+ *  % java SequentialSearchST < tinyST.txt
  *  L 11
  *  P 10
  *  M 9
@@ -41,7 +41,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  It relies on the {@code equals()} method to test whether two keys
  *  are equal. It does not call either the {@code compareTo()} or
- *  {@code hashCode()} method. 
+ *  {@code hashCode()} method.
  *  <p>
  *  This implementation uses a <em>singly linked list</em> and
  *  <em>sequential search</em>.
@@ -122,7 +122,7 @@ public class SequentialSearchST<Key, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public Value get(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to get() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to get() is null");
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key))
                 return x.val;
@@ -131,7 +131,7 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
-     * Inserts the specified key-value pair into the symbol table, overwriting the old 
+     * Inserts the specified key-value pair into the symbol table, overwriting the old
      * value with the new value if the symbol table already contains the specified key.
      * Deletes the specified key (and its associated value) from this symbol table
      * if the specified value is {@code null}.
@@ -141,7 +141,7 @@ public class SequentialSearchST<Key, Value> {
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("first argument to put() is null"); 
+        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
         if (val == null) {
             delete(key);
             return;
@@ -158,14 +158,14 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
-     * Removes the specified key and its associated value from this symbol table     
-     * (if the key is in this symbol table).    
+     * Removes the specified key and its associated value from this symbol table
+     * (if the key is in this symbol table).
      *
      * @param  key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     public void delete(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to delete() is null"); 
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
         first = delete(first, key);
     }
 
@@ -214,7 +214,7 @@ public class SequentialSearchST<Key, Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

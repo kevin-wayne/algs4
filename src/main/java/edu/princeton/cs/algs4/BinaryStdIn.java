@@ -1,8 +1,8 @@
 /******************************************************************************
  *  Compilation:  javac BinaryStdIn.java
  *  Execution:    java BinaryStdIn < input > output
- *  Dependencies: none             
- *  
+ *  Dependencies: none
+ *
  *  Supports reading binary data from standard input.
  *
  *  % java BinaryStdIn < input.jpg > output.jpg
@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
  *  (as an {@code int} or {@code float}), or 64 bits at a time (as a
  *  {@code double} or {@code long}).
  *  <p>
- *  All primitive types are assumed to be represented using their 
+ *  All primitive types are assumed to be represented using their
  *  standard Java representations, in big-endian (most significant
  *  byte first) order.
  *  <p>
@@ -159,7 +159,7 @@ public final class BinaryStdIn {
     }
 
    /**
-     * Reads the remaining bytes of data from standard input and return as a string. 
+     * Reads the remaining bytes of data from standard input and return as a string.
      *
      * @return the remaining bytes of data from standard input as a {@code String}
      * @throws NoSuchElementException if standard input is empty or if the number of bits
@@ -280,7 +280,7 @@ public final class BinaryStdIn {
         char c = readChar();
         return (byte) (c & 0xff);
     }
-    
+
    /**
      * Test client. Reads in a binary input file from standard input and writes
      * it to standard output.
@@ -299,7 +299,7 @@ public final class BinaryStdIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

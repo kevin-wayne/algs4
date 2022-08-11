@@ -1,8 +1,8 @@
 /******************************************************************************
  *  Compilation:  javac BinaryIn.java
  *  Execution:    java BinaryIn input output
- *  Dependencies: none             
- *  
+ *  Dependencies: none
+ *
  *  This library is for reading binary data from an input stream.
  *
  *  % java BinaryIn https://introcs.cs.princeton.edu/java/cover.png output.png
@@ -33,7 +33,7 @@ import java.util.NoSuchElementException;
  *  The binary input stream can be from standard input, a filename,
  *  a URL name, a Socket, or an InputStream.
  *  <p>
- *  All primitive types are assumed to be represented using their 
+ *  All primitive types are assumed to be represented using their
  *  standard Java representations, in big-endian (most significant
  *  byte first) order.
  *  <p>
@@ -238,7 +238,7 @@ public final class BinaryIn {
 
 
    /**
-     * Reads the remaining bytes of data from this binary input stream and return as a string. 
+     * Reads the remaining bytes of data from this binary input stream and return as a string.
      *
      * @return the remaining bytes of data from this binary input stream as a {@code String}
      * @throws NoSuchElementException if this binary input stream is empty or if the number of bits
@@ -359,7 +359,7 @@ public final class BinaryIn {
         char c = readChar();
         return (byte) (c & 0xff);
     }
-    
+
    /**
      * Unit tests the {@code BinaryIn} data type.
      * Reads the name of a file or URL (first command-line argument)
@@ -381,7 +381,7 @@ public final class BinaryIn {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

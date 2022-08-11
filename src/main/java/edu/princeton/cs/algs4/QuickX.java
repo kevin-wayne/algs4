@@ -4,7 +4,7 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
  *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
- *  
+ *
  *  Uses the Hoare's 2-way partitioning scheme, chooses the partitioning
  *  element using median-of-3, and cuts off to insertion sort.
  *
@@ -19,7 +19,7 @@ package edu.princeton.cs.algs4;
  *  to insertion sort).
  *  <p>
  *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a>   
+ *  <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -44,7 +44,7 @@ public class QuickX {
     }
 
     // quicksort the subarray from a[lo] to a[hi]
-    private static void sort(Comparable[] a, int lo, int hi) { 
+    private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
 
         // cutoff to insertion sort (Insertion.sort() uses half-open intervals)
@@ -81,7 +81,7 @@ public class QuickX {
         }
 
         // the main loop
-        while (i < j) { 
+        while (i < j) {
             exch(a, i, j);
             while (less(a[++i], v)) ;
             while (less(v, a[--j])) ;
@@ -104,7 +104,7 @@ public class QuickX {
    /***************************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -136,8 +136,8 @@ public class QuickX {
 
     /**
      * Reads in a sequence of strings from standard input; quicksorts them
-     * (using an optimized version of 2-way quicksort); 
-     * and prints them to standard output in ascending order. 
+     * (using an optimized version of 2-way quicksort);
+     * and prints them to standard output in ascending order.
      *
      * @param args the command-line arguments
      */
@@ -151,7 +151,7 @@ public class QuickX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

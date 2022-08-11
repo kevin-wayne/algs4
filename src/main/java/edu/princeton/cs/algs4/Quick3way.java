@@ -4,18 +4,18 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
  *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
- *   
+ *
  *  Sorts a sequence of strings from standard input using 3-way quicksort.
- *   
+ *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
  *  % java Quick3way < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
- *    
+ *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
- *  
+ *
  *  % java Quick3way < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
@@ -50,7 +50,7 @@ public class Quick3way {
     }
 
     // quicksort the subarray a[lo .. hi] using 3-way partitioning
-    private static void sort(Comparable[] a, int lo, int hi) { 
+    private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
         int lt = lo, gt = hi;
         Comparable v = a[lo];
@@ -62,7 +62,7 @@ public class Quick3way {
             else              i++;
         }
 
-        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
+        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
         sort(a, lo, lt-1);
         sort(a, gt+1, hi);
         assert isSorted(a, lo, hi);
@@ -73,12 +73,12 @@ public class Quick3way {
    /***************************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
-        
+
     // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
@@ -111,7 +111,7 @@ public class Quick3way {
 
     /**
      * Reads in a sequence of strings from standard input; 3-way
-     * quicksorts them; and prints them to standard output in ascending order. 
+     * quicksorts them; and prints them to standard output in ascending order.
      *
      * @param args the command-line arguments
      */
@@ -124,7 +124,7 @@ public class Quick3way {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

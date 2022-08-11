@@ -7,7 +7,7 @@
  *                https://algs4.cs.princeton.edu/41graph/moviestiny.txt
  *                https://algs4.cs.princeton.edu/41graph/moviesG.txt
  *                https://algs4.cs.princeton.edu/41graph/moviestopGrossing.txt
- *  
+ *
  *  %  java SymbolGraph routes.txt " "
  *  JFK
  *     MCO
@@ -35,7 +35,7 @@
  *     Apollo 13 (1995)
  *     Animal House (1978)
  *
- * 
+ *
  *  Assumes that input file is encoded using UTF-8.
  *  % iconv -f ISO-8859-1 -t UTF-8 movies-iso8859.txt > movies.txt
  *
@@ -55,7 +55,7 @@ package edu.princeton.cs.algs4;
  *  This implementation uses an {@link ST} to map from strings to integers,
  *  an array to map from integers to strings, and a {@link Graph} to store
  *  the underlying graph.
- *  The <em>indexOf</em> and <em>contains</em> operations take time 
+ *  The <em>indexOf</em> and <em>contains</em> operations take time
  *  proportional to log <em>V</em>, where <em>V</em> is the number of vertices.
  *  The <em>nameOf</em> operation takes constant time.
  *  <p>
@@ -70,7 +70,7 @@ public class SymbolGraph {
     private String[] keys;           // index  -> string
     private Graph graph;             // the underlying graph
 
-    /**  
+    /**
      * Initializes a graph from a file using the specified delimiter.
      * Each line in the file contains
      * the name of a vertex, followed by a list of the names
@@ -145,7 +145,7 @@ public class SymbolGraph {
 
     /**
      * Returns the name of the vertex associated with the integer {@code v}.
-     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1)
      * @return the name of the vertex associated with the integer {@code v}
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      * @deprecated Replaced by {@link #nameOf(int)}.
@@ -158,7 +158,7 @@ public class SymbolGraph {
 
     /**
      * Returns the name of the vertex associated with the integer {@code v}.
-     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1) 
+     * @param  v the integer corresponding to a vertex (between 0 and <em>V</em> - 1)
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      * @return the name of the vertex associated with the integer {@code v}
      */
@@ -221,7 +221,7 @@ public class SymbolGraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

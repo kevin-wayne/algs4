@@ -23,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  The order of growth of the running time in the worst case is
  *  O(<em>n</em>^3 log <em>n</em>) to solve an <em>n</em>-by-<em>n</em>
  *  instance.
- *  <p> 
+ *  <p>
  *  This computes correct results if all arithmetic performed is
  *  without floating-point rounding error or arithmetic overflow.
  *  This is the case if all edge weights are integers and if none of the
@@ -54,7 +54,7 @@ public class AssignmentProblem {
      * @param  weight the <em>n</em>-by-<em>n</em> matrix of weights
      * @throws IllegalArgumentException unless all weights are nonnegative
      * @throws IllegalArgumentException if {@code weight} is {@code null}
-     */ 
+     */
     public AssignmentProblem(double[][] weight) {
         if (weight == null) throw new IllegalArgumentException("constructor argument is null");
 
@@ -286,7 +286,7 @@ public class AssignmentProblem {
         double[][] weight = new double[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                weight[i][j] = StdRandom.uniform(900) + 100;  // 3 digits
+                weight[i][j] = StdRandom.uniformInt(900) + 100;  // 3 digits
             }
         }
 
@@ -311,7 +311,7 @@ public class AssignmentProblem {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

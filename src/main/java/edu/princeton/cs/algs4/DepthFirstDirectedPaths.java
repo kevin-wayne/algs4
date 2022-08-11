@@ -42,9 +42,9 @@ package edu.princeton.cs.algs4;
  *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
  *  See {@link DepthFirstDirectedPaths} for a nonrecursive implementation.
- *  For additional documentation,  
- *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of  
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -68,7 +68,7 @@ public class DepthFirstDirectedPaths {
         dfs(G, s);
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         for (int w : G.adj(v)) {
             if (!marked[w]) {
@@ -90,7 +90,7 @@ public class DepthFirstDirectedPaths {
         return marked[v];
     }
 
-    
+
     /**
      * Returns a directed path from the source vertex {@code s} to vertex {@code v}, or
      * {@code null} if no such path.
@@ -149,7 +149,7 @@ public class DepthFirstDirectedPaths {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

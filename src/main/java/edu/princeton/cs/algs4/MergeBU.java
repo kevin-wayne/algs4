@@ -4,19 +4,19 @@
  *  Dependencies: StdOut.java StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/22mergesort/tiny.txt
  *                https://algs4.cs.princeton.edu/22mergesort/words3.txt
- *   
+ *
  *  Sorts a sequence of strings from standard input using
  *  bottom-up mergesort.
- *   
+ *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
  *  % java MergeBU < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
- *    
+ *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
- *  
+ *
  *  % java MergeBU < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
@@ -54,7 +54,7 @@ public class MergeBU {
 
         // copy to aux[]
         for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k]; 
+            aux[k] = a[k];
         }
 
         // merge back to a[]
@@ -88,7 +88,7 @@ public class MergeBU {
   /***********************************************************************
     *  Helper sorting functions.
     ***************************************************************************/
-    
+
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -113,7 +113,7 @@ public class MergeBU {
 
     /**
      * Reads in a sequence of strings from standard input; bottom-up
-     * mergesorts them; and prints them to standard output in ascending order. 
+     * mergesorts them; and prints them to standard output in ascending order.
      *
      * @param args the command-line arguments
      */
@@ -125,7 +125,7 @@ public class MergeBU {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

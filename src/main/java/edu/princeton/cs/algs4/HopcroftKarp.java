@@ -292,7 +292,7 @@ public class HopcroftKarp {
     }
 
     /**************************************************************************
-     *   
+     *
      *  The code below is solely for testing correctness of the data type.
      *
      **************************************************************************/
@@ -349,8 +349,8 @@ public class HopcroftKarp {
         return true;
     }
 
-    /** 
-     * Unit tests the {@code HopcroftKarp} data type.   
+    /**
+     * Unit tests the {@code HopcroftKarp} data type.
      * Takes three command-line arguments {@code V1}, {@code V2}, and {@code E};
      * creates a random bipartite graph with {@code V1} + {@code V2} vertices
      * and {@code E} edges; computes a maximum matching and minimum vertex cover;
@@ -395,7 +395,7 @@ public class HopcroftKarp {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

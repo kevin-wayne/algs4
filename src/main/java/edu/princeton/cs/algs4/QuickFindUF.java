@@ -68,7 +68,7 @@ public class QuickFindUF {
 
     /**
      * Initializes an empty union-find data structure with
-     * {@code n} elements {@code 0} through {@code n-1}. 
+     * {@code n} elements {@code 0} through {@code n-1}.
      * Initially, each element is in its own set.
      *
      * @param  n the number of elements
@@ -89,7 +89,7 @@ public class QuickFindUF {
     public int count() {
         return count;
     }
-  
+
     /**
      * Returns the canonical element of the set containing element {@code p}.
      *
@@ -112,7 +112,7 @@ public class QuickFindUF {
 
     /**
      * Returns true if the two elements are in the same set.
-     * 
+     *
      * @param  p one element
      * @param  q the other element
      * @return {@code true} if {@code p} and {@code q} are in the same set;
@@ -127,9 +127,9 @@ public class QuickFindUF {
         validate(q);
         return id[p] == id[q];
     }
-  
+
     /**
-     * Merges the set containing element {@code p} with the 
+     * Merges the set containing element {@code p} with the
      * the set containing element {@code q}.
      *
      * @param  p one element
@@ -157,7 +157,7 @@ public class QuickFindUF {
      * in the pair represents some element;
      * if the elements are in different sets, merge the two sets
      * and print the pair to standard output.
-     * 
+     *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
@@ -176,7 +176,7 @@ public class QuickFindUF {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -5,17 +5,17 @@
  *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
  *                https://algs4.cs.princeton.edu/63suffix/tinyTale.txt
  *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
- *  
+ *
  *  Reads a text string from stdin, replaces all consecutive blocks of
  *  whitespace with a single space, and then computes the longest
  *  repeated substring in that text using a suffix array.
- * 
- *  % java LongestRepeatedSubstring < tinyTale.txt 
+ *
+ *  % java LongestRepeatedSubstring < tinyTale.txt
  *  'st of times it was the '
  *
  *  % java LongestRepeatedSubstring < mobydick.txt
  *  ',- Such a funny, sporty, gamy, jesty, joky, hoky-poky lad, is the Ocean, oh! Th'
- * 
+ *
  *  % java LongestRepeatedSubstring
  *  aaaaaaaaa
  *  'aaaaaaaa'
@@ -89,7 +89,7 @@ public class LongestRepeatedSubstring {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -1,20 +1,20 @@
 /******************************************************************************
  *  Compilation:  javac GlobalMincut.java
  *  Execution:    java  GlobalMincut filename.txt
- *  Dependencies: EdgeWeightedGraph.java Edge.java UF.java 
- *                IndexMaxPQ.java FlowNetwork.java FlowEdge.java 
+ *  Dependencies: EdgeWeightedGraph.java Edge.java UF.java
+ *                IndexMaxPQ.java FlowNetwork.java FlowEdge.java
  *                FordFulkerson.java In.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/43mst/tinyEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
  *
  *  Computes a minimum cut using Stoer-Wagner's algorithm.
  *
- *  % java GlobalMincut tinyEWG.txt 
- *    Min cut: 5 
+ *  % java GlobalMincut tinyEWG.txt
+ *    Min cut: 5
  *    Min cut weight = 0.9500000000000001
- *    
- *  % java GlobalMincut mediumEWG.txt 
- *    Min cut: 25 60 63 96 199 237 
+ *
+ *  % java GlobalMincut mediumEWG.txt
+ *    Min cut: 25 60 63 96 199 237
  *    Min cut weight = 0.14021
  *
  ******************************************************************************/
@@ -35,7 +35,7 @@ package edu.princeton.cs.algs4;
  *  The constructor takes
  *  <em>O</em>(<em>V</em> (<em>V</em> + <em>E</em>) log <em>V</em>) time,
  *  where <em>V</em> is the number of vertices and <em>E</em> is the
- *  number of edges. 
+ *  number of edges.
  *  The <em>weight</em> and <em>isCut</em> methods take &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
@@ -44,7 +44,7 @@ package edu.princeton.cs.algs4;
  *  <li>M. Stoer and F. Wagner (1997). A simple min-cut algorithm. <em>Journal of
  *  the ACM </em>, 44(4):585-591.
  *  </ul>
- * 
+ *
  * @author Marcelo Silva
  */
 public class GlobalMincut {
@@ -80,7 +80,7 @@ public class GlobalMincut {
 
     /**
      * Computes a minimum cut in an edge-weighted graph.
-     * 
+     *
      * @param G the edge-weighted graph
      * @throws IllegalArgumentException if the number of vertices of {@code G}
      *             is less than {@code 2}.
@@ -95,7 +95,7 @@ public class GlobalMincut {
 
     /**
      * Validates the edge-weighted graph.
-     * 
+     *
      * @param G the edge-weighted graph
      * @throws IllegalArgumentException if the number of vertices of {@code G}
      *             is less than {@code 2} or if any edge weight is negative
@@ -109,7 +109,7 @@ public class GlobalMincut {
 
     /**
      * Returns the weight of the minimum cut.
-     * 
+     *
      * @return the weight of the minimum cut
      */
     public double weight() {
@@ -121,7 +121,7 @@ public class GlobalMincut {
      * mincut and {@code false} otherwise. An edge <em>v</em>-<em>w</em>
      * crosses the mincut if and only if <em>v</em> and <em>w</em> have
      * opposite parity.
-     * 
+     *
      * @param v the vertex to check
      * @return {@code true} if the vertex {@code v} is on the first subset of
      *         vertices of the minimum cut; or {@code false} if the vertex
@@ -139,7 +139,7 @@ public class GlobalMincut {
      * vertices into two nonempty subsets. The vertices connected to the
      * vertex {@code t} belong to the first subset. Other vertices not connected
      * to {@code t} belong to the second subset.
-     * 
+     *
      * @param t the vertex {@code t}
      * @param uf the union-find data type
      */
@@ -153,7 +153,7 @@ public class GlobalMincut {
      * Computes a minimum cut of the edge-weighted graph. Precisely, it computes
      * the lightest of the cuts-of-the-phase which yields the desired minimum
      * cut.
-     * 
+     *
      * @param G the edge-weighted graph
      * @param a the starting vertex
      */
@@ -179,7 +179,7 @@ public class GlobalMincut {
      * in the current graph, where {@code s} and {@code t} are the two vertices
      * added last in the phase. This algorithm is known in the literature as
      * <em>maximum adjacency search</em> or <em>maximum cardinality search</em>.
-     * 
+     *
      * @param G the edge-weighted graph
      * @param marked the array of contracted vertices, where {@code marked[v]}
      *            is {@code true} if the vertex {@code v} was already
@@ -212,7 +212,7 @@ public class GlobalMincut {
     /**
      * Contracts the edges incidents on the vertices {@code s} and {@code t} of
      * the given edge-weighted graph.
-     * 
+     *
      * @param G the edge-weighted graph
      * @param s the vertex {@code s}
      * @param t the vertex {@code t}
@@ -237,7 +237,7 @@ public class GlobalMincut {
 
     /**
      * Checks optimality conditions.
-     * 
+     *
      * @param G the edge-weighted graph
      * @return {@code true} if optimality conditions are fine
      */
@@ -273,7 +273,7 @@ public class GlobalMincut {
 
     /**
      * Unit tests the {@code GlobalMincut} data type.
-     * 
+     *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
@@ -290,7 +290,7 @@ public class GlobalMincut {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

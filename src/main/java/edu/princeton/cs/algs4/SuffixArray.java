@@ -44,7 +44,7 @@ import java.util.Arrays;
  *  This implementation uses a nested class {@code Suffix} to represent
  *  a suffix of a string (using constant time and space) and
  *  {@code Arrays.sort()} to sort the array of suffixes.
- *  The <em>index</em> and <em>length</em> operations takes constant time 
+ *  The <em>index</em> and <em>length</em> operations takes constant time
  *  in the worst case. The <em>lcp</em> operation takes time proportional to the
  *  length of the longest common prefix.
  *  The <em>select</em> operation takes time proportional
@@ -221,7 +221,7 @@ public class SuffixArray {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -13,26 +13,26 @@
  *
  *  % java KosarajuSharirSCC tinyDG.txt
  *  5 strong components
- *  1 
- *  0 2 3 4 5 
- *  9 10 11 12 
- *  6 8 
+ *  1
+ *  0 2 3 4 5
+ *  9 10 11 12
+ *  6 8
  *  7
  *
- *  % java KosarajuSharirSCC mediumDG.txt 
+ *  % java KosarajuSharirSCC mediumDG.txt
  *  10 strong components
- *  21 
- *  2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49 
- *  14 
- *  3 4 17 20 24 27 36 
- *  41 
- *  7 
- *  45 
- *  1 
- *  0 
- *  10 
+ *  21
+ *  2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49
+ *  14
+ *  3 4 17 20 24 27 36
+ *  41
+ *  7
+ *  45
+ *  1
+ *  0
+ *  10
  *
- *  % java -Xss50m KosarajuSharirSCC mediumDG.txt 
+ *  % java -Xss50m KosarajuSharirSCC mediumDG.txt
  *  25 strong components
  *  7 11 32 36 61 84 95 116 121 128 230   ...
  *  28 73 80 104 115 143 149 164 184 185  ...
@@ -65,7 +65,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code KosarajuSharirSCC} class represents a data type for 
+ *  The {@code KosarajuSharirSCC} class represents a data type for
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -122,7 +122,7 @@ public class KosarajuSharirSCC {
     }
 
     // DFS on graph G
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         id[v] = count;
         for (int w : G.adj(v)) {
@@ -219,7 +219,7 @@ public class KosarajuSharirSCC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

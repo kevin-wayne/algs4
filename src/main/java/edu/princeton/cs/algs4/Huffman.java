@@ -163,7 +163,7 @@ public class Huffman {
     public static void expand() {
 
         // read in Huffman trie from input stream
-        Node root = readTrie(); 
+        Node root = readTrie();
 
         // number of bytes to write
         int length = BinaryStdIn.readInt();
@@ -207,7 +207,7 @@ public class Huffman {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

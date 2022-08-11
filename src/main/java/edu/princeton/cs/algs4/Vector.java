@@ -17,7 +17,7 @@
  *   10z     = [ 60.0 40.0 70.0 50.0 ]
  *    |x|    = 5.477225575051661
  *   <x, y>  = 25.0
- * 
+ *
  *
  *  Note that Vector is also the name of an unrelated Java library class
  *  in the package java.util.
@@ -33,14 +33,14 @@ package edu.princeton.cs.algs4;
  *  dot product, scalar product, unit vector, Euclidean norm, and the Euclidean
  *  distance between two vectors.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Vector { 
+public class Vector {
 
     private int d;               // dimension of the vector
     private double[] data;       // array of vector's components
@@ -120,7 +120,7 @@ public class Vector {
     /**
      * Returns the Euclidean distance between this vector and the specified vector.
      *
-     * @param  that the other vector 
+     * @param  that the other vector
      * @return the Euclidean distance between this vector and that vector
      * @throws IllegalArgumentException if the dimensions of the two vectors are not equal
      */
@@ -212,7 +212,7 @@ public class Vector {
     /**
      * Returns a string representation of this vector.
      *
-     * @return a string representation of this vector, which consists of the 
+     * @return a string representation of this vector, which consists of the
      *         the vector entries, separates by single spaces
      */
     public String toString() {
@@ -251,7 +251,7 @@ public class Vector {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

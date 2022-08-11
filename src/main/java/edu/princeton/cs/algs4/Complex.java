@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  conjugation, and other common functions on complex numbers.
  *  <p>
  *  This computes correct results if all arithmetic performed is
- *  without floating-point rounding error or arithmetic overflow.  
+ *  without floating-point rounding error or arithmetic overflow.
  *  In practice, there will be floating-point rounding error.
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
@@ -237,7 +237,7 @@ public class Complex {
     public Complex tan() {
         return sin().divides(cos());
     }
-    
+
 
     /**
      * Unit tests the {@code Complex} data type.
@@ -266,7 +266,7 @@ public class Complex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

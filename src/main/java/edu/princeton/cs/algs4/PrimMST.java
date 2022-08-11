@@ -9,7 +9,7 @@
  *
  *  Compute a minimum spanning forest using Prim's algorithm.
  *
- *  %  java PrimMST tinyEWG.txt 
+ *  %  java PrimMST tinyEWG.txt
  *  1-7 0.19000
  *  0-2 0.26000
  *  2-3 0.17000
@@ -44,7 +44,7 @@ package edu.princeton.cs.algs4;
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The {@code weight()} method returns the 
+ *  in each connected component. The {@code weight()} method returns the
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
@@ -54,7 +54,7 @@ package edu.princeton.cs.algs4;
  *  the worst case, where <em>V</em> is the number of
  *  vertices and <em>E</em> is the number of edges.
  *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the 
+ *  It uses &Theta;(<em>V</em>) extra space (not including the
  *  edge-weighted graph).
  *  <p>
  *  This {@code weight()} method correctly computes the weight of the MST
@@ -230,7 +230,7 @@ public class PrimMST {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

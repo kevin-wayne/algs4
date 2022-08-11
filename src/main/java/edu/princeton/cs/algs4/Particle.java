@@ -2,7 +2,7 @@
  *  Compilation:  javac Particle.java
  *  Execution:    none
  *  Dependencies: StdDraw.java
- *      
+ *
  *  A particle moving in the unit box with a given position, velocity,
  *  radius, and mass.
  *
@@ -19,9 +19,9 @@ import java.awt.Color;
  *  collisions with vertical walls, horizontal walls, and other particles.
  *  This data type is mutable because the position and velocity change.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/61event">Section 6.1</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -57,17 +57,17 @@ public class Particle {
         this.mass   = mass;
         this.color  = color;
     }
-         
+
     /**
      * Initializes a particle with a random position and velocity.
      * The position is uniform in the unit box; the velocity in
      * either direciton is chosen uniformly at random.
      */
     public Particle() {
-        rx     = StdRandom.uniform(0.0, 1.0);
-        ry     = StdRandom.uniform(0.0, 1.0);
-        vx     = StdRandom.uniform(-0.005, 0.005);
-        vy     = StdRandom.uniform(-0.005, 0.005);
+        rx     = StdRandom.uniformDouble(0.0, 1.0);
+        ry     = StdRandom.uniformDouble(0.0, 1.0);
+        vx     = StdRandom.uniformDouble(-0.005, 0.005);
+        vy     = StdRandom.uniformDouble(-0.005, 0.005);
         radius = 0.02;
         mass   = 0.5;
         color  = Color.BLACK;
@@ -112,7 +112,7 @@ public class Particle {
      *
      * @param  that the other particle
      * @return the amount of time for this particle to collide with the specified
-     *         particle, assuming no interening collisions; 
+     *         particle, assuming no interening collisions;
      *         {@code Double.POSITIVE_INFINITY} if the particles will not collide
      */
     public double timeToHit(Particle that) {
@@ -138,13 +138,13 @@ public class Particle {
      * wall, assuming no interening collisions.
      *
      * @return the amount of time for this particle to collide with a vertical wall,
-     *         assuming no interening collisions; 
+     *         assuming no interening collisions;
      *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a vertical wall
      */
     public double timeToHitVerticalWall() {
         if      (vx > 0) return (1.0 - rx - radius) / vx;
-        else if (vx < 0) return (radius - rx) / vx;  
+        else if (vx < 0) return (radius - rx) / vx;
         else             return INFINITY;
     }
 
@@ -153,7 +153,7 @@ public class Particle {
      * wall, assuming no interening collisions.
      *
      * @return the amount of time for this particle to collide with a horizontal wall,
-     *         assuming no interening collisions; 
+     *         assuming no interening collisions;
      *         {@code Double.POSITIVE_INFINITY} if the particle will not collide
      *         with a horizontal wall
      */
@@ -229,7 +229,7 @@ public class Particle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

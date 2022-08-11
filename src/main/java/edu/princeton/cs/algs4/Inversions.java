@@ -2,7 +2,7 @@
  *  Compilation:  javac Inversions.java
  *  Execution:    java Inversions < input.txt
  *  Dependencies: StdIn.java StdOut.java
- *  
+ *
  *  Read array of n integers and count number of inversions in n log n time.
  *
  ******************************************************************************/
@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Inversions} class provides static methods to count the 
+ *  The {@code Inversions} class provides static methods to count the
  *  number of <em>inversions</em> in either an array of integers or comparables.
  *  An inversion in an array {@code a[]} is a pair of indicies {@code i} and
  *  {@code j} such that {@code i < j} and {@code a[i] > a[j]}.
@@ -38,7 +38,7 @@ public class Inversions {
 
         // copy to aux[]
         for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k]; 
+            aux[k] = a[k];
         }
 
         // merge back to a[]
@@ -58,7 +58,7 @@ public class Inversions {
         long inversions = 0;
         if (hi <= lo) return 0;
         int mid = lo + (hi - lo) / 2;
-        inversions += count(a, b, aux, lo, mid);  
+        inversions += count(a, b, aux, lo, mid);
         inversions += count(a, b, aux, mid+1, hi);
         inversions += merge(b, aux, lo, mid, hi);
         assert inversions == brute(a, lo, hi);
@@ -70,7 +70,7 @@ public class Inversions {
      * Returns the number of inversions in the integer array.
      * The argument array is not modified.
      * @param  a the array
-     * @return the number of inversions in the array. An inversion is a pair of 
+     * @return the number of inversions in the array. An inversion is a pair of
      *         indicies {@code i} and {@code j} such that {@code i < j}
      *         and {@code a[i] > a[j]}.
      */
@@ -91,7 +91,7 @@ public class Inversions {
 
         // copy to aux[]
         for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k]; 
+            aux[k] = a[k];
         }
 
         // merge back to a[]
@@ -111,7 +111,7 @@ public class Inversions {
         long inversions = 0;
         if (hi <= lo) return 0;
         int mid = lo + (hi - lo) / 2;
-        inversions += count(a, b, aux, lo, mid);  
+        inversions += count(a, b, aux, lo, mid);
         inversions += count(a, b, aux, mid+1, hi);
         inversions += merge(b, aux, lo, mid, hi);
         assert inversions == brute(a, lo, hi);
@@ -124,7 +124,7 @@ public class Inversions {
      * The argument array is not modified.
      * @param  a the array
      * @param <Key> the inferred type of the elements in the array
-     * @return the number of inversions in the array. An inversion is a pair of 
+     * @return the number of inversions in the array. An inversion is a pair of
      *         indicies {@code i} and {@code j} such that {@code i < j}
      *         and {@code a[i].compareTo(a[j]) > 0}.
      */
@@ -177,7 +177,7 @@ public class Inversions {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

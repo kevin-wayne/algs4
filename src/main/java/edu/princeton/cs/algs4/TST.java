@@ -239,7 +239,7 @@ public class TST<Value> {
         collect(root, new StringBuilder(), 0, pattern, queue);
         return queue;
     }
- 
+
     private void collect(Node<Value> x, StringBuilder prefix, int i, String pattern, Queue<String> queue) {
         if (x == null) return;
         char c = pattern.charAt(i);
@@ -298,7 +298,7 @@ public class TST<Value> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -44,11 +44,11 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class LookupIndex { 
+public class LookupIndex {
 
     // Do not instantiate.
     private LookupIndex() { }
@@ -79,10 +79,10 @@ public class LookupIndex {
         // read queries from standard input, one per line
         while (!StdIn.isEmpty()) {
             String query = StdIn.readLine();
-            if (st.contains(query)) 
+            if (st.contains(query))
                 for (String vals : st.get(query))
                     StdOut.println("  " + vals);
-            if (ts.contains(query)) 
+            if (ts.contains(query))
                 for (String keys : ts.get(query))
                     StdOut.println("  " + keys);
         }
@@ -92,7 +92,7 @@ public class LookupIndex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

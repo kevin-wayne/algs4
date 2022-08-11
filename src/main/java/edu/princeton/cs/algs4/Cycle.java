@@ -4,26 +4,26 @@
  *  Dependencies: Graph.java Stack.java In.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/41graph/tinyG.txt
  *                https://algs4.cs.princeton.edu/41graph/mediumG.txt
- *                https://algs4.cs.princeton.edu/41graph/largeG.txt  
+ *                https://algs4.cs.princeton.edu/41graph/largeG.txt
  *
  *  Identifies a cycle.
  *  Runs in O(E + V) time.
  *
  *  % java Cycle tinyG.txt
- *  3 4 5 3 
- * 
- *  % java Cycle mediumG.txt 
- *  15 0 225 15 
- * 
- *  % java Cycle largeG.txt 
- *  996673 762 840164 4619 785187 194717 996673 
+ *  3 4 5 3
+ *
+ *  % java Cycle mediumG.txt
+ *  15 0 225 15
+ *
+ *  % java Cycle largeG.txt
+ *  996673 762 840164 4619 785187 194717 996673
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Cycle} class represents a data type for 
+ *  The {@code Cycle} class represents a data type for
  *  determining whether an undirected graph has a simple cycle.
  *  The <em>hasCycle</em> operation determines whether the graph has
  *  a cycle and, if so, the <em>cycle</em> operation returns one.
@@ -37,10 +37,10 @@ package edu.princeton.cs.algs4;
  *  &Theta;(<em>V</em> + <em>E</em>) time in the worst case.)
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
- *  
+ *
  *  <p>
  *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -177,12 +177,10 @@ public class Cycle {
         }
     }
 
-
 }
 
-
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -3,11 +3,11 @@
  *  Execution:    java PictureDump width height < file
  *  Dependencies: BinaryStdIn.java Picture.java
  *  Data file:    http://introcs.cs.princeton.edu/stdlib/abra.txt
- *  
+ *
  *  Reads in a binary file and writes out the bits as w-by-h picture,
  *  with the 1 bits in black and the 0 bits in white.
  *
- *  % more abra.txt 
+ *  % more abra.txt
  *  ABRACADABRA!
  *
  *  % java PictureDump 16 6 < abra.txt
@@ -66,7 +66,7 @@ public class PictureDump {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

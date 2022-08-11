@@ -2,7 +2,7 @@
  *  Compilation:  javac Transaction.java
  *  Execution:    java Transaction
  *  Dependencies: StdOut.java
- *  
+ *
  *  Data type for commercial transactions.
  *
  ******************************************************************************/
@@ -16,9 +16,9 @@ import java.util.Comparator;
  *  The {@code Transaction} class is an immutable data type to encapsulate a
  *  commercial transaction with a customer name, date, and amount.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -35,7 +35,7 @@ public class Transaction implements Comparable<Transaction> {
      * @param  who the person involved in this transaction
      * @param  when the date of this transaction
      * @param  amount the amount of this transaction
-     * @throws IllegalArgumentException if {@code amount} 
+     * @throws IllegalArgumentException if {@code amount}
      *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
      *         or {@code Double.NEGATIVE_INFINITY}
      */
@@ -51,7 +51,7 @@ public class Transaction implements Comparable<Transaction> {
      * Initializes a new transaction by parsing a string of the form NAME DATE AMOUNT.
      *
      * @param  transaction the string to parse
-     * @throws IllegalArgumentException if {@code amount} 
+     * @throws IllegalArgumentException if {@code amount}
      *         is {@code Double.NaN}, {@code Double.POSITIVE_INFINITY},
      *         or {@code Double.NEGATIVE_INFINITY}
      */
@@ -72,7 +72,7 @@ public class Transaction implements Comparable<Transaction> {
     public String who() {
         return who;
     }
- 
+
     /**
      * Returns the date of this transaction.
      *
@@ -81,7 +81,7 @@ public class Transaction implements Comparable<Transaction> {
     public Date when() {
         return when;
     }
- 
+
     /**
      * Returns the amount of this transaction.
      *
@@ -111,7 +111,7 @@ public class Transaction implements Comparable<Transaction> {
      */
     public int compareTo(Transaction that) {
         return Double.compare(this.amount, that.amount);
-    }    
+    }
 
     /**
      * Compares this transaction to the specified object.
@@ -194,7 +194,7 @@ public class Transaction implements Comparable<Transaction> {
         for (int i = 0; i < a.length; i++)
             StdOut.println(a[i]);
         StdOut.println();
-        
+
         StdOut.println("Sort by date");
         Arrays.sort(a, new Transaction.WhenOrder());
         for (int i = 0; i < a.length; i++)
@@ -220,7 +220,7 @@ public class Transaction implements Comparable<Transaction> {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

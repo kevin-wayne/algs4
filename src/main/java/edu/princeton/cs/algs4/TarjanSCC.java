@@ -6,25 +6,25 @@
  *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
  *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
- *  Compute the strongly-connected components of a digraph using 
+ *  Compute the strongly-connected components of a digraph using
  *  Tarjan's algorithm.
  *
  *  Runs in O(E + V) time.
  *
  *  % java TarjanSCC tinyDG.txt
  *  5 components
- *  1 
+ *  1
  *  0 2 3 4 5
  *  9 10 11 12
  *  6 8
- *  7 
+ *  7
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code TarjanSCC} class represents a data type for 
+ *  The {@code TarjanSCC} class represents a data type for
  *  determining the strong components in a digraph.
  *  The <em>id</em> operation determines in which strong component
  *  a given vertex lies; the <em>areStronglyConnected</em> operation
@@ -69,7 +69,7 @@ public class TarjanSCC {
     public TarjanSCC(Digraph G) {
         marked = new boolean[G.V()];
         stack = new Stack<Integer>();
-        id = new int[G.V()]; 
+        id = new int[G.V()];
         low = new int[G.V()];
         for (int v = 0; v < G.V(); v++) {
             if (!marked[v]) dfs(G, v);
@@ -79,7 +79,7 @@ public class TarjanSCC {
         assert check(G);
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         marked[v] = true;
         low[v] = pre++;
         int min = low[v];
@@ -192,7 +192,7 @@ public class TarjanSCC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

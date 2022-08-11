@@ -9,15 +9,15 @@
  *  (does not implement the strong good suffix rule)
  *
  *  % java BoyerMoore abracadabra abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
+ *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:               abracadabra
  *
  *  % java BoyerMoore rab abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
+ *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:         rab
  *
  *  % java BoyerMoore bcara abacadabrabracabracadabrabrabracad
- *  text:    abacadabrabracabracadabrabrabracad 
+ *  text:    abacadabrabracabracadabrabrabracad
  *  pattern:                                   bcara
  *
  *  % java BoyerMoore rabrabracad abacadabrabracabracadabrabrabracad
@@ -174,7 +174,7 @@ public class BoyerMoore {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -11,12 +11,12 @@
  *
  *  %  java Graph tinyCG.txt
  *  6 8
- *  0: 2 1 5 
- *  1: 0 2 
- *  2: 0 1 3 4 
- *  3: 5 4 2 
- *  4: 3 2 
- *  5: 3 0 
+ *  0: 2 1 5
+ *  1: 0 2
+ *  2: 0 1 3 4
+ *  3: 5 4 2
+ *  4: 3 2
+ *  5: 3 0
  *
  *  % java DepthFirstPaths tinyCG.txt 0
  *  0 to 0:  0
@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
  *  For additional documentation, see
- *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -146,7 +146,7 @@ public class DepthFirstPaths {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

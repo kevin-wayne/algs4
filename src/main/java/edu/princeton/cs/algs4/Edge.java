@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Edge} class represents a weighted edge in an 
+ *  The {@code Edge} class represents a weighted edge in an
  *  {@link EdgeWeightedGraph}. Each edge consists of two integers
  *  (naming the two vertices) and a real-value weight. The data type
  *  provides methods for accessing the two endpoints of the edge and
@@ -23,7 +23,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Edge implements Comparable<Edge> { 
+public class Edge implements Comparable<Edge> {
 
     private final int v;
     private final int w;
@@ -36,7 +36,7 @@ public class Edge implements Comparable<Edge> {
      * @param  v one vertex
      * @param  w the other vertex
      * @param  weight the weight of this edge
-     * @throws IllegalArgumentException if either {@code v} or {@code w} 
+     * @throws IllegalArgumentException if either {@code v} or {@code w}
      *         is a negative integer
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
@@ -117,7 +117,7 @@ public class Edge implements Comparable<Edge> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

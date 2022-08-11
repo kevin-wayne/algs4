@@ -12,14 +12,14 @@
  *  % java CC tinyG.txt
  *  3 components
  *  0 1 2 3 4 5 6
- *  7 8 
+ *  7 8
  *  9 10 11 12
  *
- *  % java CC mediumG.txt 
+ *  % java CC mediumG.txt
  *  1 components
  *  0 1 2 3 4 5 6 7 8 9 10 ...
  *
- *  % java -Xss50m CC largeG.txt 
+ *  % java -Xss50m CC largeG.txt
  *  1 components
  *  0 1 2 3 4 5 6 7 8 9 10 ...
  *
@@ -32,7 +32,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code CC} class represents a data type for 
+ *  The {@code CC} class represents a data type for
  *  determining the connected components in an undirected graph.
  *  The <em>id</em> operation determines in which connected component
  *  a given vertex lies; the <em>connected</em> operation
@@ -53,8 +53,8 @@ package edu.princeton.cs.algs4;
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *  <p>
- *  For additional documentation, see 
- *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>   
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a>
  *  of <em>Algorithms, 4th Edition</em> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
@@ -236,7 +236,7 @@ public class CC {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

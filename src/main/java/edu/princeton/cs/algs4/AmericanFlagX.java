@@ -7,7 +7,7 @@
  *
  *  Sort an array of strings or integers in-place using American Flag sort.
  *
- *  % java AmericanFlagX < shells.txt 
+ *  % java AmericanFlagX < shells.txt
  *  are
  *  by
  *  sea
@@ -29,8 +29,8 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code AmericanFlagX} class provides static methods for sorting an
- *  array of extended ASCII strings or integers in-place using 
- *  American Flag sort. This implementation is non-recursive and uses only 
+ *  array of extended ASCII strings or integers in-place using
+ *  American Flag sort. This implementation is non-recursive and uses only
  *  one auxiliary array.
  *  <p>
  *  For additional documentation,
@@ -48,7 +48,7 @@ public class AmericanFlagX {
     private static final int CUTOFF =  15;   // cutoff to insertion sort
 
     // do not instantiate
-    private AmericanFlagX() { } 
+    private AmericanFlagX() { }
 
     // return dth character of s, -1 if d = length of string
     private static int charAt(String s, int d) {
@@ -77,7 +77,7 @@ public class AmericanFlagX {
         st.push(lo);
         st.push(hi);
         st.push(d);
-        
+
         while (!st.isEmpty()) {
             d = st.pop();
             hi = st.pop();
@@ -94,17 +94,17 @@ public class AmericanFlagX {
                 count[c]++;
             }
 
-            // accumulate counts relative to a[0], so that 
+            // accumulate counts relative to a[0], so that
             // count[c] is the number of keys <= c
             count[0] += lo;
             for (int c = 0; c < R; c++) {
                 count[c+1] += count[c];
-            
-                if (c > 0 && count[c+1]-1 > count[c]) { 
+
+                if (c > 0 && count[c+1]-1 > count[c]) {
                     // add subproblem for character c (excludes sentinel c == 0)
                     st.push(count[c]);
                     st.push(count[c+1]-1);
-                    st.push(d+1); 
+                    st.push(d+1);
                 }
             }
 
@@ -122,20 +122,20 @@ public class AmericanFlagX {
 
                 // if r < lo the subarray is sorted.
                 if (r < lo) break;
-            
+
                 // permute a[r] until correct element is in place
                 while (--count[c] != r) {
                     exch(a, r, count[c]);
                     c = charAt(a[r], d) + 1;
                 }
             }
-          
+
             // clear count[] array
             for (int c = 0; c < R+1; c++)
                 count[c] = 0;
         }
     }
-    
+
     // insertion sort a[lo..hi], starting at dth character
     private static void insertion(String[] a, int lo, int hi, int d) {
         for (int i = lo; i <= hi; i++)
@@ -159,7 +159,7 @@ public class AmericanFlagX {
         }
         return v.length() < w.length();
     }
-        
+
     /**
      * Reads in a sequence of extended ASCII strings or non-negative ints from standard input;
      * American flag sorts them;
@@ -167,7 +167,7 @@ public class AmericanFlagX {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {      
+    public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
         sort(a);
         // print results
@@ -178,7 +178,7 @@ public class AmericanFlagX {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

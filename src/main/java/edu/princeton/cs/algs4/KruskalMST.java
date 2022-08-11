@@ -9,7 +9,7 @@
  *
  *  Compute a minimum spanning forest using Kruskal's algorithm.
  *
- *  %  java KruskalMST tinyEWG.txt 
+ *  %  java KruskalMST tinyEWG.txt
  *  0-7 0.16000
  *  2-3 0.17000
  *  1-7 0.19000
@@ -44,7 +44,7 @@ import java.util.Arrays;
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The {@code weight()} method returns the 
+ *  in each connected component. The {@code weight()} method returns the
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
@@ -125,7 +125,7 @@ public class KruskalMST {
     public double weight() {
         return weight;
     }
-    
+
     // check optimality conditions (takes time proportional to E V lg* V)
     private boolean check(EdgeWeightedGraph G) {
 
@@ -168,7 +168,7 @@ public class KruskalMST {
                 int x = f.either(), y = f.other(x);
                 if (f != e) uf.union(x, y);
             }
-            
+
             // check that e is min weight edge in crossing cut
             for (Edge f : G.edges()) {
                 int x = f.either(), y = f.other(x);
@@ -205,7 +205,7 @@ public class KruskalMST {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

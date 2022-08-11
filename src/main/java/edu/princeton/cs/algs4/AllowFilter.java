@@ -4,22 +4,22 @@
  *  Dependencies: SET In.java StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyTale.txt
  *                https://algs4.cs.princeton.edu/35applications/allowlist.txt
- * 
+ *
  *  Read in a allowlist of words from a file. Then read in a list of
  *  words from standard input and print out all those words that
  *  are in the first file.
- * 
- *  % more tinyTale.txt 
- *  it was the best of times it was the worst of times 
- *  it was the age of wisdom it was the age of foolishness 
- *  it was the epoch of belief it was the epoch of incredulity 
- *  it was the season of light it was the season of darkness 
+ *
+ *  % more tinyTale.txt
+ *  it was the best of times it was the worst of times
+ *  it was the age of wisdom it was the age of foolishness
+ *  it was the epoch of belief it was the epoch of incredulity
+ *  it was the season of light it was the season of darkness
  *  it was the spring of hope it was the winter of despair
  *
- *  % more list.txt 
- *  was it the of 
- * 
- *  % java AllowFilter list.txt < tinyTale.txt 
+ *  % more list.txt
+ *  was it the of
+ *
+ *  % java AllowFilter list.txt < tinyTale.txt
  *  it was the of it was the of
  *  it was the of it was the of
  *  it was the of it was the of
@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class AllowFilter {  
+public class AllowFilter {
 
     // Do not instantiate.
     private AllowFilter() { }
@@ -68,7 +68,7 @@ public class AllowFilter {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

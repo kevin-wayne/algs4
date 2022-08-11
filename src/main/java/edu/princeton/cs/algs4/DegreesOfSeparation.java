@@ -4,8 +4,8 @@
  *  Dependencies: SymbolGraph.java Graph.java BreadthFirstPaths.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/41graph/routes.txt
  *                https://algs4.cs.princeton.edu/41graph/movies.txt
- *  
- *  
+ *
+ *
  *  %  java DegreesOfSeparation routes.txt " " "JFK"
  *  LAS
  *     JFK
@@ -129,7 +129,7 @@ public class DegreesOfSeparation {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

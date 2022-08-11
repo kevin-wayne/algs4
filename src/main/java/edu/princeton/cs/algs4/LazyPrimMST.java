@@ -7,10 +7,10 @@
  *                https://algs4.cs.princeton.edu/43mst/mediumEWG.txt
  *                https://algs4.cs.princeton.edu/43mst/largeEWG.txt
  *
- *  Compute a minimum spanning forest using a lazy version of Prim's 
+ *  Compute a minimum spanning forest using a lazy version of Prim's
  *  algorithm.
  *
- *  %  java LazyPrimMST tinyEWG.txt 
+ *  %  java LazyPrimMST tinyEWG.txt
  *  0-7 0.16000
  *  1-7 0.19000
  *  0-2 0.26000
@@ -47,7 +47,7 @@ package edu.princeton.cs.algs4;
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The {@code weight()} method returns the 
+ *  in each connected component. The {@code weight()} method returns the
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
@@ -114,7 +114,7 @@ public class LazyPrimMST {
         for (Edge e : G.adj(v))
             if (!marked[e.other(v)]) pq.insert(e);
     }
-        
+
     /**
      * Returns the edges in a minimum spanning tree (or forest).
      * @return the edges in a minimum spanning tree (or forest) as
@@ -190,8 +190,8 @@ public class LazyPrimMST {
 
         return true;
     }
-    
-    
+
+
     /**
      * Unit tests the {@code LazyPrimMST} data type.
      *
@@ -210,7 +210,7 @@ public class LazyPrimMST {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -1,13 +1,13 @@
 /******************************************************************************
  *  Compilation: javac MSD.java
  *  Execution:   java MSD < input.txt
- *  Dependencies: StdIn.java StdOut.java 
+ *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
  *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using MSD radix sort.
  *
- *  % java MSD < shells.txt 
+ *  % java MSD < shells.txt
  *  are
  *  by
  *  sea
@@ -40,12 +40,12 @@ package edu.princeton.cs.algs4;
  */
 public class MSD {
     private static final int BITS_PER_BYTE =   8;
-    private static final int BITS_PER_INT  =  32;   // each Java int is 32 bits 
+    private static final int BITS_PER_INT  =  32;   // each Java int is 32 bits
     private static final int R             = 256;   // extended ASCII alphabet size
     private static final int CUTOFF        =  15;   // cutoff to insertion sort
 
     // do not instantiate
-    private MSD() { } 
+    private MSD() { }
 
    /**
      * Rearranges the array of extended ASCII strings in ascending order.
@@ -92,7 +92,7 @@ public class MSD {
         }
 
         // copy back
-        for (int i = lo; i <= hi; i++) 
+        for (int i = lo; i <= hi; i++)
             a[i] = aux[i - lo];
 
 
@@ -179,7 +179,7 @@ public class MSD {
         }
 
         // copy back
-        for (int i = lo; i <= hi; i++) 
+        for (int i = lo; i <= hi; i++)
             a[i] = aux[i - lo];
 
         // no more bits
@@ -232,7 +232,7 @@ public class MSD {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

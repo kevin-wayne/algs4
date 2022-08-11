@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 /**
  *  The {@code IndexMaxPQ} class represents an indexed priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-maximum</em>
- *  operations, along with <em>delete</em> and <em>change-the-key</em> 
+ *  operations, along with <em>delete</em> and <em>change-the-key</em>
  *  methods. In order to let the client refer to items on the priority queue,
  *  an integer between {@code 0} and {@code maxN - 1}
  *  is associated with each key—the client
@@ -92,7 +92,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     /**
      * Returns the number of keys on this priority queue.
      *
-     * @return the number of keys on this priority queue 
+     * @return the number of keys on this priority queue
      */
     public int size() {
         return n;
@@ -358,7 +358,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
 
         // increase or decrease the key
         for (int i = 0; i < strings.length; i++) {
-            if (StdRandom.uniform() < 0.5)
+            if (StdRandom.bernoulli(0.5))
                 pq.increaseKey(i, strings[i] + strings[i]);
             else
                 pq.decreaseKey(i, strings[i].substring(0, 1));
@@ -392,7 +392,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

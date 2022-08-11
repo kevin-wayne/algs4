@@ -3,7 +3,7 @@
  *  Execution:    java KWIK file.txt
  *  Dependencies: StdIn.java StdOut.java In.java SuffixArray.java
  *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
- *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt 
+ *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *
  *  Keyword-in-context search.
  *
@@ -11,7 +11,7 @@
  *  majesty
  *   most gracious majesty king george th
  *  rnkeys and the majesty of the law fir
- *  on against the majesty of the people 
+ *  on against the majesty of the people
  *  se them to his majestys chief secreta
  *  h lists of his majestys forces and of
  *
@@ -21,17 +21,17 @@
  *  for in case of the worst is a friend in
  *  e roomdoor and the worst is over then a
  *  pect mr darnay the worst its the wisest
- *  is his brother the worst of a bad race 
- *  ss in them for the worst of health for 
+ *  is his brother the worst of a bad race
+ *  ss in them for the worst of health for
  *   you have seen the worst of her agitati
  *  cumwented into the worst of luck buuust
  *  n your brother the worst of the bad rac
  *   full share in the worst of the day pla
- *  mes to himself the worst of the strife 
+ *  mes to himself the worst of the strife
  *  f times it was the worst of times it wa
- *  ould hope that the worst was over well 
+ *  ould hope that the worst was over well
  *  urage business the worst will be over i
- *  clesiastics of the worst world worldly 
+ *  clesiastics of the worst world worldly
  *
  ******************************************************************************/
 
@@ -88,11 +88,11 @@ public class KWIK {
             }
             StdOut.println();
         }
-    } 
-} 
+    }
+}
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

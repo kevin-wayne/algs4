@@ -34,15 +34,15 @@ public class StopwatchCPU {
 
     private final ThreadMXBean threadTimer;
     private final long start;
-            
+
     /**
      * Initializes a new stopwatch.
      */
-    public StopwatchCPU() {  
+    public StopwatchCPU() {
         threadTimer = ManagementFactory.getThreadMXBean();
         start = threadTimer.getCurrentThreadCpuTime();
-    }   
-        
+    }
+
     /**
      * Returns the elapsed CPU time (in seconds) since the stopwatch was created.
      *
@@ -55,7 +55,7 @@ public class StopwatchCPU {
 
     /**
      * Unit tests the {@code StopwatchCPU} data type.
-     * Takes a command-line argument {@code n} and computes the 
+     * Takes a command-line argument {@code n} and computes the
      * sum of the square roots of the first {@code n} positive integers,
      * first using {@code Math.sqrt()}, then using {@code Math.pow()}.
      * It prints to standard output the sum and the amount of time to
@@ -88,7 +88,7 @@ public class StopwatchCPU {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

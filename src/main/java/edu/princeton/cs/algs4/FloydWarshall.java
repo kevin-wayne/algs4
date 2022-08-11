@@ -40,9 +40,9 @@ package edu.princeton.cs.algs4;
  *  where <em>V</em> is the number of vertices and <em>C</em> is the maximum
  *  absolute value of any edge weight.
  *  <p>
- *  For additional documentation,    
- *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of    
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -227,9 +227,9 @@ public class FloydWarshall {
         int E = Integer.parseInt(args[1]);
         AdjMatrixEdgeWeightedDigraph G = new AdjMatrixEdgeWeightedDigraph(V);
         for (int i = 0; i < E; i++) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
-            double weight = Math.round(100 * (StdRandom.uniform() - 0.15)) / 100.0;
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
+            double weight = 0.01 * StdRandom.uniformInt(-15, 100);
             if (v == w) G.addEdge(new DirectedEdge(v, w, Math.abs(weight)));
             else G.addEdge(new DirectedEdge(v, w, weight));
         }
@@ -284,7 +284,7 @@ public class FloydWarshall {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

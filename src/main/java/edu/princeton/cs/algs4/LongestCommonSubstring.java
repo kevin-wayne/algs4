@@ -4,10 +4,10 @@
  *  Dependencies: SuffixArray.java In.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/63suffix/tale.txt
  *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
- *  
+ *
  *  Read in two text files and find the longest substring that
  *  appears in both texts.
- * 
+ *
  *  % java LongestCommonSubstring tale.txt mobydick.txt
  *  ' seemed on the point of being '
  *
@@ -29,7 +29,7 @@ package edu.princeton.cs.algs4;
  *  see <a href="https://algs4.cs.princeton.edu/63suffix">Section 6.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *  <p>
- *     
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
@@ -73,7 +73,7 @@ public class LongestCommonSubstring {
         SuffixArray suffix1 = new SuffixArray(s);
         SuffixArray suffix2 = new SuffixArray(t);
 
-        // find longest common substring by "merging" sorted suffixes 
+        // find longest common substring by "merging" sorted suffixes
         String lcs = "";
         int i = 0, j = 0;
         while (i < s.length() && j < t.length()) {
@@ -106,7 +106,7 @@ public class LongestCommonSubstring {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

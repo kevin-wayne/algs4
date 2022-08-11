@@ -9,17 +9,17 @@
  *
  *  % java RabinKarp abracadabra abacadabrabracabracadabrabrabracad
  *  pattern: abracadabra
- *  text:    abacadabrabracabracadabrabrabracad 
- *  match:                 abracadabra          
+ *  text:    abacadabrabracabracadabrabrabracad
+ *  match:                 abracadabra
  *
  *  % java RabinKarp rab abacadabrabracabracadabrabrabracad
  *  pattern: rab
- *  text:    abacadabrabracabracadabrabrabracad 
- *  match:           rab                         
+ *  text:    abacadabrabracabracadabrabrabracad
+ *  match:           rab
  *
  *  % java RabinKarp bcara abacadabrabracabracadabrabrabracad
  *  pattern: bcara
- *  text:         abacadabrabracabracadabrabrabracad 
+ *  text:         abacadabrabracabracadabrabrabracad
  *
  *  %  java RabinKarp rabrabracad abacadabrabracabracadabrabrabracad
  *  text:    abacadabrabracabracadabrabrabracad
@@ -62,7 +62,7 @@ public class RabinKarp {
      */
     public RabinKarp(char[] pattern, int R) {
         this.pat = String.valueOf(pattern);
-        this.R = R;        
+        this.R = R;
         throw new UnsupportedOperationException("Operation not supported yet");
     }
 
@@ -82,21 +82,21 @@ public class RabinKarp {
         for (int i = 1; i <= m-1; i++)
             RM = (R * RM) % q;
         patHash = hash(pat, m);
-    } 
+    }
 
-    // Compute hash for key[0..m-1]. 
-    private long hash(String key, int m) { 
-        long h = 0; 
-        for (int j = 0; j < m; j++) 
+    // Compute hash for key[0..m-1].
+    private long hash(String key, int m) {
+        long h = 0;
+        for (int j = 0; j < m; j++)
             h = (R * h + key.charAt(j)) % q;
         return h;
     }
 
     // Las Vegas version: does pat[] match txt[i..i-m+1] ?
     private boolean check(String txt, int i) {
-        for (int j = 0; j < m; j++) 
-            if (pat.charAt(j) != txt.charAt(i + j)) 
-                return false; 
+        for (int j = 0; j < m; j++)
+            if (pat.charAt(j) != txt.charAt(i + j))
+                return false;
         return true;
     }
 
@@ -104,7 +104,7 @@ public class RabinKarp {
     // private boolean check(int i) {
     //    return true;
     //}
- 
+
     /**
      * Returns the index of the first occurrrence of the pattern string
      * in the text string.
@@ -114,9 +114,9 @@ public class RabinKarp {
      *         in the text string; n if no such match
      */
     public int search(String txt) {
-        int n = txt.length(); 
+        int n = txt.length();
         if (n < m) return n;
-        long txtHash = hash(txt, m); 
+        long txtHash = hash(txt, m);
 
         // check for match at offset 0
         if ((patHash == txtHash) && check(txt, 0))
@@ -124,9 +124,9 @@ public class RabinKarp {
 
         // check for hash match; if hash match, check for exact match
         for (int i = m; i < n; i++) {
-            // Remove leading digit, add trailing digit, check for match. 
-            txtHash = (txtHash + q - RM*txt.charAt(i-m) % q) % q; 
-            txtHash = (txtHash*R + txt.charAt(i)) % q; 
+            // Remove leading digit, add trailing digit, check for match.
+            txtHash = (txtHash + q - RM*txt.charAt(i-m) % q) % q;
+            txtHash = (txtHash*R + txt.charAt(i)) % q;
 
             // match
             int offset = i - m + 1;
@@ -145,7 +145,7 @@ public class RabinKarp {
         return prime.longValue();
     }
 
-    /** 
+    /**
      * Takes a pattern string and an input string as command-line arguments;
      * searches for the pattern string in the text string; and prints
      * the first occurrence of the pattern string in the text string.
@@ -171,7 +171,7 @@ public class RabinKarp {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

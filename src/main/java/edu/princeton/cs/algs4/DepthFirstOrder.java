@@ -25,16 +25,16 @@
  *    10    8    5
  *    11    6    4
  *    12    7    3
- *  Preorder:  0 5 4 1 6 9 11 12 10 2 3 7 8 
- *  Postorder: 4 5 1 12 11 10 9 6 0 3 2 7 8 
- *  Reverse postorder: 8 7 2 3 0 6 9 10 11 12 1 5 4 
+ *  Preorder:  0 5 4 1 6 9 11 12 10 2 3 7 8
+ *  Postorder: 4 5 1 12 11 10 9 6 0 3 2 7 8
+ *  Reverse postorder: 8 7 2 3 0 6 9 10 11 12 1 5 4
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code DepthFirstOrder} class represents a data type for 
+ *  The {@code DepthFirstOrder} class represents a data type for
  *  determining depth-first search ordering of the vertices in a digraph
  *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
  *  <p>
@@ -243,7 +243,7 @@ public class DepthFirstOrder {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

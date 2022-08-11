@@ -17,13 +17,13 @@
  *  0 1 2 3 4 5
  *
  *  % java DirectedDFS tinyDG.txt 1 2 6
- *  0 1 2 3 4 5 6 8 9 10 11 12 
+ *  0 1 2 3 4 5 6 8 9 10 11 12
  *
  ******************************************************************************/
 
 package edu.princeton.cs.algs4;
 /**
- *  The {@code DirectedDFS} class represents a data type for 
+ *  The {@code DirectedDFS} class represents a data type for
  *  determining the vertices reachable from a given source vertex <em>s</em>
  *  (or set of source vertices) in a digraph. For versions that find the paths,
  *  see {@link DepthFirstDirectedPaths} and {@link BreadthFirstDirectedPaths}.
@@ -77,7 +77,7 @@ public class DirectedDFS {
         }
     }
 
-    private void dfs(Digraph G, int v) { 
+    private void dfs(Digraph G, int v) {
         count++;
         marked[v] = true;
         for (int w : G.adj(v)) {
@@ -165,7 +165,7 @@ public class DirectedDFS {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

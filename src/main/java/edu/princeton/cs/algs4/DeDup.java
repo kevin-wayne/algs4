@@ -7,14 +7,14 @@
  *  Read in a list of words from standard input and print out
  *  each word, removing any duplicates.
  *
- *  % more tinyTale.txt 
- *  it was the best of times it was the worst of times 
- *  it was the age of wisdom it was the age of foolishness 
- *  it was the epoch of belief it was the epoch of incredulity 
- *  it was the season of light it was the season of darkness 
+ *  % more tinyTale.txt
+ *  it was the best of times it was the worst of times
+ *  it was the age of wisdom it was the age of foolishness
+ *  it was the epoch of belief it was the epoch of incredulity
+ *  it was the season of light it was the season of darkness
  *  it was the spring of hope it was the winter of despair
  *
- *  % java DeDup < tinyTale.txt 
+ *  % java DeDup < tinyTale.txt
  *  it
  *  was
  *  the
@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class DeDup {  
+public class DeDup {
 
     // Do not instantiate.
     private DeDup() { }
@@ -63,7 +63,7 @@ public class DeDup {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

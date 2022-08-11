@@ -30,7 +30,7 @@ package edu.princeton.cs.algs4;
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/41graph">Section 4.1</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- * 
+ *
  * @author Robert Sedgewick
  * @author Kevin Wayne
  * @author Nate Liu
@@ -60,7 +60,7 @@ public class EulerianPath {
 
     /**
      * Computes an Eulerian path in the specified graph, if one exists.
-     * 
+     *
      * @param G the graph
      */
     public EulerianPath(Graph G) {
@@ -138,7 +138,7 @@ public class EulerianPath {
 
     /**
      * Returns the sequence of vertices on an Eulerian path.
-     * 
+     *
      * @return the sequence of vertices on an Eulerian path;
      *         {@code null} if no such path
      */
@@ -148,7 +148,7 @@ public class EulerianPath {
 
     /**
      * Returns true if the graph has an Eulerian path.
-     * 
+     *
      * @return {@code true} if the graph has an Eulerian path;
      *         {@code false} otherwise
      */
@@ -260,18 +260,18 @@ public class EulerianPath {
 
         // add one random edge
         Graph G3 = new Graph(G2);
-        G3.addEdge(StdRandom.uniform(V), StdRandom.uniform(V));
+        G3.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
         unitTest(G3, "one random edge added to Eulerian path");
 
         // self loop
         Graph G4 = new Graph(V);
-        int v4 = StdRandom.uniform(V);
+        int v4 = StdRandom.uniformInt(V);
         G4.addEdge(v4, v4);
         unitTest(G4, "single self loop");
 
         // single edge
         Graph G5 = new Graph(V);
-        G5.addEdge(StdRandom.uniform(V), StdRandom.uniform(V));
+        G5.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
         unitTest(G5, "single edge");
 
         // empty graph
@@ -285,7 +285,7 @@ public class EulerianPath {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

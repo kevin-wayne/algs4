@@ -1,13 +1,13 @@
 /******************************************************************************
  *  Compilation: javac InplaceMSD.java
  *  Execution:   java InplaceMSD < input.txt
- *  Dependencies: StdIn.java StdOut.java 
+ *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/51radix/words3.txt
  *                https://algs4.cs.princeton.edu/51radix/shells.txt
  *
  *  Sort an array of strings or integers using in-place MSD radix sort.
  *
- *  % java InplaceMSD < shells.txt 
+ *  % java InplaceMSD < shells.txt
  *  are
  *  by
  *  sea
@@ -43,7 +43,7 @@ public class InplaceMSD {
     private static final int CUTOFF        =  15;   // cutoff to insertion sort
 
     // do not instantiate
-    private InplaceMSD() { } 
+    private InplaceMSD() { }
 
    /**
      * Rearranges the array of extended ASCII strings in ascending order.
@@ -98,7 +98,7 @@ public class InplaceMSD {
                 heads[r]++;
             }
         }
-              
+
         // recursively sort for each character (excludes sentinel -1)
         for (int r = 0; r < R; r++)
             sort(a, tails[r], tails[r+1] - 1, d+1);
@@ -147,7 +147,7 @@ public class InplaceMSD {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

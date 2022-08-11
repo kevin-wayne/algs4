@@ -21,13 +21,13 @@
  *
  *  % java ThreeSumFast 1Kints.txt
  *  70
- *  
+ *
  *  % java ThreeSumFast 2Kints.txt
  *  528
- *                
+ *
  *  % java ThreeSumFast 4Kints.txt
  *  4039
- * 
+ *
  *  % java ThreeSumFast 8Kints.txt
  *  32074
  *
@@ -48,7 +48,7 @@ import java.util.Arrays;
  *  and printing the number of triples in an array of distinct integers that
  *  sum to 0 (ignoring integer overflow).
  *  <p>
- *  This implementation uses sorting and binary search and takes time 
+ *  This implementation uses sorting and binary search and takes time
  *  proportional to n^2 log n, where n is the number of integers.
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/14analysis">Section 1.4</a> of
@@ -86,7 +86,7 @@ public class ThreeSumFast {
                 if (k > j) StdOut.println(a[i] + " " + a[j] + " " + a[k]);
             }
         }
-    } 
+    }
 
     /**
      * Returns the number of triples (i, j, k) with {@code i < j < k}
@@ -108,7 +108,7 @@ public class ThreeSumFast {
             }
         }
         return count;
-    } 
+    }
 
     /**
      * Reads in a sequence of distinct integers from a file, specified as a command-line argument;
@@ -117,16 +117,16 @@ public class ThreeSumFast {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args)  { 
+    public static void main(String[] args)  {
         In in = new In(args[0]);
         int[] a = in.readAllInts();
         int count = count(a);
         StdOut.println(count);
-    } 
-} 
+    }
+}
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

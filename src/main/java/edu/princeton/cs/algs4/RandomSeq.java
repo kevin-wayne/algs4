@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class RandomSeq { 
+public class RandomSeq {
 
     // this class should not be instantiated
     private RandomSeq() { }
@@ -47,7 +47,7 @@ public class RandomSeq {
         if (args.length == 1) {
             // generate and print n numbers between 0.0 and 1.0
             for (int i = 0; i < n; i++) {
-                double x = StdRandom.uniform();
+                double x = StdRandom.uniformDouble(0.0, 1.0);
                 StdOut.println(x);
             }
         }
@@ -58,7 +58,7 @@ public class RandomSeq {
 
             // generate and print n numbers between lo and hi
             for (int i = 0; i < n; i++) {
-                double x = StdRandom.uniform(lo, hi);
+                double x = StdRandom.uniformDouble(lo, hi);
                 StdOut.printf("%.2f\n", x);
             }
         }
@@ -70,7 +70,7 @@ public class RandomSeq {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -2,7 +2,7 @@
  *  Compilation:  javac GaussJordanElimination.java
  *  Execution:    java GaussJordanElimination n
  *  Dependencies: StdOut.java
- * 
+ *
  *  Finds a solutions to Ax = b using Gauss-Jordan elimination with partial
  *  pivoting. If no solution exists, find a solution to yA = 0, yb != 0,
  *  which serves as a certificate of infeasibility.
@@ -15,7 +15,7 @@
  *  3.000000
  *  -1.000000
  *  -2.000000
- * 
+ *
  *  System is infeasible
  *
  *  -6.250000
@@ -48,10 +48,10 @@ package edu.princeton.cs.algs4;
  *  See {@link GaussianElimination} for an implementation that uses
  *  Gaussian elimination (but does not provide the certificate of infeasibility).
  *  For an industrial-strength numerical linear algebra library,
- *  see <a href = "http://math.nist.gov/javanumerics/jama/">JAMA</a>. 
+ *  see <a href = "http://math.nist.gov/javanumerics/jama/">JAMA</a>.
  *  <p>
  *  This computes correct results if all arithmetic performed is
- *  without floating-point rounding error or arithmetic overflow.  
+ *  without floating-point rounding error or arithmetic overflow.
  *  In practice, there will be floating-point rounding error;
  *  partial pivoting helps prevent accumulated floating-point rounding
  *  errors from growing out of control (though it does not
@@ -160,7 +160,7 @@ public class GaussJordanElimination {
 
     /**
      * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return a solution <em>x</em> to the linear system of equations
      *         <em>Ax</em> = <em>b</em>; {@code null} if no such solution
      */
@@ -178,7 +178,7 @@ public class GaussJordanElimination {
     /**
      * Returns a solution to the linear system of equations <em>yA</em> = 0,
      * <em>yb</em> &ne; 0.
-     *      
+     *
      * @return a solution <em>y</em> to the linear system of equations
      *         <em>yA</em> = 0, <em>yb</em> &ne; 0; {@code null} if no such solution
      */
@@ -197,7 +197,7 @@ public class GaussJordanElimination {
     /**
      * Returns true if there exists a solution to the linear system of
      * equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return {@code true} if there exists a solution to the linear system
      *         of equations <em>Ax</em> = <em>b</em>; {@code false} otherwise
      */
@@ -384,10 +384,10 @@ public class GaussJordanElimination {
         double[][] A = new double[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
-                A[i][j] = StdRandom.uniform(1000);
+                A[i][j] = StdRandom.uniformInt(1000);
         double[] b = new double[n];
         for (int i = 0; i < n; i++)
-            b[i] = StdRandom.uniform(1000);
+            b[i] = StdRandom.uniformInt(1000);
         test("random " + n + "-by-" + n + " (likely full rank)", A, b);
 
 
@@ -395,23 +395,23 @@ public class GaussJordanElimination {
         A = new double[n][n];
         for (int i = 0; i < n-1; i++)
             for (int j = 0; j < n; j++)
-                A[i][j] = StdRandom.uniform(1000);
+                A[i][j] = StdRandom.uniformInt(1000);
         for (int i = 0; i < n-1; i++) {
-            double alpha = StdRandom.uniform(11) - 5.0;
+            double alpha = StdRandom.uniformInt(-5, 5);
             for (int j = 0; j < n; j++) {
                 A[n-1][j] += alpha * A[i][j];
             }
         }
         b = new double[n];
         for (int i = 0; i < n; i++)
-            b[i] = StdRandom.uniform(1000);
+            b[i] = StdRandom.uniformInt(1000);
         test("random " + n + "-by-" + n + " (likely infeasible)", A, b);
     }
 
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

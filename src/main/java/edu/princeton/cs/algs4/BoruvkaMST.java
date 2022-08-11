@@ -9,7 +9,7 @@
  *
  *  Compute a minimum spanning forest using Boruvka's algorithm.
  *
- *  % java BoruvkaMST tinyEWG.txt 
+ *  % java BoruvkaMST tinyEWG.txt
  *  0-2 0.26000
  *  6-2 0.40000
  *  5-7 0.28000
@@ -29,7 +29,7 @@ package edu.princeton.cs.algs4;
  *  The edge weights can be positive, zero, or negative and need not
  *  be distinct. If the graph is not connected, it computes a <em>minimum
  *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The {@code weight()} method returns the 
+ *  in each connected component. The {@code weight()} method returns the
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
@@ -203,7 +203,7 @@ public class BoruvkaMST {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

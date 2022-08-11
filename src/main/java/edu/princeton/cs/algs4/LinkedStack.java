@@ -6,8 +6,8 @@
  *
  *  A generic stack, implemented using a linked list. Each stack
  *  element is of type Item.
- *  
- *  % more tobe.txt 
+ *
+ *  % more tobe.txt
  *  to be or not to - be - - that - - - is
  *
  *  % java LinkedStack < tobe.txt
@@ -28,7 +28,7 @@ import java.util.NoSuchElementException;
  *  for peeking at the top item, testing if the stack is empty, and iterating through
  *  the items in LIFO order.
  *  <p>
- *  This implementation uses a singly linked list with a non-static nested class for 
+ *  This implementation uses a singly linked list with a non-static nested class for
  *  linked-list nodes. See {@link Stack} for a version that uses a static nested class.
  *  The <em>push</em>, <em>pop</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
@@ -123,7 +123,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
             s.append(item + " ");
         return s.toString();
     }
-       
+
     /**
      * Returns an iterator to this stack that iterates through the items in LIFO order.
      * @return an iterator to this stack that iterates through the items in LIFO order.
@@ -141,7 +141,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
-            current = current.next; 
+            current = current.next;
             return item;
         }
     }
@@ -196,7 +196,7 @@ public class LinkedStack<Item> implements Iterable<Item> {
 
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

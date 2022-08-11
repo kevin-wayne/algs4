@@ -15,7 +15,7 @@
  *      an object type for representing complex numbers and because
  *      it re-allocates memory for the subarray, instead of doing
  *      in-place or reusing a single temporary array)
- *  
+ *
  *
  *  % java FFT 4
  *  x
@@ -62,7 +62,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code FFT} class provides methods for computing the 
+ *  The {@code FFT} class provides methods for computing the
  *  FFT (Fast-Fourier Transform), inverse FFT, linear convolution,
  *  and circular convolution of a complex array.
  *  <p>
@@ -75,7 +75,7 @@ package edu.princeton.cs.algs4;
  *  for the subarray, instead of doing in-place or reusing a single temporary array.
  *  <p>
  *  This computes correct results if all arithmetic performed is
- *  without floating-point rounding error or arithmetic overflow.  
+ *  without floating-point rounding error or arithmetic overflow.
  *  In practice, there will be floating-point rounding error.
  *  <p>
  *  For additional documentation,
@@ -249,14 +249,14 @@ public class FFT {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         Complex[] x = new Complex[n];
 
         // original data
         for (int i = 0; i < n; i++) {
             x[i] = new Complex(i, 0);
-            x[i] = new Complex(StdRandom.uniform(-1.0, 1.0), 0);
+            x[i] = new Complex(StdRandom.uniformDouble(-1.0, 1.0), 0);
         }
         show(x, "x");
 
@@ -280,7 +280,7 @@ public class FFT {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

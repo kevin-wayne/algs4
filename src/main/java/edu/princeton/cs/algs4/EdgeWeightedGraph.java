@@ -9,14 +9,14 @@
  *  An edge-weighted undirected graph, implemented using adjacency lists.
  *  Parallel edges and self-loops are permitted.
  *
- *  % java EdgeWeightedGraph tinyEWG.txt 
+ *  % java EdgeWeightedGraph tinyEWG.txt
  *  8 16
- *  0: 6-0 0.58000  0-2 0.26000  0-4 0.38000  0-7 0.16000  
- *  1: 1-3 0.29000  1-2 0.36000  1-7 0.19000  1-5 0.32000  
- *  2: 6-2 0.40000  2-7 0.34000  1-2 0.36000  0-2 0.26000  2-3 0.17000  
- *  3: 3-6 0.52000  1-3 0.29000  2-3 0.17000  
- *  4: 6-4 0.93000  0-4 0.38000  4-7 0.37000  4-5 0.35000  
- *  5: 1-5 0.32000  5-7 0.28000  4-5 0.35000  
+ *  0: 6-0 0.58000  0-2 0.26000  0-4 0.38000  0-7 0.16000
+ *  1: 1-3 0.29000  1-2 0.36000  1-7 0.19000  1-5 0.32000
+ *  2: 6-2 0.40000  2-7 0.34000  1-2 0.36000  0-2 0.26000  2-3 0.17000
+ *  3: 3-6 0.52000  1-3 0.29000  2-3 0.17000
+ *  4: 6-4 0.93000  0-4 0.38000  4-7 0.37000  4-5 0.35000
+ *  5: 1-5 0.32000  5-7 0.28000  4-5 0.35000
  *  6: 6-4 0.93000  6-0 0.58000  3-6 0.52000  6-2 0.40000
  *  7: 2-7 0.34000  1-7 0.19000  0-7 0.16000  5-7 0.28000  4-7 0.37000
  *
@@ -49,7 +49,7 @@ import java.util.NoSuchElementException;
  *  Constructing an empty edge-weighted graph with <em>V</em> vertices takes
  *  &Theta;(<em>V</em>) time; constructing a edge-weighted graph with
  *  <em>E</em> edges and <em>V</em> vertices takes
- *  &Theta;(<em>E</em> + <em>V</em>) time. 
+ *  &Theta;(<em>E</em> + <em>V</em>) time.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
@@ -64,7 +64,7 @@ public class EdgeWeightedGraph {
     private final int V;
     private int E;
     private Bag<Edge>[] adj;
-    
+
     /**
      * Initializes an empty edge-weighted graph with {@code V} vertices and 0 edges.
      *
@@ -93,15 +93,15 @@ public class EdgeWeightedGraph {
         this(V);
         if (E < 0) throw new IllegalArgumentException("Number of edges must be non-negative");
         for (int i = 0; i < E; i++) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
-            double weight = Math.round(100 * StdRandom.uniform()) / 100.0;
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
+            double weight = 0.01 * StdRandom.uniformInt(0, 100);
             Edge e = new Edge(v, w, weight);
             addEdge(e);
         }
     }
 
-    /**  
+    /**
      * Initializes an edge-weighted graph from an input stream.
      * The format is the number of vertices <em>V</em>,
      * followed by the number of edges <em>E</em>,
@@ -134,7 +134,7 @@ public class EdgeWeightedGraph {
                 Edge e = new Edge(v, w, weight);
                 addEdge(e);
             }
-        }   
+        }
         catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in EdgeWeightedGraph constructor", e);
         }
@@ -218,7 +218,7 @@ public class EdgeWeightedGraph {
      * Returns the degree of vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the degree of vertex {@code v}               
+     * @return the degree of vertex {@code v}
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public int degree(int v) {
@@ -285,7 +285,7 @@ public class EdgeWeightedGraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

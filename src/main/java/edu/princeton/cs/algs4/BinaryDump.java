@@ -3,10 +3,10 @@
  *  Execution:    java BinaryDump n < file
  *  Dependencies: BinaryStdIn.java
  *  Data file:    https://introcs.cs.princeton.edu/stdlib/abra.txt
- *  
+ *
  *  Reads in a binary file and writes out the bits, n per line.
  *
- *  % more abra.txt 
+ *  % more abra.txt
  *  ABRACADABRA!
  *
  *  % java BinaryDump 16 < abra.txt
@@ -74,7 +74,7 @@ public class BinaryDump {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

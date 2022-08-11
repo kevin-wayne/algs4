@@ -42,14 +42,14 @@ public class Counter implements Comparable<Counter> {
      */
     public Counter(String id) {
         name = id;
-    } 
+    }
 
     /**
      * Increments the counter by 1.
      */
     public void increment() {
         count++;
-    } 
+    }
 
     /**
      * Returns the current value of this counter.
@@ -58,7 +58,7 @@ public class Counter implements Comparable<Counter> {
      */
     public int tally() {
         return count;
-    } 
+    }
 
     /**
      * Returns a string representation of this counter.
@@ -67,7 +67,7 @@ public class Counter implements Comparable<Counter> {
      */
     public String toString() {
         return count + " " + name;
-    } 
+    }
 
     /**
      * Compares this counter to the specified counter.
@@ -94,7 +94,7 @@ public class Counter implements Comparable<Counter> {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int trials = Integer.parseInt(args[1]);
 
@@ -106,18 +106,18 @@ public class Counter implements Comparable<Counter> {
 
         // increment trials counters at random
         for (int t = 0; t < trials; t++) {
-            hits[StdRandom.uniform(n)].increment();
+            hits[StdRandom.uniformInt(n)].increment();
         }
 
         // print results
         for (int i = 0; i < n; i++) {
             StdOut.println(hits[i]);
         }
-    } 
-} 
+    }
+}
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

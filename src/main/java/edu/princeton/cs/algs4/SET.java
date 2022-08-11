@@ -2,7 +2,7 @@
  *  Compilation:  javac SET.java
  *  Execution:    java SET
  *  Dependencies: StdOut.java
- *  
+ *
  *  Set implementation using Java's TreeSet library.
  *  Does not allow duplicates.
  *
@@ -135,7 +135,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
     public boolean isEmpty() {
         return size() == 0;
     }
- 
+
     /**
      * Returns all of the keys in this set, as an iterator.
      * To iterate over all of the keys in a set named {@code set}, use the
@@ -242,14 +242,14 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
         return c;
     }
 
-    /**       
+    /**
      * Compares this set to the specified set.
      * <p>
      * Note that this method declares two empty sets to be equal
      * even if they are parameterized by different generic types.
-     * This is consistent with the behavior of {@code equals()} 
+     * This is consistent with the behavior of {@code equals()}
      * within Java's Collections framework.
-     *       
+     *
      * @param  other the other set
      * @return {@code true} if this set equals {@code other};
      *         {@code false} otherwise
@@ -345,7 +345,7 @@ public class SET<Key extends Comparable<Key>> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

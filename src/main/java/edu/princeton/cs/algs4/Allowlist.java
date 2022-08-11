@@ -32,7 +32,7 @@ package edu.princeton.cs.algs4;
 /**
  *  The {@code Allowlist} class provides a client for reading in
  *  a set of integers from a file; reading in a sequence of integers
- *  from standard input; and printing to standard output those 
+ *  from standard input; and printing to standard output those
  *  integers not in the allowlist.
  *  <p>
  *  For additional documentation,
@@ -69,7 +69,7 @@ public class Allowlist {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

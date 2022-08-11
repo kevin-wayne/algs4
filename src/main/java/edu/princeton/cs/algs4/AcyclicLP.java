@@ -3,20 +3,20 @@
  *  Execution:    java AcyclicP V E
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java Topological.java
  *  Data files:   https://algs4.cs.princeton.edu/44sp/tinyEWDAG.txt
- *  
+ *
  *  Computes longeset paths in an edge-weighted acyclic digraph.
  *
  *  Remark: should probably check that graph is a DAG before running
  *
  *  % java AcyclicLP tinyEWDAG.txt 5
- *  5 to 0 (2.44)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->0  0.38   
- *  5 to 1 (0.32)  5->1  0.32   
- *  5 to 2 (2.77)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->7  0.37   7->2  0.34   
- *  5 to 3 (0.61)  5->1  0.32   1->3  0.29   
- *  5 to 4 (2.06)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   
- *  5 to 5 (0.00)  
- *  5 to 6 (1.13)  5->1  0.32   1->3  0.29   3->6  0.52   
- *  5 to 7 (2.43)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->7  0.37   
+ *  5 to 0 (2.44)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->0  0.38
+ *  5 to 1 (0.32)  5->1  0.32
+ *  5 to 2 (2.77)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->7  0.37   7->2  0.34
+ *  5 to 3 (0.61)  5->1  0.32   1->3  0.29
+ *  5 to 4 (2.06)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93
+ *  5 to 5 (0.00)
+ *  5 to 6 (1.13)  5->1  0.32   1->3  0.29   3->6  0.52
+ *  5 to 7 (2.43)  5->1  0.32   1->3  0.29   3->6  0.52   6->4  0.93   4->7  0.37
  *
  ******************************************************************************/
 
@@ -43,9 +43,9 @@ package edu.princeton.cs.algs4;
  *  where <em>V</em> is the number of vertices and <em>C</em> is the maximum
  *  absolute value of any edge weight.
  *  <p>
- *  For additional documentation,   
- *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -88,7 +88,7 @@ public class AcyclicLP {
         if (distTo[w] < distTo[v] + e.weight()) {
             distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
-        }       
+        }
     }
 
     /**
@@ -167,7 +167,7 @@ public class AcyclicLP {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

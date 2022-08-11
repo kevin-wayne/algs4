@@ -3,11 +3,11 @@
  *  Execution:    java SuffixArrayX < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/63suffix/abra.txt
- *  
+ *
  *  A data type that computes the suffix array of a string using 3-way
  *  radix quicksort.
  *
- *  % java SuffixArrayX < abra.txt 
+ *  % java SuffixArrayX < abra.txt
  *    i ind lcp rnk  select
  *  ---------------------------
  *    0  11   -   0  !
@@ -53,7 +53,7 @@ package edu.princeton.cs.algs4;
  *  In practice, this algorithm runs very fast. However, in the worst-case
  *  it can be very poor (e.g., a string consisting of N copies of the same
  *  character. We do not shuffle the array of suffixes before sorting because
- *  shuffling is relatively expensive and a pathologial input for which 
+ *  shuffling is relatively expensive and a pathologial input for which
  *  the suffixes start out in a bad order (e.g., sorted) is likely to be
  *  a bad input for this algorithm with or without the shuffle.
  *  <p>
@@ -83,7 +83,7 @@ public class SuffixArrayX {
     }
 
     // 3-way string quicksort lo..hi starting at dth character
-    private void sort(int lo, int hi, int d) { 
+    private void sort(int lo, int hi, int d) {
 
         // cutoff to insertion sort for small subarrays
         if (hi <= lo + CUTOFF) {
@@ -101,7 +101,7 @@ public class SuffixArrayX {
             else            i++;
         }
 
-        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi]. 
+        // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
         sort(lo, lt-1, d);
         if (v > 0) sort(lt, gt, d+1);
         sort(gt+1, hi, d);
@@ -195,7 +195,7 @@ public class SuffixArrayX {
     /**
      * Returns the number of suffixes strictly less than the {@code query} string.
      * We note that {@code rank(select(i))} equals {@code i} for each {@code i}
-     * between 0 and <em>n</em>-1. 
+     * between 0 and <em>n</em>-1.
      * @param query the query string
      * @return the number of suffixes strictly less than {@code query}
      */
@@ -209,7 +209,7 @@ public class SuffixArrayX {
             else return mid;
         }
         return lo;
-    } 
+    }
 
     // is query < text[i..n) ?
     private int compare(String query, int i) {
@@ -271,7 +271,7 @@ public class SuffixArrayX {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

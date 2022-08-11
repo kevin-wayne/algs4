@@ -3,7 +3,7 @@
  *  Execution:    java MinPQ < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/24pq/tinyPQ.txt
- *  
+ *
  *  Generic min priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order.
  *
@@ -297,7 +297,7 @@ public class MinPQ<Key> implements Iterable<Key> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

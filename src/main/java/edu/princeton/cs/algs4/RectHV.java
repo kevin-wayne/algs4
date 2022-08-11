@@ -14,9 +14,9 @@ package edu.princeton.cs.algs4;
  *  two-dimensional axis-aligned rectagle with real-value coordinates.
  *  The rectangle is <em>closed</em>—it includes the points on the boundary.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -113,13 +113,13 @@ public final class RectHV {
     }
 
     /**
-     * Returns true if the two rectangles intersect, an false otherwise.
+     * Returns true if the two rectangles intersect, and false otherwise.
      * This includes <em>improper intersections</em> (at points on the
-     * boundary of each rectangle) and <em>nested intersctions</em>
+     * boundary of each rectangle) and <em>nested intersections</em>
      * (when one rectangle is contained inside the other).
      *
      * @param  that the other rectangle
-     * @return {@code true} if this rectangle intersect the argument
+     * @return {@code true} if this rectangle intersects the argument
                rectangle at one or more points; false otherwise
      */
     public boolean intersects(RectHV that) {
@@ -128,9 +128,10 @@ public final class RectHV {
     }
 
     /**
-     * Returns true if this rectangle contain the point, and false otherwise.
+     * Returns true if this rectangle contains the point, and false otherwise.
+     * This includes point on the boundary of the rectangle.
      * @param  p the point
-     * @return {@code true} if this rectangle contain the point {@code p},
+     * @return {@code true} if this rectangle contains the point {@code p},
                possibly at the boundary; {@code false} otherwise
      */
     public boolean contains(Point2D p) {
@@ -224,7 +225,7 @@ public final class RectHV {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

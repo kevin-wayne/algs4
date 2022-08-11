@@ -2,7 +2,7 @@
  *  Compilation:  javac ResizingArrayBag.java
  *  Execution:    java ResizingArrayBag
  *  Dependencies: StdIn.java StdOut.java
- *  
+ *
  *  Bag implementation with a resizing array.
  *
  ******************************************************************************/
@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The {@code ResizingArrayBag} class represents a bag (or multiset) of 
- *  generic items. It supports insertion and iterating over the 
+ *  The {@code ResizingArrayBag} class represents a bag (or multiset) of
+ *  generic items. It supports insertion and iterating over the
  *  items in arbitrary order.
  *  <p>
  *  This implementation uses a resizing array.
@@ -119,7 +119,7 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

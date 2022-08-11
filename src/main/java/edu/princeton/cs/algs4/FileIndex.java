@@ -10,14 +10,14 @@
  *  % java FileIndex ex*.txt
  *  age
  *   ex3.txt
- *   ex4.txt 
+ *   ex4.txt
  * best
- *   ex1.txt 
+ *   ex1.txt
  * was
  *   ex1.txt
  *   ex2.txt
  *   ex3.txt
- *   ex4.txt 
+ *   ex4.txt
  *
  *  % java FileIndex *.txt
  *
@@ -36,11 +36,11 @@ import java.io.File;
  *  <p>
  *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  
+ *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class FileIndex { 
+public class FileIndex {
 
     // Do not instantiate.
     private FileIndex() { }
@@ -81,7 +81,7 @@ public class FileIndex {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -14,12 +14,12 @@
  *  % java TransitiveClosure tinyDG.txt
  *         0  1  2  3  4  5  6  7  8  9 10 11 12
  *  --------------------------------------------
- *    0:   T  T  T  T  T  T                     
- *    1:      T                                 
- *    2:   T  T  T  T  T  T                     
- *    3:   T  T  T  T  T  T                     
- *    4:   T  T  T  T  T  T                     
- *    5:   T  T  T  T  T  T                     
+ *    0:   T  T  T  T  T  T
+ *    1:      T
+ *    2:   T  T  T  T  T  T
+ *    3:   T  T  T  T  T  T
+ *    4:   T  T  T  T  T  T
+ *    5:   T  T  T  T  T  T
  *    6:   T  T  T  T  T  T  T        T  T  T  T
  *    7:   T  T  T  T  T  T  T  T  T  T  T  T  T
  *    8:   T  T  T  T  T  T  T  T  T  T  T  T  T
@@ -33,7 +33,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code TransitiveClosure} class represents a data type for 
+ *  The {@code TransitiveClosure} class represents a data type for
  *  computing the transitive closure of a digraph.
  *  <p>
  *  This implementation runs depth-first search from each vertex.
@@ -122,7 +122,7 @@ public class TransitiveClosure {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

@@ -82,7 +82,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
     public BTree() {
         root = new Node(0);
     }
- 
+
     /**
      * Returns true if this symbol table is empty.
      * @return {@code true} if this symbol table is empty; {@code false} otherwise
@@ -154,7 +154,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
      */
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("argument key to put() is null");
-        Node u = insert(root, key, val, height); 
+        Node u = insert(root, key, val, height);
         n++;
         if (u == null) return;
 
@@ -204,8 +204,8 @@ public class BTree<Key extends Comparable<Key>, Value>  {
         Node t = new Node(M/2);
         h.m = M/2;
         for (int j = 0; j < M/2; j++)
-            t.children[j] = h.children[M/2+j]; 
-        return t;    
+            t.children[j] = h.children[M/2+j];
+        return t;
     }
 
     /**
@@ -290,7 +290,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

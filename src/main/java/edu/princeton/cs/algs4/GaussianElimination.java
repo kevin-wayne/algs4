@@ -2,7 +2,7 @@
  *  Compilation:  javac GaussianElimination.java
  *  Execution:    java GaussianElimination m n
  *  Dependencies: StdOut.java
- * 
+ *
  *  Gaussian elimination with partial pivoting for m-by-n system.
  *
  *  % java GaussianElimination m n
@@ -13,7 +13,7 @@
  *  3.000000
  *  -1.000000
  *  -2.000000
- * 
+ *
  *  System is infeasible
  *
  *  -6.250000
@@ -141,7 +141,7 @@ public class GaussianElimination {
 
     /**
      * Returns a solution to the linear system of equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return a solution <em>x</em> to the linear system of equations
      *         <em>Ax</em> = <em>b</em>; {@code null} if no such solution
      */
@@ -175,7 +175,7 @@ public class GaussianElimination {
     /**
      * Returns true if there exists a solution to the linear system of
      * equations <em>Ax</em> = <em>b</em>.
-     *      
+     *
      * @return {@code true} if there exists a solution to the linear system
      *         of equations <em>Ax</em> = <em>b</em>; {@code false} otherwise
      */
@@ -351,10 +351,10 @@ public class GaussianElimination {
         double[][] A = new double[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
-                A[i][j] = StdRandom.uniform(1000);
+                A[i][j] = StdRandom.uniformInt(1000);
         double[] b = new double[n];
         for (int i = 0; i < n; i++)
-            b[i] = StdRandom.uniform(1000);
+            b[i] = StdRandom.uniformInt(1000);
 
         test(n + "-by-" + n + " (probably nonsingular)", A, b);
     }
@@ -362,7 +362,7 @@ public class GaussianElimination {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

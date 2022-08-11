@@ -17,13 +17,13 @@ import java.util.Comparator;
  *  The {@code Point} class is an immutable data type to encapsulate a
  *  two-dimensional point with real-value coordinates.
  *  <p>
- *  Note: in order to deal with the difference behavior of double and 
+ *  Note: in order to deal with the difference behavior of double and
  *  Double with respect to -0.0 and +0.0, the Point2D constructor converts
  *  any coordinates that are -0.0 to +0.0.
  *  <p>
- *  For additional documentation, 
- *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of 
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/12oop">Section 1.2</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -231,7 +231,7 @@ public final class Point2D implements Comparable<Point2D> {
             return 0;
         }
     }
- 
+
     // compare other points relative to atan2 angle (bewteen -pi/2 and pi/2) they make with this Point
     private class Atan2Order implements Comparator<Point2D> {
         public int compare(Point2D q1, Point2D q2) {
@@ -276,9 +276,9 @@ public final class Point2D implements Comparable<Point2D> {
     }
 
 
-    /**       
+    /**
      * Compares this point to the specified point.
-     *       
+     *
      * @param  other the other point
      * @return {@code true} if this point equals {@code other};
      *         {@code false} otherwise
@@ -346,8 +346,8 @@ public final class Point2D implements Comparable<Point2D> {
 
         Point2D[] points = new Point2D[n];
         for (int i = 0; i < n; i++) {
-            int x = StdRandom.uniform(100);
-            int y = StdRandom.uniform(100);
+            int x = StdRandom.uniformInt(100);
+            int y = StdRandom.uniformInt(100);
             points[i] = new Point2D(x, y);
             points[i].draw();
         }
@@ -372,7 +372,7 @@ public final class Point2D implements Comparable<Point2D> {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

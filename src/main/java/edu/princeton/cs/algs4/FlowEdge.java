@@ -10,7 +10,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code FlowEdge} class represents a capacitated edge with a 
+ *  The {@code FlowEdge} class represents a capacitated edge with a
   * flow in a {@link FlowNetwork}. Each edge consists of two integers
  *  (naming the two vertices), a real-valued capacity, and a real-valued
  *  flow. The data type provides methods for accessing the two endpoints
@@ -29,7 +29,7 @@ public class FlowEdge {
     private static final double FLOATING_POINT_EPSILON = 1E-10;
 
     private final int v;             // from
-    private final int w;             // to 
+    private final int w;             // to
     private final double capacity;   // capacity
     private double flow;             // flow
 
@@ -48,7 +48,7 @@ public class FlowEdge {
         if (w < 0) throw new IllegalArgumentException("vertex index must be a non-negative integer");
         if (!(capacity >= 0.0)) throw new IllegalArgumentException("Edge capacity must be non-negative");
         this.v         = v;
-        this.w         = w;  
+        this.w         = w;
         this.capacity  = capacity;
         this.flow      = 0.0;
     }
@@ -63,7 +63,7 @@ public class FlowEdge {
      * @throws IllegalArgumentException if either {@code v} or {@code w}
      *    is a negative integer
      * @throws IllegalArgumentException if {@code capacity} is negative
-     * @throws IllegalArgumentException unless {@code flow} is between 
+     * @throws IllegalArgumentException unless {@code flow} is between
      *    {@code 0.0} and {@code capacity}.
      */
     public FlowEdge(int v, int w, double capacity, double flow) {
@@ -73,7 +73,7 @@ public class FlowEdge {
         if (!(flow <= capacity)) throw new IllegalArgumentException("flow exceeds capacity");
         if (!(flow >= 0.0))      throw new IllegalArgumentException("flow must be non-negative");
         this.v         = v;
-        this.w         = w;  
+        this.w         = w;
         this.capacity  = capacity;
         this.flow      = flow;
     }
@@ -95,7 +95,7 @@ public class FlowEdge {
      */
     public int from() {
         return v;
-    }  
+    }
 
     /**
      * Returns the head vertex of the edge.
@@ -103,7 +103,7 @@ public class FlowEdge {
      */
     public int to() {
         return w;
-    }  
+    }
 
     /**
      * Returns the capacity of the edge.
@@ -204,7 +204,7 @@ public class FlowEdge {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

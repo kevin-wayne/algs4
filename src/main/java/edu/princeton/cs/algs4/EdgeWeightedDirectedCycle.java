@@ -12,7 +12,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code EdgeWeightedDirectedCycle} class represents a data type for 
+ *  The {@code EdgeWeightedDirectedCycle} class represents a data type for
  *  determining whether an edge-weighted digraph has a directed cycle.
  *  The <em>hasCycle</em> operation determines whether the edge-weighted
  *  digraph has a directed cycle and, if so, the <em>cycle</em> operation
@@ -23,15 +23,15 @@ package edu.princeton.cs.algs4;
  *  worst case, where <em>V</em> is the number of vertices and
  *  <em>E</em> is the number of edges.
  *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the 
+ *  It uses &Theta;(<em>V</em>) extra space (not including the
  *  edge-weighted digraph).
  *  <p>
  *  See {@link Topological} to compute a topological order if the
  *  edge-weighted digraph is acyclic.
  *  <p>
- *  For additional documentation,   
- *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of   
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne. 
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/44sp">Section 4.4</a> of
+ *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -159,18 +159,18 @@ public class EdgeWeightedDirectedCycle {
         for (int i = 0; i < E; i++) {
             int v, w;
             do {
-                v = StdRandom.uniform(V);
-                w = StdRandom.uniform(V);
+                v = StdRandom.uniformInt(V);
+                w = StdRandom.uniformInt(V);
             } while (v >= w);
-            double weight = StdRandom.uniform();
+            double weight = StdRandom.uniformDouble(0.0, 1.0);
             G.addEdge(new DirectedEdge(v, w, weight));
         }
 
         // add F extra edges
         for (int i = 0; i < F; i++) {
-            int v = StdRandom.uniform(V);
-            int w = StdRandom.uniform(V);
-            double weight = StdRandom.uniform(0.0, 1.0);
+            int v = StdRandom.uniformInt(V);
+            int w = StdRandom.uniformInt(V);
+            double weight = StdRandom.uniformDouble(0.0, 1.0);
             G.addEdge(new DirectedEdge(v, w, weight));
         }
 
@@ -195,7 +195,7 @@ public class EdgeWeightedDirectedCycle {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *

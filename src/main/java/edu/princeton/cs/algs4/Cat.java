@@ -5,17 +5,17 @@
  *  Data files:   https://algs4.cs.princeton.edu/11model/in1.txt
  *                https://algs4.cs.princeton.edu/11model/in2.txt
  *
- *  Reads in text files specified as the first command-line 
+ *  Reads in text files specified as the first command-line
  *  arguments, concatenates them, and writes the result to
  *  filename specified as the last command-line arguments.
  *
  *  % more in1.txt
  *  This is
  *
- *  % more in2.txt 
+ *  % more in2.txt
  *  a tiny
  *  test.
- * 
+ *
  *  % java Cat in1.txt in2.txt out.txt
  *
  *  % more out.txt
@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class Cat { 
+public class Cat {
 
     // this class should not be instantiated
     private Cat() { }
@@ -49,7 +49,7 @@ public class Cat {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         Out out = new Out(args[args.length - 1]);
         for (int i = 0; i < args.length - 1; i++) {
             In in = new In(args[i]);
@@ -63,7 +63,7 @@ public class Cat {
 }
 
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
