@@ -1,18 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac Picture.java
- *  Execution:    java Picture imagename
+ *  Execution:    java Picture filename.jpg
  *  Dependencies: none
- *
- *  Data type for manipulating individual pixels of an image. The original
- *  image can be read from a file in JPG, GIF, or PNG format, or the
- *  user can create a blank image of a given dimension. Includes methods for
- *  displaying the image in a window on the screen or saving to a file.
- *
- *  % java Picture mandrill.jpg
- *
- *  Remarks
- *  -------
- *   - pixel (x, y) is column x and row y, where (0, 0) is upper left
  *
  ******************************************************************************/
 
@@ -21,14 +10,20 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
+
 import java.net.URL;
+
 import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,46 +35,191 @@ import javax.swing.KeyStroke;
 
 
 /**
- *  This class provides methods for manipulating individual pixels of
- *  an image using the RGB color format. The alpha component (for transparency)
- *  is not currently supported.
- *  The original image can be read from a {@code PNG}, {@code GIF},
- *  or {@code JPEG} file or the user can create a blank image of a given dimension.
- *  This class includes methods for displaying the image in a window on
- *  the screen or saving it to a file.
+ *  <p><b>Overview.</b>
+ *  The {@code Picture} class provides a basic capability for manipulating
+ *  the individual pixels of an image.
+ *  You can either create a blank image (of a given dimension) or read an
+ *  image in a supported file format (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  This class also includes methods for displaying the image in a window
+ *  and saving it to a file.
+ *
  *  <p>
- *  Pixel (<em>col</em>, <em>row</em>) is column <em>col</em> and row <em>row</em>.
- *  By default, the origin (0, 0) is the pixel in the top-left corner,
- *  which is a common convention in image processing.
- *  The method {@link #setOriginLowerLeft()} change the origin to the lower left.
+ *  <b>Use in the curriculum.</b>
+ *  The {@code Picture} class is intended for use in the
+ *  curriculum once objects are introduced.
+ *  The {@link StdPicture} class is intended for earlier use in
+ *  the curriculum, before objects (but it can support only one
+ *  picture at a time).
+ *  See {@link GrayscalePicture} for a version that supports
+ *  grayscale images.
+ *
  *  <p>
- *  The {@code get()} and {@code set()} methods use {@link Color} objects to get
- *  or set the color of the specified pixel.
- *  The {@code getRGB()} and {@code setRGB()} methods use a 32-bit {@code int}
- *  to encode the color, thereby avoiding the need to create temporary
- *  {@code Color} objects. The red (R), green (G), and blue (B) components 
+ *  <b>Getting started.</b>
+ *  To use this class, you must have {@code Picture} in your Java classpath.
+ *  Here are three possible ways to do this:
+ *  <ul>
+ *  <li> If you ran our autoinstaller, use the commands
+ *  {@code javac-introcs} and {@code java-introcs} (or {@code javac-algs4}
+ *  and {@code java-algs4}) when compiling and executing. These commands
+ *  add {@code stdlib.jar} (or {@code algs4.jar}) to the Java classpath, which
+ *  provides access to {@code Picture}.
+ *
+ *  <li> Download <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ *  (or <a href = "https://algs4.cs.princeton.edu/code/algs4.jar">algs4.jar</a>)
+ *  and add it to the Java classpath.
+ *
+ *  <li> Download <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdPicture.java">StdPicture.java</a>
+ *  and
+ *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/Picture.java">Picture.java</a>
+ *  and put them in the working directory.
+ *  </ul>
+ *
+ *  <p>
+ *  As a test, cut-and-paste the following short program into your editor:
+ *  <pre>
+ *   public class TestPicture {
+ *       public static void main(String[] args) {
+ *           Picture picture = new Picture("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
+ *           picture.show();
+ *       }
+ *   }
+ *  </pre>
+ *  <p>
+ *  If you compile and execute the program, you should see a picture of a mandrill
+ *  (a colorful monkey native to west-central Africa) in a window.
+ *
+ *  <p>
+ *  <b>Anatomy of an image.</b>
+ *  An image is a <em>width</em>-by-<em>height</em> grid of pixels, with pixel (0, 0)
+ *  in the upper-left corner.
+ *  Each pixel has a color that is represented using the <em>RGB color model</em>,
+ *  which specifies the levels of <em>red</em> (R), <em>green</em> (G), and <em>blue</em> (B)
+ *  on an integer scale from 0 to 255.
+ *
+ *  <blockquote>
+ *  <img src = "https://introcs.cs.princeton.edu/java/stdlib/AnatomyImage.png" width = 200 alt = "anatomy of an image">
+ *  </blockquote>
+ *
+ *  <p>
+ *  <b>Creating pictures.</b>
+ *  You can use the following constructors to create new {@code Picture} objects:
+ *  <ul>
+ *  <li> {@link #Picture(String filename)}
+ *  <li> {@link #Picture(int width, int height)}
+ *  </ul>
+ *  <p>
+ *  The first constructor read an image in a supported file format
+ *  (typically JPEG, PNG, GIF TIFF, and BMP)
+ *  and initializes the picture to that image.
+ *  The second constructor creates a <em>width</em>-by-<em>height</em> picture,
+ *  with each pixel black.
+ *
+ *  <p>
+ *  <b>Getting and setting the colors of the individual pixels.</b>
+ *  You can use the following methods to get and set the color of a
+ *  specified pixel:
+ *  <ul>
+ *  <li> {@link #get(int col, int row)}
+ *  <li> {@link #set(int col, int row, Color color)}
+ *  </ul>
+ *  <p>
+ *  The first method returns the color of pixel (<em>col</em>, <em>row</em>)
+ *  as a {@code Color} object.
+ *  The second method set the color of pixel (<em>col</em>, <em>row</em>) to
+ *  the specified color.
+ *
+ *  <p><b>Iterating over the pixels.</b>
+ *  A common operation in image processing is to iterate over and process
+ *  all of the pixels in an image.
+ *  Here is a prototypical example that creates a grayscale version of a color image,
+ *  using the NTSC formula
+ *  <em>Y</em> = 0.299<em>r</em> + 0.587<em>g</em> + 0.114<em>b</em>.
+ *  Note that if the red, green, and blue components of an RGB color
+ *  are all equal, the color is a shade of gray.
+ *  <pre>
+ *  Picture picture  = new Picture("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
+ *  Picture grayscale = new Picture(picture.width(), picture.height());
+ *  for (int col = 0; col &lt; picture.width(); col++) {
+ *      for (int row = 0; row &lt; picture.height(); row++) {
+ *          Color color = picture.get(col, row);
+ *          int r = color.getRed();
+ *          int g = color.getGreen();
+ *          int b = color.getBlue();
+ *          int y = (int) (Math.round(0.299*r + 0.587*g + 0.114*b));
+ *          Color gray = new Color(y, y, y);
+ *          grayscale.set(col, row, gray);
+ *      }
+ *  }
+ *  picture.show();
+ *  grayscale.show();
+ *  </pre>
+ *
+ *  <p><b>Saving files.</b>
+ *  The {@code Picture} class supports writing images to a supported
+ *  file format (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  Note that some file formats (such as JPEG and BMP) do not support
+ *  transparency.
+ *  You can save the picture to a file using these two methods:
+ *  <ul>
+ *  <li> {@link #save(String filename)}
+ *  <li> {@link #save(File file)}
+ *  </ul>
+ *
+ *  <p>Alternatively, you can save the picture interactively
+ *  by using the menu option <em>File → Save</em> from the picture window.
+ *
+ *  <p><b>Transparency.</b>
+ *  Both the {@link Color} and {@code Picture} classes support
+ *  transparency, using the <em>alpha channel</em>.
+ *  The alpha value defines the transparency of a color, with 0 corresponding to
+ *  completely transparent and 255 to completely opaque. If transparency is not
+ *  explicitly used, all alpha values are 255.
+ *
+ *  <p><b>32-bit color.</b>
+ *  Sometimes it is more convenient (or efficient) to manipulate the
+ *  color of a pixel as a single 32-bit integers instead of four 8-bit components.
+ *  The following methods support this:
+ *  <ul>
+ *  <li> {@link #getRGB(int col, int row)}
+ *  <li> {@link #setRGB(int col, int row, int rgb)}
+ *  </ul>
+ *  <p>
+ *  The red (R), green (G), and blue (B) components
  *  are encoded using the least significant 24 bits.
  *  Given a 32-bit {@code int} encoding the color, the following code extracts
- *  the RGB components:
+ *  the ARGB components:
  * <blockquote><pre>
+ *  int a = (rgb &gt;&gt; 24) &amp; 0xFF;
  *  int r = (rgb &gt;&gt; 16) &amp; 0xFF;
  *  int g = (rgb &gt;&gt;  8) &amp; 0xFF;
  *  int b = (rgb &gt;&gt;  0) &amp; 0xFF;
- *  </pre></blockquote> 
- *  Given the RGB components (8-bits each) of a color,
+ *  </pre></blockquote>
+ *  Given the ARGB components (8-bits each) of a color,
  *  the following statement packs it into a 32-bit {@code int}:
- * <blockquote><pre>
- *  int rgb = (r &lt;&lt; 16) + (g &lt;&lt; 8) + (b &lt;&lt; 0);
- * </pre></blockquote> 
- *  <p>
+ *  <blockquote><pre>
+ *  int argb = (a &lt;&lt; 24) | (r &lt;&lt; 16) | (g &lt;&lt; 8) | (b &lt;&lt; 0);
+ *  </pre></blockquote>
+ *
+ *  <p><b>Coordinates.</b>
+ *  Pixel (<em>col</em>, <em>row</em>) is column <em>col</em> and row <em>row</em>.
+ *  By default, the origin (0, 0) is the pixel in the upper-left corner.
+ *  These are common conventions in image processing and consistent with Java's
+ *  {@link java.awt.image.BufferedImage} data type. The following
+ *  two methods allow you to change this convention:
+ *  <ul>
+ *  <li> {@link #setOriginLowerLeft()}
+ *  <li> {@link #setOriginUpperLeft()}
+ *  </ul>
+ *
+ *  <p><b>Memory usage.</b>
  *  A <em>W</em>-by-<em>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
  *  since the color of each pixel is encoded as a 32-bit <code>int</code>.
- *  <p>
+ *
+ *  <p><b>Additional documentation.</b>
  *  For additional documentation, see
  *  <a href="https://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of
  *  <i>Computer Science: An Interdisciplinary Approach</i>
  *  by Robert Sedgewick and Kevin Wayne.
- *  See {@link GrayscalePicture} for a version that supports grayscale images.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -87,8 +227,9 @@ import javax.swing.KeyStroke;
 public final class Picture implements ActionListener {
     private BufferedImage image;               // the rasterized image
     private JFrame frame;                      // on-screen view
-    private String filename;                   // name of file
+    private String title;                      // window title (typically the name of the file)
     private boolean isOriginUpperLeft = true;  // location of origin
+    private boolean isVisible = false;         // is the frame visible?
     private final int width, height;           // width and height
 
    /**
@@ -105,8 +246,8 @@ public final class Picture implements ActionListener {
         if (height <= 0) throw new IllegalArgumentException("height must be positive");
         this.width  = width;
         this.height = height;
-        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        // set to TYPE_INT_ARGB here and in next constructor to support transparency
+        this.title = width + "-by-" + height;
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
     }
 
    /**
@@ -120,8 +261,8 @@ public final class Picture implements ActionListener {
 
         width  = picture.width();
         height = picture.height();
-        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        filename = picture.filename;
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        title = picture.title;
         isOriginUpperLeft = picture.isOriginUpperLeft;
         for (int col = 0; col < width(); col++)
             for (int row = 0; row < height(); row++)
@@ -129,21 +270,23 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Creates a picture by reading an image from a file or URL.
+     * Creates a picture by reading a JPEG, PNG, or GIF image from a file or URL.
+     * The filetype extension must be {@code .jpg}, {@code .png}, or {@code .gif}.
      *
-     * @param  name the name of the file (.png, .gif, or .jpg) or URL.
+     * @param  filename the name of the file or URL
      * @throws IllegalArgumentException if cannot read image
      * @throws IllegalArgumentException if {@code name} is {@code null}
      */
-    public Picture(String name) {
-        if (name == null) throw new IllegalArgumentException("constructor argument is null");
-        if (name.length() == 0) throw new IllegalArgumentException("constructor argument is the empty string");
+    public Picture(String filename) {
+        if (filename == null) throw new IllegalArgumentException("constructor argument is null");
+        if (filename.length() == 0) throw new IllegalArgumentException("constructor argument is the empty string");
 
-        this.filename = name;
+        title = filename;
         try {
             // try to read from file in working directory
-            File file = new File(name);
+            File file = new File(filename);
             if (file.isFile()) {
+                title = file.getName();
                 image = ImageIO.read(file);
             }
 
@@ -154,31 +297,38 @@ public final class Picture implements ActionListener {
 
                 // resource relative to classloader root
                 if (url == null) {
-                    url = getClass().getClassLoader().getResource(name);
+                    url = getClass().getClassLoader().getResource(filename);
                 }
 
                 // or URL from web or jar
                 if (url == null) {
-                    url = new URL(name);
+                    url = new URL(filename);
                 }
 
                 image = ImageIO.read(url);
             }
 
             if (image == null) {
-                throw new IllegalArgumentException("could not read image: " + name);
+                throw new IllegalArgumentException("could not read image: " + filename);
             }
 
             width  = image.getWidth(null);
             height = image.getHeight(null);
+
+            // convert to ARGB if necessary
+            if (image.getType() != BufferedImage.TYPE_INT_ARGB) {
+                BufferedImage imageARGB = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+                imageARGB.createGraphics().drawImage(image, 0, 0, null);
+                image = imageARGB;
+            }
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("could not open image: " + name, ioe);
+            throw new IllegalArgumentException("could not open image: " + filename, ioe);
         }
     }
 
    /**
-     * Creates a picture by reading the image from a PNG, GIF, or JPEG file.
+     * Creates a picture by reading the image from a JPEG, PNG, or GIF file.
      *
      * @param file the file
      * @throws IllegalArgumentException if cannot read image
@@ -188,7 +338,18 @@ public final class Picture implements ActionListener {
         if (file == null) throw new IllegalArgumentException("constructor argument is null");
 
         try {
-            image = ImageIO.read(file);
+            BufferedImage image = ImageIO.read(file);
+
+            width  = image.getWidth(null);
+            height = image.getHeight(null);
+            title = file.getName();
+
+            // convert to ARGB
+            if (image.getType() != BufferedImage.TYPE_INT_RGB) {
+                BufferedImage imageARGB = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+                imageARGB.createGraphics().drawImage(image, 0, 0, null);
+                image = imageARGB;
+            }
         }
         catch (IOException ioe) {
             throw new IllegalArgumentException("could not open file: " + file, ioe);
@@ -196,9 +357,7 @@ public final class Picture implements ActionListener {
         if (image == null) {
             throw new IllegalArgumentException("could not read file: " + file);
         }
-        width  = image.getWidth(null);
-        height = image.getHeight(null);
-        filename = file.getName();
+
     }
 
    /**
@@ -233,7 +392,7 @@ public final class Picture implements ActionListener {
 
     // getMenuShortcutKeyMask() deprecated in Java 10 but its replacement
     // getMenuShortcutKeyMaskEx() is not available in Java 8
-    @SuppressWarnings("deprecation") 
+    @SuppressWarnings("deprecation")
     public void show() {
 
         // create the GUI for viewing the image if needed
@@ -255,15 +414,33 @@ public final class Picture implements ActionListener {
             frame.setContentPane(getJLabel());
             // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            if (filename == null) frame.setTitle(width + "-by-" + height);
-            else                  frame.setTitle(filename);
+            frame.setTitle(title);
             frame.setResizable(false);
             frame.pack();
-            frame.setVisible(true);
         }
 
         // draw
+        frame.setVisible(true);
+        isVisible = true;
         frame.repaint();
+    }
+
+   /**
+     * Hides the window on the screen.
+     */
+    public void hide() {
+        if (frame != null) {
+            isVisible = false;
+            frame.setVisible(false);
+        }
+    }
+
+   /**
+     * Is the window containing the picture visible?
+     * @return {@code true} if the picture is visible, and {@code false} otherwise
+     */
+    public boolean isVisible() {
+        return isVisible;
     }
 
    /**
@@ -305,8 +482,8 @@ public final class Picture implements ActionListener {
     public Color get(int col, int row) {
         validateColumnIndex(col);
         validateRowIndex(row);
-        int rgb = getRGB(col, row);
-        return new Color(rgb);
+        int argb = getRGB(col, row);
+        return new Color(argb, true);
     }
 
    /**
@@ -411,54 +588,64 @@ public final class Picture implements ActionListener {
         throw new UnsupportedOperationException("hashCode() is not supported because pictures are mutable");
     }
 
-   /**
-     * Saves the picture to a file in either PNG or JPEG format.
-     * The filetype extension must be either .png or .jpg.
-     *
-     * @param name the name of the file
-     * @throws IllegalArgumentException if {@code name} is {@code null}
-     */
-    public void save(String name) {
-        if (name == null) throw new IllegalArgumentException("argument to save() is null");
-  	if (name.length() == 0) throw new IllegalArgumentException("argument to save() is the empty string");
-        File file = new File(name);
-        if (file == null) throw new IllegalArgumentException("could not open file: '" + name + "'");
-        filename = file.getName();
-        String suffix = filename.substring(filename.lastIndexOf('.') + 1);
-        if ("jpg".equalsIgnoreCase(suffix) || "png".equalsIgnoreCase(suffix)) {
-            try {
-                ImageIO.write(image, suffix, file);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
+    // does this picture use transparency (i.e., alpha < 255 for some pixel)?
+    private boolean hasAlpha() {
+        for (int col = 0; col < width; col++) {
+            for (int row = 0; row < height; row++) {
+                int argb = image.getRGB(col, row);
+                int alpha =  (argb >> 24) & 0xFF;
+                if (alpha != 255) return true;
             }
         }
-        else {
-            System.out.println("Error: filename must end in '.jpg' or '.png'");
-        }
+        return false;
     }
 
    /**
-     * Saves the picture to a file in a PNG or JPEG image format.
+     * Saves the picture to a file in a supported file format
+     * (typically JPEG, PNG, GIF TIFF, and BMP).
+     * If the file format does not support transparency (such as JPEG
+     * or BMP), it will be converted to be opaque (with purely
+     * transparent pixels converted to black).
+     *
+     * @param filename the name of the file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code filename} is the empty string
+     */
+    public void save(String filename) {
+        if (filename == null) throw new IllegalArgumentException("argument to save() is null");
+        if (filename.length() == 0) throw new IllegalArgumentException("argument to save() is the empty string");
+        File file = new File(filename);
+        save(file);
+    }
+
+   /**
+     * Saves the picture to a file in a supported format
+     * (typically JPEG, PNG, GIF TIFF, and BMP).
      *
      * @param  file the file
      * @throws IllegalArgumentException if {@code file} is {@code null}
      */
     public void save(File file) {
         if (file == null) throw new IllegalArgumentException("argument to save() is null");
-        filename = file.getName();
-        if (frame != null) frame.setTitle(filename);
-        String suffix = filename.substring(filename.lastIndexOf('.') + 1);
-        if ("jpg".equalsIgnoreCase(suffix) || "png".equalsIgnoreCase(suffix)) {
-            try {
-                ImageIO.write(image, suffix, file);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+        title = file.getName();
+
+        String suffix = title.substring(title.lastIndexOf('.') + 1);
+        if (!title.contains(".")) suffix = "";
+
+        try {
+            // for formats that support transparency (e.g., PNG and GIF)
+            if (ImageIO.write(image, suffix, file)) return;
+
+            // for formats that don't support transparency (e.g., JPG and BMP)
+            // create BufferedImage in RGB format and use white background
+            BufferedImage imageRGB = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            imageRGB.createGraphics().drawImage(image, 0, 0, Color.WHITE, null);
+            if (ImageIO.write(imageRGB, suffix, file)) return;
+
+            System.out.printf("Error: the filetype '%s' is not supported\n", suffix);
         }
-        else {
-            System.out.println("Error: filename must end in .jpg or .png");
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -468,7 +655,7 @@ public final class Picture implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         FileDialog chooser = new FileDialog(frame,
-                             "Use a .png or .jpg extension", FileDialog.SAVE);
+                             "The filetype extension must be either .jpg or .png", FileDialog.SAVE);
         chooser.setVisible(true);
         if (chooser.getFile() != null) {
             save(chooser.getDirectory() + File.separator + chooser.getFile());
@@ -490,9 +677,8 @@ public final class Picture implements ActionListener {
 
 }
 
-
 /******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
