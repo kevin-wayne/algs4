@@ -114,7 +114,7 @@ package edu.princeton.cs.algs4;
  *
  *  <p><b>Transparency.</b>
  *  The {@code StdPicture} class supports transparent images, using the
- *  ARGB color model. The folowing methods are useful for this:
+ *  ARGB color model. The following methods are useful for this:
  *  <ul>
  *  <li> {@link #getAlpha(int col, int row)}
  *  <li> {@link #setARGB(int col, int row, int r, int g, int b, int a)}

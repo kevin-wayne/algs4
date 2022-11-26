@@ -217,7 +217,7 @@ public final class BinaryIn {
      * as an <em>r</em>-bit character.
      *
      * @param  r number of bits to read
-     * @return the next {@code r} bits of data from this binary input streamt as a {@code char}
+     * @return the next {@code r} bits of data from this binary input stream as a {@code char}
      * @throws NoSuchElementException if there are fewer than {@code r} bits available
      * @throws IllegalArgumentException unless {@code 1 <= r <= 16}
      */

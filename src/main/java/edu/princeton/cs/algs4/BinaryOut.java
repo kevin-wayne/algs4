@@ -22,7 +22,7 @@ import java.net.Socket;
 
 /**
  *  <i>Binary output</i>. This class provides methods for converting
- *  primtive type variables ({@code boolean}, {@code byte}, {@code char},
+ *  primitive type variables ({@code boolean}, {@code byte}, {@code char},
  *  {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to an output stream.
  *  The output stream can be standard output, a file, an OutputStream or a Socket.
@@ -262,10 +262,10 @@ public final class BinaryOut {
      * Writes the 8-bit char to the binary output stream.
      *
      * @param  x the {@code char} to write
-     * @throws IllegalArgumentException unless {@code x} is betwen 0 and 255
+     * @throws IllegalArgumentException unless {@code x} is between 0 and 255
      */
     public void write(char x) {
-        if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
+        if (x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
         writeByte(x);
     }
 
@@ -306,7 +306,7 @@ public final class BinaryOut {
    /**
      * Writes the string of <em>r</em>-bit characters to the binary output stream.
      * @param  s the {@code String} to write
-     * @param  r the number of relevants bits in each character
+     * @param  r the number of relevant bits in each character
      * @throws IllegalArgumentException unless r is between 1 and 16
      * @throws IllegalArgumentException if any character in the string is not
      *         between 0 and 2<sup>r</sup> - 1

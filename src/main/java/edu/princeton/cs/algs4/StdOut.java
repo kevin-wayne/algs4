@@ -301,7 +301,7 @@ public final class StdOut {
     }
 
    /**
-     * Unit tests some of the methods in {@code StdOut}.
+     * Unit tests some methods in {@code StdOut}.
      *
      * @param args the command-line arguments
      */

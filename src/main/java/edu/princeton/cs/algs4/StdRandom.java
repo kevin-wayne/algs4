@@ -475,7 +475,7 @@ public final class StdRandom {
         if (sum >= Integer.MAX_VALUE)
             throw new IllegalArgumentException("sum of frequencies overflows an int");
 
-        // pick index i with probabilitity proportional to frequency
+        // pick index i with probability proportional to frequency
         double r = uniformInt((int) sum);
         sum = 0;
         for (int i = 0; i < frequencies.length; i++) {

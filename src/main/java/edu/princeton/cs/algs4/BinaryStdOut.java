@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /**
  *  <i>Binary standard output</i>. This class provides methods for converting
- *  primtive type variables ({@code boolean}, {@code byte}, {@code char},
+ *  primitive type variables ({@code boolean}, {@code byte}, {@code char},
  *  {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to standard output.
  *  Uses big-endian (most-significant byte first).
@@ -230,7 +230,7 @@ public final class BinaryStdOut {
    /**
      * Writes the 8-bit char to standard output.
      * @param x the {@code char} to write.
-     * @throws IllegalArgumentException if {@code x} is not betwen 0 and 255.
+     * @throws IllegalArgumentException if {@code x} is not between 0 and 255.
      */
     public static void write(char x) {
         if (x < 0 || x >= 256) throw new IllegalArgumentException("Illegal 8-bit char = " + x);
@@ -271,7 +271,7 @@ public final class BinaryStdOut {
    /**
      * Writes the string of <em>r</em>-bit characters to standard output.
      * @param s the {@code String} to write.
-     * @param r the number of relevants bits in each character.
+     * @param r the number of relevant bits in each character.
      * @throws IllegalArgumentException if r is not between 1 and 16.
      * @throws IllegalArgumentException if any character in the string is not
      * between 0 and 2<sup>r</sup> - 1.

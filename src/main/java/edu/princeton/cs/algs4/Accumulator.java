@@ -22,7 +22,7 @@ package edu.princeton.cs.algs4;
  *  to floating-point roundoff error than the more straightforward
  *  implementation based on saving the sum of the squares of the numbers.
  *  This technique is due to
- *  <a href = "https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Online_algorithm">B. P. Welford</a>.
+ *  <a href = "https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm">B. P. Welford</a>.
  *  Each operation takes constant time in the worst case.
  *  The amount of memory is constant - the data values are not stored.
  *  <p>

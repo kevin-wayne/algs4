@@ -29,9 +29,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import javax.sound.sampled.LineListener;
-import javax.sound.sampled.LineEvent;
-
 /**
  *  <p><b>Overview.</b>
  *  The {@code StdAudio} class provides a basic capability for
@@ -64,18 +61,18 @@ import javax.sound.sampled.LineEvent;
  *  <pre>
  *   public class TestStdAudio {
  *       public static void main(String[] args) {
- *           double concertA = 440.0;
+ *           double freq = 440.0;
  *           for (int i = 0; i &lt; StdAudio.SAMPLE_RATE; i++) {
- *               double sample = 0.5 * Math.sin(2*Math.PI * freq * i / StdAudio.SAMPLE_RATE);
+ *               double sample = 0.5 * Math.sin(2 * Math.PI * freq * i / StdAudio.SAMPLE_RATE);
  *               StdAudio.play(sample);
  *           }
- *           StdAudio.close();
+ *           StdAudio.drain();
  *       }
  *   }
  *  </pre>
  *  <p>
  *  If you compile and execute the program, you should hear a pure tone
- *  whose frequency is concert A.
+ *  whose frequency is concert A (440 Hz).
  *
  *  <p>
  *  <b>Playing audio samples.</b>
@@ -182,7 +179,7 @@ import javax.sound.sampled.LineEvent;
  *  </ul>
  *  <p>
  *  Each call to the first method plays the specified sound in a separate background
- *  thread. Unlike with the {@link play} methods, your program will not wait
+ *  thread. Unlike with the {@code play()} methods, your program will not wait
  *  for the samples to finish playing before continuing.
  *  It supports playing an audio file in WAVE, AU, AIFF, or MIDI format.
  *  It is possible to play
@@ -233,7 +230,7 @@ public final class StdAudio {
     private static byte[] buffer;         // our internal buffer
     private static int bufferSize = 0;    // number of samples currently in internal buffer
 
-    // queue of background runnables
+    // queue of background Runnable objects
     private static LinkedList<BackgroundRunnable> backgroundRunnables = new LinkedList<>();
 
     // for recording audio
@@ -299,14 +296,7 @@ public final class StdAudio {
 
             // from URL (including jar file)
             URL url = new URL(filename);
-            if (url != null) {
-                return AudioSystem.getAudioInputStream(url);
-            }
-
-            // give up
-            else {
-                throw new IllegalArgumentException("could not read '" + filename + "'");
-            }
+            return AudioSystem.getAudioInputStream(url);
         }
         catch (IOException e) {
             throw new IllegalArgumentException("could not read '" + filename + "'", e);
@@ -403,15 +393,12 @@ public final class StdAudio {
             line.open(audioFormat);
             line.start();
             byte[] samples = new byte[BUFFER_SIZE];
-            int count = 0;
+            int count;
             while ((count = ais.read(samples, 0, BUFFER_SIZE)) != -1) {
                 line.write(samples, 0, count);
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        catch (LineUnavailableException e) {
+        catch (IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
         finally {
@@ -452,8 +439,8 @@ public final class StdAudio {
         // extract the audio data and convert to a double[] with each sample between -1 and +1
         try {
             QueueOfDoubles queue = new QueueOfDoubles();
-            int count = 0;
             byte[] bytes = new byte[READ_BUFFER_SIZE];
+            int count;
             while ((count = toAudioInputStream.read(bytes, 0, READ_BUFFER_SIZE)) != -1) {
 
                 // little endian, monoaural
@@ -595,15 +582,12 @@ public final class StdAudio {
                 line.open(audioFormat);
                 line.start();
                 byte[] samples = new byte[BUFFER_SIZE];
-                int count = 0;
+                int count;
                 while (!exit && (count = ais.read(samples, 0, BUFFER_SIZE)) != -1) {
                     line.write(samples, 0, count);
                 }
             }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            catch (LineUnavailableException e) {
+            catch (IOException | LineUnavailableException e) {
                 e.printStackTrace();
             }
             finally {
@@ -642,10 +626,7 @@ public final class StdAudio {
             clip.open(ais);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
-        catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
+        catch (IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
 
@@ -699,7 +680,7 @@ public final class StdAudio {
     * Helper class for reading and recording audio.
     ***************************************************************************/
     private static class QueueOfDoubles {
-        private final static int INIT_CAPACITY = 16;
+        private static final int INIT_CAPACITY = 16;
         private double[] a;   // array of doubles
         private int n;        // number of items in queue
 
@@ -760,11 +741,6 @@ public final class StdAudio {
         StdAudio.play(base + "test.wav");          // helicopter
         StdAudio.play(base + "test-22050.wav");    // twenty-four
         StdAudio.play(base + "test.midi");         // a Mozart measure
-
-        // read and play some sound files
-        StdAudio.play(StdAudio.read(base + "test.wav"));
-        StdAudio.play(StdAudio.read(base + "test-22050.wav"));
-        StdAudio.play(StdAudio.read(base + "test.midi"));
 
         // a sound loop
         for (int i = 0; i < 10; i++) {

@@ -354,10 +354,6 @@ public final class Picture implements ActionListener {
         catch (IOException ioe) {
             throw new IllegalArgumentException("could not open file: " + file, ioe);
         }
-        if (image == null) {
-            throw new IllegalArgumentException("could not read file: " + file);
-        }
-
     }
 
    /**
@@ -568,7 +564,7 @@ public final class Picture implements ActionListener {
         sb.append(width +"-by-" + height + " picture (RGB values given in hex)\n");
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
-                int rgb = 0;
+                int rgb;
                 if (isOriginUpperLeft) rgb = image.getRGB(col, row);
                 else                   rgb = image.getRGB(col, height - row - 1);
                 sb.append(String.format("#%06X ", rgb & 0xFFFFFF));

@@ -244,7 +244,7 @@ public final class StdIn {
    /**
      * Returns true if standard input is empty (except possibly for whitespace).
      * Use this method to know whether the next call to {@link #readString()},
-     * {@link #readDouble()}, etc will succeed.
+     * {@link #readDouble()}, etc. will succeed.
      *
      * @return {@code true} if standard input is empty (except possibly
      *         for whitespace); {@code false} otherwise
@@ -331,7 +331,7 @@ public final class StdIn {
             return "";
 
         String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
-        // not that important to reset delimeter, since now scanner is empty
+        // not that important to reset delimiter, since now scanner is empty
         scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
         return result;
     }
@@ -541,7 +541,7 @@ public final class StdIn {
         while (hasNextLine()) {
             lines.add(readLine());
         }
-        return lines.toArray(new String[lines.size()]);
+        return lines.toArray(new String[0]);
     }
 
     /**

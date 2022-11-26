@@ -27,7 +27,7 @@
  *         max   5.000
  *     std dev   1.581
  *
- *  Should these funtions use varargs instead of array arguments?
+ *  Should these functions use varargs instead of array arguments?
  *
  ******************************************************************************/
 
