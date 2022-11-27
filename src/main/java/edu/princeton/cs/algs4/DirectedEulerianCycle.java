@@ -39,7 +39,7 @@ import java.util.Iterator;
  *  @author Nate Liu
  */
 public class DirectedEulerianCycle {
-    private Stack<Integer> cycle = null;  // Eulerian cycle; null if no such cylce
+    private Stack<Integer> cycle = null;  // Eulerian cycle; null if no such cycle
 
     /**
      * Computes an Eulerian cycle in the specified digraph, if one exists.
@@ -144,7 +144,7 @@ public class DirectedEulerianCycle {
             for (int w : G.adj(v))
                 H.addEdge(v, w);
 
-        // check that all non-isolated vertices are conneted
+        // check that all non-isolated vertices are connected
         int s = nonIsolatedVertex(G);
         BreadthFirstPaths bfs = new BreadthFirstPaths(H, s);
         for (int v = 0; v < G.V(); v++)

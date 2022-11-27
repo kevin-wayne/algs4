@@ -49,7 +49,7 @@ public class HexDump {
 
     /**
      * Reads in a sequence of bytes from standard input and writes
-     * them to standard output using hexademical notation, k hex digits
+     * them to standard output using hexadecimal notation, k hex digits
      * per line, where k is given as a command-line integer (defaults
      * to 16 if no integer is specified); also writes the number
      * of bits.

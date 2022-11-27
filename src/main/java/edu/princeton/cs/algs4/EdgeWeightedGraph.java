@@ -47,7 +47,7 @@ import java.util.NoSuchElementException;
  *  the edges returned by {@link #adj(int)} takes time proportional
  *  to the degree of the vertex.)
  *  Constructing an empty edge-weighted graph with <em>V</em> vertices takes
- *  &Theta;(<em>V</em>) time; constructing a edge-weighted graph with
+ *  &Theta;(<em>V</em>) time; constructing an edge-weighted graph with
  *  <em>E</em> edges and <em>V</em> vertices takes
  *  &Theta;(<em>E</em> + <em>V</em>) time.
  *  <p>

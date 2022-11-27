@@ -130,6 +130,13 @@ public class EdgeWeightedDirectedCycle {
                 last = e;
             }
 
+            // cycle() contains no edges
+            if (first == null || last == null) {
+                System.err.printf("cycle contains no edges\n");
+                return false;
+            }
+
+            // first and last edges in cycle are not incident
             if (last.to() != first.from()) {
                 System.err.printf("cycle edges %s and %s not incident\n", last, first);
                 return false;
@@ -186,7 +193,7 @@ public class EdgeWeightedDirectedCycle {
             StdOut.println();
         }
 
-        // or give topologial sort
+        // or give topological sort
         else {
             StdOut.println("No directed cycle");
         }

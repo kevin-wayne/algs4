@@ -4,7 +4,7 @@
  *  Dependencies: EdgeWeightedDigraph.java DirectedEdge.java Topological.java
  *  Data files:   https://algs4.cs.princeton.edu/44sp/tinyEWDAG.txt
  *
- *  Computes longeset paths in an edge-weighted acyclic digraph.
+ *  Computes longest paths in an edge-weighted acyclic digraph.
  *
  *  Remark: should probably check that graph is a DAG before running
  *

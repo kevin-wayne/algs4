@@ -7,9 +7,9 @@
  *
  *  Runs in O(E + V) time.
  *
- *  This implementation is tricker than the one for digraphs because
+ *  This implementation is trickier than the one for digraphs because
  *  when we use edge v-w from v's adjacency list, we must be careful
- *  not to use the second copy of the edge from w's adjaceny list.
+ *  not to use the second copy of the edge from w's adjacency list.
  *
  ******************************************************************************/
 
@@ -75,7 +75,7 @@ public class EulerianCycle {
         if (G.E() == 0) return;
 
         // necessary condition: all vertices have even degree
-        // (this test is needed or it might find an Eulerian path instead of cycle)
+        // (this test is needed, or it might find an Eulerian path instead of cycle)
         for (int v = 0; v < G.V(); v++)
             if (G.degree(v) % 2 != 0)
                 return;

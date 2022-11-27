@@ -5,7 +5,7 @@
  *
  *  Solve an m-by-n two-person zero-sum game by reducing it to
  *  linear programming. Assuming A is a strictly positive payoff
- *  matrix, the optimal row and column player strategies are x* an y*,
+ *  matrix, the optimal row and column player strategies are x* and y*,
  *  scaled to be probability distributions.
  *
  *  (P)  max  y^T 1         (D)  min   1^T x
@@ -51,7 +51,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class TwoPersonZeroSumGame {
-    private static final double EPSILON = 1E-8;
+    private static final double EPSILON = 1.0E-8;
 
     private final int m;            // number of rows
     private final int n;            // number of columns

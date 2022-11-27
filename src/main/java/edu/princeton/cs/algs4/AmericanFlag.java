@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne
  *  and <a href = "http://static.usenix.org/publications/compsystems/1993/win_mcilroy.pdf">
  *  Engineering Radix Sort</a> by McIlroy and Bostic.
- *  For a version that uses only one auxilary array, see {@link AmericanFlagX}.
+ *  For a version that uses only one auxiliary array, see {@link AmericanFlagX}.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
@@ -160,7 +160,7 @@ public class AmericanFlag {
 
    /**
      * Rearranges the array of 32-bit integers in ascending order.
-     * Currently assumes that the integers are nonnegative.
+     * Currently, assumes that the integers are nonnegative.
      *
      * @param a the array to be sorted
      */

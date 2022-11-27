@@ -48,7 +48,7 @@ package edu.princeton.cs.algs4;
  * @author Marcelo Silva
  */
 public class GlobalMincut {
-    private static final double FLOATING_POINT_EPSILON = 1E-11;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-11;
 
     // the weight of the minimum cut
     private double weight = Double.POSITIVE_INFINITY;
@@ -163,7 +163,7 @@ public class GlobalMincut {
         cut = new boolean[G.V()];
         CutPhase cp = new CutPhase(0.0, a, a);
         for (int v = G.V(); v > 1; v--) {
-            cp = minCutPhase(G, marked, cp);
+            minCutPhase(G, marked, cp);
             if (cp.weight < weight) {
                 weight = cp.weight;
                 makeCut(cp.t, uf);
@@ -187,7 +187,7 @@ public class GlobalMincut {
      * @param cp the previous cut-of-the-phase
      * @return the cut-of-the-phase
      */
-    private CutPhase minCutPhase(EdgeWeightedGraph G, boolean[] marked, CutPhase cp) {
+    private void minCutPhase(EdgeWeightedGraph G, boolean[] marked, CutPhase cp) {
         IndexMaxPQ<Double> pq = new IndexMaxPQ<Double>(G.V());
         for (int v = 0; v < G.V(); v++) {
             if (v != cp.s && !marked[v]) pq.insert(v, 0.0);
@@ -206,7 +206,6 @@ public class GlobalMincut {
         for (Edge e : G.adj(cp.t)) {
             cp.weight += e.weight();
         }
-        return cp;
     }
 
     /**

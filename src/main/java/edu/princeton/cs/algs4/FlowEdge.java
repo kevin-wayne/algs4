@@ -26,7 +26,7 @@ package edu.princeton.cs.algs4;
  */
 public class FlowEdge {
     // to deal with floating-point roundoff errors
-    private static final double FLOATING_POINT_EPSILON = 1E-10;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-10;
 
     private final int v;             // from
     private final int w;             // to
@@ -154,14 +154,14 @@ public class FlowEdge {
 
     /**
      * Increases the flow on the edge in the direction to the given vertex.
-     *   If {@code vertex} is the tail vertex, this increases the flow on the edge by {@code delta};
-     *   if {@code vertex} is the head vertex, this decreases the flow on the edge by {@code delta}.
+     * If {@code vertex} is the tail vertex, this increases the flow on the edge by {@code delta};
+     * if {@code vertex} is the head vertex, this decreases the flow on the edge by {@code delta}.
      * @param vertex one endpoint of the edge
      * @param delta amount by which to increase flow
      * @throws IllegalArgumentException if {@code vertex} is not one of the endpoints
-     *   of the edge
-     * @throws IllegalArgumentException if {@code delta} makes the flow on
-     *   on the edge either negative or larger than its capacity
+     *         of the edge
+     * @throws IllegalArgumentException if {@code delta} makes the flow
+     *         on the edge either negative or larger than its capacity
      * @throws IllegalArgumentException if {@code delta} is {@code NaN}
      */
     public void addResidualFlowTo(int vertex, double delta) {

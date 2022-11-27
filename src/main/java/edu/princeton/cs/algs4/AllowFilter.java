@@ -5,8 +5,8 @@
  *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyTale.txt
  *                https://algs4.cs.princeton.edu/35applications/allowlist.txt
  *
- *  Read in a allowlist of words from a file. Then read in a list of
- *  words from standard input and print out all those words that
+ *  Reads an allowlist of words from a file. Then readsa list of
+ *  words from standard input and prints all those words that
  *  are in the first file.
  *
  *  % more tinyTale.txt
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  The {@code AllowFilter} class provides a client for reading in an <em>allowlist</em>
  *  of words from a file; then, reading in a sequence of words from standard input,
  *  printing out each word that appears in the file.
- *  It is useful as a test client for various symbol table implementations.
+ *  It is useful as a test client for various symbol-table implementations.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of

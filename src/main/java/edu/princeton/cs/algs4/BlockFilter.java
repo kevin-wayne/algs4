@@ -5,8 +5,8 @@
  *  Data files:   https://algs4.cs.princeton.edu/35applications/tinyTale.txt
  *                https://algs4.cs.princeton.edu/35applications/blocklist.txt
  *
- *  Read in a blocklist of words from a file. Then read in a list of
- *  words from standard input and print out all those words that
+ *  Reads a blocklist of words from a file. Then reads a list of
+ *  words from standard input and print all those words that
  *  are not in the first file.
  *
  *  % more tinyTale.txt
@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  The {@code BlockFilter} class provides a client for reading in a <em>blocklist</em>
  *  of words from a file; then, reading in a sequence of words from standard input,
  *  printing out each word that <em>does not</em> appear in the file.
- *  It is useful as a test client for various symbol table implementations.
+ *  It is useful as a test client for various symbol-table implementations.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/35applications">Section 3.5</a> of

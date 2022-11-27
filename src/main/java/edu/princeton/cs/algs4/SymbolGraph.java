@@ -168,7 +168,7 @@ public class SymbolGraph {
     }
 
     /**
-     * Returns the graph assoicated with the symbol graph. It is the client's responsibility
+     * Returns the graph associated with the symbol graph. It is the client's responsibility
      * not to mutate the graph.
      * @return the graph associated with the symbol graph
      * @deprecated Replaced by {@link #graph()}.
@@ -179,7 +179,7 @@ public class SymbolGraph {
     }
 
     /**
-     * Returns the graph assoicated with the symbol graph. It is the client's responsibility
+     * Returns the graph associated with the symbol graph. It is the client's responsibility
      * not to mutate the graph.
      * @return the graph associated with the symbol graph
      */
@@ -210,7 +210,7 @@ public class SymbolGraph {
             if (sg.contains(source)) {
                 int s = sg.index(source);
                 for (int v : graph.adj(s)) {
-                    StdOut.println("   " + sg.name(v));
+                    StdOut.println("   " + sg.nameOf(v));
                 }
             }
             else {

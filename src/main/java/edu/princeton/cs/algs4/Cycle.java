@@ -34,7 +34,7 @@ package edu.princeton.cs.algs4;
  *  <em>E</em> is the number of edges.
  *  (The depth-first search part takes only <em>O</em>(<em>V</em>) time;
  *  however, checking for self-loops and parallel edges takes
- *  &Theta;(<em>V</em> + <em>E</em>) time in the worst case.)
+ *  &Theta;(<em>V</em> + <em>E</em>) time in the worst case.
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the graph).
  *

@@ -26,7 +26,7 @@ import java.util.Iterator;
  *  A <em>vertex cover</em> in a graph is a subset of its vertices such that
  *  every edge is incident to at least one vertex. A <em>minimum vertex cover</em>
  *  is a vertex cover with the minimum number of vertices.
- *  By Konig's theorem, in any biparite
+ *  By Konig's theorem, in any bipartite
  *  graph, the maximum number of edges in matching equals the minimum number
  *  of vertices in a vertex cover.
  *  The maximum matching problem in <em>nonbipartite</em> graphs is

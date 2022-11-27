@@ -47,7 +47,7 @@ public class DoublingRatio {
             a[i] = StdRandom.uniformInt(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
         }
         Stopwatch timer = new Stopwatch();
-        ThreeSum.count(a);
+        int ignore = ThreeSum.count(a);
         return timer.elapsedTime();
     }
 

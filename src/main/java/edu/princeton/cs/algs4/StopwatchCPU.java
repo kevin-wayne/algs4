@@ -1,6 +1,6 @@
 /******************************************************************************
  *  Compilation:  javac StopwatchCPU.java
- *  Execution:    java StopwtachCPU n
+ *  Execution:    java StopwatchCPU n
  *  Dependencies: none
  *
  *  A version of Stopwatch.java that measures CPU time on a single

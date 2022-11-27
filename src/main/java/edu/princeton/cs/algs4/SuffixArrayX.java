@@ -47,13 +47,13 @@ package edu.princeton.cs.algs4;
  *  The <em>select</em> operation takes time proportional
  *  to the length of the suffix and should be used primarily for debugging.
  *  <p>
- *  This implementation uses '\0' as a sentinel and assumes that the charater
+ *  This implementation uses '\0' as a sentinel and assumes that the character
  *  '\0' does not appear in the text.
  *  <p>
  *  In practice, this algorithm runs very fast. However, in the worst-case
  *  it can be very poor (e.g., a string consisting of N copies of the same
- *  character. We do not shuffle the array of suffixes before sorting because
- *  shuffling is relatively expensive and a pathologial input for which
+ *  character). We do not shuffle the array of suffixes before sorting because
+ *  shuffling is relatively expensive and a pathological input for which
  *  the suffixes start out in a bad order (e.g., sorted) is likely to be
  *  a bad input for this algorithm with or without the shuffle.
  *  <p>
@@ -228,7 +228,7 @@ public class SuffixArrayX {
 
 
     /**
-     * Unit tests the {@code SuffixArrayx} data type.
+     * Unit tests the {@code SuffixArrayX} data type.
      *
      * @param args the command-line arguments
      */

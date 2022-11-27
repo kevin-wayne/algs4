@@ -200,7 +200,7 @@ public class LinearProbingHashST<Key, Value> {
         // rehash all keys in same cluster
         i = (i + 1) % m;
         while (keys[i] != null) {
-            // delete keys[i] an vals[i] and reinsert
+            // delete keys[i] and vals[i] and reinsert
             Key   keyToRehash = keys[i];
             Value valToRehash = vals[i];
             keys[i] = null;
@@ -233,7 +233,7 @@ public class LinearProbingHashST<Key, Value> {
     }
 
     // integrity check - don't check after each put() because
-    // integrity not maintained during a delete()
+    // integrity not maintained during a call to delete()
     private boolean check() {
 
         // check that hash table is at most 50% full

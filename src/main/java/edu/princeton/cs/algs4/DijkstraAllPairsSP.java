@@ -36,7 +36,7 @@ public class DijkstraAllPairsSP {
     private DijkstraSP[] all;
 
     /**
-     * Computes a shortest paths tree from each vertex to to every other vertex in
+     * Computes a shortest paths tree from each vertex to every other vertex in
      * the edge-weighted digraph {@code G}.
      * @param G the edge-weighted digraph
      * @throws IllegalArgumentException if an edge weight is negative

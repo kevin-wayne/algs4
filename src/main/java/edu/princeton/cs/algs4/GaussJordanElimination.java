@@ -41,7 +41,7 @@ package edu.princeton.cs.algs4;
  *  where <em>A</em> is an <em>n</em>-by-<em>n</em> matrix
  *  and <em>b</em> is a length <em>n</em> vector.
  *  If no solution exists, it finds a solution <em>y</em> to
- *  <em>yA</em> = 0, <em>yb</em> &ne; 0, which
+ *  <em>yA</em> = 0, <em>yb</em> &ne; 0,
  *  which serves as a certificate of infeasibility.
  *  <p>
  *  This implementation uses Gauss-Jordan elimination with partial pivoting.
@@ -329,7 +329,7 @@ public class GaussJordanElimination {
         test("test 3", A, b);
     }
 
-    // 5-by-5 singluar: infinitely many solutions
+    // 5-by-5 singular: infinitely many solutions
     private static void test4() {
         double[][] A = {
             {  2, -3, -1,  2,  3 },

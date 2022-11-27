@@ -48,7 +48,7 @@ package edu.princeton.cs.algs4;
 public class KMP {
     private final int R;       // the radix
     private final int m;       // length of pattern
-    private int[][] dfa;       // the KMP automoton
+    private int[][] dfa;       // the KMP automaton
 
     /**
      * Preprocesses the pattern string.
@@ -93,7 +93,7 @@ public class KMP {
     }
 
     /**
-     * Returns the index of the first occurrrence of the pattern string
+     * Returns the index of the first occurrence of the pattern string
      * in the text string.
      *
      * @param  txt the text string
@@ -113,7 +113,7 @@ public class KMP {
     }
 
     /**
-     * Returns the index of the first occurrrence of the pattern string
+     * Returns the index of the first occurrence of the pattern string
      * in the text string.
      *
      * @param  text the text string

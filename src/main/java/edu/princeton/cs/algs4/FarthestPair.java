@@ -4,7 +4,7 @@
  *  Dependencies: GrahamScan.java Point2D.java
  *  Data files:   https://algs4.cs.princeton.edu/99hull/rs1423.txt
  *                https://algs4.cs.princeton.edu/99hull/kw1260.txt
- *  
+ *
  *  Given a set of n points in the plane, find the farthest pair
  *  (equivalently, compute the diameter of the set of points).
  *
@@ -134,7 +134,7 @@ public class FarthestPair {
     }
 
     /**
-     * Returns the Eucliden distance between the farthest pair of points.
+     * Returns the Euclidean distance between the farthest pair of points.
      * This quantity is also known as the <em>diameter</em> of the set of points.
      *
      * @return the Euclidean distance between the farthest pair of points

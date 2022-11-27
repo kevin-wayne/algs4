@@ -6,8 +6,8 @@
  *                https://algs4.cs.princeton.edu/63suffix/tinyTale.txt
  *                https://algs4.cs.princeton.edu/63suffix/mobydick.txt
  *
- *  Reads a text string from stdin, replaces all consecutive blocks of
- *  whitespace with a single space, and then computes the longest
+ *  Reads a text string from standard input, replaces all consecutive blocks
+ *  of whitespace with a single space, and then computes the longest
  *  repeated substring in that text using a suffix array.
  *
  *  % java LongestRepeatedSubstring < tinyTale.txt

@@ -53,7 +53,7 @@ public class FloydWarshall {
     private DirectedEdge[][] edgeTo;   // edgeTo[v][w] = last edge on shortest v->w path
 
     /**
-     * Computes a shortest paths tree from each vertex to to every other vertex in
+     * Computes a shortest paths tree from each vertex to every other vertex in
      * the edge-weighted digraph {@code G}. If no such shortest path exists for
      * some pair of vertices, it computes a negative cycle.
      * @param G the edge-weighted digraph

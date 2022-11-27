@@ -59,7 +59,7 @@ public class Vector {
     /**
      * Initializes a vector from either an array or a vararg list.
      * The vararg syntax supports a constructor that takes a variable number of
-     * arugments such as Vector x = new Vector(1.0, 2.0, 3.0, 4.0).
+     * arguments such as Vector x = new Vector(1.0, 2.0, 3.0, 4.0).
      *
      * @param a  the array or vararg list
      */
@@ -212,7 +212,7 @@ public class Vector {
     /**
      * Returns a string representation of this vector.
      *
-     * @return a string representation of this vector, which consists of the
+     * @return a string representation of this vector, which consists of
      *         the vector entries, separates by single spaces
      */
     public String toString() {

@@ -40,7 +40,7 @@ package edu.princeton.cs.algs4;
  *  opportunity exists) under the assumption that all arithmetic
  *  performed is without floating-point rounding error or arithmetic
  *  overflow. Since the code computes the logarithms of the edge weights,
- *  floating-point rounding error will be present and it may fail on
+ *  floating-point rounding error will be present, and it may fail on
  *  some pathological inputs.
  *  <p>
  *  For additional documentation,

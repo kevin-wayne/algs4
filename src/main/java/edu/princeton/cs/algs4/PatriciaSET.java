@@ -81,7 +81,7 @@ import java.util.Iterator;
  *  implementation performs well, the source code was written with an emphasis
  *  on clarity, and not performance. PATRICIA performs admirably when its
  *  bit-testing loops are well tuned. Consider using the source code as a guide,
- *  should you need to produce an optimized implementation, for anther key type,
+ *  should you need to produce an optimized implementation, for another key type,
  *  or in another programming language.
  *  <p>
  *  Other resources for PATRICIA:<br>

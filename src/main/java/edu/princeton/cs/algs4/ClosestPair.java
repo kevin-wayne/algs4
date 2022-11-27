@@ -4,7 +4,7 @@
  *  Dependencies: Point2D.java
  *  Data files:   https://algs4.cs.princeton.edu/99hull/rs1423.txt
  *                https://algs4.cs.princeton.edu/99hull/kw1260.txt
- *  
+ *
  *  Given n points in the plane, find the closest pair in n log n time.
  *
  *  Note: could speed it up by comparing square of Euclidean distances
@@ -18,11 +18,11 @@ import java.util.Arrays;
 
 /**
  *  The {@code ClosestPair} data type computes a closest pair of points
- *  in a set of <em>n</em> points in the plane and provides accessor methods 
+ *  in a set of <em>n</em> points in the plane and provides accessor methods
  *  for getting the closest pair of points and the distance between them.
  *  The distance between two points is their Euclidean distance.
  *  <p>
- *  This implementation uses a divide-and-conquer algorithm. 
+ *  This implementation uses a divide-and-conquer algorithm.
  *  It runs in O(<em>n</em> log <em>n</em>) time in the worst case and uses
  *  O(<em>n</em>) extra space.
  *  <p>
@@ -73,7 +73,7 @@ public class ClosestPair {
             }
         }
 
-        // sort by y-coordinate (but not yet sorted) 
+        // sort by y-coordinate (but not yet sorted)
         Point2D[] pointsByY = new Point2D[n];
         for (int i = 0; i < n; i++)
             pointsByY[i] = pointsByX[i];
@@ -149,7 +149,7 @@ public class ClosestPair {
     }
 
     /**
-     * Returns the Eucliden distance between the closest pair of points.
+     * Returns the Euclidean distance between the closest pair of points.
      *
      * @return the Euclidean distance between the closest pair of points
      *         {@code Double.POSITIVE_INFINITY} if no such pair of points
@@ -171,8 +171,8 @@ public class ClosestPair {
         for (int k = lo; k <= hi; k++) {
             aux[k] = a[k];
         }
-    
-        // merge back to a[] 
+
+        // merge back to a[]
         int i = lo, j = mid+1;
         for (int k = lo; k <= hi; k++) {
             if      (i > mid)              a[k] = aux[j++];

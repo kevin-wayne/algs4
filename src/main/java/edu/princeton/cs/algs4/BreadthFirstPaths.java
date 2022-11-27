@@ -248,16 +248,15 @@ public class BreadthFirstPaths {
         if (vertices == null) {
             throw new IllegalArgumentException("argument is null");
         }
-        int V = marked.length;
-        int count = 0;
+        int vertexCount = 0;
         for (Integer v : vertices) {
-            count++;
+            vertexCount++;
             if (v == null) {
                 throw new IllegalArgumentException("vertex is null");
             }
             validateVertex(v);
         }
-        if (count == 0) {
+        if (vertexCount == 0) {
             throw new IllegalArgumentException("zero vertices");
         }
     }

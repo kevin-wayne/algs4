@@ -116,7 +116,7 @@ public class Huffman {
     // build the Huffman trie given frequencies
     private static Node buildTrie(int[] freq) {
 
-        // initialze priority queue with singleton trees
+        // initialize priority queue with singleton trees
         MinPQ<Node> pq = new MinPQ<Node>();
         for (char c = 0; c < R; c++)
             if (freq[c] > 0)

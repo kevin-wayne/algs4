@@ -147,8 +147,8 @@ public class UF {
     }
 
     /**
-     * Merges the set containing element {@code p} with the
-     * the set containing element {@code q}.
+     * Merges the set containing element {@code p} with the set
+     * containing element {@code q}.
      *
      * @param  p one element
      * @param  q the other element

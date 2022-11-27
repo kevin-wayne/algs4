@@ -36,7 +36,7 @@ package edu.princeton.cs.algs4;
  *  <em>closure</em>, <em>binary or</em>, and <em>parentheses</em>.
  *  It does not support <em>mutiway or</em>, <em>character classes</em>,
  *  <em>metacharacters</em> (either in the text or pattern),
- *  <em>capturing capabilities</em>, <em>greedy</em> or <em>relucantant</em>
+ *  <em>capturing capabilities</em>, <em>greedy</em> or <em>reluctant</em>
  *  modifiers, and other features in industrial-strength implementations
  *  such as {@link java.util.regex.Pattern} and {@link java.util.regex.Matcher}.
  *  <p>

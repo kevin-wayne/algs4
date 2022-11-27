@@ -21,7 +21,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code TrieST} class represents an symbol table of key-value
+ *  The {@code TrieST} class represents a symbol table of key-value
  *  pairs, with string keys and generic values.
  *  It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  *  <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.

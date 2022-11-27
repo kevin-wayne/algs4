@@ -72,7 +72,7 @@ public class DigraphGenerator {
      * Returns a random simple digraph on {@code V} vertices, with an
      * edge between any two vertices with probability {@code p}. This is sometimes
      * referred to as the Erdos-Renyi random digraph model.
-     * This implementations takes time propotional to V^2 (even if {@code p} is small).
+     * This implementations takes time proportional to V^2 (even if {@code p} is small).
      * @param V the number of vertices
      * @param p the probability of choosing an edge
      * @return a random simple digraph on {@code V} vertices, with an edge between
@@ -408,7 +408,7 @@ public class DigraphGenerator {
      * assigned integer labels between {@code 0} and {@code c-1} (corresponding to
      * strong components). Then, a strong component is creates among the vertices
      * with the same label. Next, random edges (either between two vertices with
-     * the same labels or from a vetex with a smaller label to a vertex with a
+     * the same labels or from a vertex with a smaller label to a vertex with a
      * larger label). The number of components will be equal to the number of
      * distinct labels that are assigned to vertices.
      *

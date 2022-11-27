@@ -6,7 +6,7 @@
  *                https://algs4.cs.princeton.edu/42digraph/mediumDG.txt
  *                https://algs4.cs.princeton.edu/42digraph/largeDG.txt
  *
- *  Run nonrecurisve depth-first search on an directed graph.
+ *  Run nonrecurisve depth-first search on a directed graph.
  *  Runs in O(E + V) time.
  *
  *  Explores the vertices in exactly the same order as DirectedDFS.java.

@@ -46,7 +46,7 @@ import java.util.TreeSet;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  *
- *  @param <Key> the generic type of a key in this set
+ *  @param <Key> the generic type of each key in this set
  */
 
 public class SET<Key extends Comparable<Key>> implements Iterable<Key> {

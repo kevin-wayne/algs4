@@ -70,7 +70,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class LazyPrimMST {
-    private static final double FLOATING_POINT_EPSILON = 1E-12;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-12;
 
     private double weight;       // total weight of MST
     private Queue<Edge> mst;     // edges in the MST

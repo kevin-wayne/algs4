@@ -17,16 +17,16 @@ package edu.princeton.cs.algs4;
 
 /**
  *  The {@code LinearProgramming} class represents a data type for solving a
- *  linear program of the form { max cx : Ax &le; b, x &ge; 0 }, where A is a m-by-n
- *  matrix, b is an m-length vector, and c is an n-length vector. For simplicity,
- *  we assume that A is of full rank and that b &ge; 0 so that x = 0 is a basic
- *  feasible soution.
+ *  linear program of the form { max cx : Ax &le; b, x &ge; 0 }, where A is an
+ *  m-by-n matrix, b is an m-length vector, and c is an n-length vector.
+ *  For simplicity, we assume that A is of full rank and that b &ge; 0
+ *  so that x = 0 is a basic feasible solution.
  *  <p>
  *  The data type supplies methods for determining the optimal primal and
  *  dual solutions.
  *  <p>
  *  This is a bare-bones implementation of the <em>simplex algorithm</em>.
- *  It uses Bland's rule to determing the entering and leaving variables.
+ *  It uses Bland's rule to determine the entering and leaving variables.
  *  It is not suitable for use on large inputs.
  *  <p>
  *  This computes correct results if all arithmetic performed is
@@ -53,7 +53,7 @@ public class LinearProgramming {
 
     /**
      * Determines an optimal solution to the linear program
-     * { max cx : Ax &le; b, x &ge; 0 }, where A is a m-by-n
+     * { max cx : Ax &le; b, x &ge; 0 }, where A is an m-by-n
      * matrix, b is an m-length vector, and c is an n-length vector.
      *
      * @param  A the <em>m</em>-by-<em>b</em> matrix

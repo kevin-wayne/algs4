@@ -146,7 +146,7 @@ public class Polynomial {
     /**
      * Compares this polynomial to the specified polynomial.
      *
-     * @param  other the other polynoimal
+     * @param  other the other polynomial
      * @return {@code true} if this polynomial equals {@code other};
      *         {@code false} otherwise
      */
@@ -195,7 +195,7 @@ public class Polynomial {
      * @param  that the other point
      * @return the value {@code 0} if this polynomial is equal to the argument
      *         polynomial (precisely when {@code equals()} returns {@code true});
-     *         a negative integer if this polynomialt is less than the argument
+     *         a negative integer if this polynomial is less than the argument
      *         polynomial; and a positive integer if this polynomial is greater than the
      *         argument point
      */

@@ -377,7 +377,7 @@ public class GraphGenerator {
         for (int i = 0; i < V-2; i++)
             prufer[i] = StdRandom.uniformInt(V);
 
-        // degree of vertex v = 1 + number of times it appers in Prufer sequence
+        // degree of vertex v = 1 + number of times it appears in Prufer sequence
         int[] degree = new int[V];
         for (int v = 0; v < V; v++)
             degree[v] = 1;

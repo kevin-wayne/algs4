@@ -69,7 +69,7 @@ public class BinaryInsertion {
                 else                 lo = mid + 1;
             }
 
-            // insetion sort with "half exchanges"
+            // insertion sort with "half exchanges"
             // (insert a[i] at index j and shift a[j], ..., a[i-1] to right)
             for (int j = i; j > lo; --j)
                 a[j] = a[j-1];

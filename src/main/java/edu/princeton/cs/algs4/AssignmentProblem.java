@@ -37,7 +37,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class AssignmentProblem {
-    private static final double FLOATING_POINT_EPSILON = 1E-14;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-14;
     private static final int UNMATCHED = -1;
 
     private int n;              // number of rows and columns
@@ -90,7 +90,7 @@ public class AssignmentProblem {
         assert certifySolution();
     }
 
-    // find shortest augmenting path and upate
+    // find shortest augmenting path and update
     private void augment() {
 
         // build residual graph
@@ -131,7 +131,7 @@ public class AssignmentProblem {
     }
 
     // reduced cost of i-j
-    // (subtracting off minWeight reweights all weights to be non-negative)
+    // (subtracting off minWeight re-weights all weights to be non-negative)
     private double reducedCost(int i, int j) {
         double reducedCost = (weight[i][j] - minWeight) + px[i] - py[j];
 

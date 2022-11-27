@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  The {@code AdjMatrixEdgeWeightedDigraph} class represents a edge-weighted
+ *  The {@code AdjMatrixEdgeWeightedDigraph} class represents an edge-weighted
  *  digraph of vertices named 0 through <em>V</em> - 1, where each
  *  directed edge is of type {@link DirectedEdge} and has a real-valued weight.
  *  It supports the following two primary operations: add a directed edge

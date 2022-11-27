@@ -24,7 +24,7 @@
  *  0 1 2 3 4 5 6 7 8 9 10 ...
  *
  *  Note: This implementation uses a recursive DFS. To avoid needing
- *        a potentially very large stack size, replace with a non-recurisve
+ *        a potentially very large stack size, replace with a nonrecursive
  *        DFS ala NonrecursiveDFS.java.
  *
  ******************************************************************************/

@@ -4,7 +4,7 @@
  *  Dependencies: Complex.java
  *
  *  Compute the FFT and inverse FFT of a length n complex sequence.
- *  Bare bones implementation that runs in O(n log n) time. Our goal
+ *  Bare-bones implementation that runs in O(n log n) time. Our goal
  *  is to optimize the clarity of the code, rather than performance.
  *
  *  Limitations
@@ -71,8 +71,9 @@ package edu.princeton.cs.algs4;
  *  <em>n</em> must be a power of 2.
  *  Our goal is to optimize the clarity of the code, rather than performance.
  *  It is not the most memory efficient implementation because it uses
- *  objects to represents complex numbers and it it re-allocates memory
- *  for the subarray, instead of doing in-place or reusing a single temporary array.
+ *  objects to represent complex numbers and it re-allocates memory
+ *  for the subarray, instead of doing in-place or reusing a single
+ *  temporary array.
  *  <p>
  *  This computes correct results if all arithmetic performed is
  *  without floating-point rounding error or arithmetic overflow.
@@ -120,7 +121,7 @@ public class FFT {
         Complex[] q = fft(even);
 
         // fft of odd terms
-        Complex[] odd  = even;  // reuse the array
+        Complex[] odd = even;  // reuse the array
         for (int k = 0; k < n/2; k++) {
             odd[k] = x[2*k + 1];
         }

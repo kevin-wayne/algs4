@@ -28,7 +28,7 @@ package edu.princeton.cs.algs4;
  *  performed is without floating-point rounding error or arithmetic
  *  overflow. This is guaranteed to be the case if all edge capacities
  *  and initial flow values are integers and the value of the maxflow
- *  does not exceeds 2<sup>52</sup>.
+ *  does not exceed 2<sup>52</sup>.
  *  <p>
  *  For additional documentation, see
  *  <a href="https://algs4.cs.princeton.edu/64maxflow">Section 6.4</a> of
@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class FordFulkerson {
-    private static final double FLOATING_POINT_EPSILON = 1E-11;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-11;
 
     private final int V;          // number of vertices
     private boolean[] marked;     // marked[v] = true iff s->v path in residual graph
@@ -99,7 +99,7 @@ public class FordFulkerson {
      * Returns true if the specified vertex is on the {@code s} side of the mincut.
      *
      * @param  v vertex
-     * @return {@code true} if vertex {@code v} is on the {@code s} side of the micut;
+     * @return {@code true} if vertex {@code v} is on the {@code s} side of the mincut;
      *         {@code false} otherwise
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
@@ -108,7 +108,7 @@ public class FordFulkerson {
         return marked[v];
     }
 
-    // throw an IllegalArgumentException if v is outside prescibed range
+    // throw an IllegalArgumentException if v is outside prescribed range
     private void validate(int v)  {
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));

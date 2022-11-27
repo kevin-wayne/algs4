@@ -48,7 +48,7 @@ import java.util.Arrays;
  *  weight of a minimum spanning tree and the {@code edges()} method
  *  returns its edges.
  *  <p>
- *  This implementation uses <em>Krusal's algorithm</em> and the
+ *  This implementation uses <em>Kruskal's algorithm</em> and the
  *  union-find data type.
  *  The constructor takes &Theta;(<em>E</em> log <em>E</em>) time in
  *  the worst case.
@@ -71,7 +71,7 @@ import java.util.Arrays;
  *  @author Kevin Wayne
  */
 public class KruskalMST {
-    private static final double FLOATING_POINT_EPSILON = 1E-12;
+    private static final double FLOATING_POINT_EPSILON = 1.0E-12;
 
     private double weight;                        // weight of MST
     private Queue<Edge> mst = new Queue<Edge>();  // edges in MST

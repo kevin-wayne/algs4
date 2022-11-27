@@ -18,7 +18,7 @@ package edu.princeton.cs.algs4;
  *  dot product, scalar product, unit vector, and Euclidean norm.
  *  <p>
  *  The implementation is a symbol table of indices and values for which the vector
- *  coordinates are nonzero. This makes it efficient when most of the vector coordindates
+ *  coordinates are nonzero. This makes it efficient when most of the vector coordinates
   * are zero.
  *  <p>
  *  For additional documentation,
@@ -187,7 +187,7 @@ public class SparseVector {
    /**
      * Returns a string representation of this vector.
      * @return a string representation of this vector, which consists of the
-     *         the vector entries, separates by commas, enclosed in parentheses
+     *         vector entries, separates by commas, enclosed in parentheses
      */
     public String toString() {
         StringBuilder s = new StringBuilder();

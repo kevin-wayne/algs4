@@ -81,7 +81,7 @@ public class MSD {
             count[c+2]++;
         }
 
-        // transform counts to indicies
+        // transform counts to indices
         for (int r = 0; r < R+1; r++)
             count[r+1] += count[r];
 
@@ -157,7 +157,7 @@ public class MSD {
             count[c + 1]++;
         }
 
-        // transform counts to indicies
+        // transform counts to indices
         for (int r = 0; r < R; r++)
             count[r+1] += count[r];
 

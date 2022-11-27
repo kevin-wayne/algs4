@@ -87,7 +87,7 @@ public class LSD {
      */
     public static void sort(int[] a) {
         final int BITS = 32;                 // each int is 32 bits
-        final int R = 1 << BITS_PER_BYTE;    // each bytes is between 0 and 255
+        final int R = 1 << BITS_PER_BYTE;    // each byte is between 0 and 255
         final int MASK = R - 1;              // 0xFF
         final int w = BITS / BITS_PER_BYTE;  // each int is 4 bytes
 

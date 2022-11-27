@@ -4,7 +4,7 @@
  *  Dependencies: StdIn.java
  *  Data files:   https://algs4.cs.princeton.edu/52trie/shellsST.txt
  *
- *  An set for extended ASCII strings, implemented  using a 256-way trie.
+ *  A set for extended ASCII strings, implemented  using a 256-way trie.
  *
  *  Sample client reads in a list of words from standard input and
  *  prints out each word, removing any duplicates.
@@ -201,7 +201,7 @@ public class TrieSET implements Iterable<String> {
     // returns the length of the longest string key in the subtrie
     // rooted at x that is a prefix of the query string,
     // assuming the first d character match and we have already
-    // found a prefix match of length length
+    // found a prefix match of the specified length
     private int longestPrefixOf(Node x, String query, int d, int length) {
         if (x == null) return length;
         if (x.isString) length = d;

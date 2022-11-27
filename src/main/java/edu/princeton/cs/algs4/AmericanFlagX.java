@@ -38,7 +38,7 @@ package edu.princeton.cs.algs4;
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne
  *  and <a href = "http://static.usenix.org/publications/compsystems/1993/win_mcilroy.pdf">
  *  Engineering Radix Sort</a> by McIlroy and Bostic.
- *  For a version that uses two auxilary arrays, see {@link AmericanFlag}.
+ *  For a version that uses two auxiliary arrays, see {@link AmericanFlag}.
  *
  *  @author Ivan Pesin
  */
@@ -109,7 +109,7 @@ public class AmericanFlagX {
             }
 
             // permute data in place
-            // for details and proof see Knuth Theorem 5.1.2B and ch 5.2 excercise 13.
+            // for details and proof see Knuth Theorem 5.1.2B and ch 5.2 exercise 13.
             for (int r = hi; r >= lo; r--) {
 
                 // locate element that must be shifted right of r

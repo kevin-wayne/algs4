@@ -62,7 +62,7 @@ package edu.princeton.cs.algs4;
  *  @author Kevin Wayne
  */
 public class GaussianElimination {
-    private static final double EPSILON = 1e-8;
+    private static final double EPSILON = 1.0E-8;
 
     private final int m;      // number of rows
     private final int n;      // number of columns

@@ -141,7 +141,7 @@ public class SymbolDigraph {
     }
 
     /**
-     * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
+     * Returns the digraph associated with the symbol graph. It is the client's responsibility
      * not to mutate the digraph.
      *
      * @return the digraph associated with the symbol digraph
@@ -153,7 +153,7 @@ public class SymbolDigraph {
     }
 
     /**
-     * Returns the digraph assoicated with the symbol graph. It is the client's responsibility
+     * Returns the digraph associated with the symbol graph. It is the client's responsibility
      * not to mutate the digraph.
      *
      * @return the digraph associated with the symbol digraph
@@ -182,7 +182,7 @@ public class SymbolDigraph {
         while (!StdIn.isEmpty()) {
             String t = StdIn.readLine();
             for (int v : graph.adj(sg.index(t))) {
-                StdOut.println("   " + sg.name(v));
+                StdOut.println("   " + sg.nameOf(v));
             }
         }
     }

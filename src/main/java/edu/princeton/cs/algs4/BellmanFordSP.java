@@ -133,7 +133,7 @@ public class BellmanFordSP {
     /**
      * Returns a negative cycle reachable from the source vertex {@code s}, or {@code null}
      * if there is no such cycle.
-     * @return a negative cycle reachable from the soruce vertex {@code s}
+     * @return a negative cycle reachable from the source vertex {@code s}
      *    as an iterable of edges, and {@code null} if there is no such cycle
      */
     public Iterable<DirectedEdge> negativeCycle() {
@@ -202,7 +202,7 @@ public class BellmanFordSP {
     }
 
     // check optimality conditions: either
-    // (i) there exists a negative cycle reacheable from s
+    // (i) there exists a negative cycle reachable from s
     //     or
     // (ii)  for all edges e = v->w:            distTo[w] <= distTo[v] + e.weight()
     // (ii') for all edges e = v->w on the SPT: distTo[w] == distTo[v] + e.weight()

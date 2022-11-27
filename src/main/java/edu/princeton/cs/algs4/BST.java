@@ -505,7 +505,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     // is the tree rooted at x a BST with all keys strictly between min and max
     // (if min or max is null, treat as empty constraint)
-    // Credit: Bob Dondero's elegant solution
+    // Credit: elegant solution due to Bob Dondero
     private boolean isBST(Node x, Key min, Key max) {
         if (x == null) return true;
         if (min != null && x.key.compareTo(min) <= 0) return false;
