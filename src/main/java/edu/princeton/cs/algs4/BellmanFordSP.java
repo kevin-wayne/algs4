@@ -114,10 +114,10 @@ public class BellmanFordSP {
                     onQueue[w] = true;
                 }
             }
-            if (++cost % G.V() == 0) {
+        }
+        if (++cost % G.V() == 0) {
                 findNegativeCycle();
                 if (hasNegativeCycle()) return;  // found a negative cycle
-            }
         }
     }
 
