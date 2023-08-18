@@ -97,6 +97,14 @@ public interface DrawListener {
     default void keyReleased(int keycode) {
         // does nothing by default
     }
+
+    /**
+     * Gets called at regular time intervals.
+     */
+    default void update() {
+        // does nothing by default
+    }
+
 }
 
 /******************************************************************************

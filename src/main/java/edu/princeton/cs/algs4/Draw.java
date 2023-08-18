@@ -46,6 +46,9 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import java.awt.geom.Arc2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
@@ -201,13 +204,13 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     private static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, 16);
 
     // default title of drawing window
-    private static final String DEFAULT_TITLE = "Standard Draw";
+    private static final String DEFAULT_WINDOW_TITLE = "Draw";
 
     // current pen color
     private Color penColor;
 
     // current title of drawing window
-    private String title = DEFAULT_TITLE;
+    private String windowTitle = DEFAULT_WINDOW_TITLE;
 
     // canvas size
     private int width  = DEFAULT_SIZE;
@@ -250,6 +253,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     // event-based listeners
     private final ArrayList<DrawListener> listeners = new ArrayList<DrawListener>();
 
+    // timer
+    private Timer timer;
 
     /**
      * Initializes an empty drawing object.
@@ -259,49 +264,64 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     }
 
     private void init() {
-        if (frame != null) frame.setVisible(false);
-        frame = new JFrame();
+        // JFrame stuff
+        if (frame == null) {
+            frame = new JFrame();
+            frame.addKeyListener(this);    // JLabel cannot get keyboard focus
+            frame.setFocusTraversalKeysEnabled(false);  // allow VK_TAB with isKeyPressed()
+            frame.setResizable(false);
+            // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
+            frame.setTitle(windowTitle);
+            frame.setJMenuBar(createMenuBar());
+        }
+
+        // BufferedImage stuff
         offscreenImage = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
         onscreenImage  = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
         offscreen = offscreenImage.createGraphics();
         onscreen  = onscreenImage.createGraphics();
         offscreen.scale(2.0, 2.0);  // since we made it 2x as big
 
+        // initialize drawing window
         setXscale();
         setYscale();
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
         offscreen.fillRect(0, 0, width, height);
+        onscreen.setColor(DEFAULT_CLEAR_COLOR);
+        onscreen.fillRect(0, 0, width, height);
         setPenColor();
         setPenRadius();
         setFont();
-        clear();
 
         // add antialiasing
-        RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
-                                                  RenderingHints.VALUE_ANTIALIAS_ON);
+        RenderingHints hints = new RenderingHints(null);
+        hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         offscreen.addRenderingHints(hints);
 
-        // frame stuff
+        // ImageIcon stuff
         RetinaImageIcon icon = new RetinaImageIcon(onscreenImage);
         draw = new JLabel(icon);
-
         draw.addMouseListener(this);
         draw.addMouseMotionListener(this);
 
+        // JFrame stuff
         frame.setContentPane(draw);
-        frame.addKeyListener(this);    // JLabel cannot get keyboard focus
-        frame.setResizable(false);
-        // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-        frame.setFocusTraversalKeysEnabled(false);  // to recognize VK_TAB with isKeyPressed()
-        frame.setTitle(title);
-        frame.setJMenuBar(createMenuBar());
         frame.pack();
         frame.requestFocusInWindow();
         frame.setVisible(true);
     }
 
+    /**
+     * Makes the drawing window visible or invisible.
+     *
+     * @param  isVisible if {@code true}, makes the drawing window visible,
+     *         otherwise hides the drawing window.
+     */
+    public void setVisible(boolean isVisible) {
+        frame.setVisible(isVisible);
+    }
 
     /**
      * Sets the upper-left hand corner of the drawing window to be (x, y), where (0, 0) is upper left.
@@ -347,16 +367,17 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     }
 
 
-    // create the menu bar (changed to private)
+    // create the menu bar
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("File");
         menuBar.add(menu);
         JMenuItem menuItem1 = new JMenuItem(" Save...   ");
         menuItem1.addActionListener(this);
-        // Java 10+: replace getMenuShortcutKeyMask() with getMenuShortcutKeyMaskEx()
+        // Java 11: use getMenuShortcutKeyMaskEx()
+        // Java 8:  use getMenuShortcutKeyMask()
         menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         menu.add(menuItem1);
         return menuBar;
     }
@@ -389,13 +410,13 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     /**
      * Sets the title of the drawing window to the specified string.
      *
-     * @param  title the title
+     * @param  windowTitle the title of the window
      * @throws IllegalArgumentException if {@code title} is {@code null}
      */
-    public void setTitle(String title) {
-        validateNotNull(title, "title");
-        this.title = title;
-        frame.setTitle(title);
+    public void setTitle(String windowTitle) {
+        validateNotNull(windowTitle, "title");
+        this.windowTitle = windowTitle;
+        frame.setTitle(windowTitle);
     }
 
    /***************************************************************************
@@ -1287,6 +1308,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
      * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
      * and enables double buffering.
      * @param t number of milliseconds
+     * @throws IllegalArgumentException if {@code t} is negative
      * @deprecated replaced by {@link #enableDoubleBuffering()}, {@link #show()}, and {@link #pause(int t)}
      */
     @Deprecated
@@ -1299,6 +1321,7 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     /**
      * Pause for t milliseconds. This method is intended to support computer animations.
      * @param t number of milliseconds
+     * @throws IllegalArgumentException if {@code t} is negative
      */
     public void pause(int t) {
         try {
@@ -1381,9 +1404,10 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     public void actionPerformed(ActionEvent e) {
         FileDialog chooser = new FileDialog(frame, "Use a .png or .jpg extension", FileDialog.SAVE);
         chooser.setVisible(true);
-        String filename = chooser.getFile();
-        if (filename != null) {
-            save(chooser.getDirectory() + File.separator + chooser.getFile());
+        String selectedDirectory = chooser.getDirectory();
+        String selectedFilename = chooser.getFile();
+        if (selectedDirectory != null && selectedFilename != null) {
+            StdDraw.save(selectedDirectory + selectedFilename);
         }
     }
 
@@ -1631,6 +1655,32 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
             listener.keyReleased(e.getKeyCode());
     }
 
+   /***************************************************************************
+    *  Timer events.
+    ***************************************************************************/
+
+   /**
+     * Sets a timer that calls update() method a specified number of times
+     * per second.
+     * <p>
+     * @param  callsPerSecond calls per second
+     */
+    public void enableTimer(int callsPerSecond) {
+        disableTimer();
+        timer = new Timer();
+        timer.schedule(new MyTimerTask(), 0, (int) Math.round(1000.0 / callsPerSecond));
+    }
+
+    public void disableTimer() {
+        if (timer != null) timer.cancel();
+    }
+
+    private class MyTimerTask extends TimerTask {
+        public void run() {
+            for (DrawListener listener : listeners)
+                listener.update();
+        }
+    }
 
    /***************************************************************************
     *  For improved resolution on Mac Retina displays.
