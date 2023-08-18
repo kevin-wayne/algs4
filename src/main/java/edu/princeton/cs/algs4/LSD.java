@@ -81,7 +81,7 @@ public class LSD {
 
    /**
      * Rearranges the array of 32-bit integers in ascending order.
-     * This is about 2-3x faster than Arrays.sort().
+     * This is about 2-5x faster than Arrays.sort().
      *
      * @param a the array to be sorted
      */
@@ -123,11 +123,15 @@ public class LSD {
                 aux[count[c]++] = a[i];
             }
 
-            // copy back
-            for (int i = 0; i < n; i++)
-                a[i] = aux[i];
+            // optimization: swap a[] and aux[] references instead of copying
+            // (since w is even, the argument a[] to sort() will be the array
+            // with the sorted integers)
+            int[] temp = a;
+            a = aux;
+            aux = temp;
         }
     }
+
 
     /**
      * Reads in a sequence of fixed-length strings from standard input;
