@@ -116,11 +116,6 @@ public class LinkedBag<Item> implements Iterable<Item> {
             return current != null;
         }
 
-        // this method is optional in Iterator interface
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
         // returns the next item in the iterator (and advances the iterator)
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();

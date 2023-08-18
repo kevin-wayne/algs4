@@ -133,7 +133,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         return new ReverseArrayIterator();
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // a array iterator, in reverse order
     private class ReverseArrayIterator implements Iterator<Item> {
         private int i;
 
@@ -143,10 +143,6 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
         public boolean hasNext() {
             return i >= 0;
-        }
-
-        public void remove() {
-            throw new UnsupportedOperationException();
         }
 
         public Item next() {

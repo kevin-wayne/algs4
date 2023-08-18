@@ -87,11 +87,13 @@ public class ResizingArrayBag<Item> implements Iterable<Item> {
         return new ArrayIterator();
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // an array iterator
     private class ArrayIterator implements Iterator<Item> {
         private int i = 0;
-        public boolean hasNext()  { return i < n;                               }
-        public void remove()      { throw new UnsupportedOperationException();  }
+
+        public boolean hasNext() {
+            return i < n;
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();

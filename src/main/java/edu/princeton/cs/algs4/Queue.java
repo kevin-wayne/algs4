@@ -141,7 +141,7 @@ public class Queue<Item> implements Iterable<Item> {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // a linked-list iterator
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 
@@ -149,8 +149,9 @@ public class Queue<Item> implements Iterable<Item> {
             current = first;
         }
 
-        public boolean hasNext()  { return current != null;                     }
-        public void remove()      { throw new UnsupportedOperationException();  }
+        public boolean hasNext() {
+            return current != null;
+        }
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();

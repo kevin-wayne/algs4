@@ -146,7 +146,7 @@ public class Stack<Item> implements Iterable<Item> {
         return new LinkedIterator(first);
     }
 
-    // an iterator, doesn't implement remove() since it's optional
+    // the iterator
     private class LinkedIterator implements Iterator<Item> {
         private Node<Item> current;
 
@@ -154,14 +154,12 @@ public class Stack<Item> implements Iterable<Item> {
             current = first;
         }
 
+        // is there a next item?
         public boolean hasNext() {
             return current != null;
         }
 
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
+        // returns the next item
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
             Item item = current.item;
