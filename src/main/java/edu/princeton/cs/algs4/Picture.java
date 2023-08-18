@@ -14,6 +14,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import java.awt.image.BufferedImage;
 
@@ -137,7 +139,7 @@ import javax.swing.KeyStroke;
  *  Note that if the red, green, and blue components of an RGB color
  *  are all equal, the color is a shade of gray.
  *  <pre>
- *  Picture picture  = new Picture("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
+ *  Picture picture   = new Picture("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
  *  Picture grayscale = new Picture(picture.width(), picture.height());
  *  for (int col = 0; col &lt; picture.width(); col++) {
  *      for (int row = 0; row &lt; picture.height(); row++) {
@@ -226,10 +228,11 @@ import javax.swing.KeyStroke;
  */
 public final class Picture implements ActionListener {
     private BufferedImage image;               // the rasterized image
-    private JFrame frame;                      // on-screen view
+    private JFrame jframe;                     // on-screen view
     private String title;                      // window title (typically the name of the file)
     private boolean isOriginUpperLeft = true;  // location of origin
     private boolean isVisible = false;         // is the frame visible?
+    private boolean isDisposed = false;        // has the window been disposed?
     private final int width, height;           // width and height
 
    /**
@@ -356,6 +359,39 @@ public final class Picture implements ActionListener {
         }
     }
 
+    // create the GUI for viewing the image if needed
+    @SuppressWarnings("deprecation")
+    private JFrame createGUI() {
+        JFrame frame = new JFrame();
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("File");
+        menuBar.add(menu);
+        JMenuItem menuItem1 = new JMenuItem(" Save...   ");
+        menuItem1.addActionListener(this);
+  	// Java 11:  use getMenuShortcutKeyMaskEx()
+        // Java 8:   use getMenuShortcutKeyMask()
+        menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                                 Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        menu.add(menuItem1);
+        frame.setJMenuBar(menuBar);
+
+        frame.setContentPane(getJLabel());
+        // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setTitle(title);
+        frame.setResizable(false);
+        frame.pack();
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e){
+                isVisible = false;
+                isDisposed = true;
+                super.windowClosing(e);
+            }
+        });
+        return frame;
+    }
+
    /**
      * Returns a {@link JLabel} containing this picture, for embedding in a {@link JPanel},
      * {@link JFrame} or other GUI widget.
@@ -389,45 +425,31 @@ public final class Picture implements ActionListener {
     // getMenuShortcutKeyMask() deprecated in Java 10 but its replacement
     // getMenuShortcutKeyMaskEx() is not available in Java 8
     @SuppressWarnings("deprecation")
+   /**
+     * Displays the picture in a window on the screen.
+     */
     public void show() {
-
-        // create the GUI for viewing the image if needed
-        if (frame == null) {
-            frame = new JFrame();
-
-            JMenuBar menuBar = new JMenuBar();
-            JMenu menu = new JMenu("File");
-            menuBar.add(menu);
-            JMenuItem menuItem1 = new JMenuItem(" Save...   ");
-            menuItem1.addActionListener(this);
-            menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                     Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-            menu.add(menuItem1);
-            frame.setJMenuBar(menuBar);
-
-
-
-            frame.setContentPane(getJLabel());
-            // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setTitle(title);
-            frame.setResizable(false);
-            frame.pack();
+        if (jframe == null && !isDisposed) {
+            jframe = createGUI();
+            isVisible = true;
+            jframe.setVisible(true);
+            jframe.repaint();
         }
 
-        // draw
-        frame.setVisible(true);
-        isVisible = true;
-        frame.repaint();
+        if (jframe != null && !isDisposed) {
+            isVisible = true;
+            jframe.setVisible(true);
+            jframe.repaint();
+        }
     }
 
    /**
      * Hides the window on the screen.
      */
     public void hide() {
-        if (frame != null) {
+        if (jframe != null) {
             isVisible = false;
-            frame.setVisible(false);
+            jframe.setVisible(false);
         }
     }
 
@@ -584,6 +606,16 @@ public final class Picture implements ActionListener {
         throw new UnsupportedOperationException("hashCode() is not supported because pictures are mutable");
     }
 
+    /**
+     * Sets the title of this picture.
+     * @param title the title
+     * @throws IllegalArgumentException if {@code title} is {@code null}
+     */
+    public void setTitle(String title) {
+        if (title == null) throw new IllegalArgumentException("title is null");
+        this.title = title;
+    }
+
     // does this picture use transparency (i.e., alpha < 255 for some pixel)?
     private boolean hasAlpha() {
         for (int col = 0; col < width; col++) {
@@ -650,11 +682,13 @@ public final class Picture implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        FileDialog chooser = new FileDialog(frame,
+        FileDialog chooser = new FileDialog(jframe,
                              "The filetype extension must be either .jpg or .png", FileDialog.SAVE);
         chooser.setVisible(true);
-        if (chooser.getFile() != null) {
-            save(chooser.getDirectory() + File.separator + chooser.getFile());
+        String selectedDirectory = chooser.getDirectory();
+        String selectedFilename = chooser.getFile();
+        if (selectedDirectory != null && selectedFilename != null) {
+            StdDraw.save(selectedDirectory + selectedFilename);
         }
     }
 
