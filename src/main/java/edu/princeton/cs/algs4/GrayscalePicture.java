@@ -224,9 +224,10 @@ public final class GrayscalePicture implements ActionListener {
             menuBar.add(menu);
             JMenuItem menuItem1 = new JMenuItem(" Save...   ");
             menuItem1.addActionListener(this);
-            // use getMenuShortcutKeyMaskEx() in Java 10 (getMenuShortcutKeyMask() deprecated)
+            // Java 11: use getMenuShortcutKeyMaskEx()
+            // Java 8:  use getMenuShortcutKeyMask()
             menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                     Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+                                     Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
             menu.add(menuItem1);
             frame.setJMenuBar(menuBar);
 
@@ -463,8 +464,10 @@ public final class GrayscalePicture implements ActionListener {
         FileDialog chooser = new FileDialog(frame,
                              "Use a .png or .jpg extension", FileDialog.SAVE);
         chooser.setVisible(true);
-        if (chooser.getFile() != null) {
-            save(chooser.getDirectory() + File.separator + chooser.getFile());
+        String selectedDirectory = chooser.getDirectory();
+        String selectedFilename = chooser.getFile();
+        if (selectedDirectory != null && selectedFilename != null) {
+            StdDraw.save(selectedDirectory + selectedFilename);
         }
     }
 

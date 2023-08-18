@@ -12,7 +12,7 @@ package edu.princeton.cs.algs4;
  *  <p><b>Overview.</b>
  *  The {@code StdPicture} class provides a basic capability for manipulating
  *  the individual pixels of an image using the RGB color model.
- *  You can either create a blank image (of a given dimension) or read an
+ *  You can either initialize a blank image (of a given dimension) or read an
  *  image in a supported file format
  *  (typically JPEG, PNG, GIF TIFF, and BMP).
  *  This class also includes methods for displaying the image in a window
@@ -51,7 +51,7 @@ package edu.princeton.cs.algs4;
  *  <pre>
  *   public class TestStdPicture {
  *       public static void main(String[] args) {
- *           StdPicture.create("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
+ *           StdPicture.read("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
  *           StdPicture.show();
  *       }
  *   }
@@ -99,14 +99,14 @@ package edu.princeton.cs.algs4;
  *  Note that if the red, green, and blue components are all equal,
  *  then the color is a shade of gray.
  *  <pre>
- *  StdPicture.create("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
+ *  StdPicture.read("https://introcs.cs.princeton.edu/java/stdlib/mandrill.jpg");
  *  for (int col = 0; col &lt; StdPicture.width(); col++) {
  *      for (int row = 0; row &lt; StdPicture.height(); row++) {
  *          int r = StdPicture.getRed(col, row);
  *          int g = StdPicture.getGreen(col, row);
  *          int b = StdPicture.getBlue(col, row);
  *          int y = (int) (Math.round(0.299*r + 0.587*g + 0.114*b));
- *          StdPicture.set(col, row, y, y, y);
+ *          StdPicture.setRGB(col, row, y, y, y);
  *      }
  *  }
  *  StdPicture.show();
@@ -164,7 +164,7 @@ public final class StdPicture {
     private StdPicture() { }
 
    /**
-     * Creates a {@code width}-by-{@code height} picture, with {@code width} columns
+     * Initializes a {@code width}-by-{@code height} picture, with {@code width} columns
      * and {@code height} rows, where each pixel is black.
      *
      * @param width the width of the picture
@@ -172,7 +172,7 @@ public final class StdPicture {
      * @throws IllegalArgumentException if {@code width} is negative or zero
      * @throws IllegalArgumentException if {@code height} is negative or zero
      */
-    public static void create(int width, int height) {
+    public static void init(int width, int height) {
         if (picture.isVisible()) {
             hide();
             picture = new Picture(width, height);
@@ -184,21 +184,63 @@ public final class StdPicture {
     }
 
    /**
-     * Creates a picture by reading an image from a file or URL.
+     * Creates a {@code width}-by-{@code height} picture, with {@code width} columns
+     * and {@code height} rows, where each pixel is black.
+     *
+     * @param width the width of the picture
+     * @param height the height of the picture
+     * @throws IllegalArgumentException if {@code width} is negative or zero
+     * @throws IllegalArgumentException if {@code height} is negative or zero
+     * @deprecated Replaced by {@link #init(int, int)}.
+     */
+    @Deprecated
+    public static void create(int width, int height) {
+        init(width, height);
+    }
+
+   /**
+     * Initializes the picture by reading an image from a file or URL.
      *
      * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
      * @throws IllegalArgumentException if cannot read image
      * @throws IllegalArgumentException if {@code name} is {@code null}
      */
-    public static void create(String filename) {
-        if (picture.isVisible()) {
+    public static void read(String filename) {
+        Picture newPicture = new Picture(filename);
+
+        // same dimension, so copy pixels instead of using new Picture and GUI
+        if (newPicture.width() == picture.width() && newPicture.height() == newPicture.height()) {
+            for (int col = 0; col < picture.width(); col++) {
+                for (int row = 0; row < picture.height(); row++) {
+                    picture.setRGB(col, row, newPicture.getRGB(col, row));
+                }
+            }
+        }
+
+        // different dimension, so need to use new Picture and GUI
+        else if (picture.isVisible()) {
             hide();
-            picture = new Picture(filename);
+            picture = newPicture;
             show();
         }
+
+        // no GUI, so use the new Picture
         else {
-            picture = new Picture(filename);
+            picture = newPicture;
         }
+    }
+
+   /**
+     * Initializes the picture by reading an image from a file or URL.
+     *
+     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @throws IllegalArgumentException if cannot read image
+     * @throws IllegalArgumentException if {@code name} is {@code null}
+     * @deprecated Replaced by {@link #read(String)}.
+     */
+    @Deprecated
+    public static void create(String filename) {
+        read(filename);
     }
 
    /**
@@ -213,6 +255,21 @@ public final class StdPicture {
      */
     public static void hide() {
         picture.hide();
+    }
+
+    /**
+     * Pauses for t milliseconds. This method is intended to support computer animations.
+     * @param t number of milliseconds
+     * @throws IllegalArgumentException if {@code t} is negative
+     */
+    public static void pause(int t) {
+        if (t < 0) throw new IllegalArgumentException("argument must be non-negative");
+        try {
+            Thread.sleep(t);
+        }
+        catch (InterruptedException e) {
+            System.out.println("Error sleeping");
+        }
     }
 
    /**
@@ -321,6 +378,15 @@ public final class StdPicture {
         picture.setRGB(col, row, rgb);
     }
 
+    /**
+     * Sets the title of this picture.
+     * @param title the title
+     * @throws IllegalArgumentException if {@code title} is {@code null}
+     */
+    public static void setTitle(String title) {
+        picture.setTitle(title);
+    }
+
    /**
      * Saves the picture to a file in a supported format
      * (typically JPEG, PNG, GIF TIFF, and BMP).
@@ -341,7 +407,7 @@ public final class StdPicture {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        StdPicture.create(args[0]);
+        StdPicture.read(args[0]);
         System.out.printf("%d-by-%d\n", picture.width(), picture.height());
         StdPicture.show();
     }

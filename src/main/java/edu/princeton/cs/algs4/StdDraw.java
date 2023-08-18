@@ -11,6 +11,8 @@
  *
  *  Todo
  *  ----
+ *    -  Don't show window until first unbuffered drawing command or call to show()
+ *       (with setVisible not set to false).
  *    -  Add support for gradient fill, etc.
  *    -  Fix setCanvasSize() so that it can be called only once.
  *    -  Should setCanvasSize() reset xScale(), yScale(), penRadius(),
@@ -228,7 +230,7 @@ import javax.swing.KeyStroke;
  *  By default, the standard drawing window title is "Standard Draw".
  *  You can change the title with the following method:
  *  <ul>
- *  <li> {@link #setTitle(String title)}
+ *  <li> {@link #setTitle(String windowTitle)}
  *  </ul>
  *  <p>
  *  This sets the standard drawing window title to the specified string.
@@ -658,6 +660,16 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     }
 
     /**
+     * Makes the drawing window visible or invisible.
+     *
+     * @param  isVisible if {@code true}, makes the drawing window visible,
+     *         otherwise hides the drawing window.
+     */
+    public static void setVisible(boolean isVisible) {
+        frame.setVisible(isVisible);
+    }
+
+    /**
      * Sets the canvas (drawing area) to be 512-by-512 pixels.
      * This also erases the current drawing and resets the coordinate system,
      * pen radius, pen color, and font back to their default values.
@@ -690,63 +702,70 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
     // init
     private static void init() {
-        if (frame != null) frame.setVisible(false);
-        frame = new JFrame();
+        // JFrame stuff
+        if (frame == null) {
+            frame = new JFrame();
+            frame.addKeyListener(std);    // JLabel cannot get keyboard focus
+            frame.setFocusTraversalKeysEnabled(false);  // allow VK_TAB with isKeyPressed()
+            frame.setResizable(false);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
+            // frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
+            frame.setTitle(windowTitle);
+            frame.setJMenuBar(createMenuBar());
+        }
+
+        // BufferedImage stuff
         offscreenImage = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
         onscreenImage  = new BufferedImage(2*width, 2*height, BufferedImage.TYPE_INT_ARGB);
         offscreen = offscreenImage.createGraphics();
         onscreen  = onscreenImage.createGraphics();
         offscreen.scale(2.0, 2.0);  // since we made it 2x as big
 
+        // initialize drawing window
         setXscale();
         setYscale();
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
         offscreen.fillRect(0, 0, width, height);
+        onscreen.setColor(DEFAULT_CLEAR_COLOR);
+        onscreen.fillRect(0, 0, width, height);
         setPenColor();
         setPenRadius();
         setFont();
-        clear();
 
         // initialize keystroke buffers
         keysTyped = new LinkedList<Character>();
         keysDown = new TreeSet<Integer>();
 
         // add antialiasing
-        RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING,
-                                                  RenderingHints.VALUE_ANTIALIAS_ON);
+        RenderingHints hints = new RenderingHints(null);
+        hints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         hints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         offscreen.addRenderingHints(hints);
 
-        // frame stuff
+        // ImageIcon stuff
         RetinaImageIcon icon = new RetinaImageIcon(onscreenImage);
         JLabel draw = new JLabel(icon);
-
         draw.addMouseListener(std);
         draw.addMouseMotionListener(std);
 
+        // JFrame stuff
         frame.setContentPane(draw);
-        frame.addKeyListener(std);    // JLabel cannot get keyboard focus
-        frame.setFocusTraversalKeysEnabled(false);  // allow VK_TAB with isKeyPressed()
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
-        // frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-        frame.setTitle(windowTitle);
-        frame.setJMenuBar(createMenuBar());
         frame.pack();
         frame.requestFocusInWindow();
         frame.setVisible(true);
     }
 
-    // create the menu bar (changed to private)
+    // create the menu bar
     private static JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("File");
         menuBar.add(menu);
         JMenuItem menuItem1 = new JMenuItem(" Save...   ");
         menuItem1.addActionListener(std);
-        // Java 10+: replace getMenuShortcutKeyMask() with getMenuShortcutKeyMaskEx()
+        // Java 11: use getMenuShortcutKeyMaskEx()
+        // Java 8:  use getMenuShortcutKeyMask()
         menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+                                Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
         menu.add(menuItem1);
         return menuBar;
     }
@@ -1737,6 +1756,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      * Copies the offscreen buffer to the onscreen buffer, pauses for t milliseconds
      * and enables double buffering.
      * @param t number of milliseconds
+     * @throws IllegalArgumentException if {@code t} is negative
      * @deprecated replaced by {@link #enableDoubleBuffering()}, {@link #show()}, and {@link #pause(int t)}
      */
     @Deprecated
@@ -1750,6 +1770,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Pauses for t milliseconds. This method is intended to support computer animations.
      * @param t number of milliseconds
+     * @throws IllegalArgumentException if {@code t} is negative
      */
     public static void pause(int t) {
         validateNonnegative(t, "t");
@@ -1839,9 +1860,10 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     public void actionPerformed(ActionEvent e) {
         FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
         chooser.setVisible(true);
-        String filename = chooser.getFile();
-        if (filename != null) {
-            StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
+        String selectedDirectory = chooser.getDirectory();
+        String selectedFilename = chooser.getFile();
+        if (selectedDirectory != null && selectedFilename != null) {
+            StdDraw.save(selectedDirectory + selectedFilename);
         }
     }
 

@@ -497,10 +497,25 @@ public final class StdRandom {
      *         rate {@code lambda}
      * @throws IllegalArgumentException unless {@code lambda > 0.0}
      */
-    public static double exp(double lambda) {
+    public static double exponential(double lambda) {
         if (!(lambda > 0.0))
             throw new IllegalArgumentException("lambda must be positive: " + lambda);
         return -Math.log(1 - uniformDouble()) / lambda;
+    }
+
+    /**
+     * Returns a random real number from an exponential distribution
+     * with rate &lambda;.
+     *
+     * @param  lambda the rate of the exponential distribution
+     * @return a random real number from an exponential distribution with
+     *         rate {@code lambda}
+     * @throws IllegalArgumentException unless {@code lambda > 0.0}
+     * @deprecated Replaced by {@link #exponential(double)}.
+     */
+     @Deprecated
+    public static double exp(double lambda) {
+        return exponential(lambda);
     }
 
     /**
