@@ -145,7 +145,7 @@ public class LinearProgramming {
         // everything but row p and column q
         for (int i = 0; i <= m; i++)
             for (int j = 0; j <= m+n; j++)
-                if (i != p && j != q) a[i][j] -= a[p][j] * a[i][q] / a[p][q];
+                if (i != p && j != q) a[i][j] -= a[p][j] * (a[i][q] / a[p][q]);
 
         // zero out column q
         for (int i = 0; i <= m; i++)
@@ -186,8 +186,10 @@ public class LinearProgramming {
      */
     public double[] dual() {
         double[] y = new double[m];
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < m; i++) {
             y[i] = -a[m][n+i];
+            if (y[i] == -0.0) y[i] = 0.0;
+        }
         return y;
     }
 
@@ -198,7 +200,7 @@ public class LinearProgramming {
 
         // check that x >= 0
         for (int j = 0; j < x.length; j++) {
-            if (x[j] < 0.0) {
+            if (x[j] < -EPSILON) {
                 StdOut.println("x[" + j + "] = " + x[j] + " is negative");
                 return false;
             }
@@ -225,7 +227,7 @@ public class LinearProgramming {
 
         // check that y >= 0
         for (int i = 0; i < y.length; i++) {
-            if (y[i] < 0.0) {
+            if (y[i] < -EPSILON) {
                 StdOut.println("y[" + i + "] = " + y[i] + " is negative");
                 return false;
             }
