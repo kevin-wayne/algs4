@@ -155,7 +155,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  <b>Recording audio.</b>
  *  You can use the following methods to record audio samples that are
  *  played as a result of calls to {@link #play(double sample)} or
- *  {@link #play(double[] samples)}.
+ *  {@link #play(double[] samples)}. To record audio samples that are
+ *  played as a result of calls to {@link #play(String filename)},
+ *  first read them into an array using {@link #read(String filename)}
+ *  and call {@link #play(double[] samples)} on that array.
  *  <ul>
  *  <li> {@link #startRecording()}
  *  <li> {@link #stopRecording()}

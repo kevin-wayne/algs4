@@ -727,7 +727,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
         offscreen.fillRect(0, 0, width, height);
         onscreen.setColor(DEFAULT_CLEAR_COLOR);
-        onscreen.fillRect(0, 0, width, height);
+        onscreen.fillRect(0, 0, 2*width, 2*height);
         setPenColor();
         setPenRadius();
         setFont();

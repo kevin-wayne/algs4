@@ -141,7 +141,7 @@ public class Merge {
      * Returns a permutation that gives the elements in the array in ascending order.
      * @param a the array
      * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
-     *    ..., {@code a[p[N-1]]} are in ascending order
+     *    ..., {@code a[p[n-1]]} are in ascending order
      */
     public static int[] indexSort(Comparable[] a) {
         int n = a.length;
