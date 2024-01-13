@@ -688,7 +688,7 @@ public final class Picture implements ActionListener {
         String selectedDirectory = chooser.getDirectory();
         String selectedFilename = chooser.getFile();
         if (selectedDirectory != null && selectedFilename != null) {
-            StdDraw.save(selectedDirectory + selectedFilename);
+            save(selectedDirectory + selectedFilename);
         }
     }
 
