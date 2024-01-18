@@ -21,9 +21,9 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /**
- *  <i>Binary output</i>. This class provides methods for converting
- *  primitive type variables ({@code boolean}, {@code byte}, {@code char},
- *  {@code int}, {@code long}, {@code float}, and {@code double})
+ *  The <code>BinaryOut</code> data type provides a basic capability for
+ *  converting primitive type variables ({@code boolean}, {@code byte},
+ *  {@code char}, {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to an output stream.
  *  The output stream can be standard output, a file, an OutputStream or a Socket.
  *  Uses big-endian (most-significant byte first).

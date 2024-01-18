@@ -9,7 +9,7 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  <i>DrawListener</i>. This interface provides a basic capability for
+ *  The <code>DrawListener</code> interface provides a basic capability for
  *  responding to keyboard in mouse events from {@link Draw} via callbacks.
  *  You can see some examples in
  *  <a href="https://introcs.cs.princeton.edu/java/36inheritance">Section 3.6</a>.

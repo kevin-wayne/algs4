@@ -30,8 +30,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code StdAudio} class provides a basic capability for
+ *  The {@code StdAudio} class provides static methods for
  *  playing, reading, and saving audio.
  *  It uses a simple audio model that allows you
  *  to send one sample to the sound card at a time.

@@ -50,7 +50,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  <i>Standard array IO</i>. This class provides methods for reading
+ *  The <code>StdArrayIO</code> class provides static methods for reading
  *  in 1D and 2D arrays from standard input and printing out to
  *  standard output.
  *  <p>

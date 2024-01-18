@@ -34,7 +34,6 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  <p><b>Overview.</b>
  *  The {@code StdStats} class provides static methods for computing
  *  statistics such as min, max, mean, sample standard deviation, and
  *  sample variance.

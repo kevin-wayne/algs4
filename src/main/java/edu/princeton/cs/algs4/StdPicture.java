@@ -9,8 +9,7 @@ package edu.princeton.cs.algs4;
 
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code StdPicture} class provides a basic capability for manipulating
+ *  The {@code StdPicture} class provides static methods for manipulating
  *  the individual pixels of an image using the RGB color model.
  *  You can either initialize a blank image (of a given dimension) or read an
  *  image in a supported file format

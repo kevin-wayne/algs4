@@ -37,8 +37,7 @@ import javax.swing.KeyStroke;
 
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code Picture} class provides a basic capability for manipulating
+ *  The {@code Picture} data type provides a basic capability for manipulating
  *  the individual pixels of an image.
  *  You can either create a blank image (of a given dimension) or read an
  *  image in a supported file format (typically JPEG, PNG, GIF TIFF, and BMP).

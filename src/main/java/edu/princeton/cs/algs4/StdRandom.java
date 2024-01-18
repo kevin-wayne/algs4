@@ -50,7 +50,6 @@ package edu.princeton.cs.algs4;
 import java.util.Random;
 
 /**
- *  <p><b>Overview.</b>
  *  The {@code StdRandom} class provides static methods for generating
  *  random number from various discrete and continuous distributions,
  *  including uniform, Bernoulli, geometric, Gaussian, exponential, Pareto,

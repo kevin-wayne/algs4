@@ -19,8 +19,8 @@ import java.net.Socket;
 import java.util.Locale;
 
 /**
- *  This class provides methods for writing strings and numbers to
- *  various output streams, including standard output, file, and sockets.
+ *  The <code>Out</code> data type provides methods for writing strings and
+ *  numbers to various output streams, including standard output, file, and sockets.
  *  <p>
  *  For additional documentation, see
  *  <a href="https://introcs.cs.princeton.edu/31datatype">Section 3.1</a> of

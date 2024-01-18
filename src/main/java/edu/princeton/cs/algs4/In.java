@@ -25,7 +25,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- *  <i>Input</i>. This class provides methods for reading strings
+ *  The <code>In</code> data type provides methods for reading strings
  *  and numbers from standard input, file input, URLs, and sockets.
  *  <p>
  *  The Locale used is: language = English, country = US. This is consistent

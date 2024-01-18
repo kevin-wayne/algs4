@@ -15,9 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code StdOut} class provides methods for printing strings and numbers
- *  to standard output.
+ *  The {@code StdOut} class provides static methods for printing strings
+ *  and numbers to standard output.
  *
  *  <p><b>Getting started.</b>
  *  To use this class, you must have {@code StdOut.class} in your

@@ -42,8 +42,8 @@ import javax.swing.KeyStroke;
 
 
 /**
- *  This class provides methods for manipulating individual pixels of
- *  a grayscale image.
+ *  The <code>GrayscalePicture</code> data type provides a basic capability
+ *  for manipulating the individual pixels of a grayscale image.
  *  The original image can be read from a {@code PNG}, {@code GIF},
  *  or {@code JPEG} file or the user can create a blank image of a given dimension.
  *  This class includes methods for displaying the image in a window on

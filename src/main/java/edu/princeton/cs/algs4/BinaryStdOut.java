@@ -17,7 +17,7 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 
 /**
- *  <i>Binary standard output</i>. This class provides methods for converting
+ *  The <code>BinaryStdOut</code> class provides static methods for converting
  *  primitive type variables ({@code boolean}, {@code byte}, {@code char},
  *  {@code int}, {@code long}, {@code float}, and {@code double})
  *  to sequences of bits and writing them to standard output.

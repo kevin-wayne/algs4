@@ -78,9 +78,8 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code StdDraw} class provides a basic capability for
- *  creating drawings with your programs. It uses a simple graphics model that
+ *  The {@code StdDraw} class provides static methods for creating drawings
+ *  with your programs. It uses a simple graphics model that
  *  allows you to create drawings consisting of points, lines, squares,
  *  circles, and other geometric shapes in a window on your computer and
  *  to save the drawings to a file. Standard drawing also includes

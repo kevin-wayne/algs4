@@ -17,8 +17,9 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 
 /**
- *  <i>Binary standard input</i>. This class provides methods for reading
- *  in bits from standard input, either one bit at a time (as a {@code boolean}),
+ *  The <code>BinaryStdIn</code> class provides static methods for reading
+ *  in bits from standard input. It can process the bits
+ *  one bit at a time (as a {@code boolean}),
  *  8 bits at a time (as a {@code byte} or {@code char}),
  *  16 bits at a time (as a {@code short}), 32 bits at a time
  *  (as an {@code int} or {@code float}), or 64 bits at a time (as a
