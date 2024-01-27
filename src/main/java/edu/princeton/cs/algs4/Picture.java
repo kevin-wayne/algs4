@@ -657,7 +657,10 @@ public final class Picture implements ActionListener {
         title = file.getName();
 
         String suffix = title.substring(title.lastIndexOf('.') + 1);
-        if (!title.contains(".")) suffix = "";
+        if (!title.contains(".") || suffix.length() == 0) {
+            System.out.printf("Error: the filename '%s' has no file extension, such as .jpg or .png\n", title);
+            return;
+        }
 
         try {
             // for formats that support transparency (e.g., PNG and GIF)

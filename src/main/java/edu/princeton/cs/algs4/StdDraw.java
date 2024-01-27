@@ -1831,8 +1831,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         validateNotNull(filename, "filename");
         if (filename.length() == 0) throw new IllegalArgumentException("argument to save() is the empty string");
         File file = new File(filename);
+
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
-        if (!filename.contains(".")) suffix = "";
+        if (!filename.contains(".") || suffix.length() == 0) {
+            System.out.printf("Error: the filename '%s' has no file extension, such as .jpg or .png\n", filename);
+            return;
+        }
 
         try {
             // if the file format supports transparency (such as PNG or GIF)

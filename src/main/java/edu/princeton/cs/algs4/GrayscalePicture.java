@@ -442,7 +442,13 @@ public final class GrayscalePicture implements ActionListener {
         if (file == null) throw new IllegalArgumentException("argument to save() is null");
         filename = file.getName();
         if (frame != null) frame.setTitle(filename);
+
         String suffix = filename.substring(filename.lastIndexOf('.') + 1);
+        if (!filename.contains(".") || suffix.length() == 0) {
+            System.out.printf("Error: the filename '%s' has no file extension, such as .jpg or .png\n", filename);
+            return;
+        }
+
         if ("jpg".equalsIgnoreCase(suffix) || "png".equalsIgnoreCase(suffix)) {
             try {
                 ImageIO.write(image, suffix, file);

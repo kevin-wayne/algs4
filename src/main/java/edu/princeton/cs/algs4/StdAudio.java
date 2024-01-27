@@ -385,6 +385,14 @@ public final class StdAudio {
      * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
     public static void play(String filename) {
+
+        // may not work for streaming file formats
+        if (isRecording) {
+            double[] samples = read(filename);
+            for (double sample : samples)
+                recordedSamples.enqueue(sample);
+        }
+
         AudioInputStream ais = getAudioInputStreamFromFile(filename);
         SourceDataLine line = null;
         int BUFFER_SIZE = 4096; // 4K buffer
