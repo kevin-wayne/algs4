@@ -149,6 +149,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  <p>
  *  When saving files, {@code StdAudio} uses a sampling rate of 44,100 Hz,
  *  16 bits per sample, monaural audio, little endian, and linear PCM encoding.
+ *  When reading files, {@code StdAudio} converts to a sammpling rate of 44,100 Hz,
+ *  with 16 bits per sample.
  *
  *  <p>
  *  <b>Recording audio.</b>
@@ -379,6 +381,8 @@ public final class StdAudio {
 
     /**
      * Plays an audio file (in WAVE, AU, AIFF, or MIDI format) and waits for it to finish.
+     * The file extension must be either {@code .wav}, {@code .au},
+     * or {@code .aiff}.
      *
      * @param filename the name of the audio file
      * @throws IllegalArgumentException if unable to play {@code filename}
@@ -423,9 +427,8 @@ public final class StdAudio {
     /**
      * Reads audio samples from a file (in WAVE, AU, AIFF, or MIDI format)
      * and returns them as a double array with values between –1.0 and +1.0.
-     * The sound format must use 16-bit audio data with a sampling rate of 44,100.
-     * The sound format can be either monoaural or stereo, and the bytes can
-     * be stored in either little endian or big endian order.
+     * The file extension must be either {@code .wav}, {@code .au},
+     * or {@code .aiff}.
      *
      * @param  filename the name of the audio file
      * @return the array of samples
@@ -480,7 +483,7 @@ public final class StdAudio {
 
     /**
      * Saves the double array as an audio file (using WAV, AU, or AIFF format).
-     * The file extension type must be either {@code .wav}, {@code .au},
+     * The file extension must be either {@code .wav}, {@code .au},
      * or {@code .aiff}.
      * The format uses a sampling rate of 44,100 Hz, 16-bit audio,
      * mono, signed PCM, ands little Endian.
@@ -557,6 +560,8 @@ public final class StdAudio {
     /**
      * Plays an audio file (in WAVE, AU, AIFF, or MIDI format) in its own
      * background thread. Multiple audio files can be played simultaneously.
+     * The file extension must be either {@code .wav}, {@code .au},
+     * or {@code .aiff}.
      *
      * @param filename the name of the audio file
      * @throws IllegalArgumentException if unable to play {@code filename}

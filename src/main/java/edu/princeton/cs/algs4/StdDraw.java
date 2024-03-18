@@ -186,18 +186,18 @@ import javax.swing.KeyStroke;
  *  The pen is circular, so that when you set the pen radius to <em>r</em>
  *  and draw a point, you get a circle of radius <em>r</em>. Also, lines are
  *  of thickness 2<em>r</em> and have rounded ends. The default pen radius
- *  is 0.005 and is not affected by coordinate scaling. This default pen
- *  radius is about 1/200 the width of the default canvas, so that if
- *  you draw 100 points equally spaced along a horizontal or vertical line,
- *  you will be able to see individual circles, but if you draw 200 such
+ *  is 0.002 and is not affected by coordinate scaling. This default pen
+ *  radius is about 1/500 the width of the default canvas, so that if
+ *  you draw 200 points equally spaced along a horizontal or vertical line,
+ *  you will be able to see individual circles, but if you draw 250 such
  *  points, the result will look like a line.
  *  <ul>
  *  <li> {@link #setPenRadius(double radius)}
  *  </ul>
  *  <p>
- *  For example, {@code StdDraw.setPenRadius(0.025)} makes
+ *  For example, {@code StdDraw.setPenRadius(0.01)} makes
  *  the thickness of the lines and the size of the points to be five times
- *  the 0.005 default.
+ *  the 0.002 default.
  *  To draw points with the minimum possible radius (one pixel on typical
  *  displays), set the pen radius to 0.0.
  *  <p>
@@ -315,7 +315,7 @@ import javax.swing.KeyStroke;
  *  </ul>
  *  <p>
  *  These methods draw the specified image, centered at (<em>x</em>, <em>y</em>).
- *  The image must be in a supported file format (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  The image must be in a supported file format (typically JPEG, PNG, GIF, TIFF, and BMP).
  *  The image will display at its native size, independent of the coordinate system.
  *  Optionally, you can rotate the image a specified number of degrees counterclockwise
  *  or rescale it to fit snugly inside a width-by-height bounding box.
@@ -328,9 +328,18 @@ import javax.swing.KeyStroke;
  *  </ul>
  *  <p>
  *  You can save the drawing to a file in a supported file format
- *  (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  (typically JPEG, PNG, GIF, TIFF, and BMP).
  *  We recommend using PNG for drawing that consist solely of geometric shapes
  *  and JPEG for drawings that contains pictures.
+ *
+ *  <p><b>File formats.</b>
+ *  The {@code StdDraw} class supports reading and writing images to any of the
+ *  file formats supported by {@link javax.imageio} (typically JPEG, PNG,
+ *  GIF, TIFF, and BMP).
+ *  The file extensions corresponding to JPEG, PNG, GIF, TIFF, and BMP,
+ *  are {@code .jpg}, {@code .png}, {@code .gif}, {@code .tif},
+ *  and {@code .bmp}, respectively.
+ *
  *  <p>
  *  <b>Clearing the canvas.</b>
  *  To clear the entire drawing canvas, you can use the following methods:
@@ -343,6 +352,7 @@ import javax.swing.KeyStroke;
  *  allows you to specify a color of your choice. For example,
  *  {@code StdDraw.clear(StdDraw.LIGHT_GRAY)} clears the canvas to a shade
  *  of gray.
+ *
  *  <p>
  *  <b>Computer animations and double buffering.</b>
  *  Double buffering is one of the most powerful features of standard drawing,
@@ -385,19 +395,20 @@ import javax.swing.KeyStroke;
  *  <p>
  *  For example, this code fragment animates two balls moving in a circle.
  *  <pre>
- *   StdDraw.setScale(-2, +2);
+ *   StdDraw.setScale(-2.0, +2.0);
  *   StdDraw.enableDoubleBuffering();
  *
  *   for (double t = 0.0; true; t += 0.02) {
  *       double x = Math.sin(t);
  *       double y = Math.cos(t);
  *       StdDraw.clear();
- *       StdDraw.filledCircle(x, y, 0.05);
- *       StdDraw.filledCircle(-x, -y, 0.05);
+ *       StdDraw.filledCircle(x, y, 0.1);
+ *       StdDraw.filledCircle(-x, -y, 0.1);
  *       StdDraw.show();
  *       StdDraw.pause(20);
  *   }
  *  </pre>
+ *  Without double buffering, the balls would flicker as they move.
  *  <p>
  *  <b>Keyboard and mouse inputs.</b>
  *  Standard drawing has very basic support for keyboard and mouse input.
@@ -557,6 +568,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      *  The color yellow.
      */
     public static final Color YELLOW = Color.YELLOW;
+
+    /**
+     *  A 100% transparent color, for transparent background.
+     */
+    public static final Color TRANSPARENT = new Color(0, 0, 0, 0);
 
     /**
      * Shade of blue used in <em>Introduction to Programming in Java</em>.
@@ -723,10 +739,18 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         // initialize drawing window
         setXscale();
         setYscale();
+
+        offscreen.setBackground(DEFAULT_CLEAR_COLOR);
+        offscreen.clearRect(0, 0, width, height);
+        onscreen.setBackground(DEFAULT_CLEAR_COLOR);
+        onscreen.clearRect(0, 0, 2*width, 2*height);
+
+/*
         offscreen.setColor(DEFAULT_CLEAR_COLOR);
         offscreen.fillRect(0, 0, width, height);
         onscreen.setColor(DEFAULT_CLEAR_COLOR);
         onscreen.fillRect(0, 0, 2*width, 2*height);
+*/
         setPenColor();
         setPenRadius();
         setFont();
@@ -916,9 +940,16 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
      */
     public static void clear(Color color) {
         validateNotNull(color, "color");
+
+        offscreen.setBackground(color);
+        offscreen.clearRect(0, 0, width, height);
+        onscreen.setBackground(color);
+        onscreen.clearRect(0, 0, 2*width, 2*height);
+/*
         offscreen.setColor(color);
         offscreen.fillRect(0, 0, width, height);
         offscreen.setColor(penColor);
+*/
         draw();
     }
 
@@ -1500,7 +1531,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 */
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>).
-     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
+     * The supported image formats are typically JPEG, PNG, GIF, TIFF, and BMP.
      * As an optimization, the picture is cached, so there is no performance
      * penalty for redrawing the same image multiple times (e.g., in an animation).
      * However, if you change the picture file after drawing it, subsequent
@@ -1534,7 +1565,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>),
      * rotated given number of degrees.
-     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
+     * The supported image formats are typically JPEG, PNG, GIF, TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1570,7 +1601,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>),
      * rescaled to the specified bounding box.
-     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
+     * The supported image formats are typically JPEG, PNG, GIF, TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1612,7 +1643,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     /**
      * Draws the specified image centered at (<em>x</em>, <em>y</em>), rotated
      * given number of degrees, and rescaled to the specified bounding box.
-     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
+     * The supported image formats are typically JPEG, PNG, GIF, TIFF, and BMP.
      *
      * @param  x the center <em>x</em>-coordinate of the image
      * @param  y the center <em>y</em>-coordinate of the image
@@ -1821,10 +1852,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
     ***************************************************************************/
 
     /**
-     * Saves the drawing to using the specified filename.
-     * The supported image formats are typically JPEG, PNG, GIF TIFF, and BMP.
+     * Saves the drawing to a file in a supported file format
+     * (typically JPEG, PNG, GIF, TIFF, and BMP).
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
      *
-     * @param  filename the name of the file with one of the required format
+     * @param  filename the name of the file
      * @throws IllegalArgumentException if {@code filename} is {@code null}
      */
     public static void save(String filename) {

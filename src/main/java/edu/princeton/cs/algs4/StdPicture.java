@@ -12,8 +12,7 @@ package edu.princeton.cs.algs4;
  *  The {@code StdPicture} class provides static methods for manipulating
  *  the individual pixels of an image using the RGB color model.
  *  You can either initialize a blank image (of a given dimension) or read an
- *  image in a supported file format
- *  (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  image in a supported file format (typically JPEG, PNG, GIF, TIFF, and BMP).
  *  This class also includes methods for displaying the image in a window
  *  and saving it to a file.
  *
@@ -72,6 +71,20 @@ package edu.princeton.cs.algs4;
  *  </blockquote>
  *
  *  <p>
+ *  <b>Initializing the picture.</b>
+ *  You can use the following methods to initialize the picture:
+ *  <ul>
+ *  <li> {@link #read(String filename)}
+ *  <li> {@link #init(int width, int height)}
+ *  </ul>
+ *  <p>
+ *  The first method reads an image in a supported file format
+ *  (typically JPEG, PNG, GIF, TIFF, and BMP)
+ *  and initializes the picture to that image.
+ *  The second method initializes a <em>width</em>-by-<em>height</em>
+ *  picture, with each pixel black.
+ *
+ *  <p>
  *  <b>Getting and setting the colors of the individual pixels.</b>
  *  You can use the following methods to retrieve the RGB components
  *  of a specified pixel:
@@ -86,7 +99,7 @@ package edu.princeton.cs.algs4;
  *  (<em>col</em>, <em>row</em>). Each component is an integer between 0 and 255,
  *  with 0 corresponding to the absence of that component and 255 corresponding
  *  to full intensity of that component.
- *  The last methods set the red, green, and blue components of pixel
+ *  The last method sets the red, green, and blue components of pixel
  *  (<em>col</em>, <em>row</em>) to the specified values.
  *
  *  <p><b>Iterating over the pixels.</b>
@@ -124,19 +137,27 @@ package edu.princeton.cs.algs4;
  *  pixel (<em>col</em>, <em>row</em>).
  *  The alpha value defines the transparency of a color, with 0 corresponding to
  *  completely transparent and 255 to completely opaque. If transparency is not
- *  explicitly used, all alpha values are 255.
+ *  explicitly used, the alpha value is 255.
  *
- *  <p><b>File formats.</b>
- *  The {@code Picture} class supports reading and writing images in
- *  a supported format (typically JPEG, PNG, GIF TIFF, and BMP).
- *  Note that some file format (such as JPEG and BMP) do not support transparency.
- *  You can save the picture to a file using this method:
+ *  <p><b>Saving files.</b>
+ *  The {@code StdPicture} class supports writing images to a supported
+ *  file format (typically JPEG, PNG, GIF, TIFF, and BMP).
+ *  You can save the picture to a file two method:
  *  <ul>
  *  <li> {@link #save(String filename)}
  *  </ul>
  *
  *  <p>Alternatively, you can save the picture interactively
  *  by using the menu option <em>File → Save</em> from the picture window.
+ *
+ *  <p><b>File formats.</b>
+ *  The {@code StdPicture} class supports reading and writing images to any of the
+ *  file formats supported by {@link javax.imageio} (typically JPEG, PNG,
+ *  GIF, TIFF, and BMP).
+ *  The file extensions corresponding to JPEG, PNG, GIF, TIFF, and BMP,
+ *  are {@code .jpg}, {@code .png}, {@code .gif}, {@code .tif},
+ *  and {@code .bmp}, respectively.
+ *  The file formats JPEG and BMP do not support transparency.
  *
  *  <p><b>Memory usage.</b>
  *  A <em>W</em>-by-<em>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
@@ -198,9 +219,12 @@ public final class StdPicture {
     }
 
    /**
-     * Initializes the picture by reading an image from a file or URL.
+     * Initializes the picture by reading a JPEG, PNG, GIF, BMP, or TIFF image
+     * from a file or URL.
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
      *
-     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @param  filename the name of the file or URL
      * @throws IllegalArgumentException if cannot read image
      * @throws IllegalArgumentException if {@code name} is {@code null}
      */
@@ -232,7 +256,7 @@ public final class StdPicture {
    /**
      * Initializes the picture by reading an image from a file or URL.
      *
-     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @param  filename the name of the file or URL
      * @throws IllegalArgumentException if cannot read image
      * @throws IllegalArgumentException if {@code name} is {@code null}
      * @deprecated Replaced by {@link #read(String)}.
@@ -257,7 +281,7 @@ public final class StdPicture {
     }
 
     /**
-     * Pauses for t milliseconds. This method is intended to support computer animations.
+     * Pauses for t milliseconds. This method is intended to support computer animation.
      * @param t number of milliseconds
      * @throws IllegalArgumentException if {@code t} is negative
      */
@@ -387,8 +411,13 @@ public final class StdPicture {
     }
 
    /**
-     * Saves the picture to a file in a supported format
-     * (typically JPEG, PNG, GIF TIFF, and BMP).
+     * Saves the picture to a file in a supported file format
+     * (typically JPEG, PNG, GIF, TIFF, and BMP).
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
+     * If the file format does not support transparency (such as JPEG
+     * or BMP), it will be converted to be opaque (with purely
+     * transparent pixels converted to black).
      *
      * @param filename the name of the file
      * @throws IllegalArgumentException if {@code filename} is {@code null}

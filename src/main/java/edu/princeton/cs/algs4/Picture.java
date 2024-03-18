@@ -40,7 +40,7 @@ import javax.swing.KeyStroke;
  *  The {@code Picture} data type provides a basic capability for manipulating
  *  the individual pixels of an image.
  *  You can either create a blank image (of a given dimension) or read an
- *  image in a supported file format (typically JPEG, PNG, GIF TIFF, and BMP).
+ *  image in a supported file format (typically JPEG, PNG, GIF, TIFF, and BMP).
  *  This class also includes methods for displaying the image in a window
  *  and saving it to a file.
  *
@@ -110,7 +110,7 @@ import javax.swing.KeyStroke;
  *  </ul>
  *  <p>
  *  The first constructor read an image in a supported file format
- *  (typically JPEG, PNG, GIF TIFF, and BMP)
+ *  (typically JPEG, PNG, GIF, TIFF, and BMP)
  *  and initializes the picture to that image.
  *  The second constructor creates a <em>width</em>-by-<em>height</em> picture,
  *  with each pixel black.
@@ -126,7 +126,7 @@ import javax.swing.KeyStroke;
  *  <p>
  *  The first method returns the color of pixel (<em>col</em>, <em>row</em>)
  *  as a {@code Color} object.
- *  The second method set the color of pixel (<em>col</em>, <em>row</em>) to
+ *  The second method sets the color of pixel (<em>col</em>, <em>row</em>) to
  *  the specified color.
  *
  *  <p><b>Iterating over the pixels.</b>
@@ -155,26 +155,12 @@ import javax.swing.KeyStroke;
  *  grayscale.show();
  *  </pre>
  *
- *  <p><b>Saving files.</b>
- *  The {@code Picture} class supports writing images to a supported
- *  file format (typically JPEG, PNG, GIF TIFF, and BMP).
- *  Note that some file formats (such as JPEG and BMP) do not support
- *  transparency.
- *  You can save the picture to a file using these two methods:
- *  <ul>
- *  <li> {@link #save(String filename)}
- *  <li> {@link #save(File file)}
- *  </ul>
- *
- *  <p>Alternatively, you can save the picture interactively
- *  by using the menu option <em>File → Save</em> from the picture window.
- *
  *  <p><b>Transparency.</b>
  *  Both the {@link Color} and {@code Picture} classes support
  *  transparency, using the <em>alpha channel</em>.
  *  The alpha value defines the transparency of a color, with 0 corresponding to
  *  completely transparent and 255 to completely opaque. If transparency is not
- *  explicitly used, all alpha values are 255.
+ *  explicitly used, the alpha values is 255.
  *
  *  <p><b>32-bit color.</b>
  *  Sometimes it is more convenient (or efficient) to manipulate the
@@ -211,6 +197,27 @@ import javax.swing.KeyStroke;
  *  <li> {@link #setOriginLowerLeft()}
  *  <li> {@link #setOriginUpperLeft()}
  *  </ul>
+ *
+ *  <p><b>Saving files.</b>
+ *  The {@code Picture} class supports writing images to a supported
+ *  file format (typically JPEG, PNG, GIF, TIFF, and BMP).
+ *  You can save the picture to a file using these two methods:
+ *  <ul>
+ *  <li> {@link #save(String filename)}
+ *  <li> {@link #save(File file)}
+ *  </ul>
+ *
+ *  <p>Alternatively, you can save the picture interactively
+ *  by using the menu option <em>File → Save</em> from the picture window.
+ *
+ *  <p><b>File formats.</b>
+ *  The {@code Picture} class supports reading and writing images to any of the
+ *  file formats supported by {@link javax.imageio} (typically JPEG, PNG,
+ *  GIF, TIFF, and BMP).
+ *  The file extensions corresponding to JPEG, PNG, GIF, TIFF, and BMP,
+ *  are {@code .jpg}, {@code .png}, {@code .gif}, {@code .tif},
+ *  and {@code .bmp}, respectively.
+ *  The file formats JPEG and BMP do not support transparency.
  *
  *  <p><b>Memory usage.</b>
  *  A <em>W</em>-by-<em>H</em> picture uses ~ 4 <em>W H</em> bytes of memory,
@@ -272,8 +279,10 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Creates a picture by reading a JPEG, PNG, or GIF image from a file or URL.
-     * The filetype extension must be {@code .jpg}, {@code .png}, or {@code .gif}.
+     * Creates a picture by reading a JPEG, PNG, GIF , BMP, or TIFF image
+     * from a file or URL.
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
      *
      * @param  filename the name of the file or URL
      * @throws IllegalArgumentException if cannot read image
@@ -330,7 +339,9 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Creates a picture by reading the image from a JPEG, PNG, or GIF file.
+     * Creates a picture by reading the image from a JPEG, PNG, GIF, BMP, or TIFF file.
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
      *
      * @param file the file
      * @throws IllegalArgumentException if cannot read image
@@ -629,7 +640,9 @@ public final class Picture implements ActionListener {
 
    /**
      * Saves the picture to a file in a supported file format
-     * (typically JPEG, PNG, GIF TIFF, and BMP).
+     * (typically JPEG, PNG, GIF, TIFF, and BMP).
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
      * If the file format does not support transparency (such as JPEG
      * or BMP), it will be converted to be opaque (with purely
      * transparent pixels converted to black).
@@ -646,8 +659,13 @@ public final class Picture implements ActionListener {
     }
 
    /**
-     * Saves the picture to a file in a supported format
-     * (typically JPEG, PNG, GIF TIFF, and BMP).
+     * Saves the picture to a file in a supported file format
+     * (typically JPEG, PNG, GIF, TIFF, and BMP).
+     * The filetype extension must be {@code .jpg}, {@code .png}, {@code .gif},
+     * {@code .bmp}, or {@code .tif}.
+     * If the file format does not support transparency (such as JPEG
+     * or BMP), it will be converted to be opaque (with purely
+     * transparent pixels converted to black).
      *
      * @param  file the file
      * @throws IllegalArgumentException if {@code file} is {@code null}
