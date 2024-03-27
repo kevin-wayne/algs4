@@ -42,15 +42,15 @@ jar {
     from sourceSets.main.allSource
 }
 
-java{
-    // withSourcesJar()
-    withJavadocJar()
-}
-
+// To generate sources and javadoc jars, uncomment the following lines
+// java{
+//     withSourcesJar()
+//     withJavadocJar()
+// }
 
 tasks.named('jar') {
     manifest {
-        attributes('Implementation-Title': project.name,
+        attributes('Implementation-Title': archivesBaseName,
                    'Implementation-Version': project.version)
     }
 }

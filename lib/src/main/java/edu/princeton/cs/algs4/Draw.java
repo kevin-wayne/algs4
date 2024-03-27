@@ -310,6 +310,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         frame.setContentPane(draw);
         frame.pack();
         frame.requestFocusInWindow();
+        // The window is placed in the center of the screen.
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
