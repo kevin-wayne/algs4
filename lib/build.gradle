@@ -40,6 +40,8 @@ java {
 jar {
     // Include source files in the JAR
     from sourceSets.main.allSource
+    // To remove the version from the jar file name. Currently, this project does not use semantic versioning.
+    version = null
 }
 
 // To generate sources and javadoc jars, uncomment the following lines
