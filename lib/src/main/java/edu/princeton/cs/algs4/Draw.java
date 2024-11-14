@@ -54,7 +54,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 import java.io.File;
@@ -947,6 +947,58 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         double hs = factorY(2*halfHeight);
         if (ws <= 1 && hs <= 1) pixel(x, y);
         else offscreen.fill(new Rectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs));
+        draw();
+    }
+
+    /**
+     * Draws a rounded rectangle of the specified size, centered at (<em>x</em>, <em>y</em>).
+     * @param x the <em>x</em>-coordinate of the center of the rectangle
+     * @param y the <em>y</em>-coordinate of the center of the rectangle
+     * @param halfWidth one half the width of the rectangle
+     * @param halfHeight one half the height of the rectangle
+     * @param arcWidth the width of the arc
+     * @param arcHeight the height of the arc
+     */
+    public void roundRectangle(double x, double y, double halfWidth, double halfHeight, double arcWidth, double arcHeight) {
+        validate(x, "x");
+        validate(y, "y");
+        validate(halfWidth, "halfWidth");
+        validate(halfHeight, "halfHeight");
+        validateNonnegative(halfWidth, "half width");
+        validateNonnegative(halfHeight, "half height");
+
+        double xs = scaleX(x);
+        double ys = scaleY(y);
+        double ws = factorX(2*halfWidth);
+        double hs = factorY(2*halfHeight);
+        if (ws <= 1 && hs <= 1) pixel(x, y);
+        else offscreen.draw(new RoundRectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs, arcWidth, arcHeight));
+        draw();
+    }
+
+    /**
+     * Draws a filled rounded rectangle of the specified size, centered at (<em>x</em>, <em>y</em>).
+     * @param x the <em>x</em>-coordinate of the center of the rectangle
+     * @param y the <em>y</em>-coordinate of the center of the rectangle
+     * @param halfWidth one half the width of the rectangle
+     * @param halfHeight one half the height of the rectangle
+     * @param arcWidth the width of the arc
+     * @param arcHeight the height of the arc
+     */
+    public void filledRoundRectangle(double x, double y, double halfWidth, double halfHeight, double arcWidth, double arcHeight) {
+        validate(x, "x");
+        validate(y, "y");
+        validate(halfWidth, "halfWidth");
+        validate(halfHeight, "halfHeight");
+        validateNonnegative(halfWidth, "half width");
+        validateNonnegative(halfHeight, "half height");
+
+        double xs = scaleX(x);
+        double ys = scaleY(y);
+        double ws = factorX(2*halfWidth);
+        double hs = factorY(2*halfHeight);
+        if (ws <= 1 && hs <= 1) pixel(x, y);
+        else offscreen.fill(new RoundRectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs, arcWidth, arcHeight));
         draw();
     }
 
