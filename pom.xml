@@ -18,7 +18,7 @@
 			<name>Kevin Wayne</name>
 			<email>wayne@CS.Princeton.EDU</email>
 			<url>https://www.cs.princeton.edu/~wayne/contact/</url>
-			<organization>Princeton University </organization>
+			<organization>Princeton University</organization>
 			<organizationUrl>https://www.cs.princeton.edu</organizationUrl>
 			<roles>
 				<role>author</role>
@@ -41,46 +41,64 @@
 		<system>github.com</system>
 		<url>https://github.com/kevin-wayne/algs4/issues</url>
 	</issueManagement>
-	<profiles>
-		<profile>
-			<id>main-build</id>
-				<activation>
-					<activeByDefault>true</activeByDefault>
-				</activation>
-			<properties>
-				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-				<java.version>1.8</java.version>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.3</version>
-						<configuration>
-							<source>${java.version}</source>
-							<target>${java.version}</target>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>3.0.1</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-			<repositories>
-			</repositories>
-		</profile>
-	</profiles>
+	<build>
+        <sourceDirectory>${project.basedir}/lib/src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+	 <profiles>
+        <profile>
+            <id>main-build</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>1.8</java.version>
+            </properties>
+        </profile>
+    </profiles>
 	<dependencies>
-	</dependencies>  
+	</dependencies>
 </project>
