@@ -30,11 +30,11 @@ package edu.princeton.cs.algs4;
  *  determines whether two vertices are in the same strong component;
  *  and the <em>count</em> operation determines the number of strong
  *  components.
-
- *  The <em>component identifier</em> of a component is one of the
- *  vertices in the strong component: two vertices have the same component
- *  identifier if and only if they are in the same strong component.
-
+ *  <p>
+ *  The <em>component identifier</em> of a vertex is an integer between
+ *  0 and <em>k</em>–1, where <em>k</em> is the number of strong components.
+ *  Two vertices have the same component identifier if and only if they
+ *  are in the same strong component.
  *  <p>
  *  This implementation uses the Gabow's algorithm.
  *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,

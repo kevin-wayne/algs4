@@ -40,11 +40,11 @@ package edu.princeton.cs.algs4;
  *  the <em>count</em> operation determines the number of connected
  *  components; and the <em>size</em> operation determines the number
  *  of vertices in the connect component containing a given vertex.
-
- *  The <em>component identifier</em> of a connected component is one of the
- *  vertices in the connected component: two vertices have the same component
- *  identifier if and only if they are in the same connected component.
-
+ *  <p>
+ *  The <em>component identifier</em> of a vertex is an integer between
+ *  0 and <em>k</em>–1, where <em>k</em> is the number of connected components.
+ *  Two vertices have the same component identifier if and only if
+ *  they are in the same connected component.
  *  <p>
  *  This implementation uses depth-first search.
  *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
