@@ -16,6 +16,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import java.util.LinkedList;
@@ -39,6 +41,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  rate of 44,100 Hz.
  *  In addition to playing individual samples, standard audio supports
  *  reading, writing, and playing audio files in a variety of standard formats.
+ *  <p>
+ *  See {@link StdAudioStereo} for a version that supports
+ *  <em>stereo</em> audio (separate left and right channels).
  *  <p>
  *  <b>Getting started.</b>
  *  To use this class, you must have {@code StdAudio} in your Java classpath.
@@ -123,14 +128,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  The first method reads audio samples from an audio file
  *  (in WAVE, AU, AIFF, or MIDI format)
  *  and returns them as a double array with values between –1.0 and +1.0.
- *  The second method saves the samples in the specified double array to an
+ *  The second method saves the audio samples in the specified double array to an
  *  audio file (in WAVE, AU, or AIFF format).
  *
  *  <p>
  *  <b>Audio file formats.</b>
  *  {@code StdAudio} relies on the
  *  <a href = "https://www.oracle.com/java/technologies/javase/jmf-211-formats.html">Java Media Framework</a>
- *  for reading, writing, and playing  audio files. You should be able to read or play files
+ *  for reading, writing, and playing audio files. You should be able to read or play files
  *  in WAVE, AU, AIFF, and MIDI formats and save them to WAVE, AU, and AIFF formats.
  *  The file extensions corresponding to WAVE, AU, AIFF, and MIDI files
  *  are {@code .wav}, {@code .au}, {@code .aiff}, and {@code .midi},
@@ -156,23 +161,18 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *  <b>Recording audio.</b>
  *  You can use the following methods to record audio samples that are
  *  played as a result of calls to {@link #play(double sample)} or
- *  {@link #play(double[] samples)}. To record audio samples that are
- *  played as a result of calls to {@link #play(String filename)},
- *  first read them into an array using {@link #read(String filename)}
- *  and call {@link #play(double[] samples)} on that array.
+ *  {@link #play(double[] samples)}.
  *  <ul>
  *  <li> {@link #startRecording()}
  *  <li> {@link #stopRecording()}
  *  </ul>
  *  <p>
- *  The method {@link #startRecording()} begins recording audio.
- *  The method {@link #stopRecording()} stops recording and returns the recorded
+ *  The method {@code startRecording()} begins recording audio.
+ *  The method {@code stopRecording()} stops recording and returns the recorded
  *  samples as an array of doubles.
  *  <p>
  *  {@code StdAudio} does not currently support recording audio that calls
- *  either {@link #play(String filename)} or
- *  {@link #playInBackground(String filename)}, as these may use different
- *  data formats, such as 8-bit and stereo.
+ *  {@code playInBackground()}.
  *  <p>
  *  <b>Playing audio files in a background thread.</b>
  *  You can use the following methods to play an audio file in a background thread
@@ -222,7 +222,7 @@ public final class StdAudio {
     private static final int MAX_16_BIT = 32768;
     private static final int SAMPLE_BUFFER_SIZE = 4096;
 
-    private static final int MONO   = 1;
+    private static final int MONAURAL = 1;
     private static final int STEREO = 2;
     private static final boolean LITTLE_ENDIAN = false;
     private static final boolean BIG_ENDIAN    = true;
@@ -253,8 +253,8 @@ public final class StdAudio {
     // open up an audio stream
     private static void init() {
         try {
-            // 44,100 Hz, 16-bit audio, mono, signed PCM, little endian
-            AudioFormat format = new AudioFormat((float) SAMPLE_RATE, BITS_PER_SAMPLE, MONO, SIGNED, LITTLE_ENDIAN);
+            // 44,100 Hz, 16-bit audio, monaural, signed PCM, little endian
+            AudioFormat format = new AudioFormat((float) SAMPLE_RATE, BITS_PER_SAMPLE, MONAURAL, SIGNED, LITTLE_ENDIAN);
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
 
             line = (SourceDataLine) AudioSystem.getLine(info);
@@ -299,11 +299,15 @@ public final class StdAudio {
             }
 
             // from URL (including jar file)
-            URL url = new URL(filename);
-            return AudioSystem.getAudioInputStream(url);
+            URI uri = new URI(filename);
+            if (uri.isAbsolute()) {
+                URL url = uri.toURL();
+                return AudioSystem.getAudioInputStream(url);
+            }
+            else throw new IllegalArgumentException("could not read audio file '" + filename + "'");
         }
-        catch (IOException e) {
-            throw new IllegalArgumentException("could not read '" + filename + "'", e);
+        catch (IOException | URISyntaxException e) {
+            throw new IllegalArgumentException("could not read audio file '" + filename + "'", e);
         }
         catch (UnsupportedAudioFileException e) {
             throw new IllegalArgumentException("file of unsupported audio file format: '" + filename + "'", e);
@@ -413,7 +417,7 @@ public final class StdAudio {
             }
         }
         catch (IOException | LineUnavailableException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
         finally {
             if (line != null) {
@@ -434,16 +438,16 @@ public final class StdAudio {
      * @return the array of samples
      */
     public static double[] read(String filename) {
-        // 4K buffer (must be a multiple of 2 for mono or 4 for stereo)
+        // 4K buffer (must be a multiple of 2 for monaural or 4 for stereo)
         int READ_BUFFER_SIZE = 4096;
 
         // create AudioInputStream from file
         AudioInputStream fromAudioInputStream = getAudioInputStreamFromFile(filename);
         AudioFormat fromAudioFormat = fromAudioInputStream.getFormat();
 
-        // normalize AudioInputStream to 44,100 Hz, 16-bit audio, mono, signed PCM, little endian
+        // normalize AudioInputStream to 44,100 Hz, 16-bit audio, monaural, signed PCM, little endian
         // https://docs.oracle.com/javase/tutorial/sound/converters.html
-        AudioFormat toAudioFormat = new AudioFormat((float) SAMPLE_RATE, BITS_PER_SAMPLE, MONO, SIGNED, LITTLE_ENDIAN);
+        AudioFormat toAudioFormat = new AudioFormat((float) SAMPLE_RATE, BITS_PER_SAMPLE, MONAURAL, SIGNED, LITTLE_ENDIAN);
         if (!AudioSystem.isConversionSupported(toAudioFormat, fromAudioFormat)) {
             throw new IllegalArgumentException("system cannot convert from " + fromAudioFormat + " to " + toAudioFormat);
         }
@@ -456,7 +460,7 @@ public final class StdAudio {
             int count;
             while ((count = toAudioInputStream.read(bytes, 0, READ_BUFFER_SIZE)) != -1) {
 
-                // little endian, monoaural
+                // little endian, monaural
                 for (int i = 0; i < count/2; i++) {
                     double sample = ((short) (((bytes[2*i+1] & 0xFF) << 8) | (bytes[2*i] & 0xFF))) / ((double) MAX_16_BIT);
                     queue.enqueue(sample);
@@ -477,22 +481,23 @@ public final class StdAudio {
             return queue.toArray();
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("could not read '" + filename + "'", ioe);
+            throw new IllegalArgumentException("could not read audio file '" + filename + "'", ioe);
         }
     }
 
     /**
-     * Saves the double array as an audio file (using WAV, AU, or AIFF format).
+     * Saves the audio samples as an audio file (using WAV, AU, or AIFF format).
      * The file extension must be either {@code .wav}, {@code .au},
      * or {@code .aiff}.
      * The format uses a sampling rate of 44,100 Hz, 16-bit audio,
-     * mono, signed PCM, ands little Endian.
+     * monaural, signed PCM, ands little Endian.
      *
      * @param  filename the name of the audio file
      * @param  samples the array of samples
      * @throws IllegalArgumentException if unable to save {@code filename}
      * @throws IllegalArgumentException if {@code samples} is {@code null}
      * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code filename} is the empty string
      * @throws IllegalArgumentException if {@code filename} extension is not
      *         {@code .wav}, {@code .au}, or {@code .aiff}.
      */
@@ -503,10 +508,13 @@ public final class StdAudio {
         if (samples == null) {
             throw new IllegalArgumentException("samples[] is null");
         }
+        if (filename.length() == 0) {
+            throw new IllegalArgumentException("argument to save() is the empty string");
+        }
 
         // assumes 16-bit samples with sample rate = 44,100 Hz
-        // use 16-bit audio, mono, signed PCM, little Endian
-        AudioFormat format = new AudioFormat(SAMPLE_RATE, 16, MONO, SIGNED, LITTLE_ENDIAN);
+        // use 16-bit audio, monaural, signed PCM, little Endian
+        AudioFormat format = new AudioFormat(SAMPLE_RATE, 16, MONAURAL, SIGNED, LITTLE_ENDIAN);
         byte[] data = new byte[2 * samples.length];
         for (int i = 0; i < samples.length; i++) {
             int temp = (short) (samples[i] * MAX_16_BIT);
@@ -554,7 +562,7 @@ public final class StdAudio {
         for (BackgroundRunnable runnable : backgroundRunnables) {
             runnable.stop();
         }
-        backgroundRunnables = new LinkedList<>();
+        backgroundRunnables.clear();
     }
 
     /**
@@ -603,13 +611,14 @@ public final class StdAudio {
                 }
             }
             catch (IOException | LineUnavailableException e) {
-                e.printStackTrace();
+                System.out.println(e);
             }
             finally {
                 if (line != null) {
                     line.drain();
                     line.close();
                 }
+                backgroundRunnables.remove(this);
             }
         }
 
@@ -642,7 +651,7 @@ public final class StdAudio {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
         catch (IOException | LineUnavailableException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
 
         // keep JVM open
@@ -653,7 +662,7 @@ public final class StdAudio {
                        Thread.sleep(1000);
                     }
                     catch (InterruptedException e) {
-                        e.printStackTrace();
+                        System.out.println(e);
                     }
                 }
             }
@@ -684,10 +693,10 @@ public final class StdAudio {
             isRecording = false;
             recordedSamples = null;
             return results;
-         }
-         else {
-             throw new IllegalStateException("stopRecording() must be called after calling startRecording()");
-         }
+        }
+        else {
+            throw new IllegalStateException("stopRecording() must be called after calling startRecording()");
+        }
     }
 
 

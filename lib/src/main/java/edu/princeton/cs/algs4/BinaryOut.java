@@ -60,29 +60,46 @@ public final class BinaryOut {
 
    /**
      * Initializes a binary output stream from a file.
-     * @param filename the name of the file
+     * @param  filename the name of the file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code filename} is the empty string
+     * @throws IllegalArgumentException if cannot write the file {@code filename}
      */
     public BinaryOut(String filename) {
+        if (filename == null) {
+            throw new IllegalArgumentException("filename argument is null");
+        }
+
+        if (filename.length() == 0) {
+            throw new IllegalArgumentException("filename argument is the empty string");
+        }
+
         try {
             OutputStream os = new FileOutputStream(filename);
             out = new BufferedOutputStream(os);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("could not create file '" + filename + "' for writing", e);
         }
     }
 
    /**
      * Initializes a binary output stream from a socket.
      * @param socket the socket
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if cannot create output stream from socket
      */
     public BinaryOut(Socket socket) {
+        if (socket == null) {
+            throw new IllegalArgumentException("socket argument is null");
+        }
+
         try {
             OutputStream os = socket.getOutputStream();
             out = new BufferedOutputStream(os);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("could not create output stream from socket", e);
         }
     }
 
