@@ -32,9 +32,10 @@ package edu.princeton.cs.algs4;
  *  and the <em>count</em> operation determines the number of strong
  *  components.
  *  <p>
- *  The <em>component identifier</em> of a component is one of the
- *  vertices in the strong component: two vertices have the same component
- *  identifier if and only if they are in the same strong component.
+ *  The <em>component identifier</em> of a vertex is an integer between
+ *  0 and <em>k</em>–1, where <em>k</em> is the number of strong components.
+ *  Two vertices have the same component identifier if and only if they
+ *  are in the same strong component.
  *  <p>
  *  This implementation uses Tarjan's algorithm.
  *  The constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
