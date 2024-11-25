@@ -14,9 +14,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.Socket;
+import java.net.URL;
 import java.net.URLConnection;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -100,7 +104,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + socket, ioe);
+            throw new IllegalArgumentException("could not open socket: " + socket, ioe);
         }
     }
 
@@ -120,7 +124,7 @@ public final class In {
             scanner.useLocale(LOCALE);
         }
         catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + url, ioe);
+            throw new IllegalArgumentException("could not read URL: '" + url + "'", ioe);
         }
     }
 
@@ -140,8 +144,8 @@ public final class In {
             scanner = new Scanner(new BufferedInputStream(fis), CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
-        catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + file, ioe);
+        catch (IOException ioe) {;
+            throw new IllegalArgumentException("could not read file: " + file, ioe);
         }
     }
 
@@ -179,6 +183,9 @@ public final class In {
 
             // or URL from web
             if (url == null) {
+                URI uri = new URI(name);
+                if (uri.isAbsolute()) url = uri.toURL();
+                else throw new IllegalArgumentException("could not read: '" + name + "'");
                 url = new URL(name);
             }
 
@@ -192,8 +199,8 @@ public final class In {
             scanner            = new Scanner(new BufferedInputStream(is), CHARSET_NAME);
             scanner.useLocale(LOCALE);
         }
-        catch (IOException ioe) {
-            throw new IllegalArgumentException("Could not open " + name, ioe);
+        catch (IOException | URISyntaxException e) {
+            throw new IllegalArgumentException("could not read: '" + name + "'");
         }
     }
 
@@ -628,7 +635,7 @@ public final class In {
      * an array of integers.
      *
      * @return     the integers on standard input
-     * @deprecated Replaced by {@link StdIn#readAllInts()}.
+     * @deprecated Replaced by {@code new In()}.{@link #readAllInts()}.
      */
     @Deprecated
     public static int[] readInts() {
@@ -640,7 +647,7 @@ public final class In {
      * an array of doubles.
      *
      * @return     the doubles on standard input
-     * @deprecated Replaced by {@link StdIn#readAllDoubles()}.
+     * @deprecated Replaced by {@code new In()}.{@link #readAllDoubles()}.
      */
     @Deprecated
     public static double[] readDoubles() {
@@ -652,7 +659,7 @@ public final class In {
      *  an array of strings.
      *
      * @return     the strings on standard input
-     * @deprecated Replaced by {@link StdIn#readAllStrings()}.
+     * @deprecated Replaced by {@code new In()}.{@link #readAllStrings()}.
      */
     @Deprecated
     public static String[] readStrings() {

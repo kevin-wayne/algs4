@@ -16,6 +16,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 /**
@@ -33,7 +35,7 @@ import java.util.Locale;
 public class Out {
 
     // force Unicode UTF-8 encoding; otherwise it's system dependent
-    private static final String CHARSET_NAME = "UTF-8";
+    private static final Charset CHARSET = StandardCharsets.UTF_8;
 
     // assume language = English, country = US for consistency with In
     private static final Locale LOCALE = Locale.US;
@@ -46,13 +48,8 @@ public class Out {
      * @param  os the {@code OutputStream}
      */
     public Out(OutputStream os) {
-        try {
-            OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET_NAME);
-            out = new PrintWriter(osw, true);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET);
+        out = new PrintWriter(osw, true);
     }
 
    /**
@@ -66,15 +63,20 @@ public class Out {
      * Initializes an output stream from a socket.
      *
      * @param  socket the socket
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if cannot create output stream from socket
      */
     public Out(Socket socket) {
+        if (socket == null) {
+            throw new IllegalArgumentException("socket argument is null");
+        }
         try {
             OutputStream os = socket.getOutputStream();
-            OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET_NAME);
+            OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET);
             out = new PrintWriter(osw, true);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("could not create output stream from socket", e);
         }
     }
 
@@ -82,15 +84,26 @@ public class Out {
      * Initializes an output stream from a file.
      *
      * @param  filename the name of the file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code filename} is the empty string
+     * @throws IllegalArgumentException if cannot write the file {@code filename}
      */
     public Out(String filename) {
+        if (filename == null) {
+            throw new IllegalArgumentException("filename argument is null");
+        }
+
+        if (filename.length() == 0) {
+            throw new IllegalArgumentException("filename argument is the empty string");
+        }
+
         try {
             OutputStream os = new FileOutputStream(filename);
-            OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET_NAME);
+            OutputStreamWriter osw = new OutputStreamWriter(os, CHARSET);
             out = new PrintWriter(osw, true);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("could not create file '" + filename + "' for writing", e);
         }
     }
 
