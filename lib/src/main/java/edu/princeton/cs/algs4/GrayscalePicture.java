@@ -23,14 +23,21 @@ package edu.princeton.cs.algs4;
 import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+
 import java.io.File;
 import java.io.IOException;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -78,7 +85,7 @@ import javax.swing.KeyStroke;
 public final class GrayscalePicture implements ActionListener {
     private BufferedImage image;               // the rasterized image
     private JFrame frame;                      // on-screen view
-    private String filename;                   // name of file
+    private String title;                      // name of file
     private boolean isOriginUpperLeft = true;  // location of origin
     private boolean isVisible = false;         // is the frame visible?
     private final int width, height;           // width and height
@@ -112,7 +119,7 @@ public final class GrayscalePicture implements ActionListener {
         width  = picture.width();
         height = picture.height();
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        filename = picture.filename;
+        title = picture.title;
         isOriginUpperLeft = picture.isOriginUpperLeft;
         for (int col = 0; col < width(); col++)
             for (int row = 0; row < height(); row++)
@@ -122,16 +129,16 @@ public final class GrayscalePicture implements ActionListener {
    /**
      * Creates a grayscale picture by reading an image from a file or URL.
      *
-     * @param  name the name of the file (.png, .gif, or .jpg) or URL.
-     * @throws IllegalArgumentException if cannot read image
-     * @throws IllegalArgumentException if {@code name} is {@code null}
+     * @param  filename the name of the file (.png, .gif, or .jpg) or URL.
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if cannot read image from file or URL
      */
-    public GrayscalePicture(String name) {
-        if (name == null) throw new IllegalArgumentException("constructor argument is null");
-        this.filename = name;
+    public GrayscalePicture(String filename) {
+        if (filename == null) throw new IllegalArgumentException("constructor argument is null");
+        title = filename;
         try {
             // try to read from file in working directory
-            File file = new File(name);
+            File file = new File(filename);
             if (file.isFile()) {
                 image = ImageIO.read(file);
             }
@@ -139,23 +146,25 @@ public final class GrayscalePicture implements ActionListener {
             else {
 
                 // resource relative to .class file
-                URL url = getClass().getResource(name);
+                URL url = getClass().getResource(filename);
 
                 // resource relative to classloader root
                 if (url == null) {
-                    url = getClass().getClassLoader().getResource(name);
+                    url = getClass().getClassLoader().getResource(filename);
                 }
 
-                // or URL from web
+                // or URL from web or jar
                 if (url == null) {
-                    url = new URL(name);
+                    URI uri = new URI(filename);
+                    if (uri.isAbsolute()) url = uri.toURL();
+                    else throw new IllegalArgumentException("could not read image: '" + filename + "'");
                 }
 
                 image = ImageIO.read(url);
             }
 
             if (image == null) {
-                throw new IllegalArgumentException("could not read image: " + name);
+                throw new IllegalArgumentException("could not read image: '" + filename + "'");
             }
 
             width  = image.getWidth(null);
@@ -170,8 +179,8 @@ public final class GrayscalePicture implements ActionListener {
                 }
             }
         }
-        catch (IOException ioe) {
-            throw new IllegalArgumentException("could not open image: " + name, ioe);
+        catch (IOException | URISyntaxException e) {
+            throw new IllegalArgumentException("could not open image: " + filename, e);
         }
     }
 
@@ -236,8 +245,8 @@ public final class GrayscalePicture implements ActionListener {
             frame.setContentPane(getJLabel());
             // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            if (filename == null) frame.setTitle(width + "-by-" + height);
-            else                  frame.setTitle(filename);
+            if (title == null) frame.setTitle(width + "-by-" + height);
+            else               frame.setTitle(title);
             frame.setResizable(false);
             frame.pack();
         }
@@ -286,12 +295,12 @@ public final class GrayscalePicture implements ActionListener {
 
     private void validateRowIndex(int row) {
         if (row < 0 || row >= height())
-            throw new IllegalArgumentException("row index must be between 0 and " + (height() - 1) + ": " + row);
+            throw new IndexOutOfBoundsException("row index must be between 0 and " + (height() - 1) + ": " + row);
     }
 
     private void validateColumnIndex(int col) {
         if (col < 0 || col >= width())
-            throw new IllegalArgumentException("column index must be between 0 and " + (width() - 1) + ": " + col);
+            throw new IndexOutOfBoundsException("column index must be between 0 and " + (width() - 1) + ": " + col);
     }
 
     private void validateGrayscaleValue(int gray) {
@@ -305,7 +314,7 @@ public final class GrayscalePicture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @return the grayscale value of pixel ({@code col}, {@code row})
-     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public Color get(int col, int row) {
         validateColumnIndex(col);
@@ -323,7 +332,7 @@ public final class GrayscalePicture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @return the 8-bit integer representation of the grayscale value of pixel ({@code col}, {@code row})
-     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public int getGrayscale(int col, int row) {
         validateColumnIndex(col);
@@ -338,7 +347,7 @@ public final class GrayscalePicture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @param color the color (converts to grayscale if color is not a shade of gray)
-     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      * @throws IllegalArgumentException if {@code color} is {@code null}
      */
     public void set(int col, int row, Color color) {
@@ -356,7 +365,7 @@ public final class GrayscalePicture implements ActionListener {
      * @param col the column index
      * @param row the row index
      * @param gray the 8-bit integer representation of the grayscale value
-     * @throws IllegalArgumentException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
+     * @throws IndexOutOfBoundsException unless both {@code 0 <= col < width} and {@code 0 <= row < height}
      */
     public void setGrayscale(int col, int row, int gray) {
         validateColumnIndex(col);
@@ -423,13 +432,16 @@ public final class GrayscalePicture implements ActionListener {
      * Saves the picture to a file in either PNG or JPEG format.
      * The filetype extension must be either .png or .jpg.
      *
-     * @param name the name of the file
-     * @throws IllegalArgumentException if {@code name} is {@code null}
+     * @param  filename the name of the file
+     * @throws IllegalArgumentException if {@code filename} is {@code null}
+     * @throws IllegalArgumentException if {@code filename} is the empty string
+     * @throws IllegalArgumentException if {@code filename} has invalid filetype extension
+     * @throws IllegalArgumentException if cannot write the file {@code filename}
      */
-    public void save(String name) {
-        if (name == null) throw new IllegalArgumentException("argument to save() is null");
-        save(new File(name));
-        filename = name;
+    public void save(String filename) {
+        if (filename == null) throw new IllegalArgumentException("argument to save() is null");
+        save(new File(filename));
+        title = filename;
     }
 
    /**
@@ -440,25 +452,30 @@ public final class GrayscalePicture implements ActionListener {
      */
     public void save(File file) {
         if (file == null) throw new IllegalArgumentException("argument to save() is null");
-        filename = file.getName();
-        if (frame != null) frame.setTitle(filename);
+        title = file.getName();
+        if (frame != null) frame.setTitle(title);
 
-        String suffix = filename.substring(filename.lastIndexOf('.') + 1);
-        if (!filename.contains(".") || suffix.length() == 0) {
-            System.out.printf("Error: the filename '%s' has no file extension, such as .jpg or .png\n", filename);
+        String suffix = title.substring(title.lastIndexOf('.') + 1);
+        if (!title.contains(".") || suffix.length() == 0) {
+            System.out.printf("Error: the filename '%s' has no file extension, such as .jpg or .png\n", title);
             return;
         }
 
-        if ("jpg".equalsIgnoreCase(suffix) || "png".equalsIgnoreCase(suffix)) {
-            try {
-                ImageIO.write(image, suffix, file);
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            // for formats that support transparency (e.g., PNG and GIF)
+            if (ImageIO.write(image, suffix, file)) return;
+
+            // for formats that don't support transparency (e.g., JPG and BMP)
+            // create BufferedImage in RGB format and use white background
+            BufferedImage imageRGB = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            imageRGB.createGraphics().drawImage(image, 0, 0, Color.WHITE, null);
+            if (ImageIO.write(imageRGB, suffix, file)) return;
+
+            // failed to save the file; probably wrong format
+            throw new IllegalArgumentException("The filetype '" + suffix + "' is not supported");
         }
-        else {
-            System.out.println("Error: filename must end in .jpg or .png");
+        catch (IOException e) {
+            throw new IllegalArgumentException("could not write file '" + title + "'", e);
         }
     }
 
@@ -466,14 +483,19 @@ public final class GrayscalePicture implements ActionListener {
      * Opens a save dialog box when the user selects "Save As" from the menu.
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         FileDialog chooser = new FileDialog(frame,
                              "Use a .png or .jpg extension", FileDialog.SAVE);
         chooser.setVisible(true);
         String selectedDirectory = chooser.getDirectory();
         String selectedFilename = chooser.getFile();
         if (selectedDirectory != null && selectedFilename != null) {
-            save(selectedDirectory + selectedFilename);
+            try {
+                save(selectedDirectory + selectedFilename);
+            }
+            catch (IllegalArgumentException e) {
+                System.err.println(e.getMessage());
+            }
         }
     }
 
