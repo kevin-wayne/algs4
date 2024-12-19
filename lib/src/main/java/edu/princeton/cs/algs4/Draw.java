@@ -253,8 +253,11 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     // default pen radius
     private static final double DEFAULT_PEN_RADIUS = 0.002;
 
+    // default font size 
+    private static final int DEFAULT_FONT_SIZE = 16;
+
     // default font
-    private static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, 16);
+    private static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, DEFAULT_FONT_SIZE);
 
     // default title of drawing window
     private static final String DEFAULT_WINDOW_TITLE = "Draw";
@@ -750,6 +753,18 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     public void setFont(Font font) {
         validateNotNull(font, "font");
         this.font = font;
+    }
+
+    /**
+     * Sets the font to the given value. If the size is 0, it will be set to 16, the default size.
+     * @param size the size of the font
+     */
+    public void setFontSize(int size) {
+        validate(size, "size");
+        if (size == 0){
+            size = DEFAULT_FONT_SIZE;
+        }
+        font = new Font(font.getName(), font.getStyle(), size);
     }
 
 
@@ -1390,6 +1405,25 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         int hs = metrics.getDescent();
         offscreen.drawString(text, (float) (xs - ws/2.0), (float) (ys + hs));
         draw();
+    }
+
+    /**
+     * Writes the given text string in the current font, centered at (<em>x</em>, <em>y</em>) and 
+     * rescaled to the specified font size.
+     * 
+     * @param  x the center <em>x</em>-coordinate of the text
+     * @param  y the center <em>y</em>-coordinate of the text
+     * @param  text the text to write
+     * @param  fontSize the font size
+     * @throws IllegalArgumentException if {@code text} is {@code null}
+     * @throws IllegalArgumentException if {@code x} or {@code y} is either NaN or infinite
+     * @throws IllegalArgumentException if {@code size} is negative
+     */
+    public void text(double x, double y, String text, int fontSize){
+        int currentSize = font.getSize();
+        setFontSize(fontSize);
+        text(x, y, text);
+        setFontSize(currentSize);
     }
 
     /**
