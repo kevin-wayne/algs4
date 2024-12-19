@@ -49,6 +49,10 @@ public class Particle {
      * @param  color the color
      */
     public Particle(double rx, double ry, double vx, double vy, double radius, double mass, Color color) {
+        if (!(radius > 0.0)) throw new IllegalArgumentException("radius must be positive");
+        if (!(mass > 0.0)) throw new IllegalArgumentException("mass must be positive");
+        if (rx - radius < -1.0 || rx + radius > 1.0) throw new IllegalArgumentException("out-of-bounds rx");
+        if (ry - radius < -1.0 || ry + radius > 1.0) throw new IllegalArgumentException("out-of-bounds ry");
         this.vx = vx;
         this.vy = vy;
         this.rx = rx;
@@ -127,10 +131,16 @@ public class Particle {
         if (dvdv == 0) return INFINITY;
         double drdr = dx*dx + dy*dy;
         double sigma = this.radius + that.radius;
-        double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
+         double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
         // if (drdr < sigma*sigma) StdOut.println("overlapping particles");
         if (d < 0) return INFINITY;
-        return -(dvdr + Math.sqrt(d)) / dvdv;
+        double t = -(dvdr + Math.sqrt(d)) / dvdv;
+
+        // should't happen, but seems to be needed for some extreme inputs
+        // (floating-point precision when dvdv is close to 0, I think)
+        if (t <= 0) return INFINITY;
+
+        return t;
     }
 
     /**

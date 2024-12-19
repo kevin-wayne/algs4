@@ -12,6 +12,8 @@ package edu.princeton.cs.algs4;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 /**
@@ -65,7 +67,7 @@ import java.util.Locale;
 public final class StdOut {
 
     // force Unicode UTF-8 encoding; otherwise it's system dependent
-    private static final String CHARSET_NAME = "UTF-8";
+    private static final Charset CHARSET = StandardCharsets.UTF_8;
 
     // assume language = English, country = US for consistency with StdIn
     private static final Locale LOCALE = Locale.US;
@@ -75,12 +77,7 @@ public final class StdOut {
 
     // this is called before invoking any methods
     static {
-        try {
-            out = new PrintWriter(new OutputStreamWriter(System.out, CHARSET_NAME), true);
-        }
-        catch (UnsupportedEncodingException e) {
-            System.out.println(e);
-        }
+        out = new PrintWriter(new OutputStreamWriter(System.out, CHARSET), true);
     }
 
     // don't instantiate
