@@ -1,7 +1,9 @@
 name: Release
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - master 
+      - main
 
 env:
   build-number: ${GITHUB_RUN_NUMBER}
