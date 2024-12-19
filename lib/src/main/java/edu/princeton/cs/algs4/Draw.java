@@ -54,7 +54,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 import java.io.File;
@@ -253,8 +253,11 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     // default pen radius
     private static final double DEFAULT_PEN_RADIUS = 0.002;
 
+    // default font size 
+    private static final int DEFAULT_FONT_SIZE = 16;
+
     // default font
-    private static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, 16);
+    private static final Font DEFAULT_FONT = new Font("SansSerif", Font.PLAIN, DEFAULT_FONT_SIZE);
 
     // default title of drawing window
     private static final String DEFAULT_WINDOW_TITLE = "Draw";
@@ -377,6 +380,8 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         frame.setContentPane(draw);
         frame.pack();
         frame.requestFocusInWindow();
+        // The window is placed in the center of the screen.
+        frame.setLocationRelativeTo(null);
         frame.setVisible(false);
     }
 
@@ -750,6 +755,18 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         this.font = font;
     }
 
+    /**
+     * Sets the font to the given value. If the size is 0, it will be set to 16, the default size.
+     * @param size the size of the font
+     */
+    public void setFontSize(int size) {
+        validate(size, "size");
+        if (size == 0){
+            size = DEFAULT_FONT_SIZE;
+        }
+        font = new Font(font.getName(), font.getStyle(), size);
+    }
+
 
    /***************************************************************************
     *  Drawing geometric shapes.
@@ -1050,6 +1067,58 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
     }
 
     /**
+     * Draws a rounded rectangle of the specified size, centered at (<em>x</em>, <em>y</em>).
+     * @param x the <em>x</em>-coordinate of the center of the rectangle
+     * @param y the <em>y</em>-coordinate of the center of the rectangle
+     * @param halfWidth one half the width of the rectangle
+     * @param halfHeight one half the height of the rectangle
+     * @param arcWidth the width of the arc
+     * @param arcHeight the height of the arc
+     */
+    public void roundRectangle(double x, double y, double halfWidth, double halfHeight, double arcWidth, double arcHeight) {
+        validate(x, "x");
+        validate(y, "y");
+        validate(halfWidth, "halfWidth");
+        validate(halfHeight, "halfHeight");
+        validateNonnegative(halfWidth, "half width");
+        validateNonnegative(halfHeight, "half height");
+
+        double xs = scaleX(x);
+        double ys = scaleY(y);
+        double ws = factorX(2*halfWidth);
+        double hs = factorY(2*halfHeight);
+        if (ws <= 1 && hs <= 1) pixel(x, y);
+        else offscreen.draw(new RoundRectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs, arcWidth, arcHeight));
+        draw();
+    }
+
+    /**
+     * Draws a filled rounded rectangle of the specified size, centered at (<em>x</em>, <em>y</em>).
+     * @param x the <em>x</em>-coordinate of the center of the rectangle
+     * @param y the <em>y</em>-coordinate of the center of the rectangle
+     * @param halfWidth one half the width of the rectangle
+     * @param halfHeight one half the height of the rectangle
+     * @param arcWidth the width of the arc
+     * @param arcHeight the height of the arc
+     */
+    public void filledRoundRectangle(double x, double y, double halfWidth, double halfHeight, double arcWidth, double arcHeight) {
+        validate(x, "x");
+        validate(y, "y");
+        validate(halfWidth, "halfWidth");
+        validate(halfHeight, "halfHeight");
+        validateNonnegative(halfWidth, "half width");
+        validateNonnegative(halfHeight, "half height");
+
+        double xs = scaleX(x);
+        double ys = scaleY(y);
+        double ws = factorX(2*halfWidth);
+        double hs = factorY(2*halfHeight);
+        if (ws <= 1 && hs <= 1) pixel(x, y);
+        else offscreen.fill(new RoundRectangle2D.Double(xs - ws/2, ys - hs/2, ws, hs, arcWidth, arcHeight));
+        draw();
+    }
+
+    /**
      * Draws a polygon with the vertices
      * (<em>x</em><sub>0</sub>, <em>y</em><sub>0</sub>),
      * (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), ...,
@@ -1336,6 +1405,25 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
         int hs = metrics.getDescent();
         offscreen.drawString(text, (float) (xs - ws/2.0), (float) (ys + hs));
         draw();
+    }
+
+    /**
+     * Writes the given text string in the current font, centered at (<em>x</em>, <em>y</em>) and 
+     * rescaled to the specified font size.
+     * 
+     * @param  x the center <em>x</em>-coordinate of the text
+     * @param  y the center <em>y</em>-coordinate of the text
+     * @param  text the text to write
+     * @param  fontSize the font size
+     * @throws IllegalArgumentException if {@code text} is {@code null}
+     * @throws IllegalArgumentException if {@code x} or {@code y} is either NaN or infinite
+     * @throws IllegalArgumentException if {@code size} is negative
+     */
+    public void text(double x, double y, String text, int fontSize){
+        int currentSize = font.getSize();
+        setFontSize(fontSize);
+        text(x, y, text);
+        setFontSize(currentSize);
     }
 
     /**
