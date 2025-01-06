@@ -1874,15 +1874,15 @@ public final class Draw implements ActionListener, MouseListener, MouseMotionLis
 
         // text
         draw2.setPenColor(Draw.BLACK);
-        draw2.text(0.2, 0.5, "bdfdfdfdlack text");
+        draw2.text(0.2, 0.5, "black text");
         draw2.setPenColor(Draw.WHITE);
-        draw2.text(0.8, 0.8, "white text");
+        draw2.text(0.2, 0.2, "white text");
     }
 
 }
 
 /******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2025, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
