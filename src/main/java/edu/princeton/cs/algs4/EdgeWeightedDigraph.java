@@ -266,6 +266,43 @@ public class EdgeWeightedDigraph {
     }
 
     /**
+     * Returns a string representation of this edge-weighted digraph in DOT format,
+     * suitable for visualization with Graphviz.
+     *
+     * To visualize the graph, install Graphviz (e.g., "brew install graphviz").
+     * Then use one of the graph visualization tools
+     *    - dot    (hierarchical or layer drawing)
+     *    - neato  (spring model)
+     *    - fdp    (force-directed placement)
+     *    - sfdp   (scalable force-directed placement)
+     *    - twopi  (radial layout)
+     *
+     * For example, the following commands will create graph drawings in SVG
+     * and PDF formats
+     *    - dot input.dot -Tsvg -o output.svg
+     *    - dot input.dot -Tpdf -o output.pdf
+     *
+     * To change the digraph attributes (e.g., vertex and edge shapes, arrows, colors)
+     *  in the DOT format, see https://graphviz.org/doc/info/lang.html
+     *
+     * @return a string representation of this edge-weighted digraph in DOT format
+     */
+    public String toDot() {
+        StringBuilder s = new StringBuilder();
+        s.append("digraph {" + NEWLINE);
+        s.append("node[shape=circle, style=filled, fixedsize=true, width=0.3, fontsize=\"10pt\"]" + NEWLINE);
+        s.append("edge[arrowhead=normal, fontsize=\"9pt\"]" + NEWLINE);
+        for (int v = 0; v < V; v++) {
+            for (DirectedEdge e : adj[v]) {
+                int w = e.to();
+                s.append(v + " -> " + w + " [label=\"" + e.weight() + "\"]" + NEWLINE);
+            }
+        }
+        s.append("}" + NEWLINE);
+        return s.toString();
+    }
+
+    /**
      * Unit tests the {@code EdgeWeightedDigraph} data type.
      *
      * @param args the command-line arguments
@@ -279,7 +316,7 @@ public class EdgeWeightedDigraph {
 }
 
 /******************************************************************************
- *  Copyright 2002-2022, Robert Sedgewick and Kevin Wayne.
+ *  Copyright 2002-2025, Robert Sedgewick and Kevin Wayne.
  *
  *  This file is part of algs4.jar, which accompanies the textbook
  *
