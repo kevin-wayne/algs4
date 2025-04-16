@@ -52,7 +52,7 @@ public class Accumulator {
         n++;
         double delta = x - mu;
         mu  += delta / n;
-        sum += (double) (n - 1) / n * delta * delta;
+        sum += ((double) (n - 1) / n) * delta * delta;
     }
 
     /**
