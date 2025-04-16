@@ -127,6 +127,17 @@ public class Interval1D {
     }
 
     /**
+     * Returns true if this interval contains the specified interval.
+     *
+     * @param  that the other interval
+     * @return {@code true} if this interval contains the argument interval;
+     *         {@code false} otherwise
+     */
+    public boolean contains(Interval1D that) {
+        return (this.max >= that.max) && (this.min <= that.min);
+    }
+
+    /**
      * Returns true if this interval contains the specified value.
      *
      * @param x the value

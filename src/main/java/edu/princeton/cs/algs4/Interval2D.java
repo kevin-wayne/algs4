@@ -53,6 +53,16 @@ public class Interval2D {
     }
 
     /**
+     * Does this two-dimensional interval contain that two-dimensional interval?
+     * @param that the other two-dimensional interval
+     * @return true if this two-dimensional interval contains
+     *    that two-dimensional interval; false otherwise
+     */
+    public boolean contains(Interval2D that) {
+        return this.x.contains(that.x) && this.y.contains(that.y);
+    }
+
+    /**
      * Does this two-dimensional interval contain the point p?
      * @param p the two-dimensional point
      * @return true if this two-dimensional interval contains the point p; false otherwise
