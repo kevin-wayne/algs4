@@ -217,7 +217,7 @@ public final class StdPicture {
         Picture newPicture = new Picture(filename);
 
         // same dimension, so copy pixels instead of using new Picture and GUI
-        if (newPicture.width() == picture.width() && newPicture.height() == newPicture.height()) {
+        if (newPicture.width() == picture.width() && newPicture.height() == picture.height()) {
             for (int col = 0; col < picture.width(); col++) {
                 for (int row = 0; row < picture.height(); row++) {
                     picture.setARGB(col, row, newPicture.getARGB(col, row));
