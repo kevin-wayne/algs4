@@ -31,7 +31,7 @@ import java.util.NoSuchElementException;
  *  graph of vertices named 0 through <em>V</em> – 1, where each
  *  undirected edge is of type {@link Edge} and has a real-valued weight.
  *  It supports the following two primary operations: add an edge to the graph,
- *  iterate over all of the edges incident to a vertex. It also provides
+ *  iterate over all of the edges incident with a vertex. It also provides
  *  methods for returning the degree of a vertex, the number of vertices
  *  <em>V</em> in the graph, and the number of edges <em>E</em> in the graph.
  *  Parallel edges and self-loops are permitted.
@@ -203,10 +203,10 @@ public class EdgeWeightedGraph {
     }
 
     /**
-     * Returns the edges incident on vertex {@code v}.
+     * Returns the edges incident with vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the edges incident on vertex {@code v} as an Iterable
+     * @return the edges incident with vertex {@code v} as an Iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Edge> adj(int v) {

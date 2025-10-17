@@ -42,7 +42,7 @@ import java.util.NoSuchElementException;
  *  The {@code Graph} class represents an undirected graph of vertices
  *  named 0 through <em>V</em> – 1.
  *  It supports the following two primary operations: add an edge to the graph,
- *  iterate over all of the vertices adjacent to a vertex. It also provides
+ *  iterate over all of the vertices adjacent with a given vertex. It also provides
  *  methods for returning the degree of a vertex, the number of vertices
  *  <em>V</em> in the graph, and the number of edges <em>E</em> in the graph.
  *  Parallel edges and self-loops are permitted.
@@ -199,10 +199,10 @@ public class Graph {
 
 
     /**
-     * Returns the vertices adjacent to vertex {@code v}.
+     * Returns the vertices adjacent with vertex {@code v}.
      *
      * @param  v the vertex
-     * @return the vertices adjacent to vertex {@code v}, as an iterable
+     * @return the vertices adjacent with vertex {@code v}, as an iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
     public Iterable<Integer> adj(int v) {
