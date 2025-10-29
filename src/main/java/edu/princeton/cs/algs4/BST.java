@@ -106,9 +106,9 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     // return number of key-value pairs in BST rooted at x
-    private int size(Node x) {
-        if (x == null) return 0;
-        else return x.size;
+    private int size(Node node) {
+        if (node == null) return 0;
+        else return node.size;
     }
 
     /**
@@ -136,13 +136,13 @@ public class BST<Key extends Comparable<Key>, Value> {
         return get(root, key);
     }
 
-    private Value get(Node x, Key key) {
+    private Value get(Node node, Key key) {
         if (key == null) throw new IllegalArgumentException("calls get() with a null key");
-        if (x == null) return null;
-        int cmp = key.compareTo(x.key);
-        if      (cmp < 0) return get(x.left, key);
-        else if (cmp > 0) return get(x.right, key);
-        else              return x.val;
+        if (node == null) return null;
+        int cmp = key.compareTo(node.key);
+        if      (cmp < 0) return get(node.left, key);
+        else if (cmp > 0) return get(node.right, key);
+        else              return node.val;
     }
 
     /**
@@ -165,14 +165,14 @@ public class BST<Key extends Comparable<Key>, Value> {
         assert check();
     }
 
-    private Node put(Node x, Key key, Value val) {
-        if (x == null) return new Node(key, val, 1);
-        int cmp = key.compareTo(x.key);
-        if      (cmp < 0) x.left  = put(x.left,  key, val);
-        else if (cmp > 0) x.right = put(x.right, key, val);
-        else              x.val   = val;
-        x.size = 1 + size(x.left) + size(x.right);
-        return x;
+    private Node put(Node node, Key key, Value val) {
+        if (node == null) return new Node(key, val, 1);
+        int cmp = key.compareTo(node.key);
+        if      (cmp < 0) node.left  = put(node.left,  key, val);
+        else if (cmp > 0) node.right = put(node.right, key, val);
+        else              node.val   = val;
+        node.size = 1 + size(node.left) + size(node.right);
+        return node;
     }
 
 
@@ -187,11 +187,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         assert check();
     }
 
-    private Node deleteMin(Node x) {
-        if (x.left == null) return x.right;
-        x.left = deleteMin(x.left);
-        x.size = size(x.left) + size(x.right) + 1;
-        return x;
+    private Node deleteMin(Node node) {
+        if (node.left == null) return node.right;
+        node.left = deleteMin(node.left);
+        node.size = size(node.left) + size(node.right) + 1;
+        return node;
     }
 
     /**
@@ -205,11 +205,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         assert check();
     }
 
-    private Node deleteMax(Node x) {
-        if (x.right == null) return x.left;
-        x.right = deleteMax(x.right);
-        x.size = size(x.left) + size(x.right) + 1;
-        return x;
+    private Node deleteMax(Node node) {
+        if (node.right == null) return node.left;
+        node.right = deleteMax(node.right);
+        node.size = size(node.left) + size(node.right) + 1;
+        return node;
     }
 
     /**
@@ -225,22 +225,22 @@ public class BST<Key extends Comparable<Key>, Value> {
         assert check();
     }
 
-    private Node delete(Node x, Key key) {
-        if (x == null) return null;
+    private Node delete(Node node, Key key) {
+        if (node == null) return null;
 
-        int cmp = key.compareTo(x.key);
-        if      (cmp < 0) x.left  = delete(x.left,  key);
-        else if (cmp > 0) x.right = delete(x.right, key);
+        int cmp = key.compareTo(node.key);
+        if      (cmp < 0) node.left  = delete(node.left,  key);
+        else if (cmp > 0) node.right = delete(node.right, key);
         else {
-            if (x.right == null) return x.left;
-            if (x.left  == null) return x.right;
-            Node t = x;
-            x = min(t.right);
-            x.right = deleteMin(t.right);
-            x.left = t.left;
+            if (node.right == null) return node.left;
+            if (node.left  == null) return node.right;
+            Node temp = node;
+            node = min(temp.right);
+            node.right = deleteMin(temp.right);
+            node.left = temp.left;
         }
-        x.size = size(x.left) + size(x.right) + 1;
-        return x;
+        node.size = size(node.left) + size(node.right) + 1;
+        return node;
     }
 
 
@@ -255,9 +255,9 @@ public class BST<Key extends Comparable<Key>, Value> {
         return min(root).key;
     }
 
-    private Node min(Node x) {
-        if (x.left == null) return x;
-        else                return min(x.left);
+    private Node min(Node node) {
+        if (node.left == null) return node;
+        else                   return min(node.left);
     }
 
     /**
@@ -271,9 +271,9 @@ public class BST<Key extends Comparable<Key>, Value> {
         return max(root).key;
     }
 
-    private Node max(Node x) {
-        if (x.right == null) return x;
-        else                 return max(x.right);
+    private Node max(Node node) {
+        if (node.right == null) return node;
+        else                    return max(node.right);
     }
 
     /**
@@ -287,34 +287,34 @@ public class BST<Key extends Comparable<Key>, Value> {
     public Key floor(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to floor() is null");
         if (isEmpty()) throw new NoSuchElementException("calls floor() with empty symbol table");
-        Node x = floor(root, key);
-        if (x == null) throw new NoSuchElementException("argument to floor() is too small");
-        else return x.key;
+        Node node = floor(root, key);
+        if (node == null) throw new NoSuchElementException("argument to floor() is too small");
+        else return node.key;
     }
 
-    private Node floor(Node x, Key key) {
-        if (x == null) return null;
-        int cmp = key.compareTo(x.key);
-        if (cmp == 0) return x;
-        if (cmp <  0) return floor(x.left, key);
-        Node t = floor(x.right, key);
+    private Node floor(Node node, Key key) {
+        if (node == null) return null;
+        int cmp = key.compareTo(node.key);
+        if (cmp == 0) return node;
+        if (cmp <  0) return floor(node.left, key);
+        Node t = floor(node.right, key);
         if (t != null) return t;
-        else return x;
+        else return node;
     }
 
     public Key floor2(Key key) {
-        Key x = floor2(root, key, null);
-        if (x == null) throw new NoSuchElementException("argument to floor() is too small");
-        else return x;
+        Key floor = floor2(root, key, null);
+        if (floor == null) throw new NoSuchElementException("argument to floor() is too small");
+        else return floor;
 
     }
 
-    private Key floor2(Node x, Key key, Key best) {
-        if (x == null) return best;
-        int cmp = key.compareTo(x.key);
-        if      (cmp  < 0) return floor2(x.left, key, best);
-        else if (cmp  > 0) return floor2(x.right, key, x.key);
-        else               return x.key;
+    private Key floor2(Node node, Key key, Key champ) {
+        if (node == null) return champ;
+        int cmp = key.compareTo(node.key);
+        if      (cmp  < 0) return floor2(node.left, key, champ);
+        else if (cmp  > 0) return floor2(node.right, key, node.key);
+        else               return node.key;
     }
 
     /**
@@ -328,21 +328,21 @@ public class BST<Key extends Comparable<Key>, Value> {
     public Key ceiling(Key key) {
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         if (isEmpty()) throw new NoSuchElementException("calls ceiling() with empty symbol table");
-        Node x = ceiling(root, key);
-        if (x == null) throw new NoSuchElementException("argument to ceiling() is too large");
-        else return x.key;
+        Node node = ceiling(root, key);
+        if (node == null) throw new NoSuchElementException("argument to ceiling() is too large");
+        else return node.key;
     }
 
-    private Node ceiling(Node x, Key key) {
-        if (x == null) return null;
-        int cmp = key.compareTo(x.key);
-        if (cmp == 0) return x;
+    private Node ceiling(Node node, Key key) {
+        if (node == null) return null;
+        int cmp = key.compareTo(node.key);
+        if (cmp == 0) return node;
         if (cmp < 0) {
-            Node t = ceiling(x.left, key);
+            Node t = ceiling(node.left, key);
             if (t != null) return t;
-            else return x;
+            else return node;
         }
-        return ceiling(x.right, key);
+        return ceiling(node.right, key);
     }
 
     /**
@@ -365,12 +365,12 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     // Return key in BST rooted at x of given rank.
     // Precondition: rank is in legal range.
-    private Key select(Node x, int rank) {
-        if (x == null) return null;
-        int leftSize = size(x.left);
-        if      (leftSize > rank) return select(x.left,  rank);
-        else if (leftSize < rank) return select(x.right, rank - leftSize - 1);
-        else                      return x.key;
+    private Key select(Node node, int rank) {
+        if (node == null) return null;
+        int leftSize = size(node.left);
+        if      (leftSize > rank) return select(node.left,  rank);
+        else if (leftSize < rank) return select(node.right, rank - leftSize - 1);
+        else                      return node.key;
     }
 
     /**
@@ -386,12 +386,12 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     // Number of keys in the subtree less than key.
-    private int rank(Key key, Node x) {
-        if (x == null) return 0;
-        int cmp = key.compareTo(x.key);
-        if      (cmp < 0) return rank(key, x.left);
-        else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right);
-        else              return size(x.left);
+    private int rank(Key key, Node node) {
+        if (node == null) return 0;
+        int cmp = key.compareTo(node.key);
+        if      (cmp < 0) return rank(key, node.left);
+        else if (cmp > 0) return 1 + size(node.left) + rank(key, node.right);
+        else              return size(node.left);
     }
 
     /**
@@ -427,13 +427,13 @@ public class BST<Key extends Comparable<Key>, Value> {
         return queue;
     }
 
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
-        if (x == null) return;
-        int cmplo = lo.compareTo(x.key);
-        int cmphi = hi.compareTo(x.key);
-        if (cmplo < 0) keys(x.left, queue, lo, hi);
-        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
-        if (cmphi > 0) keys(x.right, queue, lo, hi);
+    private void keys(Node node, Queue<Key> queue, Key lo, Key hi) {
+        if (node == null) return;
+        int cmplo = lo.compareTo(node.key);
+        int cmphi = hi.compareTo(node.key);
+        if (cmplo < 0) keys(node.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(node.key);
+        if (cmphi > 0) keys(node.right, queue, lo, hi);
     }
 
     /**
@@ -463,9 +463,9 @@ public class BST<Key extends Comparable<Key>, Value> {
     public int height() {
         return height(root);
     }
-    private int height(Node x) {
-        if (x == null) return -1;
-        return 1 + Math.max(height(x.left), height(x.right));
+    private int height(Node node) {
+        if (node == null) return -1;
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
     /**
@@ -478,11 +478,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         Queue<Node> queue = new Queue<Node>();
         queue.enqueue(root);
         while (!queue.isEmpty()) {
-            Node x = queue.dequeue();
-            if (x == null) continue;
-            keys.enqueue(x.key);
-            queue.enqueue(x.left);
-            queue.enqueue(x.right);
+            Node node = queue.dequeue();
+            if (node == null) continue;
+            keys.enqueue(node.key);
+            queue.enqueue(node.left);
+            queue.enqueue(node.right);
         }
         return keys;
     }
@@ -506,19 +506,19 @@ public class BST<Key extends Comparable<Key>, Value> {
     // is the tree rooted at x a BST with all keys strictly between min and max
     // (if min or max is null, treat as empty constraint)
     // Credit: elegant solution due to Bob Dondero
-    private boolean isBST(Node x, Key min, Key max) {
-        if (x == null) return true;
-        if (min != null && x.key.compareTo(min) <= 0) return false;
-        if (max != null && x.key.compareTo(max) >= 0) return false;
-        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+    private boolean isBST(Node node, Key min, Key max) {
+        if (node == null) return true;
+        if (min != null && node.key.compareTo(min) <= 0) return false;
+        if (max != null && node.key.compareTo(max) >= 0) return false;
+        return isBST(node.left, min, node.key) && isBST(node.right, node.key, max);
     }
 
     // are the size fields correct?
     private boolean isSizeConsistent() { return isSizeConsistent(root); }
-    private boolean isSizeConsistent(Node x) {
-        if (x == null) return true;
-        if (x.size != size(x.left) + size(x.right) + 1) return false;
-        return isSizeConsistent(x.left) && isSizeConsistent(x.right);
+    private boolean isSizeConsistent(Node node) {
+        if (node == null) return true;
+        if (node.size != size(node.left) + size(node.right) + 1) return false;
+        return isSizeConsistent(node.left) && isSizeConsistent(node.right);
     }
 
     // check that ranks are consistent
