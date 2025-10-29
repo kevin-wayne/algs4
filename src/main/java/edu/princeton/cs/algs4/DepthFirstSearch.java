@@ -46,25 +46,25 @@ public class DepthFirstSearch {
     private int count;           // number of vertices connected to s
 
     /**
-     * Computes the vertices in graph {@code G} that are
+     * Computes the vertices in {@code graph} that are
      * connected to the source vertex {@code s}.
-     * @param G the graph
+     * @param graph the graph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DepthFirstSearch(Graph G, int s) {
-        marked = new boolean[G.V()];
+    public DepthFirstSearch(Graph graph, int s) {
+        marked = new boolean[graph.V()];
         validateVertex(s);
-        dfs(G, s);
+        dfs(graph, s);
     }
 
     // depth first search from v
-    private void dfs(Graph G, int v) {
+    private void dfs(Graph graph, int v) {
         count++;
         marked[v] = true;
-        for (int w : G.adj(v)) {
+        for (int w : graph.adj(v)) {
             if (!marked[w]) {
-                dfs(G, w);
+                dfs(graph, w);
             }
         }
     }
@@ -102,17 +102,17 @@ public class DepthFirstSearch {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
+        Graph graph = new Graph(in);
         int s = Integer.parseInt(args[1]);
-        DepthFirstSearch search = new DepthFirstSearch(G, s);
-        for (int v = 0; v < G.V(); v++) {
+        DepthFirstSearch search = new DepthFirstSearch(graph, s);
+        for (int v = 0; v < graph.V(); v++) {
             if (search.marked(v))
                 StdOut.print(v + " ");
         }
 
         StdOut.println();
-        if (search.count() != G.V()) StdOut.println("NOT connected");
-        else                         StdOut.println("connected");
+        if (search.count() != graph.V()) StdOut.println("NOT connected");
+        else                             StdOut.println("connected");
     }
 
 }

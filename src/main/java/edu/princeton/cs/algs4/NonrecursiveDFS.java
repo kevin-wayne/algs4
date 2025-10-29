@@ -63,21 +63,21 @@ import java.util.Iterator;
 public class NonrecursiveDFS {
     private boolean[] marked;  // marked[v] = is there an s-v path?
     /**
-     * Computes the vertices connected to the source vertex {@code s} in the graph {@code G}.
-     * @param G the graph
+     * Computes the vertices connected to the source vertex {@code s} in {@code graph}.
+     * @param graph the graph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public NonrecursiveDFS(Graph G, int s) {
-        marked = new boolean[G.V()];
+    public NonrecursiveDFS(Graph graph, int s) {
+        marked = new boolean[graph.V()];
 
         validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
-        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            adj[v] = G.adj(v).iterator();
+        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[graph.V()];
+        for (int v = 0; v < graph.V(); v++)
+            adj[v] = graph.adj(v).iterator();
 
         // depth-first search using an explicit stack
         Stack<Integer> stack = new Stack<Integer>();
@@ -129,10 +129,10 @@ public class NonrecursiveDFS {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
+        Graph graph = new Graph(in);
         int s = Integer.parseInt(args[1]);
-        NonrecursiveDFS dfs = new NonrecursiveDFS(G, s);
-        for (int v = 0; v < G.V(); v++)
+        NonrecursiveDFS dfs = new NonrecursiveDFS(graph, s);
+        for (int v = 0; v < graph.V(); v++)
             if (dfs.marked(v))
                 StdOut.print(v + " ");
         StdOut.println();

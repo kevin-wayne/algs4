@@ -125,20 +125,20 @@ public class Digraph {
     /**
      * Initializes a new digraph that is a deep copy of the specified digraph.
      *
-     * @param  G the digraph to copy
-     * @throws IllegalArgumentException if {@code G} is {@code null}
+     * @param  digraph the digraph to copy
+     * @throws IllegalArgumentException if {@code digraph} is {@code null}
      */
-    public Digraph(Digraph G) {
-        if (G == null) throw new IllegalArgumentException("argument is null");
+    public Digraph(Digraph digraph) {
+        if (digraph == null) throw new IllegalArgumentException("argument is null");
 
-        this.V = G.V();
-        this.E = G.E();
+        this.V = digraph.V();
+        this.E = digraph.E();
         if (V < 0) throw new IllegalArgumentException("Number of vertices in a Digraph must be non-negative");
 
         // update indegrees
         indegree = new int[V];
         for (int v = 0; v < V; v++)
-            this.indegree[v] = G.indegree(v);
+            this.indegree[v] = digraph.indegree(v);
 
         // update adjacency lists
         adj = (Bag<Integer>[]) new Bag[V];
@@ -146,10 +146,10 @@ public class Digraph {
             adj[v] = new Bag<Integer>();
         }
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
-            for (int w : G.adj[v]) {
+            for (int w : digraph.adj[v]) {
                 reverse.push(w);
             }
             for (int w : reverse) {
@@ -313,8 +313,8 @@ public class Digraph {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
-        StdOut.println(G);
+        Digraph graph = new Digraph(in);
+        StdOut.println(graph);
     }
 
 }

@@ -61,16 +61,16 @@ public class Topological {
     private int[] rank;               // rank[v] = rank of vertex v in order
 
     /**
-     * Determines whether the digraph {@code G} has a topological order and, if so,
+     * Determines whether the {@code digraph} has a topological order and, if so,
      * finds such a topological order.
-     * @param G the digraph
+     * @param digraph the digraph
      */
-    public Topological(Digraph G) {
-        DirectedCycle finder = new DirectedCycle(G);
+    public Topological(Digraph digraph) {
+        DirectedCycle finder = new DirectedCycle(digraph);
         if (!finder.hasCycle()) {
-            DepthFirstOrder dfs = new DepthFirstOrder(G);
+            DepthFirstOrder dfs = new DepthFirstOrder(digraph);
             order = dfs.reversePost();
-            rank = new int[G.V()];
+            rank = new int[digraph.V()];
             int i = 0;
             for (int v : order)
                 rank[v] = i++;
@@ -78,14 +78,14 @@ public class Topological {
     }
 
     /**
-     * Determines whether the edge-weighted digraph {@code G} has a topological
+     * Determines whether the edge-weighted digraph {@code digraph} has a topological
      * order and, if so, finds such an order.
-     * @param G the edge-weighted digraph
+     * @param digraph the edge-weighted digraph
      */
-    public Topological(EdgeWeightedDigraph G) {
-        EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(G);
+    public Topological(EdgeWeightedDigraph digraph) {
+        EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(digraph);
         if (!finder.hasCycle()) {
-            DepthFirstOrder dfs = new DepthFirstOrder(G);
+            DepthFirstOrder dfs = new DepthFirstOrder(digraph);
             order = dfs.reversePost();
         }
     }

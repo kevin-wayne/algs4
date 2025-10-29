@@ -52,31 +52,31 @@ public class Cycle {
     private Stack<Integer> cycle;
 
     /**
-     * Determines whether the undirected graph {@code G} has a cycle and,
+     * Determines whether the undirected graph {@code graph} has a cycle and,
      * if so, finds such a cycle.
      *
-     * @param G the undirected graph
+     * @param graph the undirected graph
      */
-    public Cycle(Graph G) {
+    public Cycle(Graph graph) {
         // need special case to identify parallel edge as a cycle
-        if (hasParallelEdges(G)) return;
+        if (hasParallelEdges(graph)) return;
 
         // don't need special case to identify self-loop as a cycle
-        // if (hasSelfLoop(G)) return;
+        // if (hasSelfLoop(graph)) return;
 
-        marked = new boolean[G.V()];
-        edgeTo = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
+        marked = new boolean[graph.V()];
+        edgeTo = new int[graph.V()];
+        for (int v = 0; v < graph.V(); v++)
             if (!marked[v])
-                dfs(G, -1, v);
+                dfs(graph, -1, v);
     }
 
 
     // does this graph have a self loop?
     // side effect: initialize cycle to be self loop
-    private boolean hasSelfLoop(Graph G) {
-        for (int v = 0; v < G.V(); v++) {
-            for (int w : G.adj(v)) {
+    private boolean hasSelfLoop(Graph graph) {
+        for (int v = 0; v < graph.V(); v++) {
+            for (int w : graph.adj(v)) {
                 if (v == w) {
                     cycle = new Stack<Integer>();
                     cycle.push(v);
@@ -90,13 +90,13 @@ public class Cycle {
 
     // does this graph have two parallel edges?
     // side effect: initialize cycle to be two parallel edges
-    private boolean hasParallelEdges(Graph G) {
-        marked = new boolean[G.V()];
+    private boolean hasParallelEdges(Graph graph) {
+        marked = new boolean[graph.V()];
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
 
             // check for parallel edges incident to v
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 if (marked[w]) {
                     cycle = new Stack<Integer>();
                     cycle.push(v);
@@ -108,7 +108,7 @@ public class Cycle {
             }
 
             // reset so marked[v] = false for all v
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 marked[w] = false;
             }
         }
@@ -116,7 +116,7 @@ public class Cycle {
     }
 
     /**
-     * Returns true if the graph {@code G} has a cycle.
+     * Returns true if {@code graph} has a cycle.
      *
      * @return {@code true} if the graph has a cycle; {@code false} otherwise
      */
@@ -133,16 +133,16 @@ public class Cycle {
         return cycle;
     }
 
-    private void dfs(Graph G, int u, int v) {
+    private void dfs(Graph graph, int u, int v) {
         marked[v] = true;
-        for (int w : G.adj(v)) {
+        for (int w : graph.adj(v)) {
 
             // short circuit if cycle already found
             if (cycle != null) return;
 
             if (!marked[w]) {
                 edgeTo[w] = v;
-                dfs(G, v, w);
+                dfs(graph, v, w);
             }
 
             // check for cycle (but disregard reverse of edge leading to v)
@@ -164,8 +164,8 @@ public class Cycle {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
-        Cycle finder = new Cycle(G);
+        Graph graph = new Graph(in);
+        Cycle finder = new Cycle(graph);
         if (finder.hasCycle()) {
             for (int v : finder.cycle()) {
                 StdOut.print(v + " ");

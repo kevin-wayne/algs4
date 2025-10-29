@@ -67,60 +67,60 @@ public class CC {
     private int count;          // number of connected components
 
     /**
-     * Computes the connected components of the undirected graph {@code G}.
+     * Computes the connected components of the undirected graph {@code graph}.
      *
-     * @param G the undirected graph
+     * @param graph the undirected graph
      */
-    public CC(Graph G) {
-        marked = new boolean[G.V()];
-        id = new int[G.V()];
-        size = new int[G.V()];
-        for (int v = 0; v < G.V(); v++) {
+    public CC(Graph graph) {
+        marked = new boolean[graph.V()];
+        id = new int[graph.V()];
+        size = new int[graph.V()];
+        for (int v = 0; v < graph.V(); v++) {
             if (!marked[v]) {
-                dfs(G, v);
+                dfs(graph, v);
                 count++;
             }
         }
     }
 
     /**
-     * Computes the connected components of the edge-weighted graph {@code G}.
+     * Computes the connected components of the edge-weighted graph {@code graph}.
      *
-     * @param G the edge-weighted graph
+     * @param graph the edge-weighted graph
      */
-    public CC(EdgeWeightedGraph G) {
-        marked = new boolean[G.V()];
-        id = new int[G.V()];
-        size = new int[G.V()];
-        for (int v = 0; v < G.V(); v++) {
+    public CC(EdgeWeightedGraph graph) {
+        marked = new boolean[graph.V()];
+        id = new int[graph.V()];
+        size = new int[graph.V()];
+        for (int v = 0; v < graph.V(); v++) {
             if (!marked[v]) {
-                dfs(G, v);
+                dfs(graph, v);
                 count++;
             }
         }
     }
 
     // depth-first search for a Graph
-    private void dfs(Graph G, int v) {
+    private void dfs(Graph graph, int v) {
         marked[v] = true;
         id[v] = count;
         size[count]++;
-        for (int w : G.adj(v)) {
+        for (int w : graph.adj(v)) {
             if (!marked[w]) {
-                dfs(G, w);
+                dfs(graph, w);
             }
         }
     }
 
     // depth-first search for an EdgeWeightedGraph
-    private void dfs(EdgeWeightedGraph G, int v) {
+    private void dfs(EdgeWeightedGraph graph, int v) {
         marked[v] = true;
         id[v] = count;
         size[count]++;
-        for (Edge e : G.adj(v)) {
+        for (Edge e : graph.adj(v)) {
             int w = e.other(v);
             if (!marked[w]) {
-                dfs(G, w);
+                dfs(graph, w);
             }
         }
     }
@@ -209,8 +209,8 @@ public class CC {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
-        CC cc = new CC(G);
+        Graph graph = new Graph(in);
+        CC cc = new CC(graph);
 
         // number of connected components
         int m = cc.count();
@@ -221,7 +221,7 @@ public class CC {
         for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
             components[cc.id(v)].enqueue(v);
         }
 

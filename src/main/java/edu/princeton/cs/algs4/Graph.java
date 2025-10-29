@@ -130,14 +130,14 @@ public class Graph {
 
 
     /**
-     * Initializes a new graph that is a deep copy of {@code G}.
+     * Initializes a new graph that is a deep copy of {@code graph}.
      *
-     * @param  G the graph to copy
-     * @throws IllegalArgumentException if {@code G} is {@code null}
+     * @param  graph the graph to copy
+     * @throws IllegalArgumentException if {@code graph} is {@code null}
      */
-    public Graph(Graph G) {
-        this.V = G.V();
-        this.E = G.E();
+    public Graph(Graph graph) {
+        this.V = graph.V();
+        this.E = graph.E();
         if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
 
         // update adjacency lists
@@ -146,10 +146,10 @@ public class Graph {
             adj[v] = new Bag<Integer>();
         }
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<Integer>();
-            for (int w : G.adj[v]) {
+            for (int w : graph.adj[v]) {
                 reverse.push(w);
             }
             for (int w : reverse) {
@@ -294,8 +294,8 @@ public class Graph {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
-        StdOut.println(G);
+        Graph graph = new Graph(in);
+        StdOut.println(graph);
     }
 
 }

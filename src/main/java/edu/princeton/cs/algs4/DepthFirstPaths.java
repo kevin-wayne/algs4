@@ -55,26 +55,26 @@ public class DepthFirstPaths {
     private final int s;         // source vertex
 
     /**
-     * Computes a path between {@code s} and every other vertex in graph {@code G}.
-     * @param G the graph
+     * Computes a path between {@code s} and every other vertex in {@code graph}.
+     * @param graph the graph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DepthFirstPaths(Graph G, int s) {
+    public DepthFirstPaths(Graph graph, int s) {
         this.s = s;
-        edgeTo = new int[G.V()];
-        marked = new boolean[G.V()];
+        edgeTo = new int[graph.V()];
+        marked = new boolean[graph.V()];
         validateVertex(s);
-        dfs(G, s);
+        dfs(graph, s);
     }
 
     // depth first search from v
-    private void dfs(Graph G, int v) {
+    private void dfs(Graph graph, int v) {
         marked[v] = true;
-        for (int w : G.adj(v)) {
+        for (int w : graph.adj(v)) {
             if (!marked[w]) {
                 edgeTo[w] = v;
-                dfs(G, w);
+                dfs(graph, w);
             }
         }
     }
@@ -122,11 +122,11 @@ public class DepthFirstPaths {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
+        Graph graph = new Graph(in);
         int s = Integer.parseInt(args[1]);
-        DepthFirstPaths dfs = new DepthFirstPaths(G, s);
+        DepthFirstPaths dfs = new DepthFirstPaths(graph, s);
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
             if (dfs.hasPathTo(v)) {
                 StdOut.printf("%d to %d:  ", s, v);
                 for (int x : dfs.pathTo(v)) {

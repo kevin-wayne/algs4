@@ -34,6 +34,7 @@ package edu.princeton.cs.algs4;
  *  where <em>V</em> is the number of vertices and <em>E</em> is the number of edges.
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ *  See {@link NonrecursiveDirectedDFS} for a nonrecursive implementation.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of

@@ -67,39 +67,39 @@ public class DijkstraSP {
 
     /**
      * Computes a shortest-paths tree from the source vertex {@code s} to every other
-     * vertex in the edge-weighted digraph {@code G}.
+     * vertex in the edge-weighted {@code digraph}.
      *
-     * @param  G the edge-weighted digraph
+     * @param  digraph the edge-weighted digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException if an edge weight is negative
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DijkstraSP(EdgeWeightedDigraph G, int s) {
-        for (DirectedEdge e : G.edges()) {
+    public DijkstraSP(EdgeWeightedDigraph digraph, int s) {
+        for (DirectedEdge e : digraph.edges()) {
             if (e.weight() < 0)
                 throw new IllegalArgumentException("edge " + e + " has negative weight");
         }
 
-        distTo = new double[G.V()];
-        edgeTo = new DirectedEdge[G.V()];
+        distTo = new double[digraph.V()];
+        edgeTo = new DirectedEdge[digraph.V()];
 
         validateVertex(s);
 
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
 
         // relax vertices in order of distance from s
-        pq = new IndexMinPQ<Double>(G.V());
+        pq = new IndexMinPQ<Double>(digraph.V());
         pq.insert(s, distTo[s]);
         while (!pq.isEmpty()) {
             int v = pq.delMin();
-            for (DirectedEdge e : G.adj(v))
+            for (DirectedEdge e : digraph.adj(v))
                 relax(e);
         }
 
         // check optimality conditions
-        assert check(G, s);
+        assert check(digraph, s);
     }
 
     // relax edge e and update pq if changed
@@ -160,10 +160,10 @@ public class DijkstraSP {
     // check optimality conditions:
     // (i) for all edges e:            distTo[e.to()] <= distTo[e.from()] + e.weight()
     // (ii) for all edge e on the SPT: distTo[e.to()] == distTo[e.from()] + e.weight()
-    private boolean check(EdgeWeightedDigraph G, int s) {
+    private boolean check(EdgeWeightedDigraph digraph, int s) {
 
         // check that edge weights are non-negative
-        for (DirectedEdge e : G.edges()) {
+        for (DirectedEdge e : digraph.edges()) {
             if (e.weight() < 0) {
                 System.err.println("negative edge weight detected");
                 return false;
@@ -175,7 +175,7 @@ public class DijkstraSP {
             System.err.println("distTo[s] and edgeTo[s] inconsistent");
             return false;
         }
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (v == s) continue;
             if (edgeTo[v] == null && distTo[v] != Double.POSITIVE_INFINITY) {
                 System.err.println("distTo[] and edgeTo[] inconsistent");
@@ -184,8 +184,8 @@ public class DijkstraSP {
         }
 
         // check that all edges e = v->w satisfy distTo[w] <= distTo[v] + e.weight()
-        for (int v = 0; v < G.V(); v++) {
-            for (DirectedEdge e : G.adj(v)) {
+        for (int v = 0; v < digraph.V(); v++) {
+            for (DirectedEdge e : digraph.adj(v)) {
                 int w = e.to();
                 if (distTo[v] + e.weight() < distTo[w]) {
                     System.err.println("edge " + e + " not relaxed");
@@ -195,7 +195,7 @@ public class DijkstraSP {
         }
 
         // check that all edges e = v->w on SPT satisfy distTo[w] == distTo[v] + e.weight()
-        for (int w = 0; w < G.V(); w++) {
+        for (int w = 0; w < digraph.V(); w++) {
             if (edgeTo[w] == null) continue;
             DirectedEdge e = edgeTo[w];
             int v = e.from();
@@ -222,15 +222,15 @@ public class DijkstraSP {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
+        EdgeWeightedDigraph digraph = new EdgeWeightedDigraph(in);
         int s = Integer.parseInt(args[1]);
 
         // compute shortest paths
-        DijkstraSP sp = new DijkstraSP(G, s);
+        DijkstraSP sp = new DijkstraSP(digraph, s);
 
 
         // print shortest path
-        for (int t = 0; t < G.V(); t++) {
+        for (int t = 0; t < digraph.V(); t++) {
             if (sp.hasPathTo(t)) {
                 StdOut.printf("%d to %d (%.2f)  ", s, t, sp.distTo(t));
                 for (DirectedEdge e : sp.pathTo(t)) {

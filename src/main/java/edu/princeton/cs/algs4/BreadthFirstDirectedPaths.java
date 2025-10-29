@@ -54,50 +54,50 @@ public class BreadthFirstDirectedPaths {
     private int[] distTo;      // distTo[v] = length of shortest s->v path
 
     /**
-     * Computes the shortest path from {@code s} and every other vertex in graph {@code G}.
-     * @param G the digraph
+     * Computes the shortest path from {@code s} and every other vertex in {@code digraph}.
+     * @param digraph the digraph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
-    public BreadthFirstDirectedPaths(Digraph G, int s) {
-        marked = new boolean[G.V()];
-        distTo = new int[G.V()];
-        edgeTo = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
+    public BreadthFirstDirectedPaths(Digraph digraph, int s) {
+        marked = new boolean[digraph.V()];
+        distTo = new int[digraph.V()];
+        edgeTo = new int[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
             distTo[v] = INFINITY;
         validateVertex(s);
-        bfs(G, s);
+        bfs(digraph, s);
     }
 
     /**
      * Computes the shortest path from any one of the source vertices in {@code sources}
-     * to every other vertex in graph {@code G}.
-     * @param G the digraph
+     * to every other vertex in {@code digraph}.
+     * @param digraph the digraph
      * @param sources the source vertices
      * @throws IllegalArgumentException if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code sources} contains no vertices
      * @throws IllegalArgumentException unless each vertex {@code v} in
      *         {@code sources} satisfies {@code 0 <= v < V}
      */
-    public BreadthFirstDirectedPaths(Digraph G, Iterable<Integer> sources) {
-        marked = new boolean[G.V()];
-        distTo = new int[G.V()];
-        edgeTo = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
+    public BreadthFirstDirectedPaths(Digraph digraph, Iterable<Integer> sources) {
+        marked = new boolean[digraph.V()];
+        distTo = new int[digraph.V()];
+        edgeTo = new int[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
             distTo[v] = INFINITY;
         validateVertices(sources);
-        bfs(G, sources);
+        bfs(digraph, sources);
     }
 
     // BFS from single source
-    private void bfs(Digraph G, int s) {
+    private void bfs(Digraph digraph, int s) {
         Queue<Integer> q = new Queue<Integer>();
         marked[s] = true;
         distTo[s] = 0;
         q.enqueue(s);
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : digraph.adj(v)) {
                 if (!marked[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
@@ -109,7 +109,7 @@ public class BreadthFirstDirectedPaths {
     }
 
     // BFS from multiple sources
-    private void bfs(Digraph G, Iterable<Integer> sources) {
+    private void bfs(Digraph digraph, Iterable<Integer> sources) {
         Queue<Integer> q = new Queue<Integer>();
         for (int s : sources) {
             marked[s] = true;
@@ -118,7 +118,7 @@ public class BreadthFirstDirectedPaths {
         }
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : digraph.adj(v)) {
                 if (!marked[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
@@ -205,13 +205,13 @@ public class BreadthFirstDirectedPaths {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
-        // StdOut.println(G);
+        Digraph digraph = new Digraph(in);
+        // StdOut.println(digraph);
 
         int s = Integer.parseInt(args[1]);
-        BreadthFirstDirectedPaths bfs = new BreadthFirstDirectedPaths(G, s);
+        BreadthFirstDirectedPaths bfs = new BreadthFirstDirectedPaths(digraph, s);
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (bfs.hasPathTo(v)) {
                 StdOut.printf("%d to %d (%d):  ", s, v, bfs.distTo(v));
                 for (int x : bfs.pathTo(v)) {

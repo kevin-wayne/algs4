@@ -33,6 +33,7 @@ package edu.princeton.cs.algs4;
  *  <p>
  *  See {@link Topological} to compute a topological order if the
  *  digraph is acyclic.
+ *  See {@link DirectedCycleX} for a nonrecursive, queue-based implementation.
  *  <p>
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
@@ -48,23 +49,23 @@ public class DirectedCycle {
     private Stack<Integer> cycle;    // directed cycle (or null if no such cycle)
 
     /**
-     * Determines whether the digraph {@code G} has a directed cycle and, if so,
+     * Determines whether {@code digraph} has a directed cycle and, if so,
      * finds such a cycle.
-     * @param G the digraph
+     * @param digraph the digraph
      */
-    public DirectedCycle(Digraph G) {
-        marked  = new boolean[G.V()];
-        onStack = new boolean[G.V()];
-        edgeTo  = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            if (!marked[v] && cycle == null) dfs(G, v);
+    public DirectedCycle(Digraph digraph) {
+        marked  = new boolean[digraph.V()];
+        onStack = new boolean[digraph.V()];
+        edgeTo  = new int[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
+            if (!marked[v] && cycle == null) dfs(digraph, v);
     }
 
     // run DFS and find a directed cycle (if one exists)
-    private void dfs(Digraph G, int v) {
+    private void dfs(Digraph digraph, int v) {
         onStack[v] = true;
         marked[v] = true;
-        for (int w : G.adj(v)) {
+        for (int w : digraph.adj(v)) {
 
             // short circuit if directed cycle found
             if (cycle != null) return;
@@ -72,7 +73,7 @@ public class DirectedCycle {
             // found new vertex, so recur
             else if (!marked[w]) {
                 edgeTo[w] = v;
-                dfs(G, w);
+                dfs(digraph, w);
             }
 
             // trace back directed cycle
@@ -134,9 +135,9 @@ public class DirectedCycle {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
+        Digraph digraph = new Digraph(in);
 
-        DirectedCycle finder = new DirectedCycle(G);
+        DirectedCycle finder = new DirectedCycle(digraph);
         if (finder.hasCycle()) {
             StdOut.print("Directed cycle: ");
             for (int v : finder.cycle()) {

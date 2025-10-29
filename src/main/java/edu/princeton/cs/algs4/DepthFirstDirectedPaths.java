@@ -41,7 +41,6 @@ package edu.princeton.cs.algs4;
  *  Each instance method takes &Theta;(1) time.
  *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
  *  <p>
- *  See {@link DepthFirstDirectedPaths} for a nonrecursive implementation.
  *  For additional documentation,
  *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
@@ -55,25 +54,25 @@ public class DepthFirstDirectedPaths {
     private final int s;       // source vertex
 
     /**
-     * Computes a directed path from {@code s} to every other vertex in digraph {@code G}.
-     * @param  G the digraph
+     * Computes a directed path from {@code s} to every other vertex in {@code digraph}.
+     * @param  digraph the digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DepthFirstDirectedPaths(Digraph G, int s) {
-        marked = new boolean[G.V()];
-        edgeTo = new int[G.V()];
+    public DepthFirstDirectedPaths(Digraph digraph, int s) {
+        marked = new boolean[digraph.V()];
+        edgeTo = new int[digraph.V()];
         this.s = s;
         validateVertex(s);
-        dfs(G, s);
+        dfs(digraph, s);
     }
 
-    private void dfs(Digraph G, int v) {
+    private void dfs(Digraph digraph, int v) {
         marked[v] = true;
-        for (int w : G.adj(v)) {
+        for (int w : digraph.adj(v)) {
             if (!marked[w]) {
                 edgeTo[w] = v;
-                dfs(G, w);
+                dfs(digraph, w);
             }
         }
     }
@@ -123,13 +122,13 @@ public class DepthFirstDirectedPaths {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
-        // StdOut.println(G);
+        Digraph digraph = new Digraph(in);
+        // StdOut.println(digraph);
 
         int s = Integer.parseInt(args[1]);
-        DepthFirstDirectedPaths dfs = new DepthFirstDirectedPaths(G, s);
+        DepthFirstDirectedPaths dfs = new DepthFirstDirectedPaths(digraph, s);
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (dfs.hasPathTo(v)) {
                 StdOut.printf("%d to %d:  ", s, v);
                 for (int x : dfs.pathTo(v)) {

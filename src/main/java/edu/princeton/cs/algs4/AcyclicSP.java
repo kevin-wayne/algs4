@@ -55,28 +55,28 @@ public class AcyclicSP {
 
     /**
      * Computes a shortest paths tree from {@code s} to every other vertex in
-     * the directed acyclic graph {@code G}.
-     * @param G the acyclic digraph
+     * the directed acyclic graph {@code digraph}.
+     * @param digraph the acyclic digraph
      * @param s the source vertex
      * @throws IllegalArgumentException if the digraph is not acyclic
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public AcyclicSP(EdgeWeightedDigraph G, int s) {
-        distTo = new double[G.V()];
-        edgeTo = new DirectedEdge[G.V()];
+    public AcyclicSP(EdgeWeightedDigraph digraph, int s) {
+        distTo = new double[digraph.V()];
+        edgeTo = new DirectedEdge[digraph.V()];
 
         validateVertex(s);
 
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             distTo[v] = Double.POSITIVE_INFINITY;
         distTo[s] = 0.0;
 
         // visit vertices in topological order
-        Topological topological = new Topological(G);
+        Topological topological = new Topological(digraph);
         if (!topological.hasOrder())
             throw new IllegalArgumentException("Digraph is not acyclic.");
         for (int v : topological.order()) {
-            for (DirectedEdge e : G.adj(v))
+            for (DirectedEdge e : digraph.adj(v))
                 relax(e);
         }
     }
@@ -146,11 +146,11 @@ public class AcyclicSP {
     public static void main(String[] args) {
         In in = new In(args[0]);
         int s = Integer.parseInt(args[1]);
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
+        EdgeWeightedDigraph digraph = new EdgeWeightedDigraph(in);
 
         // find shortest path from s to each other vertex in DAG
-        AcyclicSP sp = new AcyclicSP(G, s);
-        for (int v = 0; v < G.V(); v++) {
+        AcyclicSP sp = new AcyclicSP(digraph, s);
+        for (int v = 0; v < digraph.V(); v++) {
             if (sp.hasPathTo(v)) {
                 StdOut.printf("%d to %d (%.2f)  ", s, v, sp.distTo(v));
                 for (DirectedEdge e : sp.pathTo(v)) {

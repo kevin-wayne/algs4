@@ -69,46 +69,46 @@ public class BreadthFirstPaths {
 
     /**
      * Computes the shortest path between the source vertex {@code s}
-     * and every other vertex in the graph {@code G}.
-     * @param G the graph
+     * and every other vertex in the undirected graph {@code graph}.
+     * @param graph the graph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public BreadthFirstPaths(Graph G, int s) {
-        marked = new boolean[G.V()];
-        distTo = new int[G.V()];
-        edgeTo = new int[G.V()];
+    public BreadthFirstPaths(Graph graph, int s) {
+        marked = new boolean[graph.V()];
+        distTo = new int[graph.V()];
+        edgeTo = new int[graph.V()];
         validateVertex(s);
-        bfs(G, s);
+        bfs(graph, s);
 
-        assert check(G, s);
+        assert check(graph, s);
     }
 
     /**
      * Computes the shortest path between any one of the source vertices in {@code sources}
-     * and every other vertex in graph {@code G}.
-     * @param G the graph
+     * and every other vertex in {@code graph}.
+     * @param graph the graph
      * @param sources the source vertices
      * @throws IllegalArgumentException if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code sources} contains no vertices
      * @throws IllegalArgumentException unless {@code 0 <= s < V} for each vertex
      *         {@code s} in {@code sources}
      */
-    public BreadthFirstPaths(Graph G, Iterable<Integer> sources) {
-        marked = new boolean[G.V()];
-        distTo = new int[G.V()];
-        edgeTo = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
+    public BreadthFirstPaths(Graph graph, Iterable<Integer> sources) {
+        marked = new boolean[graph.V()];
+        distTo = new int[graph.V()];
+        edgeTo = new int[graph.V()];
+        for (int v = 0; v < graph.V(); v++)
             distTo[v] = INFINITY;
         validateVertices(sources);
-        bfs(G, sources);
+        bfs(graph, sources);
     }
 
 
     // breadth-first search from a single source
-    private void bfs(Graph G, int s) {
+    private void bfs(Graph graph, int s) {
         Queue<Integer> q = new Queue<Integer>();
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < graph.V(); v++)
             distTo[v] = INFINITY;
         distTo[s] = 0;
         marked[s] = true;
@@ -116,7 +116,7 @@ public class BreadthFirstPaths {
 
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 if (!marked[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
@@ -128,7 +128,7 @@ public class BreadthFirstPaths {
     }
 
     // breadth-first search from multiple sources
-    private void bfs(Graph G, Iterable<Integer> sources) {
+    private void bfs(Graph graph, Iterable<Integer> sources) {
         Queue<Integer> q = new Queue<Integer>();
         for (int s : sources) {
             marked[s] = true;
@@ -137,7 +137,7 @@ public class BreadthFirstPaths {
         }
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 if (!marked[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
@@ -192,7 +192,7 @@ public class BreadthFirstPaths {
 
 
     // check optimality conditions for single source
-    private boolean check(Graph G, int s) {
+    private boolean check(Graph graph, int s) {
 
         // check that the distance of s = 0
         if (distTo[s] != 0) {
@@ -202,8 +202,8 @@ public class BreadthFirstPaths {
 
         // check that for each edge v-w dist[w] <= dist[v] + 1
         // provided v is reachable from s
-        for (int v = 0; v < G.V(); v++) {
-            for (int w : G.adj(v)) {
+        for (int v = 0; v < graph.V(); v++) {
+            for (int w : graph.adj(v)) {
                 if (hasPathTo(v) != hasPathTo(w)) {
                     StdOut.println("edge " + v + "-" + w);
                     StdOut.println("hasPathTo(" + v + ") = " + hasPathTo(v));
@@ -221,7 +221,7 @@ public class BreadthFirstPaths {
 
         // check that v = edgeTo[w] satisfies distTo[w] = distTo[v] + 1
         // provided v is reachable from s
-        for (int w = 0; w < G.V(); w++) {
+        for (int w = 0; w < graph.V(); w++) {
             if (!hasPathTo(w) || w == s) continue;
             int v = edgeTo[w];
             if (distTo[w] != distTo[v] + 1) {
@@ -268,13 +268,13 @@ public class BreadthFirstPaths {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Graph G = new Graph(in);
-        // StdOut.println(G);
+        Graph graph = new Graph(in);
+        // StdOut.println(graph);
 
         int s = Integer.parseInt(args[1]);
-        BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
+        BreadthFirstPaths bfs = new BreadthFirstPaths(graph, s);
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
             if (bfs.hasPathTo(v)) {
                 StdOut.printf("%d to %d (%d):  ", s, v, bfs.distTo(v));
                 for (int x : bfs.pathTo(v)) {

@@ -74,7 +74,7 @@ public class SymbolGraph {
      * Initializes a graph from a file using the specified delimiter.
      * Each line in the file contains
      * the name of a vertex, followed by a list of the names
-     * of the vertices adjacent to that vertex, separated by the delimiter.
+     * of the vertices adjacent with that vertex, separated by the delimiter.
      * @param filename the name of the file
      * @param delimiter the delimiter between fields
      */

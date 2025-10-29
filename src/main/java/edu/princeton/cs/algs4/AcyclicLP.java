@@ -56,28 +56,28 @@ public class AcyclicLP {
 
     /**
      * Computes a longest paths tree from {@code s} to every other vertex in
-     * the directed acyclic graph {@code G}.
-     * @param G the acyclic digraph
+     * the directed acyclic graph {@code digraph}.
+     * @param digraph the acyclic digraph
      * @param s the source vertex
      * @throws IllegalArgumentException if the digraph is not acyclic
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public AcyclicLP(EdgeWeightedDigraph G, int s) {
-        distTo = new double[G.V()];
-        edgeTo = new DirectedEdge[G.V()];
+    public AcyclicLP(EdgeWeightedDigraph digraph, int s) {
+        distTo = new double[digraph.V()];
+        edgeTo = new DirectedEdge[digraph.V()];
 
         validateVertex(s);
 
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             distTo[v] = Double.NEGATIVE_INFINITY;
         distTo[s] = 0.0;
 
         // relax vertices in topological order
-        Topological topological = new Topological(G);
+        Topological topological = new Topological(digraph);
         if (!topological.hasOrder())
             throw new IllegalArgumentException("Digraph is not acyclic.");
         for (int v : topological.order()) {
-            for (DirectedEdge e : G.adj(v))
+            for (DirectedEdge e : digraph.adj(v))
                 relax(e);
         }
     }
@@ -147,11 +147,11 @@ public class AcyclicLP {
     public static void main(String[] args) {
         In in = new In(args[0]);
         int s = Integer.parseInt(args[1]);
-        EdgeWeightedDigraph G = new EdgeWeightedDigraph(in);
+        EdgeWeightedDigraph digraph = new EdgeWeightedDigraph(in);
 
-        AcyclicLP lp = new AcyclicLP(G, s);
+        AcyclicLP lp = new AcyclicLP(digraph, s);
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (lp.hasPathTo(v)) {
                 StdOut.printf("%d to %d (%.2f)  ", s, v, lp.distTo(v));
                 for (DirectedEdge e : lp.pathTo(v)) {

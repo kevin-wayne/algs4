@@ -47,20 +47,21 @@ public class NonrecursiveDirectedDFS {
     private boolean[] marked;  // marked[v] = is there an s->v path?
 
     /**
-     * Computes the vertices reachable from the source vertex {@code s} in the digraph {@code G}.
-     * @param  G the digraph
+     * Computes the vertices reachable from the source vertex {@code s}
+     * in {@code digraph}.
+     * @param  digraph the digraph
      * @param  s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public NonrecursiveDirectedDFS(Digraph G, int s) {
-        marked = new boolean[G.V()];
+    public NonrecursiveDirectedDFS(Digraph digraph, int s) {
+        marked = new boolean[digraph.V()];
         validateVertex(s);
 
         // to be able to iterate over each adjacency list, keeping track of which
         // vertex in each adjacency list needs to be explored next
-        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            adj[v] = G.adj(v).iterator();
+        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
+            adj[v] = digraph.adj(v).iterator();
 
         // depth-first search using an explicit stack
         Stack<Integer> stack = new Stack<Integer>();
@@ -112,10 +113,10 @@ public class NonrecursiveDirectedDFS {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
+        Digraph digraph = new Digraph(in);
         int s = Integer.parseInt(args[1]);
-        NonrecursiveDirectedDFS dfs = new NonrecursiveDirectedDFS(G, s);
-        for (int v = 0; v < G.V(); v++)
+        NonrecursiveDirectedDFS dfs = new NonrecursiveDirectedDFS(digraph, s);
+        for (int v = 0; v < digraph.V(); v++)
             if (dfs.marked(v))
                 StdOut.print(v + " ");
         StdOut.println();
