@@ -46,7 +46,7 @@ package edu.princeton.cs.algs4;
  *  See {@link DirectedCycle}, {@link DirectedCycleX}, and
  *  {@link EdgeWeightedDirectedCycle} for computing a directed cycle
  *  if the digraph is not a DAG.
- *  See {@link TopologicalX} for a nonrecursive queue-based algorithm
+ *  See {@link TopologicalX} for a nonrecursive, queue-based algorithm
  *  for computing a topological order of a DAG.
  *  <p>
  *  For additional documentation,
