@@ -51,23 +51,23 @@ public class BipartiteX {
      * Determines whether an undirected graph is bipartite and finds either a
      * bipartition or an odd-length cycle.
      *
-     * @param  G the graph
+     * @param graph the graph
      */
-    public BipartiteX(Graph G) {
+    public BipartiteX(Graph graph) {
         isBipartite = true;
-        color  = new boolean[G.V()];
-        marked = new boolean[G.V()];
-        edgeTo = new int[G.V()];
+        color  = new boolean[graph.V()];
+        marked = new boolean[graph.V()];
+        edgeTo = new int[graph.V()];
 
-        for (int v = 0; v < G.V() && isBipartite; v++) {
+        for (int v = 0; v < graph.V() && isBipartite; v++) {
             if (!marked[v]) {
-                bfs(G, v);
+                bfs(graph, v);
             }
         }
-        assert check(G);
+        assert check(graph);
     }
 
-    private void bfs(Graph G, int s) {
+    private void bfs(Graph graph, int s) {
         Queue<Integer> q = new Queue<Integer>();
         color[s] = WHITE;
         marked[s] = true;
@@ -75,7 +75,7 @@ public class BipartiteX {
 
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 if (!marked[w]) {
                     marked[w] = true;
                     edgeTo[w] = v;
@@ -148,11 +148,11 @@ public class BipartiteX {
         return cycle;
     }
 
-    private boolean check(Graph G) {
+    private boolean check(Graph graph) {
         // graph is bipartite
         if (isBipartite) {
-            for (int v = 0; v < G.V(); v++) {
-                for (int w : G.adj(v)) {
+            for (int v = 0; v < graph.V(); v++) {
+                for (int w : graph.adj(v)) {
                     if (color[v] == color[w]) {
                         System.err.printf("edge %d-%d with %d and %d in same side of bipartition\n", v, w, v, w);
                         return false;
@@ -197,20 +197,20 @@ public class BipartiteX {
 
         // create random bipartite graph with V1 vertices on left side,
         // V2 vertices on right side, and E edges; then add F random edges
-        Graph G = GraphGenerator.bipartite(V1, V2, E);
+        Graph graph = GraphGenerator.bipartite(V1, V2, E);
         for (int i = 0; i < F; i++) {
             int v = StdRandom.uniformInt(V1 + V2);
             int w = StdRandom.uniformInt(V1 + V2);
-            G.addEdge(v, w);
+            graph.addEdge(v, w);
         }
 
-        StdOut.println(G);
+        StdOut.println(graph);
 
 
-        BipartiteX b = new BipartiteX(G);
+        BipartiteX b = new BipartiteX(graph);
         if (b.isBipartite()) {
             StdOut.println("Graph is bipartite");
-            for (int v = 0; v < G.V(); v++) {
+            for (int v = 0; v < graph.V(); v++) {
                 StdOut.println(v + ": " + b.color(v));
             }
         }

@@ -64,33 +64,33 @@ public class GabowSCC {
 
 
     /**
-     * Computes the strong components of the digraph {@code G}.
-     * @param G the digraph
+     * Computes the strong components in a digraph.
+     * @param digraph the digraph
      */
-    public GabowSCC(Digraph G) {
-        marked = new boolean[G.V()];
+    public GabowSCC(Digraph digraph) {
+        marked = new boolean[digraph.V()];
         stack1 = new Stack<Integer>();
         stack2 = new Stack<Integer>();
-        id = new int[G.V()];
-        preorder = new int[G.V()];
-        for (int v = 0; v < G.V(); v++)
+        id = new int[digraph.V()];
+        preorder = new int[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
             id[v] = -1;
 
-        for (int v = 0; v < G.V(); v++) {
-            if (!marked[v]) dfs(G, v);
+        for (int v = 0; v < digraph.V(); v++) {
+            if (!marked[v]) dfs(digraph, v);
         }
 
         // check that id[] gives strong components
-        assert check(G);
+        assert check(digraph);
     }
 
-    private void dfs(Digraph G, int v) {
+    private void dfs(Digraph digraph, int v) {
         marked[v] = true;
         preorder[v] = pre++;
         stack1.push(v);
         stack2.push(v);
-        for (int w : G.adj(v)) {
-            if (!marked[w]) dfs(G, w);
+        for (int w : digraph.adj(v)) {
+            if (!marked[w]) dfs(digraph, w);
             else if (id[w] == -1) {
                 while (preorder[stack2.peek()] > preorder[w])
                     stack2.pop();
@@ -144,10 +144,10 @@ public class GabowSCC {
     }
 
     // does the id[] array contain the strongly connected components?
-    private boolean check(Digraph G) {
-        TransitiveClosure tc = new TransitiveClosure(G);
-        for (int v = 0; v < G.V(); v++) {
-            for (int w = 0; w < G.V(); w++) {
+    private boolean check(Digraph digraph) {
+        TransitiveClosure tc = new TransitiveClosure(digraph);
+        for (int v = 0; v < digraph.V(); v++) {
+            for (int w = 0; w < digraph.V(); w++) {
                 if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v)))
                     return false;
             }
@@ -169,8 +169,8 @@ public class GabowSCC {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
-        GabowSCC scc = new GabowSCC(G);
+        Digraph digraph = new Digraph(in);
+        GabowSCC scc = new GabowSCC(digraph);
 
         // number of connected components
         int m = scc.count();
@@ -181,7 +181,7 @@ public class GabowSCC {
         for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             components[scc.id(v)].enqueue(v);
         }
 

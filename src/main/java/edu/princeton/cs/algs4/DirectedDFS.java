@@ -48,41 +48,41 @@ public class DirectedDFS {
     private int count;         // number of vertices reachable from source(s)
 
     /**
-     * Computes the vertices in digraph {@code G} that are
-     * reachable from the source vertex {@code s}.
-     * @param G the digraph
+     * Computes the vertices in a digraph that are
+     * reachable from a source vertex.
+     * @param digraph the digraph
      * @param s the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DirectedDFS(Digraph G, int s) {
-        marked = new boolean[G.V()];
+    public DirectedDFS(Digraph digraph, int s) {
+        marked = new boolean[digraph.V()];
         validateVertex(s);
-        dfs(G, s);
+        dfs(digraph, s);
     }
 
     /**
-     * Computes the vertices in digraph {@code G} that are
-     * connected to any of the source vertices {@code sources}.
-     * @param G the graph
+     * Computes the vertices in a digraph that are
+     * connected to any of a set of source vertices.
+     * @param digraph the graph
      * @param sources the source vertices
      * @throws IllegalArgumentException if {@code sources} is {@code null}
      * @throws IllegalArgumentException if {@code sources} contains no vertices
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      *         for each vertex {@code s} in {@code sources}
      */
-    public DirectedDFS(Digraph G, Iterable<Integer> sources) {
-        marked = new boolean[G.V()];
+    public DirectedDFS(Digraph digraph, Iterable<Integer> sources) {
+        marked = new boolean[digraph.V()];
         validateVertices(sources);
         for (int v : sources) {
-            if (!marked[v]) dfs(G, v);
+            if (!marked[v]) dfs(digraph, v);
         }
     }
 
-    private void dfs(Digraph G, int v) {
+    private void dfs(Digraph digraph, int v) {
         count++;
         marked[v] = true;
-        for (int w : G.adj(v)) {
-            if (!marked[w]) dfs(G, w);
+        for (int w : digraph.adj(v)) {
+            if (!marked[w]) dfs(digraph, w);
         }
     }
 
@@ -143,7 +143,7 @@ public class DirectedDFS {
 
         // read in digraph from command-line argument
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
+        Digraph digraph = new Digraph(in);
 
         // read in sources from command-line arguments
         Bag<Integer> sources = new Bag<Integer>();
@@ -153,10 +153,10 @@ public class DirectedDFS {
         }
 
         // multiple-source reachability
-        DirectedDFS dfs = new DirectedDFS(G, sources);
+        DirectedDFS dfs = new DirectedDFS(digraph, sources);
 
         // print out vertices reachable from sources
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (dfs.marked(v)) StdOut.print(v + " ");
         }
         StdOut.println();

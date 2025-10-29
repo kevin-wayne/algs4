@@ -100,34 +100,34 @@ public class KosarajuSharirSCC {
     private int count;            // number of strongly-connected components
 
     /**
-     * Computes the strong components of the digraph {@code G}.
-     * @param G the digraph
+     * Computes the strong components of a digraph.
+     * @param digraph the digraph
      */
-    public KosarajuSharirSCC(Digraph G) {
+    public KosarajuSharirSCC(Digraph digraph) {
 
         // compute reverse postorder of reverse graph
-        DepthFirstOrder dfs = new DepthFirstOrder(G.reverse());
+        DepthFirstOrder dfs = new DepthFirstOrder(digraph.reverse());
 
-        // run DFS on G, using reverse postorder to guide calculation
-        marked = new boolean[G.V()];
-        id = new int[G.V()];
+        // run DFS on digraph, using reverse postorder to guide calculation
+        marked = new boolean[digraph.V()];
+        id = new int[digraph.V()];
         for (int v : dfs.reversePost()) {
             if (!marked[v]) {
-                dfs(G, v);
+                dfs(digraph, v);
                 count++;
             }
         }
 
         // check that id[] gives strong components
-        assert check(G);
+        assert check(digraph);
     }
 
-    // DFS on graph G
-    private void dfs(Digraph G, int v) {
+    // DFS on digraph
+    private void dfs(Digraph digraph, int v) {
         marked[v] = true;
         id[v] = count;
-        for (int w : G.adj(v)) {
-            if (!marked[w]) dfs(G, w);
+        for (int w : digraph.adj(v)) {
+            if (!marked[w]) dfs(digraph, w);
         }
     }
 
@@ -166,10 +166,10 @@ public class KosarajuSharirSCC {
     }
 
     // does the id[] array contain the strongly connected components?
-    private boolean check(Digraph G) {
-        TransitiveClosure tc = new TransitiveClosure(G);
-        for (int v = 0; v < G.V(); v++) {
-            for (int w = 0; w < G.V(); w++) {
+    private boolean check(Digraph digraph) {
+        TransitiveClosure tc = new TransitiveClosure(digraph);
+        for (int v = 0; v < digraph.V(); v++) {
+            for (int w = 0; w < digraph.V(); w++) {
                 if (stronglyConnected(v, w) != (tc.reachable(v, w) && tc.reachable(w, v)))
                     return false;
             }
@@ -191,8 +191,8 @@ public class KosarajuSharirSCC {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
-        KosarajuSharirSCC scc = new KosarajuSharirSCC(G);
+        Digraph digraph = new Digraph(in);
+        KosarajuSharirSCC scc = new KosarajuSharirSCC(digraph);
 
         // number of connected components
         int m = scc.count();
@@ -203,7 +203,7 @@ public class KosarajuSharirSCC {
         for (int i = 0; i < m; i++) {
             components[i] = new Queue<Integer>();
         }
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             components[scc.id(v)].enqueue(v);
         }
 

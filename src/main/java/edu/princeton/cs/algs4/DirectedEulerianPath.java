@@ -43,18 +43,18 @@ public class DirectedEulerianPath {
     /**
      * Computes an Eulerian path in the specified digraph, if one exists.
      *
-     * @param G the digraph
+     * @param digraph the digraph
      */
-    public DirectedEulerianPath(Digraph G) {
+    public DirectedEulerianPath(Digraph digraph) {
 
         // find vertex from which to start potential Eulerian path:
         // a vertex v with outdegree(v) > indegree(v) if it exits;
         // otherwise a vertex with outdegree(v) > 0
         int deficit = 0;
-        int s = nonIsolatedVertex(G);
-        for (int v = 0; v < G.V(); v++) {
-            if (G.outdegree(v) > G.indegree(v)) {
-                deficit += (G.outdegree(v) - G.indegree(v));
+        int s = nonIsolatedVertex(digraph);
+        for (int v = 0; v < digraph.V(); v++) {
+            if (digraph.outdegree(v) > digraph.indegree(v)) {
+                deficit += (digraph.outdegree(v) - digraph.indegree(v));
                 s = v;
             }
         }
@@ -67,9 +67,9 @@ public class DirectedEulerianPath {
         if (s == -1) s = 0;
 
         // create local view of adjacency lists, to iterate one vertex at a time
-        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            adj[v] = G.adj(v).iterator();
+        Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
+            adj[v] = digraph.adj(v).iterator();
 
         // greedily add to cycle, depth-first search style
         Stack<Integer> stack = new Stack<Integer>();
@@ -86,10 +86,10 @@ public class DirectedEulerianPath {
         }
 
         // check if all edges have been used
-        if (path.size() != G.E() + 1)
+        if (path.size() != digraph.E() + 1)
             path = null;
 
-        assert check(G);
+        assert check(digraph);
     }
 
     /**
@@ -114,9 +114,9 @@ public class DirectedEulerianPath {
 
 
     // returns any non-isolated vertex; -1 if no such vertex
-    private static int nonIsolatedVertex(Digraph G) {
-        for (int v = 0; v < G.V(); v++)
-            if (G.outdegree(v) > 0)
+    private static int nonIsolatedVertex(Digraph digraph) {
+        for (int v = 0; v < digraph.V(); v++)
+            if (digraph.outdegree(v) > 0)
                 return v;
         return -1;
     }
@@ -135,27 +135,27 @@ public class DirectedEulerianPath {
     //      (and one vertex v may have indegree(v) = outdegree(v) + 1)
     //    - the graph is connected, when viewed as an undirected graph
     //      (ignoring isolated vertices)
-    private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
-        if (G.E() == 0) return true;
+    private static boolean satisfiesNecessaryAndSufficientConditions(Digraph digraph) {
+        if (digraph.E() == 0) return true;
 
         // Condition 1: indegree(v) == outdegree(v) for every vertex,
         // except one vertex may have outdegree(v) = indegree(v) + 1
         int deficit = 0;
-        for (int v = 0; v < G.V(); v++)
-            if (G.outdegree(v) > G.indegree(v))
-                deficit += (G.outdegree(v) - G.indegree(v));
+        for (int v = 0; v < digraph.V(); v++)
+            if (digraph.outdegree(v) > digraph.indegree(v))
+                deficit += (digraph.outdegree(v) - digraph.indegree(v));
         if (deficit > 1) return false;
 
         // Condition 2: graph is connected, ignoring isolated vertices
-        Graph H = new Graph(G.V());
-        for (int v = 0; v < G.V(); v++)
-            for (int w : G.adj(v))
+        Graph H = new Graph(digraph.V());
+        for (int v = 0; v < digraph.V(); v++)
+            for (int w : digraph.adj(v))
                 H.addEdge(v, w);
 
         // check that all non-isolated vertices are connected
-        int s = nonIsolatedVertex(G);
+        int s = nonIsolatedVertex(digraph);
         BreadthFirstPaths bfs = new BreadthFirstPaths(H, s);
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             if (H.degree(v) > 0 && !bfs.hasPathTo(v))
                 return false;
 
@@ -163,19 +163,19 @@ public class DirectedEulerianPath {
     }
 
 
-    private boolean check(Digraph G) {
+    private boolean check(Digraph digraph) {
 
         // internal consistency check
         if (hasEulerianPath() == (path() == null)) return false;
 
         // hashEulerianPath() returns correct value
-        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(G)) return false;
+        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(digraph)) return false;
 
         // nothing else to check if no Eulerian path
         if (path == null) return true;
 
         // check that path() uses correct number of edges
-        if (path.size() != G.E() + 1) return false;
+        if (path.size() != digraph.E() + 1) return false;
 
         // check that path() is a directed path in G
         // TODO
@@ -184,12 +184,12 @@ public class DirectedEulerianPath {
     }
 
 
-    private static void unitTest(Digraph G, String description) {
+    private static void unitTest(Digraph digraph, String description) {
         StdOut.println(description);
         StdOut.println("-------------------------------------");
-        StdOut.print(G);
+        StdOut.print(digraph);
 
-        DirectedEulerianPath euler = new DirectedEulerianPath(G);
+        DirectedEulerianPath euler = new DirectedEulerianPath(digraph);
 
         StdOut.print("Eulerian path:  ");
         if (euler.hasEulerianPath()) {
@@ -215,40 +215,40 @@ public class DirectedEulerianPath {
 
 
         // Eulerian cycle
-        Digraph G1 = DigraphGenerator.eulerianCycle(V, E);
-        unitTest(G1, "Eulerian cycle");
+        Digraph digraph1 = DigraphGenerator.eulerianCycle(V, E);
+        unitTest(digraph1, "Eulerian cycle");
 
         // Eulerian path
-        Digraph G2 = DigraphGenerator.eulerianPath(V, E);
-        unitTest(G2, "Eulerian path");
+        Digraph digraph2 = DigraphGenerator.eulerianPath(V, E);
+        unitTest(digraph2, "Eulerian path");
 
         // add one random edge
-        Digraph G3 = new Digraph(G2);
-        G3.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
-        unitTest(G3, "one random edge added to Eulerian path");
+        Digraph digraph3 = new Digraph(digraph2);
+        digraph3.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
+        unitTest(digraph3, "one random edge added to Eulerian path");
 
         // self loop
-        Digraph G4 = new Digraph(V);
+        Digraph digraph4 = new Digraph(V);
         int v4 = StdRandom.uniformInt(V);
-        G4.addEdge(v4, v4);
-        unitTest(G4, "single self loop");
+        digraph4.addEdge(v4, v4);
+        unitTest(digraph4, "single self loop");
 
         // single edge
-        Digraph G5 = new Digraph(V);
-        G5.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
-        unitTest(G5, "single edge");
+        Digraph digraph5 = new Digraph(V);
+        digraph5.addEdge(StdRandom.uniformInt(V), StdRandom.uniformInt(V));
+        unitTest(digraph5, "single edge");
 
         // empty digraph
-        Digraph G6 = new Digraph(V);
-        unitTest(G6, "empty digraph");
+        Digraph digraph6 = new Digraph(V);
+        unitTest(digraph6, "empty digraph");
 
         // random digraph
-        Digraph G7 = DigraphGenerator.simple(V, E);
-        unitTest(G7, "simple digraph");
+        Digraph digraph7 = DigraphGenerator.simple(V, E);
+        unitTest(digraph7, "simple digraph");
 
         // 4-vertex digraph
-        Digraph G8 = new Digraph(new In("eulerianD.txt"));
-        unitTest(G8, "4-vertex Eulerian digraph");
+        Digraph digraph8 = new Digraph(new In("eulerianD.txt"));
+        unitTest(digraph8, "4-vertex Eulerian digraph");
     }
 
 }

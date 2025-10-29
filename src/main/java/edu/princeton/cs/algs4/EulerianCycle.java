@@ -67,28 +67,28 @@ public class EulerianCycle {
     /**
      * Computes an Eulerian cycle in the specified graph, if one exists.
      *
-     * @param G the graph
+     * @param graph the graph
      */
-    public EulerianCycle(Graph G) {
+    public EulerianCycle(Graph graph) {
 
         // must have at least one edge
-        if (G.E() == 0) return;
+        if (graph.E() == 0) return;
 
         // necessary condition: all vertices have even degree
         // (this test is needed, or it might find an Eulerian path instead of cycle)
-        for (int v = 0; v < G.V(); v++)
-            if (G.degree(v) % 2 != 0)
+        for (int v = 0; v < graph.V(); v++)
+            if (graph.degree(v) % 2 != 0)
                 return;
 
         // create local view of adjacency lists, to iterate one vertex at a time
         // the helper Edge data type is used to avoid exploring both copies of an edge v-w
-        Queue<Edge>[] adj = (Queue<Edge>[]) new Queue[G.V()];
-        for (int v = 0; v < G.V(); v++)
+        Queue<Edge>[] adj = (Queue<Edge>[]) new Queue[graph.V()];
+        for (int v = 0; v < graph.V(); v++)
             adj[v] = new Queue<Edge>();
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.V(); v++) {
             int selfLoops = 0;
-            for (int w : G.adj(v)) {
+            for (int w : graph.adj(v)) {
                 // careful with self loops
                 if (v == w) {
                     if (selfLoops % 2 == 0) {
@@ -107,7 +107,7 @@ public class EulerianCycle {
         }
 
         // initialize stack with any non-isolated vertex
-        int s = nonIsolatedVertex(G);
+        int s = nonIsolatedVertex(graph);
         Stack<Integer> stack = new Stack<Integer>();
         stack.push(s);
 
@@ -127,10 +127,10 @@ public class EulerianCycle {
         }
 
         // check if all edges are used
-        if (cycle.size() != G.E() + 1)
+        if (cycle.size() != graph.E() + 1)
             cycle = null;
 
-        assert certifySolution(G);
+        assert certifySolution(graph);
     }
 
     /**
@@ -154,9 +154,9 @@ public class EulerianCycle {
     }
 
     // returns any non-isolated vertex; -1 if no such vertex
-    private static int nonIsolatedVertex(Graph G) {
-        for (int v = 0; v < G.V(); v++)
-            if (G.degree(v) > 0)
+    private static int nonIsolatedVertex(Graph graph) {
+        for (int v = 0; v < graph.V(); v++)
+            if (graph.degree(v) > 0)
                 return v;
         return -1;
     }
@@ -172,40 +172,40 @@ public class EulerianCycle {
     //    - at least one edge
     //    - degree(v) is even for every vertex v
     //    - the graph is connected (ignoring isolated vertices)
-    private static boolean satisfiesNecessaryAndSufficientConditions(Graph G) {
+    private static boolean satisfiesNecessaryAndSufficientConditions(Graph graph) {
 
         // Condition 0: at least 1 edge
-        if (G.E() == 0) return false;
+        if (graph.E() == 0) return false;
 
         // Condition 1: degree(v) is even for every vertex
-        for (int v = 0; v < G.V(); v++)
-            if (G.degree(v) % 2 != 0)
+        for (int v = 0; v < graph.V(); v++)
+            if (graph.degree(v) % 2 != 0)
                 return false;
 
         // Condition 2: graph is connected, ignoring isolated vertices
-        int s = nonIsolatedVertex(G);
-        BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
-        for (int v = 0; v < G.V(); v++)
-            if (G.degree(v) > 0 && !bfs.hasPathTo(v))
+        int s = nonIsolatedVertex(graph);
+        BreadthFirstPaths bfs = new BreadthFirstPaths(graph, s);
+        for (int v = 0; v < graph.V(); v++)
+            if (graph.degree(v) > 0 && !bfs.hasPathTo(v))
                 return false;
 
         return true;
     }
 
     // check that solution is correct
-    private boolean certifySolution(Graph G) {
+    private boolean certifySolution(Graph graph) {
 
         // internal consistency check
         if (hasEulerianCycle() == (cycle() == null)) return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(graph)) return false;
 
         // nothing else to check if no Eulerian cycle
         if (cycle == null) return true;
 
         // check that cycle() uses correct number of edges
-        if (cycle.size() != G.E() + 1) return false;
+        if (cycle.size() != graph.E() + 1) return false;
 
         // check that cycle() is a cycle of G
         // TODO
@@ -221,12 +221,12 @@ public class EulerianCycle {
         return true;
     }
 
-    private static void unitTest(Graph G, String description) {
+    private static void unitTest(Graph graph, String description) {
         StdOut.println(description);
         StdOut.println("-------------------------------------");
-        StdOut.print(G);
+        StdOut.print(graph);
 
-        EulerianCycle euler = new EulerianCycle(G);
+        EulerianCycle euler = new EulerianCycle(graph);
 
         StdOut.print("Eulerian cycle: ");
         if (euler.hasEulerianCycle()) {
@@ -252,22 +252,22 @@ public class EulerianCycle {
         int E = Integer.parseInt(args[1]);
 
         // Eulerian cycle
-        Graph G1 = GraphGenerator.eulerianCycle(V, E);
-        unitTest(G1, "Eulerian cycle");
+        Graph graph1 = GraphGenerator.eulerianCycle(V, E);
+        unitTest(graph1, "Eulerian cycle");
 
         // Eulerian path
-        Graph G2 = GraphGenerator.eulerianPath(V, E);
-        unitTest(G2, "Eulerian path");
+        Graph graph2 = GraphGenerator.eulerianPath(V, E);
+        unitTest(graph2, "Eulerian path");
 
         // empty graph
-        Graph G3 = new Graph(V);
-        unitTest(G3, "empty graph");
+        Graph graph3 = new Graph(V);
+        unitTest(graph3, "empty graph");
 
         // self loop
-        Graph G4 = new Graph(V);
+        Graph graph4 = new Graph(V);
         int v4 = StdRandom.uniformInt(V);
-        G4.addEdge(v4, v4);
-        unitTest(G4, "single self loop");
+        graph4.addEdge(v4, v4);
+        unitTest(graph4, "single self loop");
 
         // union of two disjoint cycles
         Graph H1 = GraphGenerator.eulerianCycle(V/2, E/2);
@@ -276,18 +276,18 @@ public class EulerianCycle {
         for (int i = 0; i < V; i++)
             perm[i] = i;
         StdRandom.shuffle(perm);
-        Graph G5 = new Graph(V);
+        Graph graph5 = new Graph(V);
         for (int v = 0; v < H1.V(); v++)
             for (int w : H1.adj(v))
-                G5.addEdge(perm[v], perm[w]);
+                graph5.addEdge(perm[v], perm[w]);
         for (int v = 0; v < H2.V(); v++)
             for (int w : H2.adj(v))
-                G5.addEdge(perm[V/2 + v], perm[V/2 + w]);
-        unitTest(G5, "Union of two disjoint cycles");
+                graph5.addEdge(perm[V/2 + v], perm[V/2 + w]);
+        unitTest(graph5, "Union of two disjoint cycles");
 
         // random digraph
-        Graph G6 = GraphGenerator.simple(V, E);
-        unitTest(G6, "simple graph");
+        Graph graph6 = GraphGenerator.simple(V, E);
+        unitTest(graph6, "simple graph");
     }
 }
 

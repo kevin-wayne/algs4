@@ -59,13 +59,13 @@ public class TransitiveClosure {
     private DirectedDFS[] tc;  // tc[v] = reachable from v
 
     /**
-     * Computes the transitive closure of the digraph {@code G}.
-     * @param G the digraph
+     * Computes the transitive closure of a digraph.
+     * @param digraph the digraph
      */
-    public TransitiveClosure(Digraph G) {
-        tc = new DirectedDFS[G.V()];
-        for (int v = 0; v < G.V(); v++)
-            tc[v] = new DirectedDFS(G, v);
+    public TransitiveClosure(Digraph digraph) {
+        tc = new DirectedDFS[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++)
+            tc[v] = new DirectedDFS(digraph, v);
     }
 
     /**
@@ -97,21 +97,21 @@ public class TransitiveClosure {
      */
     public static void main(String[] args) {
         In in = new In(args[0]);
-        Digraph G = new Digraph(in);
+        Digraph digraph = new Digraph(in);
 
-        TransitiveClosure tc = new TransitiveClosure(G);
+        TransitiveClosure tc = new TransitiveClosure(digraph);
 
         // print header
         StdOut.print("     ");
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             StdOut.printf("%3d", v);
         StdOut.println();
         StdOut.println("--------------------------------------------");
 
         // print transitive closure
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             StdOut.printf("%3d: ", v);
-            for (int w = 0; w < G.V(); w++) {
+            for (int w = 0; w < digraph.V(); w++) {
                 if (tc.reachable(v, w)) StdOut.printf("  T");
                 else                    StdOut.printf("   ");
             }

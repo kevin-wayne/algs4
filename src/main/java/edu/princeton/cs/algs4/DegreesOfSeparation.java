@@ -99,14 +99,14 @@ public class DegreesOfSeparation {
         // StdOut.println("Source: " + source);
 
         SymbolGraph sg = new SymbolGraph(filename, delimiter);
-        Graph G = sg.graph();
+        Graph graph = sg.graph();
         if (!sg.contains(source)) {
             StdOut.println(source + " not in database.");
             return;
         }
 
         int s = sg.indexOf(source);
-        BreadthFirstPaths bfs = new BreadthFirstPaths(G, s);
+        BreadthFirstPaths bfs = new BreadthFirstPaths(graph, s);
 
         while (!StdIn.isEmpty()) {
             String sink = StdIn.readLine();

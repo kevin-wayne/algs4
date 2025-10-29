@@ -40,34 +40,34 @@ package edu.princeton.cs.algs4;
 public class DirectedCycleX {
     private Stack<Integer> cycle;     // the directed cycle; null if digraph is acyclic
 
-    public DirectedCycleX(Digraph G) {
+    public DirectedCycleX(Digraph digraph) {
 
         // indegrees of remaining vertices
-        int[] indegree = new int[G.V()];
-        for (int v = 0; v < G.V(); v++) {
-            indegree[v] = G.indegree(v);
+        int[] indegree = new int[digraph.V()];
+        for (int v = 0; v < digraph.V(); v++) {
+            indegree[v] = digraph.indegree(v);
         }
 
         // initialize queue to contain all vertices with indegree = 0
         Queue<Integer> queue = new Queue<Integer>();
-        for (int v = 0; v < G.V(); v++)
+        for (int v = 0; v < digraph.V(); v++)
             if (indegree[v] == 0) queue.enqueue(v);
 
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
-            for (int w : G.adj(v)) {
+            for (int w : digraph.adj(v)) {
                 indegree[w]--;
                 if (indegree[w] == 0) queue.enqueue(w);
             }
         }
 
         // there is a directed cycle in subgraph of vertices with indegree >= 1.
-        int[] edgeTo = new int[G.V()];
+        int[] edgeTo = new int[digraph.V()];
         int root = -1;  // any vertex with indegree >= -1
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < digraph.V(); v++) {
             if (indegree[v] == 0) continue;
             else root = v;
-            for (int w : G.adj(v)) {
+            for (int w : digraph.adj(v)) {
                 if (indegree[w] > 0) {
                     edgeTo[w] = v;
                 }
@@ -77,7 +77,7 @@ public class DirectedCycleX {
         if (root != -1) {
 
             // find any vertex on cycle
-            boolean[] visited = new boolean[G.V()];
+            boolean[] visited = new boolean[digraph.V()];
             while (!visited[root]) {
                 visited[root] = true;
                 root = edgeTo[root];
@@ -140,19 +140,19 @@ public class DirectedCycleX {
         int V = Integer.parseInt(args[0]);
         int E = Integer.parseInt(args[1]);
         int F = Integer.parseInt(args[2]);
-        Digraph G = DigraphGenerator.dag(V, E);
+        Digraph digraph = DigraphGenerator.dag(V, E);
 
         // add F extra edges
         for (int i = 0; i < F; i++) {
             int v = StdRandom.uniformInt(V);
             int w = StdRandom.uniformInt(V);
-            G.addEdge(v, w);
+            digraph.addEdge(v, w);
         }
 
-        StdOut.println(G);
+        StdOut.println(digraph);
 
 
-        DirectedCycleX finder = new DirectedCycleX(G);
+        DirectedCycleX finder = new DirectedCycleX(digraph);
         if (finder.hasCycle()) {
             StdOut.print("Directed cycle: ");
             for (int v : finder.cycle()) {

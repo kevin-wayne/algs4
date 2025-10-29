@@ -43,7 +43,7 @@ package edu.princeton.cs.algs4;
 public class SymbolDigraph {
     private ST<String, Integer> st;  // string -> index
     private String[] keys;           // index  -> string
-    private Digraph graph;           // the underlying digraph
+    private Digraph digraph;         // the underlying digraph
 
     /**
      * Initializes a digraph from a file using the specified delimiter.
@@ -75,14 +75,14 @@ public class SymbolDigraph {
 
         // second pass builds the digraph by connecting first vertex on each
         // line to all others
-        graph = new Digraph(st.size());
+        digraph = new Digraph(st.size());
         in = new In(filename);
         while (in.hasNextLine()) {
             String[] a = in.readLine().split(delimiter);
             int v = st.get(a[0]);
             for (int i = 1; i < a.length; i++) {
                 int w = st.get(a[i]);
-                graph.addEdge(v, w);
+                digraph.addEdge(v, w);
             }
         }
     }
@@ -149,7 +149,7 @@ public class SymbolDigraph {
      */
     @Deprecated
     public Digraph G() {
-        return graph;
+        return digraph;
     }
 
     /**
@@ -159,12 +159,12 @@ public class SymbolDigraph {
      * @return the digraph associated with the symbol digraph
      */
     public Digraph digraph() {
-        return graph;
+        return digraph;
     }
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-        int V = graph.V();
+        int V = digraph.V();
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }
@@ -178,10 +178,10 @@ public class SymbolDigraph {
         String filename  = args[0];
         String delimiter = args[1];
         SymbolDigraph sg = new SymbolDigraph(filename, delimiter);
-        Digraph graph = sg.digraph();
+        Digraph digraph = sg.digraph();
         while (!StdIn.isEmpty()) {
             String t = StdIn.readLine();
-            for (int v : graph.adj(sg.index(t))) {
+            for (int v : digraph.adj(sg.index(t))) {
                 StdOut.println("   " + sg.nameOf(v));
             }
         }
