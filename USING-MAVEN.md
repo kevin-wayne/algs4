@@ -57,9 +57,29 @@ Last, edit `pom.xml` to add dependency:
 </dependency>
 ```
 
-Using Maven in Netbeans
+Using Maven in Apache Netbeans
 -----------------------
+Install algs4.jar into your local Maven repository, this assumes you have Maven installed and its variables properly setup. See instructions for using Maven within Windows or Linux / Mac OS X bash shell at the bottom of this document.
+  * You can skip compiling the source code and install algs4.jar directly into your local Maven repository with this command: `mvn install:install-file -Dfile=algs4.jar -DpomFile=pom.xml`. These are the links to download [algs4.jar](http://algs4.cs.princeton.edu/code/algs4.jar) and [pom.xml](https://raw.githubusercontent.com/cruiztorresj/algs4/master/pom.xml).
 
+Open Apache Netbeans and create a new project.
+
+1. Click the `File` menu.
+2. Select `New Project...` from the menu.
+3. Select `Java with Maven` from Categories and `Java Application` from Projects, click the `Next` button.
+4. Provide your project information and click the `Finish` button.
+
+Add algs4.jar as a Dependency for your project.
+
+1. Right click on Dependencies, locate this folder in the upper left pane, expand your project if necessary.
+2. Select `Add Dependency...` from the contextual menu.
+3. Enter the coordinates for algs4.jar in the dialog box, Netbeans will provide suggestions as you type.
+  * `edu.princeton.cs` for the Group Id field value.
+  * `algs4` for the Artifact Id field value.
+  * `1.0.0.0` for the Version field value.
+4. Click the `Add` button.
+
+The dependency is automatically added to your pom.xml file.
 
 Using Maven from the Windows Command Prompt
 -------------------------------------------
