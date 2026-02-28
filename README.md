@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/CIResearchGroup/algs4.svg?branch=master)](https://travis-ci.org/CIResearchGroup/algs4)
 ## Overview
 
 <IMG SRC="http://algs4.cs.princeton.edu/cover.png"  align=right hspace=25 width=100 alt = "Algorithms 4/e textbook">
